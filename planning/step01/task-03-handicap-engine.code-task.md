@@ -1,12 +1,12 @@
 # Task: Handicap Engine with Parameter Sets
 
 ## Description
-Port and refactor the handicap calculation engine from `Analysis.java` to support multiple named parameter sets running in parallel on the same race data.
+Port and refactor the handicap calculation engine from `Analysis.java` to support config-driven parameter sets. Each Race Series folder has an `AnalysisConfig.json` specifying which parameter set to use.
 
 ## Background
-The prototype `Analysis.java` has a single hardcoded parameter set (BEPC #1). The new engine must support pluggable parameter sets so results from different configurations can be compared.
+The prototype `Analysis.java` has a single hardcoded parameter set (BEPC #1). The new engine must support pluggable parameter sets so different series folders can use different configurations for comparison.
 
-Two initial parameter sets (from SPEC.md):
+Two initial named parameter sets (from SPEC.md):
 - **TopYacht Standard**: 45% mark boat, ±4% clamp, ±6% ignore, EWMA gain=3
 - **BEPC #1**: 33% mark boat, no clamp, ±10% outlier, asymmetric update (30%/15%)
 
@@ -14,27 +14,31 @@ Source: `~/workplace/mliddellGenAI/src/MliddellGenAI/racingAnalytics/src/main/ja
 
 ## Technical Requirements
 1. Package: `com.bepc.racing.engine`
-2. `HandicapParameters` — immutable config object with all tunable values:
+2. `HandicapParameters` — immutable config with all tunable values:
    - markBoatPercentile (double)
    - clampPercent (double, 0 = disabled)
    - ignorePercent (double)
    - updateMethod (enum: EWMA, ASYMMETRIC)
    - ewmaGain (double, used when method=EWMA)
    - fasterWeight / slowerWeight (doubles, used when method=ASYMMETRIC)
-3. `HandicapEngine` — processes a list of `CommonRaceResult` in order, returns results annotated with all handicap fields
-4. `HandicapEngine` takes a `HandicapParameters` at construction
-5. `ParameterSets` — static factory with named sets: `TOPYACHT_STANDARD`, `BEPC_1`
-6. `HandicapAnalysis` — runs multiple engines in parallel, returns results keyed by parameter set name
+3. `AnalysisConfig` — loaded from `AnalysisConfig.json`:
+   - seriesName
+   - parameterSet (named string or inline HandicapParameters)
+   - seasonStartRaceId (races before this are warmup only — excluded from standings/points)
+   - corrections list
+4. `HandicapEngine` — processes list of `CommonRaceResult` in chronological order using given `HandicapParameters`
+5. `ParameterSets` — static factory: `TOPYACHT_STANDARD`, `BEPC_1`
+6. `SeriesAnalysis` — loads a series folder, applies corrections, runs HandicapEngine, returns annotated results
 
 ## Dependencies
 - Task 02 (domain model) complete
 
 ## Implementation Approach
 1. Extract `HandicapParameters` from hardcoded values in `Analysis.java`
-2. Refactor `Analysis.java` → `HandicapEngine` using parameters
-3. Implement both update methods (EWMA and ASYMMETRIC) as strategies
-4. Add `ParameterSets` with the two named configs
-5. Add `HandicapAnalysis` wrapper
+2. Refactor `Analysis.java` → `HandicapEngine`
+3. Implement EWMA and ASYMMETRIC update methods
+4. Add `AnalysisConfig` with JSON deserialization
+5. Add `SeriesAnalysis` as the main entry point
 
 ## Acceptance Criteria
 
@@ -46,15 +50,15 @@ Source: `~/workplace/mliddellGenAI/src/MliddellGenAI/racingAnalytics/src/main/ja
 2. **BEPC #1 matches prototype output**
    - Given the 2025 BEPC race data
    - When processed with BEPC #1 parameters
-   - Then nextHC values match the prototype's output within 0.0001
+   - Then nextHC values match prototype output within 0.0001
 
-3. **Parallel execution**
-   - Given the same race list
-   - When run through HandicapAnalysis with both parameter sets
-   - Then results for both sets are returned independently
+3. **Season start respected**
+   - Given a series with seasonStartRaceId set to race 5
+   - When analysis runs
+   - Then races 1-4 contribute to running handicap state but have zero season points
 
 4. **Clamping works**
-   - Given a racer with a BCH 8% above their startHC
+   - Given a racer with resultHC_raw 8% above startHC
    - When processed with TopYacht parameters (±4% clamp, ±6% ignore)
    - Then resultHC is clamped to startHC × 1.04
 

@@ -138,8 +138,8 @@ The system supports multiple named parameter sets run in parallel on the same da
 | Fresh racer startup | R1: set to timeVersusPar; R2: 50/50 blend |
 
 ### Design Notes
-- All parameter sets are run on the same input data each time
-- Results for each set are stored and displayed independently
+- Each series folder uses ONE parameter set (defined in AnalysisConfig.json)
+- Comparing parameter sets = run two folders with different configs pointing to same race data
 - New parameter sets can be added without changing core logic
 - Parameter sets are defined in configuration (not hardcoded)
 
@@ -171,17 +171,57 @@ The system supports multiple named parameter sets run in parallel on the same da
 ### Step 6 — Batch pipeline
 - Lambda or scheduled job to auto-fetch + process new races
 
+## Race Series Folders
+
+Analysis is always performed on a **Race Series folder** — a self-contained directory:
+
+```
+<series-folder>/
+├── AnalysisConfig.json       # Configuration for this series
+└── results/
+    └── common/               # Normalized race result files (*.common.json)
+```
+
+### AnalysisConfig.json
+
+```json
+{
+  "seriesName": "BEPC 2025",
+  "parameterSet": "TOPYACHT_STANDARD",
+  "seasonStartRaceId": "392690",
+  "corrections": [
+    {
+      "raceId": "398563",
+      "racerName": "John Smith",
+      "field": "canonicalName",
+      "correctedValue": "John A. Smith"
+    }
+  ]
+}
+```
+
+- **parameterSet** — named set or inline parameter object
+- **seasonStartRaceId** — races before this ID build running handicap state but are excluded from season standings/points
+- **corrections** — field-level overrides applied during analysis
+
+### Multiple Series Folders
+
+- **Production** — official current season
+- **Experimental** — alternate configs for comparison (different parameters, corrections under evaluation)
+
 ## Authentication
 
 **v1:** No login required. All data is publicly readable.
 
-**Future:** Cognito user pool for member accounts, enabling personalized views and integration with external systems (e.g. club membership, registration). API Gateway will be designed to support optional auth from the start so adding it later doesn't require restructuring.
+**Future:** Cognito user pool for member accounts, enabling personalized views and integration with external systems.
 
-**v1:** WebScorer API only.
+## Data Sources
 
-**Corrections layer:** A corrections database sits between the raw source data and the normalized common format. It allows overriding specific fields (racer name, boat class, finish time, DNF status) without modifying the raw data. Corrections are applied during normalization.
+**v1:** WebScorer API only. Raw JSON saved alongside common JSON in the series folder.
 
-**Future:** Additional result sources (e.g. manual entry, other timing systems) will be added as new `ResultProvider` implementations.
+**Corrections:** Applied during analysis via `AnalysisConfig.json` — no separate corrections database.
+
+**Future:** Additional result sources added as new `ResultProvider` implementations.
 
 ## Out of Scope (v1)
 - Mobile app
