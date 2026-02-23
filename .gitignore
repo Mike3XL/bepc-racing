@@ -1,0 +1,20 @@
+# Build artifacts
+target/
+*.class
+*.jar
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+
+# CDK
+cdk.out/
+node_modules/
+
+# Secrets
+*.env
+application-local.properties
