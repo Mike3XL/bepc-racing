@@ -167,47 +167,135 @@ def generate_handicap(data: dict) -> None:
 
 
 def generate_races(data: dict) -> None:
-    sections = ""
+    # Group races by season year (inferred from date)
+    from collections import defaultdict
+    import re
+
+    def year_from_date(date_str: str) -> int:
+        m = re.search(r'\b(20\d\d)\b', date_str)
+        return int(m.group(1)) if m else 0
+
+    seasons: dict[int, list] = defaultdict(list)
     for race in data["races"]:
-        rid = race["race_id"]
-        # Two tabs: finish order and handicap order
-        finish = sorted(race["results"], key=lambda r: r["original_place"])
-        handicap = sorted(race["results"], key=lambda r: r["adjusted_place"])
+        seasons[year_from_date(race["date"])].append(race)
 
-        def result_rows(results, place_field, time_field):
-            rows = ""
-            for r in results:
-                rows += f'<tr><td>{r[place_field]}</td><td>{_racer_link(r["canonical_name"])}</td><td>{r["craft_category"]}</td><td>{_fmt_time(r[time_field])}</td></tr>\n'
-            return rows
+    sorted_years = sorted(seasons.keys())
+    current_year = sorted_years[-1]
 
-        sections += f"""
-<div id="{rid}" class="mb-5">
-  <h3>{race["name"]} <small class="text-muted fs-6">{race["date"]}</small></h3>
-  <ul class="nav nav-tabs" id="tabs-{rid}">
-    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#finish-{rid}">Finish Order</button></li>
-    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#handicap-{rid}">Handicap Order</button></li>
-  </ul>
-  <div class="tab-content border border-top-0 p-3">
-    <div class="tab-pane active" id="finish-{rid}">
-      <table class="table table-sm table-striped">
-        <thead><tr><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th></tr></thead>
-        <tbody>{result_rows(finish, "original_place", "time_seconds")}</tbody>
-      </table>
-    </div>
-    <div class="tab-pane" id="handicap-{rid}">
-      <table class="table table-sm table-striped">
-        <thead><tr><th>Adj Place</th><th>Racer</th><th>Craft</th><th>Adj Time</th></tr></thead>
-        <tbody>{result_rows(handicap, "adjusted_place", "adjusted_time_seconds")}</tbody>
-      </table>
-    </div>
-  </div>
-</div>"""
+    # Season selector JS data: { year: [race, ...] }
+    seasons_js = json.dumps({
+        str(y): [
+            {
+                "race_id": r["race_id"],
+                "name": r["name"],
+                "date": r["date"],
+                "finish": sorted(r["results"], key=lambda x: x["original_place"]),
+                "handicap": sorted(r["results"], key=lambda x: x["adjusted_place"]),
+            }
+            for r in seasons[y]
+        ]
+        for y in sorted_years
+    })
+
+    year_options = "".join(
+        f'<option value="{y}"{" selected" if y == current_year else ""}>{y} Season</option>'
+        for y in reversed(sorted_years)
+    )
 
     html = _head("Races") + _nav("Races") + f"""
 <div class="container">
   <h1>Race Results</h1>
-  {sections}
-</div>""" + _foot()
+
+  <div class="mb-3">
+    <select id="season-select" class="form-select w-auto d-inline-block">
+      {year_options}
+    </select>
+  </div>
+
+  <div class="d-flex align-items-center gap-2 mb-3">
+    <button id="btn-prev" class="btn btn-outline-secondary">&larr; Prev</button>
+    <button id="btn-next" class="btn btn-outline-secondary">Next &rarr;</button>
+    <div class="ms-3">
+      <h5 id="race-name" class="mb-0"></h5>
+      <small id="race-meta" class="text-muted"></small>
+    </div>
+  </div>
+
+  <ul class="nav nav-tabs" id="result-tabs">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-finish">Finish Order</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-handicap">Handicap Order</button></li>
+  </ul>
+  <div class="tab-content border border-top-0 p-3">
+    <div class="tab-pane active" id="tab-finish">
+      <table class="table table-sm table-striped" id="tbl-finish" style="table-layout:fixed">
+        <colgroup><col style="width:60px"><col style="width:280px"><col style="width:120px"><col style="width:80px"></colgroup>
+        <thead><tr><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="tab-handicap">
+      <table class="table table-sm table-striped" id="tbl-handicap" style="table-layout:fixed">
+        <colgroup><col style="width:60px"><col style="width:200px"><col style="width:90px"><col style="width:70px"><col style="width:80px"><col style="width:80px"><col style="width:100px"></colgroup>
+        <thead><tr>
+          <th><span class="d-none d-sm-inline">Adj </span>Place</th>
+          <th>Racer</th><th>Craft</th><th>Time</th>
+          <th><span class="d-none d-sm-inline">Adj </span>Time</th>
+          <th><span class="d-none d-sm-inline">Handi</span>cap</th>
+          <th>New <span class="d-none d-sm-inline">Handi</span>cap</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+const SEASONS = {seasons_js};
+let currentYear = '{current_year}';
+let currentIndex = 0;
+
+function slug(name) {{ return name.toLowerCase().replace(/ /g, '-'); }}
+function fmtTime(s) {{
+  s = Math.floor(s);
+  const m = Math.floor(s / 60), sec = s % 60, h = Math.floor(m / 60);
+  return h ? h+':'+String(m%60).padStart(2,'0')+':'+String(sec).padStart(2,'0')
+           : m+':'+String(sec).padStart(2,'0');
+}}
+
+function renderRace(index) {{
+  const races = SEASONS[currentYear];
+  currentIndex = index;
+  const race = races[index];
+
+  document.getElementById('race-name').textContent = race.name;
+  document.getElementById('race-meta').textContent = race.date + ' · ' + race.finish.length + ' starters';
+
+  document.getElementById('btn-prev').disabled = index === 0;
+  document.getElementById('btn-next').disabled = index === races.length - 1;
+
+  function rows(results, placeField, timeField, extra) {{
+    return results.map(r => {{
+      let cells = `<td>${{r[placeField]}}</td><td><a href="racer/${{slug(r.canonical_name)}}.html">${{r.canonical_name}}</a></td><td>${{r.craft_category}}</td><td>${{fmtTime(r[timeField])}}</td>`;
+      if (extra) cells += `<td>${{fmtTime(r.adjusted_time_seconds)}}</td><td>${{r.handicap.toFixed(3)}}</td><td>${{r.handicap_post.toFixed(3)}}</td>`;
+      return `<tr>${{cells}}</tr>`;
+    }}).join('');
+  }}
+
+  document.querySelector('#tbl-finish tbody').innerHTML = rows(race.finish, 'original_place', 'time_seconds', false);
+  document.querySelector('#tbl-handicap tbody').innerHTML = rows(race.handicap, 'adjusted_place', 'time_seconds', true);
+}}
+
+function loadSeason(year) {{
+  currentYear = year;
+  renderRace(SEASONS[year].length - 1);  // default to most recent
+}}
+
+document.getElementById('btn-prev').addEventListener('click', () => renderRace(currentIndex - 1));
+document.getElementById('btn-next').addEventListener('click', () => renderRace(currentIndex + 1));
+document.getElementById('season-select').addEventListener('change', e => loadSeason(e.target.value));
+
+loadSeason(currentYear);
+</script>""" + _foot()
     (SITE_DIR / "races.html").write_text(html)
     print("Generated: site/races.html")
 
