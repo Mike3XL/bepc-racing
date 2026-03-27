@@ -1,6 +1,7 @@
 """Entry point: bepc <command>"""
 import argparse
 import json
+import sys
 from dataclasses import asdict
 from pathlib import Path
 
@@ -41,18 +42,42 @@ def cmd_generate(args):
     generate_all(data)
 
 
+def cmd_publish(args):
+    import subprocess, os
+    root = Path(__file__).parent
+    site = root / "site"
+    if not (site / "index.html").exists():
+        print("ERROR: site/index.html not found. Run 'bepc generate' first.")
+        sys.exit(1)
+    script = f"""set -e
+cd {root}
+git read-tree --empty
+git --work-tree={site} add --all
+TREE=$(git write-tree)
+COMMIT=$(git commit-tree $TREE -m "chore: publish site")
+git push origin $COMMIT:refs/heads/gh-pages --force
+git read-tree HEAD
+echo "Published → https://mike3xl.github.io/bepc-racing/"
+"""
+    result = subprocess.run(["bash", "-c", script])
+    sys.exit(result.returncode)
+
+
 def main():
     parser = argparse.ArgumentParser(prog="bepc")
     sub = parser.add_subparsers(dest="command")
 
     sub.add_parser("process", help="Process common JSON → site/data.json")
     sub.add_parser("generate", help="Generate HTML pages from site/data.json")
+    sub.add_parser("publish", help="Push site/ to GitHub Pages (gh-pages branch)")
 
     args = parser.parse_args()
     if args.command == "process":
         cmd_process(args)
     elif args.command == "generate":
         cmd_generate(args)
+    elif args.command == "publish":
+        cmd_publish(args)
     else:
         parser.print_help()
 
