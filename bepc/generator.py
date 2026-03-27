@@ -151,14 +151,14 @@ def generate_handicap(data: dict) -> None:
     rows = ""
     for i, r in enumerate(racers, 1):
         hseq = ", ".join(f'{h:.2f}' for h in r["handicap_sequence"])
-        rows += f'<tr><td>{i}</td><td>{_racer_link(r["canonical_name"])}</td><td>{r["craft_category"]}</td><td>{r["num_races"]}</td><td>{r["season_handicap_points"]}</td><td>{r["handicap_post"]:.3f}</td><td>{hseq}</td></tr>\n'
+        rows += f'<tr><td>{i}</td><td>{_racer_link(r["canonical_name"])}</td><td>{r["craft_category"]}</td><td>{r["num_races"]}</td><td>{r["season_handicap_points"]}</td><td>{r["handicap_post"]:.3f}</td><td style="white-space:nowrap">{hseq}</td></tr>\n'
 
     html = _head("Handicap Standings") + _nav("Handicap Standings") + f"""
 <div class="container">
   <h1>Handicap Standings</h1>
   <p class="text-muted">Points awarded for top-10 adjusted finish. First two races are provisional (no handicap points awarded).</p>
   <table id="handicap-table" class="table table-striped table-hover">
-    <thead><tr><th>#</th><th>Racer</th><th>Craft</th><th>Races</th><th>Handicap Points</th><th>Current Handicap</th><th>Handicap History</th></tr></thead>
+    <thead><tr><th>#</th><th style="min-width:180px">Racer</th><th>Craft</th><th>Races</th><th>Handicap Points</th><th>Current Handicap</th><th style="white-space:nowrap">Handicap History</th></tr></thead>
     <tbody>{rows}</tbody>
   </table>
 </div>""" + _foot(_datatable_init("handicap-table", 4, "desc"))
@@ -189,6 +189,7 @@ def generate_races(data: dict) -> None:
                 "race_id": r["race_id"],
                 "name": r["name"],
                 "date": r["date"],
+                "display_url": r["display_url"],
                 "finish": sorted(r["results"], key=lambda x: x["original_place"]),
                 "handicap": sorted(r["results"], key=lambda x: x["adjusted_place"]),
             }
@@ -228,8 +229,13 @@ def generate_races(data: dict) -> None:
   <div class="tab-content border border-top-0 p-3">
     <div class="tab-pane active" id="tab-finish">
       <table class="table table-sm table-striped" id="tbl-finish" style="table-layout:fixed">
-        <colgroup><col style="width:60px"><col style="width:280px"><col style="width:120px"><col style="width:80px"></colgroup>
-        <thead><tr><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th></tr></thead>
+        <colgroup><col style="width:60px"><col style="width:200px"><col style="width:90px"><col style="width:70px"><col style="width:80px"><col style="width:80px"><col style="width:100px"></colgroup>
+        <thead><tr>
+          <th>Place</th><th>Racer</th><th>Craft</th><th>Time</th>
+          <th><span class="d-sm-none">Hcap</span><span class="d-none d-sm-inline">Handicap</span></th>
+          <th><span class="d-sm-none">Adj</span><span class="d-none d-sm-inline">Adj Time</span></th>
+          <th><span class="d-sm-none">New</span><span class="d-none d-sm-inline">New Handicap</span></th>
+        </tr></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -237,11 +243,10 @@ def generate_races(data: dict) -> None:
       <table class="table table-sm table-striped" id="tbl-handicap" style="table-layout:fixed">
         <colgroup><col style="width:60px"><col style="width:200px"><col style="width:90px"><col style="width:70px"><col style="width:80px"><col style="width:80px"><col style="width:100px"></colgroup>
         <thead><tr>
-          <th><span class="d-none d-sm-inline">Adj </span>Place</th>
-          <th>Racer</th><th>Craft</th><th>Time</th>
-          <th><span class="d-none d-sm-inline">Adj </span>Time</th>
-          <th><span class="d-none d-sm-inline">Handi</span>cap</th>
-          <th>New <span class="d-none d-sm-inline">Handi</span>cap</th>
+          <th>Place</th><th>Racer</th><th>Craft</th><th>Time</th>
+          <th><span class="d-sm-none">Hcap</span><span class="d-none d-sm-inline">Handicap</span></th>
+          <th><span class="d-sm-none">Adj</span><span class="d-none d-sm-inline">Adj Time</span></th>
+          <th><span class="d-sm-none">New</span><span class="d-none d-sm-inline">New Handicap</span></th>
         </tr></thead>
         <tbody></tbody>
       </table>
@@ -268,16 +273,22 @@ function renderRace(index) {{
   const race = races[index];
 
   document.getElementById('race-name').textContent = race.name;
-  document.getElementById('race-meta').textContent = race.date + ' · ' + race.finish.length + ' starters';
+  document.getElementById('race-meta').innerHTML = race.date + ' · ' + race.finish.length + ' starters · <a href="' + race.display_url + '" target="_blank">WebScorer ↗</a>';
 
   document.getElementById('btn-prev').disabled = index === 0;
   document.getElementById('btn-next').disabled = index === races.length - 1;
 
   function rows(results, placeField, timeField, extra) {{
     return results.map(r => {{
-      let cells = `<td>${{r[placeField]}}</td><td><a href="racer/${{slug(r.canonical_name)}}.html">${{r.canonical_name}}</a></td><td>${{r.craft_category}}</td><td>${{fmtTime(r[timeField])}}</td>`;
-      if (extra) cells += `<td>${{fmtTime(r.adjusted_time_seconds)}}</td><td>${{r.handicap.toFixed(3)}}</td><td>${{r.handicap_post.toFixed(3)}}</td>`;
-      return `<tr>${{cells}}</tr>`;
+      return `<tr>
+        <td>${{r[placeField]}}</td>
+        <td><a href="racer/${{slug(r.canonical_name)}}.html">${{r.canonical_name}}</a></td>
+        <td>${{r.craft_category}}</td>
+        <td>${{fmtTime(r.time_seconds)}}</td>
+        <td>${{r.handicap.toFixed(3)}}</td>
+        <td>${{fmtTime(r.adjusted_time_seconds)}}</td>
+        <td>${{r.handicap_post.toFixed(3)}}</td>
+      </tr>`;
     }}).join('');
   }}
 
@@ -295,6 +306,14 @@ document.getElementById('btn-next').addEventListener('click', () => renderRace(c
 document.getElementById('season-select').addEventListener('change', e => loadSeason(e.target.value));
 
 loadSeason(currentYear);
+
+// If linked to a specific race via #race_id, navigate to it
+const hash = location.hash.replace('#', '');
+if (hash) {{
+  const races = SEASONS[currentYear];
+  const idx = races.findIndex(r => String(r.race_id) === hash);
+  if (idx >= 0) renderRace(idx);
+}}
 </script>""" + _foot()
     (SITE_DIR / "races.html").write_text(html)
     print("Generated: site/races.html")
