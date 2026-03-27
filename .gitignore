@@ -3,6 +3,15 @@ target/
 *.class
 *.jar
 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Generated site (rebuilt by CLI)
+site/
+
 # IDE
 .idea/
 .vscode/
