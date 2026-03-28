@@ -32,7 +32,7 @@ def _head(title: str, extra_css: str = "") -> str:
 <body>"""
 
 
-def _nav(active: str = "") -> str:
+def _nav(active: str = "", prefix: str = "") -> str:
     pages = [
         ("index.html", "Home"),
         ("standings.html", "Official Standings"),
@@ -44,10 +44,10 @@ def _nav(active: str = "") -> str:
     items = ""
     for href, label in pages:
         cls = "nav-link active" if label == active else "nav-link"
-        items += f'<li class="nav-item"><a class="{cls}" href="{href}">{label}</a></li>\n'
+        items += f'<li class="nav-item"><a class="{cls}" href="{prefix}{href}">{label}</a></li>\n'
     return f"""<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
   <div class="container">
-    <a class="navbar-brand" href="index.html">🏄 BEPC Racing</a>
+    <a class="navbar-brand" href="{prefix}index.html">🏄 BEPC Racing</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -665,7 +665,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
         if multi:
             tab_content += "</div>"
 
-        html = _head(name, _CHARTJS) + _nav() + f"""
+        html = _head(name, _CHARTJS) + _nav(prefix="../") + f"""
 <div class="container">
   {racer_nav}
   <h2>{name}</h2>
