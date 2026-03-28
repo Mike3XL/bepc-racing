@@ -39,6 +39,7 @@ def _nav(active: str = "", prefix: str = "") -> str:
         ("handicap.html", "Handicap Standings"),
         ("races.html", "Races"),
         ("trajectories.html", "Trajectories"),
+        ("racer/index.html", "Racers"),
         ("about.html", "About"),
     ]
     items = ""
@@ -442,6 +443,7 @@ function makeChart(id, data, yLabel) {
     plugins: [plugin],
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       layout: { padding: { right: 160 } },
       interaction: { mode: 'nearest', intersect: false },
       plugins: {
@@ -508,15 +510,15 @@ function resetHighlight(chart) {
   <div class="tab-content">
     <div class="tab-pane active" id="tab-pts">
       <p class="text-muted small">Official season points over time. Click legend to toggle racers.</p>
-      <canvas id="chart-pts" style="max-height:700px"></canvas>
+      <canvas id="chart-pts" style="height:600px"></canvas>
     </div>
     <div class="tab-pane" id="tab-hpts">
       <p class="text-muted small">Handicap season points over time. First two races provisional (no points awarded).</p>
-      <canvas id="chart-hpts" style="max-height:700px"></canvas>
+      <canvas id="chart-hpts" style="height:600px"></canvas>
     </div>
     <div class="tab-pane" id="tab-hnum">
       <p class="text-muted small">Handicap factor over time. Values below 1.0 = faster than par; above 1.0 = slower. Racers with 4+ races shown.</p>
-      <canvas id="chart-hnum" style="max-height:700px"></canvas>
+      <canvas id="chart-hnum" style="height:600px"></canvas>
     </div>
   </div>
 </div>
@@ -730,6 +732,31 @@ def generate_about() -> None:
     print("Generated: site/about.html")
 
 
+def generate_racer_index(data: dict) -> None:
+    from collections import defaultdict
+    racer_data: dict[str, dict] = defaultdict(dict)
+    for race in data["races"]:
+        for r in race["results"]:
+            key = r["canonical_name"]
+            racer_data[key] = r  # last appearance
+
+    rows = ""
+    for name in sorted(racer_data.keys()):
+        r = racer_data[name]
+        rows += f'<tr><td><a href="{_slug(name)}.html">{name}</a></td><td>{r["craft_category"]}</td><td>{r["num_races"]}</td><td>{r["season_points"]}</td></tr>\n'
+
+    html = _head("Racers") + _nav("Racers", prefix="../") + f"""
+<div class="container">
+  <h1>Racers</h1>
+  <table id="racer-index" class="table table-striped table-hover">
+    <thead><tr><th>Name</th><th>Craft</th><th>Races</th><th>Points</th></tr></thead>
+    <tbody>{rows}</tbody>
+  </table>
+</div>""" + _foot(_datatable_init("racer-index", 0, "asc"))
+    (SITE_DIR / "racer" / "index.html").write_text(html)
+    print("Generated: site/racer/index.html")
+
+
 def generate_all(data: dict) -> None:
     SITE_DIR.mkdir(exist_ok=True)
     (SITE_DIR / "racer").mkdir(exist_ok=True)
@@ -740,3 +767,4 @@ def generate_all(data: dict) -> None:
     generate_trajectories(data)
     generate_about()
     generate_racer_pages(data)
+    generate_racer_index(data)
