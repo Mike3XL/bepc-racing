@@ -442,7 +442,7 @@ function makeChart(id, data, yLabel) {
     data: data,
     plugins: [plugin],
     options: {
-      responsive: true,
+      responsive: false,
       maintainAspectRatio: false,
       layout: { padding: { right: 160 } },
       interaction: { mode: 'nearest', intersect: false },
@@ -510,15 +510,15 @@ function resetHighlight(chart) {
   <div class="tab-content">
     <div class="tab-pane active" id="tab-pts">
       <p class="text-muted small">Official season points over time. Click legend to toggle racers.</p>
-      <canvas id="chart-pts" style="height:600px"></canvas>
+      <div style="height:600px;overflow:auto"><canvas id="chart-pts" width="1100" height="580"></canvas></div>
     </div>
     <div class="tab-pane" id="tab-hpts">
       <p class="text-muted small">Handicap season points over time. First two races provisional (no points awarded).</p>
-      <canvas id="chart-hpts" style="height:600px"></canvas>
+      <div style="height:600px;overflow:auto"><canvas id="chart-hpts" width="1100" height="580"></canvas></div>
     </div>
     <div class="tab-pane" id="tab-hnum">
       <p class="text-muted small">Handicap factor over time. Values below 1.0 = faster than par; above 1.0 = slower. Racers with 4+ races shown.</p>
-      <canvas id="chart-hnum" style="height:600px"></canvas>
+      <div style="height:600px;overflow:auto"><canvas id="chart-hnum" width="1100" height="580"></canvas></div>
     </div>
   </div>
 </div>
