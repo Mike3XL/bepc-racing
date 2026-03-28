@@ -39,6 +39,7 @@ def _nav(active: str = "") -> str:
         ("handicap.html", "Handicap Standings"),
         ("races.html", "Races"),
         ("trajectories.html", "Trajectories"),
+        ("about.html", "About"),
     ]
     items = ""
     for href, label in pages:
@@ -536,6 +537,199 @@ def _fmt_time(seconds: float) -> str:
     return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
 
 
+def generate_racer_pages(data: dict) -> None:
+    from collections import defaultdict
+    racer_data: dict[str, dict[str, list]] = defaultdict(lambda: defaultdict(list))
+
+    for race in data["races"]:
+        for r in race["results"]:
+            racer_data[r["canonical_name"]][r["craft_category"]].append({
+                "race_id": race["race_id"],
+                "name": race["name"],
+                "date": race["date"],
+                "display_url": race["display_url"],
+                **r,
+            })
+
+    # Order by best official season points across crafts
+    def best_pts(name):
+        return max(
+            crafts[c][-1]["season_points"]
+            for c in crafts
+        ) if (crafts := racer_data[name]) else 0
+
+    ordered_by_rank = sorted(racer_data.keys(), key=lambda n: -best_pts(n))
+    alpha_names = sorted(racer_data.keys())
+
+    # Dropdown options (alphabetical)
+    dropdown_opts = "".join(
+        f'<option value="{_slug(n)}">{n}</option>' for n in alpha_names
+    )
+    nav_js = f"""
+<script>
+document.getElementById('racer-select').addEventListener('change', function() {{
+  window.location.href = this.value + '.html';
+}});
+</script>"""
+
+    for rank_idx, name in enumerate(ordered_by_rank):
+        slug = _slug(name)
+        crafts = racer_data[name]
+        craft_list = sorted(crafts.keys())
+        multi = len(craft_list) > 1
+
+        # Prev/next by rank
+        prev_name = ordered_by_rank[rank_idx - 1] if rank_idx > 0 else None
+        next_name = ordered_by_rank[rank_idx + 1] if rank_idx < len(ordered_by_rank) - 1 else None
+
+        prev_btn = f'<a href="{_slug(prev_name)}.html" class="btn btn-outline-secondary btn-sm" style="width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">&larr; {prev_name}</a>' if prev_name else '<span style="width:160px;display:inline-block"></span>'
+        next_btn = f'<a href="{_slug(next_name)}.html" class="btn btn-outline-secondary btn-sm" style="width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{next_name} &rarr;</a>' if next_name else '<span style="width:160px;display:inline-block"></span>'
+
+        racer_nav = f"""
+<div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+  {prev_btn}
+  <select id="racer-select" class="form-select form-select-sm" style="width:200px">
+    {"".join(f'<option value="{_slug(n)}"{" selected" if n == name else ""}>{n}</option>' for n in alpha_names)}
+  </select>
+  {next_btn}
+</div>"""
+
+        # Tabs
+        tab_nav = ""
+        tab_content = ""
+        if multi:
+            tab_nav = '<ul class="nav nav-tabs mb-3">'
+            for i, craft in enumerate(craft_list):
+                active = "active" if i == 0 else ""
+                tab_nav += f'<li class="nav-item"><button class="nav-link {active}" data-bs-toggle="tab" data-bs-target="#craft-{_slug(craft)}">{craft}</button></li>'
+            tab_nav += '</ul><div class="tab-content">'
+
+        all_charts_js = ""
+        for i, craft in enumerate(craft_list):
+            results = crafts[craft]
+            active = "active" if i == 0 else ""
+            wrap_open = f'<div class="tab-pane {active}" id="craft-{_slug(craft)}">' if multi else ""
+            wrap_close = "</div>" if multi else ""
+
+            last = results[-1]
+            num_races = len(results)
+            season_pts = last["season_points"]
+            season_hpts = last["season_handicap_points"]
+            cur_hcap = last["handicap_post"]
+
+            race_labels = [f'#{r["name"].rsplit("#",1)[-1].strip()}' for r in results]
+            pts_data = [r["season_points"] for r in results]
+            hpts_data = [r["season_handicap_points"] for r in results]
+            hcap_data = [round(r["handicap_post"], 4) for r in results]
+
+            cid = _slug(craft)
+            all_charts_js += f"""
+new Chart(document.getElementById('chart-pts-{cid}'), {{
+  type: 'line',
+  data: {{labels:{json.dumps(race_labels)},datasets:[
+    {{label:'Official Pts',data:{json.dumps(pts_data)},borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4}},
+    {{label:'Handicap Pts',data:{json.dumps(hpts_data)},borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}}
+  ]}},
+  options:{{responsive:true,plugins:{{legend:{{position:'top'}}}},scales:{{y:{{title:{{display:true,text:'Points'}}}}}}}}
+}});
+new Chart(document.getElementById('chart-hcap-{cid}'), {{
+  type: 'line',
+  data: {{labels:{json.dumps(race_labels)},datasets:[
+    {{label:'Handicap',data:{json.dumps(hcap_data)},borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}}
+  ]}},
+  options:{{responsive:true,plugins:{{legend:{{position:'top'}}}},scales:{{y:{{title:{{display:true,text:'Handicap Factor'}}}}}}}}
+}});"""
+
+            rows = ""
+            for r in results:
+                race_link = f'<a href="../races.html#{r["race_id"]}">{r["date"]}</a>'
+                rows += f'<tr><td>{race_link}</td><td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td><td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td><td>{r["handicap"]:.3f}</td><td>{r["handicap_post"]:.3f}</td><td>{r["race_points"]}</td><td>{r["handicap_points"]}</td></tr>\n'
+
+            tab_content += f"""{wrap_open}
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> {num_races}</div>
+  <div class="col-6 col-sm-3"><strong>Official Pts:</strong> {season_pts}</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> {season_hpts}</div>
+  <div class="col-6 col-sm-3"><strong>Current Hcap:</strong> {cur_hcap:.3f}</div>
+</div>
+<div class="row mb-4">
+  <div class="col-md-6"><canvas id="chart-pts-{cid}" style="max-height:250px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-{cid}" style="max-height:250px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th>Race</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody>{rows}</tbody>
+</table>
+{wrap_close}"""
+
+        if multi:
+            tab_content += "</div>"
+
+        html = _head(name, _CHARTJS) + _nav() + f"""
+<div class="container">
+  {racer_nav}
+  <h2>{name}</h2>
+  {tab_nav}
+  {tab_content}
+</div>
+<script>{all_charts_js}</script>
+{nav_js}""" + _foot()
+
+        (SITE_DIR / "racer" / f"{slug}.html").write_text(html)
+
+    print(f"Generated: site/racer/ ({len(racer_data)} pages)")
+
+
+def generate_about() -> None:
+    html = _head("About — BEPC Handicap System") + _nav("About") + """
+<div class="container" style="max-width:720px">
+  <h1>About the Handicap System</h1>
+  <p class="lead">BEPC uses a dynamic handicap system so all racers can compete and be scored on their relative performance.</p>
+
+  <h2>How it works</h2>
+
+  <h5>Par racer</h5>
+  <p>Each race has a <em>par racer</em> — the finisher at roughly the 33rd percentile by finish time.
+  The par racer's adjusted time defines the benchmark for that race.</p>
+
+  <h5>Adjusted time</h5>
+  <p>Your adjusted time = your finish time ÷ your handicap.
+  A handicap of 1.0 means no adjustment. A handicap below 1.0 means you're a faster racer —
+  for example, a handicap of 0.85 means you typically finish at 85% of the par time.
+  Above 1.0 means slower than par.</p>
+
+  <h5>Updating your handicap</h5>
+  <p>After each race your handicap is updated based on how your adjusted time compared to par:</p>
+  <table class="table table-bordered table-sm">
+    <thead><tr><th>Situation</th><th>Update rule</th></tr></thead>
+    <tbody>
+      <tr><td>Race 1</td><td>Handicap set to your time-vs-par (no prior history)</td></tr>
+      <tr><td>Race 2</td><td>50% blend of old handicap and new result</td></tr>
+      <tr><td>Faster than expected (&le;100% of par)</td><td>30% shift toward new result</td></tr>
+      <tr><td>Slower than expected (&gt;100% of par)</td><td>15% shift toward new result</td></tr>
+      <tr><td>Outlier (&gt;10% outside prediction)</td><td>No change — result ignored</td></tr>
+    </tbody>
+  </table>
+  <p>The asymmetry (30% vs 15%) means the handicap responds faster to improvement than to a bad day.</p>
+
+  <h5>Points</h5>
+  <p><strong>Official points</strong> are awarded for finishing position (10 pts for 1st, 9 for 2nd … 1 pt for 10th).</p>
+  <p><strong>Handicap points</strong> use the same scale but based on <em>adjusted</em> finishing position.
+  Handicap points are not awarded in your first two races (while your handicap is being established).</p>
+
+  <h2>References</h2>
+  <p>The BEPC handicap system uses the same multiplicative time-correction approach as established sailing clubs.
+  Raw race times are recorded via <a href="https://www.webscorer.com" target="_blank">WebScorer</a>;
+  the handicap calculation is applied separately by this system.</p>
+  <ul>
+    <li><a href="https://topyacht.com.au/web/" target="_blank">TopYacht</a> — the leading sailing results and handicapping software, whose Back Calculated Handicap (BCH) methodology directly inspired BEPC's approach.</li>
+    <li><a href="https://rycv.com.au/sailing/rules-handicaps/" target="_blank">Royal Yacht Club of Victoria</a> — a well-documented example of the AHC/BCH/CHC system in practice.</li>
+  </ul>
+</div>""" + _foot()
+    (SITE_DIR / "about.html").write_text(html)
+    print("Generated: site/about.html")
+
+
 def generate_all(data: dict) -> None:
     SITE_DIR.mkdir(exist_ok=True)
     (SITE_DIR / "racer").mkdir(exist_ok=True)
@@ -544,3 +738,5 @@ def generate_all(data: dict) -> None:
     generate_handicap(data)
     generate_races(data)
     generate_trajectories(data)
+    generate_about()
+    generate_racer_pages(data)
