@@ -53,7 +53,14 @@
 ### Mobile App
 - Out of scope for now; responsive site covers mobile use case
 
-## Architecture Notes
+### Multiple Clubs (Sound Rowers, SCKC, etc.)
+- Sound Rowers organizes many regional events per year — large fields, multiple series
+- Racer pages should show separate sections per club, tabs per season within each club
+- Each club/season has independent handicap history and points
+- Cross-club handicap carry-over is possible if courses are comparable (future consideration)
+- Course normalization may be needed if clubs race different distances
+
+
 
 The current static-site approach is intentionally simple and sufficient for v1.
 If BEPC grows or needs member accounts, the next step would be:

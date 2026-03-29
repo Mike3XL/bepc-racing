@@ -3,9 +3,12 @@ from .handicap import calculate_par_racer, compute_new_handicap, std_dev
 from .points import race_points, handicap_points
 
 
-def process_season(races: list[RaceResult]) -> list[RaceResult]:
+def process_season(races: list[RaceResult], carry_over: dict | None = None) -> list[RaceResult]:
     """Process races in order, computing handicaps and points. Returns enriched races."""
     running: dict[tuple, RunningRecord] = {}
+    if carry_over:
+        for key, hcap in carry_over.items():
+            running[key] = RunningRecord(handicap=hcap)
 
     for race in races:
         racers = race.racer_results
