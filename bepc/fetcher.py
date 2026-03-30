@@ -15,59 +15,65 @@ def fetch_raw(race_id: int) -> dict:
         return json.loads(resp.read())
 
 
-def raw_to_common(raw: dict) -> dict:
-    info = raw.get("RaceInfo", {})
-    # Results is a list of groupings, each with a Racers list
-    # Collect all racers across groupings, deduplicate by name+category
-    seen = set()
+def _get_overall_groups(raw: dict) -> list[dict]:
+    """Return all Overall=True groups from a race result."""
+    return [g for g in raw.get("Results", []) if g.get("Grouping", {}).get("Overall") is True]
+
+
+def _valid_racers(group: dict) -> list[dict]:
+    """Return racers with valid finish times and numeric places."""
     racers = []
-    for group in raw.get("Results", []):
-        for r in group.get("Racers", []):
-            time_str = r.get("Time", "")
-            time_sec = _parse_time(time_str)
-            if time_sec is None:
-                continue  # skip DNS/DNF
-            place_raw = r.get("Place", "-")
-            try:
-                place = int(place_raw)
-            except (ValueError, TypeError):
-                continue  # skip non-numeric places
-            key = (r.get("Name", ""), r.get("Category", ""))
-            if key in seen:
-                continue
-            seen.add(key)
-            racers.append({
-                "originalPlace": place,
-                "canonicalName": r.get("Name", "Unknown"),
-                "craftCategory": r.get("Category", "Unknown"),
-                "gender": r.get("Gender", "Unknown"),
-                "handicap": 1.0,
-                "timeSeconds": time_sec,
-                "timeVersusPar": 0.0,
-                "adjustedTimeSeconds": time_sec,
-                "adjustedTimeVersusPar": 0.0,
-                "adjustedPlace": 0,
-                "handicapPost": 1.0,
-                "numRaces": 0,
-                "handicapSequence": None,
-                "handicapPointsSequence": None,
-                "handicapStdDev": 0.0,
-                "absoluteImprovement": 0.0,
-                "parRacer": False,
-            })
-    # Sort by original place
+    for r in group.get("Racers", []):
+        time_sec = _parse_time(r.get("Time", ""))
+        if time_sec is None:
+            continue
+        try:
+            int(r.get("Place", "-"))
+        except (ValueError, TypeError):
+            continue
+        racers.append(r)
+    return racers
+
+
+def _make_common(info: dict, racers_raw: list[dict], points_weight: float, name_suffix: str = "") -> dict:
+    racers = []
+    for r in racers_raw:
+        racers.append({
+            "originalPlace": int(r["Place"]),
+            "canonicalName": r.get("Name", "Unknown"),
+            "craftCategory": r.get("Category", "Unknown"),
+            "gender": r.get("Gender", "Unknown"),
+            "handicap": 1.0,
+            "timeSeconds": _parse_time(r["Time"]),
+            "timeVersusPar": 0.0,
+            "adjustedTimeSeconds": _parse_time(r["Time"]),
+            "adjustedTimeVersusPar": 0.0,
+            "adjustedPlace": 0,
+            "handicapPost": 1.0,
+            "numRaces": 0,
+            "handicapSequence": None,
+            "handicapPointsSequence": None,
+            "handicapStdDev": 0.0,
+            "absoluteImprovement": 0.0,
+            "parRacer": False,
+        })
     racers.sort(key=lambda r: r["originalPlace"])
+    race_id = info.get("RaceId", 0)
+    name = info.get("Name", "")
+    if name_suffix:
+        name = f"{name} — {name_suffix}"
     return {
         "raceInfo": {
-            "raceId": info.get("RaceId", 0),
-            "distance": info.get("Distance", ""),
-            "name": info.get("Name", ""),
-            "displayURL": f"https://www.webscorer.com/race?raceid={info.get('RaceId', 0)}",
+            "raceId": race_id,
+            "distance": name_suffix or info.get("Distance", ""),
+            "name": name,
+            "displayURL": f"https://www.webscorer.com/race?raceid={race_id}",
             "date": info.get("Date", ""),
             "sport": info.get("Sport", ""),
             "startTime": info.get("StartTime", ""),
             "country": info.get("Country", ""),
             "city": info.get("City", ""),
+            "pointsWeight": round(points_weight, 6),
         },
         "racerResults": racers,
     }
@@ -87,24 +93,6 @@ def _parse_time(s: str) -> float | None:
     return None
 
 
-def fetch_season(race_ids: list[int], out_dir: Path) -> None:
-    out_dir.mkdir(parents=True, exist_ok=True)
-    for race_id in race_ids:
-        print(f"  Fetching {race_id}...", end=" ", flush=True)
-        try:
-            raw = fetch_raw(race_id)
-            common = raw_to_common(raw)
-            info = common["raceInfo"]
-            # filename: YYYY-MM-DD__RACEID__NAME__N.common.json
-            date_slug = _date_slug(info["date"])
-            name_slug = re.sub(r'[^a-zA-Z0-9]+', '_', info["name"]).strip('_')
-            fname = f"{date_slug}__{race_id}__{name_slug}.common.json"
-            (out_dir / fname).write_text(json.dumps(common, indent=2))
-            print(f"OK ({len(common['racerResults'])} racers)")
-        except Exception as e:
-            print(f"FAILED: {e}")
-
-
 def _date_slug(date_str: str) -> str:
     """Convert 'May 6, 2024' or 'Jul 1, 2024' → '2024-05-06'."""
     months = {
@@ -118,3 +106,40 @@ def _date_slug(date_str: str) -> str:
         mon = months.get(m.group(1), "00")
         return f"{m.group(3)}-{mon}-{int(m.group(2)):02d}"
     return date_str
+
+
+def fetch_season(race_ids: list[int], out_dir: Path) -> None:
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for race_id in race_ids:
+        print(f"  Fetching {race_id}...", end=" ", flush=True)
+        try:
+            raw = fetch_raw(race_id)
+            info = raw.get("RaceInfo", {})
+            groups = _get_overall_groups(raw)
+
+            # Get valid racers per group
+            group_racers = [(g, _valid_racers(g)) for g in groups]
+            group_racers = [(g, r) for g, r in group_racers if r]  # drop empty
+
+            if not group_racers:
+                print("SKIP (no valid racers)")
+                continue
+
+            total = sum(len(r) for _, r in group_racers)
+            date_slug = _date_slug(info.get("Date", ""))
+            name_slug = re.sub(r'[^a-zA-Z0-9]+', '_', info.get("Name", "")).strip('_')
+            multi = len(group_racers) > 1
+
+            for group, racers in group_racers:
+                distance = group.get("Grouping", {}).get("Distance", "")
+                weight = len(racers) / total
+                common = _make_common(info, racers, weight, distance if multi else "")
+                dist_slug = re.sub(r'[^a-zA-Z0-9]+', '_', distance).strip('_') if multi else ""
+                suffix = f"__{dist_slug}" if dist_slug else ""
+                fname = f"{date_slug}__{race_id}__{name_slug}{suffix}.common.json"
+                (out_dir / fname).write_text(json.dumps(common, indent=2))
+
+            groups_str = f"{len(group_racers)} groups, {total} total" if multi else f"{total} racers"
+            print(f"OK ({groups_str})")
+        except Exception as e:
+            print(f"FAILED: {e}")

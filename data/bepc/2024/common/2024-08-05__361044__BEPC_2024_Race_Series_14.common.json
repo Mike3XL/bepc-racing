@@ -8,7 +8,8 @@
     "sport": "Paddling",
     "startTime": "Monday, August 5, 2024 7:01 PM (GMT-7)",
     "country": "United States",
-    "city": "Seattle"
+    "city": "Seattle",
+    "pointsWeight": 1.0
   },
   "racerResults": [
     {

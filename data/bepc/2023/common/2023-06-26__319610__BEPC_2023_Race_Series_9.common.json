@@ -8,7 +8,8 @@
     "sport": "Paddling",
     "startTime": "Monday, June 26, 2023 7:00 PM (GMT-7)",
     "country": "United States",
-    "city": "Seattle"
+    "city": "Seattle",
+    "pointsWeight": 0.4375
   },
   "racerResults": [
     {
@@ -450,25 +451,6 @@
     },
     {
       "originalPlace": 24,
-      "canonicalName": "Natasha Shafer",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 1631.6,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 1631.6,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 25,
       "canonicalName": "Yakov Polyakov",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -487,26 +469,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 26,
-      "canonicalName": "Katherine Stevenson",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 1678.5,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 1678.5,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 27,
+      "originalPlace": 25,
       "canonicalName": "John Hansen",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -525,7 +488,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 28,
+      "originalPlace": 26,
       "canonicalName": "Ned Sherry",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -544,7 +507,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 29,
+      "originalPlace": 27,
       "canonicalName": "Jeremy Clark",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -563,7 +526,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 30,
+      "originalPlace": 28,
       "canonicalName": "Mike Breen",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -571,44 +534,6 @@
       "timeSeconds": 1899.7,
       "timeVersusPar": 0.0,
       "adjustedTimeSeconds": 1899.7,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 31,
-      "canonicalName": "Sarah Hess",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 1962.8,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 1962.8,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 32,
-      "canonicalName": "Vicki Gezon",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 2778.3,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 2778.3,
       "adjustedTimeVersusPar": 0.0,
       "adjustedPlace": 0,
       "handicapPost": 1.0,

@@ -2,10 +2,10 @@ import math
 from .models import RacerResult
 
 
-def calculate_par_racer(racers: list[RacerResult]) -> RacerResult:
-    """Par racer is the racer at the ~33rd percentile by finish time."""
-    if len(racers) <= 10:
-        raise ValueError(f"Insufficient racers for par calculation: {len(racers)} (min 10)")
+def calculate_par_racer(racers: list[RacerResult]) -> RacerResult | None:
+    """Par racer at ~33rd percentile. Returns None if insufficient racers (<10)."""
+    if len(racers) < 10:
+        return None
     sorted_by_time = sorted(racers, key=lambda r: r.time_seconds)
     return sorted_by_time[len(sorted_by_time) // 3]
 

@@ -8,7 +8,8 @@
     "sport": "Paddling",
     "startTime": "Monday, May 22, 2023 7:00 PM (GMT-7)",
     "country": "United States",
-    "city": "Seattle"
+    "city": "Seattle",
+    "pointsWeight": 0.4
   },
   "racerResults": [
     {
@@ -317,25 +318,6 @@
     },
     {
       "originalPlace": 17,
-      "canonicalName": "Kerri Seger",
-      "craftCategory": "Kayak",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 1920.8,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 1920.8,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 18,
       "canonicalName": "Alex Vaughan",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -354,7 +336,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 19,
+      "originalPlace": 18,
       "canonicalName": "Cody Bean",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -373,7 +355,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 20,
+      "originalPlace": 19,
       "canonicalName": "Michael Schutzler",
       "craftCategory": "Prone",
       "gender": "Male",
@@ -392,26 +374,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 21,
-      "canonicalName": "Lindsey Virdeh",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 2011.2,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 2011.2,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 22,
+      "originalPlace": 20,
       "canonicalName": "Rogan Carr",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -430,7 +393,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 23,
+      "originalPlace": 21,
       "canonicalName": "Calvin Rowland",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -449,7 +412,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 24,
+      "originalPlace": 22,
       "canonicalName": "Ben Koltz",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -468,7 +431,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 25,
+      "originalPlace": 23,
       "canonicalName": "Dave Reid",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -487,7 +450,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 26,
+      "originalPlace": 24,
       "canonicalName": "Jeremy Clark",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -506,7 +469,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 27,
+      "originalPlace": 25,
       "canonicalName": "Nico Wedekind",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -525,7 +488,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 28,
+      "originalPlace": 26,
       "canonicalName": "Brown Fihaki",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -544,7 +507,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 29,
+      "originalPlace": 27,
       "canonicalName": "Mike Breen",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -563,26 +526,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 30,
-      "canonicalName": "Lindi Mondavi",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 2278.6,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 2278.6,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 31,
+      "originalPlace": 28,
       "canonicalName": "Travis Harth",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -590,82 +534,6 @@
       "timeSeconds": 2355.8,
       "timeVersusPar": 0.0,
       "adjustedTimeSeconds": 2355.8,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 32,
-      "canonicalName": "Alison Cardinal",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 2519.7,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 2519.7,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 33,
-      "canonicalName": "Amy Merten",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 2686.6,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 2686.6,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 34,
-      "canonicalName": "Sarah Hess",
-      "craftCategory": "Kayak",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 2697.2,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 2697.2,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 35,
-      "canonicalName": "Liza Sheehan",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 2702.0,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 2702.0,
       "adjustedTimeVersusPar": 0.0,
       "adjustedPlace": 0,
       "handicapPost": 1.0,

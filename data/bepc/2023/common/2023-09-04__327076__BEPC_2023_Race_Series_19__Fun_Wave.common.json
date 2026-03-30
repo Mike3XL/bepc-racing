@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 327076,
+    "distance": "Fun Wave",
+    "name": "BEPC 2023 Race Series #19 \u2014 Fun Wave",
+    "displayURL": "https://www.webscorer.com/race?raceid=327076",
+    "date": "Sep 4, 2023",
+    "sport": "Paddling",
+    "startTime": "Monday, September 4, 2023 6:29 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.064516
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Holly Rasmussen",
+      "craftCategory": "Surfski",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 753.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 753.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Vicki Gezon",
+      "craftCategory": "SUP",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 1802.6,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1802.6,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

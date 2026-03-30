@@ -43,6 +43,8 @@ def build_data_json() -> dict:
                         "name": race.race_info.name,
                         "date": race.race_info.date,
                         "display_url": race.race_info.display_url,
+                        "distance": race.race_info.distance,
+                        "points_weight": race.race_info.points_weight,
                         "results": [asdict(r) for r in race.racer_results],
                     }
                     for race in races

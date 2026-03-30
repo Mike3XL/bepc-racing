@@ -8,6 +8,8 @@ class RaceInfo:
     name: str
     date: str
     display_url: str
+    points_weight: float = 1.0
+    distance: str = ""
 
 
 @dataclass

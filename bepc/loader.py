@@ -11,6 +11,8 @@ def load_common_json(path: Path) -> RaceResult:
         name=info["name"],
         date=info["date"],
         display_url=info["displayURL"],
+        points_weight=info.get("pointsWeight", 1.0),
+        distance=info.get("distance", ""),
     )
     racers = [
         RacerResult(

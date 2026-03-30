@@ -8,7 +8,8 @@
     "sport": "Paddling",
     "startTime": "Monday, May 29, 2023 6:59 PM (GMT-7)",
     "country": "United States",
-    "city": "Seattle"
+    "city": "Seattle",
+    "pointsWeight": 0.423077
   },
   "racerResults": [
     {
@@ -317,25 +318,6 @@
     },
     {
       "originalPlace": 17,
-      "canonicalName": "Jessi Wasson",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 2425.1,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 2425.1,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 18,
       "canonicalName": "Alan Lamp",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -354,7 +336,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 19,
+      "originalPlace": 18,
       "canonicalName": "John Hansen",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -373,26 +355,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 20,
-      "canonicalName": "Lindsey Virdeh",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 2526.6,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 2526.6,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 21,
+      "originalPlace": 19,
       "canonicalName": "Fed Gonzalez",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -411,7 +374,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 22,
+      "originalPlace": 20,
       "canonicalName": "Tyler Hwang",
       "craftCategory": "OC1",
       "gender": "Male",
@@ -430,7 +393,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 23,
+      "originalPlace": 21,
       "canonicalName": "Jeremy Clark",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -449,7 +412,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 24,
+      "originalPlace": 22,
       "canonicalName": "Mike Breen",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -457,44 +420,6 @@
       "timeSeconds": 2708.7,
       "timeVersusPar": 0.0,
       "adjustedTimeSeconds": 2708.7,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 25,
-      "canonicalName": "Amy Merten",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 3135.4,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 3135.4,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 26,
-      "canonicalName": "Vicki Gezon",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 3561.2,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 3561.2,
       "adjustedTimeVersusPar": 0.0,
       "adjustedPlace": 0,
       "handicapPost": 1.0,

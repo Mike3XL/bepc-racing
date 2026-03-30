@@ -8,7 +8,8 @@
     "sport": "Paddling",
     "startTime": "Monday, June 19, 2023 7:00 PM (GMT-7)",
     "country": "United States",
-    "city": "Seattle"
+    "city": "Seattle",
+    "pointsWeight": 0.42
   },
   "racerResults": [
     {
@@ -279,25 +280,6 @@
     },
     {
       "originalPlace": 15,
-      "canonicalName": "Lindsey Virdeh",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 1920.8,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 1920.8,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 16,
       "canonicalName": "Calvin Rowland",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -316,7 +298,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 17,
+      "originalPlace": 16,
       "canonicalName": "Tim Everson",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -335,7 +317,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 18,
+      "originalPlace": 17,
       "canonicalName": "Dave Reid",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -354,26 +336,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 19,
-      "canonicalName": "Natasha Shafer",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 1947.1,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 1947.1,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 20,
+      "originalPlace": 18,
       "canonicalName": "Rogan Carr",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -392,7 +355,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 21,
+      "originalPlace": 19,
       "canonicalName": "John Hansen",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -411,26 +374,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 22,
-      "canonicalName": "Jessi Wasson",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 2074.3,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 2074.3,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 23,
+      "originalPlace": 20,
       "canonicalName": "Ned Sherry",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -449,7 +393,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 24,
+      "originalPlace": 21,
       "canonicalName": "Jeremy Clark",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -457,25 +401,6 @@
       "timeSeconds": 2214.3,
       "timeVersusPar": 0.0,
       "adjustedTimeSeconds": 2214.3,
-      "adjustedTimeVersusPar": 0.0,
-      "adjustedPlace": 0,
-      "handicapPost": 1.0,
-      "numRaces": 0,
-      "handicapSequence": null,
-      "handicapPointsSequence": null,
-      "handicapStdDev": 0.0,
-      "absoluteImprovement": 0.0,
-      "parRacer": false
-    },
-    {
-      "originalPlace": 25,
-      "canonicalName": "Vicki Gezon",
-      "craftCategory": "SUP",
-      "gender": "Female",
-      "handicap": 1.0,
-      "timeSeconds": 3227.3,
-      "timeVersusPar": 0.0,
-      "adjustedTimeSeconds": 3227.3,
       "adjustedTimeVersusPar": 0.0,
       "adjustedPlace": 0,
       "handicapPost": 1.0,

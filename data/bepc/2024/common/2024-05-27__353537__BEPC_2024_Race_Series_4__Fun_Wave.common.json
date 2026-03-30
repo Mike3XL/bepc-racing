@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 353537,
+    "distance": "Fun Wave",
+    "name": "BEPC 2024 Race Series #4 \u2014 Fun Wave",
+    "displayURL": "https://www.webscorer.com/race?raceid=353537",
+    "date": "May 27, 2024",
+    "sport": "Paddling",
+    "startTime": "Monday, May 27, 2024 7:00 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.125
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Pat Gallagher",
+      "craftCategory": "SUP",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1117.3,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1117.3,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Haley Brown",
+      "craftCategory": "SUP",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 1254.4,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1254.4,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "Tanja Carter",
+      "craftCategory": "SUP",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 1301.1,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1301.1,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

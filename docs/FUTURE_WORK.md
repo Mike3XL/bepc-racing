@@ -53,7 +53,12 @@
 ### Mobile App
 - Out of scope for now; responsive site covers mobile use case
 
-### Multiple Clubs (Sound Rowers, SCKC, etc.)
+### Cross-Distance Handicap Tracking
+- Currently handicap is keyed by `(name, craft)` — a racer who switches between Race Course and Fun Wave shares one handicap
+- Low risk in practice (racers self-select), but could drift if someone switches frequently
+- Clean fix: key by `(name, craft, distance)` in the processor — small change, worth doing if drift is observed
+
+
 - Sound Rowers organizes many regional events per year — large fields, multiple series
 - Racer pages should show separate sections per club, tabs per season within each club
 - Each club/season has independent handicap history and points
