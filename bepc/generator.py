@@ -171,11 +171,6 @@ def generate_index(data: dict) -> None:
     {_season_selector_html(data, current_year)}
   </div>
   <p id="season-summary" class="lead"></p>
-  <div class="row mb-4">
-    <div class="col-md-4"><a href="standings.html" class="btn btn-primary w-100">Standings</a></div>
-    <div class="col-md-4"><a href="races.html" class="btn btn-secondary w-100">Races</a></div>
-    <div class="col-md-4"><a href="trajectories.html" class="btn btn-success w-100">Trajectories</a></div>
-  </div>
   <h2>Races</h2>
   <table id="races-table" class="table table-striped table-hover">
     <thead><tr><th>#</th><th>Race</th><th>Date</th><th>Starters</th></tr></thead>
