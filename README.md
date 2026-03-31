@@ -7,6 +7,9 @@ Race results, standings, and handicap tracking for the [Ballard Elks Paddle Club
 ## Quick Start
 
 ```bash
+# Fetch new race data from WebScorer
+python3 cli.py fetch --year 2025 <race_id> [race_id ...]
+
 # Process race data → site/data.json
 python3 cli.py process
 
@@ -17,24 +20,50 @@ python3 cli.py generate
 python3 cli.py publish
 ```
 
+## Setup
+
+Requires Python 3.13. No external dependencies.
+
+Create a `.env` file in the project root with your WebScorer API ID:
+
+```
+WEBSCORER_API_ID=your_api_id_here
+```
+
+This file is gitignored. Alternatively set the `WEBSCORER_API_ID` environment variable.
+
 ## Project Structure
 
 ```
 bepc-racing/
-├── cli.py              # Entry point: process / generate / publish
+├── cli.py                      # Entry point: fetch / process / generate / publish
+├── .env                        # WebScorer API key (gitignored)
 ├── bepc/
-│   ├── models.py       # Dataclasses: RaceInfo, RacerResult, RunningRecord
-│   ├── loader.py       # Load common.json files
-│   ├── handicap.py     # Handicap engine (par racer, BCH calculation)
-│   ├── points.py       # Points calculation
-│   ├── processor.py    # Season processing pipeline
-│   └── generator.py    # HTML page generation
+│   ├── models.py               # Dataclasses: RaceInfo, RacerResult, RunningRecord
+│   ├── loader.py               # Load common.json files, apply name aliases
+│   ├── fetcher.py              # Fetch races from WebScorer API
+│   ├── handicap.py             # Handicap engine (par racer, BCH calculation)
+│   ├── points.py               # Points calculation
+│   ├── processor.py            # Season processing pipeline
+│   └── generator.py            # HTML + JSON data file generation
 ├── data/
-│   ├── common/         # Normalized per-race JSON (source of truth)
-│   └── raw/            # Raw WebScorer downloads (not committed)
-├── site/               # Generated static site (gitignored)
-└── docs/               # Reference documents and specs
+│   └── bepc/
+│       ├── aliases.json        # Name alias mappings (variant → canonical)
+│       └── <year>/common/      # Normalized per-race JSON (source of truth)
+├── site/                       # Generated static site (gitignored)
+└── SPEC.md                     # Architecture and design spec
 ```
+
+## Site Pages
+
+| Page                | Description                                                   |
+| ------------------- | ------------------------------------------------------------- |
+| `index.html`        | Race results with prev/next nav, finish + handicap order tabs |
+| `events.html`       | Season race list                                              |
+| `standings.html`    | Official and handicap points standings                        |
+| `trajectories.html` | Points and handicap charts                                    |
+| `racer/<name>.html` | Per-racer stats, charts, race history                         |
+| `about.html`        | Handicap system explanation                                   |
 
 ## Handicap System
 
@@ -49,12 +78,12 @@ See [About page](https://mike3xl.github.io/bepc-racing/about.html) for full expl
 
 ## Data Format
 
-Race data lives in `data/common/` as `YYYY-MM-DD__RACEID__NAME__N.common.json`.
-These are normalized from WebScorer raw JSON.
+Race data lives in `data/bepc/<year>/common/` as `YYYY-MM-DD__RACEID__NAME.common.json`.
+Fetched from WebScorer via `cli.py fetch` or downloaded manually.
+
+Name aliases are defined in `data/bepc/aliases.json` and applied at load time.
 
 ## Status
 
-✅ 2025 season — 18 races, fully processed  
+✅ 2025 season — 18 races, fully processed
 🚧 2026 season — pending (season starts April 2026)
-
-See [docs/FUTURE_WORK.md](docs/FUTURE_WORK.md) for planned features.
