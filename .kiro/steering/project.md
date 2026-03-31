@@ -23,3 +23,15 @@ Follow the architecture and conventions described in #[[file:SPEC.md]]
 - Verify racer counts per race look reasonable (not 0, not wildly different from similar races)
 - Check pointsWeight is 1.0 for single-course races
 - Run process and verify race/racer counts before generating
+
+## Cleanup pass checklist
+
+When doing a general cleanup or review pass, cover all of:
+
+1. UX consistency — titles, selectors, tab order, naming conventions
+2. Inclusive language — gender values, terminology, tooltips
+3. Code quality — unused imports, dead code, fragile patterns, type hints
+4. SPEC.md — update architecture, data model, trophy system, UI conventions
+5. docs/FUTURE_WORK.md — mark completed items, add new ideas
+6. docs/CHANGES.md — summarise what changed in this session (create if missing)
+7. .kiro/steering/project.md — update conventions if anything new was established
