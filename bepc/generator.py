@@ -426,6 +426,9 @@ def generate_races(data: dict) -> None:
     )
 
     html = _head("Results") + _nav("Results") + f"""
+<div class="container">
+  <div class="d-flex align-items-center gap-3 mb-3">
+    <h1 class="mb-0">Results</h1>
     <select id="season-select" class="form-select w-auto d-inline-block">
       {year_options}
     </select>
