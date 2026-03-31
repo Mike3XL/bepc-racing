@@ -3,11 +3,11 @@ from .models import RacerResult
 
 
 def calculate_par_racer(racers: list[RacerResult]) -> RacerResult | None:
-    """Par racer at ~33rd percentile. Returns None if insufficient racers (<10)."""
+    """Par racer at ~33rd percentile by adjusted time. Returns None if insufficient racers (<10)."""
     if len(racers) < 10:
         return None
-    sorted_by_time = sorted(racers, key=lambda r: r.time_seconds)
-    return sorted_by_time[len(sorted_by_time) // 3]
+    sorted_by_adj = sorted(racers, key=lambda r: r.adjusted_time_seconds)
+    return sorted_by_adj[len(sorted_by_adj) // 3]
 
 
 def compute_new_handicap(racer: RacerResult, par_time: float) -> None:

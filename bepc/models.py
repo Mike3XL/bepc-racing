@@ -39,6 +39,7 @@ class RacerResult:
     is_par_racer: bool = False
     is_fresh_racer: bool = False
     is_outlier: bool = False
+    trophies: list = field(default_factory=list)  # e.g. ["finish_1", "hcap_2", "par"]
 
 
 @dataclass
@@ -56,3 +57,5 @@ class RunningRecord:
     handicap_sequence: list = field(default_factory=list)
     handicap_points_sequence: list = field(default_factory=list)
     handicap_std_dev: float = 0.0
+    last_atvp: float = 0.0   # last adjusted_time_versus_par for streak tracking
+    streak: int = 0          # current consecutive improvement streak

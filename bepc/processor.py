@@ -76,6 +76,47 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None) -> l
             r.handicap_points_sequence = running[key].handicap_points_sequence + [r.handicap_points]
             r.handicap_std_dev = std_dev(r.handicap_sequence)
 
+        # Trophies
+        finish_podium = {1: "finish_1", 2: "finish_2", 3: "finish_3"}
+        hcap_podium = ["hcap_1", "hcap_2", "hcap_3"]
+        consistent_awards = ["consistent_1", "consistent_2", "consistent_3"]
+        for r in racers:
+            r.trophies = []
+        eligible = [r for r in sorted(racers, key=lambda x: x.adjusted_place)
+                    if not r.is_fresh_racer and not small_group]
+        for i, r in enumerate(eligible[:3]):
+            r.trophies.append(hcap_podium[i])
+        # Consistent: top 3 closest to adjusted_time_vs_par == 1.0, excluding par racer
+        consistent_eligible = [r for r in racers
+                                if not r.is_fresh_racer and not r.is_outlier
+                                and not r.is_par_racer and not small_group
+                                and r.time_versus_par > 0]
+        consistent_eligible.sort(key=lambda x: abs(x.adjusted_time_versus_par - 1.0))
+        for i, r in enumerate(consistent_eligible[:3]):
+            r.trophies.append(consistent_awards[i])
+        for r in racers:
+            if r.original_place in finish_podium:
+                r.trophies.append(finish_podium[r.original_place])
+            if r.is_par_racer:
+                r.trophies.append("par")
+
+        # Streaks — consecutive races with improving adjusted_time_vs_par
+        for r in racers:
+            key = (r.canonical_name, r.craft_category)
+            rec = running[key]
+            if not r.is_fresh_racer and not r.is_outlier and not small_group and r.adjusted_time_versus_par > 0:
+                if rec.last_atvp > 0 and r.adjusted_time_versus_par < rec.last_atvp:
+                    r_streak = rec.streak + 1
+                else:
+                    r_streak = 1
+                if r_streak >= 3:
+                    r.trophies.append(f"streak_{r_streak}")
+            else:
+                r_streak = 0
+            # store streak on racer for saving to running record
+            r._streak = r_streak
+            r._atvp_for_streak = r.adjusted_time_versus_par if not r.is_outlier and not small_group else rec.last_atvp
+
         # Save running state
         for r in racers:
             key = (r.canonical_name, r.craft_category)
@@ -87,6 +128,8 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None) -> l
                 handicap_sequence=r.handicap_sequence,
                 handicap_points_sequence=r.handicap_points_sequence,
                 handicap_std_dev=r.handicap_std_dev,
+                last_atvp=getattr(r, '_atvp_for_streak', 0.0),
+                streak=getattr(r, '_streak', 0),
             )
 
     return races
