@@ -47,6 +47,15 @@ function getDistance() {
 function setDistance(dist) {
   if (dist) localStorage.setItem('bepc_distance', dist);
 }
+function getResultTab() {
+  return localStorage.getItem('bepc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('bepc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
 </script>"""
 
 
@@ -60,18 +69,28 @@ def _head(title: str, extra_css: str = "") -> str:
 {_BOOTSTRAP_CSS}
 {_DATATABLES_CSS}
 {extra_css}
+{_JQUERY}
+{_BOOTSTRAP_JS}
+{_DATATABLES_JS}
+{_DATATABLES_BS5_JS}
 <style>
   body {{ padding-top: 1rem; }}
   .navbar-brand {{ font-weight: bold; }}
+  .traj-scroll {{ height: calc(100vh - 220px); overflow: auto; }}
+  .hcap-medal {{ font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }}
+  .hcap-gold   {{ background:#FFF8DC; border:1px solid #FFD700; }}
+  .hcap-silver {{ background:#F5F5F5; border:1px solid #C0C0C0; }}
+  .hcap-bronze {{ background:#FDF0E0; border:1px solid #CD7F32; }}
+  .plain-medal {{ background:#F8F8F8; border:1px solid #DDDDDD; }}
 </style>
 </head>
-<body>"""
+<body>
+{_SEASON_JS}"""
 
 
 def _nav(active: str = "", prefix: str = "") -> str:
     pages = [
-        ("index.html", "Home"),
-        ("races.html", "Results"),
+        ("index.html", "Results"),
         ("standings.html", "Standings"),
         ("trajectories.html", "Trajectories"),
         ("racer/index.html", "Racers"),
@@ -96,11 +115,6 @@ def _nav(active: str = "", prefix: str = "") -> str:
 
 def _foot(extra_js: str = "") -> str:
     return f"""
-{_JQUERY}
-{_BOOTSTRAP_JS}
-{_DATATABLES_JS}
-{_DATATABLES_BS5_JS}
-{_SEASON_JS}
 {extra_js}
 </body></html>"""
 
@@ -140,7 +154,7 @@ def _season_selector_html(data: dict, current_year: str) -> str:
     club = data["clubs"][data["current_club"]]
     years = sorted(club["seasons"].keys())
     opts = "".join(
-        f'<option value="{y}">{y} Season</option>'
+        f'<option value="{y}"{" selected" if y == current_year else ""}>{y} Season</option>'
         for y in reversed(years)
     )
     return f'<select id="season-select" class="form-select form-select-sm w-auto d-inline-block mb-3">{opts}</select>'
@@ -158,155 +172,88 @@ def _final_states_for_season(season_races: list) -> dict:
     return racers
 
 
-def generate_index(data: dict) -> None:
-    club = data["clubs"][data["current_club"]]
-    current_year = club["current_season"]
-    all_seasons = _all_seasons(data)
-
-    # Build JS data for all seasons
-    seasons_js = {}
-    for year, season in all_seasons.items():
-        races = season["races"]
-        name = races[0]["name"].rsplit("#", 1)[0].strip() if races else "Race Series"
-        seasons_js[year] = {"name": name, "races": [
-            {"race_id": r["race_id"], "name": r["name"], "date": r["date"], "starters": len(r["results"])}
-            for r in races
-        ]}
-
-    html = _head("BEPC Racing") + _nav("Home") + f"""
-<div class="container">
-  <div class="d-flex align-items-center gap-3 mb-3">
-    <h1 id="season-title" class="mb-0"></h1>
-    {_season_selector_html(data, current_year)}
-  </div>
-  <p id="season-summary" class="lead"></p>
-  <h2>Results</h2>
-  <table id="races-table" class="table table-striped table-hover">
-    <thead><tr><th>#</th><th>Race</th><th>Date</th><th>Starters</th></tr></thead>
-    <tbody id="races-body"></tbody>
-  </table>
-</div>
-<script>
-const SEASONS = {json.dumps(seasons_js)};
-let dtable = null;
-function renderSeason(year) {{
-  const s = SEASONS[year];
-  document.getElementById('season-title').textContent = s.name;
-  document.getElementById('season-summary').textContent = s.races.length + ' races';
-  const tbody = document.getElementById('races-body');
-  tbody.innerHTML = s.races.map((r,i) =>
-    `<tr><td>${{i+1}}</td><td><a href="races.html#${{r.race_id}}">${{r.name}}</a></td><td>${{r.date}}</td><td>${{r.starters}}</td></tr>`
-  ).join('');
-  if (dtable) {{ dtable.destroy(); dtable = null; }}
-  dtable = $('#races-table').DataTable({{order:[[0,'asc']],pageLength:50,responsive:true}});
-}}
-window.addEventListener('load', () => {{
-  const _iyr = getSeason('{current_year}');
-  document.getElementById('season-select').value = _iyr;
-  renderSeason(_iyr);
-  document.getElementById('season-select').addEventListener('change', e => {{ setSeason(e.target.value); renderSeason(e.target.value); }});
-}});
-</script>""" + _foot()
-    (SITE_DIR / "index.html").write_text(html)
-    print("Generated: site/index.html")
-
-
-def generate_standings(data: dict) -> None:
+def generate_data_files(data: dict) -> None:
+    """Write per-page JSON data files to site/."""
     club = data["clubs"][data["current_club"]]
     current_year = club["current_season"]
 
-    seasons_js = {}
+    # standings-data.json
+    standings_data = {"current_year": current_year, "seasons": {}}
     for year, season in _all_seasons(data).items():
+        # Aggregate trophies per (name, craft) across all races
+        trophy_totals: dict[tuple, dict] = {}
+        for race in season["races"]:
+            for r in race["results"]:
+                key = (r["canonical_name"], r["craft_category"])
+                if key not in trophy_totals:
+                    trophy_totals[key] = {}
+                for t in r.get("trophies", []):
+                    trophy_totals[key][t] = trophy_totals[key].get(t, 0) + 1
+
+        def trophy_summary(name, craft):
+            counts = trophy_totals.get((name, craft), {})
+            parts = []
+            # Group streak codes by their max streak length
+            streak_codes = {k: v for k, v in counts.items() if k.startswith('streak_')}
+            max_streak = max((int(k.split('_')[1]) for k in streak_codes), default=0)
+            streak_total = sum(streak_codes.values())
+
+            for code, icon, label in [
+                ("hcap_1", "🥇", "Handicap winner"),
+                ("hcap_2", "🥈", "Handicap 2nd"),
+                ("hcap_3", "🥉", "Handicap 3rd"),
+                ("finish_1", "🥇", "Overall 1st"),
+                ("finish_2", "🥈", "Overall 2nd"),
+                ("finish_3", "🥉", "Overall 3rd"),
+                ("consistent_1", "🎯", "Consistent performer"),
+                ("consistent_2", "🎯", "Consistent performer"),
+                ("consistent_3", "🎯", "Consistent performer"),
+                ("par", "⛳", "Par racer"),
+            ]:
+                n = counts.get(code, 0)
+                if not n:
+                    continue
+                cls = {"hcap_1": "hcap-gold", "hcap_2": "hcap-silver", "hcap_3": "hcap-bronze"}.get(code, "plain-medal")
+                if n >= 4:
+                    parts.append(f'<span class="hcap-medal {cls}" data-bs-toggle="tooltip" data-bs-title="{label} × {n}" style="white-space:nowrap">{icon}<sup style="font-size:0.65em;font-weight:bold">×{n}</sup></span>')
+                else:
+                    for _ in range(n):
+                        parts.append(f'<span class="hcap-medal {cls}" data-bs-toggle="tooltip" data-bs-title="{label}">{icon}</span>')
+
+            if streak_total:
+                tooltip = f"Improving streak (best: {max_streak} races) × {streak_total}" if streak_total > 1 else f"Improving streak: {max_streak} races"
+                if streak_total >= 4:
+                    parts.append(f'<span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="{tooltip}" style="white-space:nowrap">☄️<sup style="font-size:0.65em;font-weight:bold">×{streak_total}</sup></span>')
+                else:
+                    for _ in range(streak_total):
+                        parts.append(f'<span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="{tooltip}">☄️</span>')
+            return ''.join(parts)
+
         pts = sorted(_final_states_for_season(season["races"]).values(), key=lambda r: -r["season_points"])
         hpts = sorted(_final_states_for_season(season["races"]).values(), key=lambda r: -r["season_handicap_points"])
-        distances = set(r.get("distance","") for r in season["races"])
-        multi_dist = len([d for d in distances if d]) > 1
-        seasons_js[year] = {
-            "multi_dist": multi_dist,
+        distances = set(r.get("distance", "") for r in season["races"])
+        standings_data["seasons"][year] = {
+            "multi_dist": len([d for d in distances if d]) > 1,
             "pts": [{"name": r["canonical_name"], "craft": r["craft_category"], "gender": r["gender"],
-                     "course": r.get("_distance",""), "races": r["num_races"], "points": r["season_points"]} for r in pts],
+                     "trophies": trophy_summary(r["canonical_name"], r["craft_category"]),
+                     "course": r.get("_distance", ""), "races": r["num_races"], "points": r["season_points"]} for r in pts],
             "hpts": [{"name": r["canonical_name"], "craft": r["craft_category"],
-                      "course": r.get("_distance",""), "races": r["num_races"], "hpts": r["season_handicap_points"],
+                      "gender": r["gender"],
+                      "trophies": trophy_summary(r["canonical_name"], r["craft_category"]),
+                      "course": r.get("_distance", ""), "races": r["num_races"],
+                      "hpts": r["season_handicap_points"],
                       "hcap": round(r["handicap_post"], 3),
-                      "hseq": ", ".join(f'{h:.2f}' for h in r["handicap_sequence"])} for r in hpts],
+                      "points": r["season_points"]} for r in hpts],
         }
-    html = _head("Standings") + _nav("Standings") + f"""
-<div class="container">
-  <div class="d-flex align-items-center gap-3 mb-3">
-    <h1 class="mb-0">Standings</h1>
-    {_season_selector_html(data, current_year)}
-  </div>
-  <ul class="nav nav-tabs mb-3">
-    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-pts">Official Points</button></li>
-    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-hpts">Handicap Points</button></li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane active" id="tab-pts">
-      <p class="text-muted small">Points awarded for top-10 finish (10 pts for 1st … 1 pt for 10th). No handicap applied.</p>
-      <table id="tbl-pts" class="table table-striped table-hover">
-        <thead><tr><th>#</th><th>Racer</th><th>Craft</th><th>Gender</th><th>Races</th><th>Points</th></tr></thead>
-        <tbody id="body-pts"></tbody>
-      </table>
-    </div>
-    <div class="tab-pane" id="tab-hpts">
-      <p class="text-muted small">Points awarded for top-10 adjusted finish. First two results per racer are provisional (no handicap points awarded).</p>
-      <table id="tbl-hpts" class="table table-striped table-hover">
-        <thead><tr><th>#</th><th style="min-width:180px">Racer</th><th>Craft</th><th>Races</th><th>Handicap Points</th><th>Current Handicap</th><th style="white-space:nowrap">Handicap History</th></tr></thead>
-        <tbody id="body-hpts"></tbody>
-      </table>
-    </div>
-  </div>
-</div>
-<script>
-const SEASONS = {json.dumps(seasons_js)};
-let dtPts = null, dtHpts = null;
-function render(year) {{
-  const s = SEASONS[year];
-  if (dtPts) {{ dtPts.destroy(); dtPts = null; }}
-  if (dtHpts) {{ dtHpts.destroy(); dtHpts = null; }}
-  document.getElementById('body-pts').innerHTML = s.pts.map(r =>
-    `<tr><td></td><td><a href="racer/${{r.name.toLowerCase().replace(/ /g,'-')}}.html">${{r.name}}</a></td><td>${{r.craft}}</td><td>${{r.gender}}</td><td>${{r.races}}</td><td>${{r.points}}</td></tr>`
-  ).join('');
-  document.getElementById('body-hpts').innerHTML = s.hpts.map(r =>
-    `<tr><td></td><td><a href="racer/${{r.name.toLowerCase().replace(/ /g,'-')}}.html">${{r.name}}</a></td><td>${{r.craft}}</td><td>${{r.races}}</td><td>${{r.hpts}}</td><td>${{r.hcap}}</td><td style="white-space:nowrap">${{r.hseq}}</td></tr>`
-  ).join('');
-  function addRowNumbers(dt) {{
-    dt.on('draw', () => {{
-      dt.column(0, {{search:'applied', order:'applied'}}).nodes().each((cell, i) => {{
-        cell.innerHTML = i + 1;
-      }});
-    }}).draw(false);
-  }}
-  dtPts = $('#tbl-pts').DataTable({{order:[[5,'desc']],pageLength:100,responsive:true,
-    columnDefs:[{{targets:0, orderable:false}}]}});
-  addRowNumbers(dtPts);
-  dtHpts = $('#tbl-hpts').DataTable({{order:[[4,'desc']],pageLength:100,responsive:true,
-    columnDefs:[{{targets:0, orderable:false}}]}});
-  addRowNumbers(dtHpts);
-}}
-document.getElementById('season-select').addEventListener('change', e => {{ setSeason(e.target.value); render(e.target.value); }});
-window.addEventListener('load', () => {{ const _yr = getSeason('{current_year}'); document.getElementById('season-select').value = _yr; render(_yr); }});
-</script>""" + _foot()
-    (SITE_DIR / "standings.html").write_text(html)
-    print("Generated: site/standings.html")
+    (SITE_DIR / "standings-data.json").write_text(json.dumps(standings_data))
 
-
-def generate_races(data: dict) -> None:
-    import re
-
-    all_seasons = _all_seasons(data)
-    club = data["clubs"][data["current_club"]]
-    current_year = club["current_season"]
-    sorted_years = sorted(all_seasons.keys())
-
-    # Group races by race_id (same race_id = same race day, multiple courses)
+    # races-data.json
     from collections import defaultdict
-    seasons_js = {}
-    for year, season in all_seasons.items():
+    races_data = {"current_year": current_year, "seasons": {}}
+    for year, season in _all_seasons(data).items():
         days: dict[int, list] = defaultdict(list)
         for r in season["races"]:
             days[r["race_id"]].append(r)
-        # Build ordered list of race days (preserve date order)
         seen_ids = []
         for r in season["races"]:
             if r["race_id"] not in seen_ids:
@@ -314,7 +261,6 @@ def generate_races(data: dict) -> None:
         race_days = []
         for rid in seen_ids:
             courses = days[rid]
-            # Base name: strip " — Course" suffix for the day title
             base_name = courses[0]["name"].split(" — ")[0].strip()
             race_days.append({
                 "race_id": rid,
@@ -330,42 +276,171 @@ def generate_races(data: dict) -> None:
                     for c in courses
                 ],
             })
-        seasons_js[year] = race_days
+        races_data["seasons"][year] = race_days
+    (SITE_DIR / "races-data.json").write_text(json.dumps(races_data))
 
-    seasons_js = json.dumps(seasons_js)
+    # trajectories-data.json
+    colors = ["#e6194b","#3cb44b","#4363d8","#f58231","#911eb4","#42d4f4","#f032e6",
+              "#bfef45","#c8a000","#469990","#dcbeff","#9A6324","#800000","#aaffc3",
+              "#808000","#ffd8b1","#000075","#a9a9a9"]
+    traj_data = {"current_year": current_year, "seasons": {}}
+    for year, season in _all_seasons(data).items():
+        pts, hpts, hnum = _build_traj_series(season["races"], colors)
+        traj_data["seasons"][year] = {"pts": pts, "hpts": hpts, "hnum": hnum}
+    (SITE_DIR / "trajectories-data.json").write_text(json.dumps(traj_data))
 
+    print("Generated: site/*-data.json (3 files)")
+
+
+def _loading_spinner() -> str:
+    return '<div id="loading" class="text-center my-5" style="display:none"><div class="spinner-border text-secondary"></div></div>'
+
+
+def generate_index(data: dict) -> None:
+    club = data["clubs"][data["current_club"]]
+    current_year = club["current_season"]
+    years = sorted(_all_seasons(data).keys(), reverse=True)
+    opts = "".join(f'<option value="{y}"{" selected" if y == current_year else ""}>{y} Season</option>' for y in years)
+
+    html = _head("BEPC Racing") + _nav("Events") + f"""
+<div class="container">
+  <div class="d-flex align-items-center gap-3 mb-3">
+    <h1 id="season-title" class="mb-0"></h1>
+    <select id="season-select" class="form-select form-select-sm w-auto d-inline-block mb-3">{opts}</select>
+  </div>
+  <p id="season-summary" class="lead"></p>
+  <h2>Results</h2>
+  <table id="races-table" class="table table-striped table-hover">
+    <thead><tr><th>#</th><th>Race</th><th>Date</th><th>Starters</th></tr></thead>
+    <tbody id="races-body"></tbody>
+  </table>
+</div>
+<script>
+let SEASONS = null;
+let dtable = null;
+function renderSeason(year) {{
+  const s = SEASONS[year];
+  document.getElementById('season-title').textContent = s.name;
+  document.getElementById('season-summary').textContent = s.races.length + ' races';
+  if (dtable) {{ dtable.destroy(); dtable = null; }}
+  const tbody = document.getElementById('races-body');
+  tbody.innerHTML = s.races.map((r,i) =>
+    `<tr><td>${{i+1}}</td><td><a href="index.html#${{r.race_id}}">${{r.name}}</a></td><td>${{r.date}}</td><td>${{r.starters}}</td></tr>`
+  ).join('');
+  dtable = $('#races-table').DataTable({{order:[[0,'asc']],pageLength:50,responsive:true}});
+}}
+window.addEventListener('DOMContentLoaded', () => {{
+  fetchData('index-data.json', d => {{
+    SEASONS = d.seasons;
+    const sel = document.getElementById('season-select');
+    const yr = getSeason(d.current_year);
+    if (SEASONS[yr]) sel.value = yr;
+    renderSeason(sel.value);
+    sel.addEventListener('change', e => {{ setSeason(e.target.value); renderSeason(e.target.value); }});
+  }});
+}});
+</script>""" + _foot()
+    (SITE_DIR / "events.html").write_text(html)
+    print("Generated: site/events.html")
+
+
+def generate_standings(data: dict) -> None:
+    club = data["clubs"][data["current_club"]]
+    current_year = club["current_season"]
+    years = sorted(_all_seasons(data).keys(), reverse=True)
+    opts = "".join(f'<option value="{y}"{" selected" if y == current_year else ""}>{y} Season</option>' for y in years)
+
+    html = _head("Standings") + _nav("Standings") + f"""
+<div class="container">
+  <div class="d-flex align-items-center gap-3 mb-3">
+    <h1 class="mb-0">Standings</h1>
+    <select id="season-select" class="form-select form-select-sm w-auto d-inline-block mb-3">{opts}</select>
+  </div>
+  <ul class="nav nav-tabs mb-3">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-hpts">Handicap Points</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-pts">Overall Points</button></li>
+  </ul>
+  <div class="tab-content" id="standings-content">
+    <div class="tab-pane active" id="tab-hpts">
+      <p class="text-muted small">Sorted by handicap points. Shift+click column headers to sort by multiple columns.</p>
+      <table id="tbl-hpts" class="table table-striped table-hover">
+        <thead><tr><th>#</th><th>Racer</th><th>Craft</th><th>Gender</th><th>Trophies</th><th>Races</th><th>Handicap Pts</th><th>Handicap</th><th>Overall Pts</th></tr></thead>
+        <tbody id="body-hpts"></tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="tab-pts">
+      <p class="text-muted small">Sorted by overall points. Shift+click column headers to sort by multiple columns.</p>
+      <table id="tbl-pts" class="table table-striped table-hover">
+        <thead><tr><th>#</th><th>Racer</th><th>Craft</th><th>Gender</th><th>Trophies</th><th>Races</th><th>Handicap Pts</th><th>Handicap</th><th>Overall Pts</th></tr></thead>
+        <tbody id="body-pts"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+let SEASONS = null;
+let dtPts = null, dtHpts = null;
+function render(year) {{
+  const s = SEASONS[year];
+  if (dtPts) {{ dtPts.destroy(); dtPts = null; }}
+  if (dtHpts) {{ dtHpts.destroy(); dtHpts = null; }}
+  const row = r => `<tr><td></td><td><a href="racer/${{r.name.toLowerCase().replace(/ /g,'-')}}.html">${{r.name}}</a></td><td>${{r.craft}}</td><td>${{r.gender}}</td><td style="white-space:nowrap">${{r.trophies||''}}</td><td>${{r.races}}</td><td>${{r.hpts}}</td><td>${{r.hcap}}</td><td>${{r.points}}</td></tr>`;
+  document.getElementById('body-hpts').innerHTML = s.hpts.map(row).join('');
+  document.getElementById('body-pts').innerHTML = s.hpts.map(row).join('');
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => bootstrap.Tooltip.getOrCreateInstance(el));
+  function addRowNumbers(dt) {{
+    dt.on('draw', () => {{
+      dt.column(0, {{search:'applied', order:'applied'}}).nodes().each((cell, i) => {{
+        cell.innerHTML = i + 1;
+      }});
+    }}).draw(false);
+  }}
+  const colDefs = [{{targets:0, orderable:false}},{{targets:4, orderable:false}}];
+  dtHpts = $('#tbl-hpts').DataTable({{order:[[6,'desc']],pageLength:100,responsive:true,autoWidth:false,columnDefs:colDefs}});
+  addRowNumbers(dtHpts);
+  dtPts = $('#tbl-pts').DataTable({{order:[[8,'desc']],pageLength:100,responsive:true,autoWidth:false,columnDefs:colDefs}});
+  addRowNumbers(dtPts);
+}}
+window.addEventListener('DOMContentLoaded', () => {{
+  fetchData('standings-data.json', d => {{
+    SEASONS = d.seasons;
+    const sel = document.getElementById('season-select');
+    const yr = getSeason(d.current_year);
+    if (SEASONS[yr]) sel.value = yr;
+    render(sel.value);
+    sel.addEventListener('change', e => {{ setSeason(e.target.value); render(e.target.value); }});
+  }});
+}});
+</script>""" + _foot()
+    (SITE_DIR / "standings.html").write_text(html)
+    print("Generated: site/standings.html")
+
+
+def generate_races(data: dict) -> None:
+    club = data["clubs"][data["current_club"]]
+    current_year = club["current_season"]
+    sorted_years = sorted(_all_seasons(data).keys())
     year_options = "".join(
         f'<option value="{y}"{" selected" if y == current_year else ""}>{y} Season</option>'
         for y in reversed(sorted_years)
     )
 
     html = _head("Results") + _nav("Results") + f"""
-<div class="container">
-  <h1>Results</h1>
-
-  <div class="mb-3">
     <select id="season-select" class="form-select w-auto d-inline-block">
       {year_options}
     </select>
   </div>
-
   <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
     <button id="btn-prev" class="btn btn-outline-secondary">&larr; Prev</button>
     <button id="btn-next" class="btn btn-outline-secondary">Next &rarr;</button>
     <select id="race-select" class="form-select form-select-sm w-auto"></select>
-    <div class="ms-2">
-      <small id="race-meta" class="text-muted"></small>
-    </div>
+    <div class="ms-2"><small id="race-meta" class="text-muted"></small></div>
   </div>
-
-  <!-- Course content rendered by JS -->
   <div id="course-content"></div>
 </div>
-
 <script>
-const SEASONS = {seasons_js};
+let SEASONS = null;
 let currentYear = '{current_year}';
-window.addEventListener('load', () => {{ currentYear = getSeason('{current_year}'); document.getElementById('season-select').value = currentYear; loadSeason(currentYear); }});
 let currentIndex = 0;
 
 function slug(name) {{ return name.toLowerCase().replace(/ /g, '-'); }}
@@ -376,30 +451,40 @@ function fmtTime(s) {{
            : m+':'+String(sec).padStart(2,'0');
 }}
 
+function badges(trophies) {{
+  const plain = (icon, title) => `<span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="${{title}}">${{icon}}</span>`;
+  const badged = (icon, title, cls) => `<span class="hcap-medal ${{cls}}" data-bs-toggle="tooltip" data-bs-title="${{title}}">${{icon}}</span>`;
+  const streak = (n) => `<span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="Improving streak: ${{n}} races">☄️<sup style="font-size:0.65em;font-weight:bold">${{n}}</sup></span>`;
+  const render = {{
+    finish_1: () => plain('🥇','Overall 1st'),
+    finish_2: () => plain('🥈','Overall 2nd'),
+    finish_3: () => plain('🥉','Overall 3rd'),
+    hcap_1:   () => badged('🥇','Handicap winner','hcap-gold'),
+    hcap_2:   () => badged('🥈','Handicap 2nd','hcap-silver'),
+    hcap_3:   () => badged('🥉','Handicap 3rd','hcap-bronze'),
+    consistent_1: () => plain('🎯','Consistent performer'),
+    consistent_2: () => plain('🎯','Consistent performer'),
+    consistent_3: () => plain('🎯','Consistent performer'),
+    par:      () => plain('⛳','Par racer'),
+  }};
+  if (!trophies || !trophies.length) return '';
+  return `<span style="display:flex;justify-content:center;gap:2px;flex-wrap:wrap">${{trophies.map(t => {{
+    if (t.startsWith('streak_')) return streak(parseInt(t.split('_')[1]));
+    return render[t] ? render[t]() : '';
+  }}).join('')}}</span>`;
+}}
+
 function tableHtml(id_suffix) {{
   return `
   <ul class="nav nav-tabs" id="result-tabs-${{id_suffix}}">
-    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-finish-${{id_suffix}}">Finish Order</button></li>
-    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-handicap-${{id_suffix}}">Handicap Order</button></li>
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-handicap-${{id_suffix}}">Handicap Order</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-finish-${{id_suffix}}">Finish Order</button></li>
   </ul>
   <div class="tab-content border border-top-0 p-3 mb-3">
-    <div class="tab-pane active" id="tab-finish-${{id_suffix}}">
+    <div class="tab-pane active" id="tab-handicap-${{id_suffix}}">
       <table class="table table-sm table-striped" style="table-layout:fixed">
-        <colgroup><col style="width:60px"><col style="width:180px"><col style="width:80px"><col style="width:70px"><col style="width:80px"><col style="width:80px"><col style="width:100px"><col style="width:60px"><col style="width:60px"></colgroup>
-        <thead><tr><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th>
-          <th><span class="d-sm-none">Hcap</span><span class="d-none d-sm-inline">Handicap</span></th>
-          <th><span class="d-sm-none">Adj</span><span class="d-none d-sm-inline">Adj Time</span></th>
-          <th><span class="d-sm-none">New</span><span class="d-none d-sm-inline">New Handicap</span></th>
-          <th><span class="d-sm-none">Pts</span><span class="d-none d-sm-inline">Points</span></th>
-          <th><span class="d-sm-none">HPts</span><span class="d-none d-sm-inline">Hcap Pts</span></th>
-        </tr></thead>
-        <tbody id="body-finish-${{id_suffix}}"></tbody>
-      </table>
-    </div>
-    <div class="tab-pane" id="tab-handicap-${{id_suffix}}">
-      <table class="table table-sm table-striped" style="table-layout:fixed">
-        <colgroup><col style="width:60px"><col style="width:180px"><col style="width:80px"><col style="width:70px"><col style="width:80px"><col style="width:80px"><col style="width:100px"><col style="width:60px"><col style="width:60px"></colgroup>
-        <thead><tr><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th>
+        <colgroup><col style="width:90px"><col style="width:60px"><col style="width:170px"><col style="width:80px"><col style="width:70px"><col style="width:80px"><col style="width:80px"><col style="width:100px"><col style="width:60px"><col style="width:60px"></colgroup>
+        <thead><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th>
           <th><span class="d-sm-none">Hcap</span><span class="d-none d-sm-inline">Handicap</span></th>
           <th><span class="d-sm-none">Adj</span><span class="d-none d-sm-inline">Adj Time</span></th>
           <th><span class="d-sm-none">New</span><span class="d-none d-sm-inline">New Handicap</span></th>
@@ -409,17 +494,32 @@ function tableHtml(id_suffix) {{
         <tbody id="body-handicap-${{id_suffix}}"></tbody>
       </table>
     </div>
+    <div class="tab-pane" id="tab-finish-${{id_suffix}}">
+      <table class="table table-sm table-striped" style="table-layout:fixed">
+        <colgroup><col style="width:90px"><col style="width:60px"><col style="width:170px"><col style="width:80px"><col style="width:70px"><col style="width:80px"><col style="width:80px"><col style="width:100px"><col style="width:60px"><col style="width:60px"></colgroup>
+        <thead><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th>
+          <th><span class="d-sm-none">Hcap</span><span class="d-none d-sm-inline">Handicap</span></th>
+          <th><span class="d-sm-none">Adj</span><span class="d-none d-sm-inline">Adj Time</span></th>
+          <th><span class="d-sm-none">New</span><span class="d-none d-sm-inline">New Handicap</span></th>
+          <th><span class="d-sm-none">Pts</span><span class="d-none d-sm-inline">Points</span></th>
+          <th><span class="d-sm-none">HPts</span><span class="d-none d-sm-inline">Hcap Pts</span></th>
+        </tr></thead>
+        <tbody id="body-finish-${{id_suffix}}"></tbody>
+      </table>
+    </div>
   </div>`;
 }}
 
 function rows(results, placeField) {{
+  const isHcap = placeField === 'adjusted_place';
   return results.map(r =>
-    `<tr><td>${{r[placeField]}}</td>
+    `<tr><td>${{badges(r.trophies)}}</td>
+    <td>${{r[placeField]}}</td>
     <td><a href="racer/${{slug(r.canonical_name)}}.html">${{r.canonical_name}}</a></td>
     <td>${{r.craft_category}}</td>
-    <td>${{fmtTime(r.time_seconds)}}</td>
+    <td>${{isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}}</td>
     <td>${{r.handicap.toFixed(3)}}</td>
-    <td>${{fmtTime(r.adjusted_time_seconds)}}</td>
+    <td>${{isHcap ? '<strong>' + fmtTime(r.adjusted_time_seconds) + '</strong>' : fmtTime(r.adjusted_time_seconds)}}</td>
     <td>${{r.handicap_post.toFixed(3)}}</td>
     <td>${{r.race_points || 0}}</td>
     <td>${{r.handicap_points || 0}}</td></tr>`
@@ -432,14 +532,11 @@ function renderRace(index) {{
   const race = races[index];
   const totalStarters = race.courses.reduce((s,c) => s + c.finish.length, 0);
   const content = document.getElementById('course-content');
-
   document.getElementById('race-meta').innerHTML =
     race.date + ' · ' + totalStarters + ' starters · <a href="' + race.display_url + '" target="_blank">WebScorer ↗</a>';
   document.getElementById('race-select').value = index;
   document.getElementById('btn-prev').disabled = index === 0;
   document.getElementById('btn-next').disabled = index === races.length - 1;
-
-  // Always show course tabs (even single course)
   let tabNav = '<ul class="nav nav-tabs mb-0">';
   let tabContent = '<div class="tab-content">';
   race.courses.forEach((course, i) => {{
@@ -454,7 +551,10 @@ function renderRace(index) {{
     document.getElementById(`body-finish-${{i}}`).innerHTML = rows(course.finish, 'original_place');
     document.getElementById(`body-handicap-${{i}}`).innerHTML = rows(course.handicap, 'adjusted_place');
   }});
-  // Restore saved distance, save on tab click
+  // Init tooltips on newly injected badges
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {{
+    bootstrap.Tooltip.getOrCreateInstance(el);
+  }});
   const savedDist = getDistance();
   race.courses.forEach((course, i) => {{
     const btn = document.querySelector(`[data-bs-target="#course-${{i}}"]`);
@@ -462,6 +562,11 @@ function renderRace(index) {{
       if (savedDist && course.label === savedDist) bootstrap.Tab.getOrCreateInstance(btn).show();
       btn.addEventListener('shown.bs.tab', () => setDistance(course.label));
     }}
+    const savedTab = getResultTab();
+    document.querySelectorAll(`#result-tabs-${{i}} button`).forEach(tb => {{
+      if (savedTab && tb.textContent === savedTab) bootstrap.Tab.getOrCreateInstance(tb).show();
+      tb.addEventListener('shown.bs.tab', () => setResultTab(tb.textContent));
+    }});
   }});
 }}
 
@@ -469,26 +574,32 @@ function loadSeason(year) {{
   currentYear = year;
   const races = SEASONS[year];
   const sel = document.getElementById('race-select');
-  sel.innerHTML = races.map((r,i) => `<option value="${{i}}">${{r.name}}</option>`).join('');
+  sel.innerHTML = races.map((r,i) => `<option value="${{i}}">${{r.name}} — ${{r.date}}</option>`).join('');
   renderRace(races.length - 1);
 }}
 
-document.getElementById('btn-prev').addEventListener('click', () => renderRace(currentIndex - 1));
-document.getElementById('btn-next').addEventListener('click', () => renderRace(currentIndex + 1));
-document.getElementById('race-select').addEventListener('change', e => renderRace(parseInt(e.target.value)));
-document.getElementById('season-select').addEventListener('change', e => {{ setSeason(e.target.value); loadSeason(e.target.value); }});
-loadSeason(currentYear);
-
-// If linked to a specific race via #race_id, navigate to it
-const hash = location.hash.replace('#', '');
-if (hash) {{
-  const races = SEASONS[currentYear];
-  const idx = races.findIndex(r => String(r.race_id) === hash);
-  if (idx >= 0) renderRace(idx);
-}}
+document.addEventListener('DOMContentLoaded', () => {{
+  document.getElementById('btn-prev').addEventListener('click', () => renderRace(currentIndex - 1));
+  document.getElementById('btn-next').addEventListener('click', () => renderRace(currentIndex + 1));
+  document.getElementById('race-select').addEventListener('change', e => renderRace(parseInt(e.target.value)));
+  document.getElementById('season-select').addEventListener('change', e => {{ setSeason(e.target.value); loadSeason(e.target.value); }});
+  fetchData('races-data.json', d => {{
+    SEASONS = d.seasons;
+    const sel = document.getElementById('season-select');
+    const yr = getSeason(d.current_year);
+    if (SEASONS[yr]) {{ currentYear = yr; sel.value = yr; }}
+    loadSeason(currentYear);
+    const hash = location.hash.replace('#', '');
+    if (hash) {{
+      const races = SEASONS[currentYear];
+      const idx = races.findIndex(r => String(r.race_id) === hash);
+      if (idx >= 0) renderRace(idx);
+    }}
+  }});
+}});
 </script>""" + _foot()
-    (SITE_DIR / "races.html").write_text(html)
-    print("Generated: site/races.html")
+    (SITE_DIR / "index.html").write_text(html)
+    print("Generated: site/index.html")
 
 
 def _build_traj_series(races: list, colors: list) -> tuple:
@@ -534,20 +645,8 @@ def _build_traj_series(races: list, colors: list) -> tuple:
 
 
 def generate_trajectories(data: dict) -> None:
-    colors = ["#e6194b","#3cb44b","#4363d8","#f58231","#911eb4","#42d4f4","#f032e6",
-              "#bfef45","#c8a000","#469990","#dcbeff","#9A6324","#800000","#aaffc3",
-              "#808000","#ffd8b1","#000075","#a9a9a9"]
-
     club = data["clubs"][data["current_club"]]
     current_year = club["current_season"]
-
-    # Build chart data for all seasons
-    all_chart_data = {}
-    for year, season in _all_seasons(data).items():
-        pts, hpts, hnum = _build_traj_series(season["races"], colors)
-        all_chart_data[year] = {"pts": pts, "hpts": hpts, "hnum": hnum}
-
-    chart_data_js = json.dumps(all_chart_data)
 
     # Shared chart options JS — sorted tooltip, skip nulls, highlight hovered line, inline end labels
     chart_options_js = """
@@ -621,8 +720,13 @@ const endLabelPlugin = {
 };
 
 function makeChart(id, data, yLabel) {
+  const canvas = document.getElementById(id);
+  const n = data.datasets.length;
+  const h = Math.max(window.innerHeight - 220, n * 22 + 100);
+  canvas.height = h;
+  canvas.width = 1100;
   const plugin = Object.assign({}, endLabelPlugin, { _labelRects: [], _activeIndex: null });
-  const chart = new Chart(document.getElementById(id), {
+  const chart = new Chart(canvas, {
     type: 'line',
     data: data,
     plugins: [plugin],
@@ -690,6 +794,7 @@ function resetHighlight(chart) {
     <h1 class="mb-0">Season Trajectories</h1>
     {_season_selector_html(data, current_year)}
   </div>
+  <div id="traj-content">
   <ul class="nav nav-tabs mb-3" id="traj-tabs">
     <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-pts">Official Points</button></li>
     <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-hpts">Handicap Points</button></li>
@@ -698,21 +803,22 @@ function resetHighlight(chart) {
   <div class="tab-content">
     <div class="tab-pane active" id="tab-pts">
       <p class="text-muted small">Official season points over time. Click legend to toggle racers.</p>
-      <div style="height:820px;overflow:auto"><canvas id="chart-pts" width="1100" height="1200"></canvas></div>
+      <div class="traj-scroll"><canvas id="chart-pts"></canvas></div>
     </div>
     <div class="tab-pane" id="tab-hpts">
       <p class="text-muted small">Handicap season points over time. First two races provisional (no points awarded).</p>
-      <div style="height:820px;overflow:auto"><canvas id="chart-hpts" width="1100" height="1200"></canvas></div>
+      <div class="traj-scroll"><canvas id="chart-hpts"></canvas></div>
     </div>
     <div class="tab-pane" id="tab-hnum">
       <p class="text-muted small">Handicap factor over time. Values below 1.0 = faster than par; above 1.0 = slower. Racers with 4+ races shown.</p>
-      <div style="height:820px;overflow:auto"><canvas id="chart-hnum" width="1100" height="1400"></canvas></div>
+      <div class="traj-scroll"><canvas id="chart-hnum"></canvas></div>
     </div>
+  </div>
   </div>
 </div>
 <script>
 {chart_options_js}
-const ALL_SEASONS = {chart_data_js};
+let ALL_SEASONS = null;
 let charts = {{}};
 function loadTrajSeason(year) {{
   const s = ALL_SEASONS[year];
@@ -722,8 +828,16 @@ function loadTrajSeason(year) {{
       k === 'pts' ? 'Season Points' : k === 'hpts' ? 'Handicap Points' : 'Handicap Factor');
   }});
 }}
-document.getElementById('season-select').addEventListener('change', e => {{ setSeason(e.target.value); loadTrajSeason(e.target.value); }});
-window.addEventListener('load', () => {{ const _tyr = getSeason('{current_year}'); document.getElementById('season-select').value = _tyr; loadTrajSeason(_tyr); }});
+window.addEventListener('DOMContentLoaded', () => {{
+  fetchData('trajectories-data.json', d => {{
+    ALL_SEASONS = d.seasons;
+    const sel = document.getElementById('season-select');
+    const yr = getSeason(d.current_year);
+    if (ALL_SEASONS[yr]) sel.value = yr;
+    loadTrajSeason(sel.value);
+    sel.addEventListener('change', e => {{ setSeason(e.target.value); loadTrajSeason(e.target.value); }});
+  }});
+}});
 </script>""" + _foot()
     (SITE_DIR / "trajectories.html").write_text(html)
     print("Generated: site/trajectories.html")
@@ -734,6 +848,30 @@ def _fmt_time(seconds: float) -> str:
     m, s = divmod(s, 60)
     h, m = divmod(m, 60)
     return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
+
+
+def _racer_trophy_badges(trophies: list) -> str:
+    """Render trophy badges for racer page race table (Python-side, not JS)."""
+    map = {
+        "finish_1": '<span class="hcap-medal plain-medal" title="Overall 1st">🥇</span>',
+        "finish_2": '<span class="hcap-medal plain-medal" title="Overall 2nd">🥈</span>',
+        "finish_3": '<span class="hcap-medal plain-medal" title="Overall 3rd">🥉</span>',
+        "hcap_1":   '<span class="hcap-medal hcap-gold" title="Handicap winner">🥇</span>',
+        "hcap_2":   '<span class="hcap-medal hcap-silver" title="Handicap 2nd">🥈</span>',
+        "hcap_3":   '<span class="hcap-medal hcap-bronze" title="Handicap 3rd">🥉</span>',
+        "consistent_1": '<span class="hcap-medal plain-medal" title="Consistent performer">🎯</span>',
+        "consistent_2": '<span class="hcap-medal plain-medal" title="Consistent performer">🎯</span>',
+        "consistent_3": '<span class="hcap-medal plain-medal" title="Consistent performer">🎯</span>',
+        "par":      '<span class="hcap-medal plain-medal" title="Par racer">⛳</span>',
+    }
+    parts = []
+    for t in trophies:
+        if t.startswith('streak_'):
+            n = t.split('_')[1]
+            parts.append(f'<span class="hcap-medal plain-medal" title="Improving streak: {n} races">☄️<sup style="font-size:0.65em;font-weight:bold">{n}</sup></span>')
+        elif t in map:
+            parts.append(map[t])
+    return "".join(parts)
 
 
 def generate_racer_pages(data: dict) -> None:
@@ -836,6 +974,35 @@ document.getElementById('racer-select').addEventListener('change', function() {
                     last = results[-1]
                     cid = f"{club_id}-{year}-{_slug(craft)}"
                     race_labels = [f'#{r["name"].rsplit("#",1)[-1].strip()}' for r in results]
+
+                    # Aggregate trophies
+                    trophy_counts: dict[str, int] = {}
+                    for r in results:
+                        for t in r.get("trophies", []):
+                            trophy_counts[t] = trophy_counts.get(t, 0) + 1
+
+                    trophy_map = {
+                        "finish_1": ("🥇", "Overall 1st"),
+                        "finish_2": ("🥈", "Overall 2nd"),
+                        "finish_3": ("🥉", "Overall 3rd"),
+                        "hcap_1":   ("🥇", "Handicap winner", "hcap-gold"),
+                        "hcap_2":   ("🥈", "Handicap 2nd", "hcap-silver"),
+                        "hcap_3":   ("🥉", "Handicap 3rd", "hcap-bronze"),
+                        "consistent_1": ("🎯", "Consistent performer"),
+                        "consistent_2": ("🎯", "Consistent performer"),
+                        "consistent_3": ("🎯", "Consistent performer"),
+                        "par":      ("⛳", "Par racer"),
+                    }
+                    trophy_html = ""
+                    for code, info in trophy_map.items():
+                        count = trophy_counts.get(code, 0)
+                        if not count:
+                            continue
+                        icon, label = info[0], info[1]
+                        css_class = info[2] if len(info) > 2 else ""
+                        badge = f'<span class="hcap-medal {css_class}" title="{label}">{icon}</span>' if css_class else f'<span style="font-size:1.6em" title="{label}">{icon}</span>'
+                        times = f'<span class="text-muted small ms-1">×{count}</span>' if count > 1 else ""
+                        trophy_html += f'<span class="me-3">{badge}{times}</span>'
                     pts_data = [r["season_points"] for r in results]
                     hpts_data = [r["season_handicap_points"] for r in results]
                     hcap_data = [round(r["handicap_post"], 4) for r in results]
@@ -869,13 +1036,22 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
   <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> {last["season_handicap_points"]}</div>
   <div class="col-6 col-sm-3"><strong>Hcap:</strong> {last["handicap_post"]:.3f}</div>
 </div>
+{('<div class="mb-3 p-2 bg-light rounded d-flex flex-wrap align-items-center gap-1">' + trophy_html + '</div>') if trophy_html else ''}
 <div class="row mb-3">
   <div class="col-md-6"><canvas id="chart-pts-{cid}" style="max-height:220px"></canvas></div>
   <div class="col-md-6"><canvas id="chart-hcap-{cid}" style="max-height:220px"></canvas></div>
 </div>
 <table class="table table-sm table-striped table-hover">
-  <thead><tr><th>Race</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
-  <tbody>{rows}</tbody>
+  <thead><tr><th></th><th>Race</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody>{"".join(
+      f'<tr><td style="white-space:nowrap">{_racer_trophy_badges(r.get("trophies",[]))}</td>'
+      f'<td><a href="../index.html#{r["race_id"]}">{r["date"]}</a></td>'
+      f'<td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td>'
+      f'<td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td>'
+      f'<td>{r["handicap"]:.3f}</td><td>{r["handicap_post"]:.3f}</td>'
+      f'<td>{r["race_points"]}</td><td>{r["handicap_points"]}</td></tr>'
+      for r in results
+  )}</tbody>
 </table>{cw_close}"""
 
                 craft_content += "</div>"  # close tab-content div
@@ -965,10 +1141,10 @@ def generate_about() -> None:
   <p><strong>Official points</strong> are awarded for finishing position (10 pts for 1st, 9 for 2nd … 1 pt for 10th).</p>
   <p><strong>Handicap points</strong> use the same scale but based on <em>adjusted</em> finishing position.
   Handicap points are not awarded in your first two results (while your handicap is being established).</p>
-  <p>When a race day has multiple distance groups (e.g. Race Course and Fun Wave), points are weighted
-  proportionally by group size. For example, if the Race Course has 26 racers and Fun Wave has 13,
-  the Race Course winner earns <code>ceil(10 × 26/39)</code> = 7 pts and the Fun Wave winner earns
-  <code>ceil(10 × 13/39)</code> = 4 pts. This keeps the total points available per race day roughly constant.</p>
+  <p>When a race day has multiple distance groups (e.g. Long Course and Short Course), points are weighted
+  proportionally by group size. For example, if the Long Course has 26 racers and Short Course has 13,
+  the Long Course winner earns <code>round(10 × 26/39)</code> = 7 pts and the Short Course winner earns
+  <code>round(10 × 13/39)</code> = 3 pts. This keeps the total points available per race day roughly constant.</p>
 
   <h2>References</h2>
   <p>The BEPC handicap system uses the same multiplicative time-correction approach as established sailing clubs.
@@ -1016,7 +1192,7 @@ def generate_racer_index(data: dict) -> None:
 def generate_all(data: dict) -> None:
     SITE_DIR.mkdir(exist_ok=True)
     (SITE_DIR / "racer").mkdir(exist_ok=True)
-    generate_index(data)
+    generate_data_files(data)
     generate_standings(data)
     generate_races(data)
     generate_trajectories(data)

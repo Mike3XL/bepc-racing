@@ -1,15 +1,26 @@
-"""Fetch race results from WebScorer API and convert to common.json format."""
 import json
+import os
 import re
 import urllib.request
 from pathlib import Path
 
-WEBSCORER_API_ID = "16984"
-API_URL = "https://www.webscorer.com/json/race?raceid={race_id}&apiid=" + WEBSCORER_API_ID
+def _load_api_id() -> str:
+    """Load WebScorer API ID from .env file or environment variable."""
+    env_file = Path(__file__).parent.parent / ".env"
+    if env_file.exists():
+        for line in env_file.read_text().splitlines():
+            if line.startswith("WEBSCORER_API_ID="):
+                return line.split("=", 1)[1].strip()
+    val = os.environ.get("WEBSCORER_API_ID", "")
+    if not val:
+        raise RuntimeError("WEBSCORER_API_ID not set. Add it to .env or set the environment variable.")
+    return val
+
+API_URL = "https://www.webscorer.com/json/race?raceid={race_id}&apiid={api_id}"
 
 
 def fetch_raw(race_id: int) -> dict:
-    url = API_URL.format(race_id=race_id)
+    url = API_URL.format(race_id=race_id, api_id=_load_api_id())
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.loads(resp.read())
