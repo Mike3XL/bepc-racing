@@ -919,35 +919,6 @@ document.getElementById('racer-select').addEventListener('change', function() {
                     last = results[-1]
                     cid = f"{club_id}-{year}-{_slug(craft)}"
                     race_labels = [f'#{r["name"].rsplit("#",1)[-1].strip()}' for r in results]
-
-                    # Aggregate trophies
-                    trophy_counts: dict[str, int] = {}
-                    for r in results:
-                        for t in r.get("trophies", []):
-                            trophy_counts[t] = trophy_counts.get(t, 0) + 1
-
-                    trophy_map = {
-                        "finish_1": ("🥇", "Overall 1st"),
-                        "finish_2": ("🥈", "Overall 2nd"),
-                        "finish_3": ("🥉", "Overall 3rd"),
-                        "hcap_1":   ("🥇", "Handicap winner", "hcap-gold"),
-                        "hcap_2":   ("🥈", "Handicap 2nd", "hcap-silver"),
-                        "hcap_3":   ("🥉", "Handicap 3rd", "hcap-bronze"),
-                        "consistent_1": ("🎯", "Consistent performer"),
-                        "consistent_2": ("🎯", "Consistent performer"),
-                        "consistent_3": ("🎯", "Consistent performer"),
-                        "par":      ("⛳", "Par racer"),
-                    }
-                    trophy_html = ""
-                    for code, info in trophy_map.items():
-                        count = trophy_counts.get(code, 0)
-                        if not count:
-                            continue
-                        icon, label = info[0], info[1]
-                        css_class = info[2] if len(info) > 2 else ""
-                        badge = f'<span class="hcap-medal {css_class}" title="{label}">{icon}</span>' if css_class else f'<span style="font-size:1.6em" title="{label}">{icon}</span>'
-                        times = f'<span class="text-muted small ms-1">×{count}</span>' if count > 1 else ""
-                        trophy_html += f'<span class="me-3">{badge}{times}</span>'
                     pts_data = [r["season_points"] for r in results]
                     hpts_data = [r["season_handicap_points"] for r in results]
                     hcap_data = [round(r["handicap_post"], 4) for r in results]
@@ -977,11 +948,10 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
                     craft_content += f"""{cw_open}
 <div class="row mb-3">
   <div class="col-6 col-sm-3"><strong>Races:</strong> {len(results)}</div>
-  <div class="col-6 col-sm-3"><strong>Official Pts:</strong> {last["season_points"]}</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> {last["season_points"]}</div>
   <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> {last["season_handicap_points"]}</div>
   <div class="col-6 col-sm-3"><strong>Hcap:</strong> {last["handicap_post"]:.3f}</div>
 </div>
-{('<div class="mb-3 p-2 bg-light rounded d-flex flex-wrap align-items-center gap-1">' + trophy_html + '</div>') if trophy_html else ''}
 <div class="row mb-3">
   <div class="col-md-6"><canvas id="chart-pts-{cid}" style="max-height:220px"></canvas></div>
   <div class="col-md-6"><canvas id="chart-hcap-{cid}" style="max-height:220px"></canvas></div>
