@@ -15,3 +15,11 @@ Follow the architecture and conventions described in #[[file:SPEC.md]]
 - localStorage keys: bepc_season, bepc_result_tab, bepc_distance
 - Fresh racers (first 2 races) are ineligible for handicap trophies and handicap points
 - process → generate → publish is always manual, never automatic
+
+## After pulling new race data
+
+- Always run alias check: compare all canonical names against aliases.json for new variants
+- Check for obvious duplicates: same person with different capitalisation, spelling, or abbreviation
+- Verify racer counts per race look reasonable (not 0, not wildly different from similar races)
+- Check pointsWeight is 1.0 for single-course races
+- Run process and verify race/racer counts before generating

@@ -149,15 +149,13 @@ def _final_states(data: dict) -> dict:
 
 # ── Pages ────────────────────────────────────────────────────────────────────
 
-def _season_selector_html(data: dict, current_year: str) -> str:
-    """Season dropdown HTML. Reads/writes localStorage for cross-page persistence."""
-    club = data["clubs"][data["current_club"]]
-    years = sorted(club["seasons"].keys())
-    opts = "".join(
+def _season_opts(data: dict, current_year: str) -> str:
+    """Render <option> elements for season selector, newest first."""
+    years = sorted(data["clubs"][data["current_club"]]["seasons"].keys(), reverse=True)
+    return "".join(
         f'<option value="{y}"{" selected" if y == current_year else ""}>{y} Season</option>'
-        for y in reversed(years)
+        for y in years
     )
-    return f'<select id="season-select" class="form-select form-select-sm w-auto d-inline-block mb-3">{opts}</select>'
 
 
 def _final_states_for_season(season_races: list) -> dict:
@@ -296,65 +294,15 @@ def _loading_spinner() -> str:
     return '<div id="loading" class="text-center my-5" style="display:none"><div class="spinner-border text-secondary"></div></div>'
 
 
-def generate_index(data: dict) -> None:
-    club = data["clubs"][data["current_club"]]
-    current_year = club["current_season"]
-    years = sorted(_all_seasons(data).keys(), reverse=True)
-    opts = "".join(f'<option value="{y}"{" selected" if y == current_year else ""}>{y} Season</option>' for y in years)
-
-    html = _head("BEPC Racing") + _nav("Events") + f"""
-<div class="container">
-  <div class="d-flex align-items-center gap-3 mb-3">
-    <h1 id="season-title" class="mb-0"></h1>
-    <select id="season-select" class="form-select form-select-sm w-auto d-inline-block mb-3">{opts}</select>
-  </div>
-  <p id="season-summary" class="lead"></p>
-  <h2>Results</h2>
-  <table id="races-table" class="table table-striped table-hover">
-    <thead><tr><th>#</th><th>Race</th><th>Date</th><th>Starters</th></tr></thead>
-    <tbody id="races-body"></tbody>
-  </table>
-</div>
-<script>
-let SEASONS = null;
-let dtable = null;
-function renderSeason(year) {{
-  const s = SEASONS[year];
-  document.getElementById('season-title').textContent = s.name;
-  document.getElementById('season-summary').textContent = s.races.length + ' races';
-  if (dtable) {{ dtable.destroy(); dtable = null; }}
-  const tbody = document.getElementById('races-body');
-  tbody.innerHTML = s.races.map((r,i) =>
-    `<tr><td>${{i+1}}</td><td><a href="index.html#${{r.race_id}}">${{r.name}}</a></td><td>${{r.date}}</td><td>${{r.starters}}</td></tr>`
-  ).join('');
-  dtable = $('#races-table').DataTable({{order:[[0,'asc']],pageLength:50,responsive:true}});
-}}
-window.addEventListener('DOMContentLoaded', () => {{
-  fetchData('index-data.json', d => {{
-    SEASONS = d.seasons;
-    const sel = document.getElementById('season-select');
-    const yr = getSeason(d.current_year);
-    if (SEASONS[yr]) sel.value = yr;
-    renderSeason(sel.value);
-    sel.addEventListener('change', e => {{ setSeason(e.target.value); renderSeason(e.target.value); }});
-  }});
-}});
-</script>""" + _foot()
-    (SITE_DIR / "events.html").write_text(html)
-    print("Generated: site/events.html")
-
-
 def generate_standings(data: dict) -> None:
     club = data["clubs"][data["current_club"]]
     current_year = club["current_season"]
-    years = sorted(_all_seasons(data).keys(), reverse=True)
-    opts = "".join(f'<option value="{y}"{" selected" if y == current_year else ""}>{y} Season</option>' for y in years)
 
     html = _head("Standings") + _nav("Standings") + f"""
 <div class="container">
   <div class="d-flex align-items-center gap-3 mb-3">
     <h1 class="mb-0">Standings</h1>
-    <select id="season-select" class="form-select form-select-sm w-auto d-inline-block mb-3">{opts}</select>
+    <select id="season-select" class="form-select form-select-sm w-auto d-inline-block mb-3">{_season_opts(data, current_year)}</select>
   </div>
   <ul class="nav nav-tabs mb-3">
     <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-hpts">Handicap Points</button></li>
@@ -419,19 +367,12 @@ window.addEventListener('DOMContentLoaded', () => {{
 def generate_races(data: dict) -> None:
     club = data["clubs"][data["current_club"]]
     current_year = club["current_season"]
-    sorted_years = sorted(_all_seasons(data).keys())
-    year_options = "".join(
-        f'<option value="{y}"{" selected" if y == current_year else ""}>{y} Season</option>'
-        for y in reversed(sorted_years)
-    )
 
     html = _head("Results") + _nav("Results") + f"""
 <div class="container">
   <div class="d-flex align-items-center gap-3 mb-3">
     <h1 class="mb-0">Results</h1>
-    <select id="season-select" class="form-select w-auto d-inline-block">
-      {year_options}
-    </select>
+    <select id="season-select" class="form-select form-select-sm w-auto d-inline-block mb-3">{_season_opts(data, current_year)}</select>
   </div>
   <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
     <button id="btn-prev" class="btn btn-outline-secondary">&larr; Prev</button>
@@ -793,13 +734,13 @@ function resetHighlight(chart) {
 
     html = _head("Trajectories", _CHARTJS) + _nav("Trajectories") + f"""
 <div class="container">
-  <div class="d-flex align-items-center gap-3 mb-2">
-    <h1 class="mb-0">Season Trajectories</h1>
-    {_season_selector_html(data, current_year)}
+  <div class="d-flex align-items-center gap-3 mb-3">
+    <h1 class="mb-0">Trajectories</h1>
+    <select id="season-select" class="form-select form-select-sm w-auto d-inline-block mb-3">{_season_opts(data, current_year)}</select>
   </div>
   <div id="traj-content">
   <ul class="nav nav-tabs mb-3" id="traj-tabs">
-    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-pts">Official Points</button></li>
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-pts">Overall Points</button></li>
     <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-hpts">Handicap Points</button></li>
     <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-hnum">Handicap Number</button></li>
   </ul>
