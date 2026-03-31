@@ -139,7 +139,16 @@ def fetch_season(race_ids: list[int], out_dir: Path) -> None:
             total = sum(len(r) for _, r in group_racers)
             date_slug = _date_slug(info.get("Date", ""))
             name_slug = re.sub(r'[^a-zA-Z0-9]+', '_', info.get("Name", "")).strip('_')
-            multi = len(group_racers) > 1
+
+            # Determine if groups are truly distinct courses (have different distance labels)
+            distances = [g.get("Grouping", {}).get("Distance", "") for g, _ in group_racers]
+            distinct_distances = len(set(d for d in distances if d)) > 0
+            multi = distinct_distances and len(group_racers) > 1
+
+            if not multi and len(group_racers) > 1:
+                # Multiple unlabeled groups — use only the largest (main overall result)
+                group_racers = [max(group_racers, key=lambda x: len(x[1]))]
+                total = len(group_racers[0][1])
 
             for group, racers in group_racers:
                 distance = group.get("Grouping", {}).get("Distance", "")
