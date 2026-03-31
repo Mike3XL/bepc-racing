@@ -1,4 +1,3 @@
-import math
 from .models import RacerResult
 
 POINTS_PLACES = 10

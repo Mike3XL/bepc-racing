@@ -24,7 +24,7 @@ def compute_new_handicap(racer: RacerResult, par_time: float) -> None:
         racer.handicap_post = existing * 0.5 + tvp * 0.5
         racer.handicap_note = "Second race. 50% adjustment from previous handicap."
         racer.is_fresh_racer = True
-    elif abs(atvp) > 1.1:
+    elif atvp > 1.1:
         racer.handicap_post = existing
         racer.is_outlier = True
         if atvp > 1.0:
