@@ -332,7 +332,8 @@ function render(year) {{
   const s = SEASONS[year];
   if (dtPts) {{ dtPts.destroy(); dtPts = null; }}
   if (dtHpts) {{ dtHpts.destroy(); dtHpts = null; }}
-  const row = r => `<tr><td></td><td><a href="racer/${{r.name.toLowerCase().replace(/ /g,'-')}}.html">${{r.name}}</a></td><td>${{r.craft}}</td><td>${{r.gender}}</td><td style="white-space:nowrap">${{r.trophies||''}}</td><td>${{r.races}}</td><td>${{r.hpts}}</td><td>${{r.hcap}}</td><td>${{r.points}}</td></tr>`;
+  const fmtGender = g => g === 'Female/Male' ? 'Mixed' : g;
+  const row = r => `<tr><td></td><td><a href="racer/${{r.name.toLowerCase().replace(/ /g,'-')}}.html">${{r.name}}</a></td><td>${{r.craft}}</td><td>${{fmtGender(r.gender)}}</td><td style="white-space:nowrap">${{r.trophies||''}}</td><td>${{r.races}}</td><td>${{r.hpts}}</td><td>${{r.hcap}}</td><td>${{r.points}}</td></tr>`;
   document.getElementById('body-hpts').innerHTML = s.hpts.map(row).join('');
   document.getElementById('body-pts').innerHTML = s.hpts.map(row).join('');
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => bootstrap.Tooltip.getOrCreateInstance(el));
