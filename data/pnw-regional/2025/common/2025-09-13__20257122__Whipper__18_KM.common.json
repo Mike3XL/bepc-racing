@@ -1,6 +1,6 @@
 {
   "raceInfo": {
-    "raceId": 20254520,
+    "raceId": 20257122,
     "name": "Whipper \u2014 18 KM",
     "date": "Sep 13, 2025",
     "displayURL": "https://www.jerichooutrigger.com/races2025/whipper.html",
@@ -50,7 +50,7 @@
     {
       "originalPlace": 3,
       "canonicalName": "Greg Redman",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 4953.2,
@@ -69,7 +69,7 @@
     {
       "originalPlace": 4,
       "canonicalName": "Greg Barton",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 4998.6,
@@ -107,7 +107,7 @@
     {
       "originalPlace": 6,
       "canonicalName": "Vadim Lawrence",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5033.1,
@@ -145,7 +145,7 @@
     {
       "originalPlace": 8,
       "canonicalName": "Steve Juranovics",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5233.7,
@@ -164,7 +164,7 @@
     {
       "originalPlace": 9,
       "canonicalName": "Steve Esselaar",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5244.1,
@@ -183,7 +183,7 @@
     {
       "originalPlace": 10,
       "canonicalName": "Graeme Ramsay",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5343.3,
@@ -221,7 +221,7 @@
     {
       "originalPlace": 12,
       "canonicalName": "Martin Rother",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5349.5,
@@ -240,7 +240,7 @@
     {
       "originalPlace": 13,
       "canonicalName": "Brian Kummer",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5458.0,
@@ -259,7 +259,7 @@
     {
       "originalPlace": 14,
       "canonicalName": "Bob Putnam",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5459.5,
@@ -278,7 +278,7 @@
     {
       "originalPlace": 15,
       "canonicalName": "Chris Dobrovolny",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5460.1,
@@ -297,7 +297,7 @@
     {
       "originalPlace": 16,
       "canonicalName": "David Goosen",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5467.1,
@@ -316,7 +316,7 @@
     {
       "originalPlace": 17,
       "canonicalName": "Daryl Remmler",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5476.2,
@@ -335,7 +335,7 @@
     {
       "originalPlace": 18,
       "canonicalName": "Bob Muraski",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5499.5,
@@ -373,7 +373,7 @@
     {
       "originalPlace": 20,
       "canonicalName": "Jonathan Sy",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5575.9,
@@ -392,7 +392,7 @@
     {
       "originalPlace": 21,
       "canonicalName": "Russ Stothers",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5590.2,
@@ -411,7 +411,7 @@
     {
       "originalPlace": 22,
       "canonicalName": "Warren Bruce",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5632.9,
@@ -449,7 +449,7 @@
     {
       "originalPlace": 24,
       "canonicalName": "Graham Harkley",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5676.7,
@@ -468,7 +468,7 @@
     {
       "originalPlace": 25,
       "canonicalName": "Rod Hope",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5680.6,
@@ -601,7 +601,7 @@
     {
       "originalPlace": 32,
       "canonicalName": "Paul Hansen",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5800.0,
@@ -620,7 +620,7 @@
     {
       "originalPlace": 33,
       "canonicalName": "Scott Wanless",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5808.5,
@@ -753,7 +753,7 @@
     {
       "originalPlace": 40,
       "canonicalName": "Stanley Brooker",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5939.0,
@@ -772,7 +772,7 @@
     {
       "originalPlace": 41,
       "canonicalName": "Matt Kelly",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5964.3,
@@ -791,7 +791,7 @@
     {
       "originalPlace": 42,
       "canonicalName": "Denise Weeks",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Women",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 5964.6,
@@ -810,7 +810,7 @@
     {
       "originalPlace": 43,
       "canonicalName": "Dave Ruse",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5979.1,
@@ -829,7 +829,7 @@
     {
       "originalPlace": 44,
       "canonicalName": "Andreas Thompson",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6019.3,
@@ -848,7 +848,7 @@
     {
       "originalPlace": 45,
       "canonicalName": "John George",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6034.0,
@@ -867,7 +867,7 @@
     {
       "originalPlace": 46,
       "canonicalName": "Alistair Sled",
-      "craftCategory": "Junior",
+      "craftCategory": "HPK",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6050.6,
@@ -962,7 +962,7 @@
     {
       "originalPlace": 51,
       "canonicalName": "Ileana Reyes",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Women",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6156.7,
@@ -1000,7 +1000,7 @@
     {
       "originalPlace": 53,
       "canonicalName": "Michael Lim",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6242.2,
@@ -1095,7 +1095,7 @@
     {
       "originalPlace": 58,
       "canonicalName": "Sharif Senbel",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6338.6,
@@ -1152,7 +1152,7 @@
     {
       "originalPlace": 61,
       "canonicalName": "Chris Mulder",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6370.3,
@@ -1171,7 +1171,7 @@
     {
       "originalPlace": 62,
       "canonicalName": "Jack Cummings",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6378.2,
@@ -1209,7 +1209,7 @@
     {
       "originalPlace": 64,
       "canonicalName": "Owen Kan",
-      "craftCategory": "Junior",
+      "craftCategory": "HPK",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6509.9,
@@ -1228,7 +1228,7 @@
     {
       "originalPlace": 65,
       "canonicalName": "Jen Bird",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Women",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6528.1,
@@ -1304,7 +1304,7 @@
     {
       "originalPlace": 69,
       "canonicalName": "Ryan McCuaig",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6586.0,
@@ -1437,7 +1437,7 @@
     {
       "originalPlace": 76,
       "canonicalName": "Leni Corin",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Women",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6658.2,
@@ -1494,7 +1494,7 @@
     {
       "originalPlace": 79,
       "canonicalName": "Mike Moorhead",
-      "craftCategory": "Senior",
+      "craftCategory": "Masters HPK (60+) Men",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6840.4,
@@ -1570,7 +1570,7 @@
     {
       "originalPlace": 83,
       "canonicalName": "Dennis Strashenko",
-      "craftCategory": "Junior",
+      "craftCategory": "HPK",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6945.8,
@@ -1608,7 +1608,7 @@
     {
       "originalPlace": 85,
       "canonicalName": "Axel McLean",
-      "craftCategory": "Junior",
+      "craftCategory": "SUP",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 6959.9,
@@ -1665,7 +1665,7 @@
     {
       "originalPlace": 88,
       "canonicalName": "Matthew Runzer",
-      "craftCategory": "Junior",
+      "craftCategory": "SUP",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 6972.8,
@@ -1684,7 +1684,7 @@
     {
       "originalPlace": 89,
       "canonicalName": "Veronika Juranovics",
-      "craftCategory": "Masters",
+      "craftCategory": "Masters HPK (40-59) Women",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 7018.0,
@@ -1779,7 +1779,7 @@
     {
       "originalPlace": 94,
       "canonicalName": "Anderson Lin",
-      "craftCategory": "Junior",
+      "craftCategory": "HPK",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 7122.7,
@@ -1817,7 +1817,7 @@
     {
       "originalPlace": 96,
       "canonicalName": "Cassia Hatton / Siena McLean",
-      "craftCategory": "Junior",
+      "craftCategory": "HPDK",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 7336.4,
@@ -1855,7 +1855,7 @@
     {
       "originalPlace": 98,
       "canonicalName": "Isaak Nebel",
-      "craftCategory": "Junior",
+      "craftCategory": "SUP",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 7459.7,
@@ -2026,7 +2026,7 @@
     {
       "originalPlace": 107,
       "canonicalName": "Jesse Liu",
-      "craftCategory": "Junior",
+      "craftCategory": "HPK",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 7970.6,
@@ -2121,7 +2121,7 @@
     {
       "originalPlace": 112,
       "canonicalName": "Mabel Kenny",
-      "craftCategory": "Junior",
+      "craftCategory": "SUP",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 9106.4,

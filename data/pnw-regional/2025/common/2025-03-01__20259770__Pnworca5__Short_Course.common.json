@@ -1,6 +1,6 @@
 {
   "raceInfo": {
-    "raceId": 20253916,
+    "raceId": 20259770,
     "name": "Pnworca5 \u2014 Short Course",
     "date": "Mar 1, 2025",
     "displayURL": "https://www.jerichooutrigger.com/races2025/pnworca5.html",
@@ -12,7 +12,7 @@
     {
       "originalPlace": 1,
       "canonicalName": "Nancy Maclean",
-      "craftCategory": "Women",
+      "craftCategory": "Masters 50+ OC1",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 3612.6,
@@ -31,7 +31,7 @@
     {
       "originalPlace": 2,
       "canonicalName": "Cheryl Bublitz",
-      "craftCategory": "Women",
+      "craftCategory": "Masters 70+ OC1",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 3847.6,

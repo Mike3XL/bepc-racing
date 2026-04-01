@@ -3,6 +3,7 @@ import json
 import re
 import urllib.request
 from pathlib import Path
+from .craft import normalize_craft as _normalize_craft_full
 
 
 def _parse_time(s: str) -> float | None:
@@ -80,7 +81,7 @@ def parse_jericho_html(html: str) -> dict[str, list]:
             time_sec = _parse_time(time_str)
             if time_sec is None:
                 continue
-            craft = _craft_from_division(division)
+            cat, spec = _normalize_craft_full(division); craft = spec if spec else _craft_from_division(division)
             gender = _gender_from_division(division)
             courses[current_course].append({
                 "originalPlace": place,
@@ -192,7 +193,7 @@ def import_jericho_url(url: str, out_dir: Path, race_id: int, race_name: str,
         time_sec = _parse_time(time_str)
         if time_sec is None:
             continue
-        craft = _craft_from_division(division)
+        cat, spec = _normalize_craft_full(division); craft = spec if spec else _craft_from_division(division)
         gender = _gender_from_division(division)
         courses[current_course].append({
             "originalPlace": place,
