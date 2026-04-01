@@ -13,7 +13,7 @@
 4. **Fetch 2023 Jericho data** — `cli.py fetch-jericho 2023`
 5. **Pacific Multisports PDFs** — Peter Marcus 2022-2025, Narrows Challenge 2022-2025 (manual download + `cli.py import-pdf`)
 6. **Gorge Challenge** — find results source (separate organizer from Gorge Downwind)
-7. **audit-names** — build name canonicalization audit for PNW Regional (many new racers, likely variants)
+7. **audit-names** — build name canonicalization audit for PNW Regional (many new racers, likely variants). Similar to `audit-crafts` — detect names appearing only once (possible typos), names with high similarity to others (possible duplicates). See normalization-principles.md for design guidance.
 
 ### PNW Regional — UX
 8. **Season selector** on trajectories/standings for PNW Regional (already works for BEPC)
