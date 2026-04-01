@@ -1,6 +1,8 @@
 import json
+import re
 from pathlib import Path
 from .models import RaceInfo, RacerResult, RaceResult
+from .craft import normalize_craft
 
 
 def _load_aliases(folder: Path) -> dict:
@@ -9,6 +11,11 @@ def _load_aliases(folder: Path) -> dict:
     if aliases_path.exists():
         return json.loads(aliases_path.read_text())
     return {}
+
+
+def _normalize_craft(craft: str) -> tuple[str, str]:
+    """Returns (category, specific) using the craft.py scheme."""
+    return normalize_craft(craft)
 
 
 def load_common_json(path: Path, aliases: dict | None = None) -> RaceResult:
@@ -22,16 +29,17 @@ def load_common_json(path: Path, aliases: dict | None = None) -> RaceResult:
         points_weight=info.get("pointsWeight", 1.0),
         distance=info.get("distance", ""),
     )
-    racers = [
-        RacerResult(
+    racers = []
+    for r in data["racerResults"]:
+        cat, specific = _normalize_craft(r["craftCategory"])
+        racers.append(RacerResult(
             original_place=r["originalPlace"],
             canonical_name=(aliases or {}).get(r["canonicalName"], r["canonicalName"]),
-            craft_category=r["craftCategory"],
+            craft_category=cat,
+            craft_specific=specific,
             gender=r["gender"],
             time_seconds=r["timeSeconds"],
-        )
-        for r in data["racerResults"]
-    ]
+        ))
     return RaceResult(race_info=race_info, racer_results=racers)
 
 

@@ -825,6 +825,9 @@ def _racer_trophy_badges(trophies: list) -> str:
 def generate_racer_pages(data: dict) -> None:
     from collections import defaultdict
 
+    # Per-club minimum races to generate a racer page
+    MIN_RACER_PAGES = data["clubs"].get(data["current_club"], {}).get("min_races_for_page", 1)
+
     # racer_data[name][(club_id, year, craft)] = [race results...]
     racer_data: dict[str, dict[tuple, list]] = defaultdict(lambda: defaultdict(list))
 
@@ -841,8 +844,18 @@ def generate_racer_pages(data: dict) -> None:
                         **r,
                     })
 
-    # Order by best official season points in current club/season
+    # Filter by minimum races across all seasons for current club
     current_club = data["current_club"]
+    if MIN_RACER_PAGES > 1:
+        def total_races(name):
+            return sum(
+                len(results)
+                for (club, year, craft), results in racer_data[name].items()
+                if club == current_club
+            )
+        racer_data = {n: v for n, v in racer_data.items() if total_races(n) >= MIN_RACER_PAGES}
+
+    # Order by best official season points in current club/season
     current_year = data["clubs"][current_club]["current_season"]
 
     def best_pts(name):

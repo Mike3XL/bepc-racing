@@ -38,6 +38,7 @@ class RacerResult:
     is_par_racer: bool = False
     is_fresh_racer: bool = False
     is_outlier: bool = False
+    craft_specific: str = ""  # original craft string from source data
     trophies: list = field(default_factory=list)  # e.g. ["finish_1", "hcap_2", "par"]
 
 

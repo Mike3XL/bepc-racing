@@ -1,0 +1,51 @@
+{
+  "raceInfo": {
+    "raceId": 20253916,
+    "name": "Pnworca5 \u2014 Short Course",
+    "date": "Mar 1, 2025",
+    "displayURL": "https://www.jerichooutrigger.com/races2025/pnworca5.html",
+    "distance": "Short Course",
+    "pointsWeight": 0.058824,
+    "sport": "Paddling"
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Nancy Maclean",
+      "craftCategory": "Women",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 3612.6,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 3612.6,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Cheryl Bublitz",
+      "craftCategory": "Women",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 3847.6,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 3847.6,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

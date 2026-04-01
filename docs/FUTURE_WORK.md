@@ -74,6 +74,39 @@ A curated virtual club aggregating distance events from regional organizers:
 - Sound Rowers organizes many regional events — large fields, multiple series
 - Would use multi-club architecture already in place
 
+### Trajectory Page Filters (PNW Regional)
+
+As more years are added, the trajectories page will have many racers. Consider adding:
+- Filter by craft category (HPK, OC1, SUP, etc.)
+- Filter by minimum races (e.g. show only racers with 5+ appearances)
+- "Local regulars" toggle — hide racers who only appear in one large international event (e.g. Gorge Downwind)
+
+This is especially relevant for PNW Regional where events like Gorge Downwind draw 600+ international racers who never appear elsewhere.
+
+### Club vs Regional Event Distinction
+
+Two types of organizations to track separately:
+
+**Weekly club series** (each gets its own club entry, like BEPC):
+- BEPC — Monday nights, Seattle
+- Wavechaser Paddle Series — weekly May-Aug, Jericho Sailing Centre, Vancouver BC (18 races/year)
+- SCKC Friday Night Races — Seattle Canoe and Kayak Club
+
+**Regional open-water events** → PNW Regional virtual club:
+- PNWORCA Winter Series (#1-7, Jan-Mar, various PNW locations)
+- Peter Marcus Rough Water Race (Bellingham, March)
+- Gorge Downwind Champs (Hood River, July)
+- Sound Rowers events (La Conner, Rat Island, Commencement Bay, etc.)
+- Narrows Challenge, Keats Chop, Board the Fjord, etc.
+
+**Exclude from PNW Regional:** OC6-only races, Hawaii/California events, weekly club series, team relays.
+
+**PNW Regional craft scope:** Primarily single and double craft (HPK, OC1, OC2, V1, FSK, SK, SUP) — not exclusive, but that's the focus. OC6 and larger team boats are generally excluded unless they appear alongside smallboat divisions in the same event.
+
+**Minimum distance: ~1 mile.** Sprint events (200m, 500m, 1000m, 1500m) are excluded — they are a separate discipline. Future work: PNW Canoe Sprint virtual club for sprint results.
+
+**TODO - Gorge Challenge:** Separate organizer from Jericho/PNWORCA. Need to find their results source and add to fetch-jericho or a new fetcher. Search for "Gorge Challenge paddle race Hood River" to find their site.
+
 ## Done (removed from backlog)
 
 - ✅ Multiple seasons (2020-2025 live)

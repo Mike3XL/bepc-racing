@@ -35,3 +35,11 @@ When doing a general cleanup or review pass, cover all of:
 5. docs/FUTURE_WORK.md — mark completed items, add new ideas
 6. docs/CHANGES.md — summarise what changed in this session (create if missing)
 7. .kiro/steering/project.md — update conventions if anything new was established
+
+## Data review checklist (run when adding new seasons or clubs)
+
+- **PNW Regional racer page threshold:** currently `min_races_for_page = 3` in CLUB_META (only generate pages for racers with 3+ appearances across all seasons). Review annually — increase to 4-5 as more years accumulate. Check: `python3 -c "..."` count script in FUTURE_WORK.md.
+- Alias check: compare all new canonical names against `data/<club>/aliases.json`
+- Verify race counts per season look reasonable
+- Check pointsWeight sums to ~1.0 per race day
+- Spot-check top 3 standings against known results
