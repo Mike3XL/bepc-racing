@@ -24,7 +24,16 @@ Follow the architecture and conventions described in #[[file:SPEC.md]]
 - Check pointsWeight is 1.0 for single-course races
 - Run process and verify race/racer counts before generating
 
-## Cleanup pass checklist
+## Coding principles (learned from craft normalization work)
+
+- **Simplicity first.** If a solution requires nested conditions, lookaheads, or ordering tricks to work correctly, step back and redesign. The craft.py rewrite (imperative → declarative table) cut 40% of code and eliminated most bugs.
+- **Don't rely on ordering without verification.** If correctness depends on pattern order, the audit must verify it. Use `audit-crafts` after any change to craft.py.
+- **Anchor patterns explicitly.** Use `re.match` (start-anchored) not `re.search` (anywhere). Substring matches cause silent bugs that are hard to find.
+- **Encode constraints in the pattern, not the order.** `hpk(?!-?2)` is better than "put HPK-2 before HPK and hope". Negative lookaheads are acceptable when they express a real constraint; ordering tricks are not.
+- **Test with the audit tool after every change.** `cli.py audit-crafts` shows unknowns and multi-matches. Zero multi-matches (or only ones that resolve correctly) is the target.
+- **Separate concerns.** Strip prefixes first, then match. Don't mix stripping and matching in one regex.
+
+
 
 When doing a general cleanup or review pass, cover all of:
 
