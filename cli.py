@@ -79,11 +79,13 @@ def build_data_json() -> dict:
 
 
 def cmd_audit_crafts(args):
-    """List all Unknown craft values across all clubs/seasons."""
-    from bepc.craft import normalize_craft
+    """List Unknown, no-match, and multi-match craft values across all clubs/seasons."""
+    from bepc.craft import normalize_craft, _strip_prefixes, _NON_CRAFT, _CATEGORY_PATTERNS
     from bepc.loader import load_all_common
     from collections import Counter
     unknown = Counter()
+    multi = []
+    seen = set()
     for club_dir in sorted(DATA_DIR.iterdir()):
         if not club_dir.is_dir():
             continue
@@ -98,14 +100,32 @@ def cmd_audit_crafts(args):
             races = load_all_common(common_dir)
             for race in races:
                 for r in race.racer_results:
-                    if r.craft_category == "Unknown":
-                        unknown[r.craft_specific] += 1
+                    raw = r.craft_specific or r.craft_category
+                    if not raw or raw in seen:
+                        continue
+                    seen.add(raw)
+                    cat, _ = normalize_craft(raw)
+                    if cat == "Unknown":
+                        unknown[raw] += 1
+                    # Check multi-match
+                    cleaned = _strip_prefixes(raw)
+                    if not _NON_CRAFT.match(cleaned):
+                        matches = [c for p, c in _CATEGORY_PATTERNS if p.search(cleaned)]
+                        if len(matches) > 1:
+                            multi.append((raw, matches))
     if unknown:
-        print(f"Unknown craft values ({sum(unknown.values())} results):")
+        print(f"Unknown ({sum(unknown.values())} results):")
         for spec, n in unknown.most_common():
             print(f"  {n:4d}  {spec!r}")
-    else:
-        print("No unknown craft values found.")
+    if multi:
+        print(f"\nMulti-match ({len(multi)} craft strings):")
+        for raw, matches in multi:
+            print(f"  {raw!r:40} → {matches}")
+    if not unknown and not multi:
+        print("All craft values resolve to exactly one category.")
+    elif multi:
+        print("\nNote: multi-match entries resolve correctly via first-match-wins.")
+        print("Review only if the first match seems wrong.")
 
 
 def cmd_fetch_jericho(args):
