@@ -23,9 +23,9 @@ _PATTERNS = [
     ('k-4\\b|k4\\b',            'Kayak-4',       'K4'),
     # Kayak singles — use \b or $ to avoid matching doubles
     ('surfski',                 'Kayak-1',       'SS'),
-    ('hpk\\b|hpk1\\b|hpdk\\b',  'Kayak-1',       'HPK'),
-    ('fsk\\b',                  'Kayak-1',       'FSK'),
-    ('sk\\b',                   'Kayak-1',       'SK'),
+    ('hpk(?!-?2)\\b|hpk1\\b|hpdk\\b', 'Kayak-1', 'HPK'),
+    ('fsk(?!-?2)\\b',           'Kayak-1',       'FSK'),
+    ('sk(?!-?2)\\b',            'Kayak-1',       'SK'),
     ('k-1\\b|k1\\b',            'Kayak-1',       'K1'),
     ('pk\\b',                   'Kayak-1',       'PK'),
     ('spec\\b',                 'Kayak-1',       'Spec'),
