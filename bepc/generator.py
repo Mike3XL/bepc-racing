@@ -846,14 +846,15 @@ def generate_racer_pages(data: dict) -> None:
 
     # Filter by minimum races across all seasons for current club
     current_club = data["current_club"]
-    if MIN_RACER_PAGES > 1:
-        def total_races(name):
-            return sum(
-                len(results)
-                for (club, year, craft), results in racer_data[name].items()
-                if club == current_club
-            )
-        racer_data = {n: v for n, v in racer_data.items() if total_races(n) >= MIN_RACER_PAGES}
+    min_races = MIN_RACER_PAGES  # always filter to current club racers
+
+    def total_races_in_club(name):
+        return sum(
+            len(results)
+            for (club, year, craft), results in racer_data[name].items()
+            if club == current_club
+        )
+    racer_data = {n: v for n, v in racer_data.items() if total_races_in_club(n) >= min_races}
 
     # Order by best official season points in current club/season
     current_year = data["clubs"][current_club]["current_season"]

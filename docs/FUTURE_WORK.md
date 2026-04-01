@@ -2,7 +2,33 @@
 
 ## High Priority
 
-### 2026 Season
+## Next Steps (as of 2026-03-31)
+
+### Immediate (before 2026 season starts ~April 6)
+1. **Fetch 2026 BEPC races** as they happen each Monday — `cli.py fetch --club bepc --year 2026 <race_id>`
+2. **Publish BEPC** after each race — `cli.py publish --club bepc`
+
+### PNW Regional — data completion
+3. **Fetch 2024 Jericho data** — `cli.py fetch-jericho 2024` (same races as 2025)
+4. **Fetch 2023 Jericho data** — `cli.py fetch-jericho 2023`
+5. **Pacific Multisports PDFs** — Peter Marcus 2022-2025, Narrows Challenge 2022-2025 (manual download + `cli.py import-pdf`)
+6. **Gorge Challenge** — find results source (separate organizer from Gorge Downwind)
+7. **audit-names** — build name canonicalization audit for PNW Regional (many new racers, likely variants)
+
+### PNW Regional — UX
+8. **Season selector** on trajectories/standings for PNW Regional (already works for BEPC)
+9. **Craft filter** on trajectories — filter by category (HPK, OC1, SUP, etc.)
+10. **Race name cleanup** — Jericho slugs like "Pnworca1" should display as proper names
+
+### Multi-club
+11. **Club selector UI** — once PNW Regional is stable, add club selector to site
+12. **Sound Rowers 2023 data** — fetch remaining years from Jericho
+
+### Future clubs
+13. **Wavechaser Paddle Series** — weekly Vancouver BC series, own club entry
+14. **SCKC Friday Night Races** — Seattle club series
+
+
 
 - Fetch races as they happen each Monday night
 - Run `cli.py fetch --year 2026 <race_id>` after each race, then process/generate/publish
