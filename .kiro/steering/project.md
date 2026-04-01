@@ -40,10 +40,11 @@ When doing a general cleanup or review pass, cover all of:
 1. UX consistency — titles, selectors, tab order, naming conventions
 2. Inclusive language — gender values, terminology, tooltips
 3. Code quality — unused imports, dead code, fragile patterns, type hints
-4. SPEC.md — update architecture, data model, trophy system, UI conventions
-5. docs/FUTURE_WORK.md — mark completed items, add new ideas
-6. docs/CHANGES.md — summarise what changed in this session (create if missing)
-7. .kiro/steering/project.md — update conventions if anything new was established
+4. **docs/ review** — ensure all docs describe *what the system is*, not *how to work on it*. Move any process/checklist content to `.kiro/steering/`. Update stale content (category lists, data counts, known issues).
+5. SPEC.md — update architecture, data model, trophy system, UI conventions
+6. docs/FUTURE_WORK.md — mark completed items, add new ideas
+7. docs/CHANGES.md — summarise what changed in this session (create if missing)
+8. .kiro/steering/project.md — update conventions if anything new was established
 
 ## Data review checklist (run when adding new seasons or clubs)
 
