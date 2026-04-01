@@ -22,6 +22,7 @@
 
 ### UX polish
 15. **Craft display cleanup** — two separate columns in results tables: "Category" (e.g. "Kayak") and "Craft" (e.g. "HPK", "SS"). Strip `-1` suffix from category in UX. Keep full category name in data.
+16. **Outlier indicator** — when a result is flagged as an outlier (handicap not updated), show a `*` or `~` on the handicap value in the racer page with a tooltip: "Result excluded from handicap update (outlier)".
 11. **Club selector UI** — once PNW Regional is stable, add club selector to site
 12. **Sound Rowers 2023 data** — fetch remaining years from Jericho
 
