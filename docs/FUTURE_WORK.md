@@ -21,7 +21,7 @@
 10. **Race name cleanup** — Jericho slugs like "Pnworca1" should display as proper names
 
 ### UX polish
-15. **Craft display cleanup** — strip `-1` suffix in UX (show "Kayak" not "Kayak-1", "Outrigger" not "Outrigger-1", etc). Keep full category name in data. Also review: should "Kayak-1 (HPK)" show as just "HPK"? Or "Kayak (HPK)"?
+15. **Craft display cleanup** — two separate columns in results tables: "Category" (e.g. "Kayak") and "Craft" (e.g. "HPK", "SS"). Strip `-1` suffix from category in UX. Keep full category name in data.
 11. **Club selector UI** — once PNW Regional is stable, add club selector to site
 12. **Sound Rowers 2023 data** — fetch remaining years from Jericho
 
