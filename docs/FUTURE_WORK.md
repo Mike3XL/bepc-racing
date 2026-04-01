@@ -7,6 +7,18 @@
 - Fetch races as they happen each Monday night
 - Run `cli.py fetch --year 2026 <race_id>` after each race, then process/generate/publish
 
+### PNW Regional Virtual Club
+
+A curated virtual club aggregating distance events from regional organizers:
+
+- **Scope**: Sound Rowers, PNWORCA, Gorge Downwind Champs, Vortex, and similar
+- **Curation**: hand-picked events meeting a quality/consistency bar — not every event qualifies, BEPC weekly races excluded
+- **Typical format**: 1-2 courses per event, 3-15 miles; occasional ultra (26.2+) flagged separately
+- **Cross-season handicap carry-over**: essential — most racers do 1-3 events/year so carry-over prevents permanent fresh status
+- **Data sources**: WebScorer (already works), PaddleGuru (needs CSV import or scraping)
+- **Architecture**: new `data/pnw-regional/` club directory, curated `common.json` files per event
+- **Key challenge**: PaddleGuru is JS-rendered — need manual CSV export from organizers or browser automation
+
 ### Trending Faster Award
 
 - Award for 3+ consecutive races of improving adjusted_time_vs_par (streak award implemented)
