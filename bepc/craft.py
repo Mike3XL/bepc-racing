@@ -1,189 +1,148 @@
 """
-Craft category normalization — table-driven approach.
+Craft category normalization.
 See docs/CRAFT_CATEGORIES.md for the scheme.
 
-Compare with craft.py (imperative approach) using:
-    python3 bepc/craft_compare.py
+Design: strip age/gender prefixes → match from start of cleaned string.
+Using re.match (implicit ^) eliminates substring ambiguity.
+Doubles-before-singles ordering + \b handles HPK vs HPK-2 cleanly.
 """
 import re
 
-# Step 1: Strip age/gender/qualifier prefixes to expose the craft token.
-# Applied repeatedly until no more stripping is possible.
-_STRIP_PATTERNS = [
-    # "Master/Masters AgeRange Gender Craft" — full PNWORCA format
-    r'^(?:masters?|open|junior|senior|novice|elite)\s+[\d+\-\(\)]+\s+(?:men|women|mixed)\s+(.+)$',
-    # "Master/Masters Gender Craft" — no age range
-    r'^(?:masters?|open|junior|senior|novice|elite)\s+(?:men|women|mixed)\s+(.+)$',
-    # "Masters AgeRange Craft" — no gender
-    r'^(?:masters?)\s+[\d+\-\(\)]+\s+(.+)$',
-    # "Masters Craft (AgeRange)" or "Masters Craft AgeRange"
-    r'^(?:masters?)\s+([a-z][a-z0-9\-]+)(?:\s+[\d\(].*)?$',
-    # "Gender Craft" — "Men HPK", "Women OC1"
-    r'^(?:men|women|mixed|male|female)\s+(.+)$',
-    # "Qualifier Craft" — "Junior SUP", "Any SUP Inflatable"
-    r'^(?:junior|senior|master|open|any|novice|elite|rec)\s+(.+)$',
+# Patterns applied to the cleaned craft string using re.match (start-anchored).
+# Order: doubles before singles within each family; larger before smaller for outrigger.
+# Each entry: (pattern, category, specific_override_or_None)
+# specific_override: if set, use this as the specific instead of the first token.
+_PATTERNS = [
+    # Kayak doubles — must come before singles; use $ or \b to avoid partial match
+    ('hpk-2\\b|hpk2\\b',        'Kayak-2',       'HPK-2'),
+    ('fsk-2\\b|fsk2\\b',        'Kayak-2',       'FSK-2'),
+    ('sk-2\\b|sk2\\b',          'Kayak-2',       'SK-2'),
+    ('k-2\\b|k2\\b',            'Kayak-2',       'K2'),
+    ('surfski.*double|double.*kayak|\\bdk\\b', 'Kayak-2', None),
+    # Kayak quads
+    ('k-4\\b|k4\\b',            'Kayak-4',       'K4'),
+    # Kayak singles — use \b or $ to avoid matching doubles
+    ('surfski',                 'Kayak-1',       'SS'),
+    ('hpk\\b|hpk1\\b|hpdk\\b',  'Kayak-1',       'HPK'),
+    ('fsk\\b',                  'Kayak-1',       'FSK'),
+    ('sk\\b',                   'Kayak-1',       'SK'),
+    ('k-1\\b|k1\\b',            'Kayak-1',       'K1'),
+    ('pk\\b',                   'Kayak-1',       'PK'),
+    ('spec\\b',                 'Kayak-1',       'Spec'),
+    ('kayak',                   'Kayak-1',       'Kayak'),
+    ('ss\\b',                   'Kayak-1',       'SS'),   # bare SS = surfski
+    # Open water rowing — larger before smaller
+    ('8[x+]|eight|oct',         'OW-8',          None),
+    ('4[x+]|quad',              'OW-4',          None),
+    ('2x\\b|rowboat.*2x',       'OW-2',          None),
+    ('1x\\b|rowboat|wherry|gig|row\\b', 'OW-1',  None),
+    # Outrigger — larger before smaller
+    ('oc-?6|v-?6|v-?12',        'Outrigger-6',   None),
+    ('oc-?3',                   'Outrigger-3',   None),
+    ('oc-?2|v-?2',              'Outrigger-2',   None),
+    ('oc-?1\\b|^oc$|v-?1\\b|^v$', 'Outrigger-1', None),
+    # Canoe - Outrigger (verbose form)
+    ('canoe.*outrigger.*single|canoe.*oc-?1', 'Outrigger-1', None),
+    # SUP — unlimited before standard
+    ('unlimited|sup.*ul\\b|sup.*unlim', 'SUP-Unlimited', None),
+    ('sup\\b|standup|stand.?up', 'SUP-1',        'SUP'),
+    # Prone
+    ('prone',                   'Prone-1',       'Prone'),
+    # Canoe (non-outrigger) — anchored to start, after outrigger patterns
+    ('c-?3\\b',                 'Canoe-3',       None),
+    ('c-?2\\b',                 'Canoe-2',       None),
+    ('c-?1\\b|^canoe$',         'Canoe-1',       None),
+    # Other
+    ('pedal|dragon|rowing',     'Other',         None),
 ]
-_STRIP_RE = [re.compile(p, re.I) for p in _STRIP_PATTERNS]
+_COMPILED = [(re.compile(p, re.I), cat, spec) for p, cat, spec in _PATTERNS]
+
+# Prefixes to strip: "Master 60+ Men Surfski" → "Surfski"
+# Applied in order until no more stripping possible.
+_STRIP = [re.compile(p, re.I) for p in [
+    r'^(?:masters?|open|junior|senior|novice|elite)\s+[\d+\-\(\)]+\s+(?:men|women|mixed)\s+(.+)$',
+    r'^(?:masters?|open|junior|senior|novice|elite)\s+(?:men|women|mixed)\s+(.+)$',
+    r'^(?:masters?)\s+[\d+\-\(\)]+\s+(.+)$',
+    r'^(?:masters?)\s+([a-z][a-z0-9\-]+)(?:\s+[\d\(].*)?$',
+    r'^(?:men|women|mixed|male|female)\s+(.+)$',
+    r'^(?:junior|senior|master|open|any|novice|elite|rec)\s+(.+)$',
+]]
+
+# Pure division labels — not craft
+_NON_CRAFT = re.compile(
+    r'^(men|women|mixed|male|female|master|masters|open|junior|senior|novice|elite|'
+    r'recreational|rec|competitive|double|other.*)$', re.I
+)
 
 
 def _strip_prefixes(raw: str) -> str:
-    """Strip age/gender/qualifier prefixes, returning the craft token."""
-    for _ in range(4):  # max 4 passes
+    for _ in range(4):
         changed = False
-        for pat in _STRIP_RE:
+        for pat in _STRIP:
             m = pat.match(raw)
             if m:
                 candidate = m.group(1).strip()
-                # Don't strip if result is just digits/symbols
-                if re.match(r'^[\d+\-\(\)]+$', candidate):
-                    continue
-                raw = candidate
-                changed = True
-                break
+                if not re.match(r'^[\d+\-\(\)]+$', candidate):
+                    raw, changed = candidate, True
+                    break
         if not changed:
             break
     return raw
 
 
-# Step 2: Match the cleaned craft token against category patterns.
-# Each entry: (compiled_regex, category)
-# First match wins. Patterns are ordered most-specific first.
-_CATEGORY_PATTERNS = [
-    # Kayak — most specific first; use negative lookahead to avoid -2 forms matching Kayak-1
-    (re.compile(r'surfski.*double|double.*kayak|hpk.?2|fsk.?2|sk.?2|k-?2\b|\bdk\b', re.I), 'Kayak-2'),
-    (re.compile(r'k-?4\b|k4\b', re.I), 'Kayak-4'),
-    (re.compile(r'surfski|^ss$|\bhpk(?!-?2)\b|\bfsk(?!-?2)\b|\bsk(?!-?2)\b|k-?1\b|pk\b|\bkayak(?!-?2)\b|hpdk\b|^spec\b', re.I), 'Kayak-1'),
-
-    # Open water rowing — larger before smaller
-    (re.compile(r'8[x+]|eight|oct', re.I), 'OW-8'),
-    (re.compile(r'4[x+]|quad', re.I), 'OW-4'),
-    (re.compile(r'2x|double.*ow|ow.*double|rowboat.*2x|sliding.*2x', re.I), 'OW-2'),
-    (re.compile(r'1x|single.*ow|ow.*single|rowboat.*1x|sliding.*1x|wherry|gig|row\b', re.I), 'OW-1'),
-
-    # Outrigger — larger before smaller; use exact boundaries to avoid OC-2 matching OC-1
-    (re.compile(r'oc-?6|v-?6|v-?12', re.I), 'Outrigger-6'),
-    (re.compile(r'oc-?3', re.I), 'Outrigger-3'),
-    (re.compile(r'oc-?2|v-?2', re.I), 'Outrigger-2'),
-    (re.compile(r'oc-?1\b|^oc$|v-?1\b', re.I), 'Outrigger-1'),  # bare OC or OC1/OC-1 only
-
-    # SUP — unlimited before standard
-    (re.compile(r'unlimited|sup.*ul\b|sup.*unlim', re.I), 'SUP-Unlimited'),
-    (re.compile(r'sup\b|standup|stand.?up', re.I), 'SUP-1'),
-
-    # Prone
-    (re.compile(r'prone', re.I), 'Prone-1'),
-
-    # Canoe (non-outrigger) — must start with C, not OC
-    (re.compile(r'^c-?3', re.I), 'Canoe-3'),
-    (re.compile(r'^c-?2', re.I), 'Canoe-2'),
-    (re.compile(r'^c-?1\b|^canoe$', re.I), 'Canoe-1'),
-
-    # Other
-    (re.compile(r'pedal|dragon|rowboat|rowing', re.I), 'Other'),
-]
-
-# Pure division labels — not craft at all
-_NON_CRAFT = re.compile(
-    r'^(men|women|mixed|male|female|master|masters|open|junior|senior|novice|elite|'
-    r'recreational|rec|competitive|double|other.*person)$',
-    re.I
-)
-
-
 def normalize_craft(raw: str) -> tuple[str, str]:
-    """
-    Normalize a raw craft string to (category, specific).
-
-    Returns:
-        category: e.g. "Kayak-1", "Outrigger-1", "Unknown"
-        specific: cleaned short form, with -N suffix for multi-person craft
-    """
+    """Return (category, specific) for a raw craft string."""
     raw = raw.strip()
     if not raw:
-        return "Unknown", ""
-
+        return 'Unknown', ''
     cleaned = _strip_prefixes(raw)
-
-    # Check if it's a pure division label
+    # Strip gender suffix from token: OC2-M → OC2
+    cleaned = re.sub(r'-[MWFmwf](?:x)?$', '', cleaned, flags=re.I)
     if _NON_CRAFT.match(cleaned):
-        return "Unknown", raw
-
-    # Match against category patterns
-    for pattern, category in _CATEGORY_PATTERNS:
-        if pattern.search(cleaned):
-            specific = _make_specific(cleaned, category)
+        return 'Unknown', raw
+    for pattern, category, spec_override in _COMPILED:
+        if pattern.match(cleaned):
+            specific = spec_override or _make_specific(cleaned, category)
             return category, specific
-
-    return "Unknown", raw
+    return 'Unknown', raw
 
 
 def _make_specific(cleaned: str, category: str) -> str:
-    """Derive the specific craft name from the cleaned string and category."""
-    token = cleaned.split()[0].rstrip(".,'\"`")
-    # Strip gender/age suffixes like -M, -W, -Mx from token
-    token = re.sub(r'-[MWFmwf](?:x)?$', '', token)
-
-    # Determine person count from category suffix
-    m = re.search(r'-(\d+)$', category)
-    n = int(m.group(1)) if m else 1
-
-    # Canonical short names for common tokens
-    _TOKEN_MAP = {
-        'surfski': 'SS', 'hpk': 'HPK', 'hpdk': 'HPK',
-        'fsk': 'FSK', 'sk': 'SK', 'kayak': 'Kayak', 'kayaks': 'Kayak',
-        'k': 'K', 'pk': 'PK', 'spec': 'Spec', 'dk': 'DK',
-        'oc': 'OC', 'v': 'V',
-        'sup': 'SUP', 'prone': 'Prone', 'canoe': 'Canoe',
-        'pedal': 'Pedal', 'dragon': 'Dragon',
-        'row': 'Row', 'rowboat': 'Row', 'wherry': 'Wherry', 'gig': 'Gig',
-        'double': None,  # "Double" alone is not a useful specific
-    }
-    base = _TOKEN_MAP.get(token.lower(), token)
-    if base is None:
-        # "Double" in "Surfski Double" — use first non-Double token
-        parts = [p for p in cleaned.split() if p.lower() not in ('double', 'men', 'women', 'mixed')]
-        base = _TOKEN_MAP.get(parts[0].lower(), parts[0]) if parts else token
-        if base is None:
-            base = token
-
-    # Tokens that already encode the count (e.g. 2x, 4x, OC2, V1) — don't append -N
-    if re.match(r'^[0-9]', token) or re.search(r'\d$', token):
-        return base  # e.g. "2x", "4x", "1x"
-
-    # Strip board length suffixes like 14', 12' before adding -N
-    base = re.sub(r"-?\d+['\"ft]?$", '', base)
-
-    # For multi-person craft, append -N
+    """Short specific name, with -N suffix for multi-person craft."""
+    n = int(m.group(1)) if (m := re.search(r'-(\d+)$', category)) else 1
+    # Strip board-length suffixes with foot/inch markers only (14', 12")
+    token = re.sub(r"-?\d+['\"]$", '', cleaned.split()[0].rstrip(".,'\"`"))
+    token = re.sub(r'-[MWFmwf](?:x)?$', '', token, flags=re.I)
+    # If token is a non-craft word, use next meaningful token
+    if token.lower() in ('double', 'men', 'women', 'mixed', 'single'):
+        parts = cleaned.split()
+        token = parts[1] if len(parts) > 1 else token
     if n > 1:
-        base = re.sub(r'-?\d+$', '', base)  # strip any existing number
-        return f"{base}-{n}"
-    return base
+        # Don't append -N if token already encodes count (starts with digit, e.g. 2x, 4x+, 2x-OW)
+        if re.match(r'\d', token):
+            return token
+        token = re.sub(r'-?\d+$', '', token)
+        return f'{token}-{n}'
+    return token
 
 
 def display_craft(category: str, specific: str) -> str:
-    """Format craft for display: 'Kayak-1 (HPK)' or 'Kayak-1' if redundant."""
-    if category == "Unknown":
-        return ""
+    if category == 'Unknown':
+        return ''
     if not specific or specific.lower() == category.lower():
         return category
-    return f"{category} ({specific})"
+    return f'{category} ({specific})'
 
 
 def audit_crafts(results: list[dict]) -> list[str]:
-    """Return list of warning strings for Unknown or ambiguous craft values."""
     warnings = []
     seen = set()
     for r in results:
-        raw = r.get("craft_specific", r.get("craft_category", ""))
-        if raw and raw not in seen:
-            seen.add(raw)
-            # Count how many patterns match
-            cleaned = _strip_prefixes(raw)
-            if _NON_CRAFT.match(cleaned):
-                continue  # expected Unknown
-            matches = [cat for pat, cat in _CATEGORY_PATTERNS if pat.search(cleaned)]
-            if len(matches) == 0:
-                warnings.append(f"NO MATCH: '{raw}'")
-            elif len(matches) > 1:
-                warnings.append(f"MULTI-MATCH ({len(matches)}): '{raw}' → {matches}")
+        raw = r.get('craft_specific', r.get('craft_category', ''))
+        if not raw or raw in seen:
+            continue
+        seen.add(raw)
+        cat, _ = normalize_craft(raw)
+        if cat == 'Unknown':
+            warnings.append(f"Unknown craft: '{raw}'")
     return warnings

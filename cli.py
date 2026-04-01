@@ -80,7 +80,7 @@ def build_data_json() -> dict:
 
 def cmd_audit_crafts(args):
     """List Unknown, no-match, and multi-match craft values across all clubs/seasons."""
-    from bepc.craft import normalize_craft, _strip_prefixes, _NON_CRAFT, _CATEGORY_PATTERNS
+    from bepc.craft import normalize_craft, _strip_prefixes, _NON_CRAFT, _COMPILED
     from bepc.loader import load_all_common
     from collections import Counter
     unknown = Counter()
@@ -110,7 +110,7 @@ def cmd_audit_crafts(args):
                     # Check multi-match
                     cleaned = _strip_prefixes(raw)
                     if not _NON_CRAFT.match(cleaned):
-                        matches = [c for p, c in _CATEGORY_PATTERNS if p.search(cleaned)]
+                        import re; cleaned2 = re.sub(r"-[MWFmwf](?:x)?$", "", cleaned, flags=re.I); matches = [c for p, c, _ in _COMPILED if p.match(cleaned2)]
                         if len(matches) > 1:
                             multi.append((raw, matches))
     if unknown:
