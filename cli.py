@@ -1,4 +1,5 @@
 """Entry point: bepc <command>"""
+import os
 import argparse
 import json
 import sys
@@ -14,7 +15,16 @@ DATA_DIR = Path(__file__).parent / "data"
 SITE_DIR = Path(__file__).parent / "site"
 
 CLUB_META = {
-    "bepc": {"name": "Ballard Elks Paddle Club"},
+    "bepc": {
+        "name": "Ballard Elks Paddle Club",
+        "gh_branch": "gh-pages",
+        "gh_url": "https://mike3xl.github.io/bepc-racing/",
+    },
+    "sound-rowers": {
+        "name": "Sound Rowers",
+        "gh_branch": "gh-pages-sound-rowers",
+        "gh_url": "https://mike3xl.github.io/bepc-racing/ (sound-rowers)",
+    },
 }
 CURRENT_CLUB = "bepc"
 
@@ -61,6 +71,21 @@ def build_data_json() -> dict:
     return {"clubs": clubs, "current_club": CURRENT_CLUB}
 
 
+def cmd_serve(args):
+    import http.server
+    import threading
+    port = args.port
+    site = Path(__file__).parent / "site"
+    os.chdir(site)
+    handler = http.server.SimpleHTTPRequestHandler
+    handler.log_message = lambda *a: None  # suppress request logs
+    with http.server.HTTPServer(("", port), handler) as httpd:
+        print(f"Serving site/ at http://localhost:{port}  (Ctrl+C to stop)")
+        import webbrowser
+        webbrowser.open(f"http://localhost:{port}")
+        httpd.serve_forever()
+
+
 def cmd_fetch(args):
     out_dir = DATA_DIR / args.club / args.year / "common"
     print(f"Fetching {len(args.race_ids)} races → {out_dir}")
@@ -82,26 +107,43 @@ def cmd_process(args):
 
 
 def cmd_generate(args):
+    club = getattr(args, 'club', None)
     data = json.loads((SITE_DIR / "data.json").read_text())
+    if club:
+        # Scope site to a single club
+        if club not in data["clubs"]:
+            print(f"ERROR: club '{club}' not found in data.json")
+            sys.exit(1)
+        data["current_club"] = club
     generate_all(data)
 
 
 def cmd_publish(args):
     import subprocess
+    club = getattr(args, 'club', CURRENT_CLUB)
+    meta = CLUB_META.get(club, {})
+    branch = getattr(args, 'branch', None) or meta.get("gh_branch", f"gh-pages-{club}")
+    url = meta.get("gh_url", f"https://mike3xl.github.io/bepc-racing/ ({club})")
+
+    # Generate scoped site first
+    data = json.loads((SITE_DIR / "data.json").read_text())
+    if club not in data["clubs"]:
+        print(f"ERROR: club '{club}' not found in data.json. Run 'bepc process' first.")
+        sys.exit(1)
+    data["current_club"] = club
+    generate_all(data)
+
     root = Path(__file__).parent
     site = root / "site"
-    if not (site / "index.html").exists():
-        print("ERROR: site/index.html not found. Run 'bepc generate' first.")
-        sys.exit(1)
     script = f"""set -e
 cd {root}
 git read-tree --empty
 git --work-tree={site} add --all
 TREE=$(git write-tree)
-COMMIT=$(git commit-tree $TREE -m "chore: publish site")
-git push origin $COMMIT:refs/heads/gh-pages --force
+COMMIT=$(git commit-tree $TREE -m "chore: publish site ({club})")
+git push origin $COMMIT:refs/heads/{branch} --force
 git read-tree HEAD
-echo "Published → https://mike3xl.github.io/bepc-racing/"
+echo "Published → {url}"
 """
     result = subprocess.run(["bash", "-c", script])
     sys.exit(result.returncode)
@@ -111,8 +153,16 @@ def main():
     parser = argparse.ArgumentParser(prog="bepc")
     sub = parser.add_subparsers(dest="command")
     sub.add_parser("process", help="Process common JSON → site/data.json")
-    sub.add_parser("generate", help="Generate HTML pages from site/data.json")
-    sub.add_parser("publish", help="Push site/ to GitHub Pages (gh-pages branch)")
+
+    gen_p = sub.add_parser("generate", help="Generate HTML pages from site/data.json")
+    gen_p.add_argument("--club", default=None, help="Scope site to one club")
+
+    pub_p = sub.add_parser("publish", help="Generate and push site to GitHub Pages")
+    pub_p.add_argument("--club", default=CURRENT_CLUB, help="Club to publish (default: bepc)")
+    pub_p.add_argument("--branch", default=None, help="Override gh-pages branch name")
+
+    serve_p = sub.add_parser("serve", help="Serve site/ locally for testing")
+    serve_p.add_argument("--port", type=int, default=8080)
 
     fetch_p = sub.add_parser("fetch", help="Fetch races from WebScorer API")
     fetch_p.add_argument("--club", default="bepc")
@@ -126,6 +176,8 @@ def main():
         cmd_generate(args)
     elif args.command == "publish":
         cmd_publish(args)
+    elif args.command == "serve":
+        cmd_serve(args)
     elif args.command == "fetch":
         cmd_fetch(args)
     else:

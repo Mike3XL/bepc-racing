@@ -137,7 +137,8 @@ def _racer_link(name: str, back: str = "") -> str:
 
 
 def _slug(name: str) -> str:
-    return name.lower().replace(" ", "-")
+    import re
+    return re.sub(r'[^a-z0-9-]', '-', name.lower()).strip('-')
 
 
 # ── Final racer state ────────────────────────────────────────────────────────
@@ -411,6 +412,7 @@ function badges(trophies) {{
     consistent_2: () => plain('🎯','Consistent performer'),
     consistent_3: () => plain('🎯','Consistent performer'),
     par:      () => plain('⛳','Par racer'),
+    fresh:    () => `<span class="hcap-medal" style="opacity:0.5;filter:grayscale(1)" data-bs-toggle="tooltip" data-bs-title="Provisional — first 2 results, not yet eligible for handicap awards">🆕</span>`,
   }};
   if (!trophies || !trophies.length) return '';
   return `<span style="display:flex;justify-content:center;gap:2px;flex-wrap:wrap">${{trophies.map(t => {{
@@ -808,6 +810,7 @@ def _racer_trophy_badges(trophies: list) -> str:
         "consistent_2": '<span class="hcap-medal plain-medal" title="Consistent performer">🎯</span>',
         "consistent_3": '<span class="hcap-medal plain-medal" title="Consistent performer">🎯</span>',
         "par":      '<span class="hcap-medal plain-medal" title="Par racer">⛳</span>',
+        "fresh":    '<span class="hcap-medal" style="opacity:0.5;filter:grayscale(1)" title="Provisional — first 2 results, not yet eligible for handicap awards">🆕</span>',
     }
     parts = []
     for t in trophies:

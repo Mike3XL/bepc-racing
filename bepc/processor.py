@@ -77,6 +77,7 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None) -> l
             r.handicap_std_dev = std_dev(r.handicap_sequence)
 
         # Trophies
+        MIN_ELIGIBLE = 3
         finish_podium = {1: "finish_1", 2: "finish_2", 3: "finish_3"}
         hcap_podium = ["hcap_1", "hcap_2", "hcap_3"]
         consistent_awards = ["consistent_1", "consistent_2", "consistent_3"]
@@ -84,17 +85,21 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None) -> l
             r.trophies = []
         eligible = [r for r in sorted(racers, key=lambda x: x.adjusted_place)
                     if not r.is_fresh_racer and not small_group]
-        for i, r in enumerate(eligible[:3]):
-            r.trophies.append(hcap_podium[i])
+        if len(eligible) >= MIN_ELIGIBLE:
+            for i, r in enumerate(eligible[:3]):
+                r.trophies.append(hcap_podium[i])
         # Consistent: top 3 closest to adjusted_time_vs_par == 1.0, excluding par racer
         consistent_eligible = [r for r in racers
                                 if not r.is_fresh_racer and not r.is_outlier
                                 and not r.is_par_racer and not small_group
                                 and r.time_versus_par > 0]
         consistent_eligible.sort(key=lambda x: abs(x.adjusted_time_versus_par - 1.0))
-        for i, r in enumerate(consistent_eligible[:3]):
-            r.trophies.append(consistent_awards[i])
+        if len(consistent_eligible) >= MIN_ELIGIBLE:
+            for i, r in enumerate(consistent_eligible[:3]):
+                r.trophies.append(consistent_awards[i])
         for r in racers:
+            if r.is_fresh_racer:
+                r.trophies.append("fresh")
             if r.original_place in finish_podium:
                 r.trophies.append(finish_podium[r.original_place])
             if r.is_par_racer:
