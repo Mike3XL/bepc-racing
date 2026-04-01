@@ -49,6 +49,4 @@ Known unresolvable values: `Other`, `Double`, `Other - 5 person`, `Women`, `Kaya
 
 ## Normalization
 
-Craft normalization is implemented in `bepc/craft.py` — a table of regex patterns matched from the start of the cleaned craft string. See `.kiro/steering/project.md` for coding principles.
-
-Run `cli.py audit-crafts` after adding new race data to check for Unknown and multi-match values.
+Craft normalization is implemented in `bepc/craft.py` — a table of regex patterns matched from the start of the cleaned craft string.
