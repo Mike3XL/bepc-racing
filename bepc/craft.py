@@ -14,35 +14,40 @@ import re
 # specific_override: if set, use this as the specific instead of the first token.
 _PATTERNS = [
     # Kayak doubles — must come before singles; use $ or \b to avoid partial match
-    ('hpk-2\\b|hpk2\\b',        'Kayak-2',       'HPK-2'),
+    ('hpk-2\\b|hpk2\\b|hpk.*double|hpk.*2x', 'Kayak-2', 'HPK-2'),
     ('fsk-2\\b|fsk2\\b',        'Kayak-2',       'FSK-2'),
     ('sk-2\\b|sk2\\b',          'Kayak-2',       'SK-2'),
-    ('k-2\\b|k2\\b',            'Kayak-2',       'K2'),
-    ('surfski.*double|double.*kayak|\\bdk\\b', 'Kayak-2', None),
-    # Kayak quads
-    ('k-4\\b|k4\\b',            'Kayak-4',       'K4'),
+    ('k-2\\b|k2\\b',            'Sprint-K2',     'K2'),
+    ('surfski.*double|surfski.*2x|double.*kayak|\\bdk\\b', 'Kayak-2', 'Surfski-2'),
+    # Kayak quads — sprint K4 before generic
+    ('k-4\\b|k4\\b',            'Sprint-K4',     'K4'),
     # Kayak singles — use \b or $ to avoid matching doubles
-    ('surfski',                 'Kayak-1',       'SS'),
+    ('surfski',                 'Kayak-1',       'Surfski'),
     ('hpk(?!-?2)\\b|hpk1\\b|hpdk\\b', 'Kayak-1', 'HPK'),
     ('fsk(?!-?2)\\b',           'Kayak-1',       'FSK'),
     ('sk(?!-?2)\\b',            'Kayak-1',       'SK'),
-    ('k-1\\b|k1\\b',            'Kayak-1',       'K1'),
+    ('k-1\\b|k1\\b',            'Sprint-K1',     'K1'),
     ('pk\\b',                   'Kayak-1',       'PK'),
     ('spec\\b',                 'Kayak-1',       'Spec'),
     ('kayak',                   'Kayak-1',       'Kayak'),
-    ('ss\\b',                   'Kayak-1',       'SS'),   # bare SS = surfski
+    ('ss\\b',                   'Kayak-1',       'Surfski'),  # bare SS = surfski
     # Open water rowing — larger before smaller
     ('8[x+]|eight|oct',         'OW-8',          None),
     ('4[x+]|quad',              'OW-4',          None),
     ('2x\\b|rowboat.*2x',       'OW-2',          None),
     ('1x\\b|rowboat|wherry|gig|row\\b', 'OW-1',  None),
-    # Outrigger — larger before smaller
-    ('oc-?6|v-?6|v-?12',        'Outrigger-6',   None),
-    ('oc-?3',                   'Outrigger-3',   None),
-    ('oc-?2|v-?2',              'Outrigger-2',   None),
-    ('oc-?1\\b|^oc$|v-?1\\b|^v$', 'Outrigger-1', None),
+    # OC (outrigger canoe) — larger before smaller
+    ('oc-?6',                   'OC-6',          'OC-6'),
+    ('oc-?3',                   'OC-3',          'OC-3'),
+    ('oc-?2',                   'OC-2',          'OC-2'),
+    ('oc-?1\\b|^oc$',           'OC-1',          'OC-1'),
     # Canoe - Outrigger (verbose form)
-    ('canoe.*outrigger.*single|canoe.*oc-?1', 'Outrigger-1', None),
+    ("canoe.*outrigger.*single|canoe.*oc-?1", 'OC-1', 'OC-1'),
+    # Va'a (rudderless outrigger) — larger before smaller
+    ("v-?12\\b",                "Va'a-6",        'V-12'),
+    ("v-?6\\b",                 "Va'a-6",        'V-6'),
+    ("v-?2\\b",                 "Va'a-2",        'V-2'),
+    ("v-?1\\b|^v$",             "Va'a-1",        'V-1'),
     # SUP — unlimited before standard
     ('unlimited|sup.*ul\\b|sup.*unlim', 'SUP-Unlimited', None),
     ('sup\\b|standup|stand.?up', 'SUP-1',        'SUP'),
@@ -132,6 +137,43 @@ def display_craft(category: str, specific: str) -> str:
     if not specific or specific.lower() == category.lower():
         return category
     return f'{category} ({specific})'
+
+
+def display_craft_ui(category: str) -> str:
+    """Return the Display (UX) label for a craft category.
+
+    Three-level naming:
+      Raw (source)  →  Craft (normalized specific)  →  Display (UX)
+      e.g. "surfski 2x" → "Surfski-2" → "K-2"
+      e.g. "HPK"        → "HPK"       → "K-1"
+      e.g. "K1"         → "K1"        → "K-1 (sprint)"
+      e.g. "OC-1"       → "OC-1"      → "OC-1"
+      e.g. "1x"         → "1x"        → "OW"
+
+    UX cell shows Display; tooltip shows Craft (specific).
+    """
+    if not category or category == 'Unknown':
+        return ''
+    # Sprint kayak family → K-N (sprint)
+    m = re.match(r'^Sprint-K(\d+)$', category)
+    if m:
+        return f'K-{m.group(1)} (sprint)'
+    # Va'a family → V-N
+    m = re.match(r"^Va'a-(\d+)$", category)
+    if m:
+        return f'V-{m.group(1)}'
+    # Canoe family → C-N
+    m = re.match(r'^Canoe-(\d+)$', category)
+    if m:
+        return f'C-{m.group(1)}'
+    # Kayak family → K-N
+    m = re.match(r'^Kayak-(\d+)$', category)
+    if m:
+        return f'K-{m.group(1)}'
+    # Strip -1 for OW, SUP, Prone
+    if re.match(r'^(OW|SUP|Prone)-1$', category):
+        return category[:-2]
+    return category
 
 
 def audit_crafts(results: list[dict]) -> list[str]:

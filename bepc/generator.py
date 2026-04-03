@@ -1,6 +1,7 @@
 """Generate static HTML pages from site/data.json."""
 import json
 from pathlib import Path
+from bepc.craft import display_craft_ui
 
 SITE_DIR = Path(__file__).parent.parent / "site"
 
@@ -233,10 +234,10 @@ def generate_data_files(data: dict) -> None:
         distances = set(r.get("distance", "") for r in season["races"])
         standings_data["seasons"][year] = {
             "multi_dist": len([d for d in distances if d]) > 1,
-            "pts": [{"name": r["canonical_name"], "craft": r["craft_category"], "gender": r["gender"],
+            "pts": [{"name": r["canonical_name"], "craft": display_craft_ui(r["craft_category"]), "gender": r["gender"],
                      "trophies": trophy_summary(r["canonical_name"], r["craft_category"]),
                      "course": r.get("_distance", ""), "races": r["num_races"], "points": r["season_points"]} for r in pts],
-            "hpts": [{"name": r["canonical_name"], "craft": r["craft_category"],
+            "hpts": [{"name": r["canonical_name"], "craft": display_craft_ui(r["craft_category"]),
                       "gender": r["gender"],
                       "trophies": trophy_summary(r["canonical_name"], r["craft_category"]),
                       "course": r.get("_distance", ""), "races": r["num_races"],
@@ -390,6 +391,24 @@ let currentYear = '{current_year}';
 let currentIndex = 0;
 
 function slug(name) {{ return name.toLowerCase().replace(/ /g, '-'); }}
+function display_craft_ui(cat) {{
+  if (!cat || cat === 'Unknown') return '';
+  const sprint = cat.match(/^Sprint-K(\d+)$/); if (sprint) return 'K-' + sprint[1] + ' (sprint)';
+  const vaa = cat.match(/^Va'a-(\d+)$/); if (vaa) return 'V-' + vaa[1];
+  const canoe = cat.match(/^Canoe-(\d+)$/); if (canoe) return 'C-' + canoe[1];
+  const kayak = cat.match(/^Kayak-(\d+)$/); if (kayak) return 'K-' + kayak[1];
+  if (/^(OW|SUP|Prone)-1$/.test(cat)) return cat.slice(0, -2);
+  return cat;
+}}
+function craft_cell(cat, specific) {{
+  // Render as "Display (Craft)" e.g. "K-1 (HPK)", "K-1 (Surfski)", "OC-1"
+  // Sprint family: display already contains the qualifier, use as-is e.g. "K-1 (sprint)"
+  // If specific == display or no specific, show display only.
+  const display = display_craft_ui(cat);
+  if (!display) return '<td></td>';
+  if (!specific || specific === display || cat.startsWith('Sprint-')) return `<td>${{display}}</td>`;
+  return `<td>${{display}} (${{specific}})</td>`;
+}}
 function fmtTime(s) {{
   s = Math.floor(s);
   const m = Math.floor(s / 60), sec = s % 60, h = Math.floor(m / 60);
@@ -463,7 +482,7 @@ function rows(results, placeField) {{
     `<tr><td>${{badges(r.trophies)}}</td>
     <td>${{r[placeField]}}</td>
     <td><a href="racer/${{slug(r.canonical_name)}}.html">${{r.canonical_name}}</a></td>
-    <td>${{r.craft_category}}</td>
+    ${{craft_cell(r.craft_category, r.craft_specific)}}
     <td>${{isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}}</td>
     <td>${{r.handicap.toFixed(3)}}</td>
     <td>${{isHcap ? '<strong>' + fmtTime(r.adjusted_time_seconds) + '</strong>' : fmtTime(r.adjusted_time_seconds)}}</td>
@@ -1107,7 +1126,7 @@ def generate_racer_index(data: dict) -> None:
     rows = ""
     for name in sorted(racer_data.keys()):
         r = racer_data[name]
-        rows += f'<tr><td><a href="{_slug(name)}.html">{name}</a></td><td>{r["craft_category"]}</td></tr>\n'
+        rows += f'<tr><td><a href="{_slug(name)}.html">{name}</a></td><td>{display_craft_ui(r["craft_category"])}</td></tr>\n'
 
     html = _head("Racers") + _nav("Racers", prefix="../") + f"""
 <div class="container">
