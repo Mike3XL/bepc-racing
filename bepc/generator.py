@@ -14,6 +14,30 @@ _DATATABLES_JS = '<script src="https://cdn.datatables.net/2.0.8/js/dataTables.mi
 _DATATABLES_BS5_JS = '<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>'
 _CHARTJS = '<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>'
 
+# SVG icon definitions (24x24)
+def _svg(content): return f'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block">{content}</svg>'
+
+_ICONS = {
+    "hcap_1": _svg('<path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text>'),
+    "hcap_2": _svg('<path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text>'),
+    "hcap_3": _svg('<path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text>'),
+    "finish_1": _svg('<rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#7A5C00">1</text>'),
+    "finish_2": _svg('<rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#333">2</text>'),
+    "finish_3": _svg('<rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#5C2E00">3</text>'),
+    "par":      _svg('<rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text>'),
+    "consistent": _svg('<line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'),
+    "est":      _svg('<rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text>'),
+}
+
+def _streak_icon(n):
+    return _svg(f'<polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">{n}</text>')
+
+def _icon_span(key, cls, tooltip, count=1):
+    icon = _ICONS.get(key, "")
+    if count > 1:
+        return f'<span class="hcap-medal {cls}" data-bs-toggle="tooltip" data-bs-title="{tooltip} \xd7 {count}" style="white-space:nowrap">{icon}</span>'
+    return f'<span class="hcap-medal {cls}" data-bs-toggle="tooltip" data-bs-title="{tooltip}">{icon}</span>'
+
 
 def _current_season(data: dict) -> dict:
     """Return the current season dict {races: [...]} for the current club."""
@@ -80,9 +104,13 @@ def _head(title: str, extra_css: str = "") -> str:
   .traj-scroll {{ height: calc(100vh - 220px); overflow: auto; }}
   .hcap-medal {{ font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }}
   .hcap-gold   {{ background:#FFF8DC; border:1px solid #FFD700; }}
-  .hcap-silver {{ background:#F5F5F5; border:1px solid #C0C0C0; }}
-  .hcap-bronze {{ background:#FDF0E0; border:1px solid #CD7F32; }}
+  .hcap-silver {{ background:#EBEBEB; border:1px solid #A0A0A0; }}
+  .hcap-bronze {{ background:#FDF0E0; border:1px solid #DDA84A; }}
   .plain-medal {{ background:#F8F8F8; border:1px solid #DDDDDD; }}
+  .hcap-par    {{ background:#E3F2FD; border:1px solid #1565C0; }}
+  .hcap-consist{{ background:#E3F2FD; border:1px solid #42A5F5; }}
+  .hcap-streak {{ background:#FFF3E0; border:1px solid #FF9800; }}
+  .hcap-est    {{ background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }}
 </style>
 </head>
 <body>
@@ -198,35 +226,33 @@ def generate_data_files(data: dict) -> None:
             max_streak = max((int(k.split('_')[1]) for k in streak_codes), default=0)
             streak_total = sum(streak_codes.values())
 
-            for code, icon, label in [
-                ("hcap_1", "🥇", "Handicap winner"),
-                ("hcap_2", "🥈", "Handicap 2nd"),
-                ("hcap_3", "🥉", "Handicap 3rd"),
-                ("finish_1", "🥇", "Overall 1st"),
-                ("finish_2", "🥈", "Overall 2nd"),
-                ("finish_3", "🥉", "Overall 3rd"),
-                ("consistent_1", "🎯", "Consistent performer"),
-                ("consistent_2", "🎯", "Consistent performer"),
-                ("consistent_3", "🎯", "Consistent performer"),
-                ("par", "⛳", "Par racer"),
+            for code, icon_key, label, cls in [
+                ("hcap_1",      "hcap_1",    "Handicap winner",    "hcap-gold"),
+                ("hcap_2",      "hcap_2",    "Handicap 2nd",       "hcap-silver"),
+                ("hcap_3",      "hcap_3",    "Handicap 3rd",       "hcap-bronze"),
+                ("finish_1",    "finish_1",  "Overall 1st",        "plain-medal"),
+                ("finish_2",    "finish_2",  "Overall 2nd",        "plain-medal"),
+                ("finish_3",    "finish_3",  "Overall 3rd",        "plain-medal"),
+                ("consistent_1","consistent","Consistent performer","hcap-consist"),
+                ("consistent_2","consistent","Consistent performer","hcap-consist"),
+                ("consistent_3","consistent","Consistent performer","hcap-consist"),
+                ("par",         "par",       "Par racer",          "hcap-par"),
             ]:
                 n = counts.get(code, 0)
                 if not n:
                     continue
-                cls = {"hcap_1": "hcap-gold", "hcap_2": "hcap-silver", "hcap_3": "hcap-bronze"}.get(code, "plain-medal")
-                if n >= 4:
-                    parts.append(f'<span class="hcap-medal {cls}" data-bs-toggle="tooltip" data-bs-title="{label} × {n}" style="white-space:nowrap">{icon}<sup style="font-size:0.65em;font-weight:bold">×{n}</sup></span>')
-                else:
-                    for _ in range(n):
-                        parts.append(f'<span class="hcap-medal {cls}" data-bs-toggle="tooltip" data-bs-title="{label}">{icon}</span>')
+                parts.append(_icon_span(icon_key, cls, label, n if n >= 4 else 1) if n < 4 else _icon_span(icon_key, cls, label, n))
+                if n < 4:
+                    for _ in range(n - 1):
+                        parts.append(_icon_span(icon_key, cls, label))
 
             if streak_total:
                 tooltip = f"Improving streak (best: {max_streak} races) × {streak_total}" if streak_total > 1 else f"Improving streak: {max_streak} races"
                 if streak_total >= 4:
-                    parts.append(f'<span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="{tooltip}" style="white-space:nowrap">☄️<sup style="font-size:0.65em;font-weight:bold">×{streak_total}</sup></span>')
+                    parts.append(f'<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="{tooltip}" style="white-space:nowrap">{_streak_icon(max_streak)}</span>')
                 else:
                     for _ in range(streak_total):
-                        parts.append(f'<span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="{tooltip}">☄️</span>')
+                        parts.append(f'<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="{tooltip}">{_streak_icon(max_streak)}</span>')
             return ''.join(parts)
 
         pts = sorted(_final_states_for_season(season["races"]).values(), key=lambda r: -r["season_points"])
@@ -417,21 +443,31 @@ function fmtTime(s) {{
 }}
 
 function badges(trophies) {{
-  const plain = (icon, title) => `<span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="${{title}}">${{icon}}</span>`;
-  const badged = (icon, title, cls) => `<span class="hcap-medal ${{cls}}" data-bs-toggle="tooltip" data-bs-title="${{title}}">${{icon}}</span>`;
-  const streak = (n) => `<span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="Improving streak: ${{n}} races">☄️<sup style="font-size:0.65em;font-weight:bold">${{n}}</sup></span>`;
+  const I = {{
+    hcap_1:   '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>',
+    hcap_2:   '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text></svg>',
+    hcap_3:   '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>',
+    finish_1: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>',
+    finish_2: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#333">2</text></svg>',
+    finish_3: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>',
+    par:      '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text></svg>',
+    consistent: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    est:      '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg>',
+  }};
+  const b = (key, cls, title) => `<span class="hcap-medal ${{cls}}" data-bs-toggle="tooltip" data-bs-title="${{title}}">${{I[key]}}</span>`;
+  const streak = (n) => `<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="Improving streak: ${{n}} races"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">${{n}}</text></svg></span>`;
   const render = {{
-    finish_1: () => plain('🥇','Overall 1st'),
-    finish_2: () => plain('🥈','Overall 2nd'),
-    finish_3: () => plain('🥉','Overall 3rd'),
-    hcap_1:   () => badged('🥇','Handicap winner','hcap-gold'),
-    hcap_2:   () => badged('🥈','Handicap 2nd','hcap-silver'),
-    hcap_3:   () => badged('🥉','Handicap 3rd','hcap-bronze'),
-    consistent_1: () => plain('🎯','Consistent performer'),
-    consistent_2: () => plain('🎯','Consistent performer'),
-    consistent_3: () => plain('🎯','Consistent performer'),
-    par:      () => plain('⛳','Par racer'),
-    fresh:    () => `<span class="hcap-medal" style="opacity:0.5;filter:grayscale(1)" data-bs-toggle="tooltip" data-bs-title="Provisional — first 2 results, not yet eligible for handicap awards">🆕</span>`,
+    finish_1: () => b('finish_1','plain-medal','Overall 1st'),
+    finish_2: () => b('finish_2','plain-medal','Overall 2nd'),
+    finish_3: () => b('finish_3','plain-medal','Overall 3rd'),
+    hcap_1:   () => b('hcap_1','hcap-gold','Handicap winner'),
+    hcap_2:   () => b('hcap_2','hcap-silver','Handicap 2nd'),
+    hcap_3:   () => b('hcap_3','hcap-bronze','Handicap 3rd'),
+    consistent_1: () => b('consistent','hcap-consist','Consistent performer'),
+    consistent_2: () => b('consistent','hcap-consist','Consistent performer'),
+    consistent_3: () => b('consistent','hcap-consist','Consistent performer'),
+    par:      () => b('par','hcap-par','Par racer'),
+    fresh:    () => b('est','hcap-est','Establishing handicap — not yet eligible for handicap awards'),
   }};
   if (!trophies || !trophies.length) return '';
   return `<span style="display:flex;justify-content:center;gap:2px;flex-wrap:wrap">${{trophies.map(t => {{
@@ -818,26 +854,27 @@ def _fmt_time(seconds: float) -> str:
 
 def _racer_trophy_badges(trophies: list) -> str:
     """Render trophy badges for racer page race table (Python-side, not JS)."""
-    map = {
-        "finish_1": '<span class="hcap-medal plain-medal" title="Overall 1st">🥇</span>',
-        "finish_2": '<span class="hcap-medal plain-medal" title="Overall 2nd">🥈</span>',
-        "finish_3": '<span class="hcap-medal plain-medal" title="Overall 3rd">🥉</span>',
-        "hcap_1":   '<span class="hcap-medal hcap-gold" title="Handicap winner">🥇</span>',
-        "hcap_2":   '<span class="hcap-medal hcap-silver" title="Handicap 2nd">🥈</span>',
-        "hcap_3":   '<span class="hcap-medal hcap-bronze" title="Handicap 3rd">🥉</span>',
-        "consistent_1": '<span class="hcap-medal plain-medal" title="Consistent performer">🎯</span>',
-        "consistent_2": '<span class="hcap-medal plain-medal" title="Consistent performer">🎯</span>',
-        "consistent_3": '<span class="hcap-medal plain-medal" title="Consistent performer">🎯</span>',
-        "par":      '<span class="hcap-medal plain-medal" title="Par racer">⛳</span>',
-        "fresh":    '<span class="hcap-medal" style="opacity:0.5;filter:grayscale(1)" title="Provisional — first 2 results, not yet eligible for handicap awards">🆕</span>',
+    icon_map = {
+        "finish_1":    ("plain-medal",  "Overall 1st",        "finish_1"),
+        "finish_2":    ("plain-medal",  "Overall 2nd",        "finish_2"),
+        "finish_3":    ("plain-medal",  "Overall 3rd",        "finish_3"),
+        "hcap_1":      ("hcap-gold",    "Handicap winner",    "hcap_1"),
+        "hcap_2":      ("hcap-silver",  "Handicap 2nd",       "hcap_2"),
+        "hcap_3":      ("hcap-bronze",  "Handicap 3rd",       "hcap_3"),
+        "consistent_1":("hcap-consist", "Consistent performer","consistent"),
+        "consistent_2":("hcap-consist", "Consistent performer","consistent"),
+        "consistent_3":("hcap-consist", "Consistent performer","consistent"),
+        "par":         ("hcap-par",     "Par racer",          "par"),
+        "fresh":       ("hcap-est",     "Establishing handicap — not yet eligible for handicap awards", "est"),
     }
     parts = []
     for t in trophies:
         if t.startswith('streak_'):
             n = t.split('_')[1]
-            parts.append(f'<span class="hcap-medal plain-medal" title="Improving streak: {n} races">☄️<sup style="font-size:0.65em;font-weight:bold">{n}</sup></span>')
-        elif t in map:
-            parts.append(map[t])
+            parts.append(f'<span class="hcap-medal hcap-streak" title="Improving streak: {n} races">{_streak_icon(n)}</span>')
+        elif t in icon_map:
+            cls, title, key = icon_map[t]
+            parts.append(_icon_span(key, cls, title))
     return "".join(parts)
 
 
