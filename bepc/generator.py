@@ -246,13 +246,15 @@ def generate_data_files(data: dict) -> None:
                     for _ in range(n - 1):
                         parts.append(_icon_span(icon_key, cls, label))
 
-            if streak_total:
-                tooltip = f"Improving streak (best: {max_streak} races) × {streak_total}" if streak_total > 1 else f"Improving streak: {max_streak} races"
-                if streak_total >= 4:
-                    parts.append(f'<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="{tooltip}" style="white-space:nowrap">{_streak_icon(max_streak)}</span>')
-                else:
-                    for _ in range(streak_total):
-                        parts.append(f'<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="{tooltip}">{_streak_icon(max_streak)}</span>')
+            if streak_codes:
+                for code, cnt in sorted(streak_codes.items(), key=lambda x: int(x[0].split('_')[1])):
+                    n = int(code.split('_')[1])
+                    tooltip = f"Improving streak: {n} races"
+                    if cnt >= 4:
+                        parts.append(f'<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="{tooltip} × {cnt}" style="white-space:nowrap">{_streak_icon(n)}</span>')
+                    else:
+                        for _ in range(cnt):
+                            parts.append(f'<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="{tooltip}">{_streak_icon(n)}</span>')
             return ''.join(parts)
 
         pts = sorted(_final_states_for_season(season["races"]).values(), key=lambda r: -r["season_points"])
@@ -470,7 +472,13 @@ function badges(trophies) {{
     fresh:    () => b('est','hcap-est','Establishing handicap — not yet eligible for handicap awards'),
   }};
   if (!trophies || !trophies.length) return '';
-  return `<span style="display:flex;justify-content:center;gap:2px;flex-wrap:wrap">${{trophies.map(t => {{
+  const ORDER = ['hcap_1','hcap_2','hcap_3','finish_1','finish_2','finish_3','consistent_1','consistent_2','consistent_3','par','fresh'];
+  const sorted = [...trophies].sort((a,b) => {{
+    const ai = a.startsWith('streak_') ? ORDER.length + parseInt(a.split('_')[1]) : ORDER.indexOf(a);
+    const bi = b.startsWith('streak_') ? ORDER.length + parseInt(b.split('_')[1]) : ORDER.indexOf(b);
+    return ai - bi;
+  }});
+  return `<span style="display:flex;justify-content:center;gap:2px;flex-wrap:wrap">${{sorted.map(t => {{
     if (t.startsWith('streak_')) return streak(parseInt(t.split('_')[1]));
     return render[t] ? render[t]() : '';
   }}).join('')}}</span>`;
@@ -846,7 +854,7 @@ function resetHighlight(chart) {
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab-pts">
-      <p class="text-muted small">Official season points over time. Click legend to toggle racers.</p>
+      <p class="text-muted small">Overall season points over time. Click legend to toggle racers.</p>
       <div class="traj-scroll"><canvas id="chart-pts"></canvas></div>
     </div>
     <div class="tab-pane" id="tab-hpts">
@@ -1041,7 +1049,7 @@ document.getElementById('racer-select').addEventListener('change', function() {
                     all_charts_js += f"""
 new Chart(document.getElementById('chart-pts-{cid}'), {{
   type:'line',data:{{labels:{json.dumps(race_labels)},datasets:[
-    {{label:'Official Pts',data:{json.dumps(pts_data)},borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4}},
+    {{label:'Overall Pts',data:{json.dumps(pts_data)},borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4}},
     {{label:'Handicap Pts',data:{json.dumps(hpts_data)},borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}}
   ]}},options:{{responsive:true,plugins:{{legend:{{position:'top'}}}},scales:{{y:{{title:{{display:true,text:'Points'}}}}}}}}
 }});
@@ -1168,7 +1176,7 @@ def generate_about() -> None:
   <p>The asymmetry (30% vs 15%) means the handicap responds faster to improvement than to a bad day.</p>
 
   <h5>Points</h5>
-  <p><strong>Official points</strong> are awarded for finishing position (10 pts for 1st, 9 for 2nd … 1 pt for 10th).</p>
+  <p><strong>Overall points</strong> are awarded for finishing position (10 pts for 1st, 9 for 2nd … 1 pt for 10th).</p>
   <p><strong>Handicap points</strong> use the same scale but based on <em>adjusted</em> finishing position.
   Handicap points are not awarded in your first two results (while your handicap is being established).</p>
   <p>When a race day has multiple distance groups (e.g. Long Course and Short Course), points are weighted

@@ -33,7 +33,7 @@ cli.py publish            → gh-pages branch → GitHub Pages
 | ------------------- | ------------------------------------------------------------------------------ |
 | `index.html`        | Race results — default landing page, prev/next nav, Handicap Order tab default |
 | `events.html`       | Season race list with starters count                                           |
-| `standings.html`    | Official and handicap points standings (DataTables)                            |
+| `standings.html`    | Overall and handicap points standings (DataTables)                            |
 | `trajectories.html` | Points and handicap charts (Chart.js, 3 tabs)                                  |
 | `racer/<name>.html` | Per-racer page: trophy highlights, stats, charts, race history                 |
 | `about.html`        | Handicap system explanation                                                    |
