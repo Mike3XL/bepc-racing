@@ -529,7 +529,7 @@ function rows(results, placeField) {{
     ${{craft_cell(r.craft_category, r.craft_specific)}}
     <td>${{isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}}</td>
     <td>${{r.handicap.toFixed(3)}}</td>
-    <td>${{isHcap ? '<strong>' + fmtTime(r.adjusted_time_seconds) + '</strong>' : fmtTime(r.adjusted_time_seconds)}}</td>
+    ${{r.trophies && r.trophies.includes('par') ? '<td style="padding-left:2px"><span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:4px 6px 4px 2px;font-weight:bold;color:#1565C0">' + fmtTime(r.adjusted_time_seconds) + '</span></td>' : '<td style="padding-left:2px">' + (isHcap ? '<strong>' + fmtTime(r.adjusted_time_seconds) + '</strong>' : fmtTime(r.adjusted_time_seconds)) + '</td>'}}
     <td>${{r.handicap_post.toFixed(3)}}</td>
     <td>${{r.race_points || 0}}</td>
     <td>${{r.handicap_points || 0}}</td></tr>`
