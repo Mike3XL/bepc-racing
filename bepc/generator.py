@@ -539,12 +539,54 @@ function renderRace(index) {{
   document.getElementById('race-select').value = index;
   document.getElementById('btn-prev').disabled = index === 0;
   document.getElementById('btn-next').disabled = index === races.length - 1;
+  // Sort courses by racer count descending
+  const sortedCourses = [...race.courses].sort((a,b) => b.finish.length - a.finish.length);
+  const active = (i) => i === 0 ? 'active' : '';
   let tabNav = '<ul class="nav nav-tabs mb-0">';
   let tabContent = '<div class="tab-content">';
-  race.courses.forEach((course, i) => {{
-    const active = i === 0 ? 'active' : '';
-    tabNav += `<li class="nav-item"><button class="nav-link ${{active}}" data-bs-toggle="tab" data-bs-target="#course-${{i}}">${{course.label}}</button></li>`;
-    tabContent += `<div class="tab-pane ${{active}} p-3 border border-top-0" id="course-${{i}}">${{tableHtml(i)}}</div>`;
+  const podiumCfg = [
+    {{ idx:1, label:'2nd', bg:'#EBEBEB', border:'#A0A0A0', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text></svg>', nameColor:'#333', height:'52px', width:'135px' }},
+    {{ idx:0, label:'1st', bg:'#FFF8DC', border:'#FFD700', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>', nameColor:'#7A5C00', height:'64px', width:'180px' }},
+    {{ idx:2, label:'3rd', bg:'#FDF0E0', border:'#DDA84A', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>', nameColor:'#5C2E00', height:'44px', width:'135px' }},
+  ];
+  sortedCourses.forEach((course, i) => {{
+    // Build per-course podium
+    const pr = [null, null, null];
+    course.handicap.forEach(r => {{
+      if (r.trophies && r.trophies.includes('hcap_1')) pr[0] = r;
+      if (r.trophies && r.trophies.includes('hcap_2')) pr[1] = r;
+      if (r.trophies && r.trophies.includes('hcap_3')) pr[2] = r;
+    }});
+    let podiumHtml = '';
+    {{
+      podiumHtml = `<div class="row align-items-center mb-3 pt-2">
+        <div class="col-12 col-md-4 pb-2 pb-md-0">
+          <div class="fw-bold fs-5 lh-sm">${{race.name}}</div>
+          <div class="text-muted small">${{race.date}}</div>
+        </div>
+        <div class="col-12 col-md-4 d-flex justify-content-center">
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="display:flex;align-items:flex-end;gap:6px;flex-wrap:nowrap">`;
+      podiumCfg.forEach(cfg => {{
+        const r = pr[cfg.idx];
+        const name = r
+          ? `<a href="racer/${{slug(r.canonical_name)}}.html" style="color:${{cfg.nameColor}};font-weight:600;font-size:0.85em;text-decoration:none;text-align:center;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${{r.canonical_name}}</a>`
+          : `<span style="color:#bbb;font-size:0.85em">—</span>`;
+        podiumHtml += `<div style="display:flex;flex-direction:column;align-items:center;gap:3px;width:${{cfg.width}};min-width:0;flex-shrink:1">
+            ${{cfg.cup}}
+            ${{name}}
+            <div style="width:100%;height:${{cfg.height}};background:${{cfg.bg}};border:1px solid ${{cfg.border}};border-bottom:none;border-radius:4px 4px 0 0;display:flex;align-items:center;justify-content:center;font-weight:bold;color:${{cfg.nameColor}};font-size:0.85em">${{cfg.label}}</div>
+          </div>`;
+      }});
+      podiumHtml += `</div>
+            <div style="height:3px;background:#CCC;border-radius:2px;width:calc(100% + 90px)"></div>
+          </div>
+        </div><div class="col-md-4 d-none d-md-block"></div></div>`;
+    }}
+    // Find original index for tableHtml (uses original course index for DOM ids)
+    const origIdx = race.courses.indexOf(course);
+    tabNav += `<li class="nav-item"><button class="nav-link ${{active(i)}}" data-bs-toggle="tab" data-bs-target="#course-${{origIdx}}">${{course.label}}</button></li>`;
+    tabContent += `<div class="tab-pane ${{active(i)}} p-3 border border-top-0" id="course-${{origIdx}}">${{podiumHtml}}${{tableHtml(origIdx)}}</div>`;
   }});
   tabNav += '</ul>';
   tabContent += '</div>';
