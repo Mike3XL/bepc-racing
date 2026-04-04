@@ -661,8 +661,44 @@ def _build_traj_series(races: list, colors: list) -> tuple:
     racer_hnum: dict[str, list] = {}
     race_labels = []
 
+    # Short label mapping for chart x-axis — keyed on base race name (before " — ")
+    _SHORT_LABELS = {
+        # PNW Regional slugs from Jericho
+        'Pnworca1': 'PNWORCA #1', 'Pnworca2': 'PNWORCA #2', 'Pnworca3': 'PNWORCA #3',
+        'Pnworca5': 'PNWORCA #5', 'Pnworca6': 'PNWORCA #6',
+        'Cdnssmallboats': 'CDN Small Boats',
+        'Salmonrow': 'Salmon Row',
+        'Gorgedownwind': 'Gorge Downwind',
+        'Keatschop': 'Keats Chop',
+        'Supchallenge': 'SUP Challenge',
+        'Islandironsmallboats': 'Island Iron',
+        'Dagrind': 'Da Grind',
+        'Wutg': 'WUTG',
+        'Weapon': 'Weapon',
+        'Whipper': 'Whipper',
+        'Chicken': 'Chicken',
+        'Flcc': 'FLCC',
+        'Board the Fjord 2025': 'Fjord \'25',
+    }
+
+    def _short_label(name: str) -> str:
+        base = name.split(' — ')[0].strip()
+        if base in _SHORT_LABELS:
+            return _SHORT_LABELS[base]
+        # "2025 Peter Marcus Rough Water Race" -> "Peter Marcus"
+        if 'Peter Marcus' in base:
+            return 'Peter Marcus'
+        # "2025 PNWORCA Winter Series #7 : SPOCC" -> "PNWORCA #7"
+        if 'PNWORCA Winter Series' in base and '#' in base:
+            n = base.rsplit('#', 1)[-1].split(':')[0].strip()
+            return f'PNWORCA #{n}'
+        # BEPC: "BEPC 2025 Race Series #18" -> "#18"
+        if '#' in base:
+            return f'#{base.rsplit("#", 1)[-1].strip()}'
+        return base[:12]  # fallback truncate
+
     for race in races:
-        label = f'#{race["name"].rsplit("#",1)[-1].strip()}'
+        label = _short_label(race["name"])
         race_labels.append(label)
         n = len(race_labels)
         for r in race["results"]:
