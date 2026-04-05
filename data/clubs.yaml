@@ -1,0 +1,139 @@
+# PaddleClub — Club Configuration
+# Each club entry defines identity, race inclusion rules, handicap settings, and display options.
+
+clubs:
+
+  bepc:
+    name: Ballard Elks Paddle Club
+    short_name: BEPC
+    type: org                          # org | league
+    description: >
+      Weekly race series at Shilshole Bay, Ballard, organized through Ballard Elks Lodge #827.
+      Open to the whole community — kayak, surfski, SUP, and outrigger.
+    homepage_url: https://www.ballardelks.org/paddle-club
+    logo: null                         # path to logo image (future)
+    gh_branch: gh-pages
+    gh_url: https://mike3xl.github.io/bepc-racing/
+
+    race_inclusion:
+      include_organizers: []           # WebScorer organizer IDs (future automation)
+      include_urls: []                 # specific race URLs always included
+      exclude_urls: []                 # specific races excluded (e.g. silly races)
+      include_patterns: []
+      exclude_patterns: []
+
+    handicap:
+      establishment_races: 2          # races before handicap is established
+      update_faster: 0.30             # weight toward new result when faster than par
+      update_slower: 0.15             # weight toward new result when slower than par
+      carry_over: true                # carry handicap across seasons
+      carry_over_seasons: all         # how many seasons back (all | N)
+
+    display:
+      season_mode: annual             # annual | rolling_N | all_time
+      show_all_time: false
+      min_races_for_page: 1
+      craft_scope: []                 # empty = all craft
+
+    contacts:
+      - role: Handicap System
+        name: Mike Liddell
+        email: mike.liddell@gmail.com
+
+  sound-rowers:
+    name: Sound Rowers
+    short_name: Sound Rowers
+    type: org
+    description: >
+      Open-water racing series in the Pacific Northwest,
+      organized by the Sound Rowers paddling club.
+    homepage_url: https://www.soundrowers.org
+    logo: null
+    gh_branch: gh-pages-sound-rowers
+    gh_url: https://mike3xl.github.io/bepc-racing/
+
+    race_inclusion:
+      include_organizers: []
+      include_urls: []
+      exclude_urls: []
+      include_patterns: []
+      exclude_patterns: []
+
+    handicap:
+      establishment_races: 2
+      update_faster: 0.30
+      update_slower: 0.15
+      carry_over: true
+      carry_over_seasons: all
+
+    display:
+      season_mode: annual
+      show_all_time: false
+      min_races_for_page: 1
+      craft_scope: []
+
+    contacts:
+      - role: Handicap System
+        name: Mike Liddell
+        email: mike.liddell@gmail.com
+
+  pnw-regional:
+    name: PNW Small Boats Community League
+    short_name: PNW League
+    type: league                       # community league — no formal organizing body
+    description: >
+      An informal, community-curated league tracking open-water small boat racing
+      across the Pacific Northwest. Includes events from PNWORCA, Sound Rowers,
+      Gorge Downwind, Peter Marcus, and other regional organizers.
+    homepage_url: null
+    logo: null
+    gh_branch: gh-pages-pnw-regional
+    gh_url: https://mike3xl.github.io/bepc-racing/
+
+    race_inclusion:
+      include_organizers: []
+      include_urls: []
+      exclude_urls: []
+      include_patterns:
+        - PNWORCA
+        - "Peter Marcus"
+        - "Gorge Downwind"
+        - "Keats Chop"
+        - "Board the Fjord"
+        - "Salmon Row"
+        - "Da Grind"
+        - "Island Iron"
+        - "SUP Challenge"
+        - "Mercer Island"
+        - "Sausage Pull"
+        - "Rat Island"
+        - "Commencement Bay"
+        - "La Conner"
+      exclude_patterns:
+        - OC6
+        - "Dragon Boat"
+
+    handicap:
+      establishment_races: 1          # only 1 race needed (racers do few events/year)
+      update_faster: 0.30
+      update_slower: 0.15
+      carry_over: true
+      carry_over_seasons: all
+
+    display:
+      season_mode: annual
+      show_all_time: true             # all-time view important for league
+      min_races_for_page: 3
+      craft_scope:
+        - Kayak-1
+        - Kayak-2
+        - OC-1
+        - OC-2
+        - SUP-1
+        - V1
+        - FSK-1
+
+    contacts:
+      - role: Handicap System
+        name: Mike Liddell
+        email: mike.liddell@gmail.com

@@ -46,4 +46,13 @@ def load_common_json(path: Path, aliases: dict | None = None) -> RaceResult:
 def load_all_common(folder: Path) -> list[RaceResult]:
     aliases = _load_aliases(folder)
     files = sorted(folder.glob("*.common.json"))
-    return [load_common_json(f, aliases) for f in files]
+    races = [load_common_json(f, aliases) for f in files]
+    # Deduplicate by (date, name) — keep first occurrence (lowest race_id)
+    seen: set = set()
+    deduped = []
+    for r in races:
+        key = (r.race_info.date, r.race_info.name)
+        if key not in seen:
+            seen.add(key)
+            deduped.append(r)
+    return deduped

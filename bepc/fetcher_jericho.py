@@ -142,11 +142,19 @@ def _extract_date_from_html(html: str, year: str) -> str:
 
 def import_jericho_url(url: str, out_dir: Path, race_id: int, race_name: str,
                        race_date: str) -> None:
+    from bepc.provenance import log_provenance, save_raw
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
-        html = resp.read().decode("utf-8", errors="replace")
+        html_raw = resp.read().decode("utf-8", errors="replace")
+
+    # Save raw HTML
+    date_slug_early = _date_slug(race_date)
+    name_slug_early = re.sub(r'[^a-zA-Z0-9]+', '_', race_name).strip('_')
+    raw_fname = f"{date_slug_early}__{race_id}__{name_slug_early}.raw.html"
+    save_raw(out_dir, raw_fname, html_raw)
 
     # Extract date from page before stripping HTML
+    html = html_raw
     year = re.search(r'/races(\d{4})/', url)
     year_str = year.group(1) if year else "2025"
     if race_date.startswith("Jan 1,"):
@@ -244,3 +252,14 @@ def import_jericho_url(url: str, out_dir: Path, race_id: int, race_name: str,
         }
         (out_dir / fname).write_text(json.dumps(common, indent=2))
         print(f"  Written: {fname} ({len(racers)} racers, weight={weight})")
+
+    log_provenance(out_dir, {
+        "race_id": race_id,
+        "name": race_name,
+        "date": race_date,
+        "source": "jericho",
+        "method": "html_scrape",
+        "url": url,
+        "raw_file": raw_fname,
+        "courses": list(courses.keys()),
+    })

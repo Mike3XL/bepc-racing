@@ -117,8 +117,10 @@ def _head(title: str, extra_css: str = "") -> str:
 {_SEASON_JS}"""
 
 
-def _nav(active: str = "", prefix: str = "") -> str:
+def _nav(active: str = "", prefix: str = "", data: dict = None) -> str:
     pages = [
+        ("home.html", "Home"),
+        ("races.html", "Races"),
         ("index.html", "Results"),
         ("standings.html", "Standings"),
         ("trajectories.html", "Trajectories"),
@@ -129,9 +131,10 @@ def _nav(active: str = "", prefix: str = "") -> str:
     for href, label in pages:
         cls = "nav-link active" if label == active else "nav-link"
         items += f'<li class="nav-item"><a class="{cls}" href="{prefix}{href}">{label}</a></li>\n'
-    return f"""<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+
+    return f"""<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
   <div class="container">
-    <a class="navbar-brand" href="{prefix}index.html">🏄 BEPC Racing</a>
+    <a class="navbar-brand" href="{prefix}home.html">🏄 PaddleClub</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -140,6 +143,72 @@ def _nav(active: str = "", prefix: str = "") -> str:
     </div>
   </div>
 </nav>"""
+
+
+def _selector_bar(data: dict, show_season: bool = True) -> str:
+    """Horizontal selector bar below navbar: club pills + season dropdown."""
+    if not data:
+        return ""
+
+    # Club pill buttons
+    club_btns = ""
+    cfg_path = Path(__file__).parent.parent / "data" / "clubs.yaml"
+    clubs_cfg = {}
+    if cfg_path.exists():
+        try:
+            import yaml
+            with open(cfg_path) as f:
+                clubs_cfg = yaml.safe_load(f).get("clubs", {})
+        except Exception:
+            pass
+    for club_id, club in data["clubs"].items():
+        short = clubs_cfg.get(club_id, {}).get("short_name", club.get("name", club_id))
+        club_btns += f'<button type="button" class="btn btn-sm btn-outline-secondary" data-club="{club_id}">{short}</button>\n'
+
+    season_sel = ""  # populated by JS from ALL_CLUB_SEASONS
+    if show_season:
+        pass  # season select rendered empty, filled by JS below
+
+    # Build seasons data for all clubs for JS
+    import json as _json
+    all_seasons_js = "{" + ",".join(
+        f'"{cid}":{{"years":{_json.dumps(sorted(club["seasons"].keys(), reverse=True))},"current":"{club["current_season"]}"}}'
+        for cid, club in data["clubs"].items()
+    ) + "}"
+
+    return f"""<div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Club</span>
+        <div class="btn-group" id="club-btn-group" role="group">{club_btns}</div>
+      </div>
+      {"<div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='width:auto'></select></div>" if show_season else ""}
+    </div>
+  </div>
+</div>
+<script>
+(function() {{
+  var ALL_CLUB_SEASONS = {all_seasons_js};
+  var stored = localStorage.getItem('bepc_club') || '{data["current_club"]}';
+  if (!ALL_CLUB_SEASONS[stored]) stored = '{data["current_club"]}';
+  document.querySelectorAll('#club-btn-group button').forEach(function(btn) {{
+    if (btn.dataset.club === stored) btn.classList.add('active');
+    btn.addEventListener('click', function() {{
+      localStorage.setItem('bepc_club', btn.dataset.club);
+      window.location.reload();
+    }});
+  }});
+  var sel = document.getElementById('season-select');
+  if (sel) {{
+    var info = ALL_CLUB_SEASONS[stored];
+    var saved = localStorage.getItem('bepc_season');
+    sel.innerHTML = info.years.map(function(y) {{
+      return '<option value="' + y + '"' + (y === (saved || info.current) ? ' selected' : '') + '>' + y + ' Season</option>';
+    }}).join('');
+  }}
+}})();
+</script>"""
 
 
 def _foot(extra_js: str = "") -> str:
@@ -273,6 +342,8 @@ def generate_data_files(data: dict) -> None:
                       "hcap": round(r["handicap_post"], 3),
                       "points": r["season_points"]} for r in hpts],
         }
+    (SITE_DIR / f"standings-data-{data['current_club']}.json").write_text(json.dumps(standings_data))
+    # Keep legacy filename for current club for backward compat
     (SITE_DIR / "standings-data.json").write_text(json.dumps(standings_data))
 
     # races-data.json
@@ -305,6 +376,7 @@ def generate_data_files(data: dict) -> None:
                 ],
             })
         races_data["seasons"][year] = race_days
+    (SITE_DIR / f"races-data-{data['current_club']}.json").write_text(json.dumps(races_data))
     (SITE_DIR / "races-data.json").write_text(json.dumps(races_data))
 
     # trajectories-data.json
@@ -315,6 +387,7 @@ def generate_data_files(data: dict) -> None:
     for year, season in _all_seasons(data).items():
         pts, hpts, hnum = _build_traj_series(season["races"], colors)
         traj_data["seasons"][year] = {"pts": pts, "hpts": hpts, "hnum": hnum}
+    (SITE_DIR / f"trajectories-data-{data['current_club']}.json").write_text(json.dumps(traj_data))
     (SITE_DIR / "trajectories-data.json").write_text(json.dumps(traj_data))
 
     print("Generated: site/*-data.json (3 files)")
@@ -324,16 +397,22 @@ def _loading_spinner() -> str:
     return '<div id="loading" class="text-center my-5" style="display:none"><div class="spinner-border text-secondary"></div></div>'
 
 
+def _club_opts(data: dict, current_club: str) -> str:
+    opts = ""
+    for club_id, club in data["clubs"].items():
+        sel = " selected" if club_id == current_club else ""
+        opts += f'<option value="{club_id}"{sel}>{club["name"]}</option>'
+    return opts
+
+
 def generate_standings(data: dict) -> None:
     club = data["clubs"][data["current_club"]]
     current_year = club["current_season"]
+    club_opts = _club_opts(data, data["current_club"])
 
-    html = _head("Standings") + _nav("Standings") + f"""
+    html = _head("Standings") + _nav("Standings", data=data) + _selector_bar(data) + f"""
 <div class="container">
-  <div class="d-flex align-items-center gap-3 mb-3">
-    <h1 class="mb-0">Standings</h1>
-    <select id="season-select" class="form-select form-select-sm w-auto d-inline-block mb-3">{_season_opts(data, current_year)}</select>
-  </div>
+  <h1 class="mb-3">Standings</h1>
   <ul class="nav nav-tabs mb-3">
     <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-hpts">Handicap Points</button></li>
     <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-pts">Overall Points</button></li>
@@ -381,14 +460,20 @@ function render(year) {{
   addRowNumbers(dtPts);
 }}
 window.addEventListener('DOMContentLoaded', () => {{
-  fetchData('standings-data.json', d => {{
-    SEASONS = d.seasons;
-    const sel = document.getElementById('season-select');
-    const yr = getSeason(d.current_year);
-    if (SEASONS[yr]) sel.value = yr;
-    render(sel.value);
-    sel.addEventListener('change', e => {{ setSeason(e.target.value); render(e.target.value); }});
-  }});
+  function getClub() {{ return localStorage.getItem('bepc_club') || '{data["current_club"]}'; }}
+  function setClub(c) {{ localStorage.setItem('bepc_club', c); }}
+  function loadClub(club) {{
+    fetchData(`standings-data-${{club}}.json`, d => {{
+      SEASONS = d.seasons;
+      const sel = document.getElementById('season-select');
+      sel.innerHTML = Object.keys(d.seasons).sort().reverse().map(y => `<option value="${{y}}">${{y}} Season</option>`).join('');
+      const yr = getSeason(d.current_year);
+      if (SEASONS[yr]) sel.value = yr;
+      render(sel.value);
+      sel.onchange = e => {{ setSeason(e.target.value); render(e.target.value); }};
+    }});
+  }}
+  loadClub(getClub());
 }});
 </script>""" + _foot()
     (SITE_DIR / "standings.html").write_text(html)
@@ -399,12 +484,9 @@ def generate_races(data: dict) -> None:
     club = data["clubs"][data["current_club"]]
     current_year = club["current_season"]
 
-    html = _head("Results") + _nav("Results") + f"""
+    html = _head("Results") + _nav("Results", data=data) + _selector_bar(data) + f"""
 <div class="container">
-  <div class="d-flex align-items-center gap-3 mb-3">
-    <h1 class="mb-0">Results</h1>
-    <select id="season-select" class="form-select form-select-sm w-auto d-inline-block mb-3">{_season_opts(data, current_year)}</select>
-  </div>
+  <h1 class="mb-3">Results</h1>
   <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
     <button id="btn-prev" class="btn btn-outline-secondary">&larr; Prev</button>
     <button id="btn-next" class="btn btn-outline-secondary">Next &rarr;</button>
@@ -493,10 +575,11 @@ function tableHtml(id_suffix) {{
   <div class="tab-content border border-top-0 p-3 mb-3">
     <div class="tab-pane active" id="tab-handicap-${{id_suffix}}">
       <table class="table table-sm table-striped" style="table-layout:fixed">
-        <colgroup><col style="width:90px"><col style="width:60px"><col style="width:170px"><col style="width:80px"><col style="width:70px"><col style="width:80px"><col style="width:80px"><col style="width:100px"><col style="width:60px"><col style="width:60px"></colgroup>
+        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:75px"><col style="width:75px"><col style="width:90px"><col style="width:55px"><col style="width:55px"><col style="width:65px"></colgroup>
         <thead><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th>
           <th><span class="d-sm-none">Hcap</span><span class="d-none d-sm-inline">Handicap</span></th>
           <th><span class="d-sm-none">Adj</span><span class="d-none d-sm-inline">Adj Time</span></th>
+          <th><span class="d-sm-none" data-bs-toggle="tooltip" data-bs-title="% improvement vs handicap">Imp. %</span><span class="d-none d-sm-inline" data-bs-toggle="tooltip" data-bs-title="% improvement vs handicap">Improvement %</span></th>
           <th><span class="d-sm-none">New</span><span class="d-none d-sm-inline">New Handicap</span></th>
           <th><span class="d-sm-none">Pts</span><span class="d-none d-sm-inline">Points</span></th>
           <th><span class="d-sm-none">HPts</span><span class="d-none d-sm-inline">Hcap Pts</span></th>
@@ -506,10 +589,11 @@ function tableHtml(id_suffix) {{
     </div>
     <div class="tab-pane" id="tab-finish-${{id_suffix}}">
       <table class="table table-sm table-striped" style="table-layout:fixed">
-        <colgroup><col style="width:90px"><col style="width:60px"><col style="width:170px"><col style="width:80px"><col style="width:70px"><col style="width:80px"><col style="width:80px"><col style="width:100px"><col style="width:60px"><col style="width:60px"></colgroup>
+        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:75px"><col style="width:75px"><col style="width:65px"><col style="width:90px"><col style="width:55px"><col style="width:55px"></colgroup>
         <thead><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th>
           <th><span class="d-sm-none">Hcap</span><span class="d-none d-sm-inline">Handicap</span></th>
           <th><span class="d-sm-none">Adj</span><span class="d-none d-sm-inline">Adj Time</span></th>
+          <th><span class="d-sm-none" data-bs-toggle="tooltip" data-bs-title="% improvement vs handicap">Imp. %</span><span class="d-none d-sm-inline" data-bs-toggle="tooltip" data-bs-title="% improvement vs handicap">Improvement %</span></th>
           <th><span class="d-sm-none">New</span><span class="d-none d-sm-inline">New Handicap</span></th>
           <th><span class="d-sm-none">Pts</span><span class="d-none d-sm-inline">Points</span></th>
           <th><span class="d-sm-none">HPts</span><span class="d-none d-sm-inline">Hcap Pts</span></th>
@@ -522,18 +606,26 @@ function tableHtml(id_suffix) {{
 
 function rows(results, placeField) {{
   const isHcap = placeField === 'adjusted_place';
-  return results.map(r =>
-    `<tr><td>${{badges(r.trophies)}}</td>
+  return results.map(r => {{
+    const pct = r.adjusted_time_versus_par != null && !r.is_fresh_racer
+      ? ((1 - r.adjusted_time_versus_par) * 100)
+      : null;
+    const pctHtml = pct != null
+      ? `<td style="text-align:right;font-size:0.85em;color:${{pct >= 0 ? '#2E7D32' : '#666'}};font-weight:${{pct >= 0 ? 'bold' : 'normal'}}">${{pct >= 0 ? '+' : ''}}${{pct.toFixed(1)}}%</td>`
+      : '<td></td>';
+    return `<tr><td>${{badges(r.trophies)}}</td>
     <td>${{r[placeField]}}</td>
     <td><a href="racer/${{slug(r.canonical_name)}}.html">${{r.canonical_name}}</a></td>
     ${{craft_cell(r.craft_category, r.craft_specific)}}
     <td>${{isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}}</td>
     <td>${{r.handicap.toFixed(3)}}</td>
     ${{r.trophies && r.trophies.includes('par') ? '<td style="padding-left:2px"><span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:4px 6px 4px 2px;font-weight:bold;color:#1565C0">' + fmtTime(r.adjusted_time_seconds) + '</span></td>' : '<td style="padding-left:2px">' + (isHcap ? '<strong>' + fmtTime(r.adjusted_time_seconds) + '</strong>' : fmtTime(r.adjusted_time_seconds)) + '</td>'}}
+    ${{pctHtml}}
     <td>${{r.handicap_post.toFixed(3)}}</td>
     <td>${{r.race_points || 0}}</td>
-    <td>${{r.handicap_points || 0}}</td></tr>`
-  ).join('');
+    <td>${{r.handicap_points || 0}}</td>
+    </tr>`;
+  }}).join('');
 }}
 
 function renderRace(index) {{
@@ -635,7 +727,8 @@ document.addEventListener('DOMContentLoaded', () => {{
   document.getElementById('btn-next').addEventListener('click', () => renderRace(currentIndex + 1));
   document.getElementById('race-select').addEventListener('change', e => renderRace(parseInt(e.target.value)));
   document.getElementById('season-select').addEventListener('change', e => {{ setSeason(e.target.value); loadSeason(e.target.value); }});
-  fetchData('races-data.json', d => {{
+  const club = localStorage.getItem('bepc_club') || '{data["current_club"]}';
+  fetchData(`races-data-${{club}}.json`, d => {{
     SEASONS = d.seasons;
     const sel = document.getElementById('season-select');
     const yr = getSeason(d.current_year);
@@ -735,6 +828,7 @@ def _build_traj_series(races: list, colors: list) -> tuple:
 def generate_trajectories(data: dict) -> None:
     club = data["clubs"][data["current_club"]]
     current_year = club["current_season"]
+    club_opts = _club_opts(data, data["current_club"])
 
     # Shared chart options JS — sorted tooltip, skip nulls, highlight hovered line, inline end labels
     chart_options_js = """
@@ -876,12 +970,9 @@ function resetHighlight(chart) {
 }
 """
 
-    html = _head("Trajectories", _CHARTJS) + _nav("Trajectories") + f"""
+    html = _head("Trajectories", _CHARTJS) + _nav("Trajectories", data=data) + _selector_bar(data) + f"""
 <div class="container">
-  <div class="d-flex align-items-center gap-3 mb-3">
-    <h1 class="mb-0">Trajectories</h1>
-    <select id="season-select" class="form-select form-select-sm w-auto d-inline-block mb-3">{_season_opts(data, current_year)}</select>
-  </div>
+  <h1 class="mb-3">Trajectories</h1>
   <div id="traj-content">
   <ul class="nav nav-tabs mb-3" id="traj-tabs">
     <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-pts">Overall Points</button></li>
@@ -917,14 +1008,20 @@ function loadTrajSeason(year) {{
   }});
 }}
 window.addEventListener('DOMContentLoaded', () => {{
-  fetchData('trajectories-data.json', d => {{
-    ALL_SEASONS = d.seasons;
-    const sel = document.getElementById('season-select');
-    const yr = getSeason(d.current_year);
-    if (ALL_SEASONS[yr]) sel.value = yr;
-    loadTrajSeason(sel.value);
-    sel.addEventListener('change', e => {{ setSeason(e.target.value); loadTrajSeason(e.target.value); }});
-  }});
+  function getClub() {{ return localStorage.getItem('bepc_club') || '{data["current_club"]}'; }}
+  function setClub(c) {{ localStorage.setItem('bepc_club', c); }}
+  function loadClub(club) {{
+    fetchData(`trajectories-data-${{club}}.json`, d => {{
+      ALL_SEASONS = d.seasons;
+      const sel = document.getElementById('season-select');
+      sel.innerHTML = Object.keys(d.seasons).sort().reverse().map(y => `<option value="${{y}}">${{y}} Season</option>`).join('');
+      const yr = getSeason(d.current_year);
+      if (ALL_SEASONS[yr]) sel.value = yr;
+      loadTrajSeason(sel.value);
+      sel.onchange = e => {{ setSeason(e.target.value); loadTrajSeason(e.target.value); }};
+    }});
+  }}
+  loadClub(getClub());
 }});
 </script>""" + _foot()
     (SITE_DIR / "trajectories.html").write_text(html)
@@ -1096,7 +1193,8 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 }});"""
 
                     rows = "".join(
-                        f'<tr><td><a href="../races.html#{r["race_id"]}">{r["date"]}</a></td>'
+                        f'<tr><td><a href="../races.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
+                        f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
                         f'<td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td>'
                         f'<td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td>'
                         f'<td>{r["handicap"]:.3f}</td><td>{r["handicap_post"]:.3f}</td>'
@@ -1116,10 +1214,11 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
   <div class="col-md-6"><canvas id="chart-hcap-{cid}" style="max-height:220px"></canvas></div>
 </div>
 <table class="table table-sm table-striped table-hover">
-  <thead><tr><th></th><th>Race</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
   <tbody>{"".join(
       f'<tr><td style="white-space:nowrap">{_racer_trophy_badges(r.get("trophies",[]))}</td>'
-      f'<td><a href="../index.html#{r["race_id"]}">{r["date"]}</a></td>'
+      f'<td><a href="../index.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
+      f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
       f'<td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td>'
       f'<td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td>'
       f'<td>{r["handicap"]:.3f}</td><td>{r["handicap_post"]:.3f}</td>'
@@ -1164,7 +1263,7 @@ window.addEventListener('load', () => {{
 }});
 </script>"""
 
-        html = _head(name, _CHARTJS) + _nav("Racers", prefix="../") + f"""
+        html = _head(name, _CHARTJS) + _nav("Racers", prefix="../", data=data) + _selector_bar(data, show_season=False) + f"""
 <div class="container">
   {racer_nav}
   <h2>{name}</h2>
@@ -1179,8 +1278,8 @@ window.addEventListener('load', () => {{
     print(f"Generated: site/racer/ ({len(racer_data)} pages)")
 
 
-def generate_about() -> None:
-    html = _head("About — BEPC Handicap System") + _nav("About") + """
+def generate_about(data: dict = None) -> None:
+    html = _head("About — BEPC Handicap System") + _nav("About", data=data) + _selector_bar(data, show_season=False) + """
 <div class="container" style="max-width:720px">
   <h1>About the Handicap System</h1>
   <p class="lead">BEPC uses a dynamic handicap system so all racers can compete and be scored on their relative performance.</p>
@@ -1251,7 +1350,7 @@ def generate_racer_index(data: dict) -> None:
         r = racer_data[name]
         rows += f'<tr><td><a href="{_slug(name)}.html">{name}</a></td><td>{display_craft_ui(r["craft_category"])}</td></tr>\n'
 
-    html = _head("Racers") + _nav("Racers", prefix="../") + f"""
+    html = _head("Racers") + _nav("Racers", prefix="../", data=data) + _selector_bar(data, show_season=False) + f"""
 <div class="container">
   <h1>Racers</h1>
   <table id="racer-index" class="table table-striped table-hover">
@@ -1263,13 +1362,262 @@ def generate_racer_index(data: dict) -> None:
     print("Generated: site/racer/index.html")
 
 
+def generate_platform_home(data: dict) -> None:
+    """Generate the PaddleClub platform home page with club list and recent race feed."""
+    import yaml
+    clubs_config_path = Path(__file__).parent.parent / "data" / "clubs.yaml"
+    clubs_cfg = {}
+    if clubs_config_path.exists():
+        with open(clubs_config_path) as f:
+            clubs_cfg = yaml.safe_load(f).get("clubs", {})
+
+    # Build recent races feed — collect all races, track which clubs each appears in
+    race_map = {}  # (base_name, date) -> entry
+    for club_id, club in data["clubs"].items():
+        cfg = clubs_cfg.get(club_id, {})
+        club_name = cfg.get("short_name", club.get("name", club_id))
+        club_type = cfg.get("type", "org")
+        for year, season in club["seasons"].items():
+            for race in season["races"]:
+                base_name = race["name"].split(" — ")[0]
+                key = (base_name, race["date"])
+                if key not in race_map:
+                    race_map[key] = {
+                        "name": base_name,
+                        "date": race["date"],
+                        "starters": len(race["results"]),
+                        "clubs": [],
+                    }
+                else:
+                    race_map[key]["starters"] = max(race_map[key]["starters"], len(race["results"]))
+                # Find winner for this club
+                winners = [r["canonical_name"] for r in race["results"]
+                           if "hcap_1" in r.get("trophies", [])]
+                entry = race_map[key]
+                if not any(c["id"] == club_id for c in entry["clubs"]):
+                    entry["clubs"].append({
+                        "id": club_id,
+                        "name": club_name,
+                        "type": club_type,
+                        "winner": winners[0] if winners else None,
+                        "winner_slug": _slug(winners[0]) if winners else None,
+                        "race_id": race["race_id"],
+                    })
+
+    from datetime import datetime
+    def _parse_date(d):
+        for fmt in ("%b %d, %Y", "%B %d, %Y", "%Y-%m-%d"):
+            try: return datetime.strptime(d, fmt)
+            except: pass
+        return datetime.min
+
+    recent_races = sorted(race_map.values(), key=lambda x: _parse_date(x["date"]), reverse=True)[:15]
+
+    # Club cards
+    club_cards = ""
+    for club_id, club in data["clubs"].items():
+        cfg = clubs_cfg.get(club_id, {})
+        name = cfg.get("name", club.get("name", club_id))
+        short = cfg.get("short_name", name)
+        ctype = cfg.get("type", "org")
+        desc = cfg.get("description", "").strip()
+        latest_year = max(club["seasons"].keys())
+        total_races = sum(len(s["races"]) for s in club["seasons"].values())
+        total_racers = len({r["canonical_name"] for s in club["seasons"].values()
+                            for race in s["races"] for r in race["results"]})
+        type_badge = '<span class="badge bg-secondary">Community League</span>' if ctype == "league" else '<span class="badge bg-primary">Club</span>'
+        club_cards += f"""
+        <div class="col-12 col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h5 class="card-title mb-0">{name}</h5>
+                {type_badge}
+              </div>
+              <p class="card-text text-muted small">{desc}</p>
+              <div class="small text-muted mb-3">{total_races} races · {total_racers} racers · through {latest_year}</div>
+              <a href="index.html" onclick="localStorage.setItem('bepc_club','{club_id}')" class="btn btn-outline-primary btn-sm">View Results →</a>
+            </div>
+          </div>
+        </div>"""
+
+    # Recent races feed
+    feed_rows = ""
+    for r in recent_races:
+        clubs_html = ""
+        for c in r["clubs"]:
+            winner_html = f'<a href="racer/{c["winner_slug"]}.html">{c["winner"]}</a>' if c.get("winner") else '<span class="text-muted">—</span>'
+            race_link = f'index.html#{c["race_id"]}'
+            cls = "text-secondary" if c["type"] == "league" else ""
+            clubs_html += f'<div class="small"><a href="{race_link}" onclick="localStorage.setItem(\'bepc_club\',\'{c["id"]}\')" class="{cls} fw-semibold">{c["name"]}</a>: {winner_html}</div>'
+        feed_rows += f"""
+        <tr>
+          <td class="text-muted small text-nowrap">{r["date"]}</td>
+          <td>{r["name"]}</td>
+          <td class="text-muted small text-center">{r["starters"]}</td>
+          <td>{clubs_html}</td>
+        </tr>"""
+
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PaddleClub — Handicap Racing</title>
+{_BOOTSTRAP_CSS}
+{_BOOTSTRAP_JS}
+<style>
+  body {{ padding-top: 1rem; }}
+  .navbar-brand {{ font-weight: bold; font-size: 1.3em; }}
+  .hero {{ background: #1a1a2e; color: white; padding: 3rem 0 2rem; margin-bottom: 2rem; }}
+  .hero h1 {{ font-size: 2.5rem; font-weight: 700; }}
+  .hero p {{ font-size: 1.1rem; opacity: 0.85; }}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <span class="navbar-brand">🏄 PaddleClub</span>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <h1>PaddleClub</h1>
+    <p>Handicap racing results, standings, and trajectories for paddling clubs and community leagues.</p>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="h4 mb-3">Clubs &amp; Leagues</h2>
+  <div class="row">{club_cards}</div>
+
+  <h2 class="h4 mb-3 mt-2">Recent Races</h2>
+  <div class="table-responsive">
+    <table class="table table-sm table-striped">
+      <thead><tr><th>Date</th><th>Race</th><th class="text-center">Starters</th><th>Handicap Winner (by club)</th></tr></thead>
+      <tbody>{feed_rows}</tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>"""
+
+    (SITE_DIR / "home.html").write_text(html)
+    print("Generated: site/home.html")
+
+
+def generate_races_list(data: dict) -> None:
+    """Generate races.html + per-club races-list-{club}.json data files."""
+    import json as _json
+    from collections import defaultdict
+
+    # Write per-club JSON data files
+    for club_id, club in data["clubs"].items():
+        seasons_data = {}
+        for year, season in club["seasons"].items():
+            days: dict = defaultdict(list)
+            for race in season["races"]:
+                days[race["race_id"]].append(race)
+            race_list = []
+            for race_id, courses in sorted(days.items(), key=lambda x: x[1][0]["date"]):
+                base_name = courses[0]["name"].split(" — ")[0]
+                multi = len(courses) > 1
+                courses_data = []
+                for c in courses:
+                    label = c["name"].split(" — ")[-1] if " — " in c["name"] else ""
+                    winners = {}
+                    for r in c["results"]:
+                        for place, trophy in [(1,"hcap_1"),(2,"hcap_2"),(3,"hcap_3")]:
+                            if trophy in r.get("trophies", []):
+                                winners[place] = {"name": r["canonical_name"], "slug": _slug(r["canonical_name"])}
+                    courses_data.append({"label": label if multi else "", "starters": len(c["results"]), "winners": winners})
+                race_list.append({
+                    "race_id": race_id,
+                    "name": base_name,
+                    "date": courses[0]["date"],
+                    "starters": sum(len(c["results"]) for c in courses),
+                    "courses": courses_data,
+                })
+            seasons_data[year] = race_list
+        (SITE_DIR / f"races-list-{club_id}.json").write_text(_json.dumps({"seasons": seasons_data, "current": club["current_season"]}))
+
+    # Cup SVGs as JS strings
+    cup_js = """
+const CUP = {
+  1: '<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.5"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.3"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.3"/><rect x="11" y="15" width="2" height="3" fill="#B8860B"/><rect x="7" y="18" width="10" height="1.5" rx="0.75" fill="#B8860B"/></svg>',
+  2: '<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.5"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.3"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.3"/><rect x="11" y="15" width="2" height="3" fill="#707070"/><rect x="7" y="18" width="10" height="1.5" rx="0.75" fill="#707070"/></svg>',
+  3: '<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.5"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.3"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.3"/><rect x="11" y="15" width="2" height="3" fill="#B07020"/><rect x="7" y="18" width="10" height="1.5" rx="0.75" fill="#B07020"/></svg>',
+};
+"""
+
+    html = _head("Races") + _nav("Races", data=data) + _selector_bar(data) + f"""
+<div class="container">
+  <h1 class="mb-3">Races</h1>
+  <div id="races-content"></div>
+</div>
+<script>
+{cup_js}
+function podiumHtml(course) {{
+  var w = course.winners;
+  if (!w || Object.keys(w).length === 0) return '';
+  var rows = '';
+  [1,2,3].forEach(function(p) {{
+    if (w[p]) rows += '<div class="d-flex align-items-center gap-1 text-nowrap">' + CUP[p] + '<a href="racer/' + w[p].slug + '.html" class="small text-truncate" style="max-width:130px">' + w[p].name + '</a></div>';
+  }});
+  var lbl = course.label ? '<div class="text-muted small fw-semibold mb-1">' + course.label + '</div>' : '';
+  return '<div class="me-3">' + lbl + rows + '</div>';
+}}
+
+function renderRacesList(data, year) {{
+  var races = data.seasons[year] || [];
+  var rows = races.map(function(r) {{
+    var podiums = r.courses.map(podiumHtml).join('');
+    return '<tr><td class="text-muted small text-nowrap">' + r.date + '</td>'
+      + '<td><a href="index.html#' + r.race_id + '">' + r.name + '</a></td>'
+      + '<td class="text-muted small text-center">' + r.starters + '</td>'
+      + '<td><div class="d-flex flex-wrap">' + podiums + '</div></td></tr>';
+  }}).join('');
+  document.getElementById('races-content').innerHTML =
+    '<div class="table-responsive"><table class="table table-sm table-striped">'
+    + '<thead><tr><th>Date</th><th>Race</th><th class="text-center">Starters</th><th>Handicap Podium</th></tr></thead>'
+    + '<tbody>' + rows + '</tbody></table></div>';
+}}
+
+var _racesData = null;
+function loadRacesClub(club) {{
+  fetchData('races-list-' + club + '.json', function(d) {{
+    _racesData = d;
+    var yr = getSeason(d.current);
+    var sel = document.getElementById('season-select');
+    if (sel) sel.value = yr;
+    renderRacesList(d, yr);
+  }});
+}}
+
+document.addEventListener('DOMContentLoaded', function() {{
+  var club = localStorage.getItem('bepc_club') || '{data["current_club"]}';
+  loadRacesClub(club);
+  var sel = document.getElementById('season-select');
+  if (sel) sel.addEventListener('change', function() {{
+    setSeason(this.value);
+    if (_racesData) renderRacesList(_racesData, this.value);
+  }});
+}});
+</script>""" + _foot()
+    (SITE_DIR / "races.html").write_text(html)
+    print("Generated: site/races.html")
+
+
 def generate_all(data: dict) -> None:
     SITE_DIR.mkdir(exist_ok=True)
     (SITE_DIR / "racer").mkdir(exist_ok=True)
     generate_data_files(data)
     generate_standings(data)
     generate_races(data)
+    generate_races_list(data)
     generate_trajectories(data)
-    generate_about()
+    generate_about(data)
     generate_racer_pages(data)
     generate_racer_index(data)
+    generate_platform_home(data)

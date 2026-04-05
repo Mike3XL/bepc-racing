@@ -120,6 +120,7 @@ def _date_slug(date_str: str) -> str:
 
 
 def fetch_season(race_ids: list[int], out_dir: Path) -> None:
+    from bepc.provenance import log_provenance, save_raw
     out_dir.mkdir(parents=True, exist_ok=True)
     for race_id in race_ids:
         print(f"  Fetching {race_id}...", end=" ", flush=True)
@@ -140,6 +141,10 @@ def fetch_season(race_ids: list[int], out_dir: Path) -> None:
             date_slug = _date_slug(info.get("Date", ""))
             name_slug = re.sub(r'[^a-zA-Z0-9]+', '_', info.get("Name", "")).strip('_')
 
+            # Save raw JSON
+            raw_fname = f"{date_slug}__{race_id}__{name_slug}.raw.json"
+            save_raw(out_dir, raw_fname, json.dumps(raw, indent=2))
+
             # Determine if groups are truly distinct courses (have different distance labels)
             distances = [g.get("Grouping", {}).get("Distance", "") for g, _ in group_racers]
             distinct_distances = len(set(d for d in distances if d)) > 0
@@ -150,6 +155,7 @@ def fetch_season(race_ids: list[int], out_dir: Path) -> None:
                 group_racers = [max(group_racers, key=lambda x: len(x[1]))]
                 total = len(group_racers[0][1])
 
+            common_files = []
             for group, racers in group_racers:
                 distance = group.get("Grouping", {}).get("Distance", "")
                 weight = len(racers) / total
@@ -158,6 +164,17 @@ def fetch_season(race_ids: list[int], out_dir: Path) -> None:
                 suffix = f"__{dist_slug}" if dist_slug else ""
                 fname = f"{date_slug}__{race_id}__{name_slug}{suffix}.common.json"
                 (out_dir / fname).write_text(json.dumps(common, indent=2))
+                common_files.append(fname)
+
+            log_provenance(out_dir, {
+                "race_id": race_id,
+                "name": info.get("Name", ""),
+                "date": info.get("Date", ""),
+                "source": "webscore",
+                "method": "api",
+                "raw_file": raw_fname,
+                "common_files": common_files,
+            })
 
             groups_str = f"{len(group_racers)} groups, {total} total" if multi else f"{total} racers"
             print(f"OK ({groups_str})")
