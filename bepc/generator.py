@@ -747,69 +747,74 @@ document.addEventListener('DOMContentLoaded', () => {{
     print("Generated: site/index.html")
 
 
+import re as _re_module
+
+_SHORT_LABELS = {
+    'Pnworca1': 'PNWORCA #1', 'Pnworca2': 'PNWORCA #2', 'Pnworca3': 'PNWORCA #3',
+    'Pnworca5': 'PNWORCA #5', 'Pnworca6': 'PNWORCA #6',
+    'Cdnssmallboats': 'CDN Small Boats', 'Salmonrow': 'Salmon Row',
+    'Gorgedownwind': 'Gorge Downwind', 'Keatschop': 'Keats Chop',
+    'Supchallenge': 'SUP Challenge', 'Islandironsmallboats': 'Island Iron',
+    'Dagrind': 'Da Grind', 'Wutg': 'WUTG', 'Weapon': 'Weapon',
+    'Whipper': 'Whipper', 'Chicken': 'Chicken', 'Flcc': 'FLCC',
+    "Board the Fjord 2025": "Fjord '25",
+}
+
+_SHORT_MAP = {
+    'Halloween Race': 'Halloween', 'Halloween': 'Halloween',
+    "New Year's Paddle Race": "New Year's",
+    'Paddle Your Heart Out': 'Heart Out',
+    'Post Poultry Paddle': 'Post Poultry',
+    'Alderbrook St. Paddles Day': 'St. Paddles',
+    'Deception Pass Challenge': 'Deception Pass',
+    'MAKAH COAST RACE': 'Makah',
+    # Sound Rowers
+    'Squaxin Island': 'Squaxin',
+    'Commencement Bay': 'Comm. Bay',
+    'Mercer Island Sausage Pull': 'Mercer Is.',
+    'Mercer Island': 'Mercer Is.',
+    'Rat Island Regatta': 'Rat Island',
+    'Elk River Challenge': 'Elk River',
+    'Wenatchee Guano Rocks': 'Guano Rocks',
+    'Round Shaw': 'Round Shaw',
+    'Budd Inlet': 'Budd Inlet',
+}
+
+
+def _short_label(name: str) -> str:
+    """Generate a short chart label (<= ~12 chars) from a race name."""
+    base = name.split(' — ')[0].strip()
+    if base in _SHORT_LABELS:
+        return _SHORT_LABELS[base]
+    if 'Peter Marcus' in base:
+        return 'Peter Marcus'
+    if 'PNWORCA Winter Series' in base and '#' in base:
+        n = base.rsplit('#', 1)[-1].split(':')[0].strip()
+        return f'PNWORCA #{n}'
+    if '#' in base:
+        return f'#{base.rsplit("#", 1)[-1].strip()}'
+    # Date-suffixed: "Salmon Bay Paddle Monday Race 20170501" -> "05/01"
+    m = _re_module.search(r'20\d{2}(\d{2})(\d{2})$', base)
+    if m:
+        return f'{m.group(1)}/{m.group(2)}'
+    # Strip "Sound Rowers: " prefix and year suffix
+    base = _re_module.sub(r'^Sound Rowers:\s*', '', base)
+    base = _re_module.sub(r'\s+\d{4}.*$', '', base).strip()
+    # Known short names
+    for k, v in _SHORT_MAP.items():
+        if k.lower() in base.lower():
+            return v
+    # Strip year prefix
+    base = _re_module.sub(r'^(BEPC\s+)?\d{4}\s+', '', base)
+    return base[:12]
+
+
 def _build_traj_series(races: list, colors: list) -> tuple:
     """Build chart_pts, chart_hpts, chart_hnum dicts for a list of races."""
     racer_pts: dict[str, list] = {}
     racer_hpts: dict[str, list] = {}
     racer_hnum: dict[str, list] = {}
     race_labels = []
-
-    # Short label mapping for chart x-axis — keyed on base race name (before " — ")
-    _SHORT_LABELS = {
-        # PNW Regional slugs from Jericho
-        'Pnworca1': 'PNWORCA #1', 'Pnworca2': 'PNWORCA #2', 'Pnworca3': 'PNWORCA #3',
-        'Pnworca5': 'PNWORCA #5', 'Pnworca6': 'PNWORCA #6',
-        'Cdnssmallboats': 'CDN Small Boats',
-        'Salmonrow': 'Salmon Row',
-        'Gorgedownwind': 'Gorge Downwind',
-        'Keatschop': 'Keats Chop',
-        'Supchallenge': 'SUP Challenge',
-        'Islandironsmallboats': 'Island Iron',
-        'Dagrind': 'Da Grind',
-        'Wutg': 'WUTG',
-        'Weapon': 'Weapon',
-        'Whipper': 'Whipper',
-        'Chicken': 'Chicken',
-        'Flcc': 'FLCC',
-        'Board the Fjord 2025': 'Fjord \'25',
-    }
-
-    def _short_label(name: str) -> str:
-        import re as _re
-        base = name.split(' — ')[0].strip()
-        if base in _SHORT_LABELS:
-            return _SHORT_LABELS[base]
-        # "2025 Peter Marcus Rough Water Race" -> "Peter Marcus"
-        if 'Peter Marcus' in base:
-            return 'Peter Marcus'
-        # "2025 PNWORCA Winter Series #7 : SPOCC" -> "PNWORCA #7"
-        if 'PNWORCA Winter Series' in base and '#' in base:
-            n = base.rsplit('#', 1)[-1].split(':')[0].strip()
-            return f'PNWORCA #{n}'
-        # BEPC/numbered series: "BEPC 2025 Race Series #18" -> "#18"
-        if '#' in base:
-            return f'#{base.rsplit("#", 1)[-1].strip()}'
-        # Date-suffixed names: "Salmon Bay Paddle Monday Race 20170501" -> "05/01"
-        m = _re.search(r'20\d{2}(\d{2})(\d{2})$', base)
-        if m:
-            return f'{m.group(1)}/{m.group(2)}'
-        # Special events: strip year prefix and truncate
-        base = _re.sub(r'^(BEPC\s+)?\d{4}\s+', '', base)  # remove year prefix
-        # Known short names
-        short_map = {
-            'Halloween Race': 'Halloween', 'Halloween': 'Halloween',
-            "New Year's Paddle Race": "New Year's",
-            'Paddle Your Heart Out - Race': 'Heart Out',
-            'Post Poultry Paddle': 'Post Poultry',
-            'Alderbrook St. Paddles Day Race': "St. Paddles",
-            'Alderbrook St. Paddles Day': "St. Paddles",
-            'Deception Pass Challenge': 'Deception Pass',
-            'MAKAH COAST RACE': 'Makah',
-        }
-        for k, v in short_map.items():
-            if k.lower() in base.lower():
-                return v
-        return base[:12]  # fallback truncate to 12
 
     for race in races:
         label = _short_label(race["name"])
@@ -1196,7 +1201,7 @@ document.getElementById('racer-select').addEventListener('change', function() {
 
                     last = results[-1]
                     cid = f"{club_id}-{year}-{_slug(craft)}"
-                    race_labels = [f'#{r["name"].rsplit("#",1)[-1].strip()}' for r in results]
+                    race_labels = [_short_label(r["name"]) for r in results]
                     pts_data = [r["season_points"] for r in results]
                     hpts_data = [r["season_handicap_points"] for r in results]
                     hcap_data = [round(r["handicap_post"], 4) for r in results]
