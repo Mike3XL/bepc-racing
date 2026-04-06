@@ -538,9 +538,11 @@ def _scan_pacificmultisports(verbose: bool = True) -> list[dict]:
     import urllib.request, re as _re
     catalog_path = DATA_DIR / "sources" / "pacificmultisports_events.json"
     known_rr_ids = set()
+    excluded_rr_ids = set()
     if catalog_path.exists():
         catalog = json.loads(catalog_path.read_text())
         known_rr_ids = {e["rr_id"] for e in catalog.get("events", []) if e.get("rr_id")}
+        excluded_rr_ids = {e["rr_id"] for e in catalog.get("excluded", []) if e.get("rr_id")}
 
     paddling_keywords = ['peter marcus', 'gorge', 'narrows', 'keats', 'fjord', 'rough water',
                          'paddle', 'kayak', 'surfski', 'sup', 'outrigger', 'rat island',
@@ -570,6 +572,8 @@ def _scan_pacificmultisports(verbose: bool = True) -> list[dict]:
             if not any(k in name.lower() for k in paddling_keywords):
                 continue
             if rr_id and rr_id in known_rr_ids:
+                continue
+            if rr_id and rr_id in excluded_rr_ids:
                 continue
             new_events.append({"gbrc_id": eid, "rr_id": rr_id, "name": name})
             if verbose:

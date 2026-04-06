@@ -1,6 +1,16 @@
 {
   "source": "Pacific Multisports (gbrc.pacificmultisports.com)",
   "note": "gbrc_id = Pacific Multisports event ID, rr_id = raceresult.com event ID (used for API access). rr_id fetched by inspecting page source.",
+  "excluded": [
+    {"gbrc_id": 1103, "rr_id": 263142, "name": "2023 Bellingham Bay Marathon", "reason": "Running event (5K/10K/half/full marathon) — no paddle craft"},
+    {"gbrc_id": 1170, "rr_id": 306297, "name": "2024 Bellingham Bay Marathon", "reason": "Running event — no paddle craft"},
+    {"gbrc_id": 1200, "rr_id": 298474, "name": "2024 The Gorge Outrigger Canoe Race", "reason": "OC6 team boats only (Unlimited/Spec categories) — outside PNW League small boat scope"},
+    {"gbrc_id": 1300, "rr_id": 350871, "name": "2025 The Gorge Outrigger Canoe Race", "reason": "OC6 team boats only — outside PNW League small boat scope"},
+    {"gbrc_id": 1203, "rr_id": 287268, "name": "2024 Cascadia Super Gravel", "reason": "Cycling/gravel event — not paddling"},
+    {"gbrc_id": 1224, "rr_id": 293432, "name": "2024 Galbraith Supreme", "reason": "Mountain biking event — not paddling"},
+    {"gbrc_id": 1280, "rr_id": 345446, "name": "2025 Galbraith Supreme", "reason": "Mountain biking event — not paddling"},
+    {"gbrc_id": 1298, "rr_id": 336369, "name": "2025 Cascadia Super Gravel", "reason": "Cycling/gravel event — not paddling"}
+  ],
   "events": [
     {"gbrc_id": 1006, "rr_id": null,   "year": 2022, "date": "Feb 26, 2022", "name": "2022 BBOP PNWORCA Winter Series #4",    "type": "pnw-regional"},
     {"gbrc_id": 1014, "rr_id": null,   "year": 2022, "date": "Mar 26, 2022", "name": "2022 SPOCC PNWORCA Winter Series #7",   "type": "pnw-regional"},
