@@ -145,12 +145,12 @@ def _nav(active: str = "", prefix: str = "", data: dict = None) -> str:
 </nav>"""
 
 
-def _selector_bar(data: dict, show_season: bool = True) -> str:
+def _selector_bar(data: dict, show_season: bool = True, racer_clubs: list = None) -> str:
     """Horizontal selector bar below navbar: club pills + season dropdown."""
     if not data:
         return ""
 
-    # Club pill buttons
+    # Club pill buttons — only show clubs the racer has data for (if racer_clubs specified)
     club_btns = ""
     cfg_path = Path(__file__).parent.parent / "data" / "clubs.yaml"
     clubs_cfg = {}
@@ -162,6 +162,8 @@ def _selector_bar(data: dict, show_season: bool = True) -> str:
         except Exception:
             pass
     for club_id, club in data["clubs"].items():
+        if racer_clubs is not None and club_id not in racer_clubs:
+            continue
         short = clubs_cfg.get(club_id, {}).get("short_name", club.get("name", club_id))
         club_btns += f'<button type="button" class="btn btn-sm btn-outline-secondary" data-club="{club_id}">{short}</button>\n'
 
@@ -1177,26 +1179,14 @@ document.getElementById('racer-select').addEventListener('change', function() {
         all_charts_js = ""
         body_html = ""
 
+        racer_clubs = list(by_club.keys())  # clubs this racer has data for
+
         for club_id, years in sorted(by_club.items()):
-            club_name = data["clubs"][club_id]["name"]
             body_html += f'<div data-club="{club_id}" style="display:none">'
-            body_html += f'<h4 class="mt-4">{club_name}</h4>'
 
-            # Season tabs
-            season_keys = sorted(years.keys())  # ascending: 2024, 2025
-            current_season_key = data["clubs"][club_id]["current_season"]
-            multi_season = True  # always show season tabs
-            body_html += f'<ul class="nav nav-tabs mb-2">'
-            for si, yr in enumerate(season_keys):
-                    active = "active" if yr == current_season_key else ""
-                    body_html += f'<li class="nav-item"><button class="nav-link {active}" data-bs-toggle="tab" data-bs-target="#s-{club_id}-{yr}">{yr}</button></li>'
-            body_html += '</ul><div class="tab-content">'
-
-            for si, year in enumerate(season_keys):
-                crafts = years[year]
-                active = "active" if year == current_season_key else ""
-                wrap_open = f'<div class="tab-pane {active}" id="s-{club_id}-{year}">'
-                wrap_close = "</div>"
+            for year, crafts in sorted(years.items()):
+                current_season_key = data["clubs"][club_id]["current_season"]
+                body_html += f'<div data-season="{year}" style="display:none">'
 
                 craft_keys = sorted(crafts.keys())
                 craft_tabs = '<ul class="nav nav-tabs mb-2">'
@@ -1268,10 +1258,8 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 </table>{cw_close}"""
 
                 craft_content += "</div>"  # close tab-content div
+                body_html += f"{craft_tabs}{craft_content}</div>"  # close data-season div
 
-                body_html += f"{wrap_open}{craft_tabs}{craft_content}{wrap_close}"
-
-            body_html += "</div>"  # close tab-content
             body_html += "</div>"  # close data-club div
 
         # Build list of available (club, year) tab IDs for JS
@@ -1282,41 +1270,45 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
         ])
 
         season_tab_js = f"""<script>
-window.addEventListener('load', () => {{
-  const target = getSeason('{current_year}');
-  const tabs = {available_tabs};
-  const exact = tabs.find(t => t.endsWith('-' + target));
-  const best = exact || tabs.slice().sort((a,b) => {{
-    const ya = parseInt(a.split('-').pop()), yb = parseInt(b.split('-').pop()), yt = parseInt(target);
-    return Math.abs(ya-yt) - Math.abs(yb-yt);
-  }})[0];
-  if (best) {{
-    const btn = document.querySelector(`[data-bs-target="#${{best}}"]`);
-    if (btn) bootstrap.Tab.getOrCreateInstance(btn).show();
-  }}
-  // Save year to localStorage whenever a season tab is clicked
-  document.querySelectorAll('[data-bs-target^="#s-"]').forEach(btn => {{
-    btn.addEventListener('shown.bs.tab', () => {{
-      const year = btn.getAttribute('data-bs-target').split('-').pop();
-      setSeason(year);
+(function() {{
+  var club = localStorage.getItem('bepc_club') || '{data["current_club"]}';
+  var season = getSeason('{current_year}');
+
+  function showClubSeason(c, s) {{
+    // Show correct club
+    document.querySelectorAll('[data-club]').forEach(function(el) {{
+      el.style.display = el.dataset.club === c ? '' : 'none';
     }});
+    // Show correct season within that club
+    document.querySelectorAll('[data-club="' + c + '"] [data-season]').forEach(function(el) {{
+      el.style.display = el.dataset.season === s ? '' : 'none';
+    }});
+  }}
+
+  showClubSeason(club, season);
+
+  // Season selector change
+  var sel = document.getElementById('season-select');
+  if (sel) sel.addEventListener('change', function() {{
+    setSeason(this.value);
+    showClubSeason(localStorage.getItem('bepc_club') || '{data["current_club"]}', this.value);
   }});
+
   // Restore saved craft tab
-  const savedCraft = localStorage.getItem('bepc_craft');
+  var savedCraft = localStorage.getItem('bepc_craft');
   if (savedCraft) {{
-    const craftBtn = document.querySelector(`[data-bs-target="#${{savedCraft}}"]`);
+    var craftBtn = document.querySelector('[data-bs-target="#' + savedCraft + '"]');
     if (craftBtn) bootstrap.Tab.getOrCreateInstance(craftBtn).show();
   }}
-  // Save craft tab selection
-  document.querySelectorAll('[data-bs-target^="#c-"]').forEach(btn => {{
-    btn.addEventListener('shown.bs.tab', () => {{
+  document.querySelectorAll('[data-bs-target^="#c-"]').forEach(function(btn) {{
+    btn.addEventListener('shown.bs.tab', function() {{
       localStorage.setItem('bepc_craft', btn.getAttribute('data-bs-target').substring(1));
     }});
   }});
-}});
+}})();
 </script>"""
 
-        html = _head(name, _CHARTJS) + _nav("Racers", prefix="../", data=data) + _selector_bar(data) + f"""
+        html = _head(name, _CHARTJS) + _nav("Racers", prefix="../", data=data) + _selector_bar(data, racer_clubs=racer_clubs) + f"""
 <div class="container">
   {racer_nav}
   <h2>{name}</h2>
@@ -1324,15 +1316,7 @@ window.addEventListener('load', () => {{
 </div>
 <script>{all_charts_js}</script>
 {nav_js}
-{season_tab_js}
-<script>
-(function() {{
-  var club = localStorage.getItem('bepc_club') || '{data["current_club"]}';
-  document.querySelectorAll('[data-club]').forEach(function(el) {{
-    el.style.display = el.dataset.club === club ? '' : 'none';
-  }});
-}})();
-</script>""" + _foot()
+{season_tab_js}""" + _foot()
 
         (SITE_DIR / "racer" / f"{slug}.html").write_text(html)
 
