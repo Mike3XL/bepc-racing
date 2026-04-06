@@ -2,31 +2,183 @@
   "source": "Pacific Multisports (gbrc.pacificmultisports.com)",
   "note": "gbrc_id = Pacific Multisports event ID, rr_id = raceresult.com event ID (used for API access). rr_id fetched by inspecting page source.",
   "excluded": [
-    {"gbrc_id": 1103, "rr_id": 263142, "name": "2023 Bellingham Bay Marathon", "reason": "Running event (5K/10K/half/full marathon) — no paddle craft"},
-    {"gbrc_id": 1170, "rr_id": 306297, "name": "2024 Bellingham Bay Marathon", "reason": "Running event — no paddle craft"},
-    {"gbrc_id": 1200, "rr_id": 298474, "name": "2024 The Gorge Outrigger Canoe Race", "reason": "OC6 team boats only (Unlimited/Spec categories) — outside PNW League small boat scope"},
-    {"gbrc_id": 1300, "rr_id": 350871, "name": "2025 The Gorge Outrigger Canoe Race", "reason": "OC6 team boats only — outside PNW League small boat scope"},
-    {"gbrc_id": 1203, "rr_id": 287268, "name": "2024 Cascadia Super Gravel", "reason": "Cycling/gravel event — not paddling"},
-    {"gbrc_id": 1224, "rr_id": 293432, "name": "2024 Galbraith Supreme", "reason": "Mountain biking event — not paddling"},
-    {"gbrc_id": 1280, "rr_id": 345446, "name": "2025 Galbraith Supreme", "reason": "Mountain biking event — not paddling"},
-    {"gbrc_id": 1298, "rr_id": 336369, "name": "2025 Cascadia Super Gravel", "reason": "Cycling/gravel event — not paddling"}
+    {
+      "gbrc_id": 1103,
+      "rr_id": 263142,
+      "name": "2023 Bellingham Bay Marathon",
+      "reason": "Running event (5K/10K/half/full marathon) \u2014 no paddle craft"
+    },
+    {
+      "gbrc_id": 1170,
+      "rr_id": 306297,
+      "name": "2024 Bellingham Bay Marathon",
+      "reason": "Running event \u2014 no paddle craft"
+    },
+    {
+      "gbrc_id": 1200,
+      "rr_id": 298474,
+      "name": "2024 The Gorge Outrigger Canoe Race",
+      "reason": "OC6 team boats only (Unlimited/Spec categories) \u2014 outside PNW League small boat scope"
+    },
+    {
+      "gbrc_id": 1300,
+      "rr_id": 350871,
+      "name": "2025 The Gorge Outrigger Canoe Race",
+      "reason": "OC6 team boats only \u2014 outside PNW League small boat scope"
+    },
+    {
+      "gbrc_id": 1203,
+      "rr_id": 287268,
+      "name": "2024 Cascadia Super Gravel",
+      "reason": "Cycling/gravel event \u2014 not paddling"
+    },
+    {
+      "gbrc_id": 1224,
+      "rr_id": 293432,
+      "name": "2024 Galbraith Supreme",
+      "reason": "Mountain biking event \u2014 not paddling"
+    },
+    {
+      "gbrc_id": 1280,
+      "rr_id": 345446,
+      "name": "2025 Galbraith Supreme",
+      "reason": "Mountain biking event \u2014 not paddling"
+    },
+    {
+      "gbrc_id": 1298,
+      "rr_id": 336369,
+      "name": "2025 Cascadia Super Gravel",
+      "reason": "Cycling/gravel event \u2014 not paddling"
+    }
   ],
   "events": [
-    {"gbrc_id": 1006, "rr_id": null,   "year": 2022, "date": "Feb 26, 2022", "name": "2022 BBOP PNWORCA Winter Series #4",    "type": "pnw-regional"},
-    {"gbrc_id": 1014, "rr_id": null,   "year": 2022, "date": "Mar 26, 2022", "name": "2022 SPOCC PNWORCA Winter Series #7",   "type": "pnw-regional"},
-    {"gbrc_id": 1007, "rr_id": 195487, "year": 2022, "date": "Mar 19, 2022", "name": "2022 Bellingham Bay Rough Water Race",  "type": "pnw-regional"},
-    {"gbrc_id": 1159, "rr_id": 266070, "year": 2023, "date": null,           "name": "2023 Peter Marcus - Paddle 4 Food",    "type": "pnw-regional"},
-    {"gbrc_id": 1173, "rr_id": 299092, "year": 2024, "date": null,           "name": "2024 Gorge Downwind Champs",            "type": "pnw-regional"},
-    {"gbrc_id": 1190, "rr_id": 281775, "year": 2024, "date": "Mar 16, 2024", "name": "2024 Peter Marcus Rough Water Race",   "type": "pnw-regional"},
-    {"gbrc_id": 1200, "rr_id": 298474, "year": 2024, "date": null,           "name": "2024 The Gorge Outrigger Canoe Race",  "type": "pnw-regional"},
-    {"gbrc_id": 1216, "rr_id": 313433, "year": 2024, "date": null,           "name": "2024 Narrows Challenge",               "type": "pnw-regional"},
-    {"gbrc_id": 1246, "rr_id": 305042, "year": 2024, "date": null,           "name": "2024 BBOP Challenge - Outrigger Canoe Race", "type": "pnw-regional"},
-    {"gbrc_id": 1250, "rr_id": 313487, "year": 2024, "date": null,           "name": "2024 Peter Marcus - Paddle 4 Food",   "type": "pnw-regional"},
-    {"gbrc_id": 1270, "rr_id": 351602, "year": 2025, "date": null,           "name": "2025 Gorge Downwind Champs",           "type": "pnw-regional"},
-    {"gbrc_id": 1287, "rr_id": 329920, "year": 2025, "date": "Mar 15, 2025", "name": "2025 Peter Marcus Rough Water Race",  "type": "pnw-regional"},
-    {"gbrc_id": 1304, "rr_id": 366857, "year": 2025, "date": null,           "name": "2025 Narrows Challenge",              "type": "pnw-regional"},
-    {"gbrc_id": 1332, "rr_id": 367960, "year": 2025, "date": null,           "name": "2025 Peter Marcus - Paddle 4 Food",  "type": "pnw-regional"},
-    {"gbrc_id": 1363, "rr_id": 388006, "year": 2026, "date": "Mar 14, 2026", "name": "2026 Peter Marcus Rough Water Race",  "type": "pnw-regional"},
-    {"gbrc_id": 1368, "rr_id": 384532, "year": 2026, "date": null,           "name": "2026 BBOP PNWORCA Winter Series #4",  "type": "pnw-regional"}
+    {
+      "gbrc_id": 1006,
+      "rr_id": null,
+      "year": 2022,
+      "date": "Feb 26, 2022",
+      "name": "2022 BBOP PNWORCA Winter Series #4",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1014,
+      "rr_id": null,
+      "year": 2022,
+      "date": "Mar 26, 2022",
+      "name": "2022 SPOCC PNWORCA Winter Series #7",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1007,
+      "rr_id": 195487,
+      "year": 2022,
+      "date": "Mar 19, 2022",
+      "name": "2022 Bellingham Bay Rough Water Race",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1159,
+      "rr_id": 266070,
+      "year": 2023,
+      "date": "Oct 15, 2023",
+      "name": "2023 Peter Marcus - Paddle 4 Food",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1173,
+      "rr_id": 299092,
+      "year": 2024,
+      "date": "Jul 12, 2024",
+      "name": "2024 Gorge Downwind Champs",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1190,
+      "rr_id": 281775,
+      "year": 2024,
+      "date": "Mar 16, 2024",
+      "name": "2024 Peter Marcus Rough Water Race",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1200,
+      "rr_id": 298474,
+      "year": 2024,
+      "date": "Jul 6, 2024",
+      "name": "2024 The Gorge Outrigger Canoe Race",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1216,
+      "rr_id": 313433,
+      "year": 2024,
+      "date": "Oct 12, 2024",
+      "name": "2024 Narrows Challenge",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1246,
+      "rr_id": 305042,
+      "year": 2024,
+      "date": "Aug 24, 2024",
+      "name": "2024 BBOP Challenge - Outrigger Canoe Race",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1250,
+      "rr_id": 313487,
+      "year": 2024,
+      "date": "Oct 13, 2024",
+      "name": "2024 Peter Marcus - Paddle 4 Food",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1270,
+      "rr_id": 351602,
+      "year": 2025,
+      "date": "Jul 18, 2025",
+      "name": "2025 Gorge Downwind Champs",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1287,
+      "rr_id": 329920,
+      "year": 2025,
+      "date": "Mar 15, 2025",
+      "name": "2025 Peter Marcus Rough Water Race",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1304,
+      "rr_id": 366857,
+      "year": 2025,
+      "date": "Oct 11, 2025",
+      "name": "2025 Narrows Challenge",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1332,
+      "rr_id": 367960,
+      "year": 2025,
+      "date": "Oct 18, 2025",
+      "name": "2025 Peter Marcus - Paddle 4 Food",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1363,
+      "rr_id": 388006,
+      "year": 2026,
+      "date": "Mar 14, 2026",
+      "name": "2026 Peter Marcus Rough Water Race",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1368,
+      "rr_id": 384532,
+      "year": 2026,
+      "date": "Feb 21, 2026",
+      "name": "2026 BBOP PNWORCA Winter Series #4",
+      "type": "pnw-regional"
+    }
   ]
 }
