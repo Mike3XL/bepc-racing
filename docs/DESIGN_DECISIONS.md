@@ -92,6 +92,8 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 **Implication:** WebScorer organizer IDs stored in `clubs.yaml` under `race_inclusion.include_organizers` per club. `fetch` command reads the club's organizer list. Already in spec — needs wiring.
 
 **Rejected alternative:** Source-first (fetch by scoring system, distribute to clubs) — violates club separability tenet; clubs become dependent on a shared fetch layer.
+
+**Note (2026-04-05):** In practice, some "clubs" in the system are actually race series organized by a club (e.g. Coast Outdoors runs both TNR weekly series and larger open events like Whipper/Board the Fjord). The manifest system handles this naturally — a club's manifest includes whichever series races are relevant, regardless of organizer. No structural change needed yet.
 **Date:** 2026-04-04  
 **Context:** `bepc/generator.py`, `cli.py`, `data/clubs.yaml`
 

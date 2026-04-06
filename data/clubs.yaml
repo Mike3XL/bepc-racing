@@ -16,9 +16,11 @@ clubs:
     gh_url: https://mike3xl.github.io/bepc-racing/
 
     race_inclusion:
-      include_organizers: []           # WebScorer organizer IDs (future automation)
-      include_urls: []                 # specific race URLs always included
-      exclude_urls: []                 # specific races excluded (e.g. silly races)
+      include_organizers:
+        - bepc827                      # Ballard Elks Paddle Club (primary)
+        - 13754                        # Rob Casey (ran early BEPC races 2018)
+      include_urls: []
+      exclude_urls: []
       include_patterns: []
       exclude_patterns: []
 
@@ -53,7 +55,8 @@ clubs:
     gh_url: https://mike3xl.github.io/bepc-racing/
 
     race_inclusion:
-      include_organizers: []
+      include_organizers:
+        - soundrowers                  # Sound Rowers and Paddlers (primary)
       include_urls: []
       exclude_urls: []
       include_patterns: []
@@ -91,7 +94,9 @@ clubs:
     gh_url: https://mike3xl.github.io/bepc-racing/
 
     race_inclusion:
-      include_organizers: []
+      include_organizers:
+        - 90102                        # Salmon Bay Paddle (Alderbrook, Deception Pass, etc.)
+        - 13754                        # Rob Casey (non-BEPC events: Deception Pass Challenge, Makah)
       include_urls: []
       exclude_urls: []
       include_patterns:
@@ -132,6 +137,119 @@ clubs:
         - SUP-1
         - V1
         - FSK-1
+
+    contacts:
+      - role: Handicap System
+        name: Mike Liddell
+        email: mike.liddell@gmail.com
+
+  coast-outdoors:
+    name: Coast Outdoors Paddle Series
+    short_name: Coast Outdoors
+    type: org
+    description: >
+      Weekly paddle race series run by Coast Outdoors (Deep Cove Kayak) in North Vancouver, BC.
+      TNR (Tuesday Night Race) series plus larger open events (Whipper, Board the Fjord).
+    homepage_url: https://www.coastoutdoors.com
+    logo: null
+    gh_branch: gh-pages-coast-outdoors
+    gh_url: null
+
+    race_inclusion:
+      include_organizers:
+        - deepcovekayak                # Coast Outdoors / Deep Cove Kayak
+      include_urls: []
+      exclude_urls: []
+      include_patterns: []
+      exclude_patterns: []
+
+    handicap:
+      establishment_races: 2
+      update_faster: 0.30
+      update_slower: 0.15
+      carry_over: true
+      carry_over_seasons: all
+
+    display:
+      season_mode: annual
+      show_all_time: false
+      min_races_for_page: 1
+      craft_scope: []
+
+    contacts:
+      - role: Handicap System
+        name: Mike Liddell
+        email: mike.liddell@gmail.com
+
+  sckc:
+    name: Seattle Canoe and Kayak Club
+    short_name: SCKC
+    type: org
+    description: >
+      Duck Island Race series and Saturday sprints on Lake Washington, Seattle.
+      Organized by Seattle Canoe and Kayak Club.
+    homepage_url: https://www.sckc.ws
+    logo: null
+    gh_branch: gh-pages-sckc
+    gh_url: null
+
+    race_inclusion:
+      include_organizers:
+        - sckc                         # Seattle Canoe and Kayak Club
+      include_urls: []
+      exclude_urls: []
+      include_patterns: []
+      exclude_patterns: []
+
+    handicap:
+      establishment_races: 2
+      update_faster: 0.30
+      update_slower: 0.15
+      carry_over: false
+      carry_over_seasons: all
+
+    display:
+      season_mode: annual
+      show_all_time: false
+      min_races_for_page: 1
+      craft_scope: []
+
+    contacts:
+      - role: Handicap System
+        name: Mike Liddell
+        email: mike.liddell@gmail.com
+
+  urban-surf:
+    name: Urban Surf / 2100 Project
+    short_name: Urban Surf
+    type: org
+    description: >
+      Short weekly paddle race series in Seattle. Similar format to BEPC.
+    homepage_url: null
+    logo: null
+    gh_branch: gh-pages-urban-surf
+    gh_url: null
+
+    race_inclusion:
+      include_organizers:
+        - "135348"                     # Urban Surf / 2100 Project
+      include_urls: []
+      exclude_urls: []
+      include_patterns: []
+      exclude_patterns: []
+
+    handicap:
+      establishment_races: 2
+      update_faster: 0.30
+      update_slower: 0.15
+      carry_over: false
+      carry_over_seasons: all
+
+    display:
+      season_mode: annual
+      show_all_time: false
+      min_races_for_page: 1
+      craft_scope: []
 
     contacts:
       - role: Handicap System
