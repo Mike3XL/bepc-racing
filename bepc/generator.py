@@ -1251,7 +1251,10 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 
         season_tab_js = f"""<script>
 (function() {{
+  var racer_clubs = {json.dumps(racer_clubs)};
   var club = localStorage.getItem('bepc_club') || '{data["current_club"]}';
+  // If stored club not in this racer's clubs, use first available
+  if (racer_clubs.indexOf(club) === -1) club = racer_clubs[0];
   var season = getSeason('{current_year}');
 
   function showClubSeason(c, s) {{
