@@ -96,8 +96,15 @@ def build_data_json() -> dict:
                 for race in races:
                     for r in race.racer_results:
                         key = (r.canonical_name, r.craft_category)
-                        # Keep the most recent handicap_post for each racer
                         carry_over[key] = (r.handicap_post, True)
+
+                # Rescale carry_over so P33 racer = 1.0
+                if carry_over:
+                    hcap_values = sorted(v[0] for v in carry_over.values())
+                    p33_idx = len(hcap_values) // 3
+                    p33_val = hcap_values[p33_idx]
+                    if p33_val > 0 and p33_val != 1.0:
+                        carry_over = {k: (v[0] / p33_val, v[1]) for k, v in carry_over.items()}
 
         if seasons:
             current_season = max(seasons.keys())

@@ -133,7 +133,28 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 
 ---
 
-## Season vs Year Terminology
+## Handicap Establishment vs Eligibility
+**Date:** 2026-04-05  
+**Context:** `bepc/handicap.py`, `bepc/processor.py`, `bepc/models.py`
+
+**Two distinct concepts:**
+
+- **Established** — handicap has converged. `num_races >= establishment_races`. Gets slow updates (0.30 faster / 0.15 slower), outlier detection active.
+- **Eligible** — can win handicap awards. Requires `carried_over=True` OR `established`. EST badge shown when NOT eligible.
+
+**Season start with carry-over:**
+- Carried-over racers: `num_races=0`, `carried_over=True`
+- They are **eligible** (no EST badge) but **not yet established**
+- First `establishment_races` of new season: fast 50/50 updates, no outlier detection
+- After that: normal slow updates resume
+
+**New racers (no carry-over):**
+- `num_races=0`, `carried_over=False`
+- Not eligible (EST badge shown)
+- Same fast 50/50 updates for first `establishment_races`
+- Become eligible + established after `establishment_races`
+
+**Rationale:** Establishment is about convergence speed, not eligibility. Carried-over racers have a known starting point but may need fast correction after a season gap.
 **Date:** 2026-04-05  
 **Context:** `cli.py`, `bepc/generator.py`, `data/clubs.yaml`
 

@@ -16,7 +16,7 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
                 hcap, carried = val, True
             # Seed num_races at establishment_races so carried-over racers are immediately established
             running[key] = RunningRecord(handicap=hcap, carried_over=carried,
-                                         num_races=establishment_races if carried else 0)
+                                         num_races=0)  # reset for fast updates at season start
 
     for race in races:
         racers = race.racer_results
@@ -62,13 +62,6 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
             # New handicap
             for r in racers:
                 compute_new_handicap(r, par_time, establishment_races=establishment_races)
-
-            # Rescale all handicaps so par racer = 1.0
-            par_new_hcap = par.handicap_post
-            if par_new_hcap > 0 and par_new_hcap != 1.0:
-                scale = 1.0 / par_new_hcap
-                for r in racers:
-                    r.handicap_post = r.handicap_post * scale
         else:
             # Small group: no handicap update, mark as fresh
             for r in racers:
