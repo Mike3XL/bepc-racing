@@ -730,9 +730,12 @@ document.addEventListener('DOMContentLoaded', () => {{
     loadSeason(currentYear);
     const hash = location.hash.replace('#', '');
     if (hash) {{
-      const races = SEASONS[currentYear];
-      const idx = races.findIndex(r => String(r.race_id) === hash);
-      if (idx >= 0) renderRace(idx);
+      // Search all seasons for the race_id
+      let found = false;
+      for (const [yr, races] of Object.entries(SEASONS)) {{
+        const idx = races.findIndex(r => String(r.race_id) === hash);
+        if (idx >= 0) {{ currentYear = yr; sel.value = yr; loadSeason(yr); renderRace(idx); found = true; break; }}
+      }}
     }}
   }});
 }});
