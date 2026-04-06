@@ -73,7 +73,25 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 
 ---
 
-## Platform Multi-Club Architecture
+## Data Fetch Architecture
+**Date:** 2026-04-05  
+**Context:** `cli.py`, `data/clubs.yaml`, `bepc/fetcher*.py`
+
+**Problem:** Race results exist in scoring systems (WebScorer, raceresult, Jericho). Multiple clubs may want the same race. How to organize fetching and storage?
+
+**Decision: Club-first fetch, optionally shared storage**
+
+- **Club is the primary unit** — `clubs.yaml` defines what races belong to each club (organizer IDs, URL patterns, specific events)
+- **Fetch operates per-club** — "fetch BEPC races" pulls from BEPC's configured organizers
+- **Storage is an implementation detail** — `data/raw/` and `data/common/` can be shared or per-club; the **manifest** is the authoritative include list for each club
+- **Fix-up logic** (raw → common conversion, aliases, craft normalization) is per-club — each club needs its own `common/` files. Raw files may be shared.
+- **Cross-club sharing** — if a Sound Rowers race also belongs to PNW League, the common file can be symlinked or copied; manifests handle inclusion independently
+
+**Key tenet:** Clubs must be separable — different clubs can be hosted on different sites or maintained by different people. Club config is self-contained.
+
+**Implication:** WebScorer organizer IDs stored in `clubs.yaml` under `race_inclusion.include_organizers` per club. `fetch` command reads the club's organizer list. Already in spec — needs wiring.
+
+**Rejected alternative:** Source-first (fetch by scoring system, distribute to clubs) — violates club separability tenet; clubs become dependent on a shared fetch layer.
 **Date:** 2026-04-04  
 **Context:** `bepc/generator.py`, `cli.py`, `data/clubs.yaml`
 
