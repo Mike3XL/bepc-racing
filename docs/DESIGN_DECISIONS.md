@@ -169,3 +169,11 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 - Update `current_season` logic in `build_data_json`
 
 **Decision:** No change now. Season = year for all current clubs. Note as technical debt if non-annual seasons are ever needed.
+
+---
+
+## Known Data Quality Issues (to fix)
+
+- **Race ID collisions in PNW Regional** — some races share the same `race_id`, causing wrong links on the Races page (e.g. "2025 Paddle 4 Food Relay" links to PNWORCA #7). Root cause: Jericho and raceresult use different ID namespaces but both get stored as `race_id`. Need to namespace IDs by source (e.g. prefix Jericho IDs).
+- **audit-sources cross-source matching** — "Gorgedownwind" vs "2025 Gorge Downwind Champs" similarity 0.67 < 0.70 threshold, not auto-detected. Consider lowering threshold or adding alias mapping.
+- **Racer name canonicalization** — many duplicate/variant names across sources (e.g. "Mick Liddell" vs "Mike Liddell"). aliases.json handles some but not all.
