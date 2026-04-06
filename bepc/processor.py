@@ -14,7 +14,9 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
                 hcap, carried = val
             else:
                 hcap, carried = val, True
-            running[key] = RunningRecord(handicap=hcap, carried_over=carried)
+            # Seed num_races at establishment_races so carried-over racers are immediately established
+            running[key] = RunningRecord(handicap=hcap, carried_over=carried,
+                                         num_races=establishment_races if carried else 0)
 
     for race in races:
         racers = race.racer_results
