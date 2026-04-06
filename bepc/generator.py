@@ -184,7 +184,7 @@ def _selector_bar(data: dict, show_season: bool = True, racer_clubs: list = None
     <div class="d-flex flex-wrap align-items-center gap-3">
       <div class="d-flex align-items-center gap-2">
         <span class="text-muted small fw-semibold">Club</span>
-        <div class="btn-group" id="club-btn-group" role="group">{club_btns}</div>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group">{club_btns}</div>
       </div>
       {"<div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='width:auto'></select></div>" if show_season else ""}
     </div>
