@@ -781,32 +781,45 @@ _SHORT_MAP = {
 }
 
 
-def _short_label(name: str) -> str:
-    """Generate a short chart label (<= ~12 chars) from a race name."""
+def _short_label(name: str, date: str = "") -> str:
+    """Generate a short chart label in 'MM/DD - <name>' format."""
+    # Parse date prefix
+    date_prefix = ""
+    if date:
+        m = _re_module.search(r'(\w+)\s+(\d+),\s*\d{4}', date)
+        if m:
+            months = {'Jan':'01','Feb':'02','Mar':'03','Apr':'04','May':'05','Jun':'06',
+                      'Jul':'07','Aug':'08','Sep':'09','Oct':'10','Nov':'11','Dec':'12'}
+            mo = months.get(m.group(1)[:3], '??')
+            day = m.group(2).zfill(2)
+            date_prefix = f'{mo}/{day} - '
+
     base = name.split(' — ')[0].strip()
     if base in _SHORT_LABELS:
-        return _SHORT_LABELS[base]
+        return date_prefix + _SHORT_LABELS[base]
     if 'Peter Marcus' in base:
-        return 'Peter Marcus'
+        return date_prefix + 'Peter Marcus'
     if 'PNWORCA Winter Series' in base and '#' in base:
         n = base.rsplit('#', 1)[-1].split(':')[0].strip()
-        return f'PNWORCA #{n}'
+        return date_prefix + f'PNWORCA #{n}'
     if '#' in base:
-        return f'#{base.rsplit("#", 1)[-1].strip()}'
-    # Date-suffixed: "Salmon Bay Paddle Monday Race 20170501" -> "05/01"
+        num = base.rsplit('#', 1)[-1].strip()
+        # BEPC series: "BEPC 2025 Race Series #18" -> "Monday #18"
+        if 'Race Series' in base or 'Monday' in base.lower():
+            return date_prefix + f'Monday #{num.zfill(2)}'
+        return date_prefix + f'#{num}'
+    # Date-suffixed: "Salmon Bay Paddle Monday Race 20170501" -> use date_prefix only + "Monday"
     m = _re_module.search(r'20\d{2}(\d{2})(\d{2})$', base)
     if m:
-        return f'{m.group(1)}/{m.group(2)}'
+        return f'{m.group(1)}/{m.group(2)} - Monday'
     # Strip "Sound Rowers: " prefix and year suffix
     base = _re_module.sub(r'^Sound Rowers:\s*', '', base)
     base = _re_module.sub(r'\s+\d{4}.*$', '', base).strip()
-    # Known short names
     for k, v in _SHORT_MAP.items():
         if k.lower() in base.lower():
-            return v
-    # Strip year prefix
+            return date_prefix + v
     base = _re_module.sub(r'^(BEPC\s+)?\d{4}\s+', '', base)
-    return base[:12]
+    return date_prefix + base[:12]
 
 
 def _build_traj_series(races: list, colors: list) -> tuple:
@@ -817,7 +830,7 @@ def _build_traj_series(races: list, colors: list) -> tuple:
     race_labels = []
 
     for race in races:
-        label = _short_label(race["name"])
+        label = _short_label(race["name"], race.get("date", ""))
         race_labels.append(label)
         n = len(race_labels)
         for r in race["results"]:
@@ -1201,7 +1214,7 @@ document.getElementById('racer-select').addEventListener('change', function() {
 
                     last = results[-1]
                     cid = f"{club_id}-{year}-{_slug(craft)}"
-                    race_labels = [_short_label(r["name"]) for r in results]
+                    race_labels = [_short_label(r["name"], r.get("date", "")) for r in results]
                     pts_data = [r["season_points"] for r in results]
                     hpts_data = [r["season_handicap_points"] for r in results]
                     hcap_data = [round(r["handicap_post"], 4) for r in results]
