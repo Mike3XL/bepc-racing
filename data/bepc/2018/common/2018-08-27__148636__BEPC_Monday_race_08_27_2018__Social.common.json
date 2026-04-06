@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 148636,
+    "distance": "Social",
+    "name": "BEPC Monday race 08/27/2018 \u2014 Social",
+    "displayURL": "https://www.webscorer.com/race?raceid=148636",
+    "date": "Aug 27, 2018",
+    "sport": "Paddling",
+    "startTime": "Monday, August 27, 2018 7:11 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.043478
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Harry Oesterreicher",
+      "craftCategory": "SUP 14\u2019",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1854.1,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1854.1,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

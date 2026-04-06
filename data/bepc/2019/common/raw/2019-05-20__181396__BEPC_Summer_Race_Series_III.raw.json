@@ -1,0 +1,356 @@
+{
+  "RaceInfo": {
+    "RaceId": 181396,
+    "Name": "BEPC Summer Race Series III",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=181396",
+    "Date": "May 20, 2019",
+    "Sport": "Paddling",
+    "StartTime": "Monday, May 20, 2019 6:55 PM (GMT-7)",
+    "OrganizerName": "Ballard Elks Paddle Club",
+    "OrganizerUrl": "http://ballardelks.org/membership/ballard-elks-paddling-club-bepc/",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6746350015026,
+    "Longitude": -122.408369360606,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 3.1",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, June 22, 2019 2:48 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/images/stocksmall/paddling-64x48.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "16",
+          "Name": "Christian Oliver",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "31:21.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.28%",
+          "PercentMedian": "8.58%",
+          "Pace(time / km)": "6:16.3",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "2",
+          "Bib": "9",
+          "Name": "Nick Papa",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "31:48.8",
+          "Difference": "+0:27.1",
+          "PercentBack": "+1.44%",
+          "PercentWinning": "98.58%",
+          "PercentAverage": "8.99%",
+          "PercentMedian": "7.27%",
+          "Pace(time / km)": "6:21.8",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "3",
+          "Bib": "31",
+          "Name": "John Schalka",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "32:59.5",
+          "Difference": "+1:37.8",
+          "PercentBack": "+5.20%",
+          "PercentWinning": "95.06%",
+          "PercentAverage": "5.61%",
+          "PercentMedian": "3.83%",
+          "Pace(time / km)": "6:35.9",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "4",
+          "Bib": "5",
+          "Name": "Patrick Hwang",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "33:07.2",
+          "Difference": "+1:45.5",
+          "PercentBack": "+5.61%",
+          "PercentWinning": "94.69%",
+          "PercentAverage": "5.25%",
+          "PercentMedian": "3.46%",
+          "Pace(time / km)": "6:37.4",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "5",
+          "Bib": "15",
+          "Name": "Chris Grieve",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "34:08.2",
+          "Difference": "+2:46.5",
+          "PercentBack": "+8.85%",
+          "PercentWinning": "91.87%",
+          "PercentAverage": "2.34%",
+          "PercentMedian": "0.49%",
+          "Pace(time / km)": "6:49.6",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "6",
+          "Bib": "13",
+          "Name": "Ivan Storck",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "34:28.5",
+          "Difference": "+3:06.8",
+          "PercentBack": "+9.93%",
+          "PercentWinning": "90.97%",
+          "PercentAverage": "1.37%",
+          "PercentMedian": "-0.49%",
+          "Pace(time / km)": "6:53.7",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "7",
+          "Bib": "69",
+          "Name": "Rob Casey",
+          "Category": "Kayak",
+          "Gender": "Male",
+          "Time": "35:25.6",
+          "Difference": "+4:03.9",
+          "PercentBack": "+12.96%",
+          "PercentWinning": "88.53%",
+          "PercentAverage": "-1.35%",
+          "PercentMedian": "-3.27%",
+          "Pace(time / km)": "7:05.1",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "8",
+          "Bib": "21",
+          "Name": "Lance Jorgenson",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "36:37.9",
+          "Difference": "+5:16.2",
+          "PercentBack": "+16.80%",
+          "PercentWinning": "85.61%",
+          "PercentAverage": "-4.80%",
+          "PercentMedian": "-6.78%",
+          "Pace(time / km)": "7:19.6",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "9",
+          "Bib": "42",
+          "Name": "Alan Lamp",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "39:38.6",
+          "Difference": "+8:16.9",
+          "PercentBack": "+26.41%",
+          "PercentWinning": "79.11%",
+          "PercentAverage": "-13.41%",
+          "PercentMedian": "-15.56%",
+          "Pace(time / km)": "7:55.7",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "10",
+          "Bib": "10",
+          "Name": "Lindi Mondavi",
+          "Category": "Prone",
+          "Gender": "Female",
+          "Time": "39:56.6",
+          "Difference": "+8:34.9",
+          "PercentBack": "+27.36%",
+          "PercentWinning": "78.52%",
+          "PercentAverage": "-14.27%",
+          "PercentMedian": "-16.43%",
+          "Pace(time / km)": "7:59.3",
+          "StartTime": "18:55:34.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Kayak"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "69",
+          "Name": "Rob Casey",
+          "Category": "Kayak",
+          "Gender": "Male",
+          "Time": "35:25.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / km)": "7:05.1",
+          "StartTime": "18:55:34.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Prone"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Lindi Mondavi",
+          "Category": "Prone",
+          "Gender": "Female",
+          "Time": "39:56.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / km)": "7:59.3",
+          "StartTime": "18:55:34.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 14\u2019"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "16",
+          "Name": "Christian Oliver",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "31:21.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.49%",
+          "PercentMedian": "6.74%",
+          "Pace(time / km)": "6:16.3",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "2",
+          "Bib": "9",
+          "Name": "Nick Papa",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "31:48.8",
+          "Difference": "+0:27.1",
+          "PercentBack": "+1.44%",
+          "PercentWinning": "98.58%",
+          "PercentAverage": "7.17%",
+          "PercentMedian": "5.40%",
+          "Pace(time / km)": "6:21.8",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "3",
+          "Bib": "31",
+          "Name": "John Schalka",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "32:59.5",
+          "Difference": "+1:37.8",
+          "PercentBack": "+5.20%",
+          "PercentWinning": "95.06%",
+          "PercentAverage": "3.73%",
+          "PercentMedian": "1.89%",
+          "Pace(time / km)": "6:35.9",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "4",
+          "Bib": "5",
+          "Name": "Patrick Hwang",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "33:07.2",
+          "Difference": "+1:45.5",
+          "PercentBack": "+5.61%",
+          "PercentWinning": "94.69%",
+          "PercentAverage": "3.36%",
+          "PercentMedian": "1.51%",
+          "Pace(time / km)": "6:37.4",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "5",
+          "Bib": "15",
+          "Name": "Chris Grieve",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "34:08.2",
+          "Difference": "+2:46.5",
+          "PercentBack": "+8.85%",
+          "PercentWinning": "91.87%",
+          "PercentAverage": "0.39%",
+          "PercentMedian": "-1.51%",
+          "Pace(time / km)": "6:49.6",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "6",
+          "Bib": "13",
+          "Name": "Ivan Storck",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "34:28.5",
+          "Difference": "+3:06.8",
+          "PercentBack": "+9.93%",
+          "PercentWinning": "90.97%",
+          "PercentAverage": "-0.59%",
+          "PercentMedian": "-2.52%",
+          "Pace(time / km)": "6:53.7",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "7",
+          "Bib": "21",
+          "Name": "Lance Jorgenson",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "36:37.9",
+          "Difference": "+5:16.2",
+          "PercentBack": "+16.80%",
+          "PercentWinning": "85.61%",
+          "PercentAverage": "-6.89%",
+          "PercentMedian": "-8.93%",
+          "Pace(time / km)": "7:19.6",
+          "StartTime": "18:55:34.9"
+        },
+        {
+          "Place": "8",
+          "Bib": "42",
+          "Name": "Alan Lamp",
+          "Category": "SUP 14\u2019",
+          "Gender": "Male",
+          "Time": "39:38.6",
+          "Difference": "+8:16.9",
+          "PercentBack": "+26.41%",
+          "PercentWinning": "79.11%",
+          "PercentAverage": "-15.67%",
+          "PercentMedian": "-17.89%",
+          "Pace(time / km)": "7:55.7",
+          "StartTime": "18:55:34.9"
+        }
+      ]
+    }
+  ]
+}

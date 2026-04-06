@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 137558,
+    "distance": "Social",
+    "name": "BEPC 20180521 \u2014 Social",
+    "displayURL": "https://www.webscorer.com/race?raceid=137558",
+    "date": "May 21, 2018",
+    "sport": "Paddling",
+    "startTime": "Monday, May 21, 2018 7:14 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.035714
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Caroline McCrory",
+      "craftCategory": "SUP 12'6\"",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 1476.1,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1476.1,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

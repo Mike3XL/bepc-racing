@@ -1,0 +1,1408 @@
+{
+  "RaceInfo": {
+    "RaceId": 78725,
+    "Name": "Olympia Harbor Day's SUP Race 2016",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=78725",
+    "Date": "Sep 3, 2016",
+    "Sport": "Paddling - SUP",
+    "StartTime": "Saturday, September 3, 2016 10:00 AM (GMT-7)",
+    "OrganizerName": "Chris Fry - West Bay Paddleboards",
+    "OrganizerUrl": "http://www.westbaypaddleboards.com/",
+    "Country": "United States",
+    "City": "Olympia",
+    "StateOrProvince": "WA",
+    "Latitude": 47.04153564864427,
+    "Longitude": -122.9037094116211,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 2.3",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, September 3, 2016 3:00 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/78725_8d3d445acaa1997.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "3 miles",
+        "Overall": true,
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Chris Merchant",
+          "Distance": "3 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "37:41.5",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "18:16.0",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "18:16.0",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "19:25.5",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "37:41.5",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.46%",
+          "PercentMedian": "7.17%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "2",
+          "Bib": "3",
+          "Name": "Brad Rice",
+          "Distance": "3 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "38:52.5",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:07.7",
+              "LapRank": 2,
+              "LapBehind": "+0:51.7",
+              "RaceTime": "19:07.7",
+              "RaceRank": 2,
+              "RaceBehind": "+0:51.7"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "19:44.8",
+              "LapRank": 2,
+              "LapBehind": "+0:19.3",
+              "RaceTime": "38:52.5",
+              "RaceRank": 2,
+              "RaceBehind": "+1:11.0"
+            }
+          ],
+          "Difference": "+1:11.0",
+          "PercentBack": "+3.14%",
+          "PercentWinning": "96.96%",
+          "PercentAverage": "10.74%",
+          "PercentMedian": "4.26%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "3",
+          "Bib": "7",
+          "Name": "Chris Fry",
+          "Distance": "3 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "39:26.8",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:10.4",
+              "LapRank": 3,
+              "LapBehind": "+0:54.4",
+              "RaceTime": "19:10.4",
+              "RaceRank": 3,
+              "RaceBehind": "+0:54.4"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "20:16.4",
+              "LapRank": 3,
+              "LapBehind": "+0:50.9",
+              "RaceTime": "39:26.8",
+              "RaceRank": 3,
+              "RaceBehind": "+1:45.3"
+            }
+          ],
+          "Difference": "+1:45.3",
+          "PercentBack": "+4.66%",
+          "PercentWinning": "95.55%",
+          "PercentAverage": "9.43%",
+          "PercentMedian": "2.85%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "4",
+          "Bib": "4",
+          "Name": "Sydney Dela Cruz",
+          "Distance": "3 miles",
+          "Category": "12\"6'",
+          "Gender": "Female",
+          "Time": "41:45.6",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "20:23.4",
+              "LapRank": 5,
+              "LapBehind": "+2:07.4",
+              "RaceTime": "20:23.4",
+              "RaceRank": 5,
+              "RaceBehind": "+2:07.4"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "21:22.2",
+              "LapRank": 4,
+              "LapBehind": "+1:56.7",
+              "RaceTime": "41:45.6",
+              "RaceRank": 4,
+              "RaceBehind": "+4:04.1"
+            }
+          ],
+          "Difference": "+4:04.1",
+          "PercentBack": "+10.79%",
+          "PercentWinning": "90.26%",
+          "PercentAverage": "4.12%",
+          "PercentMedian": "-2.85%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "5",
+          "Bib": "9",
+          "Name": "Brian Crane",
+          "Distance": "3 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "42:02.7",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "20:18.5",
+              "LapRank": 4,
+              "LapBehind": "+2:02.5",
+              "RaceTime": "20:18.5",
+              "RaceRank": 4,
+              "RaceBehind": "+2:02.5"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "21:44.2",
+              "LapRank": 5,
+              "LapBehind": "+2:18.7",
+              "RaceTime": "42:02.7",
+              "RaceRank": 5,
+              "RaceBehind": "+4:21.2"
+            }
+          ],
+          "Difference": "+4:21.2",
+          "PercentBack": "+11.55%",
+          "PercentWinning": "89.65%",
+          "PercentAverage": "3.47%",
+          "PercentMedian": "-3.55%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "6",
+          "Bib": "8",
+          "Name": "Carol Peebles",
+          "Distance": "3 miles",
+          "Category": "Surf",
+          "Gender": "Female",
+          "Time": "1:01:30.5",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "28:41.6",
+              "LapRank": 6,
+              "LapBehind": "+10:25.6",
+              "RaceTime": "28:41.6",
+              "RaceRank": 6,
+              "RaceBehind": "+10:25.6"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "32:48.9",
+              "LapRank": 6,
+              "LapBehind": "+13:23.4",
+              "RaceTime": "1:01:30.5",
+              "RaceRank": 6,
+              "RaceBehind": "+23:49.0"
+            }
+          ],
+          "Difference": "+23:49.0",
+          "PercentBack": "+63.19%",
+          "PercentWinning": "61.28%",
+          "PercentAverage": "-41.22%",
+          "PercentMedian": "-51.49%",
+          "StartTime": "10:00:03.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "3 miles",
+        "Gender": "Female",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "4",
+          "Name": "Sydney Dela Cruz",
+          "Distance": "3 miles",
+          "Category": "12\"6'",
+          "Gender": "Female",
+          "Time": "41:45.6",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "20:23.4",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "20:23.4",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "21:22.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "41:45.6",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "19.12%",
+          "PercentMedian": "19.12%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "2",
+          "Bib": "8",
+          "Name": "Carol Peebles",
+          "Distance": "3 miles",
+          "Category": "Surf",
+          "Gender": "Female",
+          "Time": "1:01:30.5",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "28:41.6",
+              "LapRank": 2,
+              "LapBehind": "+8:18.2",
+              "RaceTime": "28:41.6",
+              "RaceRank": 2,
+              "RaceBehind": "+8:18.2"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "32:48.9",
+              "LapRank": 2,
+              "LapBehind": "+11:26.7",
+              "RaceTime": "1:01:30.5",
+              "RaceRank": 2,
+              "RaceBehind": "+19:44.9"
+            }
+          ],
+          "Difference": "+19:44.9",
+          "PercentBack": "+47.29%",
+          "PercentWinning": "67.89%",
+          "PercentAverage": "-19.12%",
+          "PercentMedian": "-19.12%",
+          "StartTime": "10:00:03.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "3 miles",
+        "Gender": "Male",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Chris Merchant",
+          "Distance": "3 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "37:41.5",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "18:16.0",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "18:16.0",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "19:25.5",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "37:41.5",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "4.61%",
+          "PercentMedian": "3.75%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "2",
+          "Bib": "3",
+          "Name": "Brad Rice",
+          "Distance": "3 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "38:52.5",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:07.7",
+              "LapRank": 2,
+              "LapBehind": "+0:51.7",
+              "RaceTime": "19:07.7",
+              "RaceRank": 2,
+              "RaceBehind": "+0:51.7"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "19:44.8",
+              "LapRank": 2,
+              "LapBehind": "+0:19.3",
+              "RaceTime": "38:52.5",
+              "RaceRank": 2,
+              "RaceBehind": "+1:11.0"
+            }
+          ],
+          "Difference": "+1:11.0",
+          "PercentBack": "+3.14%",
+          "PercentWinning": "96.96%",
+          "PercentAverage": "1.62%",
+          "PercentMedian": "0.73%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "3",
+          "Bib": "7",
+          "Name": "Chris Fry",
+          "Distance": "3 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "39:26.8",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:10.4",
+              "LapRank": 3,
+              "LapBehind": "+0:54.4",
+              "RaceTime": "19:10.4",
+              "RaceRank": 3,
+              "RaceBehind": "+0:54.4"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "20:16.4",
+              "LapRank": 3,
+              "LapBehind": "+0:50.9",
+              "RaceTime": "39:26.8",
+              "RaceRank": 3,
+              "RaceBehind": "+1:45.3"
+            }
+          ],
+          "Difference": "+1:45.3",
+          "PercentBack": "+4.66%",
+          "PercentWinning": "95.55%",
+          "PercentAverage": "0.17%",
+          "PercentMedian": "-0.73%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "4",
+          "Bib": "9",
+          "Name": "Brian Crane",
+          "Distance": "3 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "42:02.7",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "20:18.5",
+              "LapRank": 4,
+              "LapBehind": "+2:02.5",
+              "RaceTime": "20:18.5",
+              "RaceRank": 4,
+              "RaceBehind": "+2:02.5"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "21:44.2",
+              "LapRank": 4,
+              "LapBehind": "+2:18.7",
+              "RaceTime": "42:02.7",
+              "RaceRank": 4,
+              "RaceBehind": "+4:21.2"
+            }
+          ],
+          "Difference": "+4:21.2",
+          "PercentBack": "+11.55%",
+          "PercentWinning": "89.65%",
+          "PercentAverage": "-6.40%",
+          "PercentMedian": "-7.36%",
+          "StartTime": "10:00:03.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "6 miles",
+        "Overall": true,
+        "LapCount": "4"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "John Schalka",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:07:32.5",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "16:18.4",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "16:18.4",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "16:51.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "33:09.6",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 3,
+              "LapTime": "17:09.7",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "50:19.3",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 4,
+              "LapTime": "17:13.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:07:32.5",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.97%",
+          "PercentMedian": "21.78%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "2",
+          "Bib": "6",
+          "Name": "James Berns",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:24:10.0",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:44.0",
+              "LapRank": 2,
+              "LapBehind": "+3:25.6",
+              "RaceTime": "19:44.0",
+              "RaceRank": 2,
+              "RaceBehind": "+3:25.6"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "21:26.0",
+              "LapRank": 2,
+              "LapBehind": "+4:34.8",
+              "RaceTime": "41:10.0",
+              "RaceRank": 2,
+              "RaceBehind": "+8:00.4"
+            },
+            {
+              "LapNumber": 3,
+              "LapTime": "21:50.2",
+              "LapRank": 2,
+              "LapBehind": "+4:40.5",
+              "RaceTime": "1:03:00.2",
+              "RaceRank": 2,
+              "RaceBehind": "+12:40.9"
+            },
+            {
+              "LapNumber": 4,
+              "LapTime": "21:09.8",
+              "LapRank": 2,
+              "LapBehind": "+3:56.6",
+              "RaceTime": "1:24:10.0",
+              "RaceRank": 2,
+              "RaceBehind": "+16:37.5"
+            }
+          ],
+          "Difference": "+16:37.5",
+          "PercentBack": "+24.61%",
+          "PercentWinning": "80.25%",
+          "PercentAverage": "-2.22%",
+          "PercentMedian": "2.53%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "3",
+          "Bib": "1",
+          "Name": "Colin Brooks",
+          "Distance": "6 miles",
+          "Category": "12\"6'",
+          "Gender": "Male",
+          "Time": "1:28:31.9",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "20:28.3",
+              "LapRank": 3,
+              "LapBehind": "+4:09.9",
+              "RaceTime": "20:28.3",
+              "RaceRank": 3,
+              "RaceBehind": "+4:09.9"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "22:15.7",
+              "LapRank": 3,
+              "LapBehind": "+5:24.5",
+              "RaceTime": "42:44.0",
+              "RaceRank": 3,
+              "RaceBehind": "+9:34.4"
+            },
+            {
+              "LapNumber": 3,
+              "LapTime": "22:59.3",
+              "LapRank": 4,
+              "LapBehind": "+5:49.6",
+              "RaceTime": "1:05:43.3",
+              "RaceRank": 3,
+              "RaceBehind": "+15:24.0"
+            },
+            {
+              "LapNumber": 4,
+              "LapTime": "22:48.6",
+              "LapRank": 4,
+              "LapBehind": "+5:35.4",
+              "RaceTime": "1:28:31.9",
+              "RaceRank": 3,
+              "RaceBehind": "+20:59.4"
+            }
+          ],
+          "Difference": "+20:59.4",
+          "PercentBack": "+31.08%",
+          "PercentWinning": "76.29%",
+          "PercentAverage": "-7.53%",
+          "PercentMedian": "-2.53%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "4",
+          "Bib": "2",
+          "Name": "Tamara Rice",
+          "Distance": "6 miles",
+          "Category": "12\"6'",
+          "Gender": "Female",
+          "Time": "1:29:06.0",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "21:28.7",
+              "LapRank": 4,
+              "LapBehind": "+5:10.3",
+              "RaceTime": "21:28.7",
+              "RaceRank": 4,
+              "RaceBehind": "+5:10.3"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "22:26.3",
+              "LapRank": 4,
+              "LapBehind": "+5:35.1",
+              "RaceTime": "43:55.0",
+              "RaceRank": 4,
+              "RaceBehind": "+10:45.4"
+            },
+            {
+              "LapNumber": 3,
+              "LapTime": "22:54.5",
+              "LapRank": 3,
+              "LapBehind": "+5:44.8",
+              "RaceTime": "1:06:49.5",
+              "RaceRank": 4,
+              "RaceBehind": "+16:30.2"
+            },
+            {
+              "LapNumber": 4,
+              "LapTime": "22:16.5",
+              "LapRank": 3,
+              "LapBehind": "+5:03.3",
+              "RaceTime": "1:29:06.0",
+              "RaceRank": 4,
+              "RaceBehind": "+21:33.5"
+            }
+          ],
+          "Difference": "+21:33.5",
+          "PercentBack": "+31.92%",
+          "PercentWinning": "75.80%",
+          "PercentAverage": "-8.22%",
+          "PercentMedian": "-3.19%",
+          "StartTime": "10:00:03.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "6 miles",
+        "Gender": "Female",
+        "LapCount": "4"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "2",
+          "Name": "Tamara Rice",
+          "Distance": "6 miles",
+          "Category": "12\"6'",
+          "Gender": "Female",
+          "Time": "1:29:06.0",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "21:28.7",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "21:28.7",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "22:26.3",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "43:55.0",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 3,
+              "LapTime": "22:54.5",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:06:49.5",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 4,
+              "LapTime": "22:16.5",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:29:06.0",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:03.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "6 miles",
+        "Gender": "Male",
+        "LapCount": "4"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "John Schalka",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:07:32.5",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "16:18.4",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "16:18.4",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "16:51.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "33:09.6",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 3,
+              "LapTime": "17:09.7",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "50:19.3",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 4,
+              "LapTime": "17:13.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:07:32.5",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "15.66%",
+          "PercentMedian": "19.75%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "2",
+          "Bib": "6",
+          "Name": "James Berns",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:24:10.0",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:44.0",
+              "LapRank": 2,
+              "LapBehind": "+3:25.6",
+              "RaceTime": "19:44.0",
+              "RaceRank": 2,
+              "RaceBehind": "+3:25.6"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "21:26.0",
+              "LapRank": 2,
+              "LapBehind": "+4:34.8",
+              "RaceTime": "41:10.0",
+              "RaceRank": 2,
+              "RaceBehind": "+8:00.4"
+            },
+            {
+              "LapNumber": 3,
+              "LapTime": "21:50.2",
+              "LapRank": 2,
+              "LapBehind": "+4:40.5",
+              "RaceTime": "1:03:00.2",
+              "RaceRank": 2,
+              "RaceBehind": "+12:40.9"
+            },
+            {
+              "LapNumber": 4,
+              "LapTime": "21:09.8",
+              "LapRank": 2,
+              "LapBehind": "+3:56.6",
+              "RaceTime": "1:24:10.0",
+              "RaceRank": 2,
+              "RaceBehind": "+16:37.5"
+            }
+          ],
+          "Difference": "+16:37.5",
+          "PercentBack": "+24.61%",
+          "PercentWinning": "80.25%",
+          "PercentAverage": "-5.10%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "3",
+          "Bib": "1",
+          "Name": "Colin Brooks",
+          "Distance": "6 miles",
+          "Category": "12\"6'",
+          "Gender": "Male",
+          "Time": "1:28:31.9",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "20:28.3",
+              "LapRank": 3,
+              "LapBehind": "+4:09.9",
+              "RaceTime": "20:28.3",
+              "RaceRank": 3,
+              "RaceBehind": "+4:09.9"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "22:15.7",
+              "LapRank": 3,
+              "LapBehind": "+5:24.5",
+              "RaceTime": "42:44.0",
+              "RaceRank": 3,
+              "RaceBehind": "+9:34.4"
+            },
+            {
+              "LapNumber": 3,
+              "LapTime": "22:59.3",
+              "LapRank": 3,
+              "LapBehind": "+5:49.6",
+              "RaceTime": "1:05:43.3",
+              "RaceRank": 3,
+              "RaceBehind": "+15:24.0"
+            },
+            {
+              "LapNumber": 4,
+              "LapTime": "22:48.6",
+              "LapRank": 3,
+              "LapBehind": "+5:35.4",
+              "RaceTime": "1:28:31.9",
+              "RaceRank": 3,
+              "RaceBehind": "+20:59.4"
+            }
+          ],
+          "Difference": "+20:59.4",
+          "PercentBack": "+31.08%",
+          "PercentWinning": "76.29%",
+          "PercentAverage": "-10.55%",
+          "PercentMedian": "-5.19%",
+          "StartTime": "10:00:03.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "3 miles",
+        "Category": "12\"6'",
+        "Gender": "Female",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "4",
+          "Name": "Sydney Dela Cruz",
+          "Distance": "3 miles",
+          "Category": "12\"6'",
+          "Gender": "Female",
+          "Time": "41:45.6",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "20:23.4",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "20:23.4",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "21:22.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "41:45.6",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:03.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "3 miles",
+        "Category": "14'",
+        "Gender": "Male",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Chris Merchant",
+          "Distance": "3 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "37:41.5",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "18:16.0",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "18:16.0",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "19:25.5",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "37:41.5",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "4.61%",
+          "PercentMedian": "3.75%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "2",
+          "Bib": "3",
+          "Name": "Brad Rice",
+          "Distance": "3 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "38:52.5",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:07.7",
+              "LapRank": 2,
+              "LapBehind": "+0:51.7",
+              "RaceTime": "19:07.7",
+              "RaceRank": 2,
+              "RaceBehind": "+0:51.7"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "19:44.8",
+              "LapRank": 2,
+              "LapBehind": "+0:19.3",
+              "RaceTime": "38:52.5",
+              "RaceRank": 2,
+              "RaceBehind": "+1:11.0"
+            }
+          ],
+          "Difference": "+1:11.0",
+          "PercentBack": "+3.14%",
+          "PercentWinning": "96.96%",
+          "PercentAverage": "1.62%",
+          "PercentMedian": "0.73%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "3",
+          "Bib": "7",
+          "Name": "Chris Fry",
+          "Distance": "3 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "39:26.8",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:10.4",
+              "LapRank": 3,
+              "LapBehind": "+0:54.4",
+              "RaceTime": "19:10.4",
+              "RaceRank": 3,
+              "RaceBehind": "+0:54.4"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "20:16.4",
+              "LapRank": 3,
+              "LapBehind": "+0:50.9",
+              "RaceTime": "39:26.8",
+              "RaceRank": 3,
+              "RaceBehind": "+1:45.3"
+            }
+          ],
+          "Difference": "+1:45.3",
+          "PercentBack": "+4.66%",
+          "PercentWinning": "95.55%",
+          "PercentAverage": "0.17%",
+          "PercentMedian": "-0.73%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "4",
+          "Bib": "9",
+          "Name": "Brian Crane",
+          "Distance": "3 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "42:02.7",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "20:18.5",
+              "LapRank": 4,
+              "LapBehind": "+2:02.5",
+              "RaceTime": "20:18.5",
+              "RaceRank": 4,
+              "RaceBehind": "+2:02.5"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "21:44.2",
+              "LapRank": 4,
+              "LapBehind": "+2:18.7",
+              "RaceTime": "42:02.7",
+              "RaceRank": 4,
+              "RaceBehind": "+4:21.2"
+            }
+          ],
+          "Difference": "+4:21.2",
+          "PercentBack": "+11.55%",
+          "PercentWinning": "89.65%",
+          "PercentAverage": "-6.40%",
+          "PercentMedian": "-7.36%",
+          "StartTime": "10:00:03.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "3 miles",
+        "Category": "Surf",
+        "Gender": "Female",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "8",
+          "Name": "Carol Peebles",
+          "Distance": "3 miles",
+          "Category": "Surf",
+          "Gender": "Female",
+          "Time": "1:01:30.5",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "28:41.6",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "28:41.6",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "32:48.9",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:01:30.5",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:03.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "6 miles",
+        "Category": "12\"6'",
+        "Gender": "Female",
+        "LapCount": "4"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "2",
+          "Name": "Tamara Rice",
+          "Distance": "6 miles",
+          "Category": "12\"6'",
+          "Gender": "Female",
+          "Time": "1:29:06.0",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "21:28.7",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "21:28.7",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "22:26.3",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "43:55.0",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 3,
+              "LapTime": "22:54.5",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:06:49.5",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 4,
+              "LapTime": "22:16.5",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:29:06.0",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:03.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "6 miles",
+        "Category": "12\"6'",
+        "Gender": "Male",
+        "LapCount": "4"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "Colin Brooks",
+          "Distance": "6 miles",
+          "Category": "12\"6'",
+          "Gender": "Male",
+          "Time": "1:28:31.9",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "20:28.3",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "20:28.3",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "22:15.7",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "42:44.0",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 3,
+              "LapTime": "22:59.3",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:05:43.3",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 4,
+              "LapTime": "22:48.6",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:28:31.9",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:03.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "6 miles",
+        "Category": "14'",
+        "Gender": "Male",
+        "LapCount": "4"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "John Schalka",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:07:32.5",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "16:18.4",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "16:18.4",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "16:51.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "33:09.6",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 3,
+              "LapTime": "17:09.7",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "50:19.3",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 4,
+              "LapTime": "17:13.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:07:32.5",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.96%",
+          "PercentMedian": "10.96%",
+          "StartTime": "10:00:03.1"
+        },
+        {
+          "Place": "2",
+          "Bib": "6",
+          "Name": "James Berns",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:24:10.0",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:44.0",
+              "LapRank": 2,
+              "LapBehind": "+3:25.6",
+              "RaceTime": "19:44.0",
+              "RaceRank": 2,
+              "RaceBehind": "+3:25.6"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "21:26.0",
+              "LapRank": 2,
+              "LapBehind": "+4:34.8",
+              "RaceTime": "41:10.0",
+              "RaceRank": 2,
+              "RaceBehind": "+8:00.4"
+            },
+            {
+              "LapNumber": 3,
+              "LapTime": "21:50.2",
+              "LapRank": 2,
+              "LapBehind": "+4:40.5",
+              "RaceTime": "1:03:00.2",
+              "RaceRank": 2,
+              "RaceBehind": "+12:40.9"
+            },
+            {
+              "LapNumber": 4,
+              "LapTime": "21:09.8",
+              "LapRank": 2,
+              "LapBehind": "+3:56.6",
+              "RaceTime": "1:24:10.0",
+              "RaceRank": 2,
+              "RaceBehind": "+16:37.5"
+            }
+          ],
+          "Difference": "+16:37.5",
+          "PercentBack": "+24.61%",
+          "PercentWinning": "80.25%",
+          "PercentAverage": "-10.96%",
+          "PercentMedian": "-10.96%",
+          "StartTime": "10:00:03.1"
+        }
+      ]
+    }
+  ]
+}

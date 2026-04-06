@@ -1,0 +1,834 @@
+{
+  "RaceInfo": {
+    "RaceId": 138390,
+    "Name": "Bepc Monday 05/28/2018",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=138390",
+    "Date": "May 28, 2018",
+    "Sport": "Paddling",
+    "StartTime": "Monday, May 28, 2018 7:15 PM (GMT-7)",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.673801,
+    "Longitude": -122.341904,
+    "StartType": "Wave",
+    "WaveGrouping": "By distance",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 2.9",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Monday, May 28, 2018 8:49 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/138390_8d5c51731b02194.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Cat 1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Christian Oliver",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "24:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.41%",
+          "PercentMedian": "19.90%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Ivan Storck",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "25:25.3",
+          "Difference": "+0:27.3",
+          "PercentBack": "+1.82%",
+          "PercentWinning": "98.21%",
+          "PercentAverage": "15.90%",
+          "PercentMedian": "18.44%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "3",
+          "Name": "Chris Grieve",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "26:47.0",
+          "Difference": "+1:49.0",
+          "PercentBack": "+7.28%",
+          "PercentWinning": "93.22%",
+          "PercentAverage": "11.40%",
+          "PercentMedian": "14.07%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "4",
+          "Name": "Patrick Hwang",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "27:09.1",
+          "Difference": "+2:11.1",
+          "PercentBack": "+8.75%",
+          "PercentWinning": "91.95%",
+          "PercentAverage": "10.18%",
+          "PercentMedian": "12.89%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "5",
+          "Name": "Lance Jorgensen",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "27:10.5",
+          "Difference": "+2:12.5",
+          "PercentBack": "+8.85%",
+          "PercentWinning": "91.87%",
+          "PercentAverage": "10.10%",
+          "PercentMedian": "12.82%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "6",
+          "Name": "Sarah Sandstrom",
+          "Distance": "Cat 1",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "27:30.6",
+          "Difference": "+2:32.6",
+          "PercentBack": "+10.19%",
+          "PercentWinning": "90.75%",
+          "PercentAverage": "8.99%",
+          "PercentMedian": "11.74%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "7",
+          "Name": "Levi Goetz",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "31:10.2",
+          "Difference": "+6:12.2",
+          "PercentBack": "+24.85%",
+          "PercentWinning": "80.10%",
+          "PercentAverage": "-3.11%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "8",
+          "Name": "Justin Mayfield",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "31:20.1",
+          "Difference": "+6:22.1",
+          "PercentBack": "+25.51%",
+          "PercentWinning": "79.68%",
+          "PercentAverage": "-3.66%",
+          "PercentMedian": "-0.53%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "9",
+          "Name": "Evan Vernon",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "32:43.9",
+          "Difference": "+7:45.9",
+          "PercentBack": "+31.10%",
+          "PercentWinning": "76.28%",
+          "PercentAverage": "-8.28%",
+          "PercentMedian": "-5.01%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "10",
+          "Name": "Michele Black",
+          "Distance": "Cat 1",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "32:55.4",
+          "Difference": "+7:57.4",
+          "PercentBack": "+31.87%",
+          "PercentWinning": "75.83%",
+          "PercentAverage": "-8.91%",
+          "PercentMedian": "-5.63%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "11",
+          "Name": "Darrell Kirk",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "33:20.4",
+          "Difference": "+8:22.4",
+          "PercentBack": "+33.54%",
+          "PercentWinning": "74.89%",
+          "PercentAverage": "-10.29%",
+          "PercentMedian": "-6.96%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "12",
+          "Name": "Skyler Palmer",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "35:27.0",
+          "Difference": "+10:29.0",
+          "PercentBack": "+41.99%",
+          "PercentWinning": "70.43%",
+          "PercentAverage": "-17.27%",
+          "PercentMedian": "-13.73%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "13",
+          "Name": "Harry Oesterreicher",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "37:00.9",
+          "Difference": "+12:02.9",
+          "PercentBack": "+48.26%",
+          "PercentWinning": "67.45%",
+          "PercentAverage": "-22.45%",
+          "PercentMedian": "-18.75%",
+          "StartTime": "19:15:54.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Cat 1",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Sarah Sandstrom",
+          "Distance": "Cat 1",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "27:30.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.96%",
+          "PercentMedian": "8.96%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Michele Black",
+          "Distance": "Cat 1",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "32:55.4",
+          "Difference": "+5:24.8",
+          "PercentBack": "+19.68%",
+          "PercentWinning": "83.56%",
+          "PercentAverage": "-8.96%",
+          "PercentMedian": "-8.96%",
+          "StartTime": "19:15:54.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Cat 1",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Christian Oliver",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "24:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.41%",
+          "PercentMedian": "19.90%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Ivan Storck",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "25:25.3",
+          "Difference": "+0:27.3",
+          "PercentBack": "+1.82%",
+          "PercentWinning": "98.21%",
+          "PercentAverage": "15.91%",
+          "PercentMedian": "18.44%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "3",
+          "Name": "Chris Grieve",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "26:47.0",
+          "Difference": "+1:49.0",
+          "PercentBack": "+7.28%",
+          "PercentWinning": "93.22%",
+          "PercentAverage": "11.40%",
+          "PercentMedian": "14.07%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "4",
+          "Name": "Patrick Hwang",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "27:09.1",
+          "Difference": "+2:11.1",
+          "PercentBack": "+8.75%",
+          "PercentWinning": "91.95%",
+          "PercentAverage": "10.19%",
+          "PercentMedian": "12.89%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "5",
+          "Name": "Lance Jorgensen",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "27:10.5",
+          "Difference": "+2:12.5",
+          "PercentBack": "+8.85%",
+          "PercentWinning": "91.87%",
+          "PercentAverage": "10.11%",
+          "PercentMedian": "12.82%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "6",
+          "Name": "Levi Goetz",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "31:10.2",
+          "Difference": "+6:12.2",
+          "PercentBack": "+24.85%",
+          "PercentWinning": "80.10%",
+          "PercentAverage": "-3.11%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "7",
+          "Name": "Justin Mayfield",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "31:20.1",
+          "Difference": "+6:22.1",
+          "PercentBack": "+25.51%",
+          "PercentWinning": "79.68%",
+          "PercentAverage": "-3.65%",
+          "PercentMedian": "-0.53%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "8",
+          "Name": "Evan Vernon",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "32:43.9",
+          "Difference": "+7:45.9",
+          "PercentBack": "+31.10%",
+          "PercentWinning": "76.28%",
+          "PercentAverage": "-8.27%",
+          "PercentMedian": "-5.01%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "9",
+          "Name": "Darrell Kirk",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "33:20.4",
+          "Difference": "+8:22.4",
+          "PercentBack": "+33.54%",
+          "PercentWinning": "74.89%",
+          "PercentAverage": "-10.28%",
+          "PercentMedian": "-6.96%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "10",
+          "Name": "Skyler Palmer",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "35:27.0",
+          "Difference": "+10:29.0",
+          "PercentBack": "+41.99%",
+          "PercentWinning": "70.43%",
+          "PercentAverage": "-17.26%",
+          "PercentMedian": "-13.73%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "11",
+          "Name": "Harry Oesterreicher",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "37:00.9",
+          "Difference": "+12:02.9",
+          "PercentBack": "+48.26%",
+          "PercentWinning": "67.45%",
+          "PercentAverage": "-22.44%",
+          "PercentMedian": "-18.75%",
+          "StartTime": "19:15:54.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Social",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Caroline McCrory",
+          "Distance": "Social",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "19:30.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "35.76%",
+          "PercentMedian": "38.40%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Tamara Wiesmann",
+          "Distance": "Social",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "26:08.5",
+          "Difference": "+6:37.7",
+          "PercentBack": "+33.97%",
+          "PercentWinning": "74.64%",
+          "PercentAverage": "13.93%",
+          "PercentMedian": "17.47%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "3",
+          "Name": "Adam Tischler",
+          "Distance": "Social",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "37:12.5",
+          "Difference": "+17:41.7",
+          "PercentBack": "+90.68%",
+          "PercentWinning": "52.44%",
+          "PercentAverage": "-22.50%",
+          "PercentMedian": "-17.47%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "4",
+          "Name": "Sarah Brown",
+          "Distance": "Social",
+          "Category": "SUP Surf",
+          "Gender": "Female",
+          "Time": "38:37.8",
+          "Difference": "+19:07.0",
+          "PercentBack": "+97.97%",
+          "PercentWinning": "50.51%",
+          "PercentAverage": "-27.18%",
+          "PercentMedian": "-21.96%",
+          "StartTime": "19:15:54.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Social",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Caroline McCrory",
+          "Distance": "Social",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "19:30.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "30.55%",
+          "PercentMedian": "25.36%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Tamara Wiesmann",
+          "Distance": "Social",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "26:08.5",
+          "Difference": "+6:37.7",
+          "PercentBack": "+33.97%",
+          "PercentWinning": "74.64%",
+          "PercentAverage": "6.95%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "3",
+          "Name": "Sarah Brown",
+          "Distance": "Social",
+          "Category": "SUP Surf",
+          "Gender": "Female",
+          "Time": "38:37.8",
+          "Difference": "+19:07.0",
+          "PercentBack": "+97.97%",
+          "PercentWinning": "50.51%",
+          "PercentAverage": "-37.50%",
+          "PercentMedian": "-47.77%",
+          "StartTime": "19:15:54.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Social",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Adam Tischler",
+          "Distance": "Social",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "37:12.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:15:54.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Cat 1",
+        "Category": "SUP 12'6\"",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Sarah Sandstrom",
+          "Distance": "Cat 1",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "27:30.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.96%",
+          "PercentMedian": "8.96%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Michele Black",
+          "Distance": "Cat 1",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "32:55.4",
+          "Difference": "+5:24.8",
+          "PercentBack": "+19.68%",
+          "PercentWinning": "83.56%",
+          "PercentAverage": "-8.96%",
+          "PercentMedian": "-8.96%",
+          "StartTime": "19:15:54.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Cat 1",
+        "Category": "SUP 14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Christian Oliver",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "24:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.41%",
+          "PercentMedian": "19.90%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Ivan Storck",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "25:25.3",
+          "Difference": "+0:27.3",
+          "PercentBack": "+1.82%",
+          "PercentWinning": "98.21%",
+          "PercentAverage": "15.91%",
+          "PercentMedian": "18.44%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "3",
+          "Name": "Chris Grieve",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "26:47.0",
+          "Difference": "+1:49.0",
+          "PercentBack": "+7.28%",
+          "PercentWinning": "93.22%",
+          "PercentAverage": "11.40%",
+          "PercentMedian": "14.07%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "4",
+          "Name": "Patrick Hwang",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "27:09.1",
+          "Difference": "+2:11.1",
+          "PercentBack": "+8.75%",
+          "PercentWinning": "91.95%",
+          "PercentAverage": "10.19%",
+          "PercentMedian": "12.89%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "5",
+          "Name": "Lance Jorgensen",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "27:10.5",
+          "Difference": "+2:12.5",
+          "PercentBack": "+8.85%",
+          "PercentWinning": "91.87%",
+          "PercentAverage": "10.11%",
+          "PercentMedian": "12.82%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "6",
+          "Name": "Levi Goetz",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "31:10.2",
+          "Difference": "+6:12.2",
+          "PercentBack": "+24.85%",
+          "PercentWinning": "80.10%",
+          "PercentAverage": "-3.11%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "7",
+          "Name": "Justin Mayfield",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "31:20.1",
+          "Difference": "+6:22.1",
+          "PercentBack": "+25.51%",
+          "PercentWinning": "79.68%",
+          "PercentAverage": "-3.65%",
+          "PercentMedian": "-0.53%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "8",
+          "Name": "Evan Vernon",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "32:43.9",
+          "Difference": "+7:45.9",
+          "PercentBack": "+31.10%",
+          "PercentWinning": "76.28%",
+          "PercentAverage": "-8.27%",
+          "PercentMedian": "-5.01%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "9",
+          "Name": "Darrell Kirk",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "33:20.4",
+          "Difference": "+8:22.4",
+          "PercentBack": "+33.54%",
+          "PercentWinning": "74.89%",
+          "PercentAverage": "-10.28%",
+          "PercentMedian": "-6.96%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "10",
+          "Name": "Skyler Palmer",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "35:27.0",
+          "Difference": "+10:29.0",
+          "PercentBack": "+41.99%",
+          "PercentWinning": "70.43%",
+          "PercentAverage": "-17.26%",
+          "PercentMedian": "-13.73%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "11",
+          "Name": "Harry Oesterreicher",
+          "Distance": "Cat 1",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "37:00.9",
+          "Difference": "+12:02.9",
+          "PercentBack": "+48.26%",
+          "PercentWinning": "67.45%",
+          "PercentAverage": "-22.44%",
+          "PercentMedian": "-18.75%",
+          "StartTime": "19:15:54.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Social",
+        "Category": "SUP 12'6\"",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Caroline McCrory",
+          "Distance": "Social",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "19:30.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.52%",
+          "PercentMedian": "14.52%",
+          "StartTime": "19:15:54.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Tamara Wiesmann",
+          "Distance": "Social",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "26:08.5",
+          "Difference": "+6:37.7",
+          "PercentBack": "+33.97%",
+          "PercentWinning": "74.64%",
+          "PercentAverage": "-14.52%",
+          "PercentMedian": "-14.52%",
+          "StartTime": "19:15:54.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Social",
+        "Category": "SUP 14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Adam Tischler",
+          "Distance": "Social",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "37:12.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:15:54.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Social",
+        "Category": "SUP Surf",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Sarah Brown",
+          "Distance": "Social",
+          "Category": "SUP Surf",
+          "Gender": "Female",
+          "Time": "38:37.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:15:54.9"
+        }
+      ]
+    }
+  ]
+}

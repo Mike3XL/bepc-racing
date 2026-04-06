@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 169816,
+    "distance": "Short (3 mile)",
+    "name": "Paddle Your Heart Out - Race \u2014 Short (3 mile)",
+    "displayURL": "https://www.webscorer.com/race?raceid=169816",
+    "date": "Feb 16, 2019",
+    "sport": "Paddling",
+    "startTime": "Saturday, February 16, 2019 2:36 PM (GMT-8)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.333333
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Bruce Barry",
+      "craftCategory": "SUP",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1493.2,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1493.2,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "John Hansen",
+      "craftCategory": "SUP",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 2005.6,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2005.6,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "Jennifer Donogh",
+      "craftCategory": "SUP",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 2425.5,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2425.5,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

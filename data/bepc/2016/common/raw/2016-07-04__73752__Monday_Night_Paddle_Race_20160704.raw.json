@@ -1,0 +1,407 @@
+{
+  "RaceInfo": {
+    "RaceId": 73752,
+    "Name": "Monday Night Paddle Race 20160704",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=73752",
+    "Date": "Jul 4, 2016",
+    "Sport": "Paddling",
+    "StartTime": "Monday, July 4, 2016 4:15 PM (GMT-7)",
+    "OrganizerName": "Salmon Bay Paddle",
+    "OrganizerUrl": "http://SalmonBayPaddle.com/",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67472380427891,
+    "Longitude": -122.40838050842285,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 2.3",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, September 17, 2016 4:10 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/73752_8d3a46bd0f36b41.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "1 Lap downwinder",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Chris Grieve",
+          "Distance": "1 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "14:59.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.17%",
+          "PercentMedian": "0.34%",
+          "StartTime": "17:25:33.1"
+        },
+        {
+          "Place": "2",
+          "Name": "Michele Black",
+          "Distance": "1 Lap downwinder",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "15:02.2",
+          "Difference": "+0:03.1",
+          "PercentBack": "+0.34%",
+          "PercentWinning": "99.66%",
+          "PercentAverage": "10.87%",
+          "PercentMedian": "0.00%",
+          "StartTime": "17:25:33.1"
+        },
+        {
+          "Place": "3",
+          "Name": "Lindi Mondavi",
+          "Distance": "1 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Female",
+          "Time": "20:35.3",
+          "Difference": "+5:36.2",
+          "PercentBack": "+37.39%",
+          "PercentWinning": "72.78%",
+          "PercentAverage": "-22.04%",
+          "PercentMedian": "-36.92%",
+          "StartTime": "17:25:33.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "1 Lap downwinder",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Michele Black",
+          "Distance": "1 Lap downwinder",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "15:02.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "15.58%",
+          "PercentMedian": "15.58%",
+          "StartTime": "17:25:33.1"
+        },
+        {
+          "Place": "2",
+          "Name": "Lindi Mondavi",
+          "Distance": "1 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Female",
+          "Time": "20:35.3",
+          "Difference": "+5:33.1",
+          "PercentBack": "+36.92%",
+          "PercentWinning": "73.03%",
+          "PercentAverage": "-15.58%",
+          "PercentMedian": "-15.58%",
+          "StartTime": "17:25:33.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "1 Lap downwinder",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Chris Grieve",
+          "Distance": "1 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "14:59.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "17:25:33.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2 Lap downwinder",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Alex Vaughan",
+          "Distance": "2 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "23:41.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.81%",
+          "PercentMedian": "5.94%",
+          "StartTime": "17:25:33.1"
+        },
+        {
+          "Place": "2",
+          "Name": "Jeff Gassen",
+          "Distance": "2 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "24:41.5",
+          "Difference": "+0:59.8",
+          "PercentBack": "+4.21%",
+          "PercentWinning": "95.96%",
+          "PercentAverage": "10.18%",
+          "PercentMedian": "1.98%",
+          "StartTime": "17:25:33.1"
+        },
+        {
+          "Place": "3",
+          "Name": "Troy Trimmer",
+          "Distance": "2 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "25:41.4",
+          "Difference": "+1:59.7",
+          "PercentBack": "+8.42%",
+          "PercentWinning": "92.23%",
+          "PercentAverage": "6.55%",
+          "PercentMedian": "-1.98%",
+          "StartTime": "17:25:33.1"
+        },
+        {
+          "Place": "4",
+          "Name": "Alan Lamp",
+          "Distance": "2 Lap downwinder",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "35:53.3",
+          "Difference": "+12:11.6",
+          "PercentBack": "+51.46%",
+          "PercentWinning": "66.02%",
+          "PercentAverage": "-30.54%",
+          "PercentMedian": "-42.47%",
+          "StartTime": "17:25:33.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2 Lap downwinder",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Alex Vaughan",
+          "Distance": "2 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "23:41.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.81%",
+          "PercentMedian": "5.94%",
+          "StartTime": "17:25:33.1"
+        },
+        {
+          "Place": "2",
+          "Name": "Jeff Gassen",
+          "Distance": "2 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "24:41.5",
+          "Difference": "+0:59.8",
+          "PercentBack": "+4.21%",
+          "PercentWinning": "95.96%",
+          "PercentAverage": "10.18%",
+          "PercentMedian": "1.98%",
+          "StartTime": "17:25:33.1"
+        },
+        {
+          "Place": "3",
+          "Name": "Troy Trimmer",
+          "Distance": "2 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "25:41.4",
+          "Difference": "+1:59.7",
+          "PercentBack": "+8.42%",
+          "PercentWinning": "92.23%",
+          "PercentAverage": "6.55%",
+          "PercentMedian": "-1.98%",
+          "StartTime": "17:25:33.1"
+        },
+        {
+          "Place": "4",
+          "Name": "Alan Lamp",
+          "Distance": "2 Lap downwinder",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "35:53.3",
+          "Difference": "+12:11.6",
+          "PercentBack": "+51.46%",
+          "PercentWinning": "66.02%",
+          "PercentAverage": "-30.54%",
+          "PercentMedian": "-42.47%",
+          "StartTime": "17:25:33.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "1 Lap downwinder",
+        "Category": "SUP 12'6\"",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Michele Black",
+          "Distance": "1 Lap downwinder",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "15:02.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "17:25:33.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "1 Lap downwinder",
+        "Category": "SUP 14'",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Lindi Mondavi",
+          "Distance": "1 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Female",
+          "Time": "20:35.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "17:25:33.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "1 Lap downwinder",
+        "Category": "SUP 14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Chris Grieve",
+          "Distance": "1 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "14:59.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "17:25:33.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2 Lap downwinder",
+        "Category": "SUP 12'6\"",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Alan Lamp",
+          "Distance": "2 Lap downwinder",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "35:53.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "17:25:33.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2 Lap downwinder",
+        "Category": "SUP 14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Alex Vaughan",
+          "Distance": "2 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "23:41.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "4.04%",
+          "PercentMedian": "4.04%",
+          "StartTime": "17:25:33.1"
+        },
+        {
+          "Place": "2",
+          "Name": "Jeff Gassen",
+          "Distance": "2 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "24:41.5",
+          "Difference": "+0:59.8",
+          "PercentBack": "+4.21%",
+          "PercentWinning": "95.96%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "17:25:33.1"
+        },
+        {
+          "Place": "3",
+          "Name": "Troy Trimmer",
+          "Distance": "2 Lap downwinder",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "25:41.4",
+          "Difference": "+1:59.7",
+          "PercentBack": "+8.42%",
+          "PercentWinning": "92.23%",
+          "PercentAverage": "-4.04%",
+          "PercentMedian": "-4.04%",
+          "StartTime": "17:25:33.1"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 163142,
+    "distance": "Short (3 mile)",
+    "name": "Post Poultry Paddle \u2014 Short (3 mile)",
+    "displayURL": "https://www.webscorer.com/race?raceid=163142",
+    "date": "Dec 1, 2018",
+    "sport": "Paddling",
+    "startTime": "Saturday, December 1, 2018 10:42 AM (GMT-8)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.090909
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Bruce Barry",
+      "craftCategory": "SUP",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1785.1,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1785.1,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Doug Broadbent",
+      "craftCategory": "SUP",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 2420.2,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2420.2,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "Heidi Palmer",
+      "craftCategory": "SUP",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 2693.6,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2693.6,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

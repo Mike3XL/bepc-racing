@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 135678,
+    "distance": "Cat 2",
+    "name": "Ballrd Elks Monday Night Paddle 20180507 \u2014 Cat 2",
+    "displayURL": "https://www.webscorer.com/race?raceid=135678",
+    "date": "May 7, 2018",
+    "sport": "Paddling",
+    "startTime": "Monday, May 7, 2018 7:09 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.071429
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "John Hansen",
+      "craftCategory": "SUP 12'6\"",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1652.2,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1652.2,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Harry Oesterreicher",
+      "craftCategory": "SUP 12'6\"",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 2421.9,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2421.9,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

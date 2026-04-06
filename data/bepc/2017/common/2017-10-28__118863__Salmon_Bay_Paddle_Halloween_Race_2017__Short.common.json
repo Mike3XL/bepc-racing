@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 118863,
+    "distance": "Short",
+    "name": "Salmon Bay Paddle Halloween Race 2017 \u2014 Short",
+    "displayURL": "https://www.webscorer.com/race?raceid=118863",
+    "date": "Oct 28, 2017",
+    "sport": "Paddling",
+    "startTime": "Saturday, October 28, 2017 11:15 AM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.0625
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "John Foster",
+      "craftCategory": "SUP 14'",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1709.8,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1709.8,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Anna Unger",
+      "craftCategory": "SUP 12'6\"",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 1725.4,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1725.4,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

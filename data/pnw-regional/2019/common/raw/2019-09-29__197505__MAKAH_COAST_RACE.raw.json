@@ -1,0 +1,569 @@
+{
+  "RaceInfo": {
+    "RaceId": 197505,
+    "Name": "MAKAH COAST RACE",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=197505",
+    "Date": "Sep 29, 2019",
+    "Sport": "Paddling",
+    "StartTime": "Sunday, September 29, 2019 8:12 AM (GMT-7)",
+    "Country": "United States",
+    "City": "Neah Bay",
+    "StateOrProvince": "WA",
+    "Latitude": 48.3405899908844,
+    "Longitude": -124.666957995039,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 4.1",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Sunday, September 29, 2019 10:18 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/197505_8d745010fe1ff34.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Steve Goodson",
+          "FirstName": "Steve",
+          "LastName": "Goodson",
+          "Category": "Surf Ski",
+          "Age": 51,
+          "Gender": "Male",
+          "Time": "55:43.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "27.13%",
+          "PercentMedian": "29.70%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "2",
+          "Name": "John Schalka",
+          "FirstName": "John",
+          "LastName": "Schalka",
+          "Category": "OC1",
+          "Age": 64,
+          "Gender": "Male",
+          "Time": "57:10.8",
+          "Difference": "+1:27.0",
+          "PercentBack": "+2.60%",
+          "PercentWinning": "97.46%",
+          "PercentAverage": "25.24%",
+          "PercentMedian": "27.87%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "3",
+          "Name": "Patrick Hwang",
+          "FirstName": "Patrick",
+          "LastName": "Hwang",
+          "Category": "OC1",
+          "Age": 45,
+          "Gender": "Male",
+          "Time": "57:20.0",
+          "Difference": "+1:36.2",
+          "PercentBack": "+2.88%",
+          "PercentWinning": "97.20%",
+          "PercentAverage": "25.04%",
+          "PercentMedian": "27.68%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "4",
+          "Name": "Nick Papa",
+          "FirstName": "Nick",
+          "LastName": "Papa",
+          "Category": "SUP 14'",
+          "Age": 33,
+          "Gender": "Male",
+          "Time": "1:16:06.5",
+          "Difference": "+20:22.7",
+          "PercentBack": "+36.57%",
+          "PercentWinning": "73.22%",
+          "PercentAverage": "0.49%",
+          "PercentMedian": "3.99%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "5",
+          "Name": "Chris Grieve",
+          "FirstName": "Chris",
+          "LastName": "Grieve",
+          "Category": "SUP 14'",
+          "Age": 49,
+          "Gender": "Male",
+          "Time": "1:19:16.4",
+          "Difference": "+23:32.6",
+          "PercentBack": "+42.25%",
+          "PercentWinning": "70.30%",
+          "PercentAverage": "-3.65%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "6",
+          "Name": "Mark Stephenson",
+          "FirstName": "Mark",
+          "LastName": "Stephenson",
+          "Category": "SUP 14'",
+          "Age": 48,
+          "Gender": "Male",
+          "Time": "1:24:23.5",
+          "Difference": "+28:39.7",
+          "PercentBack": "+51.43%",
+          "PercentWinning": "66.04%",
+          "PercentAverage": "-10.34%",
+          "PercentMedian": "-6.46%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "7",
+          "Name": "Erica Whisenant",
+          "FirstName": "Erica",
+          "LastName": "Whisenant",
+          "Category": "SUP 14'",
+          "Age": 41,
+          "Gender": "Female",
+          "Time": "1:26:10.4",
+          "Difference": "+30:26.6",
+          "PercentBack": "+54.63%",
+          "PercentWinning": "64.67%",
+          "PercentAverage": "-12.67%",
+          "PercentMedian": "-8.70%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "8",
+          "Name": "Rob Casey",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "Surf Ski",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:35:10.0",
+          "Difference": "+39:26.2",
+          "PercentBack": "+70.76%",
+          "PercentWinning": "58.56%",
+          "PercentAverage": "-24.43%",
+          "PercentMedian": "-20.05%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "9",
+          "Name": "Alan Lamp",
+          "FirstName": "Alan",
+          "LastName": "Lamp",
+          "Category": "SUP 14'",
+          "Age": 44,
+          "Gender": "Male",
+          "Time": "1:36:58.5",
+          "Difference": "+41:14.7",
+          "PercentBack": "+74.01%",
+          "PercentWinning": "57.47%",
+          "PercentAverage": "-26.80%",
+          "PercentMedian": "-22.33%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "-",
+          "Name": "Dave Ter Hark",
+          "FirstName": "Dave",
+          "LastName": "Ter Hark",
+          "Category": "SUP Surf",
+          "Age": 52,
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Erica Whisenant",
+          "FirstName": "Erica",
+          "LastName": "Whisenant",
+          "Category": "SUP 14'",
+          "Age": 41,
+          "Gender": "Female",
+          "Time": "1:26:10.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:12:55.2"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Steve Goodson",
+          "FirstName": "Steve",
+          "LastName": "Goodson",
+          "Category": "Surf Ski",
+          "Age": 51,
+          "Gender": "Male",
+          "Time": "55:43.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "25.96%",
+          "PercentMedian": "28.27%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "2",
+          "Name": "John Schalka",
+          "FirstName": "John",
+          "LastName": "Schalka",
+          "Category": "OC1",
+          "Age": 64,
+          "Gender": "Male",
+          "Time": "57:10.8",
+          "Difference": "+1:27.0",
+          "PercentBack": "+2.60%",
+          "PercentWinning": "97.46%",
+          "PercentAverage": "24.03%",
+          "PercentMedian": "26.40%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "3",
+          "Name": "Patrick Hwang",
+          "FirstName": "Patrick",
+          "LastName": "Hwang",
+          "Category": "OC1",
+          "Age": 45,
+          "Gender": "Male",
+          "Time": "57:20.0",
+          "Difference": "+1:36.2",
+          "PercentBack": "+2.88%",
+          "PercentWinning": "97.20%",
+          "PercentAverage": "23.83%",
+          "PercentMedian": "26.20%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "4",
+          "Name": "Nick Papa",
+          "FirstName": "Nick",
+          "LastName": "Papa",
+          "Category": "SUP 14'",
+          "Age": 33,
+          "Gender": "Male",
+          "Time": "1:16:06.5",
+          "Difference": "+20:22.7",
+          "PercentBack": "+36.57%",
+          "PercentWinning": "73.22%",
+          "PercentAverage": "-1.11%",
+          "PercentMedian": "2.04%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "5",
+          "Name": "Chris Grieve",
+          "FirstName": "Chris",
+          "LastName": "Grieve",
+          "Category": "SUP 14'",
+          "Age": 49,
+          "Gender": "Male",
+          "Time": "1:19:16.4",
+          "Difference": "+23:32.6",
+          "PercentBack": "+42.25%",
+          "PercentWinning": "70.30%",
+          "PercentAverage": "-5.32%",
+          "PercentMedian": "-2.04%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "6",
+          "Name": "Mark Stephenson",
+          "FirstName": "Mark",
+          "LastName": "Stephenson",
+          "Category": "SUP 14'",
+          "Age": 48,
+          "Gender": "Male",
+          "Time": "1:24:23.5",
+          "Difference": "+28:39.7",
+          "PercentBack": "+51.43%",
+          "PercentWinning": "66.04%",
+          "PercentAverage": "-12.12%",
+          "PercentMedian": "-8.62%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "7",
+          "Name": "Rob Casey",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "Surf Ski",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:35:10.0",
+          "Difference": "+39:26.2",
+          "PercentBack": "+70.76%",
+          "PercentWinning": "58.56%",
+          "PercentAverage": "-26.43%",
+          "PercentMedian": "-22.49%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "8",
+          "Name": "Alan Lamp",
+          "FirstName": "Alan",
+          "LastName": "Lamp",
+          "Category": "SUP 14'",
+          "Age": 44,
+          "Gender": "Male",
+          "Time": "1:36:58.5",
+          "Difference": "+41:14.7",
+          "PercentBack": "+74.01%",
+          "PercentWinning": "57.47%",
+          "PercentAverage": "-28.84%",
+          "PercentMedian": "-24.82%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "-",
+          "Name": "Dave Ter Hark",
+          "FirstName": "Dave",
+          "LastName": "Ter Hark",
+          "Category": "SUP Surf",
+          "Age": 52,
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC1",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "John Schalka",
+          "FirstName": "John",
+          "LastName": "Schalka",
+          "Category": "OC1",
+          "Age": 64,
+          "Gender": "Male",
+          "Time": "57:10.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.13%",
+          "PercentMedian": "0.13%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "2",
+          "Name": "Patrick Hwang",
+          "FirstName": "Patrick",
+          "LastName": "Hwang",
+          "Category": "OC1",
+          "Age": 45,
+          "Gender": "Male",
+          "Time": "57:20.0",
+          "Difference": "+0:09.2",
+          "PercentBack": "+0.27%",
+          "PercentWinning": "99.73%",
+          "PercentAverage": "-0.13%",
+          "PercentMedian": "-0.13%",
+          "StartTime": "08:12:55.2"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 14'",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Erica Whisenant",
+          "FirstName": "Erica",
+          "LastName": "Whisenant",
+          "Category": "SUP 14'",
+          "Age": 41,
+          "Gender": "Female",
+          "Time": "1:26:10.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:12:55.2"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Nick Papa",
+          "FirstName": "Nick",
+          "LastName": "Papa",
+          "Category": "SUP 14'",
+          "Age": 33,
+          "Gender": "Male",
+          "Time": "1:16:06.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.60%",
+          "PercentMedian": "6.99%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "2",
+          "Name": "Chris Grieve",
+          "FirstName": "Chris",
+          "LastName": "Grieve",
+          "Category": "SUP 14'",
+          "Age": 49,
+          "Gender": "Male",
+          "Time": "1:19:16.4",
+          "Difference": "+3:09.9",
+          "PercentBack": "+4.16%",
+          "PercentWinning": "96.01%",
+          "PercentAverage": "5.84%",
+          "PercentMedian": "3.13%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "3",
+          "Name": "Mark Stephenson",
+          "FirstName": "Mark",
+          "LastName": "Stephenson",
+          "Category": "SUP 14'",
+          "Age": 48,
+          "Gender": "Male",
+          "Time": "1:24:23.5",
+          "Difference": "+8:17.0",
+          "PercentBack": "+10.88%",
+          "PercentWinning": "90.18%",
+          "PercentAverage": "-0.24%",
+          "PercentMedian": "-3.13%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "4",
+          "Name": "Alan Lamp",
+          "FirstName": "Alan",
+          "LastName": "Lamp",
+          "Category": "SUP 14'",
+          "Age": 44,
+          "Gender": "Male",
+          "Time": "1:36:58.5",
+          "Difference": "+20:52.0",
+          "PercentBack": "+27.42%",
+          "PercentWinning": "78.48%",
+          "PercentAverage": "-15.19%",
+          "PercentMedian": "-18.50%",
+          "StartTime": "08:12:55.2"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP Surf",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Name": "Dave Ter Hark",
+          "FirstName": "Dave",
+          "LastName": "Ter Hark",
+          "Category": "SUP Surf",
+          "Age": 52,
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Surf Ski",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Steve Goodson",
+          "FirstName": "Steve",
+          "LastName": "Goodson",
+          "Category": "Surf Ski",
+          "Age": 51,
+          "Gender": "Male",
+          "Time": "55:43.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "26.13%",
+          "PercentMedian": "26.13%",
+          "StartTime": "08:12:55.2"
+        },
+        {
+          "Place": "2",
+          "Name": "Rob Casey",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "Surf Ski",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:35:10.0",
+          "Difference": "+39:26.2",
+          "PercentBack": "+70.76%",
+          "PercentWinning": "58.56%",
+          "PercentAverage": "-26.13%",
+          "PercentMedian": "-26.13%",
+          "StartTime": "08:12:55.2"
+        }
+      ]
+    }
+  ]
+}

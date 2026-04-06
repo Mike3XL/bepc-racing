@@ -1,0 +1,809 @@
+{
+  "RaceInfo": {
+    "RaceId": 169816,
+    "Name": "Paddle Your Heart Out - Race",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=169816",
+    "Date": "Feb 16, 2019",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, February 16, 2019 2:36 PM (GMT-8)",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6852524420691,
+    "Longitude": -122.386130327473,
+    "StartType": "Wave",
+    "WaveGrouping": "By distance",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 3.1",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, February 16, 2019 3:44 PM (GMT-8)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/169816_8d69468a907963a.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Long (8 mile)",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "5",
+          "Name": "Patrick Hwang",
+          "FirstName": "Patrick",
+          "LastName": "Hwang",
+          "Distance": "Long (8 mile)",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long (8 mile)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "5",
+          "Name": "Patrick Hwang",
+          "FirstName": "Patrick",
+          "LastName": "Hwang",
+          "Distance": "Long (8 mile)",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Medium (5 mile)",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "6",
+          "Name": "Christian Oliver",
+          "FirstName": "Christian",
+          "LastName": "Oliver",
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "51:23.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.48%",
+          "PercentMedian": "15.89%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "13",
+          "Name": "Nick Papa",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "53:02.0",
+          "Difference": "+1:38.1",
+          "PercentBack": "+3.18%",
+          "PercentWinning": "96.92%",
+          "PercentAverage": "10.73%",
+          "PercentMedian": "13.22%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "111",
+          "Name": "Chris Grieve",
+          "FirstName": "Chris",
+          "LastName": "Grieve",
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "58:00.3",
+          "Difference": "+6:36.4",
+          "PercentBack": "+12.85%",
+          "PercentWinning": "88.61%",
+          "PercentAverage": "2.36%",
+          "PercentMedian": "5.08%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "11",
+          "Name": "Alan Lamp",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "1:04:13.1",
+          "Difference": "+12:49.2",
+          "PercentBack": "+24.94%",
+          "PercentWinning": "80.04%",
+          "PercentAverage": "-8.10%",
+          "PercentMedian": "-5.08%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "9",
+          "Name": "Skyler Palmer",
+          "FirstName": "Skyler",
+          "LastName": "Palmer",
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "1:04:44.7",
+          "Difference": "+13:20.8",
+          "PercentBack": "+25.97%",
+          "PercentWinning": "79.39%",
+          "PercentAverage": "-8.99%",
+          "PercentMedian": "-5.95%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "6",
+          "Bib": "10",
+          "Name": "Michael Schutzler",
+          "FirstName": "Michael",
+          "LastName": "Schutzler",
+          "Distance": "Medium (5 mile)",
+          "Category": "Prone",
+          "Gender": "Male",
+          "Time": "1:05:01.9",
+          "Difference": "+13:38.0",
+          "PercentBack": "+26.52%",
+          "PercentWinning": "79.04%",
+          "PercentAverage": "-9.47%",
+          "PercentMedian": "-6.41%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "3",
+          "Name": "John Schalka",
+          "FirstName": "John",
+          "LastName": "Schalka",
+          "Distance": "Medium (5 mile)",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        },
+        {
+          "Place": "-",
+          "Bib": "8",
+          "Name": "Adam Tischler",
+          "FirstName": "Adam",
+          "LastName": "Tischler",
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Medium (5 mile)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "6",
+          "Name": "Christian Oliver",
+          "FirstName": "Christian",
+          "LastName": "Oliver",
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "51:23.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.48%",
+          "PercentMedian": "15.89%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "13",
+          "Name": "Nick Papa",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "53:02.0",
+          "Difference": "+1:38.1",
+          "PercentBack": "+3.18%",
+          "PercentWinning": "96.92%",
+          "PercentAverage": "10.73%",
+          "PercentMedian": "13.22%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "111",
+          "Name": "Chris Grieve",
+          "FirstName": "Chris",
+          "LastName": "Grieve",
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "58:00.3",
+          "Difference": "+6:36.4",
+          "PercentBack": "+12.85%",
+          "PercentWinning": "88.61%",
+          "PercentAverage": "2.36%",
+          "PercentMedian": "5.08%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "11",
+          "Name": "Alan Lamp",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "1:04:13.1",
+          "Difference": "+12:49.2",
+          "PercentBack": "+24.94%",
+          "PercentWinning": "80.04%",
+          "PercentAverage": "-8.10%",
+          "PercentMedian": "-5.08%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "9",
+          "Name": "Skyler Palmer",
+          "FirstName": "Skyler",
+          "LastName": "Palmer",
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "1:04:44.7",
+          "Difference": "+13:20.8",
+          "PercentBack": "+25.97%",
+          "PercentWinning": "79.39%",
+          "PercentAverage": "-8.99%",
+          "PercentMedian": "-5.95%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "6",
+          "Bib": "10",
+          "Name": "Michael Schutzler",
+          "FirstName": "Michael",
+          "LastName": "Schutzler",
+          "Distance": "Medium (5 mile)",
+          "Category": "Prone",
+          "Gender": "Male",
+          "Time": "1:05:01.9",
+          "Difference": "+13:38.0",
+          "PercentBack": "+26.52%",
+          "PercentWinning": "79.04%",
+          "PercentAverage": "-9.47%",
+          "PercentMedian": "-6.41%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "3",
+          "Name": "John Schalka",
+          "FirstName": "John",
+          "LastName": "Schalka",
+          "Distance": "Medium (5 mile)",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        },
+        {
+          "Place": "-",
+          "Bib": "8",
+          "Name": "Adam Tischler",
+          "FirstName": "Adam",
+          "LastName": "Tischler",
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short (3 mile)",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "Bruce Barry",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Short (3 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "24:53.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "24.39%",
+          "PercentMedian": "25.55%",
+          "StartTime": "14:37:11.4"
+        },
+        {
+          "Place": "2",
+          "Bib": "2",
+          "Name": "John Hansen",
+          "FirstName": "John",
+          "LastName": "Hansen",
+          "Distance": "Short (3 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "33:25.6",
+          "Difference": "+8:32.4",
+          "PercentBack": "+34.32%",
+          "PercentWinning": "74.45%",
+          "PercentAverage": "-1.56%",
+          "PercentMedian": "0.00%",
+          "StartTime": "14:37:11.4"
+        },
+        {
+          "Place": "3",
+          "Bib": "4",
+          "Name": "Jennifer Donogh",
+          "FirstName": "Jennifer",
+          "LastName": "Donogh",
+          "Distance": "Short (3 mile)",
+          "Category": "SUP",
+          "Gender": "Female",
+          "Time": "40:25.5",
+          "Difference": "+15:32.3",
+          "PercentBack": "+62.44%",
+          "PercentWinning": "61.56%",
+          "PercentAverage": "-22.82%",
+          "PercentMedian": "-20.94%",
+          "StartTime": "14:37:11.4"
+        },
+        {
+          "Place": "-",
+          "Bib": "7",
+          "Name": "Conor Watters",
+          "FirstName": "Conor",
+          "LastName": "Watters",
+          "Distance": "Short (3 mile)",
+          "Category": "Kayak",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short (3 mile)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "4",
+          "Name": "Jennifer Donogh",
+          "FirstName": "Jennifer",
+          "LastName": "Donogh",
+          "Distance": "Short (3 mile)",
+          "Category": "SUP",
+          "Gender": "Female",
+          "Time": "40:25.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "14:37:11.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short (3 mile)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "Bruce Barry",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Short (3 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "24:53.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.65%",
+          "PercentMedian": "14.65%",
+          "StartTime": "14:37:11.4"
+        },
+        {
+          "Place": "2",
+          "Bib": "2",
+          "Name": "John Hansen",
+          "FirstName": "John",
+          "LastName": "Hansen",
+          "Distance": "Short (3 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "33:25.6",
+          "Difference": "+8:32.4",
+          "PercentBack": "+34.32%",
+          "PercentWinning": "74.45%",
+          "PercentAverage": "-14.65%",
+          "PercentMedian": "-14.65%",
+          "StartTime": "14:37:11.4"
+        },
+        {
+          "Place": "-",
+          "Bib": "7",
+          "Name": "Conor Watters",
+          "FirstName": "Conor",
+          "LastName": "Watters",
+          "Distance": "Short (3 mile)",
+          "Category": "Kayak",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long (8 mile)",
+        "Category": "OC1",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "5",
+          "Name": "Patrick Hwang",
+          "FirstName": "Patrick",
+          "LastName": "Hwang",
+          "Distance": "Long (8 mile)",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Medium (5 mile)",
+        "Category": "OC1",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "3",
+          "Name": "John Schalka",
+          "FirstName": "John",
+          "LastName": "Schalka",
+          "Distance": "Medium (5 mile)",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Medium (5 mile)",
+        "Category": "Prone",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Michael Schutzler",
+          "FirstName": "Michael",
+          "LastName": "Schutzler",
+          "Distance": "Medium (5 mile)",
+          "Category": "Prone",
+          "Gender": "Male",
+          "Time": "1:05:01.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "14:36:01.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Medium (5 mile)",
+        "Category": "SUP",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "6",
+          "Name": "Christian Oliver",
+          "FirstName": "Christian",
+          "LastName": "Oliver",
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "51:23.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.81%",
+          "PercentMedian": "11.39%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "13",
+          "Name": "Nick Papa",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "53:02.0",
+          "Difference": "+1:38.1",
+          "PercentBack": "+3.18%",
+          "PercentWinning": "96.92%",
+          "PercentAverage": "9.00%",
+          "PercentMedian": "8.57%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "111",
+          "Name": "Chris Grieve",
+          "FirstName": "Chris",
+          "LastName": "Grieve",
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "58:00.3",
+          "Difference": "+6:36.4",
+          "PercentBack": "+12.85%",
+          "PercentWinning": "88.61%",
+          "PercentAverage": "0.47%",
+          "PercentMedian": "0.00%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "11",
+          "Name": "Alan Lamp",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "1:04:13.1",
+          "Difference": "+12:49.2",
+          "PercentBack": "+24.94%",
+          "PercentWinning": "80.04%",
+          "PercentAverage": "-10.19%",
+          "PercentMedian": "-10.71%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "9",
+          "Name": "Skyler Palmer",
+          "FirstName": "Skyler",
+          "LastName": "Palmer",
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "1:04:44.7",
+          "Difference": "+13:20.8",
+          "PercentBack": "+25.97%",
+          "PercentWinning": "79.39%",
+          "PercentAverage": "-11.09%",
+          "PercentMedian": "-11.62%",
+          "StartTime": "14:36:01.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "8",
+          "Name": "Adam Tischler",
+          "FirstName": "Adam",
+          "LastName": "Tischler",
+          "Distance": "Medium (5 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short (3 mile)",
+        "Category": "Kayak",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "7",
+          "Name": "Conor Watters",
+          "FirstName": "Conor",
+          "LastName": "Watters",
+          "Distance": "Short (3 mile)",
+          "Category": "Kayak",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short (3 mile)",
+        "Category": "SUP",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "4",
+          "Name": "Jennifer Donogh",
+          "FirstName": "Jennifer",
+          "LastName": "Donogh",
+          "Distance": "Short (3 mile)",
+          "Category": "SUP",
+          "Gender": "Female",
+          "Time": "40:25.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "14:37:11.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short (3 mile)",
+        "Category": "SUP",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "Bruce Barry",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Short (3 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "24:53.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.65%",
+          "PercentMedian": "14.65%",
+          "StartTime": "14:37:11.4"
+        },
+        {
+          "Place": "2",
+          "Bib": "2",
+          "Name": "John Hansen",
+          "FirstName": "John",
+          "LastName": "Hansen",
+          "Distance": "Short (3 mile)",
+          "Category": "SUP",
+          "Gender": "Male",
+          "Time": "33:25.6",
+          "Difference": "+8:32.4",
+          "PercentBack": "+34.32%",
+          "PercentWinning": "74.45%",
+          "PercentAverage": "-14.65%",
+          "PercentMedian": "-14.65%",
+          "StartTime": "14:37:11.4"
+        }
+      ]
+    }
+  ]
+}

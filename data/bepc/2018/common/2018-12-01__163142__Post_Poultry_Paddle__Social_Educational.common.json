@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 163142,
+    "distance": "Social/Educational",
+    "name": "Post Poultry Paddle \u2014 Social/Educational",
+    "displayURL": "https://www.webscorer.com/race?raceid=163142",
+    "date": "Dec 1, 2018",
+    "sport": "Paddling",
+    "startTime": "Saturday, December 1, 2018 10:42 AM (GMT-8)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.030303
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Doc Doolittle",
+      "craftCategory": "SUP",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 4283.8,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 4283.8,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

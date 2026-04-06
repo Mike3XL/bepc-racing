@@ -1,0 +1,528 @@
+{
+  "RaceInfo": {
+    "RaceId": 70323,
+    "Name": "Monday Night Race 20160523",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=70323",
+    "Date": "May 23, 2016",
+    "Sport": "Paddling",
+    "StartTime": "Monday, May 23, 2016 7:00 PM (GMT-7)",
+    "OrganizerName": "Rob Casey",
+    "OrganizerUrl": "http://www.salmonbaypaddle.com/",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67559213866222,
+    "Longitude": -122.40795135498047,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 2.2",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Monday, May 23, 2016 9:09 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/70323_8d3838831f727d2.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Robert Picardo",
+          "Category": "Surfski",
+          "Gender": "Male",
+          "Time": "26:07.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "15.48%",
+          "PercentMedian": "10.67%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "2",
+          "Name": "Alex Vaughan",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "26:29.0",
+          "Difference": "+0:22.0",
+          "PercentBack": "+1.40%",
+          "PercentWinning": "98.62%",
+          "PercentAverage": "14.30%",
+          "PercentMedian": "9.41%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "3",
+          "Name": "Jeff Gassen",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "27:59.4",
+          "Difference": "+1:52.4",
+          "PercentBack": "+7.17%",
+          "PercentWinning": "93.31%",
+          "PercentAverage": "9.42%",
+          "PercentMedian": "4.26%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "4",
+          "Name": "Rob Casey",
+          "Category": "SUP Unlimited",
+          "Gender": "Male",
+          "Time": "28:12.2",
+          "Difference": "+2:05.2",
+          "PercentBack": "+7.99%",
+          "PercentWinning": "92.60%",
+          "PercentAverage": "8.73%",
+          "PercentMedian": "3.53%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "5",
+          "Name": "Michele Black",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "28:57.5",
+          "Difference": "+2:50.5",
+          "PercentBack": "+10.88%",
+          "PercentWinning": "90.19%",
+          "PercentAverage": "6.29%",
+          "PercentMedian": "0.95%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "6",
+          "Name": "Chris Grieve",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "29:30.8",
+          "Difference": "+3:23.8",
+          "PercentBack": "+13.01%",
+          "PercentWinning": "88.49%",
+          "PercentAverage": "4.49%",
+          "PercentMedian": "-0.95%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "7",
+          "Name": "Doug Broadbent",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "33:54.7",
+          "Difference": "+7:47.7",
+          "PercentBack": "+29.85%",
+          "PercentWinning": "77.01%",
+          "PercentAverage": "-9.74%",
+          "PercentMedian": "-15.99%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "8",
+          "Name": "Paul Guillien",
+          "Category": "SUP Surf",
+          "Gender": "Male",
+          "Time": "35:12.9",
+          "Difference": "+9:05.9",
+          "PercentBack": "+34.84%",
+          "PercentWinning": "74.16%",
+          "PercentAverage": "-13.96%",
+          "PercentMedian": "-20.45%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "9",
+          "Name": "Alan Lamp",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "35:42.7",
+          "Difference": "+9:35.7",
+          "PercentBack": "+36.74%",
+          "PercentWinning": "73.13%",
+          "PercentAverage": "-15.57%",
+          "PercentMedian": "-22.15%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "10",
+          "Name": "Autumn Peele",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "36:54.4",
+          "Difference": "+10:47.4",
+          "PercentBack": "+41.31%",
+          "PercentWinning": "70.76%",
+          "PercentAverage": "-19.44%",
+          "PercentMedian": "-26.24%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "-",
+          "Name": "Adam Tischler",
+          "Category": "SUP Surf",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "19:00:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Michele Black",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "28:57.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.07%",
+          "PercentMedian": "12.07%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "2",
+          "Name": "Autumn Peele",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "36:54.4",
+          "Difference": "+7:56.9",
+          "PercentBack": "+27.45%",
+          "PercentWinning": "78.46%",
+          "PercentAverage": "-12.07%",
+          "PercentMedian": "-12.07%",
+          "StartTime": "19:00:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Robert Picardo",
+          "Category": "Surfski",
+          "Gender": "Male",
+          "Time": "26:07.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.07%",
+          "PercentMedian": "9.50%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "2",
+          "Name": "Alex Vaughan",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "26:29.0",
+          "Difference": "+0:22.0",
+          "PercentBack": "+1.40%",
+          "PercentWinning": "98.62%",
+          "PercentAverage": "12.86%",
+          "PercentMedian": "8.23%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "3",
+          "Name": "Jeff Gassen",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "27:59.4",
+          "Difference": "+1:52.4",
+          "PercentBack": "+7.17%",
+          "PercentWinning": "93.31%",
+          "PercentAverage": "7.91%",
+          "PercentMedian": "3.01%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "4",
+          "Name": "Rob Casey",
+          "Category": "SUP Unlimited",
+          "Gender": "Male",
+          "Time": "28:12.2",
+          "Difference": "+2:05.2",
+          "PercentBack": "+7.99%",
+          "PercentWinning": "92.60%",
+          "PercentAverage": "7.20%",
+          "PercentMedian": "2.27%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "5",
+          "Name": "Chris Grieve",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "29:30.8",
+          "Difference": "+3:23.8",
+          "PercentBack": "+13.01%",
+          "PercentWinning": "88.49%",
+          "PercentAverage": "2.89%",
+          "PercentMedian": "-2.27%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "6",
+          "Name": "Doug Broadbent",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "33:54.7",
+          "Difference": "+7:47.7",
+          "PercentBack": "+29.85%",
+          "PercentWinning": "77.01%",
+          "PercentAverage": "-11.58%",
+          "PercentMedian": "-17.51%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "7",
+          "Name": "Paul Guillien",
+          "Category": "SUP Surf",
+          "Gender": "Male",
+          "Time": "35:12.9",
+          "Difference": "+9:05.9",
+          "PercentBack": "+34.84%",
+          "PercentWinning": "74.16%",
+          "PercentAverage": "-15.87%",
+          "PercentMedian": "-22.03%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "8",
+          "Name": "Alan Lamp",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "35:42.7",
+          "Difference": "+9:35.7",
+          "PercentBack": "+36.74%",
+          "PercentWinning": "73.13%",
+          "PercentAverage": "-17.50%",
+          "PercentMedian": "-23.75%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "-",
+          "Name": "Adam Tischler",
+          "Category": "SUP Surf",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "19:00:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 12'6\"",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Michele Black",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "28:57.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.07%",
+          "PercentMedian": "12.07%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "2",
+          "Name": "Autumn Peele",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "36:54.4",
+          "Difference": "+7:56.9",
+          "PercentBack": "+27.45%",
+          "PercentWinning": "78.46%",
+          "PercentAverage": "-12.07%",
+          "PercentMedian": "-12.07%",
+          "StartTime": "19:00:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 12'6\"",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Alan Lamp",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "35:42.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:00:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Alex Vaughan",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "26:29.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.15%",
+          "PercentMedian": "7.89%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "2",
+          "Name": "Jeff Gassen",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "27:59.4",
+          "Difference": "+1:30.4",
+          "PercentBack": "+5.69%",
+          "PercentWinning": "94.62%",
+          "PercentAverage": "5.04%",
+          "PercentMedian": "2.65%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "3",
+          "Name": "Chris Grieve",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "29:30.8",
+          "Difference": "+3:01.8",
+          "PercentBack": "+11.44%",
+          "PercentWinning": "89.73%",
+          "PercentAverage": "-0.13%",
+          "PercentMedian": "-2.65%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "4",
+          "Name": "Doug Broadbent",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "33:54.7",
+          "Difference": "+7:25.7",
+          "PercentBack": "+28.05%",
+          "PercentWinning": "78.10%",
+          "PercentAverage": "-15.05%",
+          "PercentMedian": "-17.95%",
+          "StartTime": "19:00:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP Surf",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Paul Guillien",
+          "Category": "SUP Surf",
+          "Gender": "Male",
+          "Time": "35:12.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:00:49.7"
+        },
+        {
+          "Place": "-",
+          "Name": "Adam Tischler",
+          "Category": "SUP Surf",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "19:00:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP Unlimited",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Rob Casey",
+          "Category": "SUP Unlimited",
+          "Gender": "Male",
+          "Time": "28:12.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:00:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Surfski",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Robert Picardo",
+          "Category": "Surfski",
+          "Gender": "Male",
+          "Time": "26:07.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:00:49.7"
+        }
+      ]
+    }
+  ]
+}

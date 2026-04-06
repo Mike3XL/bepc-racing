@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 139353,
+    "distance": "Cat 2",
+    "name": "BEPC Monday Night Paddle Race \u2014 Cat 2",
+    "displayURL": "https://www.webscorer.com/race?raceid=139353",
+    "date": "Jun 4, 2018",
+    "sport": "Paddling",
+    "startTime": "Monday, June 4, 2018 7:15 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.04
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Holly Ramussen",
+      "craftCategory": "SUP 14'",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 2282.8,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2282.8,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

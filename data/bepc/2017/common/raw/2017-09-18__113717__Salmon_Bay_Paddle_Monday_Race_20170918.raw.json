@@ -1,0 +1,1080 @@
+{
+  "RaceInfo": {
+    "RaceId": 113717,
+    "Name": "Salmon Bay Paddle Monday Race 20170918",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=113717",
+    "Date": "Sep 18, 2017",
+    "Sport": "Paddling",
+    "StartTime": "Monday, September 18, 2017 6:49 PM (GMT-7)",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6847,
+    "Longitude": -122.384804,
+    "StartType": "Mass",
+    "CompletionState": "Preliminary results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Monday, September 18, 2017 8:32 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/113717_8d4ff0eff3f05cf.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Fun",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Periscope",
+          "Distance": "Fun",
+          "Category": "Fun",
+          "Gender": "Female",
+          "Time": "24:41.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Fun",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Periscope",
+          "Distance": "Fun",
+          "Category": "Fun",
+          "Gender": "Female",
+          "Time": "24:41.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Main",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Robert Picardo",
+          "Distance": "Main",
+          "Category": "Surf Ski",
+          "Gender": "Male",
+          "Time": "15:45.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "29.43%",
+          "PercentMedian": "27.54%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "2",
+          "Name": "Christian Oliver",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "18:33.4",
+          "Difference": "+2:48.0",
+          "PercentBack": "+17.77%",
+          "PercentWinning": "84.91%",
+          "PercentAverage": "16.89%",
+          "PercentMedian": "14.67%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "3",
+          "Name": "Ivan Storck",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "19:59.8",
+          "Difference": "+4:14.4",
+          "PercentBack": "+26.91%",
+          "PercentWinning": "78.80%",
+          "PercentAverage": "10.44%",
+          "PercentMedian": "8.05%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "4",
+          "Name": "Darrell Kirk",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:10.7",
+          "Difference": "+4:25.3",
+          "PercentBack": "+28.06%",
+          "PercentWinning": "78.09%",
+          "PercentAverage": "9.63%",
+          "PercentMedian": "7.21%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "5",
+          "Name": "Lance Jorgensen",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:15.9",
+          "Difference": "+4:30.5",
+          "PercentBack": "+28.61%",
+          "PercentWinning": "77.75%",
+          "PercentAverage": "9.24%",
+          "PercentMedian": "6.81%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "6",
+          "Name": "Jim Jarvie",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:25.0",
+          "Difference": "+4:39.6",
+          "PercentBack": "+29.57%",
+          "PercentWinning": "77.18%",
+          "PercentAverage": "8.56%",
+          "PercentMedian": "6.12%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "7",
+          "Name": "Adam Tischler",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:57.9",
+          "Difference": "+5:12.5",
+          "PercentBack": "+33.05%",
+          "PercentWinning": "75.16%",
+          "PercentAverage": "6.11%",
+          "PercentMedian": "3.59%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "8",
+          "Name": "Shane Donogh",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:59.8",
+          "Difference": "+5:14.4",
+          "PercentBack": "+33.26%",
+          "PercentWinning": "75.04%",
+          "PercentAverage": "5.96%",
+          "PercentMedian": "3.45%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "9",
+          "Name": "Aaron Thompson",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "21:19.4",
+          "Difference": "+5:34.0",
+          "PercentBack": "+35.33%",
+          "PercentWinning": "73.89%",
+          "PercentAverage": "4.50%",
+          "PercentMedian": "1.95%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "10",
+          "Name": "Mark McAlpin",
+          "Distance": "Main",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "21:28.5",
+          "Difference": "+5:43.1",
+          "PercentBack": "+36.29%",
+          "PercentWinning": "73.37%",
+          "PercentAverage": "3.82%",
+          "PercentMedian": "1.25%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "11",
+          "Name": "Jonathan Foley",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "21:44.8",
+          "Difference": "+5:59.4",
+          "PercentBack": "+38.02%",
+          "PercentWinning": "72.46%",
+          "PercentAverage": "2.60%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "12",
+          "Name": "Matt Radford",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "21:48.2",
+          "Difference": "+6:02.8",
+          "PercentBack": "+38.38%",
+          "PercentWinning": "72.27%",
+          "PercentAverage": "2.35%",
+          "PercentMedian": "-0.26%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "13",
+          "Name": "Troy Kasper",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "21:55.2",
+          "Difference": "+6:09.8",
+          "PercentBack": "+39.12%",
+          "PercentWinning": "71.88%",
+          "PercentAverage": "1.83%",
+          "PercentMedian": "-0.80%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "14",
+          "Name": "Wes Van Wambeck",
+          "Distance": "Main",
+          "Category": "SUP Surf",
+          "Gender": "Male",
+          "Time": "22:37.0",
+          "Difference": "+6:51.6",
+          "PercentBack": "+43.54%",
+          "PercentWinning": "69.67%",
+          "PercentAverage": "-1.29%",
+          "PercentMedian": "-4.00%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "15",
+          "Name": "Rob Casey",
+          "Distance": "Main",
+          "Category": "SUP Unlimited",
+          "Gender": "Male",
+          "Time": "22:48.6",
+          "Difference": "+7:03.2",
+          "PercentBack": "+44.76%",
+          "PercentWinning": "69.08%",
+          "PercentAverage": "-2.16%",
+          "PercentMedian": "-4.89%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "16",
+          "Name": "Alan Lamp",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "23:30.8",
+          "Difference": "+7:45.4",
+          "PercentBack": "+49.23%",
+          "PercentWinning": "67.01%",
+          "PercentAverage": "-5.31%",
+          "PercentMedian": "-8.12%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "17",
+          "Name": "Frederick Lefebvre",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "25:08.9",
+          "Difference": "+9:23.5",
+          "PercentBack": "+59.60%",
+          "PercentWinning": "62.65%",
+          "PercentAverage": "-12.63%",
+          "PercentMedian": "-15.64%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "18",
+          "Name": "Rosie Dixon",
+          "Distance": "Main",
+          "Category": "Kayak",
+          "Gender": "Female",
+          "Time": "26:03.9",
+          "Difference": "+10:18.5",
+          "PercentBack": "+65.42%",
+          "PercentWinning": "60.45%",
+          "PercentAverage": "-16.74%",
+          "PercentMedian": "-19.86%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "19",
+          "Name": "Dan Strauss",
+          "Distance": "Main",
+          "Category": "Kayak",
+          "Gender": "Male",
+          "Time": "26:07.5",
+          "Difference": "+10:22.1",
+          "PercentBack": "+65.80%",
+          "PercentWinning": "60.31%",
+          "PercentAverage": "-17.00%",
+          "PercentMedian": "-20.13%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "20",
+          "Name": "Babbette Siebol",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "28:32.9",
+          "Difference": "+12:47.5",
+          "PercentBack": "+81.18%",
+          "PercentWinning": "55.19%",
+          "PercentAverage": "-27.86%",
+          "PercentMedian": "-31.28%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "21",
+          "Name": "Anneka McSherry",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "28:40.0",
+          "Difference": "+12:54.6",
+          "PercentBack": "+81.93%",
+          "PercentWinning": "54.97%",
+          "PercentAverage": "-28.39%",
+          "PercentMedian": "-31.82%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Main",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Rosie Dixon",
+          "Distance": "Main",
+          "Category": "Kayak",
+          "Gender": "Female",
+          "Time": "26:03.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "6.11%",
+          "PercentMedian": "8.70%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "2",
+          "Name": "Babbette Siebol",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "28:32.9",
+          "Difference": "+2:29.0",
+          "PercentBack": "+9.53%",
+          "PercentWinning": "91.30%",
+          "PercentAverage": "-2.84%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "3",
+          "Name": "Anneka McSherry",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "28:40.0",
+          "Difference": "+2:36.1",
+          "PercentBack": "+9.98%",
+          "PercentWinning": "90.92%",
+          "PercentAverage": "-3.27%",
+          "PercentMedian": "-0.41%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Main",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Robert Picardo",
+          "Distance": "Main",
+          "Category": "Surf Ski",
+          "Gender": "Male",
+          "Time": "15:45.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "26.45%",
+          "PercentMedian": "26.37%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "2",
+          "Name": "Christian Oliver",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "18:33.4",
+          "Difference": "+2:48.0",
+          "PercentBack": "+17.77%",
+          "PercentWinning": "84.91%",
+          "PercentAverage": "13.38%",
+          "PercentMedian": "13.28%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "3",
+          "Name": "Ivan Storck",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "19:59.8",
+          "Difference": "+4:14.4",
+          "PercentBack": "+26.91%",
+          "PercentWinning": "78.80%",
+          "PercentAverage": "6.66%",
+          "PercentMedian": "6.55%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "4",
+          "Name": "Darrell Kirk",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:10.7",
+          "Difference": "+4:25.3",
+          "PercentBack": "+28.06%",
+          "PercentWinning": "78.09%",
+          "PercentAverage": "5.81%",
+          "PercentMedian": "5.71%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "5",
+          "Name": "Lance Jorgensen",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:15.9",
+          "Difference": "+4:30.5",
+          "PercentBack": "+28.61%",
+          "PercentWinning": "77.75%",
+          "PercentAverage": "5.41%",
+          "PercentMedian": "5.30%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "6",
+          "Name": "Jim Jarvie",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:25.0",
+          "Difference": "+4:39.6",
+          "PercentBack": "+29.57%",
+          "PercentWinning": "77.18%",
+          "PercentAverage": "4.70%",
+          "PercentMedian": "4.59%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "7",
+          "Name": "Adam Tischler",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:57.9",
+          "Difference": "+5:12.5",
+          "PercentBack": "+33.05%",
+          "PercentWinning": "75.16%",
+          "PercentAverage": "2.14%",
+          "PercentMedian": "2.03%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "8",
+          "Name": "Shane Donogh",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:59.8",
+          "Difference": "+5:14.4",
+          "PercentBack": "+33.26%",
+          "PercentWinning": "75.04%",
+          "PercentAverage": "1.99%",
+          "PercentMedian": "1.88%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "9",
+          "Name": "Aaron Thompson",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "21:19.4",
+          "Difference": "+5:34.0",
+          "PercentBack": "+35.33%",
+          "PercentWinning": "73.89%",
+          "PercentAverage": "0.47%",
+          "PercentMedian": "0.35%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "10",
+          "Name": "Mark McAlpin",
+          "Distance": "Main",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "21:28.5",
+          "Difference": "+5:43.1",
+          "PercentBack": "+36.29%",
+          "PercentWinning": "73.37%",
+          "PercentAverage": "-0.24%",
+          "PercentMedian": "-0.35%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "11",
+          "Name": "Jonathan Foley",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "21:44.8",
+          "Difference": "+5:59.4",
+          "PercentBack": "+38.02%",
+          "PercentWinning": "72.46%",
+          "PercentAverage": "-1.51%",
+          "PercentMedian": "-1.62%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "12",
+          "Name": "Matt Radford",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "21:48.2",
+          "Difference": "+6:02.8",
+          "PercentBack": "+38.38%",
+          "PercentWinning": "72.27%",
+          "PercentAverage": "-1.78%",
+          "PercentMedian": "-1.89%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "13",
+          "Name": "Troy Kasper",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "21:55.2",
+          "Difference": "+6:09.8",
+          "PercentBack": "+39.12%",
+          "PercentWinning": "71.88%",
+          "PercentAverage": "-2.32%",
+          "PercentMedian": "-2.43%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "14",
+          "Name": "Wes Van Wambeck",
+          "Distance": "Main",
+          "Category": "SUP Surf",
+          "Gender": "Male",
+          "Time": "22:37.0",
+          "Difference": "+6:51.6",
+          "PercentBack": "+43.54%",
+          "PercentWinning": "69.67%",
+          "PercentAverage": "-5.57%",
+          "PercentMedian": "-5.69%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "15",
+          "Name": "Rob Casey",
+          "Distance": "Main",
+          "Category": "SUP Unlimited",
+          "Gender": "Male",
+          "Time": "22:48.6",
+          "Difference": "+7:03.2",
+          "PercentBack": "+44.76%",
+          "PercentWinning": "69.08%",
+          "PercentAverage": "-6.47%",
+          "PercentMedian": "-6.59%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "16",
+          "Name": "Alan Lamp",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "23:30.8",
+          "Difference": "+7:45.4",
+          "PercentBack": "+49.23%",
+          "PercentWinning": "67.01%",
+          "PercentAverage": "-9.76%",
+          "PercentMedian": "-9.88%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "17",
+          "Name": "Frederick Lefebvre",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "25:08.9",
+          "Difference": "+9:23.5",
+          "PercentBack": "+59.60%",
+          "PercentWinning": "62.65%",
+          "PercentAverage": "-17.39%",
+          "PercentMedian": "-17.52%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "18",
+          "Name": "Dan Strauss",
+          "Distance": "Main",
+          "Category": "Kayak",
+          "Gender": "Male",
+          "Time": "26:07.5",
+          "Difference": "+10:22.1",
+          "PercentBack": "+65.80%",
+          "PercentWinning": "60.31%",
+          "PercentAverage": "-21.95%",
+          "PercentMedian": "-22.08%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Fun",
+        "Category": "Fun",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Periscope",
+          "Distance": "Fun",
+          "Category": "Fun",
+          "Gender": "Female",
+          "Time": "24:41.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Main",
+        "Category": "Kayak",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Rosie Dixon",
+          "Distance": "Main",
+          "Category": "Kayak",
+          "Gender": "Female",
+          "Time": "26:03.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Main",
+        "Category": "Kayak",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Dan Strauss",
+          "Distance": "Main",
+          "Category": "Kayak",
+          "Gender": "Male",
+          "Time": "26:07.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Main",
+        "Category": "OC1",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Mark McAlpin",
+          "Distance": "Main",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "21:28.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Main",
+        "Category": "SUP 12'6\"",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Babbette Siebol",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "28:32.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.21%",
+          "PercentMedian": "0.21%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "2",
+          "Name": "Anneka McSherry",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "28:40.0",
+          "Difference": "+0:07.1",
+          "PercentBack": "+0.41%",
+          "PercentWinning": "99.59%",
+          "PercentAverage": "-0.21%",
+          "PercentMedian": "-0.21%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Main",
+        "Category": "SUP 12'6\"",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Aaron Thompson",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "21:19.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "6.31%",
+          "PercentMedian": "2.20%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "2",
+          "Name": "Matt Radford",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "21:48.2",
+          "Difference": "+0:28.8",
+          "PercentBack": "+2.25%",
+          "PercentWinning": "97.80%",
+          "PercentAverage": "4.20%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "3",
+          "Name": "Frederick Lefebvre",
+          "Distance": "Main",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "25:08.9",
+          "Difference": "+3:49.5",
+          "PercentBack": "+17.94%",
+          "PercentWinning": "84.79%",
+          "PercentAverage": "-10.50%",
+          "PercentMedian": "-15.34%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Main",
+        "Category": "SUP 14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Christian Oliver",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "18:33.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.02%",
+          "PercentMedian": "10.31%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "2",
+          "Name": "Ivan Storck",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "19:59.8",
+          "Difference": "+1:26.4",
+          "PercentBack": "+7.76%",
+          "PercentWinning": "92.80%",
+          "PercentAverage": "4.12%",
+          "PercentMedian": "3.35%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "3",
+          "Name": "Darrell Kirk",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:10.7",
+          "Difference": "+1:37.3",
+          "PercentBack": "+8.74%",
+          "PercentWinning": "91.96%",
+          "PercentAverage": "3.25%",
+          "PercentMedian": "2.48%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "4",
+          "Name": "Lance Jorgensen",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:15.9",
+          "Difference": "+1:42.5",
+          "PercentBack": "+9.21%",
+          "PercentWinning": "91.57%",
+          "PercentAverage": "2.83%",
+          "PercentMedian": "2.06%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "5",
+          "Name": "Jim Jarvie",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:25.0",
+          "Difference": "+1:51.6",
+          "PercentBack": "+10.02%",
+          "PercentWinning": "90.89%",
+          "PercentAverage": "2.10%",
+          "PercentMedian": "1.33%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "6",
+          "Name": "Adam Tischler",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:57.9",
+          "Difference": "+2:24.5",
+          "PercentBack": "+12.98%",
+          "PercentWinning": "88.51%",
+          "PercentAverage": "-0.53%",
+          "PercentMedian": "-1.33%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "7",
+          "Name": "Shane Donogh",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "20:59.8",
+          "Difference": "+2:26.4",
+          "PercentBack": "+13.15%",
+          "PercentWinning": "88.38%",
+          "PercentAverage": "-0.68%",
+          "PercentMedian": "-1.48%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "8",
+          "Name": "Jonathan Foley",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "21:44.8",
+          "Difference": "+3:11.4",
+          "PercentBack": "+17.19%",
+          "PercentWinning": "85.33%",
+          "PercentAverage": "-4.27%",
+          "PercentMedian": "-5.10%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "9",
+          "Name": "Troy Kasper",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "21:55.2",
+          "Difference": "+3:21.8",
+          "PercentBack": "+18.12%",
+          "PercentWinning": "84.66%",
+          "PercentAverage": "-5.10%",
+          "PercentMedian": "-5.94%",
+          "StartTime": "18:49:44.6"
+        },
+        {
+          "Place": "10",
+          "Name": "Alan Lamp",
+          "Distance": "Main",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "23:30.8",
+          "Difference": "+4:57.4",
+          "PercentBack": "+26.71%",
+          "PercentWinning": "78.92%",
+          "PercentAverage": "-12.74%",
+          "PercentMedian": "-13.64%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Main",
+        "Category": "SUP Surf",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Wes Van Wambeck",
+          "Distance": "Main",
+          "Category": "SUP Surf",
+          "Gender": "Male",
+          "Time": "22:37.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Main",
+        "Category": "SUP Unlimited",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Rob Casey",
+          "Distance": "Main",
+          "Category": "SUP Unlimited",
+          "Gender": "Male",
+          "Time": "22:48.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Main",
+        "Category": "Surf Ski",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Robert Picardo",
+          "Distance": "Main",
+          "Category": "Surf Ski",
+          "Gender": "Male",
+          "Time": "15:45.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:49:44.6"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,523 @@
+{
+  "RaceInfo": {
+    "RaceId": 108692,
+    "Name": "LCPF 2017 6 Mile Coastal Race",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=108692",
+    "Date": "Aug 6, 2017",
+    "Sport": "Paddling",
+    "StartTime": "Sunday, August 6, 2017 9:52 AM (GMT-7)",
+    "Country": "United States",
+    "City": "Lincoln City",
+    "StateOrProvince": "OR",
+    "Latitude": 44.9581644,
+    "Longitude": -124.0178914,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Sunday, August 6, 2017 7:55 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/108692_8d4dd3fd49b13ab.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "BLUE, Nattie",
+          "FirstName": "Nattie",
+          "LastName": "Blue",
+          "Category": "OC1",
+          "Gender": "Female",
+          "Time": "1:04:01.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.69%",
+          "PercentMedian": "10.32%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "2",
+          "Name": "BILLENNESS, Dave",
+          "FirstName": "Dave",
+          "LastName": "Billenness",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:07:09.6",
+          "Difference": "+3:07.7",
+          "PercentBack": "+4.89%",
+          "PercentWinning": "95.34%",
+          "PercentAverage": "9.47%",
+          "PercentMedian": "5.94%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "3",
+          "Name": "Ryan Milley",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:10:25.4",
+          "Difference": "+6:23.5",
+          "PercentBack": "+9.98%",
+          "PercentWinning": "90.92%",
+          "PercentAverage": "5.07%",
+          "PercentMedian": "1.37%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "4",
+          "Name": "Jeremiah Smith",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:11:13.2",
+          "Difference": "+7:11.3",
+          "PercentBack": "+11.23%",
+          "PercentWinning": "89.91%",
+          "PercentAverage": "4.00%",
+          "PercentMedian": "0.25%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "5",
+          "Name": "Misako Yamamoto",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "SUP 12'6",
+          "Gender": "Female",
+          "Time": "1:11:23.9",
+          "Difference": "+7:22.0",
+          "PercentBack": "+11.50%",
+          "PercentWinning": "89.68%",
+          "PercentAverage": "3.75%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "6",
+          "Name": "SANDERSON, Josh",
+          "FirstName": "Josh",
+          "LastName": "Sanderson",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:18:10.9",
+          "Difference": "+14:09.0",
+          "PercentBack": "+22.10%",
+          "PercentWinning": "81.90%",
+          "PercentAverage": "-5.39%",
+          "PercentMedian": "-9.50%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "7",
+          "Name": "DE LEON, MANNY",
+          "FirstName": "MANNY",
+          "LastName": "DE LEON",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:18:13.7",
+          "Difference": "+14:11.8",
+          "PercentBack": "+22.17%",
+          "PercentWinning": "81.85%",
+          "PercentAverage": "-5.45%",
+          "PercentMedian": "-9.57%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "8",
+          "Name": "TRIMMER, Troy",
+          "FirstName": "Troy",
+          "LastName": "Trimmer",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:23:14.5",
+          "Difference": "+19:12.6",
+          "PercentBack": "+30.00%",
+          "PercentWinning": "76.92%",
+          "PercentAverage": "-12.21%",
+          "PercentMedian": "-16.59%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "9",
+          "Name": "STORCK, Ivan",
+          "FirstName": "Ivan",
+          "LastName": "Storck",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:23:46.2",
+          "Difference": "+19:44.3",
+          "PercentBack": "+30.83%",
+          "PercentWinning": "76.44%",
+          "PercentAverage": "-12.92%",
+          "PercentMedian": "-17.33%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "-",
+          "Name": "BLACK, Michele",
+          "FirstName": "Michele",
+          "LastName": "Black",
+          "Category": "SUP 12'6",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "09:52:29.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "BLUE, Nattie",
+          "FirstName": "Nattie",
+          "LastName": "Blue",
+          "Category": "OC1",
+          "Gender": "Female",
+          "Time": "1:04:01.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.44%",
+          "PercentMedian": "5.44%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "2",
+          "Name": "Misako Yamamoto",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "SUP 12'6",
+          "Gender": "Female",
+          "Time": "1:11:23.9",
+          "Difference": "+7:22.0",
+          "PercentBack": "+11.50%",
+          "PercentWinning": "89.68%",
+          "PercentAverage": "-5.44%",
+          "PercentMedian": "-5.44%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "-",
+          "Name": "BLACK, Michele",
+          "FirstName": "Michele",
+          "LastName": "Black",
+          "Category": "SUP 12'6",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "09:52:29.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "BILLENNESS, Dave",
+          "FirstName": "Dave",
+          "LastName": "Billenness",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:07:09.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.67%",
+          "PercentMedian": "14.10%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "2",
+          "Name": "Ryan Milley",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:10:25.4",
+          "Difference": "+3:15.8",
+          "PercentBack": "+4.86%",
+          "PercentWinning": "95.37%",
+          "PercentAverage": "7.38%",
+          "PercentMedian": "9.92%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "3",
+          "Name": "Jeremiah Smith",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:11:13.2",
+          "Difference": "+4:03.6",
+          "PercentBack": "+6.05%",
+          "PercentWinning": "94.30%",
+          "PercentAverage": "6.33%",
+          "PercentMedian": "8.90%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "4",
+          "Name": "SANDERSON, Josh",
+          "FirstName": "Josh",
+          "LastName": "Sanderson",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:18:10.9",
+          "Difference": "+11:01.3",
+          "PercentBack": "+16.41%",
+          "PercentWinning": "85.90%",
+          "PercentAverage": "-2.83%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "5",
+          "Name": "DE LEON, MANNY",
+          "FirstName": "MANNY",
+          "LastName": "DE LEON",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:18:13.7",
+          "Difference": "+11:04.1",
+          "PercentBack": "+16.48%",
+          "PercentWinning": "85.85%",
+          "PercentAverage": "-2.89%",
+          "PercentMedian": "-0.06%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "6",
+          "Name": "TRIMMER, Troy",
+          "FirstName": "Troy",
+          "LastName": "Trimmer",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:23:14.5",
+          "Difference": "+16:04.9",
+          "PercentBack": "+23.95%",
+          "PercentWinning": "80.68%",
+          "PercentAverage": "-9.48%",
+          "PercentMedian": "-6.47%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "7",
+          "Name": "STORCK, Ivan",
+          "FirstName": "Ivan",
+          "LastName": "Storck",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:23:46.2",
+          "Difference": "+16:36.6",
+          "PercentBack": "+24.73%",
+          "PercentWinning": "80.17%",
+          "PercentAverage": "-10.18%",
+          "PercentMedian": "-7.15%",
+          "StartTime": "09:52:29.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC1",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "BLUE, Nattie",
+          "FirstName": "Nattie",
+          "LastName": "Blue",
+          "Category": "OC1",
+          "Gender": "Female",
+          "Time": "1:04:01.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:52:29.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 12'6",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Misako Yamamoto",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "SUP 12'6",
+          "Gender": "Female",
+          "Time": "1:11:23.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "-",
+          "Name": "BLACK, Michele",
+          "FirstName": "Michele",
+          "LastName": "Black",
+          "Category": "SUP 12'6",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "09:52:29.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "BILLENNESS, Dave",
+          "FirstName": "Dave",
+          "LastName": "Billenness",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:07:09.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.67%",
+          "PercentMedian": "14.10%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "2",
+          "Name": "Ryan Milley",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:10:25.4",
+          "Difference": "+3:15.8",
+          "PercentBack": "+4.86%",
+          "PercentWinning": "95.37%",
+          "PercentAverage": "7.38%",
+          "PercentMedian": "9.92%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "3",
+          "Name": "Jeremiah Smith",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:11:13.2",
+          "Difference": "+4:03.6",
+          "PercentBack": "+6.05%",
+          "PercentWinning": "94.30%",
+          "PercentAverage": "6.33%",
+          "PercentMedian": "8.90%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "4",
+          "Name": "SANDERSON, Josh",
+          "FirstName": "Josh",
+          "LastName": "Sanderson",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:18:10.9",
+          "Difference": "+11:01.3",
+          "PercentBack": "+16.41%",
+          "PercentWinning": "85.90%",
+          "PercentAverage": "-2.83%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "5",
+          "Name": "DE LEON, MANNY",
+          "FirstName": "MANNY",
+          "LastName": "DE LEON",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:18:13.7",
+          "Difference": "+11:04.1",
+          "PercentBack": "+16.48%",
+          "PercentWinning": "85.85%",
+          "PercentAverage": "-2.89%",
+          "PercentMedian": "-0.06%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "6",
+          "Name": "TRIMMER, Troy",
+          "FirstName": "Troy",
+          "LastName": "Trimmer",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:23:14.5",
+          "Difference": "+16:04.9",
+          "PercentBack": "+23.95%",
+          "PercentWinning": "80.68%",
+          "PercentAverage": "-9.48%",
+          "PercentMedian": "-6.47%",
+          "StartTime": "09:52:29.3"
+        },
+        {
+          "Place": "7",
+          "Name": "STORCK, Ivan",
+          "FirstName": "Ivan",
+          "LastName": "Storck",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:23:46.2",
+          "Difference": "+16:36.6",
+          "PercentBack": "+24.73%",
+          "PercentWinning": "80.17%",
+          "PercentAverage": "-10.18%",
+          "PercentMedian": "-7.15%",
+          "StartTime": "09:52:29.3"
+        }
+      ]
+    }
+  ]
+}

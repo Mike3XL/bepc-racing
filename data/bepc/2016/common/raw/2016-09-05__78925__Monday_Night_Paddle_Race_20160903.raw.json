@@ -1,0 +1,582 @@
+{
+  "RaceInfo": {
+    "RaceId": 78925,
+    "Name": "Monday Night Paddle Race 20160903",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=78925",
+    "Date": "Sep 5, 2016",
+    "Sport": "Paddling",
+    "StartTime": "Monday, September 5, 2016 6:06 PM (GMT-7)",
+    "OrganizerName": "Rob Casey of Salmon Bay Paddle",
+    "OrganizerUrl": "http://SalmonBayPaddle.com",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.606201,
+    "Longitude": -122.3321,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 2.3",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, September 17, 2016 4:33 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/78925_8d3d5fa20556d75.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "John Schalka",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "23:19.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.28%",
+          "PercentMedian": "12.02%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Alex Vaughan",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "23:25.3",
+          "Difference": "+0:06.3",
+          "PercentBack": "+0.45%",
+          "PercentWinning": "99.55%",
+          "PercentAverage": "13.90%",
+          "PercentMedian": "11.63%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "3",
+          "Name": "Christian Oliver",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "24:21.1",
+          "Difference": "+1:02.1",
+          "PercentBack": "+4.44%",
+          "PercentWinning": "95.75%",
+          "PercentAverage": "10.48%",
+          "PercentMedian": "8.12%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "4",
+          "Name": "Chris Grieve",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "25:14.5",
+          "Difference": "+1:55.5",
+          "PercentBack": "+8.26%",
+          "PercentWinning": "92.37%",
+          "PercentAverage": "7.21%",
+          "PercentMedian": "4.76%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "5",
+          "Name": "Darrell Kirk",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "25:41.1",
+          "Difference": "+2:22.1",
+          "PercentBack": "+10.16%",
+          "PercentWinning": "90.78%",
+          "PercentAverage": "5.58%",
+          "PercentMedian": "3.09%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "6",
+          "Name": "Lance Jorgensen",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "26:22.2",
+          "Difference": "+3:03.2",
+          "PercentBack": "+13.10%",
+          "PercentWinning": "88.42%",
+          "PercentAverage": "3.06%",
+          "PercentMedian": "0.50%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "7",
+          "Name": "Michele Black",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "26:30.2",
+          "Difference": "+3:11.2",
+          "PercentBack": "+13.67%",
+          "PercentWinning": "87.98%",
+          "PercentAverage": "2.57%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "8",
+          "Name": "Jeremiah Smith",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "26:32.2",
+          "Difference": "+3:13.2",
+          "PercentBack": "+13.81%",
+          "PercentWinning": "87.87%",
+          "PercentAverage": "2.45%",
+          "PercentMedian": "-0.13%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "9",
+          "Name": "Alan Lamp",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "27:11.5",
+          "Difference": "+3:52.5",
+          "PercentBack": "+16.62%",
+          "PercentWinning": "85.75%",
+          "PercentAverage": "0.04%",
+          "PercentMedian": "-2.60%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "10",
+          "Name": "Jan Brandt",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "27:59.6",
+          "Difference": "+4:40.6",
+          "PercentBack": "+20.06%",
+          "PercentWinning": "83.29%",
+          "PercentAverage": "-2.91%",
+          "PercentMedian": "-5.62%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "11",
+          "Name": "Susan Horst",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "28:00.8",
+          "Difference": "+4:41.8",
+          "PercentBack": "+20.14%",
+          "PercentWinning": "83.23%",
+          "PercentAverage": "-2.98%",
+          "PercentMedian": "-5.70%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "12",
+          "Name": "Adam Tischler",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "31:54.0",
+          "Difference": "+8:35.0",
+          "PercentBack": "+36.81%",
+          "PercentWinning": "73.09%",
+          "PercentAverage": "-17.27%",
+          "PercentMedian": "-20.36%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "13",
+          "Name": "Vicki Gezon",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "37:06.4",
+          "Difference": "+13:47.4",
+          "PercentBack": "+59.14%",
+          "PercentWinning": "62.84%",
+          "PercentAverage": "-36.41%",
+          "PercentMedian": "-40.01%",
+          "StartTime": "18:06:18.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Michele Black",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "26:30.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.22%",
+          "PercentMedian": "5.39%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Susan Horst",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "28:00.8",
+          "Difference": "+1:30.6",
+          "PercentBack": "+5.70%",
+          "PercentWinning": "94.61%",
+          "PercentAverage": "8.28%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "3",
+          "Name": "Vicki Gezon",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "37:06.4",
+          "Difference": "+10:36.2",
+          "PercentBack": "+40.01%",
+          "PercentWinning": "71.42%",
+          "PercentAverage": "-21.50%",
+          "PercentMedian": "-32.46%",
+          "StartTime": "18:06:18.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "John Schalka",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "23:19.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.01%",
+          "PercentMedian": "10.42%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Alex Vaughan",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "23:25.3",
+          "Difference": "+0:06.3",
+          "PercentBack": "+0.45%",
+          "PercentWinning": "99.55%",
+          "PercentAverage": "10.61%",
+          "PercentMedian": "10.01%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "3",
+          "Name": "Christian Oliver",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "24:21.1",
+          "Difference": "+1:02.1",
+          "PercentBack": "+4.44%",
+          "PercentWinning": "95.75%",
+          "PercentAverage": "7.06%",
+          "PercentMedian": "6.44%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "4",
+          "Name": "Chris Grieve",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "25:14.5",
+          "Difference": "+1:55.5",
+          "PercentBack": "+8.26%",
+          "PercentWinning": "92.37%",
+          "PercentAverage": "3.66%",
+          "PercentMedian": "3.02%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "5",
+          "Name": "Darrell Kirk",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "25:41.1",
+          "Difference": "+2:22.1",
+          "PercentBack": "+10.16%",
+          "PercentWinning": "90.78%",
+          "PercentAverage": "1.97%",
+          "PercentMedian": "1.32%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "6",
+          "Name": "Lance Jorgensen",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "26:22.2",
+          "Difference": "+3:03.2",
+          "PercentBack": "+13.10%",
+          "PercentWinning": "88.42%",
+          "PercentAverage": "-0.65%",
+          "PercentMedian": "-1.32%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "7",
+          "Name": "Jeremiah Smith",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "26:32.2",
+          "Difference": "+3:13.2",
+          "PercentBack": "+13.81%",
+          "PercentWinning": "87.87%",
+          "PercentAverage": "-1.28%",
+          "PercentMedian": "-1.96%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "8",
+          "Name": "Alan Lamp",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "27:11.5",
+          "Difference": "+3:52.5",
+          "PercentBack": "+16.62%",
+          "PercentWinning": "85.75%",
+          "PercentAverage": "-3.78%",
+          "PercentMedian": "-4.47%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "9",
+          "Name": "Jan Brandt",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "27:59.6",
+          "Difference": "+4:40.6",
+          "PercentBack": "+20.06%",
+          "PercentWinning": "83.29%",
+          "PercentAverage": "-6.84%",
+          "PercentMedian": "-7.55%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "10",
+          "Name": "Adam Tischler",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "31:54.0",
+          "Difference": "+8:35.0",
+          "PercentBack": "+36.81%",
+          "PercentWinning": "73.09%",
+          "PercentAverage": "-21.75%",
+          "PercentMedian": "-22.56%",
+          "StartTime": "18:06:18.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 12'6\"",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Michele Black",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "26:30.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.22%",
+          "PercentMedian": "5.39%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Susan Horst",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "28:00.8",
+          "Difference": "+1:30.6",
+          "PercentBack": "+5.70%",
+          "PercentWinning": "94.61%",
+          "PercentAverage": "8.28%",
+          "PercentMedian": "0.00%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "3",
+          "Name": "Vicki Gezon",
+          "Category": "SUP 12'6\"",
+          "Gender": "Female",
+          "Time": "37:06.4",
+          "Difference": "+10:36.2",
+          "PercentBack": "+40.01%",
+          "PercentWinning": "71.42%",
+          "PercentAverage": "-21.50%",
+          "PercentMedian": "-32.46%",
+          "StartTime": "18:06:18.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 12'6\"",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Alan Lamp",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "27:11.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.97%",
+          "PercentMedian": "7.97%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Adam Tischler",
+          "Category": "SUP 12'6\"",
+          "Gender": "Male",
+          "Time": "31:54.0",
+          "Difference": "+4:42.5",
+          "PercentBack": "+17.32%",
+          "PercentWinning": "85.24%",
+          "PercentAverage": "-7.97%",
+          "PercentMedian": "-7.97%",
+          "StartTime": "18:06:18.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "John Schalka",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "23:19.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.07%",
+          "PercentMedian": "8.43%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Alex Vaughan",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "23:25.3",
+          "Difference": "+0:06.3",
+          "PercentBack": "+0.45%",
+          "PercentWinning": "99.55%",
+          "PercentAverage": "7.66%",
+          "PercentMedian": "8.02%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "3",
+          "Name": "Christian Oliver",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "24:21.1",
+          "Difference": "+1:02.1",
+          "PercentBack": "+4.44%",
+          "PercentWinning": "95.75%",
+          "PercentAverage": "3.99%",
+          "PercentMedian": "4.37%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "4",
+          "Name": "Chris Grieve",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "25:14.5",
+          "Difference": "+1:55.5",
+          "PercentBack": "+8.26%",
+          "PercentWinning": "92.37%",
+          "PercentAverage": "0.48%",
+          "PercentMedian": "0.87%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "5",
+          "Name": "Darrell Kirk",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "25:41.1",
+          "Difference": "+2:22.1",
+          "PercentBack": "+10.16%",
+          "PercentWinning": "90.78%",
+          "PercentAverage": "-1.26%",
+          "PercentMedian": "-0.87%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "6",
+          "Name": "Lance Jorgensen",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "26:22.2",
+          "Difference": "+3:03.2",
+          "PercentBack": "+13.10%",
+          "PercentWinning": "88.42%",
+          "PercentAverage": "-3.96%",
+          "PercentMedian": "-3.56%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "7",
+          "Name": "Jeremiah Smith",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "26:32.2",
+          "Difference": "+3:13.2",
+          "PercentBack": "+13.81%",
+          "PercentWinning": "87.87%",
+          "PercentAverage": "-4.62%",
+          "PercentMedian": "-4.22%",
+          "StartTime": "18:06:18.5"
+        },
+        {
+          "Place": "8",
+          "Name": "Jan Brandt",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "27:59.6",
+          "Difference": "+4:40.6",
+          "PercentBack": "+20.06%",
+          "PercentWinning": "83.29%",
+          "PercentAverage": "-10.36%",
+          "PercentMedian": "-9.94%",
+          "StartTime": "18:06:18.5"
+        }
+      ]
+    }
+  ]
+}

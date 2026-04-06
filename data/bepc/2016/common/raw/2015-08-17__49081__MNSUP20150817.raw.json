@@ -1,0 +1,723 @@
+{
+  "RaceInfo": {
+    "RaceId": 49081,
+    "Name": "MNSUP20150817",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=49081",
+    "Date": "Aug 17, 2015",
+    "Sport": "Paddling - SUP",
+    "StartTime": "Monday, August 17, 2015 7:30 PM (GMT-7)",
+    "OrganizerName": "Rob Casey",
+    "OrganizerUrl": "http://www.salmonbaypaddle.com/",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6847,
+    "Longitude": -122.384804,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 2.0",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Tuesday, August 18, 2015 1:39 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/49081_8d2a80d0f95940a.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Rennick Wood",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "27:52.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "16.22%",
+          "PercentMedian": "16.64%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Marco Scheuer",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "28:34.8",
+          "Difference": "+0:42.1",
+          "PercentBack": "+2.52%",
+          "PercentWinning": "97.54%",
+          "PercentAverage": "14.11%",
+          "PercentMedian": "14.54%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "3",
+          "Name": "Rob Casey",
+          "Category": "Unlimited",
+          "Gender": "Male",
+          "Time": "28:39.9",
+          "Difference": "+0:47.2",
+          "PercentBack": "+2.82%",
+          "PercentWinning": "97.26%",
+          "PercentAverage": "13.85%",
+          "PercentMedian": "14.28%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "4",
+          "Name": "Alex Vaughan",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "29:21.1",
+          "Difference": "+1:28.4",
+          "PercentBack": "+5.28%",
+          "PercentWinning": "94.98%",
+          "PercentAverage": "11.79%",
+          "PercentMedian": "12.23%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "5",
+          "Name": "Patrick Hwang",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "29:30.2",
+          "Difference": "+1:37.5",
+          "PercentBack": "+5.83%",
+          "PercentWinning": "94.49%",
+          "PercentAverage": "11.33%",
+          "PercentMedian": "11.78%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "6",
+          "Name": "Darrell Kirk",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "30:37.3",
+          "Difference": "+2:44.6",
+          "PercentBack": "+9.84%",
+          "PercentWinning": "91.04%",
+          "PercentAverage": "7.97%",
+          "PercentMedian": "8.43%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "7",
+          "Name": "Luke Burritt",
+          "Category": "12'6\"",
+          "Gender": "Male",
+          "Time": "31:14.1",
+          "Difference": "+3:21.4",
+          "PercentBack": "+12.04%",
+          "PercentWinning": "89.25%",
+          "PercentAverage": "6.13%",
+          "PercentMedian": "6.60%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "8",
+          "Name": "Chris Grieve",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "33:26.5",
+          "Difference": "+5:33.8",
+          "PercentBack": "+19.96%",
+          "PercentWinning": "83.36%",
+          "PercentAverage": "-0.50%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "9",
+          "Name": "Jeff Rudd",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "33:41.6",
+          "Difference": "+5:48.9",
+          "PercentBack": "+20.86%",
+          "PercentWinning": "82.74%",
+          "PercentAverage": "-1.26%",
+          "PercentMedian": "-0.75%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "10",
+          "Name": "Angela Veetutu",
+          "Category": "14\"",
+          "Gender": "Female",
+          "Time": "33:49.7",
+          "Difference": "+5:57.0",
+          "PercentBack": "+21.34%",
+          "PercentWinning": "82.41%",
+          "PercentAverage": "-1.66%",
+          "PercentMedian": "-1.16%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "11",
+          "Name": "Lisa Worthington",
+          "Category": "14\"",
+          "Gender": "Female",
+          "Time": "35:10.5",
+          "Difference": "+7:17.8",
+          "PercentBack": "+26.17%",
+          "PercentWinning": "79.26%",
+          "PercentAverage": "-5.71%",
+          "PercentMedian": "-5.18%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "12",
+          "Name": "Sydney DelaCruz",
+          "Category": "12'6\"",
+          "Gender": "Female",
+          "Time": "35:22.7",
+          "Difference": "+7:30.0",
+          "PercentBack": "+26.90%",
+          "PercentWinning": "78.80%",
+          "PercentAverage": "-6.32%",
+          "PercentMedian": "-5.79%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "13",
+          "Name": "Jeremiah Smith",
+          "Category": "11'6\" surf",
+          "Gender": "Male",
+          "Time": "35:47.6",
+          "Difference": "+7:54.9",
+          "PercentBack": "+28.39%",
+          "PercentWinning": "77.89%",
+          "PercentAverage": "-7.57%",
+          "PercentMedian": "-7.03%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "14",
+          "Name": "Vicki Gezon",
+          "Category": "12'6\"",
+          "Gender": "Female",
+          "Time": "42:58.7",
+          "Difference": "+15:06.0",
+          "PercentBack": "+54.16%",
+          "PercentWinning": "64.87%",
+          "PercentAverage": "-29.16%",
+          "PercentMedian": "-28.52%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "15",
+          "Name": "Doug Broadbent",
+          "Category": "11'6\" surf",
+          "Gender": "Male",
+          "Time": "42:59.6",
+          "Difference": "+15:06.9",
+          "PercentBack": "+54.22%",
+          "PercentWinning": "64.84%",
+          "PercentAverage": "-29.21%",
+          "PercentMedian": "-28.56%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "-",
+          "Name": "Emily Nevin",
+          "Category": "12'6\"",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "19:30:30.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Angela Veetutu",
+          "Category": "14\"",
+          "Gender": "Female",
+          "Time": "33:49.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.17%",
+          "PercentMedian": "4.11%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Lisa Worthington",
+          "Category": "14\"",
+          "Gender": "Female",
+          "Time": "35:10.5",
+          "Difference": "+1:20.8",
+          "PercentBack": "+3.98%",
+          "PercentWinning": "96.17%",
+          "PercentAverage": "4.52%",
+          "PercentMedian": "0.29%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "3",
+          "Name": "Sydney DelaCruz",
+          "Category": "12'6\"",
+          "Gender": "Female",
+          "Time": "35:22.7",
+          "Difference": "+1:33.0",
+          "PercentBack": "+4.58%",
+          "PercentWinning": "95.62%",
+          "PercentAverage": "3.97%",
+          "PercentMedian": "-0.29%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "4",
+          "Name": "Vicki Gezon",
+          "Category": "12'6\"",
+          "Gender": "Female",
+          "Time": "42:58.7",
+          "Difference": "+9:09.0",
+          "PercentBack": "+27.05%",
+          "PercentWinning": "78.71%",
+          "PercentAverage": "-16.66%",
+          "PercentMedian": "-21.83%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "-",
+          "Name": "Emily Nevin",
+          "Category": "12'6\"",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "19:30:30.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Rennick Wood",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "27:52.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.82%",
+          "PercentMedian": "8.96%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Marco Scheuer",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "28:34.8",
+          "Difference": "+0:42.1",
+          "PercentBack": "+2.52%",
+          "PercentWinning": "97.54%",
+          "PercentAverage": "10.63%",
+          "PercentMedian": "6.67%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "3",
+          "Name": "Rob Casey",
+          "Category": "Unlimited",
+          "Gender": "Male",
+          "Time": "28:39.9",
+          "Difference": "+0:47.2",
+          "PercentBack": "+2.82%",
+          "PercentWinning": "97.26%",
+          "PercentAverage": "10.36%",
+          "PercentMedian": "6.39%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "4",
+          "Name": "Alex Vaughan",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "29:21.1",
+          "Difference": "+1:28.4",
+          "PercentBack": "+5.28%",
+          "PercentWinning": "94.98%",
+          "PercentAverage": "8.21%",
+          "PercentMedian": "4.15%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "5",
+          "Name": "Patrick Hwang",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "29:30.2",
+          "Difference": "+1:37.5",
+          "PercentBack": "+5.83%",
+          "PercentWinning": "94.49%",
+          "PercentAverage": "7.74%",
+          "PercentMedian": "3.65%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "6",
+          "Name": "Darrell Kirk",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "30:37.3",
+          "Difference": "+2:44.6",
+          "PercentBack": "+9.84%",
+          "PercentWinning": "91.04%",
+          "PercentAverage": "4.24%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "7",
+          "Name": "Luke Burritt",
+          "Category": "12'6\"",
+          "Gender": "Male",
+          "Time": "31:14.1",
+          "Difference": "+3:21.4",
+          "PercentBack": "+12.04%",
+          "PercentWinning": "89.25%",
+          "PercentAverage": "2.32%",
+          "PercentMedian": "-2.00%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "8",
+          "Name": "Chris Grieve",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "33:26.5",
+          "Difference": "+5:33.8",
+          "PercentBack": "+19.96%",
+          "PercentWinning": "83.36%",
+          "PercentAverage": "-4.58%",
+          "PercentMedian": "-9.21%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "9",
+          "Name": "Jeff Rudd",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "33:41.6",
+          "Difference": "+5:48.9",
+          "PercentBack": "+20.86%",
+          "PercentWinning": "82.74%",
+          "PercentAverage": "-5.36%",
+          "PercentMedian": "-10.03%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "10",
+          "Name": "Jeremiah Smith",
+          "Category": "11'6\" surf",
+          "Gender": "Male",
+          "Time": "35:47.6",
+          "Difference": "+7:54.9",
+          "PercentBack": "+28.39%",
+          "PercentWinning": "77.89%",
+          "PercentAverage": "-11.93%",
+          "PercentMedian": "-16.89%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "11",
+          "Name": "Doug Broadbent",
+          "Category": "11'6\" surf",
+          "Gender": "Male",
+          "Time": "42:59.6",
+          "Difference": "+15:06.9",
+          "PercentBack": "+54.22%",
+          "PercentWinning": "64.84%",
+          "PercentAverage": "-34.45%",
+          "PercentMedian": "-40.40%",
+          "StartTime": "19:30:30.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "11'6\" surf",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jeremiah Smith",
+          "Category": "11'6\" surf",
+          "Gender": "Male",
+          "Time": "35:47.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.14%",
+          "PercentMedian": "9.14%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Doug Broadbent",
+          "Category": "11'6\" surf",
+          "Gender": "Male",
+          "Time": "42:59.6",
+          "Difference": "+7:12.0",
+          "PercentBack": "+20.12%",
+          "PercentWinning": "83.25%",
+          "PercentAverage": "-9.14%",
+          "PercentMedian": "-9.14%",
+          "StartTime": "19:30:30.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "12'6\"",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Sydney DelaCruz",
+          "Category": "12'6\"",
+          "Gender": "Female",
+          "Time": "35:22.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.70%",
+          "PercentMedian": "9.70%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Vicki Gezon",
+          "Category": "12'6\"",
+          "Gender": "Female",
+          "Time": "42:58.7",
+          "Difference": "+7:36.0",
+          "PercentBack": "+21.48%",
+          "PercentWinning": "82.32%",
+          "PercentAverage": "-9.70%",
+          "PercentMedian": "-9.70%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "-",
+          "Name": "Emily Nevin",
+          "Category": "12'6\"",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "19:30:30.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "12'6\"",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Luke Burritt",
+          "Category": "12'6\"",
+          "Gender": "Male",
+          "Time": "31:14.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:30:30.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "14\"",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Angela Veetutu",
+          "Category": "14\"",
+          "Gender": "Female",
+          "Time": "33:49.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "1.95%",
+          "PercentMedian": "1.95%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Lisa Worthington",
+          "Category": "14\"",
+          "Gender": "Female",
+          "Time": "35:10.5",
+          "Difference": "+1:20.8",
+          "PercentBack": "+3.98%",
+          "PercentWinning": "96.17%",
+          "PercentAverage": "-1.95%",
+          "PercentMedian": "-1.95%",
+          "StartTime": "19:30:30.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "14\"",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Rennick Wood",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "27:52.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.41%",
+          "PercentMedian": "5.51%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "2",
+          "Name": "Marco Scheuer",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "28:34.8",
+          "Difference": "+0:42.1",
+          "PercentBack": "+2.52%",
+          "PercentWinning": "97.54%",
+          "PercentAverage": "6.11%",
+          "PercentMedian": "3.13%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "3",
+          "Name": "Alex Vaughan",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "29:21.1",
+          "Difference": "+1:28.4",
+          "PercentBack": "+5.28%",
+          "PercentWinning": "94.98%",
+          "PercentAverage": "3.57%",
+          "PercentMedian": "0.51%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "4",
+          "Name": "Patrick Hwang",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "29:30.2",
+          "Difference": "+1:37.5",
+          "PercentBack": "+5.83%",
+          "PercentWinning": "94.49%",
+          "PercentAverage": "3.07%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "5",
+          "Name": "Darrell Kirk",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "30:37.3",
+          "Difference": "+2:44.6",
+          "PercentBack": "+9.84%",
+          "PercentWinning": "91.04%",
+          "PercentAverage": "-0.60%",
+          "PercentMedian": "-3.79%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "6",
+          "Name": "Chris Grieve",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "33:26.5",
+          "Difference": "+5:33.8",
+          "PercentBack": "+19.96%",
+          "PercentWinning": "83.36%",
+          "PercentAverage": "-9.87%",
+          "PercentMedian": "-13.35%",
+          "StartTime": "19:30:30.9"
+        },
+        {
+          "Place": "7",
+          "Name": "Jeff Rudd",
+          "Category": "14\"",
+          "Gender": "Male",
+          "Time": "33:41.6",
+          "Difference": "+5:48.9",
+          "PercentBack": "+20.86%",
+          "PercentWinning": "82.74%",
+          "PercentAverage": "-10.69%",
+          "PercentMedian": "-14.20%",
+          "StartTime": "19:30:30.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Unlimited",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Rob Casey",
+          "Category": "Unlimited",
+          "Gender": "Male",
+          "Time": "28:39.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:30:30.9"
+        }
+      ]
+    }
+  ]
+}

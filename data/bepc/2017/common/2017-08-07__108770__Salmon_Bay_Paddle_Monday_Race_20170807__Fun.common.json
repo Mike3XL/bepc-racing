@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 108770,
+    "distance": "Fun",
+    "name": "Salmon Bay Paddle Monday Race 20170807 \u2014 Fun",
+    "displayURL": "https://www.webscorer.com/race?raceid=108770",
+    "date": "Aug 7, 2017",
+    "sport": "Paddling",
+    "startTime": "Monday, August 7, 2017 7:00 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.045455
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Lisa Miller",
+      "craftCategory": "Fun",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 2852.3,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2852.3,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

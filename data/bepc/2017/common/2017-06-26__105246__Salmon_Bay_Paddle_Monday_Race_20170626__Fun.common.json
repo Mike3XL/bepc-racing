@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 105246,
+    "distance": "Fun",
+    "name": "Salmon Bay Paddle Monday Race 20170626 \u2014 Fun",
+    "displayURL": "https://www.webscorer.com/race?raceid=105246",
+    "date": "Jun 26, 2017",
+    "sport": "Paddling",
+    "startTime": "Monday, June 26, 2017 7:00 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.125
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Charli Kasper",
+      "craftCategory": "Fun",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 1488.1,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1488.1,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Lisa Miller",
+      "craftCategory": "Fun",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 2593.1,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2593.1,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "Tom Phillips",
+      "craftCategory": "Fun",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 2660.5,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2660.5,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

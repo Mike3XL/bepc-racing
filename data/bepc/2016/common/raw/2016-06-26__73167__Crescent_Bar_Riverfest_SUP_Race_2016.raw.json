@@ -1,0 +1,897 @@
+{
+  "RaceInfo": {
+    "RaceId": 73167,
+    "Name": "Crescent Bar Riverfest SUP Race 2016",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=73167",
+    "Date": "Jun 26, 2016",
+    "Sport": "Paddling - SUP",
+    "StartTime": "Sunday, June 26, 2016 7:43 AM (GMT-7)",
+    "OrganizerName": "Int Sports and the City of Crescent Bar",
+    "OrganizerUrl": "http://www.crescentbarriverfest.com/crescent-bar-river-fest-adds-paddle-sports-race-to-the-line-up/",
+    "Country": "United States",
+    "City": "Crescent Bar",
+    "StateOrProvince": "WA",
+    "Latitude": 47.212238708054755,
+    "Longitude": -119.99078750610352,
+    "StartType": "Wave",
+    "WaveGrouping": "By distance",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 2.3",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Sunday, June 26, 2016 3:52 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/73167_8d39e1482fd1839.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "2.33 miles",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "16",
+          "Name": "Chris Grieve",
+          "Distance": "2.33 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "17:01.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "29.86%",
+          "PercentMedian": "21.78%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "19",
+          "Name": "Will Threadgill",
+          "Distance": "2.33 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "17:22.8",
+          "Difference": "+0:21.7",
+          "PercentBack": "+2.13%",
+          "PercentWinning": "97.92%",
+          "PercentAverage": "28.36%",
+          "PercentMedian": "20.12%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "12",
+          "Name": "Ivan Storck",
+          "Distance": "2.33 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "18:36.0",
+          "Difference": "+1:34.9",
+          "PercentBack": "+9.29%",
+          "PercentWinning": "91.50%",
+          "PercentAverage": "23.34%",
+          "PercentMedian": "14.52%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "17",
+          "Name": "Brandon Falk",
+          "Distance": "2.33 miles",
+          "Category": "Surf",
+          "Gender": "Male",
+          "Time": "21:20.0",
+          "Difference": "+4:18.9",
+          "PercentBack": "+25.36%",
+          "PercentWinning": "79.77%",
+          "PercentAverage": "12.07%",
+          "PercentMedian": "1.95%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "15",
+          "Name": "Treacy Morgan",
+          "Distance": "2.33 miles",
+          "Category": "14'",
+          "Gender": "Female",
+          "Time": "21:45.5",
+          "Difference": "+4:44.4",
+          "PercentBack": "+27.85%",
+          "PercentWinning": "78.22%",
+          "PercentAverage": "10.32%",
+          "PercentMedian": "0.00%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "6",
+          "Bib": "7",
+          "Name": "Holly Ramussen",
+          "Distance": "2.33 miles",
+          "Category": "12'6\"",
+          "Gender": "Female",
+          "Time": "21:59.1",
+          "Difference": "+4:58.0",
+          "PercentBack": "+29.18%",
+          "PercentWinning": "77.41%",
+          "PercentAverage": "9.38%",
+          "PercentMedian": "-1.04%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "7",
+          "Bib": "11",
+          "Name": "Caylin Bennetsen",
+          "Distance": "2.33 miles",
+          "Category": "Surf",
+          "Gender": "Female",
+          "Time": "31:39.9",
+          "Difference": "+14:38.8",
+          "PercentBack": "+86.06%",
+          "PercentWinning": "53.74%",
+          "PercentAverage": "-30.51%",
+          "PercentMedian": "-45.53%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "8",
+          "Bib": "9",
+          "Name": "Katie Everts",
+          "Distance": "2.33 miles",
+          "Category": "Surf",
+          "Gender": "Female",
+          "Time": "34:08.7",
+          "Difference": "+17:07.6",
+          "PercentBack": "+100.64%",
+          "PercentWinning": "49.84%",
+          "PercentAverage": "-40.74%",
+          "PercentMedian": "-56.93%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "9",
+          "Bib": "10",
+          "Name": "Dan Legg",
+          "Distance": "2.33 miles",
+          "Category": "Surf",
+          "Gender": "Male",
+          "Time": "34:28.2",
+          "Difference": "+17:27.1",
+          "PercentBack": "+102.55%",
+          "PercentWinning": "49.37%",
+          "PercentAverage": "-42.08%",
+          "PercentMedian": "-58.42%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "8",
+          "Name": "Steven Dorsey",
+          "Distance": "2.33 miles",
+          "Category": "12'6\"",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2.33 miles",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "15",
+          "Name": "Treacy Morgan",
+          "Distance": "2.33 miles",
+          "Category": "14'",
+          "Gender": "Female",
+          "Time": "21:45.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "20.56%",
+          "PercentMedian": "18.89%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "7",
+          "Name": "Holly Ramussen",
+          "Distance": "2.33 miles",
+          "Category": "12'6\"",
+          "Gender": "Female",
+          "Time": "21:59.1",
+          "Difference": "+0:13.6",
+          "PercentBack": "+1.04%",
+          "PercentWinning": "98.97%",
+          "PercentAverage": "19.73%",
+          "PercentMedian": "18.04%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "11",
+          "Name": "Caylin Bennetsen",
+          "Distance": "2.33 miles",
+          "Category": "Surf",
+          "Gender": "Female",
+          "Time": "31:39.9",
+          "Difference": "+9:54.4",
+          "PercentBack": "+45.53%",
+          "PercentWinning": "68.71%",
+          "PercentAverage": "-15.61%",
+          "PercentMedian": "-18.04%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "9",
+          "Name": "Katie Everts",
+          "Distance": "2.33 miles",
+          "Category": "Surf",
+          "Gender": "Female",
+          "Time": "34:08.7",
+          "Difference": "+12:23.2",
+          "PercentBack": "+56.93%",
+          "PercentWinning": "63.72%",
+          "PercentAverage": "-24.67%",
+          "PercentMedian": "-27.29%",
+          "StartTime": "07:51:06.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2.33 miles",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "16",
+          "Name": "Chris Grieve",
+          "Distance": "2.33 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "17:01.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "21.79%",
+          "PercentMedian": "8.50%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "19",
+          "Name": "Will Threadgill",
+          "Distance": "2.33 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "17:22.8",
+          "Difference": "+0:21.7",
+          "PercentBack": "+2.13%",
+          "PercentWinning": "97.92%",
+          "PercentAverage": "20.13%",
+          "PercentMedian": "6.56%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "12",
+          "Name": "Ivan Storck",
+          "Distance": "2.33 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "18:36.0",
+          "Difference": "+1:34.9",
+          "PercentBack": "+9.29%",
+          "PercentWinning": "91.50%",
+          "PercentAverage": "14.52%",
+          "PercentMedian": "0.00%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "17",
+          "Name": "Brandon Falk",
+          "Distance": "2.33 miles",
+          "Category": "Surf",
+          "Gender": "Male",
+          "Time": "21:20.0",
+          "Difference": "+4:18.9",
+          "PercentBack": "+25.36%",
+          "PercentWinning": "79.77%",
+          "PercentAverage": "1.96%",
+          "PercentMedian": "-14.70%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "10",
+          "Name": "Dan Legg",
+          "Distance": "2.33 miles",
+          "Category": "Surf",
+          "Gender": "Male",
+          "Time": "34:28.2",
+          "Difference": "+17:27.1",
+          "PercentBack": "+102.55%",
+          "PercentWinning": "49.37%",
+          "PercentAverage": "-58.41%",
+          "PercentMedian": "-85.32%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "8",
+          "Name": "Steven Dorsey",
+          "Distance": "2.33 miles",
+          "Category": "12'6\"",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "6 miles",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Beau Whitehead",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:15:24.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.84%",
+          "PercentMedian": "7.24%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "18",
+          "Name": "Joe Threadgill",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:15:26.0",
+          "Difference": "+0:01.4",
+          "PercentBack": "+0.03%",
+          "PercentWinning": "99.97%",
+          "PercentAverage": "5.82%",
+          "PercentMedian": "7.21%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "3",
+          "Name": "Richard Weaver",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:21:17.9",
+          "Difference": "+5:53.3",
+          "PercentBack": "+7.81%",
+          "PercentWinning": "92.76%",
+          "PercentAverage": "-1.51%",
+          "PercentMedian": "0.00%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "2",
+          "Name": "Scott Greene",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:22:27.5",
+          "Difference": "+7:02.9",
+          "PercentBack": "+9.35%",
+          "PercentWinning": "91.45%",
+          "PercentAverage": "-2.96%",
+          "PercentMedian": "-1.43%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "4",
+          "Name": "John Misasi",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:25:51.3",
+          "Difference": "+10:26.7",
+          "PercentBack": "+13.85%",
+          "PercentWinning": "87.83%",
+          "PercentAverage": "-7.20%",
+          "PercentMedian": "-5.60%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "6",
+          "Name": "John Schalka",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        },
+        {
+          "Place": "-",
+          "Bib": "14",
+          "Name": "James Grieve",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "6 miles",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Beau Whitehead",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:15:24.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.84%",
+          "PercentMedian": "7.24%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "18",
+          "Name": "Joe Threadgill",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:15:26.0",
+          "Difference": "+0:01.4",
+          "PercentBack": "+0.03%",
+          "PercentWinning": "99.97%",
+          "PercentAverage": "5.82%",
+          "PercentMedian": "7.21%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "3",
+          "Name": "Richard Weaver",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:21:17.9",
+          "Difference": "+5:53.3",
+          "PercentBack": "+7.81%",
+          "PercentWinning": "92.76%",
+          "PercentAverage": "-1.51%",
+          "PercentMedian": "0.00%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "2",
+          "Name": "Scott Greene",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:22:27.5",
+          "Difference": "+7:02.9",
+          "PercentBack": "+9.35%",
+          "PercentWinning": "91.45%",
+          "PercentAverage": "-2.96%",
+          "PercentMedian": "-1.43%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "4",
+          "Name": "John Misasi",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:25:51.3",
+          "Difference": "+10:26.7",
+          "PercentBack": "+13.85%",
+          "PercentWinning": "87.83%",
+          "PercentAverage": "-7.20%",
+          "PercentMedian": "-5.60%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "6",
+          "Name": "John Schalka",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        },
+        {
+          "Place": "-",
+          "Bib": "14",
+          "Name": "James Grieve",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2.33 miles",
+        "Category": "12'6\"",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "7",
+          "Name": "Holly Ramussen",
+          "Distance": "2.33 miles",
+          "Category": "12'6\"",
+          "Gender": "Female",
+          "Time": "21:59.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "07:51:06.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2.33 miles",
+        "Category": "12'6\"",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "8",
+          "Name": "Steven Dorsey",
+          "Distance": "2.33 miles",
+          "Category": "12'6\"",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2.33 miles",
+        "Category": "14'",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "15",
+          "Name": "Treacy Morgan",
+          "Distance": "2.33 miles",
+          "Category": "14'",
+          "Gender": "Female",
+          "Time": "21:45.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "07:51:06.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2.33 miles",
+        "Category": "14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "16",
+          "Name": "Chris Grieve",
+          "Distance": "2.33 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "17:01.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.67%",
+          "PercentMedian": "2.08%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "19",
+          "Name": "Will Threadgill",
+          "Distance": "2.33 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "17:22.8",
+          "Difference": "+0:21.7",
+          "PercentBack": "+2.13%",
+          "PercentWinning": "97.92%",
+          "PercentAverage": "1.62%",
+          "PercentMedian": "0.00%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "12",
+          "Name": "Ivan Storck",
+          "Distance": "2.33 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "18:36.0",
+          "Difference": "+1:34.9",
+          "PercentBack": "+9.29%",
+          "PercentWinning": "91.50%",
+          "PercentAverage": "-5.29%",
+          "PercentMedian": "-7.02%",
+          "StartTime": "07:51:06.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2.33 miles",
+        "Category": "Surf",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "11",
+          "Name": "Caylin Bennetsen",
+          "Distance": "2.33 miles",
+          "Category": "Surf",
+          "Gender": "Female",
+          "Time": "31:39.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.77%",
+          "PercentMedian": "3.77%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "9",
+          "Name": "Katie Everts",
+          "Distance": "2.33 miles",
+          "Category": "Surf",
+          "Gender": "Female",
+          "Time": "34:08.7",
+          "Difference": "+2:28.8",
+          "PercentBack": "+7.83%",
+          "PercentWinning": "92.74%",
+          "PercentAverage": "-3.77%",
+          "PercentMedian": "-3.77%",
+          "StartTime": "07:51:06.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2.33 miles",
+        "Category": "Surf",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "17",
+          "Name": "Brandon Falk",
+          "Distance": "2.33 miles",
+          "Category": "Surf",
+          "Gender": "Male",
+          "Time": "21:20.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.54%",
+          "PercentMedian": "23.54%",
+          "StartTime": "07:51:06.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "10",
+          "Name": "Dan Legg",
+          "Distance": "2.33 miles",
+          "Category": "Surf",
+          "Gender": "Male",
+          "Time": "34:28.2",
+          "Difference": "+13:08.2",
+          "PercentBack": "+61.58%",
+          "PercentWinning": "61.89%",
+          "PercentAverage": "-23.54%",
+          "PercentMedian": "-23.54%",
+          "StartTime": "07:51:06.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "6 miles",
+        "Category": "14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Beau Whitehead",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:15:24.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.84%",
+          "PercentMedian": "7.24%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "18",
+          "Name": "Joe Threadgill",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:15:26.0",
+          "Difference": "+0:01.4",
+          "PercentBack": "+0.03%",
+          "PercentWinning": "99.97%",
+          "PercentAverage": "5.82%",
+          "PercentMedian": "7.21%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "3",
+          "Name": "Richard Weaver",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:21:17.9",
+          "Difference": "+5:53.3",
+          "PercentBack": "+7.81%",
+          "PercentWinning": "92.76%",
+          "PercentAverage": "-1.51%",
+          "PercentMedian": "0.00%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "2",
+          "Name": "Scott Greene",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:22:27.5",
+          "Difference": "+7:02.9",
+          "PercentBack": "+9.35%",
+          "PercentWinning": "91.45%",
+          "PercentAverage": "-2.96%",
+          "PercentMedian": "-1.43%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "4",
+          "Name": "John Misasi",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "1:25:51.3",
+          "Difference": "+10:26.7",
+          "PercentBack": "+13.85%",
+          "PercentWinning": "87.83%",
+          "PercentAverage": "-7.20%",
+          "PercentMedian": "-5.60%",
+          "StartTime": "07:43:11.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "6",
+          "Name": "John Schalka",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        },
+        {
+          "Place": "-",
+          "Bib": "14",
+          "Name": "James Grieve",
+          "Distance": "6 miles",
+          "Category": "14'",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    }
+  ]
+}

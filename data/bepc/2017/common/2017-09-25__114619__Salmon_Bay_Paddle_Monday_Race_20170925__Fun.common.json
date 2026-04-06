@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 114619,
+    "distance": "Fun",
+    "name": "Salmon Bay Paddle Monday Race 20170925 \u2014 Fun",
+    "displayURL": "https://www.webscorer.com/race?raceid=114619",
+    "date": "Sep 25, 2017",
+    "sport": "Paddling",
+    "startTime": "Monday, September 25, 2017 6:45 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.083333
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Doug Broadbent",
+      "craftCategory": "Fun",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1998.2,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1998.2,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Jeremiah Smith",
+      "craftCategory": "Fun",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 2064.8,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2064.8,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "Lindsay Lambert",
+      "craftCategory": "Fun",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 2065.9,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2065.9,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}
