@@ -7,6 +7,8 @@
     "2022-03-12__20229728__Npiattack.common.json",
     "2022-03-19__195487__2022_Bellingham_Bay_Rough_Water_Race__Long_Course_10_miles.common.json",
     "2022-03-19__195487__2022_Bellingham_Bay_Rough_Water_Race__Short_Course_5_miles.common.json",
+    "2022-03-19__20221194__Roughwater__10_Mile.common.json",
+    "2022-03-19__20221194__Roughwater__5_Mile.common.json",
     "2022-05-21__277918__Sound_Rowers_Commencement_Bay_2022.common.json",
     "2022-06-18__280529__Sound_Rowers_Rat_Island_Regatta_2022__Long_Course.common.json",
     "2022-06-18__280529__Sound_Rowers_Rat_Island_Regatta_2022__Short_Course.common.json",
@@ -17,16 +19,5 @@
     "2022-10-20__20225914__Chicken__Long_Course.common.json",
     "2022-10-20__20225914__Chicken__Short_Course.common.json"
   ],
-  "exclude": [
-    {
-      "file": "2022-03-19__20221194__Roughwater__10_Mile.common.json",
-      "reason": "Duplicate of 2022 Bellingham Bay Rough Water Race (same event, Jericho slug). raceresult version preferred.",
-      "preferred": "2022-03-19__195487__2022_Bellingham_Bay_Rough_Water_Race__Long_Course_10_miles.common.json"
-    },
-    {
-      "file": "2022-03-19__20221194__Roughwater__5_Mile.common.json",
-      "reason": "Duplicate of 2022 Bellingham Bay Rough Water Race (same event, Jericho slug). raceresult version preferred.",
-      "preferred": "2022-03-19__195487__2022_Bellingham_Bay_Rough_Water_Race__Long_Course_10_miles.common.json"
-    }
-  ]
+  "exclude": []
 }
