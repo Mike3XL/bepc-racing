@@ -1547,8 +1547,15 @@ def generate_races_list(data: dict) -> None:
             days: dict = defaultdict(list)
             for race in season["races"]:
                 days[race["race_id"]].append(race)
+            from datetime import datetime
+            def _parse_date(d):
+                for fmt in ("%b %d, %Y", "%B %d, %Y"):
+                    try: return datetime.strptime(d, fmt)
+                    except: pass
+                return datetime.min
+
             race_list = []
-            for race_id, courses in sorted(days.items(), key=lambda x: x[1][0]["date"]):
+            for race_id, courses in sorted(days.items(), key=lambda x: _parse_date(x[1][0]["date"])):
                 base_name = courses[0]["name"].split(" — ")[0]
                 multi = len(courses) > 1
                 courses_data = []
@@ -1598,7 +1605,7 @@ function podiumHtml(course) {{
 }}
 
 function renderRacesList(data, year) {{
-  var races = data.seasons[year] || [];
+  var races = (data.seasons[year] || []).slice().reverse();  // newest first
   var rows = races.map(function(r) {{
     var podiums = r.courses.map(podiumHtml).join('');
     return '<tr><td class="text-muted small text-nowrap">' + r.date + '</td>'
