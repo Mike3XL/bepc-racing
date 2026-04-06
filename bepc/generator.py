@@ -1294,7 +1294,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 (function() {{
   var club = '{current_club}';
   localStorage.setItem('bepc_club', club);
-  var season = getSeason('{current_year}');
+  var season = localStorage.getItem('bepc_season_' + club) || '{current_year}';
 
   function showClubSeason(c, s) {{
     // Show correct club
@@ -1538,7 +1538,12 @@ def generate_platform_home(data: dict) -> None:
                 # Multiple courses — show label: name for each
                 parts = []
                 for label, name in winners:
-                    short = label.split(" ")[0] if label else ""
+                    if label:
+                        m = __import__('re').search(r'(\d+(?:\.\d+)?)\s*(?:mi|mile|km)', label, __import__('re').I)
+                        unit = 'km' if m and 'km' in m.group(0).lower() else 'mi'
+                        short = f"{m.group(1)}{unit}" if m else label.split()[0]
+                    else:
+                        short = ""
                     parts.append(f'<span class="text-muted small">{short}:</span> {_racer_link(name)}')
                 winner_line = " · ".join(parts)
             winners_html += f'<div class="small"><span class="text-muted">{c["name"]}:</span> {winner_line}</div>'
@@ -1759,8 +1764,13 @@ def generate_cross_club_links() -> None:
 def generate_all(data: dict) -> None:
     SITE_DIR.mkdir(exist_ok=True)
     (SITE_DIR / "racer").mkdir(exist_ok=True)
-    generate_racer_pages(data)
-    generate_racer_index(data)
+    # Generate racer pages for all clubs
+    original_club = data["current_club"]
+    for club_id in data["clubs"]:
+        data["current_club"] = club_id
+        generate_racer_pages(data)
+        generate_racer_index(data)
+    data["current_club"] = original_club
     generate_data_files(data)
     generate_standings(data)
     generate_races(data)
