@@ -775,6 +775,7 @@ def _build_traj_series(races: list, colors: list) -> tuple:
     }
 
     def _short_label(name: str) -> str:
+        import re as _re
         base = name.split(' — ')[0].strip()
         if base in _SHORT_LABELS:
             return _SHORT_LABELS[base]
@@ -785,10 +786,30 @@ def _build_traj_series(races: list, colors: list) -> tuple:
         if 'PNWORCA Winter Series' in base and '#' in base:
             n = base.rsplit('#', 1)[-1].split(':')[0].strip()
             return f'PNWORCA #{n}'
-        # BEPC: "BEPC 2025 Race Series #18" -> "#18"
+        # BEPC/numbered series: "BEPC 2025 Race Series #18" -> "#18"
         if '#' in base:
             return f'#{base.rsplit("#", 1)[-1].strip()}'
-        return base[:12]  # fallback truncate
+        # Date-suffixed names: "Salmon Bay Paddle Monday Race 20170501" -> "05/01"
+        m = _re.search(r'20\d{2}(\d{2})(\d{2})$', base)
+        if m:
+            return f'{m.group(1)}/{m.group(2)}'
+        # Special events: strip year prefix and truncate
+        base = _re.sub(r'^(BEPC\s+)?\d{4}\s+', '', base)  # remove year prefix
+        # Known short names
+        short_map = {
+            'Halloween Race': 'Halloween', 'Halloween': 'Halloween',
+            "New Year's Paddle Race": "New Year's",
+            'Paddle Your Heart Out - Race': 'Heart Out',
+            'Post Poultry Paddle': 'Post Poultry',
+            'Alderbrook St. Paddles Day Race': "St. Paddles",
+            'Alderbrook St. Paddles Day': "St. Paddles",
+            'Deception Pass Challenge': 'Deception Pass',
+            'MAKAH COAST RACE': 'Makah',
+        }
+        for k, v in short_map.items():
+            if k.lower() in base.lower():
+                return v
+        return base[:12]  # fallback truncate to 12
 
     for race in races:
         label = _short_label(race["name"])
@@ -1260,6 +1281,18 @@ window.addEventListener('load', () => {{
     btn.addEventListener('shown.bs.tab', () => {{
       const year = btn.getAttribute('data-bs-target').split('-').pop();
       setSeason(year);
+    }});
+  }});
+  // Restore saved craft tab
+  const savedCraft = localStorage.getItem('bepc_craft');
+  if (savedCraft) {{
+    const craftBtn = document.querySelector(`[data-bs-target="#${{savedCraft}}"]`);
+    if (craftBtn) bootstrap.Tab.getOrCreateInstance(craftBtn).show();
+  }}
+  // Save craft tab selection
+  document.querySelectorAll('[data-bs-target^="#c-"]').forEach(btn => {{
+    btn.addEventListener('shown.bs.tab', () => {{
+      localStorage.setItem('bepc_craft', btn.getAttribute('data-bs-target').substring(1));
     }});
   }});
 }});
