@@ -333,25 +333,68 @@ echo "Published → {url}"
     sys.exit(result.returncode)
 
 
+def _are_duplicates(a: dict, b: dict) -> tuple[bool, list[str]]:
+    """
+    Three-stage duplicate detection:
+    1. Racer count — >10% difference → not duplicates
+    2. Finish time comparison — ≥80% of sorted times match within 2s
+    3. Returns (is_duplicate, diff_notes) where diff_notes surfaces canonicalization opportunities
+    """
+    a_results = a.get("racerResults", [])
+    b_results = b.get("racerResults", [])
+    if not a_results or not b_results:
+        return False, []
+
+    # Stage 1: racer count
+    count_a, count_b = len(a_results), len(b_results)
+    if abs(count_a - count_b) / max(count_a, count_b) > 0.10:
+        return False, []
+
+    # Stage 2: finish time comparison
+    def times(results):
+        ts = []
+        for r in results:
+            t = r.get("timeSeconds", 0)
+            if t and t > 0:
+                ts.append(t)
+        return sorted(ts)
+
+    ta, tb = times(a_results), times(b_results)
+    n = min(len(ta), len(tb), 20)
+    if n < 3:
+        return False, []
+
+    matches = sum(1 for x, y in zip(ta[:n], tb[:n]) if abs(x - y) <= 2.0)
+    if matches / n < 0.80:
+        return False, []
+
+    # Stage 3: diff for canonicalization opportunities
+    diffs = []
+    a_by_time = {round(r.get("timeSeconds", 0)): r for r in a_results}
+    b_by_time = {round(r.get("timeSeconds", 0)): r for r in b_results}
+    for t, ra in a_by_time.items():
+        rb = b_by_time.get(t) or b_by_time.get(t+1) or b_by_time.get(t-1)
+        if not rb:
+            continue
+        if ra.get("canonicalName") != rb.get("canonicalName"):
+            diffs.append(f"  name: '{ra['canonicalName']}' vs '{rb['canonicalName']}'")
+        if ra.get("craftCategory") != rb.get("craftCategory"):
+            diffs.append(f"  craft: '{ra['craftCategory']}' vs '{rb['craftCategory']}'")
+
+    return True, diffs
+
+
 def cmd_audit_sources(args):
-    """Detect duplicate race sources and generate/update manifests."""
+    """Detect duplicate race sources using time-based comparison and generate/update manifests."""
     import re as _re
     from difflib import SequenceMatcher
 
     def _normalize(name: str) -> str:
-        """Strip distance/course suffixes for event base name comparison."""
         name = name.lower()
         name = _re.sub(r'\s*[-—]\s*(long|short|downwind|intermediate|expert|novice|youth|men|women|mixed|overall|iron).*$', '', name)
         name = _re.sub(r'\s*\d+\s*(mile|km|mi|k)\b.*$', '', name)
         name = _re.sub(r'\s+course\s*$', '', name)
         return name.strip()
-
-    def _norm_course(course: str) -> str:
-        """Normalize course label for duplicate detection — keep distance numbers."""
-        c = course.lower().strip()
-        c = _re.sub(r'[^a-z0-9]', ' ', c)
-        c = _re.sub(r'\s+', ' ', c).strip()
-        return c or '__no_course__'
 
     def _similar(a: str, b: str) -> float:
         return SequenceMatcher(None, _normalize(a), _normalize(b)).ratio()
@@ -374,44 +417,37 @@ def cmd_audit_sources(args):
         if not files:
             continue
 
-        # Load race info from each file
-        races = []
+        loaded = []
         for f in files:
             try:
                 d = json.loads(f.read_text())
                 info = d.get("raceInfo", {})
-                races.append({
-                    "file": f.name,
+                loaded.append({
+                    "file": f.name, "data": d,
                     "date": info.get("date", ""),
-                    "name": info.get("name", ""),
                     "base": info.get("name", "").split(" — ")[0],
-                    "course": info.get("distance", "") or (info.get("name", "").split(" — ")[-1] if " — " in info.get("name", "") else ""),
                     "racers": len(d.get("racerResults", [])),
                 })
             except Exception:
                 continue
 
-        # Find duplicates: same date + similar base name
-        groups: dict[str, list] = {}
-        for r in races:
-            key = r["date"]
-            groups.setdefault(key, []).append(r)
+        by_date: dict[str, list] = {}
+        for r in loaded:
+            by_date.setdefault(r["date"], []).append(r)
 
         manifest_path = common_dir / "manifest.json"
-        existing_manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else None
-        include = []
-        exclude = []
+        existing = json.loads(manifest_path.read_text()) if manifest_path.exists() else None
+        include, exclude = [], []
         has_dupes = False
 
-        for date, group in sorted(groups.items()):
+        for date, group in sorted(by_date.items()):
             if len(group) < 2:
                 include.extend(f["file"] for f in group)
                 continue
 
-            # Group by normalized base name to find same-event files
+            # Group by similar base name
             base_groups: dict[str, list] = {}
             for r in group:
-                # Find which base_group this belongs to
                 placed = False
                 for key in list(base_groups.keys()):
                     if _similar(r["base"], key) > 0.7:
@@ -421,46 +457,52 @@ def cmd_audit_sources(args):
                 if not placed:
                     base_groups[r["base"]] = [r]
 
-            for base_key, same_event in base_groups.items():
+            for same_event in base_groups.values():
                 if len(same_event) == 1:
                     include.append(same_event[0]["file"])
                     continue
 
-                # Check if these are true duplicates (same course label) or multi-course
-                course_groups: dict[str, list] = {}
-                for r in same_event:
-                    norm_course = _norm_course(r["course"])
-                    course_groups.setdefault(norm_course, []).append(r)
+                processed = set()
+                for i, a in enumerate(same_event):
+                    if a["file"] in processed:
+                        continue
+                    dupe_group = [a]
+                    for b in same_event[i+1:]:
+                        if b["file"] in processed:
+                            continue
+                        is_dup, diffs = _are_duplicates(a["data"], b["data"])
+                        if is_dup:
+                            dupe_group.append(b)
+                            processed.add(b["file"])
+                            if diffs:
+                                print(f"\n  [{year_dir.name}] Canonicalization ({a['file'][:40]} vs {b['file'][:40]}):")
+                                for d in diffs[:5]:
+                                    print(d)
 
-                for course_key, course_files in course_groups.items():
-                    if len(course_files) == 1:
-                        # Unique course — include it
-                        include.append(course_files[0]["file"])
-                    else:
-                        # True duplicate: same event, same course, multiple sources
+                    if len(dupe_group) > 1:
                         has_dupes = True
                         total_dupes += 1
-                        print(f"\n  [{year_dir.name}] True duplicates on {date} (course: '{course_key}'):")
-                        for d in course_files:
+                        print(f"\n  [{year_dir.name}] Duplicates on {date}:")
+                        for d in dupe_group:
                             print(f"    {d['file']} ({d['racers']} racers)")
-                        best = max(course_files, key=lambda x: x["racers"])
-                        print(f"    → Auto-selecting: {best['file']}")
+                        best = max(dupe_group, key=lambda x: x["racers"])
+                        print(f"    → Selecting: {best['file']}")
                         include.append(best["file"])
-                        for d in course_files:
+                        for d in dupe_group:
                             if d["file"] != best["file"]:
-                                exclude.append({
-                                    "file": d["file"],
-                                    "reason": f"True duplicate of {best['file']} (same event/course, different source fetch)",
-                                    "preferred": best["file"]
-                                })
+                                exclude.append({"file": d["file"],
+                                               "reason": f"Duplicate of {best['file']} (time-match)",
+                                               "preferred": best["file"]})
+                    else:
+                        include.append(a["file"])
+                    processed.add(a["file"])
 
-        if has_dupes or existing_manifest:
-            manifest = {
-                "note": "Authoritative list of race files included in club history. Edit to resolve source conflicts.",
+        if has_dupes or existing:
+            manifest_path.write_text(json.dumps({
+                "note": "Authoritative list of race files included in club history.",
                 "include": sorted(include),
                 "exclude": exclude,
-            }
-            manifest_path.write_text(json.dumps(manifest, indent=2))
+            }, indent=2))
             print(f"  Written: {manifest_path}")
 
     if total_dupes == 0:
