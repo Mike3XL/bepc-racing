@@ -553,7 +553,7 @@ def _scan_pacificmultisports(verbose: bool = True) -> list[dict]:
                                   headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=15) as r:
         html = r.read().decode("utf-8", errors="replace")
-    all_ids = sorted(set(int(x) for x in _re.findall(r'/Events/Results/(\d+)', html)))
+    all_ids = sorted(set(int(x) for x in re.findall(r'/Events/Results/(\d+)', html)))
 
     new_events = []
     import time
@@ -563,8 +563,8 @@ def _scan_pacificmultisports(verbose: bool = True) -> list[dict]:
                                           headers={"User-Agent": "Mozilla/5.0"})
             with urllib.request.urlopen(req, timeout=5) as r:
                 page = r.read().decode("utf-8", errors="replace")
-            title = _re.search(r'<title>Results - ([^<]+) - Pacific', page)
-            rr = _re.search(r'new RRPublish\([^,]+,\s*(\d+)', page)
+            title = re.search(r'<title>Results - ([^<]+) - Pacific', page)
+            rr = re.search(r'new RRPublish\([^,]+,\s*(\d+)', page)
             if not title:
                 continue
             name = title.group(1).strip()
@@ -605,6 +605,75 @@ def cmd_scan(args):
     cmd_scan_sources(args)
 
 
+def cmd_search(args):
+    """Search configured organizers for new races not yet fetched for a club."""
+    import urllib.request, re
+
+    club = args.club
+    clubs_cfg = _load_clubs_config()
+    cfg = clubs_cfg.get(club, {})
+    organizers = cfg.get("race_inclusion", {}).get("include_organizers", [])
+
+    if not organizers:
+        print(f"No include_organizers configured for club '{club}' in clubs.yaml.")
+        return
+
+    # Find all race IDs already in this club's data folders
+    club_dir = DATA_DIR / club
+    existing_ids = set()
+    if club_dir.exists():
+        for f in club_dir.rglob("*.common.json"):
+            m = re.search(r'__(\d{5,})__', f.name)
+            if m:
+                existing_ids.add(int(m.group(1)))
+
+    print(f"Club: {club} | Organizers: {organizers}")
+    print(f"Already have {len(existing_ids)} race IDs on disk.\n")
+
+    all_new = []
+    for org_id in organizers:
+        try:
+            url = f"https://www.webscorer.com/{org_id}"
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=15) as r:
+                html = r.read().decode("utf-8", errors="replace")
+
+            # Extract race ID + name + date pairs
+            # WebScorer page has links like /race?raceid=XXXXX
+            pairs = re.findall(r'raceid=(\d+)[^>]*>\s*([^<\n]{3,60})', html)
+            # Also try to get dates
+            date_map = {}
+            date_blocks = re.findall(r'raceid=(\d+)[^\n]*\n[^\n]*(\d{4}-\d{2}-\d{2}|\w+ \d+, \d{4})', html)
+            for rid, date in date_blocks:
+                date_map[rid] = date
+
+            seen = set()
+            new_for_org = []
+            for rid, name in pairs:
+                name = name.strip()
+                if rid in seen or not name:
+                    continue
+                seen.add(rid)
+                if int(rid) not in existing_ids:
+                    new_for_org.append((rid, name, date_map.get(rid, "")))
+
+            if new_for_org:
+                print(f"  [{org_id}] {len(new_for_org)} new races:")
+                for rid, name, date in new_for_org[:30]:
+                    print(f"    {rid}  {date:<12}  {name[:55]}")
+                all_new.extend(new_for_org)
+            else:
+                print(f"  [{org_id}] No new races found.")
+        except Exception as e:
+            print(f"  [{org_id}] ERROR: {e}")
+
+    if all_new:
+        ids = " ".join(r[0] for r in all_new)
+        print(f"\nTo fetch all new races:")
+        print(f"  python3.13 cli.py fetch --club {club} --year <YEAR> {ids}")
+        print(f"\nTo exclude a race, add its ID to the club's exclude_urls in clubs.yaml.")
+
+
 def main():
     parser = argparse.ArgumentParser(prog="bepc")
     sub = parser.add_subparsers(dest="command")
@@ -631,6 +700,9 @@ def main():
                             help="Source to scan (default: all)")
 
     sub.add_parser("scan", help="Scan all result sources for new events")
+
+    search_p = sub.add_parser("search", help="Search club's configured organizers for new races")
+    search_p.add_argument("--club", default=CURRENT_CLUB, help="Club to search for")
     audit_p.add_argument("--club", default=None)
 
     jericho_p = sub.add_parser("fetch-jericho", help="Fetch PNW smallboat races from Jericho year page")
@@ -690,6 +762,8 @@ def main():
         cmd_scan_sources(args)
     elif args.command == "scan":
         cmd_scan(args)
+    elif args.command == "search":
+        cmd_search(args)
     else:
         parser.print_help()
 
