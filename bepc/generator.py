@@ -1,5 +1,6 @@
 """Generate static HTML pages from site/data.json."""
 import json
+import re as _re_module
 from pathlib import Path
 from bepc.craft import display_craft_ui
 
@@ -399,18 +400,9 @@ def _loading_spinner() -> str:
     return '<div id="loading" class="text-center my-5" style="display:none"><div class="spinner-border text-secondary"></div></div>'
 
 
-def _club_opts(data: dict, current_club: str) -> str:
-    opts = ""
-    for club_id, club in data["clubs"].items():
-        sel = " selected" if club_id == current_club else ""
-        opts += f'<option value="{club_id}"{sel}>{club["name"]}</option>'
-    return opts
-
-
 def generate_standings(data: dict) -> None:
     club = data["clubs"][data["current_club"]]
     current_year = club["current_season"]
-    club_opts = _club_opts(data, data["current_club"])
 
     html = _head("Standings") + _nav("Standings", data=data) + _selector_bar(data) + f"""
 <div class="container">
@@ -505,10 +497,10 @@ let currentIndex = 0;
 function slug(name) {{ return name.toLowerCase().replace(/ /g, '-'); }}
 function display_craft_ui(cat) {{
   if (!cat || cat === 'Unknown') return '';
-  const sprint = cat.match(/^Sprint-K(\d+)$/); if (sprint) return 'K-' + sprint[1] + ' (sprint)';
-  const vaa = cat.match(/^Va'a-(\d+)$/); if (vaa) return 'V-' + vaa[1];
-  const canoe = cat.match(/^Canoe-(\d+)$/); if (canoe) return 'C-' + canoe[1];
-  const kayak = cat.match(/^Kayak-(\d+)$/); if (kayak) return 'K-' + kayak[1];
+  const sprint = cat.match(/^Sprint-K(\\d+)$/); if (sprint) return 'K-' + sprint[1] + ' (sprint)';
+  const vaa = cat.match(/^Va'a-(\\d+)$/); if (vaa) return 'V-' + vaa[1];
+  const canoe = cat.match(/^Canoe-(\\d+)$/); if (canoe) return 'C-' + canoe[1];
+  const kayak = cat.match(/^Kayak-(\\d+)$/); if (kayak) return 'K-' + kayak[1];
   if (/^(OW|SUP|Prone)-1$/.test(cat)) return cat.slice(0, -2);
   return cat;
 }}
@@ -748,9 +740,6 @@ document.addEventListener('DOMContentLoaded', () => {{
     (SITE_DIR / "index.html").write_text(html)
     print("Generated: site/index.html")
 
-
-import re as _re_module
-
 _SHORT_LABELS = {
     'Pnworca1': 'PNWORCA #1', 'Pnworca2': 'PNWORCA #2', 'Pnworca3': 'PNWORCA #3',
     'Pnworca5': 'PNWORCA #5', 'Pnworca6': 'PNWORCA #6',
@@ -869,7 +858,6 @@ def _build_traj_series(races: list, colors: list) -> tuple:
 def generate_trajectories(data: dict) -> None:
     club = data["clubs"][data["current_club"]]
     current_year = club["current_season"]
-    club_opts = _club_opts(data, data["current_club"])
 
     # Shared chart options JS — sorted tooltip, skip nulls, highlight hovered line, inline end labels
     chart_options_js = """
@@ -1185,7 +1173,6 @@ document.getElementById('racer-select').addEventListener('change', function() {
             body_html += f'<div data-club="{club_id}" style="display:none">'
 
             for year, crafts in sorted(years.items()):
-                current_season_key = data["clubs"][club_id]["current_season"]
                 body_html += f'<div data-season="{year}" style="display:none">'
 
                 craft_keys = sorted(crafts.keys())
@@ -1261,13 +1248,6 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
                 body_html += f"{craft_tabs}{craft_content}</div>"  # close data-season div
 
             body_html += "</div>"  # close data-club div
-
-        # Build list of available (club, year) tab IDs for JS
-        available_tabs = json.dumps([
-            f"s-{club_id}-{year}"
-            for club_id in by_club
-            for year in sorted(by_club[club_id].keys())
-        ])
 
         season_tab_js = f"""<script>
 (function() {{

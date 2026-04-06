@@ -55,7 +55,7 @@ HTML pages are thin shells that fetch JSON data on load. No inline data blobs.
 ## Handicap Algorithm (BEPC #1)
 
 1. Sort racers by finish time
-2. Par racer = finisher at 33rd percentile by adjusted time (min 10 racers; ⛳ trophy)
+2. Par racer = finisher at 33rd percentile by adjusted time (min 10 racers; tide marker trophy). After each race, all handicaps are rescaled so par racer = 1.0 at season start (P33 rescaling on carry-over).
 3. `adjusted_time = finish_time / handicap`
 4. `time_vs_par = finish_time / par_adjusted_time`
 5. Update handicap:
@@ -73,13 +73,16 @@ Computed per race in `processor.py`, stored in `RacerResult.trophies` as a list 
 
 | Code       | Icon              | Tooltip         | Eligibility                 |
 | ---------- | ----------------- | --------------- | --------------------------- |
-| `finish_1` | 🥇 (plain)        | Overall 1st     | original_place == 1         |
-| `finish_2` | 🥈 (plain)        | Overall 2nd     | original_place == 2         |
-| `finish_3` | 🥉 (plain)        | Overall 3rd     | original_place == 3         |
-| `hcap_1`   | 🥇 (gold badge)   | Handicap winner | top eligible adjusted place |
-| `hcap_2`   | 🥈 (silver badge) | Handicap 2nd    | top eligible adjusted place |
-| `hcap_3`   | 🥉 (bronze badge) | Handicap 3rd    | top eligible adjusted place |
-| `par`      | ⛳ (plain)        | Par racer       | is_par_racer                |
+| `finish_1` | pennant flag (gold)   | Overall 1st     | original_place == 1         |
+| `finish_2` | pennant flag (silver) | Overall 2nd     | original_place == 2         |
+| `finish_3` | pennant flag (bronze) | Overall 3rd     | original_place == 3         |
+| `hcap_1`   | trophy cup (gold)     | Handicap winner | top eligible adjusted place |
+| `hcap_2`   | trophy cup (silver)   | Handicap 2nd    | top eligible adjusted place |
+| `hcap_3`   | trophy cup (bronze)   | Handicap 3rd    | top eligible adjusted place |
+| `par`      | tide marker (blue)    | Par racer       | is_par_racer                |
+| `consistent_1/2/3` | heartbeat line | Consistent performer | closest adj_time_vs_par to 1.0 |
+| `streak_N` | lightning bolt + N    | Improving streak | N consecutive improvements |
+| `fresh`    | EST badge (green)     | Establishing handicap | not eligible for hcap awards |
 
 Handicap trophies skip fresh racers (first 2 races) — awarded to top 3 eligible by adjusted place.
 Finish trophies are always awarded regardless of fresh status.
