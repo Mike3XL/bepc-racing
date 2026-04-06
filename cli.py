@@ -311,27 +311,36 @@ def cmd_generate(args):
 
 def cmd_publish(args):
     import subprocess
-    club = getattr(args, 'club', CURRENT_CLUB)
-    meta = CLUB_META.get(club, {})
-    branch = getattr(args, 'branch', None) or meta.get("gh_branch", f"gh-pages-{club}")
-    url = meta.get("gh_url", f"https://mike3xl.github.io/bepc-racing/ ({club})")
-
-    # Generate scoped site first
-    data = json.loads((SITE_DIR / "data.json").read_text())
-    if club not in data["clubs"]:
-        print(f"ERROR: club '{club}' not found in data.json. Run 'bepc process' first.")
-        sys.exit(1)
-    data["current_club"] = club
-    generate_all(data)
+    club = getattr(args, 'club', None)
+    publish_all = club is None or club == 'all'
 
     root = Path(__file__).parent
     site = root / "site"
+    data = json.loads((SITE_DIR / "data.json").read_text())
+
+    if publish_all:
+        # Generate full multi-club site and push to gh-pages
+        generate_all(data)
+        branch = "gh-pages"
+        url = "https://mike3xl.github.io/bepc-racing/"
+        msg = "chore: publish full site (all clubs)"
+    else:
+        meta = CLUB_META.get(club, {})
+        branch = getattr(args, 'branch', None) or meta.get("gh_branch", f"gh-pages-{club}")
+        url = meta.get("gh_url", f"https://mike3xl.github.io/bepc-racing/ ({club})")
+        if club not in data["clubs"]:
+            print(f"ERROR: club '{club}' not found in data.json. Run 'bepc process' first.")
+            sys.exit(1)
+        data["current_club"] = club
+        generate_all(data)
+        msg = f"chore: publish site ({club})"
+
     script = f"""set -e
 cd {root}
 git read-tree --empty
 git --work-tree={site} add --all
 TREE=$(git write-tree)
-COMMIT=$(git commit-tree $TREE -m "chore: publish site ({club})")
+COMMIT=$(git commit-tree $TREE -m "{msg}")
 git push origin $COMMIT:refs/heads/{branch} --force
 git read-tree HEAD
 echo "Published → {url}"
@@ -835,7 +844,7 @@ def main():
     gen_p.add_argument("--club", default=None, help="Scope site to one club")
 
     pub_p = sub.add_parser("publish", help="Generate and push site to GitHub Pages")
-    pub_p.add_argument("--club", default=CURRENT_CLUB, help="Club to publish (default: bepc)")
+    pub_p.add_argument("--club", default=None, help="Club to publish, or omit for full multi-club site on gh-pages")
     pub_p.add_argument("--branch", default=None, help="Override gh-pages branch name")
 
     audit_p = sub.add_parser("audit-crafts", help="List unrecognized craft values")

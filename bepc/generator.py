@@ -1462,19 +1462,23 @@ def generate_platform_home(data: dict) -> None:
                     }
                 else:
                     race_map[key]["starters"] = max(race_map[key]["starters"], len(race["results"]))
-                # Find winner for this club
+                # Find winner for this club/course
                 winners = [r["canonical_name"] for r in race["results"]
                            if "hcap_1" in r.get("trophies", [])]
+                course_label = race["name"].split(" — ")[1] if " — " in race["name"] else None
                 entry = race_map[key]
-                if not any(c["id"] == club_id for c in entry["clubs"]):
-                    entry["clubs"].append({
+                existing = next((c for c in entry["clubs"] if c["id"] == club_id), None)
+                if existing is None:
+                    existing = {
                         "id": club_id,
                         "name": club_name,
                         "type": club_type,
-                        "winner": winners[0] if winners else None,
-                        "winner_slug": _slug(winners[0]) if winners else None,
+                        "winners": [],
                         "race_id": race["race_id"],
-                    })
+                    }
+                    entry["clubs"].append(existing)
+                if winners:
+                    existing["winners"].append((course_label, winners[0]))
 
     from datetime import datetime
     def _parse_date(d):
@@ -1521,11 +1525,23 @@ def generate_platform_home(data: dict) -> None:
         club_links_html = ""
         winners_html = ""
         for c in r["clubs"]:
-            winner_html = _racer_link(c["winner"]) if c.get("winner") else '<span class="text-muted">—</span>'
             race_link = f'index.html#{c["race_id"]}'
             cls = "text-secondary" if c["type"] == "league" else ""
             club_links_html += f'<a href="{race_link}" onclick="localStorage.setItem(\'bepc_club\',\'{c["id"]}\')" class="badge bg-light text-dark border me-1 small fw-normal {cls}">{c["name"]} ↗</a>'
-            winners_html += f'<div class="small"><span class="text-muted">{c["name"]}:</span> {winner_html}</div>'
+            winners = c.get("winners", [])
+            if not winners:
+                winner_line = '<span class="text-muted">—</span>'
+            elif len(winners) == 1 or all(w[0] is None for w in winners):
+                # Single course or no labels — just show name
+                winner_line = _racer_link(winners[0][1])
+            else:
+                # Multiple courses — show label: name for each
+                parts = []
+                for label, name in winners:
+                    short = label.split(" ")[0] if label else ""
+                    parts.append(f'<span class="text-muted small">{short}:</span> {_racer_link(name)}')
+                winner_line = " · ".join(parts)
+            winners_html += f'<div class="small"><span class="text-muted">{c["name"]}:</span> {winner_line}</div>'
         feed_rows += f"""
         <tr>
           <td class="text-muted small text-nowrap">{r["date"]}</td>
