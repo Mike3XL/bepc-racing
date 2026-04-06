@@ -1291,7 +1291,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 }})();
 </script>"""
 
-        html = _head(name, _CHARTJS) + _nav("Racers", prefix="../", data=data) + _selector_bar(data, racer_clubs=racer_clubs) + f"""
+        html = _head(name, _CHARTJS) + _nav("Racers", prefix="../", data=data) + _selector_bar(data) + f"""
 <div class="container">
   {racer_nav}
   <h2>{name}</h2>
