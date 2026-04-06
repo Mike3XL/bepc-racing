@@ -512,6 +512,95 @@ def cmd_audit_sources(args):
         print("Review manifests and run 'process' to recompute.")
 
 
+def cmd_fetch_raceresult(args):
+    """Fetch one or more raceresult.com events into a club's data folder."""
+    from bepc.fetcher_raceresult import fetch_event
+    club = args.club
+    year = args.year
+    out_dir = DATA_DIR / club / year / "common"
+    for rr_id in args.rr_ids:
+        # Look up name/date from catalog if available
+        catalog_path = DATA_DIR / "sources" / "pacificmultisports_events.json"
+        name, date = f"Event {rr_id}", f"Jan 1, {year}"
+        if catalog_path.exists():
+            catalog = json.loads(catalog_path.read_text())
+            for e in catalog.get("events", []):
+                if e.get("rr_id") == rr_id:
+                    name = e.get("name", name)
+                    date = e.get("date") or date
+                    break
+        print(f"Fetching rr:{rr_id} → {name}")
+        fetch_event(rr_id=rr_id, name=name, date=date, out_dir=out_dir)
+
+
+def _scan_pacificmultisports(verbose: bool = True) -> list[dict]:
+    """Scan gbrc.pacificmultisports.com for paddling events not yet in catalog."""
+    import urllib.request, re as _re
+    catalog_path = DATA_DIR / "sources" / "pacificmultisports_events.json"
+    known_rr_ids = set()
+    if catalog_path.exists():
+        catalog = json.loads(catalog_path.read_text())
+        known_rr_ids = {e["rr_id"] for e in catalog.get("events", []) if e.get("rr_id")}
+
+    paddling_keywords = ['peter marcus', 'gorge', 'narrows', 'keats', 'fjord', 'rough water',
+                         'paddle', 'kayak', 'surfski', 'sup', 'outrigger', 'rat island',
+                         'mercer', 'sound rower', 'pnworca', 'bbop', 'spocc', 'bellingham bay']
+
+    # Get all event IDs from the results page
+    req = urllib.request.Request("https://gbrc.pacificmultisports.com/Events/Results",
+                                  headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=15) as r:
+        html = r.read().decode("utf-8", errors="replace")
+    all_ids = sorted(set(int(x) for x in _re.findall(r'/Events/Results/(\d+)', html)))
+
+    new_events = []
+    import time
+    for eid in all_ids:
+        try:
+            req = urllib.request.Request(f"https://gbrc.pacificmultisports.com/Events/Results/{eid}",
+                                          headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=5) as r:
+                page = r.read().decode("utf-8", errors="replace")
+            title = _re.search(r'<title>Results - ([^<]+) - Pacific', page)
+            rr = _re.search(r'new RRPublish\([^,]+,\s*(\d+)', page)
+            if not title:
+                continue
+            name = title.group(1).strip()
+            rr_id = int(rr.group(1)) if rr else None
+            if not any(k in name.lower() for k in paddling_keywords):
+                continue
+            if rr_id and rr_id in known_rr_ids:
+                continue
+            new_events.append({"gbrc_id": eid, "rr_id": rr_id, "name": name})
+            if verbose:
+                print(f"  NEW: gbrc:{eid} rr:{rr_id} — {name}")
+        except Exception:
+            pass
+        time.sleep(0.1)
+
+    return new_events
+
+
+def cmd_scan_sources(args):
+    """Scan result sources for new paddling events not yet in catalog."""
+    source = getattr(args, 'source', 'all')
+    found = []
+    if source in ('all', 'pacificmultisports'):
+        print("Scanning Pacific Multisports...")
+        found.extend(_scan_pacificmultisports())
+    # Future: add jericho, webscore organizer scans here
+    if not found:
+        print("No new events found.")
+    else:
+        print(f"\nFound {len(found)} new event(s). Add to data/sources/pacificmultisports_events.json and run fetch-raceresult.")
+
+
+def cmd_scan(args):
+    """Scan all result sources for new events."""
+    args.source = 'all'
+    cmd_scan_sources(args)
+
+
 def main():
     parser = argparse.ArgumentParser(prog="bepc")
     sub = parser.add_subparsers(dest="command")
@@ -527,6 +616,17 @@ def main():
     audit_p = sub.add_parser("audit-crafts", help="List unrecognized craft values")
     audit_src_p = sub.add_parser("audit-sources", help="Detect duplicate race sources and generate manifests")
     audit_src_p.add_argument("--club", default=CURRENT_CLUB, help="Club to audit")
+
+    rr_p = sub.add_parser("fetch-raceresult", help="Fetch events from raceresult.com (Pacific Multisports)")
+    rr_p.add_argument("rr_ids", nargs="+", type=int, help="raceresult event ID(s)")
+    rr_p.add_argument("--club", default="pnw-regional")
+    rr_p.add_argument("--year", required=True, help="Year folder e.g. 2025")
+
+    scan_src_p = sub.add_parser("scan-sources", help="Scan a result source for new events")
+    scan_src_p.add_argument("--source", default="all", choices=["all", "pacificmultisports"],
+                            help="Source to scan (default: all)")
+
+    sub.add_parser("scan", help="Scan all result sources for new events")
     audit_p.add_argument("--club", default=None)
 
     jericho_p = sub.add_parser("fetch-jericho", help="Fetch PNW smallboat races from Jericho year page")
@@ -580,6 +680,12 @@ def main():
         cmd_fetch(args)
     elif args.command == "audit-sources":
         cmd_audit_sources(args)
+    elif args.command == "fetch-raceresult":
+        cmd_fetch_raceresult(args)
+    elif args.command == "scan-sources":
+        cmd_scan_sources(args)
+    elif args.command == "scan":
+        cmd_scan(args)
     else:
         parser.print_help()
 

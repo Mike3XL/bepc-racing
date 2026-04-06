@@ -80,6 +80,13 @@ season_mode:   annual | rolling_N | all_time
 show_all_time: bool    # Whether to offer "All Time" option in year picker
 ```
 
+**UX model:** Single selector showing all options together:
+`All Time | Last 3 Years | Last 2 Years | 2025 | 2024 | 2023 | ...`
+
+- Individual years: per-season standings, trophies, winners (computed from real seasons)
+- Aggregated views (All Time, Last N): sum points across seasons — **display only**, never affects handicap or awards
+- Same localStorage key as season selector, same position in selector bar
+
 ### Display
 ```
 min_races_for_page:  int     # Min appearances to generate a racer page (default: 1)
@@ -255,6 +262,62 @@ craft_scope: [Kayak-1, Kayak-2, OC-1, OC-2, SUP-1, V1, FSK-1]
 
 ---
 
+## Page Scope
+
+| Page | Scope | Notes |
+|------|-------|-------|
+| Results | Per-club | Shows races for current club only |
+| Standings | Per-club | Points and handicap standings for current club |
+| Trajectories | Per-club | Handicap/points trends for current club |
+| Racer pages | Global | Shows all clubs the racer has appeared in |
+| Home | Platform | All clubs, recent races feed |
+| Club page | Per-club | Club info, config, stats |
+
+Racer pages are global by design — a racer's full history across all clubs is the most valuable view. Eventually racers may have a "preferred club" that determines default display order.
+
+---
+
+## Racer Identity & Canonicalization
+
+### Problem
+Racers appear under different name variants across data sources:
+- WebScorer: "Mike Liddell", "M. Liddell", "Michael Liddell"
+- Jericho: free-text entry, no canonical ID
+- Same name, different person (duplicate names)
+
+### Canonical Racer ID
+Each racer needs a stable `racer_id` independent of name:
+
+```yaml
+racer_id:  string    # e.g. "mike-liddell" or UUID
+name:      string    # canonical display name
+aliases:   [string]  # all known name variants that map to this racer
+sources:
+  - source: webscore
+    id: 12345        # WebScorer racer ID (stable, use for auto-matching)
+  - source: jericho
+    id: null         # no stable ID — manual tagging required
+```
+
+### Matching Strategy (priority order)
+1. **WebScorer racer ID** — most reliable, use when available
+2. **Canonical name match** — exact match against `aliases.json`
+3. **Manual override** — per-race result file can tag a result to a `racer_id`
+4. **Fuzzy match** — edit distance for Jericho data (flag for review, don't auto-apply)
+
+### Current State
+- `aliases.json` per club handles name variants (e.g. "Mick Liddell" → "Mike Liddell")
+- No stable `racer_id` yet — canonical name is the de-facto ID
+- Duplicate names not yet handled
+
+### Future Work
+- Add `racer_id` field to canonical racer registry (`data/racers.yaml`)
+- WebScorer fetch stores `racer_id` alongside name
+- Jericho import flags unmatched names for manual review
+- Racer page URL uses `racer_id` not name slug (avoids collision)
+
+---
+
 ## Open Questions
 
 1. **Club type naming** — "Community League" is the primary full name, "League" for short. "Virtual club" and "Series" reserved for explanatory copy only.
@@ -277,4 +340,8 @@ craft_scope: [Kayak-1, Kayak-2, OC-1, OC-2, SUP-1, V1, FSK-1]
 | `exclude_urls` | ❌ Not implemented |
 | `show_all_time` year picker | ❌ Not implemented |
 | `craft_scope` filtering | ❌ Not implemented |
+| Standings/Trajectories per-club | ⚠️ Single page with club selector + localStorage |
+| Racer canonical ID (`racer_id`) | ❌ Not implemented |
+| WebScorer racer ID tracking | ❌ Not implemented |
+| Jericho manual racer tagging | ❌ Not implemented |
 | Club page (`/club/<id>.html`) | ❌ Not implemented |

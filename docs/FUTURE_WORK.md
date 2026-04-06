@@ -57,6 +57,29 @@ A curated virtual club aggregating distance events from regional organizers:
 - Full season: completed every race in a season
 - Debut: first ever race in the series
 
+### % Performance Columns (race results table)
+
+Ideas discussed 2026-04-05. Implement incrementally.
+
+**Candidate columns:**
+- **% vs handicap** — `(1 - adj_time_vs_par) × 100` — did you beat your expected time? Positive = good. ✅ Implement first.
+- **% from par** — same number, opposite sign framing (alternative to above, not both)
+- **% back from winner** — `(adj_time - winner_adj_time) / winner_adj_time × 100` — gap to handicap winner
+- **% back from raw winner** — gap to overall finish winner
+
+**Design notes:**
+- % vs hcap and % from par are the same data, different framing — pick one
+- % vs hcap (positive = good) is more racer-friendly
+- Show on Handicap Order tab primarily
+- Colour-code: green for positive (beat handicap), red for negative
+- Future: column selector (gear icon or "Columns" button) to show/hide optional columns
+- Future: use % vs hcap variance for "consistent" award (low variance = truly consistent)
+
+**Award criteria review (2026-04-05):**
+- Par + streak coexistence is valid: par racer performed exactly at handicap, streak means they've been improving toward it
+- Consistent = "closest to adj_time_vs_par = 1.0 this race" — this is correct; racing at your handicap puts you at par by definition
+- Streak uses `adjusted_time_vs_par` improvement — note: this is partly affected by par racer's time varying race to race. Future: consider using absolute time improvement instead.
+
 ## Medium Priority
 
 ### Multi-Club Support
