@@ -3,7 +3,6 @@
   "include": [
     "2025-01-01__20257169__Cdnssmallboats__Long_Course.common.json",
     "2025-01-01__20257169__Cdnssmallboats__Short_Course.common.json",
-    "2025-01-01__351602__2025_Gorge_Downwind_Champs.common.json",
     "2025-01-01__366857__2025_Narrows_Challenge__10_km_Intermediate.common.json",
     "2025-01-01__366857__2025_Narrows_Challenge__20km_Expert.common.json",
     "2025-01-01__366857__2025_Narrows_Challenge__5_km_Short.common.json",
@@ -167,6 +166,11 @@
       "file": "2025-01-01__20258430__Cdnssmallboats__Short_Course.common.json",
       "reason": "Duplicate of 2025-01-01__20257169__Cdnssmallboats__Short_Course.common.json (time-match)",
       "preferred": "2025-01-01__20257169__Cdnssmallboats__Short_Course.common.json"
+    },
+    {
+      "file": "2025-01-01__351602__2025_Gorge_Downwind_Champs.common.json",
+      "reason": "Duplicate of Jericho Gorgedownwind (same event, different source name). Jericho version preferred.",
+      "preferred": "2025-07-18__20255291__Gorgedownwind.common.json"
     }
   ]
 }
