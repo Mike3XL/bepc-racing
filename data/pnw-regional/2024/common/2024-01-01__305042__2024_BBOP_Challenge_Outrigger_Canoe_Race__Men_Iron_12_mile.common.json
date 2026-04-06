@@ -1,0 +1,51 @@
+{
+  "raceInfo": {
+    "raceId": 305042,
+    "name": "2024 BBOP Challenge \u2014 Men Iron - 12 mile",
+    "date": "Jan 1, 2024",
+    "displayURL": "https://gbrc.pacificmultisports.com/Events/Results/305042",
+    "distance": "Men Iron - 12 mile",
+    "pointsWeight": 0.090909,
+    "sport": "Paddling"
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Wakinikona Open Men's Team",
+      "craftCategory": "UNLIMITED",
+      "gender": "",
+      "handicap": 1.0,
+      "timeSeconds": 6501.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 6501.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Kikaha Men's Open",
+      "craftCategory": "UNLIMITED",
+      "gender": "",
+      "handicap": 1.0,
+      "timeSeconds": 6518.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 6518.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}
