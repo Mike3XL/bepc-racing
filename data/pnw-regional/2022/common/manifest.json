@@ -1,0 +1,23 @@
+{
+  "note": "Authoritative list of race files included in club history. Edit to resolve source conflicts.",
+  "include": [
+    "2022-02-19__20229484__Gorge_V12.common.json",
+    "2022-03-05__20226836__Pnworca5__Long_Course.common.json",
+    "2022-03-05__20226836__Pnworca5__Short_Course.common.json",
+    "2022-03-12__20229728__Npiattack.common.json",
+    "2022-03-19__195487__2022_Bellingham_Bay_Rough_Water_Race__Long_Course_10_miles.common.json",
+    "2022-03-19__195487__2022_Bellingham_Bay_Rough_Water_Race__Short_Course_5_miles.common.json",
+    "2022-03-19__20221194__Roughwater__10_Mile.common.json",
+    "2022-03-19__20221194__Roughwater__5_Mile.common.json",
+    "2022-05-21__277918__Sound_Rowers_Commencement_Bay_2022.common.json",
+    "2022-06-18__280529__Sound_Rowers_Rat_Island_Regatta_2022__Long_Course.common.json",
+    "2022-06-18__280529__Sound_Rowers_Rat_Island_Regatta_2022__Short_Course.common.json",
+    "2022-06-18__280529__Sound_Rowers_Rat_Island_Regatta_2022__Tower_Course.common.json",
+    "2022-08-06__20227836__Dagrind.common.json",
+    "2022-10-01__292704__Sound_Rowers_Mercer_Island_Sausage_Pull_2022__14_3_miles.common.json",
+    "2022-10-01__292704__Sound_Rowers_Mercer_Island_Sausage_Pull_2022__6_5_miles.common.json",
+    "2022-10-20__20225914__Chicken__Long_Course.common.json",
+    "2022-10-20__20225914__Chicken__Short_Course.common.json"
+  ],
+  "exclude": []
+}

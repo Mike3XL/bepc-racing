@@ -1,0 +1,10 @@
+{
+  "note": "Authoritative list of race files included in club history. Edit to resolve source conflicts.",
+  "include": [
+    "2020-01-04__20209751__Pnworca1__Long_Course.common.json",
+    "2020-01-04__20209751__Pnworca1__Short_Course.common.json",
+    "2020-02-01__20201956__Gorge_V12.common.json",
+    "2020-02-01__20206196__Pnworca3.common.json"
+  ],
+  "exclude": []
+}

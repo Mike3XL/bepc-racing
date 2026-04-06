@@ -333,6 +333,143 @@ echo "Published → {url}"
     sys.exit(result.returncode)
 
 
+def cmd_audit_sources(args):
+    """Detect duplicate race sources and generate/update manifests."""
+    import re as _re
+    from difflib import SequenceMatcher
+
+    def _normalize(name: str) -> str:
+        """Strip distance/course suffixes for event base name comparison."""
+        name = name.lower()
+        name = _re.sub(r'\s*[-—]\s*(long|short|downwind|intermediate|expert|novice|youth|men|women|mixed|overall|iron).*$', '', name)
+        name = _re.sub(r'\s*\d+\s*(mile|km|mi|k)\b.*$', '', name)
+        name = _re.sub(r'\s+course\s*$', '', name)
+        return name.strip()
+
+    def _norm_course(course: str) -> str:
+        """Normalize course label for duplicate detection — keep distance numbers."""
+        c = course.lower().strip()
+        c = _re.sub(r'[^a-z0-9]', ' ', c)
+        c = _re.sub(r'\s+', ' ', c).strip()
+        return c or '__no_course__'
+
+    def _similar(a: str, b: str) -> float:
+        return SequenceMatcher(None, _normalize(a), _normalize(b)).ratio()
+
+    club = getattr(args, 'club', CURRENT_CLUB)
+    club_dir = DATA_DIR / club
+    if not club_dir.exists():
+        print(f"Club not found: {club}")
+        return
+
+    total_dupes = 0
+    for year_dir in sorted(club_dir.iterdir()):
+        if not year_dir.is_dir():
+            continue
+        common_dir = year_dir / "common"
+        if not common_dir.exists():
+            continue
+
+        files = sorted(common_dir.glob("*.common.json"))
+        if not files:
+            continue
+
+        # Load race info from each file
+        races = []
+        for f in files:
+            try:
+                d = json.loads(f.read_text())
+                info = d.get("raceInfo", {})
+                races.append({
+                    "file": f.name,
+                    "date": info.get("date", ""),
+                    "name": info.get("name", ""),
+                    "base": info.get("name", "").split(" — ")[0],
+                    "course": info.get("distance", "") or (info.get("name", "").split(" — ")[-1] if " — " in info.get("name", "") else ""),
+                    "racers": len(d.get("racerResults", [])),
+                })
+            except Exception:
+                continue
+
+        # Find duplicates: same date + similar base name
+        groups: dict[str, list] = {}
+        for r in races:
+            key = r["date"]
+            groups.setdefault(key, []).append(r)
+
+        manifest_path = common_dir / "manifest.json"
+        existing_manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else None
+        include = []
+        exclude = []
+        has_dupes = False
+
+        for date, group in sorted(groups.items()):
+            if len(group) < 2:
+                include.extend(f["file"] for f in group)
+                continue
+
+            # Group by normalized base name to find same-event files
+            base_groups: dict[str, list] = {}
+            for r in group:
+                # Find which base_group this belongs to
+                placed = False
+                for key in list(base_groups.keys()):
+                    if _similar(r["base"], key) > 0.7:
+                        base_groups[key].append(r)
+                        placed = True
+                        break
+                if not placed:
+                    base_groups[r["base"]] = [r]
+
+            for base_key, same_event in base_groups.items():
+                if len(same_event) == 1:
+                    include.append(same_event[0]["file"])
+                    continue
+
+                # Check if these are true duplicates (same course label) or multi-course
+                course_groups: dict[str, list] = {}
+                for r in same_event:
+                    norm_course = _norm_course(r["course"])
+                    course_groups.setdefault(norm_course, []).append(r)
+
+                for course_key, course_files in course_groups.items():
+                    if len(course_files) == 1:
+                        # Unique course — include it
+                        include.append(course_files[0]["file"])
+                    else:
+                        # True duplicate: same event, same course, multiple sources
+                        has_dupes = True
+                        total_dupes += 1
+                        print(f"\n  [{year_dir.name}] True duplicates on {date} (course: '{course_key}'):")
+                        for d in course_files:
+                            print(f"    {d['file']} ({d['racers']} racers)")
+                        best = max(course_files, key=lambda x: x["racers"])
+                        print(f"    → Auto-selecting: {best['file']}")
+                        include.append(best["file"])
+                        for d in course_files:
+                            if d["file"] != best["file"]:
+                                exclude.append({
+                                    "file": d["file"],
+                                    "reason": f"True duplicate of {best['file']} (same event/course, different source fetch)",
+                                    "preferred": best["file"]
+                                })
+
+        if has_dupes or existing_manifest:
+            manifest = {
+                "note": "Authoritative list of race files included in club history. Edit to resolve source conflicts.",
+                "include": sorted(include),
+                "exclude": exclude,
+            }
+            manifest_path.write_text(json.dumps(manifest, indent=2))
+            print(f"  Written: {manifest_path}")
+
+    if total_dupes == 0:
+        print(f"No duplicates found for {club}.")
+    else:
+        print(f"\nFound {total_dupes} duplicate group(s). Manifests written.")
+        print("Review manifests and run 'process' to recompute.")
+
+
 def main():
     parser = argparse.ArgumentParser(prog="bepc")
     sub = parser.add_subparsers(dest="command")
@@ -346,6 +483,8 @@ def main():
     pub_p.add_argument("--branch", default=None, help="Override gh-pages branch name")
 
     audit_p = sub.add_parser("audit-crafts", help="List unrecognized craft values")
+    audit_src_p = sub.add_parser("audit-sources", help="Detect duplicate race sources and generate manifests")
+    audit_src_p.add_argument("--club", default=CURRENT_CLUB, help="Club to audit")
     audit_p.add_argument("--club", default=None)
 
     jericho_p = sub.add_parser("fetch-jericho", help="Fetch PNW smallboat races from Jericho year page")
@@ -397,6 +536,8 @@ def main():
         cmd_serve(args)
     elif args.command == "fetch":
         cmd_fetch(args)
+    elif args.command == "audit-sources":
+        cmd_audit_sources(args)
     else:
         parser.print_help()
 
