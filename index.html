@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Results</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  return localStorage.getItem('bepc_season') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('bepc_season', year);
+}
+function getDistance() {
+  return localStorage.getItem('bepc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('bepc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('bepc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('bepc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container">
+    <a class="navbar-brand" href="home.html">🏄 PaddleClub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="races.html">Races</a></li>
+<li class="nav-item"><a class="nav-link active" href="index.html">Results</a></li>
+<li class="nav-item"><a class="nav-link" href="standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link" href="trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link" href="racer/sckc/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+</ul>
+    </div>
+  </div>
+</nav><div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Club</span>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group"><button type="button" class="btn btn-sm btn-outline-secondary" data-club="bepc">BEPC</button>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="pnw-regional">PNW League</button>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="sckc">SCKC</button>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="sound-rowers">Sound Rowers</button>
+</div>
+      </div>
+      <div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='width:auto'></select></div>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var ALL_CLUB_SEASONS = {"bepc":{"years":["2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015"],"current":"2025"},"pnw-regional":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017"],"current":"2026"},"sckc":{"years":["2025", "2024", "2023", "2022", "2019", "2018", "2017", "2016", "2015"],"current":"2025"},"sound-rowers":{"years":["2025", "2024", "2023", "2022"],"current":"2025"}};
+  var stored = localStorage.getItem('bepc_club') || 'sckc';
+  if (!ALL_CLUB_SEASONS[stored]) stored = 'sckc';
+  document.querySelectorAll('#club-btn-group button').forEach(function(btn) {
+    if (btn.dataset.club === stored) btn.classList.add('active');
+    btn.addEventListener('click', function() {
+      localStorage.setItem('bepc_club', btn.dataset.club);
+      window.location.reload();
+    });
+  });
+  var sel = document.getElementById('season-select');
+  if (sel) {
+    var info = ALL_CLUB_SEASONS[stored];
+    var saved = localStorage.getItem('bepc_season');
+    sel.innerHTML = info.years.map(function(y) {
+      return '<option value="' + y + '"' + (y === (saved || info.current) ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+  }
+})();
+</script>
+<div class="container">
+  <h1 class="mb-3">Results</h1>
+  <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+    <button id="btn-prev" class="btn btn-outline-secondary">&larr; Prev</button>
+    <button id="btn-next" class="btn btn-outline-secondary">Next &rarr;</button>
+    <select id="race-select" class="form-select form-select-sm w-auto"></select>
+    <div class="ms-2"><small id="race-meta" class="text-muted"></small></div>
+  </div>
+  <div id="course-content"></div>
+</div>
+<script>
+const RACER_SLUGS = new Set(["aaron-scull", "aaron-small", "abigail-maxey", "adam", "alex-ciuca", "amanda-royac", "amber-zipperer", "annett-mcpherson", "antoinette", "arthur-vernon", "avery-brown", "azamat-rustamov", "azusa-murphy", "becky-bronstein", "becky-chan", "bee-dietz", "ben-bergquist", "ben-karlinsey", "ben-moy", "ben-watters", "breona-gutschmidt", "c2-andreea-ghzila---emma-tsong", "c2-claire-ritchie---doug-ritchie", "c2-doug-ritchie---h", "c2-doug-ritchie---rhonda-eastman", "c2-doug-ritchie--claire-and-adam", "c2-einar-ogle---cian-donovan", "c2-hana-neutz---naomi-prahl", "c2-jenny---sebastian-kanter", "c2-karol-osusky---karel-zikan", "c2-neil-bransfield-and-co", "c2-nora-tsong---emma-tsong", "c2-owen-jennings---owen-white", "c2-rob-karlinsey---michelle-karlinsey", "c2-sebastian-kanter---gus-starkie", "c2-soren-ogle---skye-davidson", "c3-jane-l--emma-t--sebastian-k", "c3-sebastian--kevin--jane", "c4-hana-n--reidar-j--azusa-m--lydia", "c4-jane-l--sebastian-k--jane-l--solea", "c6-jake-einar-soren-anna-stephan-ellenor", "c6-sebastian--jane--delia--andy--emma--n", "c6-soren-miles-kevin-gus-nora-emma", "c6-the-c6-legends", "caleb-chuck", "calvin-huo", "carl-delio", "chris-flynn", "cian-donovan", "cooper-beitlers", "cooper-riley", "dave", "david-hilubek", "david-jennings", "delia-ward-smith", "dexter-barlow", "doug-bosworth", "doug-ritchie", "egor-klevak", "einar-ogle", "eliza", "elizabeth-erickson", "elizabeth-holmes", "ella-bloomquist", "emma-tsong", "ethan-chin", "ethan-durde", "ethan-karlinsey", "finn-connell", "george-lipps", "girts-beitlers", "greg-barton", "gus-starkie", "hana-neutz", "hannah-wang", "hugo-barribeau", "ian-page-nichols", "ilya", "isaac-chan", "isabella-flynn", "ivan-stork", "jake-zikan", "james-girton", "jane-lentini", "jared-ogle", "jean-bjorklund", "jim-erickson", "johnny-grady", "julie-roberts", "jupiter-grant", "juraj-osusky", "k2-aaron-small---leana-girton", "k2-andreea-ghzila---elena-wolgamot", "k2-avery-riley---dave-riley", "k2-bee-dietz---elizabeth-holmes", "k2-bee-dietz---karol-osusky", "k2-ben-karlinsey---seth-karlinsey", "k2-bobo-and-hana-ondrusek", "k2-breona-gutschmidt---becky-bronstein", "k2-calvin-huo---liang-yiiu", "k2-cooper-riley---dave-riley", "k2-david---peter", "k2-david-fort---anna-fort", "k2-delia-ward-smith---gretchen-ward-smith", "k2-delia-ward-smith---lillian-balet", "k2-delia-ward-smith---nora-tsong", "k2-doug-ritchie---aaron-small", "k2-einar-ogle---jake-zikan", "k2-einar-ogle---soren-ogle", "k2-elizabeth-holmes---becky-chan", "k2-elizabeth-holmes---breona-gutschmidt", "k2-elizabeth-holmes---julie-roberts", "k2-elizabeth-holmes---luis-buen-abad", "k2-elizabeth-holmes---sara-matasick", "k2-eric-mccluskey---owen-jennings", "k2-eric-mccluskey---owen-white", "k2-girts-beitlers---cooper-beitlers", "k2-girts-beitlers---royal-mcdonald", "k2-jaden---nolen", "k2-jake-zikan---elias-haynie-gay", "k2-jake-zikan---elizabeth-holmes", "k2-jake-zikan---karina-zikan", "k2-jake-zikan---miles-parsons", "k2-julie-roberts---becky-bronstein", "k2-karel-zikan---elizabeth-holmes", "k2-karla-ogle---soren-ogle", "k2-kevin-lentini---gus-starkie", "k2-kevin-lentini---miles-parsons", "k2-kyrstin-szewczyk---elizabeth-holmes", "k2-leana-girton---james-girton", "k2-liz-graf-brennen---breona-gutschmidt", "k2-lucas---cooper-riley", "k2-melat-peterson---cooper-riley", "k2-melat-peterson---nora-tsong", "k2-melat-peterson---tim-peterson", "k2-miles-parsons---einar-ogle", "k2-nora-tsong---emma-tsong", "k2-nora-tsong---gus-starkie", "k2-peter-turcan---juraj-osusky", "k2-philip-and-teresa-studenovka", "k2-ronan-nopp---hayden-lewis-gosch", "k2-soren-ogle---azamat-rustamov", "k2-soren-ogle---gus-starkie", "k2-soren-ogle---leo-ciuca", "k2-soren-ogle---miles-parsons", "k2-soren-ogle---nora-tsong", "k2-soren-ogle---sebastian-kauffman", "k2-steve-small---noah-small", "k2-tai-flynn---kelvin", "k2-vaughn-schenk---einar-ogle", "k2-vaughn-schenk---eric-mccluskey", "k2-vaughn-schenk---liam-jennings", "k4-aaron-s--nevin-h--hana-n--naomi-p", "k4-delia-w--emma-t--nora-t--melat-p", "k4-einar-o--hana-n--hayden--ronan-n", "k4-einar-o--jake-z--elizabeth-h--soren-o", "k4-eli--breona--beckyc--liz", "k4-eric-m--hayden-l--ronan-n--einar-o", "k4-soren-o--miles-p--delia-w--lillian-b", "k4-soren-o--miles-p--kevin-l--nora-t", "k4-vaughn-s--liam-j--jake-z--einar-o", "karel-chromy", "karel-zikan", "karla-ogle", "karol-osusky", "keller-morrison", "kevin-armitano", "kevin-lentini", "kevin-olney", "kyle-petersen", "kyrstin-szewczyk", "leana-girton", "lee-bjorklund", "leo-malmberg", "liam-jennings", "lilian-andrews", "lillian-balet", "liz-graf-brennen", "lorenzo-flynn", "ludovit-tatos", "luis-buen-abad", "lydia-sampson", "marc-lentini", "marin-miller", "mark-parrish", "marta", "martine-andrews", "meg-ludlum", "meg-theasey", "melat-peterson", "mike-lawrence", "mike-liddell", "mike-swinford", "miles-cross-whiter", "miles-parsons", "mina", "nate-errez", "nathan-mitchell", "nicolas-miatre", "nikolay-shoop", "nora-davis", "nora-tsong", "odin-harris", "oscar-white", "owen-jennings", "owen-lilleleth", "owen-white", "parker-duff", "patrick-armitano", "paul-elrif", "philip-murphy", "reuben-stambaugh", "robbie", "rowing-shell-owen--evan--sara--caeline", "rowing-shell-sara---nora", "sabine-mecking", "sarah", "sebastian-kanter", "sebastian-kauffman", "seth-karlinsey", "simon-smith", "skye-davidson", "soren-ogle", "stefan-lukacovic", "stephen-harris", "steve-small", "sup-jitka-and-nicole-studenovska", "tai-flynn", "thomas-hughes", "tina", "tomaso", "torsten", "vadim-kin", "vaughn-schenk", "wilbert-lam"]);
+const RACER_CLUB = "sckc";
+let SEASONS = null;
+let currentYear = '2025';
+let currentIndex = 0;
+
+function slug(name) { return name.toLowerCase().replace(/ /g, '-'); }
+function racerLink(name) { const s = slug(name); return RACER_SLUGS.has(s) ? `<a href="racer/sckc/${s}.html">${name}</a>` : name; }
+function display_craft_ui(cat) {
+  if (!cat || cat === 'Unknown') return '';
+  const sprint = cat.match(/^Sprint-K(\d+)$/); if (sprint) return 'K-' + sprint[1] + ' (sprint)';
+  const vaa = cat.match(/^Va'a-(\d+)$/); if (vaa) return 'V-' + vaa[1];
+  const canoe = cat.match(/^Canoe-(\d+)$/); if (canoe) return 'C-' + canoe[1];
+  const kayak = cat.match(/^Kayak-(\d+)$/); if (kayak) return 'K-' + kayak[1];
+  if (/^(OW|SUP|Prone)-1$/.test(cat)) return cat.slice(0, -2);
+  return cat;
+}
+function craft_cell(cat, specific) {
+  // Render as "Display (Craft)" e.g. "K-1 (HPK)", "K-1 (Surfski)", "OC-1"
+  // Sprint family: display already contains the qualifier, use as-is e.g. "K-1 (sprint)"
+  // If specific == display or no specific, show display only.
+  const display = display_craft_ui(cat);
+  if (!display) return '<td></td>';
+  if (!specific || specific === display || cat.startsWith('Sprint-')) return `<td>${display}</td>`;
+  return `<td>${display} (${specific})</td>`;
+}
+function fmtTime(s) {
+  s = Math.floor(s);
+  const m = Math.floor(s / 60), sec = s % 60, h = Math.floor(m / 60);
+  return h ? h+':'+String(m%60).padStart(2,'0')+':'+String(sec).padStart(2,'0')
+           : m+':'+String(sec).padStart(2,'0');
+}
+
+function badges(trophies) {
+  const I = {
+    hcap_1:   '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>',
+    hcap_2:   '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text></svg>',
+    hcap_3:   '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>',
+    finish_1: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>',
+    finish_2: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#333">2</text></svg>',
+    finish_3: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>',
+    par:      '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text></svg>',
+    consistent: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    est:      '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg>',
+    outlier:  '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg>',
+  };
+  const b = (key, cls, title) => `<span class="hcap-medal ${cls}" data-bs-toggle="tooltip" data-bs-title="${title}">${I[key]}</span>`;
+  const streak = (n) => `<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="Improving streak: ${n} races"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">${n}</text></svg></span>`;
+  const render = {
+    finish_1: () => b('finish_1','plain-medal','Overall 1st'),
+    finish_2: () => b('finish_2','plain-medal','Overall 2nd'),
+    finish_3: () => b('finish_3','plain-medal','Overall 3rd'),
+    hcap_1:   () => b('hcap_1','hcap-gold','Handicap winner'),
+    hcap_2:   () => b('hcap_2','hcap-silver','Handicap 2nd'),
+    hcap_3:   () => b('hcap_3','hcap-bronze','Handicap 3rd'),
+    consistent_1: () => b('consistent','hcap-consist','Consistent performer (±1% of expectation)'),
+    consistent_2: () => b('consistent','hcap-consist','Consistent performer (±1% of expectation)'),
+    consistent_3: () => b('consistent','hcap-consist','Consistent performer (±1% of expectation)'),
+    par:      () => b('par','hcap-par','Par racer'),
+    fresh:    () => b('est','hcap-est','Establishing handicap — not yet eligible for handicap awards'),
+    outlier:  () => b('outlier','hcap-outlier','Outlier result — >10% off handicap prediction, handicap unchanged'),
+  };
+  if (!trophies || !trophies.length) return '';
+  const ORDER = ['hcap_1','hcap_2','hcap_3','finish_1','finish_2','finish_3','consistent_1','consistent_2','consistent_3','par','fresh','outlier'];
+  const sorted = [...trophies].sort((a,b) => {
+    const ai = a.startsWith('streak_') ? ORDER.length + parseInt(a.split('_')[1]) : ORDER.indexOf(a);
+    const bi = b.startsWith('streak_') ? ORDER.length + parseInt(b.split('_')[1]) : ORDER.indexOf(b);
+    return ai - bi;
+  });
+  return `<span style="display:flex;justify-content:center;gap:2px;flex-wrap:wrap">${sorted.map(t => {
+    if (t.startsWith('streak_')) return streak(parseInt(t.split('_')[1]));
+    return render[t] ? render[t]() : '';
+  }).join('')}</span>`;
+}
+
+function tableHtml(id_suffix) {
+  return `
+  <ul class="nav nav-tabs" id="result-tabs-${id_suffix}">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-handicap-${id_suffix}">Handicap Order</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-finish-${id_suffix}">Finish Order</button></li>
+  </ul>
+  <div class="tab-content border border-top-0 p-3 mb-3">
+    <div class="tab-pane active" id="tab-handicap-${id_suffix}">
+      <table class="table table-sm table-striped" style="table-layout:fixed">
+        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:75px"><col style="width:75px"><col style="width:90px"><col style="width:55px"><col style="width:55px"><col style="width:65px"></colgroup>
+        <thead><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th>
+          <th><span class="d-sm-none">Hcap</span><span class="d-none d-sm-inline">Handicap</span></th>
+          <th><span class="d-sm-none">Adj</span><span class="d-none d-sm-inline">Adj Time</span></th>
+          <th><span class="d-sm-none" data-bs-toggle="tooltip" data-bs-title="% improvement vs handicap">Imp. %</span><span class="d-none d-sm-inline" data-bs-toggle="tooltip" data-bs-title="% improvement vs handicap">Improvement %</span></th>
+          <th><span class="d-sm-none">New</span><span class="d-none d-sm-inline">New Handicap</span></th>
+          <th><span class="d-sm-none">Pts</span><span class="d-none d-sm-inline">Points</span></th>
+          <th><span class="d-sm-none">HPts</span><span class="d-none d-sm-inline">Hcap Pts</span></th>
+        </tr></thead>
+        <tbody id="body-handicap-${id_suffix}"></tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="tab-finish-${id_suffix}">
+      <table class="table table-sm table-striped" style="table-layout:fixed">
+        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:75px"><col style="width:75px"><col style="width:65px"><col style="width:90px"><col style="width:55px"><col style="width:55px"></colgroup>
+        <thead><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th>
+          <th><span class="d-sm-none">Hcap</span><span class="d-none d-sm-inline">Handicap</span></th>
+          <th><span class="d-sm-none">Adj</span><span class="d-none d-sm-inline">Adj Time</span></th>
+          <th><span class="d-sm-none" data-bs-toggle="tooltip" data-bs-title="% improvement vs handicap">Imp. %</span><span class="d-none d-sm-inline" data-bs-toggle="tooltip" data-bs-title="% improvement vs handicap">Improvement %</span></th>
+          <th><span class="d-sm-none">New</span><span class="d-none d-sm-inline">New Handicap</span></th>
+          <th><span class="d-sm-none">Pts</span><span class="d-none d-sm-inline">Points</span></th>
+          <th><span class="d-sm-none">HPts</span><span class="d-none d-sm-inline">Hcap Pts</span></th>
+        </tr></thead>
+        <tbody id="body-finish-${id_suffix}"></tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function rows(results, placeField) {
+  const isHcap = placeField === 'adjusted_place';
+  return results.map(r => {
+    const pct = r.adjusted_time_versus_par != null && !r.is_fresh_racer
+      ? ((1 - r.adjusted_time_versus_par) * 100)
+      : null;
+    const noOutlierDetect = !r.is_fresh_racer && pct != null && pct < -10 && !r.is_outlier;
+    const pctNote = noOutlierDetect ? ' data-bs-toggle="tooltip" data-bs-title="First race back this season — no outlier detection"' : '';
+    const pctHtml = pct != null
+      ? `<td style="text-align:right;font-size:0.85em;color:${pct >= 0 ? '#2E7D32' : '#666'};font-weight:${pct >= 0 ? 'bold' : 'normal'}">${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%${noOutlierDetect ? `<sup${pctNote}>^</sup>` : ''}</td>`
+      : '<td></td>';
+    const hcapPostNote = r.is_outlier ? ' data-bs-toggle="tooltip" data-bs-title="Outlier — result suppressed, handicap unchanged"' : '';
+    const hcapPostHtml = `<td>${r.handicap_post.toFixed(3)}${r.is_outlier ? `<sup${hcapPostNote}>^</sup>` : ''}</td>`;
+    return `<tr><td>${badges(r.trophies)}</td>
+    <td>${r[placeField]}</td>
+    <td>${racerLink(r.canonical_name)}</td>
+    ${craft_cell(r.craft_category, r.craft_specific)}
+    <td>${isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}</td>
+    <td>${r.handicap.toFixed(3)}</td>
+    ${r.trophies && r.trophies.includes('par') ? '<td style="padding-left:2px"><span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:4px 6px 4px 2px;font-weight:bold;color:#1565C0">' + fmtTime(r.adjusted_time_seconds) + '</span></td>' : '<td style="padding-left:2px">' + (isHcap ? '<strong>' + fmtTime(r.adjusted_time_seconds) + '</strong>' : fmtTime(r.adjusted_time_seconds)) + '</td>'}
+    ${pctHtml}
+    ${hcapPostHtml}
+    <td>${r.race_points || 0}</td>
+    <td>${r.handicap_points || 0}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderRace(index) {
+  const races = SEASONS[currentYear];
+  currentIndex = index;
+  const race = races[index];
+  const totalStarters = race.courses.reduce((s,c) => s + c.finish.length, 0);
+  const content = document.getElementById('course-content');
+  document.getElementById('race-meta').innerHTML =
+    race.date + ' · ' + totalStarters + ' starters · <a href="' + race.display_url + '" target="_blank">WebScorer ↗</a>';
+  document.getElementById('race-select').value = index;
+  document.getElementById('btn-prev').disabled = index === 0;
+  document.getElementById('btn-next').disabled = index === races.length - 1;
+  // Sort courses by racer count descending
+  const sortedCourses = [...race.courses].sort((a,b) => b.finish.length - a.finish.length);
+  const active = (i) => i === 0 ? 'active' : '';
+  let tabNav = '<ul class="nav nav-tabs mb-0">';
+  let tabContent = '<div class="tab-content">';
+  const podiumCfg = [
+    { idx:1, label:'2nd', bg:'#EBEBEB', border:'#A0A0A0', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text></svg>', nameColor:'#333', height:'52px', width:'135px' },
+    { idx:0, label:'1st', bg:'#FFF8DC', border:'#FFD700', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>', nameColor:'#7A5C00', height:'64px', width:'180px' },
+    { idx:2, label:'3rd', bg:'#FDF0E0', border:'#DDA84A', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>', nameColor:'#5C2E00', height:'44px', width:'135px' },
+  ];
+  sortedCourses.forEach((course, i) => {
+    // Build per-course podium
+    const pr = [null, null, null];
+    course.handicap.forEach(r => {
+      if (r.trophies && r.trophies.includes('hcap_1')) pr[0] = r;
+      if (r.trophies && r.trophies.includes('hcap_2')) pr[1] = r;
+      if (r.trophies && r.trophies.includes('hcap_3')) pr[2] = r;
+    });
+    let podiumHtml = '';
+    {
+      podiumHtml = `<div class="row align-items-center mb-3 pt-2">
+        <div class="col-12 col-md-4 pb-2 pb-md-0">
+          <div class="fw-bold fs-5 lh-sm">${race.name}</div>
+          <div class="text-muted small">${race.date}</div>
+        </div>
+        <div class="col-12 col-md-4 d-flex justify-content-center">
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="display:flex;align-items:flex-end;gap:6px;flex-wrap:nowrap">`;
+      podiumCfg.forEach(cfg => {
+        const r = pr[cfg.idx];
+        const s = r ? slug(r.canonical_name) : null;
+        const name = r
+          ? (RACER_SLUGS.has(s) ? `<a href="racer/sckc/${s}.html" style="color:${cfg.nameColor};font-weight:600;font-size:0.85em;text-decoration:none;text-align:center;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.canonical_name}</a>` : `<span style="font-weight:600;font-size:0.85em;text-align:center;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:${cfg.nameColor}">${r.canonical_name}</span>`)
+          : `<span style="color:#bbb;font-size:0.85em">—</span>`;
+        podiumHtml += `<div style="display:flex;flex-direction:column;align-items:center;gap:3px;width:${cfg.width};min-width:0;flex-shrink:1">
+            ${cfg.cup}
+            ${name}
+            <div style="width:100%;height:${cfg.height};background:${cfg.bg};border:1px solid ${cfg.border};border-bottom:none;border-radius:4px 4px 0 0;display:flex;align-items:center;justify-content:center;font-weight:bold;color:${cfg.nameColor};font-size:0.85em">${cfg.label}</div>
+          </div>`;
+      });
+      podiumHtml += `</div>
+            <div style="height:3px;background:#CCC;border-radius:2px;width:calc(100% + 90px)"></div>
+          </div>
+        </div><div class="col-md-4 d-none d-md-block"></div></div>`;
+    }
+    // Find original index for tableHtml (uses original course index for DOM ids)
+    const origIdx = race.courses.indexOf(course);
+    tabNav += `<li class="nav-item"><button class="nav-link ${active(i)}" data-bs-toggle="tab" data-bs-target="#course-${origIdx}">${course.label}</button></li>`;
+    tabContent += `<div class="tab-pane ${active(i)} p-3 border border-top-0" id="course-${origIdx}">${podiumHtml}${tableHtml(origIdx)}</div>`;
+  });
+  tabNav += '</ul>';
+  tabContent += '</div>';
+  content.innerHTML = tabNav + tabContent;
+  race.courses.forEach((course, i) => {
+    document.getElementById(`body-finish-${i}`).innerHTML = rows(course.finish, 'original_place');
+    document.getElementById(`body-handicap-${i}`).innerHTML = rows(course.handicap, 'adjusted_place');
+  });
+  // Init tooltips on newly injected badges
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    bootstrap.Tooltip.getOrCreateInstance(el);
+  });
+  const savedDist = getDistance();
+  race.courses.forEach((course, i) => {
+    const btn = document.querySelector(`[data-bs-target="#course-${i}"]`);
+    if (btn) {
+      if (savedDist && course.label === savedDist) bootstrap.Tab.getOrCreateInstance(btn).show();
+      btn.addEventListener('shown.bs.tab', () => setDistance(course.label));
+    }
+    const savedTab = getResultTab();
+    document.querySelectorAll(`#result-tabs-${i} button`).forEach(tb => {
+      if (savedTab && tb.textContent === savedTab) bootstrap.Tab.getOrCreateInstance(tb).show();
+      tb.addEventListener('shown.bs.tab', () => setResultTab(tb.textContent));
+    });
+  });
+}
+
+function loadSeason(year) {
+  currentYear = year;
+  const races = SEASONS[year];
+  const sel = document.getElementById('race-select');
+  sel.innerHTML = races.map((r,i) => `<option value="${i}">${r.name} — ${r.date}</option>`).join('');
+  renderRace(races.length - 1);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('btn-prev').addEventListener('click', () => renderRace(currentIndex - 1));
+  document.getElementById('btn-next').addEventListener('click', () => renderRace(currentIndex + 1));
+  document.getElementById('race-select').addEventListener('change', e => renderRace(parseInt(e.target.value)));
+  document.getElementById('season-select').addEventListener('change', e => { setSeason(e.target.value); loadSeason(e.target.value); });
+  const club = localStorage.getItem('bepc_club') || 'sckc';
+  fetchData(`races-data-${club}.json`, d => {
+    SEASONS = d.seasons;
+    const sel = document.getElementById('season-select');
+    const yr = getSeason(d.current_year);
+    if (SEASONS[yr]) { currentYear = yr; sel.value = yr; }
+    loadSeason(currentYear);
+    const hash = location.hash.replace('#', '');
+    if (hash) {
+      // Search all seasons for the race_id
+      let found = false;
+      for (const [yr, races] of Object.entries(SEASONS)) {
+        const idx = races.findIndex(r => String(r.race_id) === hash);
+        if (idx >= 0) { currentYear = yr; sel.value = yr; loadSeason(yr); renderRace(idx); found = true; break; }
+      }
+    }
+  });
+});
+</script>
+
+</body></html>

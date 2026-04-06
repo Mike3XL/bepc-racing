@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Isaac Chan</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  return localStorage.getItem('bepc_season') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('bepc_season', year);
+}
+function getDistance() {
+  return localStorage.getItem('bepc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('bepc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('bepc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('bepc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container">
+    <a class="navbar-brand" href="../../home.html">🏄 PaddleClub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-link" href="../../home.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../races.html">Races</a></li>
+<li class="nav-item"><a class="nav-link" href="../../index.html">Results</a></li>
+<li class="nav-item"><a class="nav-link" href="../../standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link" href="../../trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../racer/sckc/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="../../about.html">About</a></li>
+</ul>
+    </div>
+  </div>
+</nav><div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Club</span>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group"><button type="button" class="btn btn-sm btn-outline-secondary" data-club="bepc">BEPC</button>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="pnw-regional">PNW League</button>
+<a href="../../racer/sckc/isaac-chan.html" class="btn btn-sm btn-outline-secondary active">SCKC</a>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="sound-rowers">Sound Rowers</button>
+</div>
+      </div>
+      <div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='width:auto'></select></div>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var ALL_CLUB_SEASONS = {"bepc":{"years":["2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015"],"current":"2025"},"pnw-regional":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017"],"current":"2026"},"sckc":{"years":["2025", "2024", "2023", "2022", "2019", "2018", "2017", "2016", "2015"],"current":"2025"},"sound-rowers":{"years":["2025", "2024", "2023", "2022"],"current":"2025"}};
+  var stored = localStorage.getItem('bepc_club') || 'sckc';
+  if (!ALL_CLUB_SEASONS[stored]) stored = 'sckc';
+  document.querySelectorAll('#club-btn-group button').forEach(function(btn) {
+    if (btn.dataset.club === stored) btn.classList.add('active');
+    btn.addEventListener('click', function() {
+      localStorage.setItem('bepc_club', btn.dataset.club);
+      window.location.reload();
+    });
+  });
+  var sel = document.getElementById('season-select');
+  if (sel) {
+    var info = ALL_CLUB_SEASONS[stored];
+    var saved = localStorage.getItem('bepc_season');
+    sel.innerHTML = info.years.map(function(y) {
+      return '<option value="' + y + '"' + (y === (saved || info.current) ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+  }
+})();
+</script>
+<div class="container">
+  <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+  <a href="torsten.html" class="btn btn-outline-secondary btn-sm" style="width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">&larr; Torsten</a>
+  <select id="racer-select" class="form-select form-select-sm" style="width:200px">
+    <option value="aaron-scull">Aaron Scull</option><option value="aaron-small">Aaron Small</option><option value="abigail-maxey">Abigail Maxey</option><option value="adam">Adam</option><option value="alex-ciuca">Alex Ciuca</option><option value="amanda-royac">Amanda Royac</option><option value="amber-zipperer">Amber Zipperer</option><option value="annett-mcpherson">Annett McPherson</option><option value="antoinette">Antoinette</option><option value="arthur-vernon">Arthur Vernon</option><option value="avery-brown">Avery Brown</option><option value="azamat-rustamov">Azamat Rustamov</option><option value="azusa-murphy">Azusa Murphy</option><option value="becky-bronstein">Becky Bronstein</option><option value="becky-chan">Becky Chan</option><option value="bee-dietz">Bee Dietz</option><option value="ben-bergquist">Ben Bergquist</option><option value="ben-karlinsey">Ben Karlinsey</option><option value="ben-moy">Ben Moy</option><option value="ben-watters">Ben Watters</option><option value="breona-gutschmidt">Breona Gutschmidt</option><option value="c2-andreea-ghzila---emma-tsong">C2 Andreea Ghzila & Emma Tsong</option><option value="c2-claire-ritchie---doug-ritchie">C2 Claire Ritchie & Doug Ritchie</option><option value="c2-doug-ritchie---h">C2 Doug Ritchie & H</option><option value="c2-doug-ritchie---rhonda-eastman">C2 Doug Ritchie & Rhonda Eastman</option><option value="c2-doug-ritchie--claire-and-adam">C2 Doug Ritchie, Claire and Adam</option><option value="c2-einar-ogle---cian-donovan">C2 Einar Ogle & Cian Donovan</option><option value="c2-hana-neutz---naomi-prahl">C2 Hana Neutz & Naomi Prahl</option><option value="c2-jenny---sebastian-kanter">C2 Jenny & Sebastian Kanter</option><option value="c2-karol-osusky---karel-zikan">C2 Karol Osusky & Karel Zikan</option><option value="c2-neil-bransfield-and-co">C2 Neil Bransfield and co</option><option value="c2-nora-tsong---emma-tsong">C2 Nora Tsong & Emma Tsong</option><option value="c2-owen-jennings---owen-white">C2 Owen Jennings & Owen White</option><option value="c2-rob-karlinsey---michelle-karlinsey">C2 Rob Karlinsey & Michelle Karlinsey</option><option value="c2-sebastian-kanter---gus-starkie">C2 Sebastian Kanter & Gus Starkie</option><option value="c2-soren-ogle---skye-davidson">C2 Soren Ogle & Skye Davidson</option><option value="c3-jane-l--emma-t--sebastian-k">C3 Jane L, Emma T, Sebastian K</option><option value="c3-sebastian--kevin--jane">C3 Sebastian, Kevin, Jane</option><option value="c4-hana-n--reidar-j--azusa-m--lydia">C4 Hana N, Reidar J, Azusa M, Lydia</option><option value="c4-jane-l--sebastian-k--jane-l--solea">C4 Jane L, Sebastian K, Jane L, Solea</option><option value="c6-jake-einar-soren-anna-stephan-ellenor">C6 Jake-Einar-Soren-Anna-Stephan-Ellenor</option><option value="c6-sebastian--jane--delia--andy--emma--n">C6 Sebastian, Jane, Delia, Andy, Emma, N</option><option value="c6-soren-miles-kevin-gus-nora-emma">C6 Soren-Miles-Kevin-Gus-Nora-Emma</option><option value="c6-the-c6-legends">C6 The C6 Legends</option><option value="caleb-chuck">Caleb Chuck</option><option value="calvin-huo">Calvin Huo</option><option value="carl-delio">Carl Delio</option><option value="chris-flynn">Chris Flynn</option><option value="cian-donovan">Cian Donovan</option><option value="cooper-beitlers">Cooper Beitlers</option><option value="cooper-riley">Cooper Riley</option><option value="dave">Dave</option><option value="david-hilubek">David Hilubek</option><option value="david-jennings">David Jennings</option><option value="delia-ward-smith">Delia Ward-Smith</option><option value="dexter-barlow">Dexter Barlow</option><option value="doug-bosworth">Doug Bosworth</option><option value="doug-ritchie">Doug Ritchie</option><option value="egor-klevak">Egor Klevak</option><option value="einar-ogle">Einar Ogle</option><option value="eliza">Eliza</option><option value="elizabeth-erickson">Elizabeth Erickson</option><option value="elizabeth-holmes">Elizabeth Holmes</option><option value="ella-bloomquist">Ella Bloomquist</option><option value="emma-tsong">Emma Tsong</option><option value="ethan-chin">Ethan Chin</option><option value="ethan-durde">Ethan Durde</option><option value="ethan-karlinsey">Ethan Karlinsey</option><option value="finn-connell">Finn Connell</option><option value="george-lipps">George Lipps</option><option value="girts-beitlers">Girts Beitlers</option><option value="greg-barton">Greg Barton</option><option value="gus-starkie">Gus Starkie</option><option value="hana-neutz">Hana Neutz</option><option value="hannah-wang">Hannah Wang</option><option value="hugo-barribeau">Hugo Barribeau</option><option value="ian-page-nichols">Ian Page-Nichols</option><option value="ilya">Ilya</option><option value="isaac-chan" selected>Isaac Chan</option><option value="isabella-flynn">Isabella Flynn</option><option value="ivan-stork">Ivan Stork</option><option value="jake-zikan">Jake Zikan</option><option value="james-girton">James Girton</option><option value="jane-lentini">Jane Lentini</option><option value="jared-ogle">Jared Ogle</option><option value="jean-bjorklund">Jean Bjorklund</option><option value="jim-erickson">Jim Erickson</option><option value="johnny-grady">Johnny Grady</option><option value="julie-roberts">Julie Roberts</option><option value="jupiter-grant">Jupiter Grant</option><option value="juraj-osusky">Juraj Osusky</option><option value="k2-aaron-small---leana-girton">K2 Aaron Small & Leana Girton</option><option value="k2-andreea-ghzila---elena-wolgamot">K2 Andreea Ghzila & Elena Wolgamot</option><option value="k2-avery-riley---dave-riley">K2 Avery Riley & Dave Riley</option><option value="k2-bee-dietz---elizabeth-holmes">K2 Bee Dietz & Elizabeth Holmes</option><option value="k2-bee-dietz---karol-osusky">K2 Bee Dietz & Karol Osusky</option><option value="k2-ben-karlinsey---seth-karlinsey">K2 Ben Karlinsey & Seth Karlinsey</option><option value="k2-bobo-and-hana-ondrusek">K2 Bobo and Hana Ondrusek</option><option value="k2-breona-gutschmidt---becky-bronstein">K2 Breona Gutschmidt & Becky Bronstein</option><option value="k2-calvin-huo---liang-yiiu">K2 Calvin Huo & Liang-Yiiu</option><option value="k2-cooper-riley---dave-riley">K2 Cooper Riley & Dave Riley</option><option value="k2-david---peter">K2 David & Peter</option><option value="k2-david-fort---anna-fort">K2 David Fort & Anna Fort</option><option value="k2-delia-ward-smith---gretchen-ward-smith">K2 Delia Ward-Smith & Gretchen Ward-Smith</option><option value="k2-delia-ward-smith---lillian-balet">K2 Delia Ward-Smith & Lillian Balet</option><option value="k2-delia-ward-smith---nora-tsong">K2 Delia Ward-Smith & Nora Tsong</option><option value="k2-doug-ritchie---aaron-small">K2 Doug Ritchie & Aaron Small</option><option value="k2-einar-ogle---jake-zikan">K2 Einar Ogle & Jake Zikan</option><option value="k2-einar-ogle---soren-ogle">K2 Einar Ogle & Soren Ogle</option><option value="k2-elizabeth-holmes---becky-chan">K2 Elizabeth Holmes & Becky Chan</option><option value="k2-elizabeth-holmes---breona-gutschmidt">K2 Elizabeth Holmes & Breona Gutschmidt</option><option value="k2-elizabeth-holmes---julie-roberts">K2 Elizabeth Holmes & Julie Roberts</option><option value="k2-elizabeth-holmes---luis-buen-abad">K2 Elizabeth Holmes & Luis Buen Abad</option><option value="k2-elizabeth-holmes---sara-matasick">K2 Elizabeth Holmes & Sara Matasick</option><option value="k2-eric-mccluskey---owen-jennings">K2 Eric McCluskey & Owen Jennings</option><option value="k2-eric-mccluskey---owen-white">K2 Eric McCluskey & Owen White</option><option value="k2-girts-beitlers---cooper-beitlers">K2 Girts Beitlers & Cooper Beitlers</option><option value="k2-girts-beitlers---royal-mcdonald">K2 Girts Beitlers & Royal McDonald</option><option value="k2-jaden---nolen">K2 Jaden & Nolen</option><option value="k2-jake-zikan---elias-haynie-gay">K2 Jake Zikan & Elias Haynie-Gay</option><option value="k2-jake-zikan---elizabeth-holmes">K2 Jake Zikan & Elizabeth Holmes</option><option value="k2-jake-zikan---karina-zikan">K2 Jake Zikan & Karina Zikan</option><option value="k2-jake-zikan---miles-parsons">K2 Jake Zikan & Miles Parsons</option><option value="k2-julie-roberts---becky-bronstein">K2 Julie Roberts & Becky Bronstein</option><option value="k2-karel-zikan---elizabeth-holmes">K2 Karel Zikan & Elizabeth Holmes</option><option value="k2-karla-ogle---soren-ogle">K2 Karla Ogle & Soren Ogle</option><option value="k2-kevin-lentini---gus-starkie">K2 Kevin Lentini & Gus Starkie</option><option value="k2-kevin-lentini---miles-parsons">K2 Kevin Lentini & Miles Parsons</option><option value="k2-kyrstin-szewczyk---elizabeth-holmes">K2 Kyrstin Szewczyk & Elizabeth Holmes</option><option value="k2-leana-girton---james-girton">K2 Leana Girton & James Girton</option><option value="k2-liz-graf-brennen---breona-gutschmidt">K2 Liz Graf-Brennen & Breona Gutschmidt</option><option value="k2-lucas---cooper-riley">K2 Lucas & Cooper Riley</option><option value="k2-melat-peterson---cooper-riley">K2 Melat Peterson & Cooper Riley</option><option value="k2-melat-peterson---nora-tsong">K2 Melat Peterson & Nora Tsong</option><option value="k2-melat-peterson---tim-peterson">K2 Melat Peterson & Tim Peterson</option><option value="k2-miles-parsons---einar-ogle">K2 Miles Parsons & Einar Ogle</option><option value="k2-nora-tsong---emma-tsong">K2 Nora Tsong & Emma Tsong</option><option value="k2-nora-tsong---gus-starkie">K2 Nora Tsong & Gus Starkie</option><option value="k2-peter-turcan---juraj-osusky">K2 Peter Turcan & Juraj Osusky</option><option value="k2-philip-and-teresa-studenovka">K2 Philip and Teresa Studenovka</option><option value="k2-ronan-nopp---hayden-lewis-gosch">K2 Ronan Nopp & Hayden Lewis-Gosch</option><option value="k2-soren-ogle---azamat-rustamov">K2 Soren Ogle & Azamat Rustamov</option><option value="k2-soren-ogle---gus-starkie">K2 Soren Ogle & Gus Starkie</option><option value="k2-soren-ogle---leo-ciuca">K2 Soren Ogle & Leo Ciuca</option><option value="k2-soren-ogle---miles-parsons">K2 Soren Ogle & Miles Parsons</option><option value="k2-soren-ogle---nora-tsong">K2 Soren Ogle & Nora Tsong</option><option value="k2-soren-ogle---sebastian-kauffman">K2 Soren Ogle & Sebastian Kauffman</option><option value="k2-steve-small---noah-small">K2 Steve Small & Noah Small</option><option value="k2-tai-flynn---kelvin">K2 Tai Flynn & Kelvin</option><option value="k2-vaughn-schenk---einar-ogle">K2 Vaughn Schenk & Einar Ogle</option><option value="k2-vaughn-schenk---eric-mccluskey">K2 Vaughn Schenk & Eric McCluskey</option><option value="k2-vaughn-schenk---liam-jennings">K2 Vaughn Schenk & Liam Jennings</option><option value="k4-aaron-s--nevin-h--hana-n--naomi-p">K4 Aaron S, Nevin H, Hana N, Naomi P</option><option value="k4-delia-w--emma-t--nora-t--melat-p">K4 Delia W, Emma T, Nora T, Melat P</option><option value="k4-einar-o--hana-n--hayden--ronan-n">K4 Einar O, Hana N, Hayden, Ronan N</option><option value="k4-einar-o--jake-z--elizabeth-h--soren-o">K4 Einar O, Jake Z, Elizabeth H, Soren O</option><option value="k4-eli--breona--beckyc--liz">K4 Eli, Breona, BeckyC, Liz</option><option value="k4-eric-m--hayden-l--ronan-n--einar-o">K4 Eric M, Hayden L, Ronan N, Einar O</option><option value="k4-soren-o--miles-p--delia-w--lillian-b">K4 Soren O, Miles P, Delia W, Lillian B</option><option value="k4-soren-o--miles-p--kevin-l--nora-t">K4 Soren O, Miles P, Kevin L, Nora T</option><option value="k4-vaughn-s--liam-j--jake-z--einar-o">K4 Vaughn S, Liam J, Jake Z, Einar O</option><option value="karel-chromy">Karel Chromy</option><option value="karel-zikan">Karel Zikan</option><option value="karla-ogle">Karla Ogle</option><option value="karol-osusky">Karol Osusky</option><option value="keller-morrison">Keller Morrison</option><option value="kevin-armitano">Kevin Armitano</option><option value="kevin-lentini">Kevin Lentini</option><option value="kevin-olney">Kevin Olney</option><option value="kyle-petersen">Kyle Petersen</option><option value="kyrstin-szewczyk">Kyrstin Szewczyk</option><option value="leana-girton">Leana Girton</option><option value="lee-bjorklund">Lee Bjorklund</option><option value="leo-malmberg">Leo Malmberg</option><option value="liam-jennings">Liam Jennings</option><option value="lilian-andrews">Lilian Andrews</option><option value="lillian-balet">Lillian Balet</option><option value="liz-graf-brennen">Liz Graf-Brennen</option><option value="lorenzo-flynn">Lorenzo Flynn</option><option value="ludovit-tatos">Ludovit Tatos</option><option value="luis-buen-abad">Luis Buen Abad</option><option value="lydia-sampson">Lydia Sampson</option><option value="marc-lentini">Marc Lentini</option><option value="marin-miller">Marin Miller</option><option value="mark-parrish">Mark Parrish</option><option value="marta">Marta</option><option value="martine-andrews">Martine Andrews</option><option value="meg-ludlum">Meg Ludlum</option><option value="meg-theasey">Meg Theasey</option><option value="melat-peterson">Melat Peterson</option><option value="mike-lawrence">Mike Lawrence</option><option value="mike-liddell">Mike Liddell</option><option value="mike-swinford">Mike Swinford</option><option value="miles-cross-whiter">Miles Cross-Whiter</option><option value="miles-parsons">Miles Parsons</option><option value="mina">Mina</option><option value="nate-errez">Nate Errez</option><option value="nathan-mitchell">Nathan Mitchell</option><option value="nicolas-miatre">Nicolas Miatre</option><option value="nikolay-shoop">Nikolay Shoop</option><option value="nora-davis">Nora Davis</option><option value="nora-tsong">Nora Tsong</option><option value="odin-harris">Odin Harris</option><option value="oscar-white">Oscar White</option><option value="owen-jennings">Owen Jennings</option><option value="owen-lilleleth">Owen Lilleleth</option><option value="owen-white">Owen White</option><option value="parker-duff">Parker Duff</option><option value="patrick-armitano">Patrick Armitano</option><option value="paul-elrif">Paul Elrif</option><option value="philip-murphy">Philip Murphy</option><option value="reuben-stambaugh">Reuben Stambaugh</option><option value="robbie">Robbie</option><option value="rowing-shell-owen--evan--sara--caeline">Rowing-Shell Owen, Evan, Sara, Caeline</option><option value="rowing-shell-sara---nora">Rowing-Shell Sara & Nora</option><option value="sup-jitka-and-nicole-studenovska">SUP Jitka and Nicole Studenovska</option><option value="sabine-mecking">Sabine Mecking</option><option value="sarah">Sarah</option><option value="sebastian-kanter">Sebastian Kanter</option><option value="sebastian-kauffman">Sebastian Kauffman</option><option value="seth-karlinsey">Seth Karlinsey</option><option value="simon-smith">Simon Smith</option><option value="skye-davidson">Skye Davidson</option><option value="soren-ogle">Soren Ogle</option><option value="stefan-lukacovic">Stefan Lukacovic</option><option value="stephen-harris">Stephen Harris</option><option value="steve-small">Steve Small</option><option value="tai-flynn">Tai Flynn</option><option value="thomas-hughes">Thomas Hughes</option><option value="tina">Tina</option><option value="tomaso">Tomaso</option><option value="torsten">Torsten</option><option value="vadim-kin">Vadim Kin</option><option value="vaughn-schenk">Vaughn Schenk</option><option value="wilbert-lam">Wilbert Lam</option>
+  </select>
+  <a href="sebastian-kauffman.html" class="btn btn-outline-secondary btn-sm" style="width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Sebastian Kauffman &rarr;</a>
+</div>
+  <h2>Isaac Chan</h2>
+  <div data-club="sckc" style="display:none"><div data-season="2024" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-sckc-2024-unknown">Unknown</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-sckc-2024-unknown">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 5</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.000</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-sckc-2024-unknown" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-sckc-2024-unknown" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing handicap — not yet eligible for handicap awards"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span><span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="Overall 2nd"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#333">2</text></svg></span></td><td><a href="../../index.html#ws-359972">2024 Duck Island Race #5</a></td><td class="text-muted small text-nowrap">Jul 26, 2024</td><td>2</td><td>2</td><td>10:17</td><td>10:17</td><td>1.000</td><td>1.000</td><td>5</td><td>0</td></tr></tbody>
+</table></div></div></div></div>
+</div>
+<script>
+new Chart(document.getElementById('chart-pts-sckc-2024-unknown'), {
+  type:'line',data:{labels:["07/26 - #5"],datasets:[
+    {label:'Overall Pts',data:[5],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-sckc-2024-unknown'), {
+  type:'line',data:{labels:["07/26 - #5"],datasets:[
+    {label:'Handicap',data:[1.0],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});</script>
+<script>
+document.getElementById('racer-select').addEventListener('change', function() {
+  window.location.href = this.value + '.html';
+});
+</script>
+<script>
+(function() {
+  var club = 'sckc';
+  localStorage.setItem('bepc_club', club);
+  var season = getSeason('2025');
+
+  function showClubSeason(c, s) {
+    // Show correct club
+    document.querySelectorAll('[data-club]').forEach(function(el) {
+      el.style.display = el.dataset.club === c ? '' : 'none';
+    });
+    // Show correct season within that club
+    document.querySelectorAll('[data-club="' + c + '"] [data-season]').forEach(function(el) {
+      el.style.display = el.dataset.season === s ? '' : 'none';
+    });
+  }
+
+  showClubSeason(club, season);
+
+  // Season selector change
+  var sel = document.getElementById('season-select');
+  if (sel) sel.addEventListener('change', function() {
+    setSeason(this.value);
+    showClubSeason(localStorage.getItem('bepc_club') || 'sckc', this.value);
+  });
+
+  // Restore saved craft tab
+  var savedCraft = localStorage.getItem('bepc_craft');
+  if (savedCraft) {
+    var craftBtn = document.querySelector('[data-bs-target="#' + savedCraft + '"]');
+    if (craftBtn) bootstrap.Tab.getOrCreateInstance(craftBtn).show();
+  }
+  document.querySelectorAll('[data-bs-target^="#c-"]').forEach(function(btn) {
+    btn.addEventListener('shown.bs.tab', function() {
+      localStorage.setItem('bepc_craft', btn.getAttribute('data-bs-target').substring(1));
+    });
+  });
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function(el) {
+    bootstrap.Tooltip.getOrCreateInstance(el);
+  });
+})();
+</script>
+
+</body></html>

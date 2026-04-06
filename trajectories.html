@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trajectories</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  return localStorage.getItem('bepc_season') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('bepc_season', year);
+}
+function getDistance() {
+  return localStorage.getItem('bepc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('bepc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('bepc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('bepc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container">
+    <a class="navbar-brand" href="home.html">🏄 PaddleClub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="races.html">Races</a></li>
+<li class="nav-item"><a class="nav-link" href="index.html">Results</a></li>
+<li class="nav-item"><a class="nav-link" href="standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link active" href="trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link" href="racer/sckc/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+</ul>
+    </div>
+  </div>
+</nav><div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Club</span>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group"><button type="button" class="btn btn-sm btn-outline-secondary" data-club="bepc">BEPC</button>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="pnw-regional">PNW League</button>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="sckc">SCKC</button>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="sound-rowers">Sound Rowers</button>
+</div>
+      </div>
+      <div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='width:auto'></select></div>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var ALL_CLUB_SEASONS = {"bepc":{"years":["2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015"],"current":"2025"},"pnw-regional":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017"],"current":"2026"},"sckc":{"years":["2025", "2024", "2023", "2022", "2019", "2018", "2017", "2016", "2015"],"current":"2025"},"sound-rowers":{"years":["2025", "2024", "2023", "2022"],"current":"2025"}};
+  var stored = localStorage.getItem('bepc_club') || 'sckc';
+  if (!ALL_CLUB_SEASONS[stored]) stored = 'sckc';
+  document.querySelectorAll('#club-btn-group button').forEach(function(btn) {
+    if (btn.dataset.club === stored) btn.classList.add('active');
+    btn.addEventListener('click', function() {
+      localStorage.setItem('bepc_club', btn.dataset.club);
+      window.location.reload();
+    });
+  });
+  var sel = document.getElementById('season-select');
+  if (sel) {
+    var info = ALL_CLUB_SEASONS[stored];
+    var saved = localStorage.getItem('bepc_season');
+    sel.innerHTML = info.years.map(function(y) {
+      return '<option value="' + y + '"' + (y === (saved || info.current) ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+  }
+})();
+</script>
+<div class="container">
+  <h1 class="mb-3">Trajectories</h1>
+  <div id="traj-content">
+  <ul class="nav nav-tabs mb-3" id="traj-tabs">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-pts">Overall Points</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-hpts">Handicap Points</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-hnum">Handicap Number</button></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab-pts">
+      <p class="text-muted small">Overall season points over time. Click legend to toggle racers.</p>
+      <div class="traj-scroll"><canvas id="chart-pts"></canvas></div>
+    </div>
+    <div class="tab-pane" id="tab-hpts">
+      <p class="text-muted small">Handicap season points over time. First two races provisional (no points awarded).</p>
+      <div class="traj-scroll"><canvas id="chart-hpts"></canvas></div>
+    </div>
+    <div class="tab-pane" id="tab-hnum">
+      <p class="text-muted small">Handicap factor over time. Values below 1.0 = faster than par; above 1.0 = slower. Racers with 4+ races shown.</p>
+      <div class="traj-scroll"><canvas id="chart-hnum"></canvas></div>
+    </div>
+  </div>
+  </div>
+</div>
+<script>
+
+const endLabelPlugin = {
+  id: 'endLabel',
+  _labelRects: [],
+  _activeIndex: null,
+  afterDatasetsDraw(chart) {
+    const ctx = chart.ctx;
+    const LINE_HEIGHT = 14;
+
+    const items = [];
+    chart.data.datasets.forEach((ds, i) => {
+      const meta = chart.getDatasetMeta(i);
+      if (meta.hidden) return;
+      let last = null;
+      for (let j = meta.data.length - 1; j >= 0; j--) {
+        if (ds.data[j] !== null && ds.data[j] !== undefined) { last = meta.data[j]; break; }
+      }
+      if (!last) return;
+      items.push({ label: ds.label, color: ds._origColor || ds.borderColor, idealY: last.y, x: last.x, index: i });
+    });
+
+    items.sort((a, b) => a.idealY - b.idealY);
+
+    const placed = [];
+    for (const item of items) {
+      let y = item.idealY;
+      for (const p of placed) {
+        if (Math.abs(p - y) < LINE_HEIGHT) y = p + LINE_HEIGHT;
+      }
+      placed.push(y);
+      item.placedY = y;
+    }
+
+    const labelX = chart.chartArea.right + 8;
+    this._labelRects = [];
+
+    ctx.save();
+    ctx.font = 'bold 11px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    items.forEach(item => {
+      ctx.fillStyle = item.color;
+      ctx.beginPath();
+      ctx.arc(item.x, item.idealY, 3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillText(item.label, labelX, item.placedY);
+      const w = ctx.measureText(item.label).width;
+      this._labelRects.push({ x: labelX, y: item.placedY - 7, w, h: 14, index: item.index });
+    });
+    ctx.restore();
+  },
+  afterEvent(chart, args) {
+    const e = args.event;
+    if (e.type !== 'mousemove') return;
+    const hit = this._labelRects.find(r =>
+      e.x >= r.x && e.x <= r.x + r.w && e.y >= r.y && e.y <= r.y + r.h
+    );
+    const newIndex = hit ? hit.index : null;
+    if (newIndex === this._activeIndex) return;
+    this._activeIndex = newIndex;
+    if (newIndex !== null) {
+      highlightDataset(chart, newIndex);
+      chart.canvas.style.cursor = 'pointer';
+    } else {
+      resetHighlight(chart);
+      chart.canvas.style.cursor = 'default';
+    }
+  }
+};
+
+function makeChart(id, data, yLabel) {
+  const canvas = document.getElementById(id);
+  const n = data.datasets.length;
+  const h = Math.max(window.innerHeight - 220, n * 22 + 100);
+  canvas.height = h;
+  canvas.width = 1100;
+  const plugin = Object.assign({}, endLabelPlugin, { _labelRects: [], _activeIndex: null });
+  const chart = new Chart(canvas, {
+    type: 'line',
+    data: data,
+    plugins: [plugin],
+    options: {
+      responsive: false,
+      maintainAspectRatio: false,
+      layout: { padding: { right: 160 } },
+      interaction: { mode: 'nearest', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ctx.parsed.y !== null
+              ? ctx.dataset.label + ': ' + ctx.parsed.y
+              : null,
+          },
+          filter: item => item.parsed.y !== null,
+          itemSort: (a, b) => b.parsed.y - a.parsed.y,
+        }
+      },
+      onHover: (e, elements, chart) => {
+        const newIndex = elements.length ? elements[0].datasetIndex : null;
+        if (newIndex === chart._hoverIndex) return;
+        chart._hoverIndex = newIndex;
+        if (newIndex !== null) highlightDataset(chart, newIndex);
+        else resetHighlight(chart);
+      },
+      scales: {
+        y: { title: { display: true, text: yLabel } },
+        x: { title: { display: true, text: 'Race' } }
+      }
+    }
+  });
+  document.getElementById(id).addEventListener('mouseleave', () => {
+    chart._hoverIndex = null;
+    plugin._activeIndex = null;
+    resetHighlight(chart);
+  });
+  return chart;
+}
+
+function highlightDataset(chart, index) {
+  chart.data.datasets.forEach((ds, i) => {
+    if (!ds._origColor) ds._origColor = ds.borderColor;
+    ds.borderWidth = i === index ? 3 : 1;
+    ds.borderColor = i === index ? ds._origColor : ds._origColor + '44';
+    ds.pointRadius = i === index ? 5 : 2;
+  });
+  chart.update('none');
+}
+
+function resetHighlight(chart) {
+  chart.data.datasets.forEach(ds => {
+    ds.borderWidth = 2;
+    ds.borderColor = ds._origColor || ds.borderColor;
+    ds.pointRadius = 4;
+  });
+  chart.update('none');
+}
+
+let ALL_SEASONS = null;
+let charts = {};
+function loadTrajSeason(year) {
+  const s = ALL_SEASONS[year];
+  ['pts','hpts','hnum'].forEach(k => {
+    if (charts[k]) charts[k].destroy();
+    charts[k] = makeChart('chart-' + k, s[k],
+      k === 'pts' ? 'Season Points' : k === 'hpts' ? 'Handicap Points' : 'Handicap Factor');
+  });
+}
+window.addEventListener('DOMContentLoaded', () => {
+  function getClub() { return localStorage.getItem('bepc_club') || 'sckc'; }
+  function setClub(c) { localStorage.setItem('bepc_club', c); }
+  function loadClub(club) {
+    fetchData(`trajectories-data-${club}.json`, d => {
+      ALL_SEASONS = d.seasons;
+      const sel = document.getElementById('season-select');
+      sel.innerHTML = Object.keys(d.seasons).sort().reverse().map(y => `<option value="${y}">${y} Season</option>`).join('');
+      const yr = getSeason(d.current_year);
+      if (ALL_SEASONS[yr]) sel.value = yr;
+      loadTrajSeason(sel.value);
+      sel.onchange = e => { setSeason(e.target.value); loadTrajSeason(e.target.value); };
+    });
+  }
+  loadClub(getClub());
+});
+</script>
+
+</body></html>

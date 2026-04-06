@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lindi Mondavi</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  return localStorage.getItem('bepc_season') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('bepc_season', year);
+}
+function getDistance() {
+  return localStorage.getItem('bepc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('bepc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('bepc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('bepc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container">
+    <a class="navbar-brand" href="../../home.html">🏄 PaddleClub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-link" href="../../home.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../races.html">Races</a></li>
+<li class="nav-item"><a class="nav-link" href="../../index.html">Results</a></li>
+<li class="nav-item"><a class="nav-link" href="../../standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link" href="../../trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../racer/pnw-regional/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="../../about.html">About</a></li>
+</ul>
+    </div>
+  </div>
+</nav><div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Club</span>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group"><a href="../../racer/bepc/lindi-mondavi.html" class="btn btn-sm btn-outline-secondary">BEPC</a>
+<a href="../../racer/pnw-regional/lindi-mondavi.html" class="btn btn-sm btn-outline-secondary active">PNW League</a>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="sckc">SCKC</button>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="sound-rowers">Sound Rowers</button>
+</div>
+      </div>
+      <div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='width:auto'></select></div>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var ALL_CLUB_SEASONS = {"bepc":{"years":["2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015"],"current":"2025"},"pnw-regional":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017"],"current":"2026"},"sckc":{"years":["2025", "2024", "2023", "2022", "2019", "2018", "2017", "2016", "2015"],"current":"2025"},"sound-rowers":{"years":["2025", "2024", "2023", "2022"],"current":"2025"}};
+  var stored = localStorage.getItem('bepc_club') || 'pnw-regional';
+  if (!ALL_CLUB_SEASONS[stored]) stored = 'pnw-regional';
+  document.querySelectorAll('#club-btn-group button').forEach(function(btn) {
+    if (btn.dataset.club === stored) btn.classList.add('active');
+    btn.addEventListener('click', function() {
+      localStorage.setItem('bepc_club', btn.dataset.club);
+      window.location.reload();
+    });
+  });
+  var sel = document.getElementById('season-select');
+  if (sel) {
+    var info = ALL_CLUB_SEASONS[stored];
+    var saved = localStorage.getItem('bepc_season');
+    sel.innerHTML = info.years.map(function(y) {
+      return '<option value="' + y + '"' + (y === (saved || info.current) ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+  }
+})();
+</script>
+<div class="container">
+  <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+  <a href="elias-nebel.html" class="btn btn-outline-secondary btn-sm" style="width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">&larr; Elias Nebel</a>
+  <select id="racer-select" class="form-select form-select-sm" style="width:200px">
+    <option value="ahmed-fakhry">Ahmed Fakhry</option><option value="ahmed-salem">Ahmed Salem</option><option value="alan-lipp">Alan Lipp</option><option value="alessandra-novak">Alessandra Novak</option><option value="alexey-svyatkovskiy">Alexey Svyatkovskiy</option><option value="amanda-hodson">Amanda Hodson</option><option value="amy-denny">Amy Denny</option><option value="ana-swetish">Ana Swetish</option><option value="andrew-commodore">Andrew Commodore</option><option value="ann-armstrong">Ann Armstrong</option><option value="antoine-issa">Antoine Issa</option><option value="axel-mclean">Axel McLean</option><option value="ayman-zaki">Ayman Zaki</option><option value="beau-whitehead">Beau Whitehead</option><option value="bill-forsythe">Bill Forsythe</option><option value="bob-muraski">Bob Muraski</option><option value="bob-putnam">Bob Putnam</option><option value="bob-stewart">Bob Stewart</option><option value="boy-chun-fook">Boy Chun Fook</option><option value="brent-campbell">Brent Campbell</option><option value="brian-flannelly">Brian Flannelly</option><option value="brian-kummer">Brian Kummer</option><option value="brown-fihaki">Brown Fihaki</option><option value="bruce-barry">Bruce Barry</option><option value="calvin-rowland">Calvin Rowland</option><option value="carrie-weisse">Carrie Weisse</option><option value="carson-hayes">Carson Hayes</option><option value="cary-morris">Cary Morris</option><option value="catherine-marr">Catherine Marr</option><option value="chris-dobrovolny">Chris Dobrovolny</option><option value="chris-grieve">Chris Grieve</option><option value="connie-and-mike">Connie And Mike</option><option value="corbin-charlton">Corbin Charlton</option><option value="dan-mayhew">Dan Mayhew</option><option value="dana-britton">Dana Britton</option><option value="daniel-point">Daniel Point</option><option value="danielle-kala">Danielle Kala</option><option value="darian-hildreth">Darian Hildreth</option><option value="david-hooper">David Hooper</option><option value="dean-bumstead">Dean Bumstead</option><option value="denise-weeks">Denise Weeks</option><option value="derek-fromm">Derek Fromm</option><option value="donald-kiesling">Donald Kiesling</option><option value="doug-thomas">Doug Thomas</option><option value="egor-klevak">Egor Klevak</option><option value="ehren-paterson">Ehren Paterson</option><option value="elias-nebel">Elias Nebel</option><option value="elizabeth-arnold">Elizabeth Arnold</option><option value="elizabeth-ellsberry">Elizabeth Ellsberry</option><option value="elizabeth-holmes">Elizabeth Holmes</option><option value="elizabeth-moller">Elizabeth Moller</option><option value="eric-nordstrom">Eric Nordstrom</option><option value="erica-quam">Erica Quam</option><option value="faye-tong---lon-kincannon">Faye Tong & Lon Kincannon</option><option value="francine-rose">Francine Rose</option><option value="fraser-schilling">Fraser Schilling</option><option value="gavin-godfrey">Gavin Godfrey</option><option value="gordon-martinez">Gordon Martinez</option><option value="graeme-galves">Graeme Galves</option><option value="greg-barton">Greg Barton</option><option value="greg-redman">Greg Redman</option><option value="gregorio-mares">Gregorio Mares</option><option value="herbert-weisse">Herbert Weisse</option><option value="hms-beluga">Hms Beluga</option><option value="holly-rasmussen">Holly Rasmussen</option><option value="hugh-owen">Hugh Owen</option><option value="isaak-nebel">Isaak Nebel</option><option value="ivan-medvedev">Ivan Medvedev</option><option value="ivan-pinzon">Ivan Pinzon</option><option value="ivan-storck">Ivan Storck</option><option value="james-healy">James Healy</option><option value="jane-chang">Jane Chang</option><option value="jane-leung">Jane Leung</option><option value="janna-gross">Janna Gross</option><option value="jason-park">Jason Park</option><option value="jay-junio">Jay Junio</option><option value="jay-marshall">Jay Marshall</option><option value="jeff-theresa-knakal">Jeff/Theresa Knakal</option><option value="jeremy-clark">Jeremy Clark</option><option value="jimi-spoto">Jimi Spoto</option><option value="jimmy-takemura">Jimmy Takemura</option><option value="jo-markham">Jo Markham</option><option value="john-mooney">John Mooney</option><option value="john-richardson">John Richardson</option><option value="john-schalka">John Schalka</option><option value="john-schwandt">John Schwandt</option><option value="jordan-van-voast">Jordan Van Voast</option><option value="joshua-proctor">Joshua Proctor</option><option value="julia-melo">Julia Melo</option><option value="juliana-acuna">Juliana Acuna</option><option value="juraj-osusky---peter-turcan">Juraj Osusky & Peter Turcan</option><option value="kate-kauffman">Kate Kauffman</option><option value="kathleen-faust">Kathleen Faust</option><option value="ken-asano">Ken Asano</option><option value="ken-deem">Ken Deem</option><option value="kevin-cowan">Kevin Cowan</option><option value="kevin-olney">Kevin Olney</option><option value="kyle-peterson">Kyle Peterson</option><option value="kyoko-tsukigase">Kyoko Tsukigase</option><option value="leni-corin">Leni Corin</option><option value="leonard-duncan">Leonard Duncan</option><option value="linda-thompson">Linda Thompson</option><option value="lindi-mondavi" selected>Lindi Mondavi</option><option value="lisa-toy">Lisa Toy</option><option value="lon-kincannon">Lon Kincannon</option><option value="luis-buen-abad">Luis Buen Abad</option><option value="lynn-bonser">Lynn Bonser</option><option value="mabel-kenny">Mabel Kenny</option><option value="makoto-tsukigase">Makoto Tsukigase</option><option value="manny-de-leon">Manny De Leon</option><option value="marc-whitlock">Marc Whitlock</option><option value="mark-miller">Mark Miller</option><option value="marnie-conklin">Marnie Conklin</option><option value="masato-tsukigase">Masato Tsukigase</option><option value="matthew-mar">Matthew Mar</option><option value="matthew-sun">Matthew Sun</option><option value="michael-lampi">Michael Lampi</option><option value="michael-lim">Michael Lim</option><option value="michael-peterson">Michael Peterson</option><option value="mignon-fontenelle">Mignon Fontenelle</option><option value="mike-darbyshire">Mike Darbyshire</option><option value="mike-liddell">Mike Liddell</option><option value="nancy-maclean">Nancy Maclean</option><option value="ned-bobo">Ned Bobo</option><option value="nikki-pearson">Nikki Pearson</option><option value="noah-johnson-greenough">Noah Johnson-Greenough</option><option value="pat-johnson">Pat Johnson</option><option value="patrick-hwang">Patrick Hwang</option><option value="paul-kendall">Paul Kendall</option><option value="paul-reavley">Paul Reavley</option><option value="peter-allen">Peter Allen</option><option value="peter-hirtle">Peter Hirtle</option><option value="peter-marcus">Peter Marcus</option><option value="reivers-dustin">Reivers Dustin</option><option value="remus-wyse-morris">Remus Wyse-Morris</option><option value="richard-campbell">Richard Campbell</option><option value="rick-renaud">Rick Renaud</option><option value="robbie-magus">Robbie Magus</option><option value="robert-beck">Robert Beck</option><option value="rod-sternagel">Rod Sternagel</option><option value="russ-woosley">Russ Woosley</option><option value="samuel-siu">Samuel Siu</option><option value="scott-borle">Scott Borle</option><option value="seattle-flying-dragons">Seattle Flying Dragons</option><option value="selena-soo">Selena Soo</option><option value="shane-baker">Shane Baker</option><option value="sharif-senbel">Sharif Senbel</option><option value="shaun-koos">Shaun Koos</option><option value="sheena-bull">Sheena Bull</option><option value="siena-mclean">Siena McLean</option><option value="simon-nebel">Simon Nebel</option><option value="spencer-lazzar">Spencer Lazzar</option><option value="steve-chapin">Steve Chapin</option><option value="steve-esselaar">Steve Esselaar</option><option value="steve-goodson">Steve Goodson</option><option value="steve-juranovics">Steve Juranovics</option><option value="steven-kala">Steven Kala</option><option value="tau-porter">Tau Porter</option><option value="toby-cooper">Toby Cooper</option><option value="tom-cartmill">Tom Cartmill</option><option value="tony-hodanic">Tony Hodanic</option><option value="traci-cole">Traci Cole</option><option value="tyler-peterson">Tyler Peterson</option><option value="van-douglas">Van Douglas</option><option value="vincent-fecteau">Vincent Fecteau</option><option value="wayne-hodson">Wayne Hodson</option><option value="wilson-reavley">Wilson Reavley</option>
+  </select>
+  <a href="peter-marcus.html" class="btn btn-outline-secondary btn-sm" style="width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Peter Marcus &rarr;</a>
+</div>
+  <h2>Lindi Mondavi</h2>
+  <div data-club="bepc" style="display:none"><div data-season="2016" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-bepc-2016-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-bepc-2016-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 4</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 3</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 4</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.276</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-2016-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-2016-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing handicap — not yet eligible for handicap awards"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span></td><td><a href="../../index.html#ws-71505">Monday Night Paddle Race 20160606</a></td><td class="text-muted small text-nowrap">Jun 6, 2016</td><td>18</td><td>18</td><td>43:12</td><td>43:12</td><td>1.000</td><td>1.276</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing handicap — not yet eligible for handicap awards"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span><span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="Overall 3rd"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg></span></td><td><a href="../../index.html#ws-73752">Monday Night Paddle Race 20160704</a></td><td class="text-muted small text-nowrap">Jul 4, 2016</td><td>3</td><td>3</td><td>20:35</td><td>16:08</td><td>1.276</td><td>1.276</td><td>3</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-74801">Monday Night Paddle Race 20160718</a></td><td class="text-muted small text-nowrap">Jul 18, 2016</td><td>12</td><td>9</td><td>39:46</td><td>31:11</td><td>1.276</td><td>1.276</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-consist" data-bs-toggle="tooltip" data-bs-title="Consistent performer (±1% of expectation)"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="hcap-medal hcap-par" data-bs-toggle="tooltip" data-bs-title="Par racer"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text></svg></span></td><td><a href="../../index.html#ws-77565">Monday Night Paddle Race 20160822</a></td><td class="text-muted small text-nowrap">Aug 22, 2016</td><td>13</td><td>7</td><td>40:06</td><td>31:26</td><td>1.276</td><td>1.276</td><td>0</td><td>4</td></tr></tbody>
+</table></div></div></div><div data-season="2017" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-bepc-2017-prone-1">Prone-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-bepc-2017-prone-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 2</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.223</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-2017-prone-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-2017-prone-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing handicap — not yet eligible for handicap awards"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span></td><td><a href="../../index.html#ws-111604">Salmon Bay Paddle Monday Race 20170904</a></td><td class="text-muted small text-nowrap">Sep 4, 2017</td><td>20</td><td>20</td><td>45:45</td><td>45:45</td><td>1.000</td><td>1.223</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-114619">Salmon Bay Paddle Monday Race 20170925</a></td><td class="text-muted small text-nowrap">Sep 25, 2017</td><td>31</td><td>31</td><td>29:25</td><td>24:03</td><td>1.223</td><td>1.223</td><td>0</td><td>0</td></tr></tbody>
+</table></div></div></div><div data-season="2018" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-bepc-2018-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-bepc-2018-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 8</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 6</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 20</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.115</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-2018-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-2018-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing handicap — not yet eligible for handicap awards"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span></td><td><a href="../../index.html#ws-141279">BEPC Monday Night Paddle Series 20180618</a></td><td class="text-muted small text-nowrap">Jun 18, 2018</td><td>25</td><td>27</td><td>33:54</td><td>33:54</td><td>1.000</td><td>1.162</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-consist" data-bs-toggle="tooltip" data-bs-title="Consistent performer (±1% of expectation)"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="hcap-medal hcap-par" data-bs-toggle="tooltip" data-bs-title="Par racer"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text></svg></span></td><td><a href="../../index.html#ws-142253">Bepc20180625</a></td><td class="text-muted small text-nowrap">Jun 25, 2018</td><td>14</td><td>8</td><td>35:11</td><td>30:16</td><td>1.162</td><td>1.162</td><td>0</td><td>2</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-143549">BEPC Monday Night Paddle 20180702</a></td><td class="text-muted small text-nowrap">Jul 2, 2018</td><td>21</td><td>22</td><td>35:50</td><td>30:49</td><td>1.162</td><td>1.162</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-144231">BEPC Monday Paddle Series 20180716</a></td><td class="text-muted small text-nowrap">Jul 16, 2018</td><td>19</td><td>15</td><td>28:58</td><td>24:55</td><td>1.162</td><td>1.170</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-bronze" data-bs-toggle="tooltip" data-bs-title="Handicap 3rd"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg></span></td><td><a href="../../index.html#ws-144824">BEPC Monday Night Race 7-23-18</a></td><td class="text-muted small text-nowrap">Jul 23, 2018</td><td>11</td><td>3</td><td>56:31</td><td>48:19</td><td>1.170</td><td>1.151</td><td>0</td><td>8</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-146126">BEPC08062018</a></td><td class="text-muted small text-nowrap">Aug 6, 2018</td><td>27</td><td>20</td><td>22:29</td><td>19:32</td><td>1.151</td><td>1.160</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-146915">BEPC Monday Night Paddle Series 20180813</a></td><td class="text-muted small text-nowrap">Aug 13, 2018</td><td>21</td><td>16</td><td>28:48</td><td>24:50</td><td>1.160</td><td>1.167</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-gold" data-bs-toggle="tooltip" data-bs-title="Handicap winner"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg></span><span class="hcap-medal hcap-streak" title="Improving streak: 3 races"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">3</text></svg></span></td><td><a href="../../index.html#ws-148636">BEPC Monday race 08/27/2018</a></td><td class="text-muted small text-nowrap">Aug 27, 2018</td><td>5</td><td>1</td><td>29:20</td><td>25:08</td><td>1.167</td><td>1.115</td><td>6</td><td>10</td></tr></tbody>
+</table></div></div></div><div data-season="2019" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-bepc-2019-prone-1">Prone-1</button></li><li class="nav-item"><button class="nav-link " data-bs-toggle="tab" data-bs-target="#c-bepc-2019-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-bepc-2019-prone-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 2</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.100</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-2019-prone-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-2019-prone-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing handicap — not yet eligible for handicap awards"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span></td><td><a href="../../index.html#ws-181396">BEPC Summer Race Series III</a></td><td class="text-muted small text-nowrap">May 20, 2019</td><td>10</td><td>10</td><td>39:56</td><td>39:56</td><td>1.000</td><td>1.084</td><td>1</td><td>0</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-190875">BEPC Summer Race Series XV</a></td><td class="text-muted small text-nowrap">Aug 12, 2019</td><td>17</td><td>20</td><td>39:21</td><td>36:18</td><td>1.084</td><td>1.100</td><td>0</td><td>0</td></tr></tbody>
+</table></div><div class="tab-pane " id="c-bepc-2019-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 10</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 17</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.207</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-2019-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-2019-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-179252">BEPC Summer Race Series I</a></td><td class="text-muted small text-nowrap">May 6, 2019</td><td>15</td><td>17</td><td>43:23</td><td>38:56</td><td>1.115</td><td>1.182</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-180207">BEPC Summer Race Series II</a></td><td class="text-muted small text-nowrap">May 13, 2019</td><td>14</td><td>6</td><td>48:38</td><td>41:09</td><td>1.182</td><td>1.179</td><td>0</td><td>5</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-182328">BEPC Summer Race Series IV</a></td><td class="text-muted small text-nowrap">May 27, 2019</td><td>13</td><td>14</td><td>53:58</td><td>45:46</td><td>1.179</td><td>1.179</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-184322">BEPC Summer Race Series VI</a></td><td class="text-muted small text-nowrap">Jun 10, 2019</td><td>14</td><td>14</td><td>43:46</td><td>37:07</td><td>1.179</td><td>1.187</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-consist" data-bs-toggle="tooltip" data-bs-title="Consistent performer (±1% of expectation)"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="hcap-medal hcap-par" data-bs-toggle="tooltip" data-bs-title="Par racer"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text></svg></span></td><td><a href="../../index.html#ws-187503">BEPC Summer Race Series X </a></td><td class="text-muted small text-nowrap">Jul 8, 2019</td><td>17</td><td>8</td><td>36:52</td><td>31:04</td><td>1.187</td><td>1.187</td><td>0</td><td>3</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-consist" data-bs-toggle="tooltip" data-bs-title="Consistent performer (±1% of expectation)"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td><td><a href="../../index.html#ws-188178">BEPC Summer Race Series XI</a></td><td class="text-muted small text-nowrap">Jul 15, 2019</td><td>14</td><td>8</td><td>39:28</td><td>33:15</td><td>1.187</td><td>1.188</td><td>0</td><td>3</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-188871">BEPC Summer Race Series XII</a></td><td class="text-muted small text-nowrap">Jul 22, 2019</td><td>15</td><td>15</td><td>47:39</td><td>40:07</td><td>1.188</td><td>1.205</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-190255">BEPC Summer Race Series XIV</a></td><td class="text-muted small text-nowrap">Aug 5, 2019</td><td>18</td><td>19</td><td>53:28</td><td>44:21</td><td>1.205</td><td>1.205</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-192506">BEPC Summer Race Series XVII</a></td><td class="text-muted small text-nowrap">Aug 26, 2019</td><td>26</td><td>27</td><td>1:02:22</td><td>51:45</td><td>1.205</td><td>1.205</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-193414">BEPC Summer Race Series XVIII</a></td><td class="text-muted small text-nowrap">Sep 2, 2019</td><td>11</td><td>5</td><td>37:18</td><td>30:57</td><td>1.205</td><td>1.207</td><td>0</td><td>6</td></tr></tbody>
+</table></div></div></div><div data-season="2020" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-bepc-2020-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-bepc-2020-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 6</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 8</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 10</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.121</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-2020-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-2020-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-216142">BEPC 2020 Race Series I</a></td><td class="text-muted small text-nowrap">Jun 29, 2020</td><td>19</td><td>15</td><td>48:53</td><td>41:37</td><td>1.174</td><td>1.242</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-gold" data-bs-toggle="tooltip" data-bs-title="Handicap winner"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg></span><span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="Overall 3rd"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg></span></td><td><a href="../../index.html#ws-217010">BEPC 2020 Race Series 3</a></td><td class="text-muted small text-nowrap">Jul 13, 2020</td><td>3</td><td>1</td><td>32:17</td><td>25:59</td><td>1.242</td><td>1.109</td><td>8</td><td>10</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-218608">BEPC 2020 Race Series 6</a></td><td class="text-muted small text-nowrap">Aug 3, 2020</td><td>18</td><td>19</td><td>40:23</td><td>36:24</td><td>1.109</td><td>1.109</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-219204">BEPC 2020 Race Series 7</a></td><td class="text-muted small text-nowrap">Aug 10, 2020</td><td>21</td><td>19</td><td>45:08</td><td>40:41</td><td>1.109</td><td>1.109</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-220230">BEPC 2020 Race Series 9</a></td><td class="text-muted small text-nowrap">Aug 24, 2020</td><td>28</td><td>28</td><td>35:38</td><td>32:07</td><td>1.109</td><td>1.109</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-220789">BEPC 2020 Race Series 10</a></td><td class="text-muted small text-nowrap">Aug 31, 2020</td><td>22</td><td>24</td><td>41:18</td><td>37:14</td><td>1.109</td><td>1.121</td><td>0</td><td>0</td></tr></tbody>
+</table></div></div></div><div data-season="2021" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-bepc-2021-prone-1">Prone-1</button></li><li class="nav-item"><button class="nav-link " data-bs-toggle="tab" data-bs-target="#c-bepc-2021-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-bepc-2021-prone-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 10</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.162</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-2021-prone-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-2021-prone-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing handicap — not yet eligible for handicap awards"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span></td><td><a href="../../index.html#ws-246186">BEPC 2021 Race Series #9</a></td><td class="text-muted small text-nowrap">Jun 28, 2021</td><td>15</td><td>18</td><td>36:29</td><td>36:29</td><td>1.000</td><td>1.162</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-246867">BEPC 2021 Race Series #10</a></td><td class="text-muted small text-nowrap">Jul 5, 2021</td><td>26</td><td>24</td><td>36:16</td><td>31:12</td><td>1.162</td><td>1.162</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-247525">BEPC 2021 Race Series #11</a></td><td class="text-muted small text-nowrap">Jul 12, 2021</td><td>26</td><td>27</td><td>48:22</td><td>41:38</td><td>1.162</td><td>1.162</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-248049">BEPC 2021 Race Series #12</a></td><td class="text-muted small text-nowrap">Jul 19, 2021</td><td>21</td><td>20</td><td>50:52</td><td>43:47</td><td>1.162</td><td>1.162</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-248821">BEPC 2021 Race Series #13</a></td><td class="text-muted small text-nowrap">Jul 26, 2021</td><td>29</td><td>29</td><td>52:42</td><td>45:21</td><td>1.162</td><td>1.162</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-249453">BEPC 2021 Race Series #14</a></td><td class="text-muted small text-nowrap">Aug 2, 2021</td><td>31</td><td>30</td><td>37:55</td><td>32:38</td><td>1.162</td><td>1.162</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-250072">BEPC 2021 Race Series #15</a></td><td class="text-muted small text-nowrap">Aug 9, 2021</td><td>32</td><td>32</td><td>45:00</td><td>38:44</td><td>1.162</td><td>1.162</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-250657">BEPC 2021 Race Series #16</a></td><td class="text-muted small text-nowrap">Aug 16, 2021</td><td>22</td><td>22</td><td>37:38</td><td>32:23</td><td>1.162</td><td>1.162</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-251350">BEPC 2021 Race Series #17</a></td><td class="text-muted small text-nowrap">Aug 23, 2021</td><td>31</td><td>32</td><td>34:45</td><td>29:54</td><td>1.162</td><td>1.162</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-252054">BEPC 2021 Race Series #18</a></td><td class="text-muted small text-nowrap">Aug 30, 2021</td><td>33</td><td>34</td><td>42:33</td><td>36:37</td><td>1.162</td><td>1.162</td><td>0</td><td>0</td></tr></tbody>
+</table></div><div class="tab-pane " id="c-bepc-2021-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 4</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.176</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-2021-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-2021-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-242341">BEPC 2021 Race Series #4</a></td><td class="text-muted small text-nowrap">May 24, 2021</td><td>20</td><td>23</td><td>45:25</td><td>40:54</td><td>1.110</td><td>1.176</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-consist" data-bs-toggle="tooltip" data-bs-title="Consistent performer (±1% of expectation)"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="hcap-medal hcap-par" data-bs-toggle="tooltip" data-bs-title="Par racer"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text></svg></span></td><td><a href="../../index.html#ws-243635">BEPC 2021 Race Series #6</a></td><td class="text-muted small text-nowrap">Jun 7, 2021</td><td>20</td><td>10</td><td>31:00</td><td>26:22</td><td>1.176</td><td>1.176</td><td>0</td><td>1</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-244495">BEPC 2021 Race Series #7</a></td><td class="text-muted small text-nowrap">Jun 14, 2021</td><td>27</td><td>26</td><td>56:25</td><td>48:00</td><td>1.176</td><td>1.176</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-consist" data-bs-toggle="tooltip" data-bs-title="Consistent performer (±1% of expectation)"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td><td><a href="../../index.html#ws-245455">BEPC 2021 Race Series #8</a></td><td class="text-muted small text-nowrap">Jun 21, 2021</td><td>19</td><td>11</td><td>34:51</td><td>29:39</td><td>1.176</td><td>1.176</td><td>0</td><td>0</td></tr></tbody>
+</table></div></div></div><div data-season="2022" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-bepc-2022-prone-1">Prone-1</button></li><li class="nav-item"><button class="nav-link " data-bs-toggle="tab" data-bs-target="#c-bepc-2022-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-bepc-2022-prone-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 3</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.223</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-2022-prone-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-2022-prone-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-279151">BEPC 2022 Race Series #6</a></td><td class="text-muted small text-nowrap">Jun 6, 2022</td><td>28</td><td>30</td><td>56:17</td><td>51:39</td><td>1.090</td><td>1.223</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-280761">BEPC 2022 Race Series #8</a></td><td class="text-muted small text-nowrap">Jun 20, 2022</td><td>32</td><td>31</td><td>32:15</td><td>26:22</td><td>1.223</td><td>1.223</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-284324">BEPC 2022 Race Series #13</a></td><td class="text-muted small text-nowrap">Jul 25, 2022</td><td>26</td><td>23</td><td>31:09</td><td>25:28</td><td>1.223</td><td>1.223</td><td>0</td><td>0</td></tr></tbody>
+</table></div><div class="tab-pane " id="c-bepc-2022-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 5</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 3</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.165</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-2022-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-2022-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-280037">BEPC 2022 Race Series #7</a></td><td class="text-muted small text-nowrap">Jun 13, 2022</td><td>13</td><td>13</td><td>47:28</td><td>43:02</td><td>1.103</td><td>1.166</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-281555">BEPC 2022 Race Series #9</a></td><td class="text-muted small text-nowrap">Jun 27, 2022</td><td>28</td><td>30</td><td>25:58</td><td>22:16</td><td>1.166</td><td>1.166</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-284980">BEPC 2022 Race Series #14</a></td><td class="text-muted small text-nowrap">Aug 1, 2022</td><td>30</td><td>8</td><td>36:43</td><td>31:29</td><td>1.166</td><td>1.156</td><td>0</td><td>3</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-285767">BEPC 2022 Race Series #15</a></td><td class="text-muted small text-nowrap">Aug 8, 2022</td><td>27</td><td>24</td><td>41:47</td><td>36:08</td><td>1.156</td><td>1.165</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-286480">BEPC 2022 Race Series #16</a></td><td class="text-muted small text-nowrap">Aug 15, 2022</td><td>23</td><td>15</td><td>38:59</td><td>33:28</td><td>1.165</td><td>1.165</td><td>0</td><td>0</td></tr></tbody>
+</table></div></div></div><div data-season="2023" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-bepc-2023-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-bepc-2023-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.204</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-2023-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-2023-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-315695">BEPC 2023 Race Series #4</a></td><td class="text-muted small text-nowrap">May 22, 2023</td><td>30</td><td>20</td><td>37:58</td><td>32:12</td><td>1.179</td><td>1.204</td><td>0</td><td>0</td></tr></tbody>
+</table></div></div></div><div data-season="2025" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-bepc-2025-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-bepc-2025-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 3</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.124</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-2025-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-2025-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing handicap — not yet eligible for handicap awards"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span></td><td><a href="../../index.html#ws-388722">BEPC 2025 Race Series #1</a></td><td class="text-muted small text-nowrap">May 5, 2025</td><td>27</td><td>29</td><td>30:30</td><td>30:30</td><td>1.000</td><td>1.124</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-389714">BEPC 2025 Race Series #2</a></td><td class="text-muted small text-nowrap">May 12, 2025</td><td>23</td><td>22</td><td>37:50</td><td>33:40</td><td>1.124</td><td>1.124</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off handicap prediction, handicap unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../../index.html#ws-393757">BEPC 2025 Race Series #6</a></td><td class="text-muted small text-nowrap">Jun 9, 2025</td><td>25</td><td>27</td><td>37:51</td><td>33:40</td><td>1.124</td><td>1.124</td><td>0</td><td>0</td></tr></tbody>
+</table></div></div></div></div><div data-club="pnw-regional" style="display:none"><div data-season="2018" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-pnw-regional-2018-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-pnw-regional-2018-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.313</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-pnw-regional-2018-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-pnw-regional-2018-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing handicap — not yet eligible for handicap awards"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span></td><td><a href="../../index.html#ws-131035">Alderbrook St. Paddle's Day Race 2018</a></td><td class="text-muted small text-nowrap">Mar 24, 2018</td><td>21</td><td>21</td><td>1:30:15</td><td>1:30:15</td><td>1.000</td><td>1.313</td><td>0</td><td>0</td></tr></tbody>
+</table></div></div></div><div data-season="2019" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-pnw-regional-2019-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-pnw-regional-2019-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 2</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.295</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-pnw-regional-2019-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-pnw-regional-2019-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-silver" data-bs-toggle="tooltip" data-bs-title="Handicap 2nd"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text></svg></span></td><td><a href="../../index.html#ws-172968">Alderbrook St. Paddle’s Day 2019</a></td><td class="text-muted small text-nowrap">Mar 16, 2019</td><td>21</td><td>7</td><td>1:26:57</td><td>1:06:14</td><td>1.313</td><td>1.295</td><td>0</td><td>2</td></tr></tbody>
+</table></div></div></div><div data-season="2025" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-pnw-regional-2025-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-pnw-regional-2025-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.186</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-pnw-regional-2025-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-pnw-regional-2025-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing handicap — not yet eligible for handicap awards"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span></td><td><a href="../../index.html#ws-389408">Board the Fjord 2025</a></td><td class="text-muted small text-nowrap">May 10, 2025</td><td>17</td><td>17</td><td>1:33:59</td><td>1:33:59</td><td>1.000</td><td>1.186</td><td>0</td><td>0</td></tr></tbody>
+</table></div></div></div></div>
+</div>
+<script>
+new Chart(document.getElementById('chart-pts-bepc-2016-sup-1'), {
+  type:'line',data:{labels:["06/06 - Monday", "07/04 - Monday", "07/18 - Monday", "08/22 - Monday"],datasets:[
+    {label:'Overall Pts',data:[0, 3, 3, 3],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0, 0, 0, 4],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-2016-sup-1'), {
+  type:'line',data:{labels:["06/06 - Monday", "07/04 - Monday", "07/18 - Monday", "08/22 - Monday"],datasets:[
+    {label:'Handicap',data:[1.2756, 1.2756, 1.2756, 1.2756],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-bepc-2017-prone-1'), {
+  type:'line',data:{labels:["09/04 - Monday", "09/25 - Monday"],datasets:[
+    {label:'Overall Pts',data:[0, 0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0, 0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-2017-prone-1'), {
+  type:'line',data:{labels:["09/04 - Monday", "09/25 - Monday"],datasets:[
+    {label:'Handicap',data:[1.2228, 1.2228],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-bepc-2018-sup-1'), {
+  type:'line',data:{labels:["06/18 - Monday", "06/25 - Monday", "07/02 - Monday", "07/16 - Monday", "07/23 - BEPC Monday ", "08/06 - BEPC08062018", "08/13 - Monday", "08/27 - BEPC Monday "],datasets:[
+    {label:'Overall Pts',data:[0, 0, 0, 0, 0, 0, 0, 6],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0, 2, 2, 2, 10, 10, 10, 20],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-2018-sup-1'), {
+  type:'line',data:{labels:["06/18 - Monday", "06/25 - Monday", "07/02 - Monday", "07/16 - Monday", "07/23 - BEPC Monday ", "08/06 - BEPC08062018", "08/13 - Monday", "08/27 - BEPC Monday "],datasets:[
+    {label:'Handicap',data:[1.1623, 1.1623, 1.1623, 1.1696, 1.1506, 1.1597, 1.1665, 1.1145],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-bepc-2019-prone-1'), {
+  type:'line',data:{labels:["05/20 - BEPC Summer ", "08/12 - BEPC Summer "],datasets:[
+    {label:'Overall Pts',data:[1, 1],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0, 0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-2019-prone-1'), {
+  type:'line',data:{labels:["05/20 - BEPC Summer ", "08/12 - BEPC Summer "],datasets:[
+    {label:'Handicap',data:[1.0839, 1.0999],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-bepc-2019-sup-1'), {
+  type:'line',data:{labels:["05/06 - BEPC Summer ", "05/13 - BEPC Summer ", "05/27 - BEPC Summer ", "06/10 - BEPC Summer ", "07/08 - BEPC Summer ", "07/15 - BEPC Summer ", "07/22 - BEPC Summer ", "08/05 - BEPC Summer ", "08/26 - BEPC Summer ", "09/02 - BEPC Summer "],datasets:[
+    {label:'Overall Pts',data:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0, 5, 5, 5, 8, 11, 11, 11, 11, 17],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-2019-sup-1'), {
+  type:'line',data:{labels:["05/06 - BEPC Summer ", "05/13 - BEPC Summer ", "05/27 - BEPC Summer ", "06/10 - BEPC Summer ", "07/08 - BEPC Summer ", "07/15 - BEPC Summer ", "07/22 - BEPC Summer ", "08/05 - BEPC Summer ", "08/26 - BEPC Summer ", "09/02 - BEPC Summer "],datasets:[
+    {label:'Handicap',data:[1.1815, 1.1792, 1.1792, 1.1865, 1.1865, 1.1878, 1.2052, 1.2052, 1.2052, 1.2073],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-bepc-2020-sup-1'), {
+  type:'line',data:{labels:["06/29 - BEPC", "07/13 - BEPC", "08/03 - BEPC", "08/10 - BEPC", "08/24 - BEPC", "08/31 - BEPC"],datasets:[
+    {label:'Overall Pts',data:[0, 8, 8, 8, 8, 8],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0, 10, 10, 10, 10, 10],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-2020-sup-1'), {
+  type:'line',data:{labels:["06/29 - BEPC", "07/13 - BEPC", "08/03 - BEPC", "08/10 - BEPC", "08/24 - BEPC", "08/31 - BEPC"],datasets:[
+    {label:'Handicap',data:[1.2418, 1.1091, 1.1091, 1.1091, 1.1091, 1.1211],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-bepc-2021-prone-1'), {
+  type:'line',data:{labels:["06/28 - Monday #09", "07/05 - Monday #10", "07/12 - Monday #11", "07/19 - Monday #12", "07/26 - Monday #13", "08/02 - Monday #14", "08/09 - Monday #15", "08/16 - Monday #16", "08/23 - Monday #17", "08/30 - Monday #18"],datasets:[
+    {label:'Overall Pts',data:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-2021-prone-1'), {
+  type:'line',data:{labels:["06/28 - Monday #09", "07/05 - Monday #10", "07/12 - Monday #11", "07/19 - Monday #12", "07/26 - Monday #13", "08/02 - Monday #14", "08/09 - Monday #15", "08/16 - Monday #16", "08/23 - Monday #17", "08/30 - Monday #18"],datasets:[
+    {label:'Handicap',data:[1.1618, 1.1618, 1.1618, 1.1618, 1.1618, 1.1618, 1.1618, 1.1618, 1.1618, 1.1618],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-bepc-2021-sup-1'), {
+  type:'line',data:{labels:["05/24 - Monday #04", "06/07 - Monday #06", "06/14 - Monday #07", "06/21 - Monday #08"],datasets:[
+    {label:'Overall Pts',data:[0, 0, 0, 0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0, 1, 1, 1],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-2021-sup-1'), {
+  type:'line',data:{labels:["05/24 - Monday #04", "06/07 - Monday #06", "06/14 - Monday #07", "06/21 - Monday #08"],datasets:[
+    {label:'Handicap',data:[1.1756, 1.1756, 1.1756, 1.176],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-bepc-2022-prone-1'), {
+  type:'line',data:{labels:["06/06 - Monday #06", "06/20 - Monday #08", "07/25 - Monday #13"],datasets:[
+    {label:'Overall Pts',data:[0, 0, 0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0, 0, 0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-2022-prone-1'), {
+  type:'line',data:{labels:["06/06 - Monday #06", "06/20 - Monday #08", "07/25 - Monday #13"],datasets:[
+    {label:'Handicap',data:[1.2233, 1.2233, 1.2233],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-bepc-2022-sup-1'), {
+  type:'line',data:{labels:["06/13 - Monday #07", "06/27 - Monday #09", "08/01 - Monday #14", "08/08 - Monday #15", "08/15 - Monday #16"],datasets:[
+    {label:'Overall Pts',data:[0, 0, 0, 0, 0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0, 0, 3, 3, 3],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-2022-sup-1'), {
+  type:'line',data:{labels:["06/13 - Monday #07", "06/27 - Monday #09", "08/01 - Monday #14", "08/08 - Monday #15", "08/15 - Monday #16"],datasets:[
+    {label:'Handicap',data:[1.1659, 1.1659, 1.1565, 1.1649, 1.1655],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-bepc-2023-sup-1'), {
+  type:'line',data:{labels:["05/22 - Monday #04"],datasets:[
+    {label:'Overall Pts',data:[0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-2023-sup-1'), {
+  type:'line',data:{labels:["05/22 - Monday #04"],datasets:[
+    {label:'Handicap',data:[1.2041],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-bepc-2025-sup-1'), {
+  type:'line',data:{labels:["05/05 - Monday #01", "05/12 - Monday #02", "06/09 - Monday #06"],datasets:[
+    {label:'Overall Pts',data:[0, 0, 0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0, 0, 0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-2025-sup-1'), {
+  type:'line',data:{labels:["05/05 - Monday #01", "05/12 - Monday #02", "06/09 - Monday #06"],datasets:[
+    {label:'Handicap',data:[1.1239, 1.1239, 1.1239],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-pnw-regional-2018-sup-1'), {
+  type:'line',data:{labels:["03/24 - Alderbrook S"],datasets:[
+    {label:'Overall Pts',data:[0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-pnw-regional-2018-sup-1'), {
+  type:'line',data:{labels:["03/24 - Alderbrook S"],datasets:[
+    {label:'Handicap',data:[1.3128],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-pnw-regional-2019-sup-1'), {
+  type:'line',data:{labels:["03/16 - Alderbrook S"],datasets:[
+    {label:'Overall Pts',data:[0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[2],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-pnw-regional-2019-sup-1'), {
+  type:'line',data:{labels:["03/16 - Alderbrook S"],datasets:[
+    {label:'Handicap',data:[1.2954],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-pnw-regional-2025-sup-1'), {
+  type:'line',data:{labels:["05/10 - Fjord '25"],datasets:[
+    {label:'Overall Pts',data:[0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-pnw-regional-2025-sup-1'), {
+  type:'line',data:{labels:["05/10 - Fjord '25"],datasets:[
+    {label:'Handicap',data:[1.1858],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});</script>
+<script>
+document.getElementById('racer-select').addEventListener('change', function() {
+  window.location.href = this.value + '.html';
+});
+</script>
+<script>
+(function() {
+  var club = 'pnw-regional';
+  localStorage.setItem('bepc_club', club);
+  var season = getSeason('2026');
+
+  function showClubSeason(c, s) {
+    // Show correct club
+    document.querySelectorAll('[data-club]').forEach(function(el) {
+      el.style.display = el.dataset.club === c ? '' : 'none';
+    });
+    // Show correct season within that club
+    document.querySelectorAll('[data-club="' + c + '"] [data-season]').forEach(function(el) {
+      el.style.display = el.dataset.season === s ? '' : 'none';
+    });
+  }
+
+  showClubSeason(club, season);
+
+  // Season selector change
+  var sel = document.getElementById('season-select');
+  if (sel) sel.addEventListener('change', function() {
+    setSeason(this.value);
+    showClubSeason(localStorage.getItem('bepc_club') || 'pnw-regional', this.value);
+  });
+
+  // Restore saved craft tab
+  var savedCraft = localStorage.getItem('bepc_craft');
+  if (savedCraft) {
+    var craftBtn = document.querySelector('[data-bs-target="#' + savedCraft + '"]');
+    if (craftBtn) bootstrap.Tab.getOrCreateInstance(craftBtn).show();
+  }
+  document.querySelectorAll('[data-bs-target^="#c-"]').forEach(function(btn) {
+    btn.addEventListener('shown.bs.tab', function() {
+      localStorage.setItem('bepc_craft', btn.getAttribute('data-bs-target').substring(1));
+    });
+  });
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function(el) {
+    bootstrap.Tooltip.getOrCreateInstance(el);
+  });
+})();
+</script>
+
+</body></html>
