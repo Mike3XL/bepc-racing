@@ -1,0 +1,97 @@
+{
+  "note": "Authoritative list of race files included in club history.",
+  "include": [
+    "2017-05-01__99223__Salmon_Bay_Paddle_Monday_Night_20170501.common.json",
+    "2017-05-08__99977__Salmon_Bay_Paddle_Monday_Race_20170508.common.json",
+    "2017-05-15__100697__Salmon_Bay_Paddle_Monday_Race_20170515.common.json",
+    "2017-05-22__101407__Salmon_Bay_Paddle_Monday_Race_20170522.common.json",
+    "2017-05-29__102105__Salmon_Bay_Paddle_Monday_Race_20170529__Fun.common.json",
+    "2017-05-29__102105__Salmon_Bay_Paddle_Monday_Race_20170529__Main.common.json",
+    "2017-06-05__102902__Salmon_Bay_Paddle_Monday_Race_20170605__Fun.common.json",
+    "2017-06-05__102902__Salmon_Bay_Paddle_Monday_Race_20170605__Main.common.json",
+    "2017-06-12__103668__Salmon_Bay_Paddle_Monday_Race_20170612__Fun.common.json",
+    "2017-06-12__103668__Salmon_Bay_Paddle_Monday_Race_20170612__Main.common.json",
+    "2017-06-19__104531__Salmon_Bay_Paddle_Monday_Race_20170619__Fun.common.json",
+    "2017-06-19__104531__Salmon_Bay_Paddle_Monday_Race_20170619__Main.common.json",
+    "2017-06-26__105246__Salmon_Bay_Paddle_Monday_Race_20170626__Fun.common.json",
+    "2017-06-26__105246__Salmon_Bay_Paddle_Monday_Race_20170626__Main.common.json",
+    "2017-07-03__105763__Salmon_Bay_Paddle_Monday_Race_2017073__Fun.common.json",
+    "2017-07-03__105763__Salmon_Bay_Paddle_Monday_Race_2017073__Main.common.json",
+    "2017-07-10__106227__Salmon_Bay_Paddle_Monday_Race_20170710__Fun.common.json",
+    "2017-07-10__106227__Salmon_Bay_Paddle_Monday_Race_20170710__Main.common.json",
+    "2017-07-17__106931__Salmon_Bay_Paddle_Monday_Race_20170717__Fun.common.json",
+    "2017-07-17__106931__Salmon_Bay_Paddle_Monday_Race_20170717__Main.common.json",
+    "2017-07-19__107089__Urbam_Surf_Wednesday_Night_Race_6_2017.common.json",
+    "2017-07-24__107588__Salmon_Bay_Paddle_Monday_Race_20170724__Fun.common.json",
+    "2017-07-24__107588__Salmon_Bay_Paddle_Monday_Race_20170724__Main.common.json",
+    "2017-07-31__108191__Salmon_Bay_Paddle_Monday_Race_20170731__Fun.common.json",
+    "2017-07-31__108191__Salmon_Bay_Paddle_Monday_Race_20170731__Main.common.json",
+    "2017-08-07__108770__Salmon_Bay_Paddle_Monday_Race_20170807__Fun.common.json",
+    "2017-08-07__108770__Salmon_Bay_Paddle_Monday_Race_20170807__Main.common.json",
+    "2017-08-16__109588__Salmon_Bay_Paddle_Monday_Race_20170814.common.json",
+    "2017-08-21__110152__Salmon_Bay_Paddle_Monday_Race_20170821__Fun.common.json",
+    "2017-08-21__110152__Salmon_Bay_Paddle_Monday_Race_20170821__Main.common.json",
+    "2017-08-28__110964__Salmon_Bay_Paddle_Monday_Race_20170828__Fun.common.json",
+    "2017-08-28__110964__Salmon_Bay_Paddle_Monday_Race_20170828__Main.common.json",
+    "2017-09-04__111604__Salmon_Bay_Paddle_Monday_Race_20170904__Fun.common.json",
+    "2017-09-04__111604__Salmon_Bay_Paddle_Monday_Race_20170904__Main.common.json",
+    "2017-09-11__112588__Salmon_Bay_Paddle_Monday_Race_20170911__Fun.common.json",
+    "2017-09-11__112588__Salmon_Bay_Paddle_Monday_Race_20170911__Main.common.json",
+    "2017-09-18__113717__Salmon_Bay_Paddle_Monday_Race_20170918__Fun.common.json",
+    "2017-09-18__113717__Salmon_Bay_Paddle_Monday_Race_20170918__Main.common.json",
+    "2017-09-25__114619__Salmon_Bay_Paddle_Monday_Race_20170925__Fun.common.json",
+    "2017-09-25__114619__Salmon_Bay_Paddle_Monday_Race_20170925__Main.common.json",
+    "2017-10-28__118863__Salmon_Bay_Paddle_Halloween_Race_2017__6_miles.common.json",
+    "2017-10-28__118863__Salmon_Bay_Paddle_Halloween_Race_2017__Short.common.json"
+  ],
+  "exclude": [
+    {
+      "file": "2017-03-18__95530__Alderbrook_St_Paddle_s_Day_Race_2017__6_miles.common.json",
+      "reason": "Alderbrook St. Paddles Day \u2014 not BEPC (PNW regional event)"
+    },
+    {
+      "file": "2017-03-18__95530__Alderbrook_St_Paddle_s_Day_Race_2017__Short.common.json",
+      "reason": "Alderbrook St. Paddles Day \u2014 not BEPC (PNW regional event)"
+    },
+    {
+      "file": "2017-06-07__103122__Urban_Surf_Wednesday_Race_2017_1.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2017-06-14__103907__Urban_Surf_Wednesday_Race_2_20170614.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2017-06-21__104762__Urban_Surf_Wednesday_Race_3_2017__Fun.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2017-06-21__104762__Urban_Surf_Wednesday_Race_3_2017__Main.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2017-06-28__105399__Urban_Surf_Wednesday_Race_4_2017.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2017-07-12__106405__Urban_Surf_Wednesday_Race_5_2017.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2017-07-26__107738__Urban_Surf_Wednesday_Race_7.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2017-08-02__108336__Urban_Surf_Wednesday_Race_8_2017.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2017-08-05__108582__LCPF_2017_3_Mile_Lake.common.json",
+      "reason": "Lake Crescent Paddle Festival \u2014 not BEPC (PNW regional event)"
+    },
+    {
+      "file": "2017-08-06__108692__LCPF_2017_6_Mile_Coastal_Race.common.json",
+      "reason": "Lake Crescent Paddle Festival \u2014 not BEPC (PNW regional event)"
+    }
+  ]
+}

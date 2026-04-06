@@ -1,0 +1,77 @@
+{
+  "note": "Authoritative list of race files included in club history.",
+  "include": [
+    "2016-03-19__64887__St_Paddle_s_Day_2016__3_miles.common.json",
+    "2016-03-19__64887__St_Paddle_s_Day_2016__6_miles.common.json",
+    "2016-05-09__69097__Monday_Night_Race_20160509.common.json",
+    "2016-05-16__69737__Monday_Night_Race_20160516.common.json",
+    "2016-05-23__70323__Monday_Night_Race_20160523.common.json",
+    "2016-05-30__70938__Monday_Night_Paddle_Race_20160530.common.json",
+    "2016-06-06__71505__Monday_Night_Paddle_Race_20160606.common.json",
+    "2016-06-13__72134__Monday_Night_Paddle_Race_20160613.common.json",
+    "2016-06-20__72729__Monday_Night_Paddle_20160620.common.json",
+    "2016-06-27__73237__Monday_Night_Paddle_Race_20160627.common.json",
+    "2016-07-04__73752__Monday_Night_Paddle_Race_20160704__1_Lap_downwinder.common.json",
+    "2016-07-04__73752__Monday_Night_Paddle_Race_20160704__2_Lap_downwinder.common.json",
+    "2016-07-11__74197__Monday_Night_Paddle_Race_20160711.common.json",
+    "2016-07-18__74801__Monday_Night_Paddle_Race_20160718.common.json",
+    "2016-08-01__75708__Monday_Night_Paddle_Race_20160801.common.json",
+    "2016-08-08__76404__Monday_Night_Paddle_Race_20160808.common.json",
+    "2016-08-15__76979__Monday_Night_Paddle_Race_20160815.common.json",
+    "2016-08-22__77565__Monday_Night_Paddle_Race_20160822.common.json",
+    "2016-08-29__78213__Monday_Night_Paddle_Race_20160829.common.json",
+    "2016-09-05__78925__Monday_Night_Paddle_Race_20160903.common.json",
+    "2016-09-12__79678__Monday_Night_Paddle_Race_20160912.common.json",
+    "2016-10-29__85436__Salmon_Bay_Paddle_Halloween_Race_2016.common.json"
+  ],
+  "exclude": [
+    {
+      "file": "2016-06-01__73978__Urban_Surf_Wednesday_Night_Race_1_2016.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2016-06-08__71689__Urban_Surf_Wednesday_Night_Race_2_2016.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2016-06-15__72302__Urban_Surf_Wednesday_Night_Race_3.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2016-06-22__72898__Urban_Surf_Wednesday_Race_4_2016.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2016-06-26__73167__Crescent_Bar_Riverfest_SUP_Race_2016__2_33_miles.common.json",
+      "reason": "Crescent Bar Riverfest \u2014 not BEPC (PNW regional event)"
+    },
+    {
+      "file": "2016-06-26__73167__Crescent_Bar_Riverfest_SUP_Race_2016__6_miles.common.json",
+      "reason": "Crescent Bar Riverfest \u2014 not BEPC (PNW regional event)"
+    },
+    {
+      "file": "2016-07-06__73874__Urban_Surf_Wednesday_Night_Race_5_2016.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2016-07-13__74324__Urban_Surf_Wednesday_Night_Race_6_2016.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2016-07-20__74911__Wednesday_Night_Urban_Surf_Race_7_2016.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2016-07-27__75364__Wednesday_Night_Urban_Surf_Race_8_2016.common.json",
+      "reason": "Urban Surf series \u2014 not BEPC (future urban-surf club)"
+    },
+    {
+      "file": "2016-09-03__78725__Olympia_Harbor_Day_s_SUP_Race_2016__3_miles.common.json",
+      "reason": "Olympia Harbor Days \u2014 not BEPC (PNW regional event)"
+    },
+    {
+      "file": "2016-09-03__78725__Olympia_Harbor_Day_s_SUP_Race_2016__6_miles.common.json",
+      "reason": "Olympia Harbor Days \u2014 not BEPC (PNW regional event)"
+    }
+  ]
+}
