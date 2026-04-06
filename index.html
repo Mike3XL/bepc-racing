@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Results</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  return localStorage.getItem('bepc_season') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('bepc_season', year);
+}
+function getDistance() {
+  return localStorage.getItem('bepc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('bepc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('bepc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('bepc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container">
+    <a class="navbar-brand" href="home.html">🏄 PaddleClub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="races.html">Races</a></li>
+<li class="nav-item"><a class="nav-link active" href="index.html">Results</a></li>
+<li class="nav-item"><a class="nav-link" href="standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link" href="trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link" href="racer/sound-rowers/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+</ul>
+    </div>
+  </div>
+</nav><div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Club</span>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group"><button type="button" class="btn btn-sm btn-outline-secondary" data-club="bepc">BEPC</button>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="pnw-regional">PNW League</button>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="sckc">SCKC</button>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="sound-rowers">Sound Rowers</button>
+</div>
+      </div>
+      <div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='width:auto'></select></div>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var ALL_CLUB_SEASONS = {"bepc":{"years":["2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015"],"current":"2025"},"pnw-regional":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017"],"current":"2026"},"sckc":{"years":["2025", "2024", "2023", "2022", "2019", "2018", "2017", "2016", "2015"],"current":"2025"},"sound-rowers":{"years":["2025", "2024", "2023", "2022"],"current":"2025"}};
+  var stored = localStorage.getItem('bepc_club') || 'sound-rowers';
+  if (!ALL_CLUB_SEASONS[stored]) stored = 'sound-rowers';
+  document.querySelectorAll('#club-btn-group button').forEach(function(btn) {
+    if (btn.dataset.club === stored) btn.classList.add('active');
+    btn.addEventListener('click', function() {
+      localStorage.setItem('bepc_club', btn.dataset.club);
+      window.location.reload();
+    });
+  });
+  var sel = document.getElementById('season-select');
+  if (sel) {
+    var info = ALL_CLUB_SEASONS[stored];
+    var saved = localStorage.getItem('bepc_season');
+    sel.innerHTML = info.years.map(function(y) {
+      return '<option value="' + y + '"' + (y === (saved || info.current) ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+  }
+})();
+</script>
+<div class="container">
+  <h1 class="mb-3">Results</h1>
+  <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+    <button id="btn-prev" class="btn btn-outline-secondary">&larr; Prev</button>
+    <button id="btn-next" class="btn btn-outline-secondary">Next &rarr;</button>
+    <select id="race-select" class="form-select form-select-sm w-auto"></select>
+    <div class="ms-2"><small id="race-meta" class="text-muted"></small></div>
+  </div>
+  <div id="course-content"></div>
+</div>
+<script>
+const RACER_SLUGS = new Set(["74-64", "a-elsberry", "aaron-ashley-tyerman", "adam-tischler", "adrian---cody---kelton---joe", "ahmed-fakhry", "aisha-abedi", "al-mackenzie", "alan-lipp", "albert-froling", "alex-doolittle", "alex-smith", "alex-smith-and-haleigh-werner", "alexander-grey", "alexey-svyatkovskiy", "allen-sleaman-and-ashlyn-devereau", "allies-with-oars", "allies-with-oars-from-spokane", "amanda-chan", "amy-denny", "amy-mcghee---cardon-hayes", "amy-merten", "amy-snively", "anderson-brothers", "anderson-racing", "andiamo", "andrea-and-kelly", "andrea-fortney", "andrea-morato", "andrew-biel-lyn-gregory", "andrew-fowler", "andy-michels", "ann-armstrong", "ann-patterson", "anna-williams", "annie-atkinson", "anthony-riddell", "anthony-ridnell", "antoine-issa", "ashley-popham", "ayelet-ezran", "baker--shane", "barbara-trafton---sharen-borgias", "barbara-trafton-ruth-sutdulth", "bass-underwood", "becky-bronstein", "becky-bronstein---julie-roberts", "bela-kovacs", "beluga", "beluga-quad", "ben-hudson", "ben-koltz", "bernard-blocker-jr", "bernard-fowler", "beshlian-racing", "bill-auchterlonie", "bill-fraser", "bill-fraser-helena-henninghausen", "bill-jaquette", "bill-zaiss", "blaise-holly", "blake-hansen---ingrid", "blake-hansen-laura-livingston", "bob-rhoades", "bobby-and-will-witkop", "boy-chun-fook", "brad-bebout", "brawt-boilers", "brent-campbell", "brent-turner", "brian-huvane", "brian-kummer", "brian-page", "brian-tracy", "brown-fihaki", "bruce-kuhnau", "bruce-white", "bryce-hongell", "buttercup", "caleb-carlson", "cameron---trott-crump", "carl-delica", "carol-sweeney", "carolyn-desalvo---frank-desalvo", "carolyn-fletcher-and-sue-monroe", "carrie-weisse", "carson-hayes", "chanway-mason-carlson-teig", "chapin-bernard-storb-storb", "charles-delaporte---theresa-batty", "chernov--dmitry", "chow-fun", "chris-grieve", "christian-roth", "christopher-swain-ann-patterson", "club-nautico-de-san-juan", "club-sake", "club-sake-masters-women", "club-sake-oc1---nathan", "club-sake-oc2", "club-sake-oc2---tsai-young", "club-sake-v12", "cody--kelton--rainer--steve", "cody--steve--rainer--adrian", "cole--traci", "cole-fontenelle", "connie-and-mike", "connie-ciagleglia", "cooper-disque", "craig-sternagel", "craig-zora", "cul8oar", "d-winters-b-steffens-n-irwin-e-adams", "dale-quigg", "dale-quigg---peter-hirtle", "dale-quigg-and-peter-hirtle", "damon-carson-hull", "damon-carson-hull--family-course", "dan-bryant", "dana-manalang-and-peter-hirtle", "dani-traphagen", "daniel-welliver", "danielle-platt", "darian-hildreth", "daryl-graham", "dave-anderson", "dave-kostalqc", "dave-mcwethy", "dave-oreiro", "dave-wong", "david-harmon", "david-kostelac", "david-nixon", "david-wolfenberger-and-jonah-czyszczon", "dennis-selvidge", "denny--a", "derek-eversen", "derek-fromm", "don-baumbach", "doug-miyata", "dudley-winters-shoulberg-matthews", "duet-in-oxygen-debt", "duwamish-rc--jessica-becca-brian-carson", "dwight-liess", "easy-riders", "ecker---clement", "edith-burbee---tom-beieroe---bob-co", "edward-gillespie", "egor-klevak", "egor-klevak---peter-turcan", "egor-klevak-and-ivan-medvedev", "eileen-gatto", "eileen-gatto---bernard-blocker-jr", "elizabeth-arnold", "elizabeth-ellsberry", "elizabeth-holmes", "elizabeth-moller", "elwah", "eric-hart", "eric-miller", "eric-nordstrom", "ernie-wong", "evan-jacobs", "evan-jacobs---tyler-peterson", "evan-jacobs--josh-proctor", "evan-jacobs-and-tyler-peterson", "evangeline-rudell-sophia-rudell", "faurot-frederickson-eppick-carter", "faust--kathleen", "fay-tong", "federico-gonzalez", "flying-sausage", "francine-rose", "francis-rosz", "frankie", "fraser-schilling", "fred-atkinson", "friend-hager-o-neil-m-russell", "g--cartmill", "gary-young", "gavin-godfrey", "geoff-briggs-barb-schleiger", "geoff-jones--barbara-kelley", "george-costakis", "giesler-bebout-deboer-richards-deal-kloo", "giesler-palmer-olsen-cosler", "glen-eppick", "gone-bananas-hwops", "gordon-martinez", "greg-barton", "gregorio-mares", "gretchen-gill", "gross--janna", "halberg-cassel-h-peterson-q-peterson-cha", "haleigh-werner", "haleigh-werner-rod-sternagel", "hall--tenar", "harmony", "harrison-ridnell", "hayes--carson", "hayes-batty-normand-grigsby", "heikkila---harwood", "heikkila-heikkila-wong-harwood-lam-lile", "herbert-weisse", "hms-beluga", "holly-rasmussen", "holm-schmidt", "howard-lee", "howard-lee---christian-roth", "hugh-owen", "hui-wa-a-o-puget-sound-north-occ-club", "hui-wa-a-o-puget-sound-north-occ-double", "hui-wa-a-puget-sound-north", "hui-wa-puget-sound-north-boat-2", "ian-thorsett", "irena-baker-marie-byrton", "it-will-be-fun--they-said", "ivan-medvedev", "ivan-medvedev---peter-turcan", "ivan-pinzon", "ivan-storck", "j-bernard---s-chapin---p-grigsby-a-fabry", "j-wong-heikkila--d-wong-oliver-see-harwo", "j2-in-a-k2", "jacob-roberts", "jamie-stroble", "jane-chang", "janna-gross", "jason-park", "jay-junio", "jeanne-costello", "jeff-and-theresa-knakal", "jeff-bernard", "jeff-castleberry", "jeff-knakal", "jeff-sanders", "jeff-theresa-knakal", "jefferies-olsen-costello-dudley", "jeffrey-knakal---theresa-knakal", "jenkin-s-and-storb-s", "jennifer-hwang---peter-hirtle", "jennifer-hwang-and-peter-hirtle", "jenny-hu", "jeremi-sanders", "jeremy-clark", "jeremy-lee", "jessie-heminway", "jessie-iverson", "jo-markham", "john-edwards", "john-heater", "john-jorgenson--novice-distance", "john-mcpheters", "john-pachata", "john-richardson", "john-rybczyk", "john-schalka", "john-schwandt", "jon-harwood", "jon-yunker", "jordan-van-voast", "jose-luis-buen-abad", "joseph-burr", "joseph-gross", "joseph-johnson", "josh---evan", "josh-proctor", "josh-proctor-and-rob-foreman", "joshua-proctor", "judith-mcculloch", "julia-melo", "julian-acuna", "juliana-acuna", "juraj-osusky", "juraj-osusky---peter-turcan", "justin-beals", "k-watson", "kara-sanders", "karen-tobin---kraig-kuntz", "karolin-neubert", "karolin-neubert-and-peter-hirtle", "kassandra-fentress", "kat-timlin", "kate-macdonald", "kathleen-faust", "kathy-lazara-whitman--rirsc", "kc-dietz---kelly-johnson", "keith-lile", "kelly-johnson---mike-rucier", "kelly-johnson-kc-dietz", "ken-barnes", "ken-deem", "ken-deem---todd-silver", "kendal-swinski---andy-rees", "kendal-swinski---carson-hayes", "kertyandfrank", "kevin-and-amber", "kevin-olney", "kikaha-marathoners", "kiska-hayes", "klevak--egor", "koloa", "koloa-heikkilax2jwongjharwdsswnsnfatksn", "koos-valaas", "kraig---kt", "kraig-and-kt", "kraig-kuntz", "kyle-peterson", "kyoko-tsukigase", "lake-washington-rowing-club", "lambert-wixson", "lambert-wixson-2", "lampi--michael", "lara-normand", "lara-normand---carson-hayes", "larry-and-penny-tobiska", "larry-bussinger", "larry-tobiska", "larry-tobiska-penelope-tobiska", "las-chicas---hwops", "laura-jackson", "laura-rudell", "laurel-pygmy-tandem", "laurel-white", "lauren-linthicum---erika-coolman", "laurie-aardal", "lee--howard", "lee-first", "leonek-hayes", "leslie-mittendorf", "liese-rajesh", "liess--dwight", "linda-roubik", "lindsey-virdeh", "lisa-parshley", "liz-savage--bunny-schmidley--lwrc", "liz-savage-bunny-schmidley", "liza-sheehan", "lon-kincannon", "lorraine-palmer", "luis-buen-abad", "luz-delgado", "lwrc--kelly", "lwrc-kc-and-susan", "m-olsen--d-winters--b-dudley--j-costello", "maclachlan--mark", "maclachlan--victoria", "mahoney--bill", "makoto-tsukigase", "malcolm-butler", "malolo", "manny-de-leon", "margaret-strozyk", "margaret-strozyk--family-course", "marica-otto", "marie-friend", "mark-dix", "mark-miller", "mark-nassutti", "mark-ostwald", "mark-parrish", "markham--kristin-jo", "masato-tsukigase", "mason-mai", "matt-kearney", "matthew-mar", "matthew-nixon", "matthew-sun", "medvedev--ivan", "megan-northey---peter-hirtle", "meghan-beamish-and-sarah-jacobson", "michael-fishbaugher", "michael-lampi", "michael-peterson", "michael-wenberg", "mignon-fontenelle", "mike-and-connie", "mike-cirineo", "mike-kennedy", "mike-liddell", "miller--mark", "mind-the-gap", "miranda-steward", "moira-bradshaw---peter-hirtle", "nancy-schafer", "nate-peterson", "neal--jeanne", "neal-cdesalvo--desalvo-holms-jolly", "ned-bobo", "neil-lester---jackson-turvey", "nick-corsiglia", "nick-papa", "nils-rain", "nils-rein", "nils-wagman", "nina-serpiello", "noah-seixas", "oar-we-there-yet", "old-man-and-the-she", "olney---kiesling---klevak", "olympia-area-rowing", "opra--coopander", "opra-4x", "opra-4x-racing-quad", "opra-doubleoarnothing", "opra-kb", "opra-odyssey--quinn--hattie-peterson", "opra-orchestra", "opra-quad", "opra-winfrey", "p-myre--k-wood-smith--a-grace--c-cosler", "pago-curcher-wispy-rundl", "pat-johnson", "pat-johnson-mari-friend", "patrick-and-tyler-hwang", "patrick-kingshill---nic-taylor", "paui-hirsh", "paul---jake", "paul---jeff--brat-boys", "paul-clendenen-and-tara-taylor", "paul-hirsh", "paul-loasby", "paul-noyes", "paul-roos", "peggy--myre", "peter-and-haleigh", "peter-dana", "peter-hirtle", "peter-hirtle---lindsey-doermann", "peter-hirtle-amy-mcghee", "peter-hirtle-jessica-lowe", "peter-hornsby", "peter-hurtle", "peter-prinos", "peter-turcan", "peter-turcan---juraj-osusky", "peter-turcan-juraj-osusky", "peterson--tyler", "pippa-rowcliffe", "possea", "pt-cruisers", "quince-chanway---mason--mai", "rachel-alexander-christian-roth", "rain--nils", "ralph-allen", "rebecca-berger", "richard-barrientos", "richard-campbell", "richard-fraser", "rick-fraser", "rick-peterson-and-peter-plimpton", "ricki-ellen-brooke", "roast-duck---cha-siu", "rob-foreman", "robbie-magus", "robert--bob--alexander-and-susanne", "robert-alexander---cezanne-alexander", "robert-alexander-cezanne-alexander", "robert-and-barbara-mcfarland", "robert-barbara-mcfarland", "robert-donovan", "rod-and-haleigh", "rod-sternagel", "rod-sternagel---haleigh-werner", "rod-sternagel---judy-wright", "ron-moller", "rose--francine", "row-nsurf", "rowe--elyse", "rowing-for-coffee", "rowing-for-fun", "russ-woosley", "ruylers-angelique-kosche-and-susan-ruyle", "ryan-monks", "sailer-voigt-de-boer-luckenbach-richards", "samantha-ritchie", "sandra-wanstall---ron-moller", "sandra-wanstall-ron-moller", "sara-and-lara", "sara-harmon---carolyn-fletcher", "sara-harmon---carson-hayes", "sarah-craig", "sarah-hess", "sckc-masters---holmes-bronstein", "scott-welker", "sean-halberg", "seattle-flying-dragons", "seattle-flying-dragons---short-course", "seattle-flying-long-dragons", "seattle-flying-sausages", "seattle-flying-women", "seattle-sake-paddle-club-2", "seattle-sake-paddle-club-mathew", "seattle-sake-paddling-club", "seattle-sake-paddling-club-2", "seattle-sake-paddling-club-koichi", "seattle-sake-paddling-club-long-course", "shane-baker", "shane-donogh", "shaun-doherty", "shaun-koos", "shoulberg-fortman-daus-bryson", "simon-ansell", "skip-and-kim", "smaalders-n-booth", "small--steve", "stephen-bennett", "stephen-pauelua", "steve-bennett", "steve-chapin", "steve-esselaar", "steve-goodson", "steve-jefferies", "steve-juranovics", "steve-moffat", "steve-swanson---valyn-metropoulos", "steven-swanson", "storb-quad", "storb-quad--beluga", "storb-silver-jenkins-jenkins-quad", "storbs-and-jenkins", "strotllegang", "sue-monroe-lara-normand", "susan-dandridge", "susan-white", "swimming-eagles", "t--silver--c--and-k--jenkins--r--storb", "tacoma-rowing--eric-davis---dave-harvey", "team-dgpf", "team-koloa", "team-long-distance-relationship", "team-mr--brown", "team-yes-and", "ted-sweeney", "teig-carlson", "tenar-hall", "terry-knutson", "the-frank-o", "the-lads---leehamilton90-gmail-com", "theresa-batty---paul-grisby", "theresa-knakal", "theresa-knakal-sandra-mcginnis", "timothy-ahern", "toby-cooper", "todd-reinwald", "todd-silver", "tom-cartmill", "too-old---two-young", "torin-shriver", "traci-cole", "tracy-ross", "travail", "travis-boothe", "trevver-fentress", "triple-by-pass", "tuf-as-nails", "twin-harbors", "tyler-hwang", "tyler-peterson", "tyler-peterson-2", "v-j", "v-j-heikkila--jharwood--tcole--jwong", "vadim-derevyanko", "vadim-kin", "valerie-hahn", "vendovi", "vern---janet", "vita-jr", "vitek-siroky", "wakinikona", "wakinikona-benco", "wayne-robson", "we-ll-be-right-back", "weisse--carrie", "werner-sternagel", "wherry-we-goin", "will-paddle-for-sausage", "william-hoker", "woods-smith-grace-campbell-steffens", "wrpc-crew", "wrpc-master-s-crew"]);
+const RACER_CLUB = "sound-rowers";
+let SEASONS = null;
+let currentYear = '2025';
+let currentIndex = 0;
+
+function slug(name) { return name.toLowerCase().replace(/ /g, '-'); }
+function racerLink(name) { const s = slug(name); return RACER_SLUGS.has(s) ? `<a href="racer/sound-rowers/${s}.html">${name}</a>` : name; }
+function display_craft_ui(cat) {
+  if (!cat || cat === 'Unknown') return '';
+  const sprint = cat.match(/^Sprint-K(\d+)$/); if (sprint) return 'K-' + sprint[1] + ' (sprint)';
+  const vaa = cat.match(/^Va'a-(\d+)$/); if (vaa) return 'V-' + vaa[1];
+  const canoe = cat.match(/^Canoe-(\d+)$/); if (canoe) return 'C-' + canoe[1];
+  const kayak = cat.match(/^Kayak-(\d+)$/); if (kayak) return 'K-' + kayak[1];
+  if (/^(OW|SUP|Prone)-1$/.test(cat)) return cat.slice(0, -2);
+  return cat;
+}
+function craft_cell(cat, specific) {
+  // Render as "Display (Craft)" e.g. "K-1 (HPK)", "K-1 (Surfski)", "OC-1"
+  // Sprint family: display already contains the qualifier, use as-is e.g. "K-1 (sprint)"
+  // If specific == display or no specific, show display only.
+  const display = display_craft_ui(cat);
+  if (!display) return '<td></td>';
+  if (!specific || specific === display || cat.startsWith('Sprint-')) return `<td>${display}</td>`;
+  return `<td>${display} (${specific})</td>`;
+}
+function fmtTime(s) {
+  s = Math.floor(s);
+  const m = Math.floor(s / 60), sec = s % 60, h = Math.floor(m / 60);
+  return h ? h+':'+String(m%60).padStart(2,'0')+':'+String(sec).padStart(2,'0')
+           : m+':'+String(sec).padStart(2,'0');
+}
+
+function badges(trophies) {
+  const I = {
+    hcap_1:   '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>',
+    hcap_2:   '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text></svg>',
+    hcap_3:   '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>',
+    finish_1: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>',
+    finish_2: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#333">2</text></svg>',
+    finish_3: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>',
+    par:      '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text></svg>',
+    consistent: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    est:      '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg>',
+    outlier:  '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg>',
+  };
+  const b = (key, cls, title) => `<span class="hcap-medal ${cls}" data-bs-toggle="tooltip" data-bs-title="${title}">${I[key]}</span>`;
+  const streak = (n) => `<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="Improving streak: ${n} races"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">${n}</text></svg></span>`;
+  const render = {
+    finish_1: () => b('finish_1','plain-medal','Overall 1st'),
+    finish_2: () => b('finish_2','plain-medal','Overall 2nd'),
+    finish_3: () => b('finish_3','plain-medal','Overall 3rd'),
+    hcap_1:   () => b('hcap_1','hcap-gold','Handicap winner'),
+    hcap_2:   () => b('hcap_2','hcap-silver','Handicap 2nd'),
+    hcap_3:   () => b('hcap_3','hcap-bronze','Handicap 3rd'),
+    consistent_1: () => b('consistent','hcap-consist','Consistent performer (±1% of expectation)'),
+    consistent_2: () => b('consistent','hcap-consist','Consistent performer (±1% of expectation)'),
+    consistent_3: () => b('consistent','hcap-consist','Consistent performer (±1% of expectation)'),
+    par:      () => b('par','hcap-par','Par racer'),
+    fresh:    () => b('est','hcap-est','Establishing handicap — not yet eligible for handicap awards'),
+    outlier:  () => b('outlier','hcap-outlier','Outlier result — >10% off handicap prediction, handicap unchanged'),
+  };
+  if (!trophies || !trophies.length) return '';
+  const ORDER = ['hcap_1','hcap_2','hcap_3','finish_1','finish_2','finish_3','consistent_1','consistent_2','consistent_3','par','fresh','outlier'];
+  const sorted = [...trophies].sort((a,b) => {
+    const ai = a.startsWith('streak_') ? ORDER.length + parseInt(a.split('_')[1]) : ORDER.indexOf(a);
+    const bi = b.startsWith('streak_') ? ORDER.length + parseInt(b.split('_')[1]) : ORDER.indexOf(b);
+    return ai - bi;
+  });
+  return `<span style="display:flex;justify-content:center;gap:2px;flex-wrap:wrap">${sorted.map(t => {
+    if (t.startsWith('streak_')) return streak(parseInt(t.split('_')[1]));
+    return render[t] ? render[t]() : '';
+  }).join('')}</span>`;
+}
+
+function tableHtml(id_suffix) {
+  return `
+  <ul class="nav nav-tabs" id="result-tabs-${id_suffix}">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-handicap-${id_suffix}">Handicap Order</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-finish-${id_suffix}">Finish Order</button></li>
+  </ul>
+  <div class="tab-content border border-top-0 p-3 mb-3">
+    <div class="tab-pane active" id="tab-handicap-${id_suffix}">
+      <table class="table table-sm table-striped" style="table-layout:fixed">
+        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:75px"><col style="width:75px"><col style="width:90px"><col style="width:55px"><col style="width:55px"><col style="width:65px"></colgroup>
+        <thead><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th>
+          <th><span class="d-sm-none">Hcap</span><span class="d-none d-sm-inline">Handicap</span></th>
+          <th><span class="d-sm-none">Adj</span><span class="d-none d-sm-inline">Adj Time</span></th>
+          <th><span class="d-sm-none" data-bs-toggle="tooltip" data-bs-title="% improvement vs handicap">Imp. %</span><span class="d-none d-sm-inline" data-bs-toggle="tooltip" data-bs-title="% improvement vs handicap">Improvement %</span></th>
+          <th><span class="d-sm-none">New</span><span class="d-none d-sm-inline">New Handicap</span></th>
+          <th><span class="d-sm-none">Pts</span><span class="d-none d-sm-inline">Points</span></th>
+          <th><span class="d-sm-none">HPts</span><span class="d-none d-sm-inline">Hcap Pts</span></th>
+        </tr></thead>
+        <tbody id="body-handicap-${id_suffix}"></tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="tab-finish-${id_suffix}">
+      <table class="table table-sm table-striped" style="table-layout:fixed">
+        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:75px"><col style="width:75px"><col style="width:65px"><col style="width:90px"><col style="width:55px"><col style="width:55px"></colgroup>
+        <thead><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th>
+          <th><span class="d-sm-none">Hcap</span><span class="d-none d-sm-inline">Handicap</span></th>
+          <th><span class="d-sm-none">Adj</span><span class="d-none d-sm-inline">Adj Time</span></th>
+          <th><span class="d-sm-none" data-bs-toggle="tooltip" data-bs-title="% improvement vs handicap">Imp. %</span><span class="d-none d-sm-inline" data-bs-toggle="tooltip" data-bs-title="% improvement vs handicap">Improvement %</span></th>
+          <th><span class="d-sm-none">New</span><span class="d-none d-sm-inline">New Handicap</span></th>
+          <th><span class="d-sm-none">Pts</span><span class="d-none d-sm-inline">Points</span></th>
+          <th><span class="d-sm-none">HPts</span><span class="d-none d-sm-inline">Hcap Pts</span></th>
+        </tr></thead>
+        <tbody id="body-finish-${id_suffix}"></tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function rows(results, placeField) {
+  const isHcap = placeField === 'adjusted_place';
+  return results.map(r => {
+    const pct = r.adjusted_time_versus_par != null && !r.is_fresh_racer
+      ? ((1 - r.adjusted_time_versus_par) * 100)
+      : null;
+    const noOutlierDetect = !r.is_fresh_racer && pct != null && pct < -10 && !r.is_outlier;
+    const pctNote = noOutlierDetect ? ' data-bs-toggle="tooltip" data-bs-title="First race back this season — no outlier detection"' : '';
+    const pctHtml = pct != null
+      ? `<td style="text-align:right;font-size:0.85em;color:${pct >= 0 ? '#2E7D32' : '#666'};font-weight:${pct >= 0 ? 'bold' : 'normal'}">${pct >= 0 ? '+' : ''}${pct.toFixed(1)}%${noOutlierDetect ? `<sup${pctNote}>^</sup>` : ''}</td>`
+      : '<td></td>';
+    const hcapPostNote = r.is_outlier ? ' data-bs-toggle="tooltip" data-bs-title="Outlier — result suppressed, handicap unchanged"' : '';
+    const hcapPostHtml = `<td>${r.handicap_post.toFixed(3)}${r.is_outlier ? `<sup${hcapPostNote}>^</sup>` : ''}</td>`;
+    return `<tr><td>${badges(r.trophies)}</td>
+    <td>${r[placeField]}</td>
+    <td>${racerLink(r.canonical_name)}</td>
+    ${craft_cell(r.craft_category, r.craft_specific)}
+    <td>${isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}</td>
+    <td>${r.handicap.toFixed(3)}</td>
+    ${r.trophies && r.trophies.includes('par') ? '<td style="padding-left:2px"><span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:4px 6px 4px 2px;font-weight:bold;color:#1565C0">' + fmtTime(r.adjusted_time_seconds) + '</span></td>' : '<td style="padding-left:2px">' + (isHcap ? '<strong>' + fmtTime(r.adjusted_time_seconds) + '</strong>' : fmtTime(r.adjusted_time_seconds)) + '</td>'}
+    ${pctHtml}
+    ${hcapPostHtml}
+    <td>${r.race_points || 0}</td>
+    <td>${r.handicap_points || 0}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderRace(index) {
+  const races = SEASONS[currentYear];
+  currentIndex = index;
+  const race = races[index];
+  const totalStarters = race.courses.reduce((s,c) => s + c.finish.length, 0);
+  const content = document.getElementById('course-content');
+  document.getElementById('race-meta').innerHTML =
+    race.date + ' · ' + totalStarters + ' starters · <a href="' + race.display_url + '" target="_blank">WebScorer ↗</a>';
+  document.getElementById('race-select').value = index;
+  document.getElementById('btn-prev').disabled = index === 0;
+  document.getElementById('btn-next').disabled = index === races.length - 1;
+  // Sort courses by racer count descending
+  const sortedCourses = [...race.courses].sort((a,b) => b.finish.length - a.finish.length);
+  const active = (i) => i === 0 ? 'active' : '';
+  let tabNav = '<ul class="nav nav-tabs mb-0">';
+  let tabContent = '<div class="tab-content">';
+  const podiumCfg = [
+    { idx:1, label:'2nd', bg:'#EBEBEB', border:'#A0A0A0', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text></svg>', nameColor:'#333', height:'52px', width:'135px' },
+    { idx:0, label:'1st', bg:'#FFF8DC', border:'#FFD700', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>', nameColor:'#7A5C00', height:'64px', width:'180px' },
+    { idx:2, label:'3rd', bg:'#FDF0E0', border:'#DDA84A', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>', nameColor:'#5C2E00', height:'44px', width:'135px' },
+  ];
+  sortedCourses.forEach((course, i) => {
+    // Build per-course podium
+    const pr = [null, null, null];
+    course.handicap.forEach(r => {
+      if (r.trophies && r.trophies.includes('hcap_1')) pr[0] = r;
+      if (r.trophies && r.trophies.includes('hcap_2')) pr[1] = r;
+      if (r.trophies && r.trophies.includes('hcap_3')) pr[2] = r;
+    });
+    let podiumHtml = '';
+    {
+      podiumHtml = `<div class="row align-items-center mb-3 pt-2">
+        <div class="col-12 col-md-4 pb-2 pb-md-0">
+          <div class="fw-bold fs-5 lh-sm">${race.name}</div>
+          <div class="text-muted small">${race.date}</div>
+        </div>
+        <div class="col-12 col-md-4 d-flex justify-content-center">
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div style="display:flex;align-items:flex-end;gap:6px;flex-wrap:nowrap">`;
+      podiumCfg.forEach(cfg => {
+        const r = pr[cfg.idx];
+        const s = r ? slug(r.canonical_name) : null;
+        const name = r
+          ? (RACER_SLUGS.has(s) ? `<a href="racer/sound-rowers/${s}.html" style="color:${cfg.nameColor};font-weight:600;font-size:0.85em;text-decoration:none;text-align:center;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.canonical_name}</a>` : `<span style="font-weight:600;font-size:0.85em;text-align:center;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:${cfg.nameColor}">${r.canonical_name}</span>`)
+          : `<span style="color:#bbb;font-size:0.85em">—</span>`;
+        podiumHtml += `<div style="display:flex;flex-direction:column;align-items:center;gap:3px;width:${cfg.width};min-width:0;flex-shrink:1">
+            ${cfg.cup}
+            ${name}
+            <div style="width:100%;height:${cfg.height};background:${cfg.bg};border:1px solid ${cfg.border};border-bottom:none;border-radius:4px 4px 0 0;display:flex;align-items:center;justify-content:center;font-weight:bold;color:${cfg.nameColor};font-size:0.85em">${cfg.label}</div>
+          </div>`;
+      });
+      podiumHtml += `</div>
+            <div style="height:3px;background:#CCC;border-radius:2px;width:calc(100% + 90px)"></div>
+          </div>
+        </div><div class="col-md-4 d-none d-md-block"></div></div>`;
+    }
+    // Find original index for tableHtml (uses original course index for DOM ids)
+    const origIdx = race.courses.indexOf(course);
+    tabNav += `<li class="nav-item"><button class="nav-link ${active(i)}" data-bs-toggle="tab" data-bs-target="#course-${origIdx}">${course.label}</button></li>`;
+    tabContent += `<div class="tab-pane ${active(i)} p-3 border border-top-0" id="course-${origIdx}">${podiumHtml}${tableHtml(origIdx)}</div>`;
+  });
+  tabNav += '</ul>';
+  tabContent += '</div>';
+  content.innerHTML = tabNav + tabContent;
+  race.courses.forEach((course, i) => {
+    document.getElementById(`body-finish-${i}`).innerHTML = rows(course.finish, 'original_place');
+    document.getElementById(`body-handicap-${i}`).innerHTML = rows(course.handicap, 'adjusted_place');
+  });
+  // Init tooltips on newly injected badges
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    bootstrap.Tooltip.getOrCreateInstance(el);
+  });
+  const savedDist = getDistance();
+  race.courses.forEach((course, i) => {
+    const btn = document.querySelector(`[data-bs-target="#course-${i}"]`);
+    if (btn) {
+      if (savedDist && course.label === savedDist) bootstrap.Tab.getOrCreateInstance(btn).show();
+      btn.addEventListener('shown.bs.tab', () => setDistance(course.label));
+    }
+    const savedTab = getResultTab();
+    document.querySelectorAll(`#result-tabs-${i} button`).forEach(tb => {
+      if (savedTab && tb.textContent === savedTab) bootstrap.Tab.getOrCreateInstance(tb).show();
+      tb.addEventListener('shown.bs.tab', () => setResultTab(tb.textContent));
+    });
+  });
+}
+
+function loadSeason(year) {
+  currentYear = year;
+  const races = SEASONS[year];
+  const sel = document.getElementById('race-select');
+  sel.innerHTML = races.map((r,i) => `<option value="${i}">${r.name} — ${r.date}</option>`).join('');
+  renderRace(races.length - 1);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('btn-prev').addEventListener('click', () => renderRace(currentIndex - 1));
+  document.getElementById('btn-next').addEventListener('click', () => renderRace(currentIndex + 1));
+  document.getElementById('race-select').addEventListener('change', e => renderRace(parseInt(e.target.value)));
+  document.getElementById('season-select').addEventListener('change', e => { setSeason(e.target.value); loadSeason(e.target.value); });
+  const club = localStorage.getItem('bepc_club') || 'sound-rowers';
+  fetchData(`races-data-${club}.json`, d => {
+    SEASONS = d.seasons;
+    const sel = document.getElementById('season-select');
+    const yr = getSeason(d.current_year);
+    if (SEASONS[yr]) { currentYear = yr; sel.value = yr; }
+    loadSeason(currentYear);
+    const hash = location.hash.replace('#', '');
+    if (hash) {
+      // Search all seasons for the race_id
+      let found = false;
+      for (const [yr, races] of Object.entries(SEASONS)) {
+        const idx = races.findIndex(r => String(r.race_id) === hash);
+        if (idx >= 0) { currentYear = yr; sel.value = yr; loadSeason(yr); renderRace(idx); found = true; break; }
+      }
+    }
+  });
+});
+</script>
+
+</body></html>

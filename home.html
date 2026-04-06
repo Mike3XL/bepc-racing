@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PaddleClub — Handicap Racing</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; font-size: 1.3em; }
+  .hero { background: #1a1a2e; color: white; padding: 3rem 0 2rem; margin-bottom: 2rem; }
+  .hero h1 { font-size: 2.5rem; font-weight: 700; }
+  .hero p { font-size: 1.1rem; opacity: 0.85; }
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <span class="navbar-brand">🏄 PaddleClub</span>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <h1>PaddleClub</h1>
+    <p>Handicap racing results, standings, and trajectories for paddling clubs and community leagues.</p>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="h4 mb-3">Clubs &amp; Leagues</h2>
+  <div class="row">
+        <div class="col-12 col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h5 class="card-title mb-0">Ballard Elks Paddle Club</h5>
+                <span class="badge bg-primary">Club</span>
+              </div>
+              <p class="card-text text-muted small">Weekly race series at Shilshole Bay, Ballard, organized through Ballard Elks Lodge #827. All craft welcome — kayak, surfski, SUP, outrigger, and more. Continues the tradition of the Rob Casey / Salmon Bay Paddle race series (2015–2018).</p>
+              <div class="small text-muted mb-3">257 races · 475 racers · 2015–2025</div>
+              <a href="index.html" onclick="localStorage.setItem('bepc_club','bepc')" class="btn btn-outline-primary btn-sm">View Results →</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h5 class="card-title mb-0">PNW Small Boats Community League</h5>
+                <span class="badge bg-secondary">Community League</span>
+              </div>
+              <p class="card-text text-muted small">An informal, community-curated league tracking open-water small boat racing across the Pacific Northwest. Includes events from PNWORCA, Sound Rowers, Gorge Downwind, Peter Marcus, and other regional organizers.</p>
+              <div class="small text-muted mb-3">72 races · 1395 racers · 2017–2026</div>
+              <a href="index.html" onclick="localStorage.setItem('bepc_club','pnw-regional')" class="btn btn-outline-primary btn-sm">View Results →</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h5 class="card-title mb-0">Seattle Canoe and Kayak Club</h5>
+                <span class="badge bg-primary">Club</span>
+              </div>
+              <p class="card-text text-muted small">Duck Island Race series on Lake Washington, Seattle. Weekly open-water distance races organized by Seattle Canoe and Kayak Club.</p>
+              <div class="small text-muted mb-3">179 races · 235 racers · 2015–2025</div>
+              <a href="index.html" onclick="localStorage.setItem('bepc_club','sckc')" class="btn btn-outline-primary btn-sm">View Results →</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h5 class="card-title mb-0">Sound Rowers</h5>
+                <span class="badge bg-primary">Club</span>
+              </div>
+              <p class="card-text text-muted small">Open-water racing series in the Pacific Northwest, organized by the Sound Rowers paddling club.</p>
+              <div class="small text-muted mb-3">53 races · 585 racers · 2022–2025</div>
+              <a href="index.html" onclick="localStorage.setItem('bepc_club','sound-rowers')" class="btn btn-outline-primary btn-sm">View Results →</a>
+            </div>
+          </div>
+        </div></div>
+
+  <h2 class="h4 mb-3 mt-2">Recent Races</h2>
+  <div class="table-responsive">
+    <table class="table table-sm table-striped">
+      <thead><tr><th>Date</th><th>Race</th><th class="text-center">Starters</th><th>Handicap Winner (by club)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="text-muted small text-nowrap">Mar 28, 2026</td>
+          <td><span class="fw-semibold me-2">2026 PNWORCA Winter Series #7 : SPOCC</span><a href="index.html#ws-426134" onclick="localStorage.setItem('bepc_club','pnw-regional')" class="badge bg-light text-dark border me-1 small fw-normal text-secondary">PNW League ↗</a></td>
+          <td class="text-muted small text-center">58</td>
+          <td><div class="small"><span class="text-muted">PNW League:</span> <a href="racer/sound-rowers/chris-grieve.html">Chris Grieve</a></div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Mar 14, 2026</td>
+          <td><span class="fw-semibold me-2">2026 Peter Marcus Rough Water Race</span><a href="index.html#pm-388006" onclick="localStorage.setItem('bepc_club','pnw-regional')" class="badge bg-light text-dark border me-1 small fw-normal text-secondary">PNW League ↗</a></td>
+          <td class="text-muted small text-center">34</td>
+          <td><div class="small"><span class="text-muted">PNW League:</span> Ian Sawyer</div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Oct 26, 2025</td>
+          <td><span class="fw-semibold me-2">2025 BEPC Halloween Race</span><a href="index.html#ws-411611" onclick="localStorage.setItem('bepc_club','bepc')" class="badge bg-light text-dark border me-1 small fw-normal ">BEPC ↗</a></td>
+          <td class="text-muted small text-center">18</td>
+          <td><div class="small"><span class="text-muted">BEPC:</span> <a href="racer/sound-rowers/amy-merten.html">Amy Merten</a></div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Oct 18, 2025</td>
+          <td><span class="fw-semibold me-2">2025 Duck Island Race #8</span><a href="index.html#ws-411968" onclick="localStorage.setItem('bepc_club','sckc')" class="badge bg-light text-dark border me-1 small fw-normal ">SCKC ↗</a></td>
+          <td class="text-muted small text-center">12</td>
+          <td><div class="small"><span class="text-muted">SCKC:</span> <span class="text-muted">—</span></div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Oct 11, 2025</td>
+          <td><span class="fw-semibold me-2">Sound Rowers: Mercer Island Sausage Pull 2025</span><a href="index.html#ws-409919" onclick="localStorage.setItem('bepc_club','pnw-regional')" class="badge bg-light text-dark border me-1 small fw-normal text-secondary">PNW League ↗</a><a href="index.html#ws-409919" onclick="localStorage.setItem('bepc_club','sound-rowers')" class="badge bg-light text-dark border me-1 small fw-normal ">Sound Rowers ↗</a></td>
+          <td class="text-muted small text-center">24</td>
+          <td><div class="small"><span class="text-muted">PNW League:</span> <a href="racer/sound-rowers/jordan-van-voast.html">Jordan Van Voast</a></div><div class="small"><span class="text-muted">Sound Rowers:</span> <a href="racer/sound-rowers/elizabeth-ellsberry.html">Elizabeth Ellsberry</a></div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Sep 13, 2025</td>
+          <td><span class="fw-semibold me-2">Whipper Snapper</span><a href="index.html#jericho-20257122" onclick="localStorage.setItem('bepc_club','pnw-regional')" class="badge bg-light text-dark border me-1 small fw-normal text-secondary">PNW League ↗</a></td>
+          <td class="text-muted small text-center">113</td>
+          <td><div class="small"><span class="text-muted">PNW League:</span> Lyndsay Sayers</div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Sep 1, 2025</td>
+          <td><span class="fw-semibold me-2">BEPC 2025 Race Series #18</span><a href="index.html#ws-403791" onclick="localStorage.setItem('bepc_club','bepc')" class="badge bg-light text-dark border me-1 small fw-normal ">BEPC ↗</a></td>
+          <td class="text-muted small text-center">27</td>
+          <td><div class="small"><span class="text-muted">BEPC:</span> <a href="racer/sound-rowers/ben-koltz.html">Ben Koltz</a></div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Aug 28, 2025</td>
+          <td><span class="fw-semibold me-2">2025 Duck Island Race #7</span><a href="index.html#ws-411964" onclick="localStorage.setItem('bepc_club','sckc')" class="badge bg-light text-dark border me-1 small fw-normal ">SCKC ↗</a></td>
+          <td class="text-muted small text-center">18</td>
+          <td><div class="small"><span class="text-muted">SCKC:</span> <span class="text-muted">—</span></div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Aug 25, 2025</td>
+          <td><span class="fw-semibold me-2">BEPC 2025 Race Series #17</span><a href="index.html#ws-402863" onclick="localStorage.setItem('bepc_club','bepc')" class="badge bg-light text-dark border me-1 small fw-normal ">BEPC ↗</a></td>
+          <td class="text-muted small text-center">28</td>
+          <td><div class="small"><span class="text-muted">BEPC:</span> Julie Roberts</div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Aug 24, 2025</td>
+          <td><span class="fw-semibold me-2">SUP Challenge</span><a href="index.html#jericho-20257421" onclick="localStorage.setItem('bepc_club','pnw-regional')" class="badge bg-light text-dark border me-1 small fw-normal text-secondary">PNW League ↗</a></td>
+          <td class="text-muted small text-center">35</td>
+          <td><div class="small"><span class="text-muted">PNW League:</span> Axel McLean</div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Aug 22, 2025</td>
+          <td><span class="fw-semibold me-2">2025 Duck Island Race #6</span><a href="index.html#ws-411951" onclick="localStorage.setItem('bepc_club','sckc')" class="badge bg-light text-dark border me-1 small fw-normal ">SCKC ↗</a></td>
+          <td class="text-muted small text-center">12</td>
+          <td><div class="small"><span class="text-muted">SCKC:</span> <span class="text-muted">—</span></div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Aug 18, 2025</td>
+          <td><span class="fw-semibold me-2">BEPC 2025 Race Series #16</span><a href="index.html#ws-401914" onclick="localStorage.setItem('bepc_club','bepc')" class="badge bg-light text-dark border me-1 small fw-normal ">BEPC ↗</a></td>
+          <td class="text-muted small text-center">31</td>
+          <td><div class="small"><span class="text-muted">BEPC:</span> Nick Gasca</div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Aug 14, 2025</td>
+          <td><span class="fw-semibold me-2">Keats Chop</span><a href="index.html#jericho-20255222" onclick="localStorage.setItem('bepc_club','pnw-regional')" class="badge bg-light text-dark border me-1 small fw-normal text-secondary">PNW League ↗</a></td>
+          <td class="text-muted small text-center">44</td>
+          <td><div class="small"><span class="text-muted">PNW League:</span> <span class="text-muted">—</span></div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Aug 11, 2025</td>
+          <td><span class="fw-semibold me-2">BEPC 2025 Race Series #15</span><a href="index.html#ws-400967" onclick="localStorage.setItem('bepc_club','bepc')" class="badge bg-light text-dark border me-1 small fw-normal ">BEPC ↗</a></td>
+          <td class="text-muted small text-center">30</td>
+          <td><div class="small"><span class="text-muted">BEPC:</span> Ned Sherry</div></td>
+        </tr>
+        <tr>
+          <td class="text-muted small text-nowrap">Aug 9, 2025</td>
+          <td><span class="fw-semibold me-2">Sound Rowers: Elk River Challenge 2025</span><a href="index.html#ws-400742" onclick="localStorage.setItem('bepc_club','sound-rowers')" class="badge bg-light text-dark border me-1 small fw-normal ">Sound Rowers ↗</a></td>
+          <td class="text-muted small text-center">24</td>
+          <td><div class="small"><span class="text-muted">Sound Rowers:</span> <span class="text-muted">—</span></div></td>
+        </tr></tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

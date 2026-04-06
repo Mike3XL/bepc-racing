@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daniel Miller</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  return localStorage.getItem('bepc_season') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('bepc_season', year);
+}
+function getDistance() {
+  return localStorage.getItem('bepc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('bepc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('bepc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('bepc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container">
+    <a class="navbar-brand" href="../../home.html">🏄 PaddleClub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto"><li class="nav-item"><a class="nav-link" href="../../home.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../races.html">Races</a></li>
+<li class="nav-item"><a class="nav-link" href="../../index.html">Results</a></li>
+<li class="nav-item"><a class="nav-link" href="../../standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link" href="../../trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link active" href="../../racer/pnw-regional/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="../../about.html">About</a></li>
+</ul>
+    </div>
+  </div>
+</nav><div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Club</span>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group"><button type="button" class="btn btn-sm btn-outline-secondary" data-club="bepc">BEPC</button>
+<a href="../../racer/pnw-regional/daniel-miller.html" class="btn btn-sm btn-outline-secondary active">PNW League</a>
+<button type="button" class="btn btn-sm btn-outline-secondary" data-club="sound-rowers">Sound Rowers</button>
+</div>
+      </div>
+      <div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='width:auto'></select></div>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var ALL_CLUB_SEASONS = {"bepc":{"years":["2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015"],"current":"2025"},"pnw-regional":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018"],"current":"2026"},"sound-rowers":{"years":["2025", "2024", "2023", "2022"],"current":"2025"}};
+  var stored = localStorage.getItem('bepc_club') || 'pnw-regional';
+  if (!ALL_CLUB_SEASONS[stored]) stored = 'pnw-regional';
+  document.querySelectorAll('#club-btn-group button').forEach(function(btn) {
+    if (btn.dataset.club === stored) btn.classList.add('active');
+    btn.addEventListener('click', function() {
+      localStorage.setItem('bepc_club', btn.dataset.club);
+      window.location.reload();
+    });
+  });
+  var sel = document.getElementById('season-select');
+  if (sel) {
+    var info = ALL_CLUB_SEASONS[stored];
+    var saved = localStorage.getItem('bepc_season');
+    sel.innerHTML = info.years.map(function(y) {
+      return '<option value="' + y + '"' + (y === (saved || info.current) ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+  }
+})();
+</script>
+<div class="container">
+  <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+  <a href="becky-sox.html" class="btn btn-outline-secondary btn-sm" style="width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">&larr; Becky Sox</a>
+  <select id="racer-select" class="form-select form-select-sm" style="width:200px">
+    <option value="a-denny">A Denny</option><option value="aaron-mclendon">Aaron McLendon</option><option value="abigail-sobczyk">Abigail Sobczyk</option><option value="adam-becenti">Adam Becenti</option><option value="adam-tischler">Adam Tischler</option><option value="ahmed-fakhry">Ahmed Fakhry</option><option value="ahmed-salem">Ahmed Salem</option><option value="alan-lipp">Alan Lipp</option><option value="alane-koki">Alane Koki</option><option value="alessandra-novak">Alessandra Novak</option><option value="alessia-faverio">Alessia Faverio</option><option value="alex-hunter">Alex Hunter</option><option value="alex-younger">Alex Younger</option><option value="alexey-svyatkovskiy">Alexey Svyatkovskiy</option><option value="allen-wyse">Allen Wyse</option><option value="amanda-hodson">Amanda Hodson</option><option value="ameglio--jaime---ameglio--paolo">Ameglio, Jaime / Ameglio, Paolo</option><option value="ana-swetish">Ana Swetish</option><option value="andre-michel">Andre Michel</option><option value="andrew-commodore">Andrew Commodore</option><option value="andrew-howell">Andrew Howell</option><option value="andrew-losli">Andrew Losli</option><option value="andy-cummings">Andy Cummings</option><option value="ann-armstrong">Ann Armstrong</option><option value="ann-mohs---fcrcc">Ann Mohs - FCRCC</option><option value="anna-mathisen">Anna Mathisen</option><option value="anne-boulding">Anne Boulding</option><option value="antoine-issa">Antoine Issa</option><option value="arthur-chow">Arthur Chow</option><option value="austin-kieffer">Austin Kieffer</option><option value="axel-mclean">Axel McLean</option><option value="ayman-zaki">Ayman Zaki</option><option value="bart-schade">Bart Schade</option><option value="beau-whitehead">Beau Whitehead</option><option value="becky-sox">Becky Sox</option><option value="ben-koltz">Ben Koltz</option><option value="bill-andrews">Bill Andrews</option><option value="bill-forsythe">Bill Forsythe</option><option value="bob-muraski">Bob Muraski</option><option value="bob-putnam">Bob Putnam</option><option value="bob-rueter">Bob Rueter</option><option value="bob-stewart">Bob Stewart</option><option value="bob-woodman">Bob Woodman</option><option value="bonnie-lyons">Bonnie Lyons</option><option value="boy-chun-fook">Boy Chun Fook</option><option value="bram-denhaan">Bram Denhaan</option><option value="brandon-viuhkola">Brandon Viuhkola</option><option value="bren-trask">Bren Trask</option><option value="brent-campbell">Brent Campbell</option><option value="brian-flannelly">Brian Flannelly</option><option value="brian-hunter">Brian Hunter</option><option value="brian-huvane">Brian Huvane</option><option value="brian-kummer">Brian Kummer</option><option value="brian-page">Brian Page</option><option value="brown-fihaki">Brown Fihaki</option><option value="bruce-barry">Bruce Barry</option><option value="bruce-diemert">Bruce Diemert</option><option value="calvin-rowland">Calvin Rowland</option><option value="cameron-jacome">Cameron Jacome</option><option value="cara-lee">Cara Lee</option><option value="carl-darmer">Carl Darmer</option><option value="carl-delica">Carl Delica</option><option value="carla-lawrence">Carla Lawrence</option><option value="carole-fullerton">Carole Fullerton</option><option value="carrie-weisse">Carrie Weisse</option><option value="carson-hayes">Carson Hayes</option><option value="cary-morris">Cary Morris</option><option value="catharine-lo-griffin">Catharine Lo Griffin</option><option value="catherine-marr">Catherine Marr</option><option value="charles-gemeiner">Charles Gemeiner</option><option value="charlie-butt">Charlie Butt</option><option value="charlie-charlie">Charlie Charlie</option><option value="chenin-chappell">Chenin Chappell</option><option value="cheryl-bublitz">Cheryl Bublitz</option><option value="chris-baker">Chris Baker</option><option value="chris-dobrovolny">Chris Dobrovolny</option><option value="chris-grieve">Chris Grieve</option><option value="claudio-d-amico">Claudio D’Amico</option><option value="coby-davis">Coby Davis</option><option value="colleen-cannon">Colleen Cannon</option><option value="colleen-kunz">Colleen Kunz</option><option value="collin-smith">Collin Smith</option><option value="connie-and-mike">Connie And Mike</option><option value="corbin-charlton">Corbin Charlton</option><option value="cortney-russell">Cortney Russell</option><option value="craig-mentz">Craig Mentz</option><option value="dalen-hosley">Dalen Hosley</option><option value="dan-mayhew">Dan Mayhew</option><option value="dan-miller">Dan Miller</option><option value="dan-moseley">Dan Moseley</option><option value="dana-britton">Dana Britton</option><option value="dana-britton---harrison-outrigger-team">Dana Britton - Harrison Outrigger Team</option><option value="dani-traphagen">Dani Traphagen</option><option value="daniel-miller" selected>Daniel Miller</option><option value="daniel-point">Daniel Point</option><option value="daniel-rohlf-lori-laws">Daniel Rohlf Lori Laws</option><option value="danielle-kala">Danielle Kala</option><option value="danielle-kuck">Danielle Kuck</option><option value="darian-hildreth">Darian Hildreth</option><option value="daryl-remmler">Daryl Remmler</option><option value="dave-allen">Dave Allen</option><option value="dave-anderson">Dave Anderson</option><option value="dave-brozowski">Dave Brozowski</option><option value="dave-oreiro">Dave Oreiro</option><option value="david-alber">David Alber</option><option value="david-hooper">David Hooper</option><option value="david-jensen">David Jensen</option><option value="david-scherrer">David Scherrer</option><option value="david-taylor">David Taylor</option><option value="davis-parchment">Davis Parchment</option><option value="dawn-lee">Dawn Lee</option><option value="dean-bumstead">Dean Bumstead</option><option value="dean-jordaan">Dean Jordaan</option><option value="denise-weeks">Denise Weeks</option><option value="dennis-mowry">Dennis Mowry</option><option value="derek-brown">Derek Brown</option><option value="derek-fromm">Derek Fromm</option><option value="dmitry-chernov">Dmitry Chernov</option><option value="donald-kiesling">Donald Kiesling</option><option value="doug-hall">Doug Hall</option><option value="doug-macgowan">Doug MacGowan</option><option value="doug-thomas">Doug Thomas</option><option value="douglas-blue">Douglas Blue</option><option value="drew-marsh">Drew Marsh</option><option value="dustin-porter">Dustin Porter</option><option value="dwight-liess">Dwight Liess</option><option value="dylan-lew">Dylan Lew</option><option value="egor-klevak">Egor Klevak</option><option value="ehren-paterson">Ehren Paterson</option><option value="elias-nebel">Elias Nebel</option><option value="elizabeth-arnold">Elizabeth Arnold</option><option value="elizabeth-ellsberry">Elizabeth Ellsberry</option><option value="elizabeth-moller">Elizabeth Moller</option><option value="emily-dashiell">Emily Dashiell</option><option value="emma-kane">Emma Kane</option><option value="enav-mcneil">Enav McNeil</option><option value="eric-grossman">Eric Grossman</option><option value="eric-nordstrom">Eric Nordstrom</option><option value="eric-verster">Eric Verster</option><option value="erica-quam">Erica Quam</option><option value="ernie-wong">Ernie Wong</option><option value="finn-martin">Finn Martin</option><option value="francine-rose">Francine Rose</option><option value="frankie-puerzer">Frankie Puerzer</option><option value="fraser-schilling">Fraser Schilling</option><option value="g--galves">G- Galves</option><option value="garry-scott">Garry Scott</option><option value="gavin-godfrey">Gavin Godfrey</option><option value="gavin-mcwilliams">Gavin McWilliams</option><option value="grace-hardy">Grace Hardy</option><option value="graeme-galves">Graeme Galves</option><option value="graeme-ramsay">Graeme Ramsay</option><option value="graham-harkley">Graham Harkley</option><option value="greg-barton">Greg Barton</option><option value="greg-greene">Greg Greene</option><option value="greg-hintz">Greg Hintz</option><option value="greg-mares">Greg Mares</option><option value="greg-miller">Greg Miller</option><option value="greg-redman">Greg Redman</option><option value="gregg-leion">Gregg Leion</option><option value="gretchen-gill">Gretchen Gill</option><option value="heather-fisher-lee-fok">Heather Fisher Lee Fok</option><option value="heather-taylor">Heather Taylor</option><option value="hector-yu">Hector Yu</option><option value="herbie-weisse">Herbie Weisse</option><option value="hms-beluga">Hms Beluga</option><option value="holly-rasmussen">Holly Rasmussen</option><option value="holm-schmidt">Holm Schmidt</option><option value="hugh-owen">Hugh Owen</option><option value="hwang--patrick---hwang--tyler">Hwang, Patrick / Hwang, Tyler</option><option value="ian-bolden">Ian Bolden</option><option value="ian-daykin">Ian Daykin</option><option value="ian-sawyer">Ian Sawyer</option><option value="ileana-reyes">Ileana Reyes</option><option value="isaak-nebel">Isaak Nebel</option><option value="ivan-medvedev">Ivan Medvedev</option><option value="ivan-pinzon">Ivan Pinzon</option><option value="ivan-storck">Ivan Storck</option><option value="jd-long">JD Long</option><option value="jacob-roberts">Jacob Roberts</option><option value="jacob-seward">Jacob Seward</option><option value="jaime-smyth">Jaime Smyth</option><option value="james-healy">James Healy</option><option value="james-mullen">James Mullen</option><option value="james-wyse">James Wyse</option><option value="jamie-klein">Jamie Klein</option><option value="jamie-stirling">Jamie Stirling</option><option value="jane-chang">Jane Chang</option><option value="jane-leung">Jane Leung</option><option value="janna-gross">Janna Gross</option><option value="jason-park">Jason Park</option><option value="jay-junio">Jay Junio</option><option value="jay-marshall">Jay Marshall</option><option value="jay-wild">Jay Wild</option><option value="jeff-black">Jeff Black</option><option value="jeff-castleberry">Jeff Castleberry</option><option value="jeff-hilburn">Jeff Hilburn</option><option value="jeff-theresa-knakal">Jeff/Theresa Knakal</option><option value="jeffrey-knakal---theresa-knakal">Jeffrey Knakal / Theresa Knakal</option><option value="jeremy-clark">Jeremy Clark</option><option value="jess-king">Jess King</option><option value="ji-wang">Ji Wang</option><option value="jimi-spoto">Jimi Spoto</option><option value="jimmy-takemura">Jimmy Takemura</option><option value="jo-markham">Jo Markham</option><option value="joan-macasiray">Joan Macasiray</option><option value="john-lindsay">John Lindsay</option><option value="john-murillo">John Murillo</option><option value="john-richardson">John Richardson</option><option value="john-schwandt">John Schwandt</option><option value="johnson-chu">Johnson Chu</option><option value="jonas-decker">Jonas Decker</option><option value="jonathan-sanborn">Jonathan Sanborn</option><option value="jordan-van-voast">Jordan Van Voast</option><option value="joseph-gapuz">Joseph Gapuz</option><option value="joseph-johnson">Joseph Johnson</option><option value="joyce-lam">Joyce Lam</option><option value="julia-melo">Julia Melo</option><option value="julian-acuna">Julian Acuna</option><option value="juliana-acuna">Juliana Acuna</option><option value="julieta-gismondi">Julieta Gismondi</option><option value="juraj-osusky---peter-turcan">Juraj Osusky & Peter Turcan</option><option value="justin-beutel">Justin Beutel</option><option value="justin-martinez">Justin Martinez</option><option value="justus-timmerman">Justus Timmerman</option><option value="kaleena-cappeway">Kaleena Cappeway</option><option value="kalvin-warbus">Kalvin Warbus</option><option value="kat-town">Kat Town</option><option value="kate-kauffman">Kate Kauffman</option><option value="kathleen-faust">Kathleen Faust</option><option value="katy-nicholls-rivera">Katy Nicholls-Rivera</option><option value="kayla-boston">Kayla Boston</option><option value="kelli-arbey">Kelli Arbey</option><option value="kelly-rhodes">Kelly Rhodes</option><option value="ken-asano">Ken Asano</option><option value="ken-deem">Ken Deem</option><option value="kendra-kent">Kendra Kent</option><option value="kenneth-howell">Kenneth Howell</option><option value="kevin-ceran-jerusalemy">Kevin Ceran Jerusalemy</option><option value="kevin-cowan">Kevin Cowan</option><option value="kevin-olney">Kevin Olney</option><option value="kevin-vallente">Kevin Vallente</option><option value="kimberly-pennington">Kimberly Pennington</option><option value="kyle-peterson">Kyle Peterson</option><option value="kyoko-tsukigase">Kyoko Tsukigase</option><option value="lance-romo">Lance Romo</option><option value="larry-bussinger">Larry Bussinger</option><option value="larry-phillips">Larry Phillips</option><option value="leah-friedman">Leah Friedman</option><option value="leanne-stanley">Leanne Stanley</option><option value="lee-mussi">Lee Mussi</option><option value="leif-anderson">Leif Anderson</option><option value="len-morris">Len Morris</option><option value="leni-corin">Leni Corin</option><option value="leo-ciuca">Leo Ciuca</option><option value="leonard-duncan">Leonard Duncan</option><option value="linda-thompson">Linda Thompson</option><option value="lindi-mondavi">Lindi Mondavi</option><option value="lindsey-richman">Lindsey Richman</option><option value="lindsey-shank">Lindsey Shank</option><option value="lindsey-virdeh">Lindsey Virdeh</option><option value="lisa-toy">Lisa Toy</option><option value="lise-oberth">Lise Oberth</option><option value="liza-sheehan">Liza Sheehan</option><option value="lon-kincannon">Lon Kincannon</option><option value="loren-wolverton">Loren Wolverton</option><option value="lorri-stewart">Lorri Stewart</option><option value="luis-buen-abad">Luis Buen Abad</option><option value="luz-delgado">Luz Delgado</option><option value="lyndsay-sayers">Lyndsay Sayers</option><option value="lynn-bonser">Lynn Bonser</option><option value="matthew-sun">MAtthew Sun</option><option value="mabel-kenny">Mabel Kenny</option><option value="mahoe--nikki---mahoe--kawai">Mahoe, Nikki / Mahoe, Kawai</option><option value="makoto-tsukigase">Makoto Tsukigase</option><option value="manny-de-leon">Manny De Leon</option><option value="marc-whitlock">Marc Whitlock</option><option value="marcus-boyle">Marcus Boyle</option><option value="marcus-imes">Marcus Imes</option><option value="marin-millar">Marin Millar</option><option value="mark-athanacio">Mark Athanacio</option><option value="mark-chamberlain">Mark Chamberlain</option><option value="mark-dix">Mark Dix</option><option value="mark-miller">Mark Miller</option><option value="marlies-ernst">Marlies Ernst</option><option value="marnie-conklin">Marnie Conklin</option><option value="martin-free">Martin Free</option><option value="mary-beth-bradford">Mary Beth Bradford</option><option value="masato-tsukigase">Masato Tsukigase</option><option value="matt-chamberlain">Matt Chamberlain</option><option value="matt-kearney">Matt Kearney</option><option value="matt-kelly">Matt Kelly</option><option value="matt-takahashi">Matt Takahashi</option><option value="matthew-arrott">Matthew Arrott</option><option value="matthew-browne">Matthew Browne</option><option value="matthew-sun">Matthew Sun</option><option value="maura-pittenger">Maura Pittenger</option><option value="megan-egbert">Megan Egbert</option><option value="michael-lampi">Michael Lampi</option><option value="michael-lim">Michael Lim</option><option value="michael-moorhead">Michael Moorhead</option><option value="michael-peterson">Michael Peterson</option><option value="michael-wyse">Michael Wyse</option><option value="michael-zheng">Michael Zheng</option><option value="michaela-copenhaver">Michaela Copenhaver</option><option value="mignon-fontenelle">Mignon Fontenelle</option><option value="mike-bremner">Mike Bremner</option><option value="mike-darbyshire">Mike Darbyshire</option><option value="mike-gregory">Mike Gregory</option><option value="mike-liddell">Mike Liddell</option><option value="mulu-tapasa">Mulu Tapasa</option><option value="murray-wood">Murray Wood</option><option value="nancy-huh">Nancy Huh</option><option value="nancy-maclean">Nancy Maclean</option><option value="nathan-grocholski">Nathan Grocholski</option><option value="nathaniel-errez">Nathaniel Errez</option><option value="ned-bobo">Ned Bobo</option><option value="ned-sherry">Ned Sherry</option><option value="nick-kelly">Nick Kelly</option><option value="nikki-pearson">Nikki Pearson</option><option value="noah-johnson-greenough">Noah Johnson-Greenough</option><option value="nori-macgowan">Nori MacGowan</option><option value="noriko-okaya">Noriko Okaya</option><option value="onno-van-baaren">Onno van Baaren</option><option value="pat-johnson">Pat Johnson</option><option value="patrick-ayau">Patrick Ayau</option><option value="patrick-dolan">Patrick Dolan</option><option value="patrick-hemmens">Patrick Hemmens</option><option value="patrick-hwang">Patrick Hwang</option><option value="patti-tohl">Patti Tohl</option><option value="paul-hirsh">Paul Hirsh</option><option value="paul-kendall">Paul Kendall</option><option value="paul-lee">Paul Lee</option><option value="paul-reavley">Paul Reavley</option><option value="paul-sibley">Paul Sibley</option><option value="pete-hess">Pete Hess</option><option value="peter-allen">Peter Allen</option><option value="peter-curtain">Peter Curtain</option><option value="peter-hirtle">Peter Hirtle</option><option value="peter-marcus">Peter Marcus</option><option value="peter-prinos">Peter Prinos</option><option value="phil-midler">Phil Midler</option><option value="priscilla-mckenney">Priscilla McKenney</option><option value="ramona-crivello">Ramona Crivello</option><option value="raymond-wong">Raymond Wong</option><option value="reivers-dustin">Reivers Dustin</option><option value="remus-wyse-morris">Remus Wyse-Morris</option><option value="rich-long">Rich Long</option><option value="richard-campbell">Richard Campbell</option><option value="rick-fraser">Rick Fraser</option><option value="rick-rother">Rick Rother</option><option value="rob-magus">Rob Magus</option><option value="rob-sutherland">Rob Sutherland</option><option value="rob-varnel">Rob Varnel</option><option value="robbie-magus">Robbie Magus</option><option value="robert-beck">Robert Beck</option><option value="robert-egbert">Robert Egbert</option><option value="robert-pelkey">Robert Pelkey</option><option value="robert-schade">Robert Schade</option><option value="rod-sternagel">Rod Sternagel</option><option value="rodrick-ho">Rodrick Ho</option><option value="ron-downs">Ron Downs</option><option value="ron-rillorta">Ron Rillorta</option><option value="rupert-wong">Rupert Wong</option><option value="russ-woosley">Russ Woosley</option><option value="ryan-lee">Ryan Lee</option><option value="ryan-nakamura">Ryan Nakamura</option><option value="sam-siu">Sam Siu</option><option value="samantha-stewart">Samantha Stewart</option><option value="samuel-taylor">Samuel Taylor</option><option value="sarah-craig">Sarah Craig</option><option value="sarah-hess">Sarah Hess</option><option value="sarah-sandstrom">Sarah Sandstrom</option><option value="sarah-sinanan">Sarah Sinanan</option><option value="scott-borle">Scott Borle</option><option value="scott-darling">Scott Darling</option><option value="scott-proudfoot">Scott Proudfoot</option><option value="scott-wanless">Scott Wanless</option><option value="sean-havens">Sean Havens</option><option value="sean-hulscher">Sean Hulscher</option><option value="seattle-flying-dragons">Seattle Flying Dragons</option><option value="selena-soo">Selena Soo</option><option value="seth-putnam-rea">Seth Putnam-Rea</option><option value="shane-baker">Shane Baker</option><option value="sharif-senbel">Sharif Senbel</option><option value="shaun-koos">Shaun Koos</option><option value="sheena-bull">Sheena Bull</option><option value="siena-mclean">Siena McLean</option><option value="simon-corbaux">Simon Corbaux</option><option value="simon-nebel">Simon Nebel</option><option value="simon-traynor">Simon Traynor</option><option value="simon-wing">Simon Wing</option><option value="sondra-moyls">Sondra Moyls</option><option value="spencer-lazzar">Spencer Lazzar</option><option value="stacey-castleberry">Stacey Castleberry</option><option value="stacey-scanlan">Stacey Scanlan</option><option value="steeve-teihotaata">Steeve Teihotaata</option><option value="steve-bujdos">Steve Bujdos</option><option value="steve-chapin">Steve Chapin</option><option value="steve-esselaar">Steve Esselaar</option><option value="steve-goodson">Steve Goodson</option><option value="steve-jewel">Steve Jewel</option><option value="steve-juranovics">Steve Juranovics</option><option value="steven-kala">Steven Kala</option><option value="steven-kala-jr">Steven Kala Jr.</option><option value="steven-pietila">Steven Pietila</option><option value="summie-tam">Summie Tam</option><option value="susanna-ieng">Susanna Ieng</option><option value="sylvester-ishii-orosco">Sylvester Ishii Orosco</option><option value="tamlyn-b-hm">Tamlyn Böhm</option><option value="tanys-cabra">Tanys Cabra</option><option value="tara-hastings">Tara Hastings</option><option value="tau-porter">Tau Porter</option><option value="ted-kraines">Ted Kraines</option><option value="theodore-sweeney">Theodore Sweeney</option><option value="thiago-giacomelli">Thiago Giacomelli</option><option value="thom-prichard">Thom Prichard</option><option value="thomas-akeson">Thomas Akeson</option><option value="thomas-yonley">Thomas Yonley</option><option value="tim-dornberg">Tim Dornberg</option><option value="tim-niemier">Tim Niemier</option><option value="timothy-lee">Timothy Lee</option><option value="toby-cooper">Toby Cooper</option><option value="tom-cartmill">Tom Cartmill</option><option value="tom-gehring">Tom Gehring</option><option value="tom-needham">Tom Needham</option><option value="tom-swetish">Tom Swetish</option><option value="tony-hodanic">Tony Hodanic</option><option value="traci-cole">Traci Cole</option><option value="trista-bilmer">Trista Bilmer</option><option value="tyler-irwin">Tyler Irwin</option><option value="tyler-peterson">Tyler Peterson</option><option value="vadim-lawrence">Vadim Lawrence</option><option value="van-douglas">Van Douglas</option><option value="vicki-mills">Vicki Mills</option><option value="vincent-fecteau">Vincent Fecteau</option><option value="vincent-sermona">Vincent Sermona</option><option value="vinny-rosato">Vinny Rosato</option><option value="warren-bruce">Warren Bruce</option><option value="wayne-hodson">Wayne Hodson</option><option value="wayne-robson">Wayne Robson</option><option value="wayne-stroope">Wayne Stroope</option><option value="will-rainey">Will Rainey</option><option value="will-reichenstein">Will Reichenstein</option><option value="will-schaet">Will Schaet</option><option value="willa-johann">Willa Johann</option><option value="wilson-reavley">Wilson Reavley</option><option value="wyatt-egbert">Wyatt Egbert</option><option value="yohei-rosen">Yohei Rosen</option><option value="zachary-handler">Zachary Handler</option><option value="duncan-howat">duncan howat</option>
+  </select>
+  <a href="stacey-scanlan.html" class="btn btn-outline-secondary btn-sm" style="width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Stacey Scanlan &rarr;</a>
+</div>
+  <h2>Daniel Miller</h2>
+  <div data-club="pnw-regional" style="display:none"><div data-season="2023" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-pnw-regional-2023-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-pnw-regional-2023-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.099</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-pnw-regional-2023-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-pnw-regional-2023-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing handicap — not yet eligible for handicap awards"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span></td><td><a href="../../index.html#jericho-20237838">Gorge Downwind Champs</a></td><td class="text-muted small text-nowrap">Jul 13, 2023</td><td>516</td><td>516</td><td>2:20:37</td><td>2:20:37</td><td>1.000</td><td>1.099</td><td>0</td><td>0</td></tr></tbody>
+</table></div></div></div><div data-season="2024" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-pnw-regional-2024-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-pnw-regional-2024-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.134</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-pnw-regional-2024-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-pnw-regional-2024-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#pm-299092">2024 Gorge Downwind Champs</a></td><td class="text-muted small text-nowrap">Jul 12, 2024</td><td>562</td><td>440</td><td>2:14:34</td><td>2:02:30</td><td>1.098</td><td>1.134</td><td>0</td><td>0</td></tr></tbody>
+</table></div></div></div><div data-season="2025" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-pnw-regional-2025-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-pnw-regional-2025-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 2</div>
+  <div class="col-6 col-sm-3"><strong>Overall Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Handicap Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.167</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-pnw-regional-2025-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-pnw-regional-2025-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#ws-389408">Board the Fjord 2025</a></td><td class="text-muted small text-nowrap">May 10, 2025</td><td>40</td><td>33</td><td>1:43:29</td><td>1:31:16</td><td>1.134</td><td>1.182</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../../index.html#jericho-20257122">Whipper Snapper</a></td><td class="text-muted small text-nowrap">Sep 13, 2025</td><td>74</td><td>12</td><td>1:50:36</td><td>1:33:34</td><td>1.182</td><td>1.167</td><td>0</td><td>0</td></tr></tbody>
+</table></div></div></div></div>
+</div>
+<script>
+new Chart(document.getElementById('chart-pts-pnw-regional-2023-sup-1'), {
+  type:'line',data:{labels:["07/13 - Gorge Downwi"],datasets:[
+    {label:'Overall Pts',data:[0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-pnw-regional-2023-sup-1'), {
+  type:'line',data:{labels:["07/13 - Gorge Downwi"],datasets:[
+    {label:'Handicap',data:[1.0988],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-pnw-regional-2024-sup-1'), {
+  type:'line',data:{labels:["07/12 - Gorge Downwi"],datasets:[
+    {label:'Overall Pts',data:[0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-pnw-regional-2024-sup-1'), {
+  type:'line',data:{labels:["07/12 - Gorge Downwi"],datasets:[
+    {label:'Handicap',data:[1.1345],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});
+new Chart(document.getElementById('chart-pts-pnw-regional-2025-sup-1'), {
+  type:'line',data:{labels:["05/10 - Fjord '25", "09/13 - Whipper Snap"],datasets:[
+    {label:'Overall Pts',data:[0, 0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Handicap Pts',data:[0, 0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-pnw-regional-2025-sup-1'), {
+  type:'line',data:{labels:["05/10 - Fjord '25", "09/13 - Whipper Snap"],datasets:[
+    {label:'Handicap',data:[1.1821, 1.1674],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Handicap Factor'}}}}
+});</script>
+<script>
+document.getElementById('racer-select').addEventListener('change', function() {
+  window.location.href = this.value + '.html';
+});
+</script>
+<script>
+(function() {
+  var club = 'pnw-regional';
+  localStorage.setItem('bepc_club', club);
+  var season = getSeason('2026');
+
+  function showClubSeason(c, s) {
+    // Show correct club
+    document.querySelectorAll('[data-club]').forEach(function(el) {
+      el.style.display = el.dataset.club === c ? '' : 'none';
+    });
+    // Show correct season within that club
+    document.querySelectorAll('[data-club="' + c + '"] [data-season]').forEach(function(el) {
+      el.style.display = el.dataset.season === s ? '' : 'none';
+    });
+  }
+
+  showClubSeason(club, season);
+
+  // Season selector change
+  var sel = document.getElementById('season-select');
+  if (sel) sel.addEventListener('change', function() {
+    setSeason(this.value);
+    showClubSeason(localStorage.getItem('bepc_club') || 'pnw-regional', this.value);
+  });
+
+  // Restore saved craft tab
+  var savedCraft = localStorage.getItem('bepc_craft');
+  if (savedCraft) {
+    var craftBtn = document.querySelector('[data-bs-target="#' + savedCraft + '"]');
+    if (craftBtn) bootstrap.Tab.getOrCreateInstance(craftBtn).show();
+  }
+  document.querySelectorAll('[data-bs-target^="#c-"]').forEach(function(btn) {
+    btn.addEventListener('shown.bs.tab', function() {
+      localStorage.setItem('bepc_craft', btn.getAttribute('data-bs-target').substring(1));
+    });
+  });
+})();
+</script>
+
+</body></html>
