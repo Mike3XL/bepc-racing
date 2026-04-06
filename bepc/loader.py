@@ -13,17 +13,30 @@ def _load_aliases(folder: Path) -> dict:
     return {}
 
 
+def _load_race_names(folder: Path) -> dict:
+    """Load race_names.json from the club directory for display name overrides."""
+    p = folder.parent.parent / "race_names.json"
+    if p.exists():
+        return json.loads(p.read_text())
+    return {}
+
+
 def _normalize_craft(craft: str) -> tuple[str, str]:
     """Returns (category, specific) using the craft.py scheme."""
     return normalize_craft(craft)
 
 
-def load_common_json(path: Path, aliases: dict | None = None) -> RaceResult:
+def load_common_json(path: Path, aliases: dict | None = None, race_names: dict | None = None) -> RaceResult:
     data = json.loads(path.read_text())
     info = data["raceInfo"]
+    raw_name = info["name"]
+    # Apply race name override: match on base name (before " — ")
+    base = raw_name.split(" — ")[0]
+    suffix = raw_name[len(base):]  # " — Course" or ""
+    display_name = (race_names or {}).get(base, base) + suffix
     race_info = RaceInfo(
         race_id=info["raceId"],
-        name=info["name"],
+        name=display_name,
         date=info["date"],
         display_url=info["displayURL"],
         points_weight=info.get("pointsWeight", 1.0),
@@ -45,6 +58,7 @@ def load_common_json(path: Path, aliases: dict | None = None) -> RaceResult:
 
 def load_all_common(folder: Path) -> list[RaceResult]:
     aliases = _load_aliases(folder)
+    race_names = _load_race_names(folder)
     manifest_path = folder / "manifest.json"
 
     if manifest_path.exists():
@@ -55,7 +69,7 @@ def load_all_common(folder: Path) -> list[RaceResult]:
         # No manifest — load all, deduplicate by (date, name)
         files = sorted(folder.glob("*.common.json"))
 
-    races = [load_common_json(f, aliases) for f in files]
+    races = [load_common_json(f, aliases, race_names) for f in files]
 
     if not manifest_path.exists():
         # Deduplicate by (date, name) — keep first occurrence (lowest race_id)
