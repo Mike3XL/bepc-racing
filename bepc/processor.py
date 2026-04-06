@@ -60,6 +60,13 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
             # New handicap
             for r in racers:
                 compute_new_handicap(r, par_time, establishment_races=establishment_races)
+
+            # Rescale all handicaps so par racer = 1.0
+            par_new_hcap = par.handicap_post
+            if par_new_hcap > 0 and par_new_hcap != 1.0:
+                scale = 1.0 / par_new_hcap
+                for r in racers:
+                    r.handicap_post = r.handicap_post * scale
         else:
             # Small group: no handicap update, mark as fresh
             for r in racers:

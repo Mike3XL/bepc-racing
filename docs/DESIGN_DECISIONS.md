@@ -63,7 +63,27 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 
 ---
 
-## Establishment Races Per Club
+## Handicap Normalization (Per-Race Rescaling)
+**Date:** 2026-04-05  
+**Context:** `bepc/processor.py`, `bepc/handicap.py`
+
+**Problem:** Without normalization, handicap values drift upward over time as the fleet composition changes. With carry-over enabled, inflated values from early seasons propagate forward — resulting in all racers having hcap>1.0 even after years of racing.
+
+**Decision:** After each race's handicap updates, rescale all `handicap_post` values so the par racer = 1.0. Divide every racer's new handicap by the par racer's new handicap.
+
+**Properties:**
+- Preserves relative ordering perfectly (ratios unchanged)
+- Par racer always has hcap=1.0 after each race
+- System cannot drift — self-correcting every race
+- hcap=1.0 has a stable, intuitive meaning: "you perform at the par level (33rd percentile)"
+- hcap<1.0 means faster than par; hcap>1.0 means slower
+
+**Rejected alternatives:**
+- End-of-season rescaling only — corrects drift but allows within-season drift
+- "Pushed towards 1.0" (partial rescaling) — adds complexity without clear benefit
+- No rescaling — causes long-term drift as shown in BEPC 2024 data
+
+**Config:** Applied per-club. BEPC: carry_over=true + rescaling. PNW League: TBD.
 **Date:** 2026-04-05  
 **Context:** `bepc/handicap.py compute_new_handicap`, `data/clubs.yaml`
 
