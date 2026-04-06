@@ -1,0 +1,69 @@
+{
+  "key": "68d01b58a609aacaac59709763ffb9f2",
+  "contests": {
+    "1": "Paddle 4 Food Relay"
+  },
+  "splits": [],
+  "eventname": "2024 Paddle 4 Food Relay",
+  "TimerLogo": "",
+  "TimerURL": "",
+  "EventOver": true,
+  "Time": 53056,
+  "server": "my-us-1.raceresult.com",
+  "BrandColorDark": "",
+  "Tab": {
+    "Label": "",
+    "URLName": "results",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ActiveFrom": "2020-08-17T00:00:00-07:00",
+    "ActiveUntil": "2100-12-31T23:59:59-08:00",
+    "Type": "lists",
+    "Config": null
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "boxes",
+    "StandardDetails": "",
+    "Lists": [
+      {
+        "Name": "04_Tour Results - Breakdown|Overall After Stage 1",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "After Stage 1",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "C1A78D",
+        "ID": "0A95C5"
+      },
+      {
+        "Name": "04_Tour Results - Breakdown|Overall After Stage 2",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "After Stage 2",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "C1A78D",
+        "ID": "5372C3"
+      },
+      {
+        "Name": "04_Tour Results - Breakdown|Overall After Stage 3",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "After Stage 3",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "C1A78D",
+        "ID": "DD695F"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": true
+  }
+}

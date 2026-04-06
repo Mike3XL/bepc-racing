@@ -1,0 +1,260 @@
+{
+  "RaceInfo": {
+    "RaceId": 290114,
+    "Name": "2022 Duck Island Race #5",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=290114",
+    "Date": "Aug 19, 2022",
+    "Sport": "Paddling - kayak",
+    "StartTime": "Friday, August 19, 2022 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6733,
+    "Longitude": -122.3426,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Google Pixel 2 XL",
+    "TimedWith": "Webscorer PRO 5.6",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 19, 2025 9:36 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/290114_8d4b820b6bb31fb.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Emma Tsong",
+          "TeamName": "Nelo C1",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "11:18.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Einar Ogle",
+          "TeamName": "Nelo Quattro K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "9:11.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.07%",
+          "PercentMedian": "9.07%"
+        },
+        {
+          "Place": "2",
+          "Name": "Alex Ciuca",
+          "TeamName": "Surfski V10",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:01.9",
+          "Difference": "+1:50.1",
+          "PercentBack": "+19.95%",
+          "PercentWinning": "83.37%",
+          "PercentAverage": "-9.07%",
+          "PercentMedian": "-9.07%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Soren Ogle & Leo Ciuca",
+          "TeamName": "Nelo K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:25.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "21.77%",
+          "PercentMedian": "12.30%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Elizabeth Holmes & Julie Roberts",
+          "TeamName": "Haywood K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "9:36.6",
+          "Difference": "+1:10.9",
+          "PercentBack": "+14.02%",
+          "PercentWinning": "87.70%",
+          "PercentAverage": "10.80%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "K2 Delia Ward-Smith & Nora Tsong",
+          "TeamName": "Epic K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "14:17.0",
+          "Difference": "+5:51.3",
+          "PercentBack": "+69.47%",
+          "PercentWinning": "59.01%",
+          "PercentAverage": "-32.57%",
+          "PercentMedian": "-48.63%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Emma Tsong",
+          "TeamName": "Nelo C1",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "11:18.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Einar Ogle",
+          "TeamName": "Nelo Quattro K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "9:11.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Alex Ciuca",
+          "TeamName": "Surfski V10",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:01.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Soren Ogle & Leo Ciuca",
+          "TeamName": "Nelo K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:25.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "25.78%",
+          "PercentMedian": "25.78%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Delia Ward-Smith & Nora Tsong",
+          "TeamName": "Epic K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "14:17.0",
+          "Difference": "+5:51.3",
+          "PercentBack": "+69.47%",
+          "PercentWinning": "59.01%",
+          "PercentAverage": "-25.78%",
+          "PercentMedian": "-25.78%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Elizabeth Holmes & Julie Roberts",
+          "TeamName": "Haywood K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "9:36.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

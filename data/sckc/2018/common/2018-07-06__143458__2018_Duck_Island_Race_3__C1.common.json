@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 143458,
+    "distance": "C1",
+    "name": "2018 Duck Island Race #3 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=143458",
+    "date": "Jul 6, 2018",
+    "sport": "Paddling",
+    "startTime": "Friday, July 6, 2018 5:47 PM (GMT+2)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.2
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Soren Ogle",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1294.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1294.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "RaceInfo": {
+    "RaceId": 107915,
+    "Name": "2017 Duck Island Race #6",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=107915",
+    "Date": "Jul 28, 2017",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 28, 2017 6:45 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6718103714026,
+    "Longitude": -122.342784404755,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 6:12 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/107915_8d4b820b6bb31fb.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:53.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Nate Errez",
+          "TeamName2": "Sprint K-1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:39.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "34.22%",
+          "PercentMedian": "33.81%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jim Erickson",
+          "TeamName2": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:47.0",
+          "Difference": "+3:08.0",
+          "PercentBack": "+40.96%",
+          "PercentWinning": "70.94%",
+          "PercentAverage": "7.27%",
+          "PercentMedian": "6.71%"
+        },
+        {
+          "Place": "3",
+          "Name": "Philip Murphy",
+          "TeamName2": "TK-1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:59.0",
+          "Difference": "+3:20.0",
+          "PercentBack": "+43.57%",
+          "PercentWinning": "69.65%",
+          "PercentAverage": "5.55%",
+          "PercentMedian": "4.97%"
+        },
+        {
+          "Place": "4",
+          "Name": "Ian Page-Nichols",
+          "TeamName2": "Surf ski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "11:20.0",
+          "Difference": "+3:41.0",
+          "PercentBack": "+48.15%",
+          "PercentWinning": "67.50%",
+          "PercentAverage": "2.54%",
+          "PercentMedian": "1.95%"
+        },
+        {
+          "Place": "5",
+          "Name": "Elizabeth Erickson",
+          "TeamName2": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "11:47.0",
+          "Difference": "+4:08.0",
+          "PercentBack": "+54.03%",
+          "PercentWinning": "64.92%",
+          "PercentAverage": "-1.33%",
+          "PercentMedian": "-1.95%"
+        },
+        {
+          "Place": "6",
+          "Name": "Karla Ogle",
+          "TeamName2": "Sprint K-1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:09.0",
+          "Difference": "+4:30.0",
+          "PercentBack": "+58.82%",
+          "PercentWinning": "62.96%",
+          "PercentAverage": "-4.48%",
+          "PercentMedian": "-5.12%"
+        },
+        {
+          "Place": "7",
+          "Name": "Avery",
+          "TeamName2": "Sprint K-1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "12:12.0",
+          "Difference": "+4:33.0",
+          "PercentBack": "+59.48%",
+          "PercentWinning": "62.70%",
+          "PercentAverage": "-4.91%",
+          "PercentMedian": "-5.55%"
+        },
+        {
+          "Place": "8",
+          "Name": "Soren Ogle",
+          "TeamName2": "Sprint K-1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "16:09.0",
+          "Difference": "+8:30.0",
+          "PercentBack": "+111.11%",
+          "PercentWinning": "47.37%",
+          "PercentAverage": "-38.87%",
+          "PercentMedian": "-39.73%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:53.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Soren Ogle",
+          "TeamName2": "Sprint K-1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "16:09.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jim Erickson",
+          "TeamName2": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:47.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.62%",
+          "PercentMedian": "5.27%"
+        },
+        {
+          "Place": "2",
+          "Name": "Philip Murphy",
+          "TeamName2": "TK-1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:59.0",
+          "Difference": "+0:12.0",
+          "PercentBack": "+1.85%",
+          "PercentWinning": "98.18%",
+          "PercentAverage": "3.87%",
+          "PercentMedian": "3.51%"
+        },
+        {
+          "Place": "3",
+          "Name": "Elizabeth Erickson",
+          "TeamName2": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "11:47.0",
+          "Difference": "+1:00.0",
+          "PercentBack": "+9.27%",
+          "PercentWinning": "91.51%",
+          "PercentAverage": "-3.14%",
+          "PercentMedian": "-3.51%"
+        },
+        {
+          "Place": "4",
+          "Name": "Karla Ogle",
+          "TeamName2": "Sprint K-1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:09.0",
+          "Difference": "+1:22.0",
+          "PercentBack": "+12.67%",
+          "PercentWinning": "88.75%",
+          "PercentAverage": "-6.35%",
+          "PercentMedian": "-6.73%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Nate Errez",
+          "TeamName2": "Sprint K-1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:39.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "26.40%",
+          "PercentMedian": "32.50%"
+        },
+        {
+          "Place": "2",
+          "Name": "Ian Page-Nichols",
+          "TeamName2": "Surf ski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "11:20.0",
+          "Difference": "+3:41.0",
+          "PercentBack": "+48.15%",
+          "PercentWinning": "67.50%",
+          "PercentAverage": "-9.03%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Avery",
+          "TeamName2": "Sprint K-1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "12:12.0",
+          "Difference": "+4:33.0",
+          "PercentBack": "+59.48%",
+          "PercentWinning": "62.70%",
+          "PercentAverage": "-17.37%",
+          "PercentMedian": "-7.65%"
+        }
+      ]
+    }
+  ]
+}

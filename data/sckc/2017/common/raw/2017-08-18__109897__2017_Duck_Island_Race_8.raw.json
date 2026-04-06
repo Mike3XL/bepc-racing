@@ -1,0 +1,288 @@
+{
+  "RaceInfo": {
+    "RaceId": 109897,
+    "Name": "2017 Duck Island Race #8",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=109897",
+    "Date": "Aug 18, 2017",
+    "Sport": "Paddling",
+    "StartTime": "Friday, August 18, 2017 6:45 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6718103714026,
+    "Longitude": -122.342784404755,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 6:18 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/109897_8d4b820b6bb31fb.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:57.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Aaron Small",
+          "TeamName": "Nelo Scorpion",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:19.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "29.51%",
+          "PercentMedian": "32.10%"
+        },
+        {
+          "Place": "2",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:43.0",
+          "Difference": "+2:23.9",
+          "PercentBack": "+28.83%",
+          "PercentWinning": "77.62%",
+          "PercentAverage": "9.18%",
+          "PercentMedian": "12.52%"
+        },
+        {
+          "Place": "3",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "V10 surfski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "12:15.0",
+          "Difference": "+3:55.9",
+          "PercentBack": "+47.27%",
+          "PercentWinning": "67.90%",
+          "PercentAverage": "-3.81%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Karla Ogle",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "13:19.0",
+          "Difference": "+4:59.9",
+          "PercentBack": "+60.09%",
+          "PercentWinning": "62.47%",
+          "PercentAverage": "-12.85%",
+          "PercentMedian": "-8.71%"
+        },
+        {
+          "Place": "5",
+          "Name": "Breona Gutschmidt",
+          "TeamName": "Tornado",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "14:24.0",
+          "Difference": "+6:04.9",
+          "PercentBack": "+73.11%",
+          "PercentWinning": "57.77%",
+          "PercentAverage": "-22.03%",
+          "PercentMedian": "-17.55%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K4",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K4 Einar O, Jake Z, Elizabeth H, Soren O",
+          "TeamName": "Van Dusen K4",
+          "Distance": "K4",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "8:19.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:57.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Aaron Small",
+          "TeamName": "Nelo Scorpion",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:19.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:43.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.82%",
+          "PercentMedian": "10.82%"
+        },
+        {
+          "Place": "2",
+          "Name": "Karla Ogle",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "13:19.0",
+          "Difference": "+2:36.0",
+          "PercentBack": "+24.26%",
+          "PercentWinning": "80.48%",
+          "PercentAverage": "-10.82%",
+          "PercentMedian": "-10.82%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "V10 surfski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "12:15.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.07%",
+          "PercentMedian": "8.07%"
+        },
+        {
+          "Place": "2",
+          "Name": "Breona Gutschmidt",
+          "TeamName": "Tornado",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "14:24.0",
+          "Difference": "+2:09.0",
+          "PercentBack": "+17.55%",
+          "PercentWinning": "85.07%",
+          "PercentAverage": "-8.07%",
+          "PercentMedian": "-8.07%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K4",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K4 Einar O, Jake Z, Elizabeth H, Soren O",
+          "TeamName": "Van Dusen K4",
+          "Distance": "K4",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "8:19.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

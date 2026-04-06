@@ -1,0 +1,224 @@
+{
+  "RaceInfo": {
+    "RaceId": 357357,
+    "Name": "2023 Duck Island Race #2",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357357",
+    "Date": "Jul 21, 2023",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 21, 2023 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67353839703027,
+    "Longitude": -122.34063807563696,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 7:14 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357357_8dc99f6de71874b.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:58.30",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Azamat Rustamov",
+          "TeamName": "Tornado",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "9:35.08",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "30.71%",
+          "PercentMedian": "25.61%"
+        },
+        {
+          "Place": "2",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:53.02",
+          "Difference": "+3:17.94",
+          "PercentBack": "+34.42%",
+          "PercentWinning": "74.39%",
+          "PercentAverage": "6.86%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Torsten",
+          "TeamName": "Nelo Viper K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "19:01.89",
+          "Difference": "+9:26.81",
+          "PercentBack": "+98.56%",
+          "PercentWinning": "50.36%",
+          "PercentAverage": "-37.58%",
+          "PercentMedian": "-47.72%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K4",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K4 Soren O, Miles P, Delia W, Lillian B",
+          "TeamName": "K4",
+          "Distance": "K4",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "7:58.01",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:58.30",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:53.02",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Azamat Rustamov",
+          "TeamName": "Tornado",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "9:35.08",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "33.01%",
+          "PercentMedian": "33.01%"
+        },
+        {
+          "Place": "2",
+          "Name": "Torsten",
+          "TeamName": "Nelo Viper K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "19:01.89",
+          "Difference": "+9:26.81",
+          "PercentBack": "+98.56%",
+          "PercentWinning": "50.36%",
+          "PercentAverage": "-33.01%",
+          "PercentMedian": "-33.01%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K4",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K4 Soren O, Miles P, Delia W, Lillian B",
+          "TeamName": "K4",
+          "Distance": "K4",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "7:58.01",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

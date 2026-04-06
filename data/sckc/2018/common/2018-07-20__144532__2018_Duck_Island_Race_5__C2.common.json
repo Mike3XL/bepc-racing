@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 144532,
+    "distance": "C2",
+    "name": "2018 Duck Island Race #5 \u2014 C2",
+    "displayURL": "https://www.webscorer.com/race?raceid=144532",
+    "date": "Jul 20, 2018",
+    "sport": "Paddling",
+    "startTime": "Friday, July 20, 2018 6:45 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.05
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "C2 Rob Karlinsey & Michelle Karlinsey",
+      "craftCategory": "Masters 40+",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 956.8,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 956.8,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

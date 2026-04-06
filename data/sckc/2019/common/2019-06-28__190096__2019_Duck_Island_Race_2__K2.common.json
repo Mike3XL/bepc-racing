@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 190096,
+    "distance": "K2",
+    "name": "2019 Duck Island Race #2 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=190096",
+    "date": "Jun 28, 2019",
+    "sport": "Paddling",
+    "startTime": "Friday, June 28, 2019 2:55 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.125
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Nora Tsong & Emma Tsong",
+      "craftCategory": "Junior",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 607.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 607.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "RaceInfo": {
+    "RaceId": 190096,
+    "Name": "2019 Duck Island Race #2",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=190096",
+    "Date": "Jun 28, 2019",
+    "Sport": "Paddling",
+    "StartTime": "Friday, June 28, 2019 2:55 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.673302,
+    "Longitude": -122.342598,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LM-X212(G)",
+    "TimedWith": "Webscorer PRO 3.1",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 9:56 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/190096_8d7185e06cd68ee.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:16.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Aaron Small",
+          "TeamName": "Epic K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:30.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "15.63%",
+          "PercentMedian": "15.57%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jake Zikan",
+          "TeamName": "Nelo Vanquish 3",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:31.0",
+          "Difference": "+0:01.0",
+          "PercentBack": "+0.22%",
+          "PercentWinning": "99.78%",
+          "PercentAverage": "15.44%",
+          "PercentMedian": "15.38%"
+        },
+        {
+          "Place": "3",
+          "Name": "Vaughn Schenk",
+          "TeamName": "Nelo Quattro",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:44.0",
+          "Difference": "+0:14.0",
+          "PercentBack": "+3.11%",
+          "PercentWinning": "96.98%",
+          "PercentAverage": "13.00%",
+          "PercentMedian": "12.95%"
+        },
+        {
+          "Place": "4",
+          "Name": "Einar Ogle",
+          "TeamName": "Nelo Vintage",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:02.0",
+          "Difference": "+2:32.0",
+          "PercentBack": "+33.78%",
+          "PercentWinning": "74.75%",
+          "PercentAverage": "-12.88%",
+          "PercentMedian": "-12.95%"
+        },
+        {
+          "Place": "5",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Nelo Mosquito 65",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:14.0",
+          "Difference": "+2:44.0",
+          "PercentBack": "+36.44%",
+          "PercentWinning": "73.29%",
+          "PercentAverage": "-15.13%",
+          "PercentMedian": "-15.20%"
+        },
+        {
+          "Place": "6",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "V10 surf ski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:19.0",
+          "Difference": "+2:49.0",
+          "PercentBack": "+37.56%",
+          "PercentWinning": "72.70%",
+          "PercentAverage": "-16.06%",
+          "PercentMedian": "-16.14%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Nora Tsong & Emma Tsong",
+          "TeamName": "Haywood K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:07.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:16.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Aaron Small",
+          "TeamName": "Epic K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:30.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.49%",
+          "PercentMedian": "1.64%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jake Zikan",
+          "TeamName": "Nelo Vanquish 3",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:31.0",
+          "Difference": "+0:01.0",
+          "PercentBack": "+0.22%",
+          "PercentWinning": "99.78%",
+          "PercentAverage": "8.29%",
+          "PercentMedian": "1.42%"
+        },
+        {
+          "Place": "3",
+          "Name": "Vaughn Schenk",
+          "TeamName": "Nelo Quattro",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:44.0",
+          "Difference": "+0:14.0",
+          "PercentBack": "+3.11%",
+          "PercentWinning": "96.98%",
+          "PercentAverage": "5.64%",
+          "PercentMedian": "-1.42%"
+        },
+        {
+          "Place": "4",
+          "Name": "Einar Ogle",
+          "TeamName": "Nelo Vintage",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:02.0",
+          "Difference": "+2:32.0",
+          "PercentBack": "+33.78%",
+          "PercentWinning": "74.75%",
+          "PercentAverage": "-22.42%",
+          "PercentMedian": "-31.58%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Nelo Mosquito 65",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:14.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "V10 surf ski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:19.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Nora Tsong & Emma Tsong",
+          "TeamName": "Haywood K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:07.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "RaceInfo": {
+    "RaceId": 144618,
+    "Name": "2018 Duck Island Race #4",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=144618",
+    "Date": "Jul 13, 2018",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 13, 2018 6:45 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6718103714026,
+    "Longitude": -122.342784404755,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 6:31 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/144618_8d4b820b6bb31fb.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Doug Ritchie",
+          "TeamName": "Clipper canoe",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:49.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Vaughn Schenk",
+          "TeamName": "Nelo Quattro",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:47.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.86%",
+          "PercentMedian": "13.91%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jim Erickson",
+          "TeamName": "Epic V10 Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:12.4",
+          "Difference": "+1:25.2",
+          "PercentBack": "+16.16%",
+          "PercentWinning": "86.09%",
+          "PercentAverage": "1.10%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Karol Osusky",
+          "TeamName": "Nelo Viper",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:58.1",
+          "Difference": "+3:10.9",
+          "PercentBack": "+36.21%",
+          "PercentWinning": "73.42%",
+          "PercentAverage": "-15.97%",
+          "PercentMedian": "-17.26%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K4",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K4 Einar O, Hana N, Hayden, Ronan N",
+          "TeamName": "Van Dusen K4",
+          "Distance": "K4",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "9:00.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Doug Ritchie",
+          "TeamName": "Clipper canoe",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:49.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Vaughn Schenk",
+          "TeamName": "Nelo Quattro",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:47.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jim Erickson",
+          "TeamName": "Epic V10 Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:12.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.94%",
+          "PercentMedian": "7.94%"
+        },
+        {
+          "Place": "2",
+          "Name": "Karol Osusky",
+          "TeamName": "Nelo Viper",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:58.1",
+          "Difference": "+1:45.7",
+          "PercentBack": "+17.26%",
+          "PercentWinning": "85.28%",
+          "PercentAverage": "-7.94%",
+          "PercentMedian": "-7.94%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K4",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K4 Einar O, Hana N, Hayden, Ronan N",
+          "TeamName": "Van Dusen K4",
+          "Distance": "K4",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "9:00.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

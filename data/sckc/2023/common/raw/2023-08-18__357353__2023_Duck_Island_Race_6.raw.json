@@ -1,0 +1,324 @@
+{
+  "RaceInfo": {
+    "RaceId": 357353,
+    "Name": "2023 Duck Island Race #6",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357353",
+    "Date": "Aug 18, 2023",
+    "Sport": "Paddling",
+    "StartTime": "Friday, August 18, 2023 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.674025656123476,
+    "Longitude": -122.34128506250711,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 10:31 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357353_8dc99f20216b0c2.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:07.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Egor Klevak",
+          "TeamName": "Surfski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:32.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "34.68%",
+          "PercentMedian": "36.15%"
+        },
+        {
+          "Place": "2",
+          "Name": "Miles Parsons",
+          "TeamName": "Zastera Vector",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:28.7",
+          "Difference": "+2:56.1",
+          "PercentBack": "+38.91%",
+          "PercentWinning": "71.99%",
+          "PercentAverage": "9.27%",
+          "PercentMedian": "11.30%"
+        },
+        {
+          "Place": "3",
+          "Name": "Lillian Balet",
+          "TeamName": "VanDusen Hawk",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "11:48.8",
+          "Difference": "+4:16.2",
+          "PercentBack": "+56.61%",
+          "PercentWinning": "63.85%",
+          "PercentAverage": "-2.29%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Delia Ward-Smith",
+          "TeamName": "Nelo Quatro",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "12:36.6",
+          "Difference": "+5:04.0",
+          "PercentBack": "+67.17%",
+          "PercentWinning": "59.82%",
+          "PercentAverage": "-9.19%",
+          "PercentMedian": "-6.74%"
+        },
+        {
+          "Place": "5",
+          "Name": "Liz Graf-Brennen",
+          "TeamName": "Laingjin Tornado",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "15:17.8",
+          "Difference": "+7:45.2",
+          "PercentBack": "+102.78%",
+          "PercentWinning": "49.31%",
+          "PercentAverage": "-32.46%",
+          "PercentMedian": "-29.49%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Peter Turcan & Juraj Osusky",
+          "TeamName": "Surfski K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "8:01.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.71%",
+          "PercentMedian": "3.71%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Soren Ogle & Azamat Rustamov",
+          "TeamName": "Nelo Vanquish K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "8:38.5",
+          "Difference": "+0:37.1",
+          "PercentBack": "+7.71%",
+          "PercentWinning": "92.84%",
+          "PercentAverage": "-3.71%",
+          "PercentMedian": "-3.71%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:07.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Miles Parsons",
+          "TeamName": "Zastera Vector",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:28.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.93%",
+          "PercentMedian": "11.30%"
+        },
+        {
+          "Place": "2",
+          "Name": "Lillian Balet",
+          "TeamName": "VanDusen Hawk",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "11:48.8",
+          "Difference": "+1:20.1",
+          "PercentBack": "+12.74%",
+          "PercentWinning": "88.70%",
+          "PercentAverage": "-1.54%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Delia Ward-Smith",
+          "TeamName": "Nelo Quatro",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "12:36.6",
+          "Difference": "+2:07.9",
+          "PercentBack": "+20.34%",
+          "PercentWinning": "83.10%",
+          "PercentAverage": "-8.39%",
+          "PercentMedian": "-6.74%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Liz Graf-Brennen",
+          "TeamName": "Laingjin Tornado",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "15:17.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Egor Klevak",
+          "TeamName": "Surfski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:32.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Peter Turcan & Juraj Osusky",
+          "TeamName": "Surfski K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "8:01.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Soren Ogle & Azamat Rustamov",
+          "TeamName": "Nelo Vanquish K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "8:38.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

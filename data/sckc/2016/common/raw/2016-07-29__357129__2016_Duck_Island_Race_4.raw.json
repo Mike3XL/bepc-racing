@@ -1,0 +1,332 @@
+{
+  "RaceInfo": {
+    "RaceId": 357129,
+    "Name": "2016 Duck Island Race #4",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357129",
+    "Date": "Jul 29, 2016",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 29, 2016 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67380186770835,
+    "Longitude": -122.34040120058594,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 5:42 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357129_8dc988e9857b70a.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Isabella Flynn",
+          "TeamName": "C1",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "15:22.80",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Doug Ritchie & H",
+          "TeamName": "Rec Rolex C2",
+          "Distance": "C2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "17:07.70",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jupiter Grant",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:34.10",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "15.59%",
+          "PercentMedian": "2.95%"
+        },
+        {
+          "Place": "2",
+          "Name": "Chris Flynn",
+          "TeamName": "SRS K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:53.00",
+          "Difference": "+0:18.90",
+          "PercentBack": "+2.98%",
+          "PercentWinning": "97.11%",
+          "PercentAverage": "13.08%",
+          "PercentMedian": "0.06%"
+        },
+        {
+          "Place": "3",
+          "Name": "Leana Girton",
+          "TeamName": "Super Lancer K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:53.40",
+          "Difference": "+0:19.30",
+          "PercentBack": "+3.04%",
+          "PercentWinning": "97.05%",
+          "PercentAverage": "13.02%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Lorenzo Flynn",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "14:47.90",
+          "Difference": "+4:13.80",
+          "PercentBack": "+40.03%",
+          "PercentWinning": "71.42%",
+          "PercentAverage": "-18.19%",
+          "PercentMedian": "-35.89%"
+        },
+        {
+          "Place": "5",
+          "Name": "Sabine Mecking",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "15:27.78",
+          "Difference": "+4:53.68",
+          "PercentBack": "+46.31%",
+          "PercentWinning": "68.35%",
+          "PercentAverage": "-23.50%",
+          "PercentMedian": "-41.99%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Jake Zikan & Elizabeth Holmes",
+          "TeamName": "Nelo Viper K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "9:13.60",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Isabella Flynn",
+          "TeamName": "C1",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "15:22.80",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Doug Ritchie & H",
+          "TeamName": "Rec Rolex C2",
+          "Distance": "C2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "17:07.70",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Leana Girton",
+          "TeamName": "Super Lancer K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:53.40",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Chris Flynn",
+          "TeamName": "SRS K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:53.00",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.38%",
+          "PercentMedian": "17.38%"
+        },
+        {
+          "Place": "2",
+          "Name": "Sabine Mecking",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "15:27.78",
+          "Difference": "+4:34.78",
+          "PercentBack": "+42.08%",
+          "PercentWinning": "70.38%",
+          "PercentAverage": "-17.38%",
+          "PercentMedian": "-17.38%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jupiter Grant",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:34.10",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "16.68%",
+          "PercentMedian": "16.68%"
+        },
+        {
+          "Place": "2",
+          "Name": "Lorenzo Flynn",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "14:47.90",
+          "Difference": "+4:13.80",
+          "PercentBack": "+40.03%",
+          "PercentWinning": "71.42%",
+          "PercentAverage": "-16.68%",
+          "PercentMedian": "-16.68%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Jake Zikan & Elizabeth Holmes",
+          "TeamName": "Nelo Viper K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "9:13.60",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

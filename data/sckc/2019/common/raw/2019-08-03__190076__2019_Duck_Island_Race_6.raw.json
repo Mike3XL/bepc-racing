@@ -1,0 +1,224 @@
+{
+  "RaceInfo": {
+    "RaceId": 190076,
+    "Name": "2019 Duck Island Race #6",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=190076",
+    "Date": "Aug 3, 2019",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, August 3, 2019 9:43 AM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.673302,
+    "Longitude": -122.342598,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LM-X212(G)",
+    "TimedWith": "Webscorer PRO 3.1",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 7:03 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/190076_8d7191cc78fbf8c.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:23.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.55%",
+          "PercentMedian": "8.55%"
+        },
+        {
+          "Place": "2",
+          "Name": "Liam Jennings",
+          "TeamName": "Marathon canoe",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "14:42.9",
+          "Difference": "+2:19.1",
+          "PercentBack": "+18.70%",
+          "PercentWinning": "84.25%",
+          "PercentAverage": "-8.55%",
+          "PercentMedian": "-8.55%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C4",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C6 Jake-Einar-Soren-Anna-Stephan-Ellenor",
+          "TeamName": "OC-6, K4+surfski K2 duct taped together",
+          "Distance": "C4",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "11:25.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Tornado K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:16.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.55%",
+          "PercentMedian": "12.55%"
+        },
+        {
+          "Place": "2",
+          "Name": "Karla Ogle",
+          "TeamName": "Tornado K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "13:13.1",
+          "Difference": "+2:56.9",
+          "PercentBack": "+28.71%",
+          "PercentWinning": "77.70%",
+          "PercentAverage": "-12.55%",
+          "PercentMedian": "-12.55%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Liam Jennings",
+          "TeamName": "Marathon canoe",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "14:42.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:23.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C4",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C6 Jake-Einar-Soren-Anna-Stephan-Ellenor",
+          "TeamName": "OC-6, K4+surfski K2 duct taped together",
+          "Distance": "C4",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "11:25.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Tornado K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:16.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.55%",
+          "PercentMedian": "12.55%"
+        },
+        {
+          "Place": "2",
+          "Name": "Karla Ogle",
+          "TeamName": "Tornado K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "13:13.1",
+          "Difference": "+2:56.9",
+          "PercentBack": "+28.71%",
+          "PercentWinning": "77.70%",
+          "PercentAverage": "-12.55%",
+          "PercentMedian": "-12.55%"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 398284,
+    "distance": "C4",
+    "name": "2025 Duck Island Race #2 \u2014 C4",
+    "displayURL": "https://www.webscorer.com/race?raceid=398284",
+    "date": "Jul 18, 2025",
+    "sport": "Paddling",
+    "startTime": "Friday, July 18, 2025 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.0625
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "C3 Jane L, Emma T, Sebastian K",
+      "craftCategory": "Junior",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 757.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 757.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

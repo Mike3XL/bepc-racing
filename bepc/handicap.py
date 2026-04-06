@@ -11,21 +11,18 @@ def calculate_par_racer(racers: list[RacerResult]) -> RacerResult | None:
 
 
 def compute_new_handicap(racer: RacerResult, par_time: float,
-                         establishment_races: int = 2) -> None:
+                         num_races_to_establish: int = 1) -> None:
     """Compute and set handicap_post, is_fresh_racer, is_outlier, handicap_note on racer.
 
-    Two concepts:
-    - eligible: can win hcap awards. True if carried_over OR num_races >= establishment_races.
-    - established: handicap converged. True if num_races >= establishment_races.
-      Established racers get slow updates + outlier detection.
-      Unestablished racers (including carried-over) get fast 50/50 updates, no outlier detection.
+    num_races_to_establish: number of races required before handicap is established.
+    Racer is ineligible (fresh) for their first N races, eligible from race N+1 onward.
     """
     existing = racer.handicap
     tvp = racer.time_versus_par
     atvp = racer.adjusted_time_versus_par
 
-    established = racer.num_races >= establishment_races
-    eligible = racer.carried_over or established
+    established = racer.num_races > num_races_to_establish
+    eligible = racer.carried_over or racer.num_races > num_races_to_establish
 
     # EST badge = not eligible
     racer.is_fresh_racer = not eligible
@@ -33,12 +30,14 @@ def compute_new_handicap(racer: RacerResult, par_time: float,
     if not established:
         # Fast convergence: 50/50 update, no outlier detection
         racer.handicap_post = existing * 0.5 + tvp * 0.5
-        racer.handicap_note = f"Race {racer.num_races + 1} of {establishment_races} (fast update). 50% adjustment."
+        racer.handicap_note = f"Race {racer.num_races} of {num_races_to_establish} (fast update). 50% adjustment."
     elif atvp > 1.1:
+        # Outlier: significantly slower than predicted — suppress update
         racer.handicap_post = existing
         racer.is_outlier = True
         racer.handicap_note = "Outlier (>10% slower than predicted). No change."
     elif atvp <= 1.0:
+        # Faster than expected (including genuine improvement jumps) — always update
         racer.handicap_post = existing * 0.7 + tvp * 0.3
         racer.handicap_note = "Faster than expected. Handicap adjusted 30% towards result."
     else:

@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 109897,
+    "distance": "K4",
+    "name": "2017 Duck Island Race #8 \u2014 K4",
+    "displayURL": "https://www.webscorer.com/race?raceid=109897",
+    "date": "Aug 18, 2017",
+    "sport": "Paddling",
+    "startTime": "Friday, August 18, 2017 6:45 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.142857
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K4 Einar O, Jake Z, Elizabeth H, Soren O",
+      "craftCategory": "Open",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 499.9,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 499.9,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "RaceInfo": {
+    "RaceId": 104940,
+    "Name": "2017 Duck Island Race #1",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=104940",
+    "Date": "Jun 23, 2017",
+    "Sport": "Paddling",
+    "StartTime": "Friday, June 23, 2017 6:45 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6718103714026,
+    "Longitude": -122.342784404755,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 5:54 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/104940_8d4b820b6bb31fb.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.63%",
+          "PercentMedian": "9.63%"
+        },
+        {
+          "Place": "2",
+          "Name": "Doug Bosworth",
+          "TeamName": "Marathon canoe C-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "15:43.8",
+          "Difference": "+2:45.8",
+          "PercentBack": "+21.31%",
+          "PercentWinning": "82.43%",
+          "PercentAverage": "-9.63%",
+          "PercentMedian": "-9.63%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C4",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C6 The C6 Legends",
+          "TeamName": "C4 & C2 ducttaped together",
+          "Distance": "C4",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "27:37.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Steve Small",
+          "TeamName": "Vajda K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "9:33.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "42.24%",
+          "PercentMedian": "18.17%"
+        },
+        {
+          "Place": "2",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Surf ski V12",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:20.7",
+          "Difference": "+0:47.7",
+          "PercentBack": "+8.32%",
+          "PercentWinning": "92.32%",
+          "PercentAverage": "37.43%",
+          "PercentMedian": "11.35%"
+        },
+        {
+          "Place": "3",
+          "Name": "Einar Ogle",
+          "TeamName": "Nelo Quattro K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:29.4",
+          "Difference": "+1:56.4",
+          "PercentBack": "+20.31%",
+          "PercentWinning": "83.12%",
+          "PercentAverage": "30.51%",
+          "PercentMedian": "1.54%"
+        },
+        {
+          "Place": "4",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:40.2",
+          "Difference": "+2:07.2",
+          "PercentBack": "+22.20%",
+          "PercentWinning": "81.83%",
+          "PercentAverage": "29.42%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "5",
+          "Name": "David Jennings",
+          "TeamName": "Surf ski V10",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:49.9",
+          "Difference": "+3:16.9",
+          "PercentBack": "+34.36%",
+          "PercentWinning": "74.43%",
+          "PercentAverage": "22.39%",
+          "PercentMedian": "-9.95%"
+        },
+        {
+          "Place": "6",
+          "Name": "Lee Bjorklund",
+          "TeamName": "Inflatible kayak",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "29:55.4",
+          "Difference": "+20:22.4",
+          "PercentBack": "+213.33%",
+          "PercentWinning": "31.91%",
+          "PercentAverage": "-80.98%",
+          "PercentMedian": "-156.41%"
+        },
+        {
+          "Place": "7",
+          "Name": "Jean Bjorklund",
+          "TeamName": "Inflatible kayak",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "29:55.6",
+          "Difference": "+20:22.6",
+          "PercentBack": "+213.37%",
+          "PercentWinning": "31.91%",
+          "PercentAverage": "-81.00%",
+          "PercentMedian": "-156.44%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Karla Ogle & Soren Ogle",
+          "TeamName": "Nelo Viper K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "14:01.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.63%",
+          "PercentMedian": "9.63%"
+        },
+        {
+          "Place": "2",
+          "Name": "Doug Bosworth",
+          "TeamName": "Marathon canoe C-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "15:43.8",
+          "Difference": "+2:45.8",
+          "PercentBack": "+21.31%",
+          "PercentWinning": "82.43%",
+          "PercentAverage": "-9.63%",
+          "PercentMedian": "-9.63%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C4",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C6 The C6 Legends",
+          "TeamName": "C4 & C2 ducttaped together",
+          "Distance": "C4",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "27:37.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Einar Ogle",
+          "TeamName": "Nelo Quattro K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:29.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Steve Small",
+          "TeamName": "Vajda K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "9:33.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "45.03%",
+          "PercentMedian": "22.05%"
+        },
+        {
+          "Place": "2",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Surf ski V12",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:20.7",
+          "Difference": "+0:47.7",
+          "PercentBack": "+8.32%",
+          "PercentWinning": "92.32%",
+          "PercentAverage": "40.46%",
+          "PercentMedian": "15.56%"
+        },
+        {
+          "Place": "3",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:40.2",
+          "Difference": "+2:07.2",
+          "PercentBack": "+22.20%",
+          "PercentWinning": "81.83%",
+          "PercentAverage": "32.83%",
+          "PercentMedian": "4.74%"
+        },
+        {
+          "Place": "4",
+          "Name": "David Jennings",
+          "TeamName": "Surf ski V10",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:49.9",
+          "Difference": "+3:16.9",
+          "PercentBack": "+34.36%",
+          "PercentWinning": "74.43%",
+          "PercentAverage": "26.15%",
+          "PercentMedian": "-4.74%"
+        },
+        {
+          "Place": "5",
+          "Name": "Lee Bjorklund",
+          "TeamName": "Inflatible kayak",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "29:55.4",
+          "Difference": "+20:22.4",
+          "PercentBack": "+213.33%",
+          "PercentWinning": "31.91%",
+          "PercentAverage": "-72.23%",
+          "PercentMedian": "-144.26%"
+        },
+        {
+          "Place": "6",
+          "Name": "Jean Bjorklund",
+          "TeamName": "Inflatible kayak",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "29:55.6",
+          "Difference": "+20:22.6",
+          "PercentBack": "+213.37%",
+          "PercentWinning": "31.91%",
+          "PercentAverage": "-72.25%",
+          "PercentMedian": "-144.28%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Karla Ogle & Soren Ogle",
+          "TeamName": "Nelo Viper K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "14:01.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

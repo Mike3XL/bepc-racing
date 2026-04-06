@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 290114,
+    "distance": "K1",
+    "name": "2022 Duck Island Race #5 \u2014 K1",
+    "displayURL": "https://www.webscorer.com/race?raceid=290114",
+    "date": "Aug 19, 2022",
+    "sport": "Paddling - kayak",
+    "startTime": "Friday, August 19, 2022 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.333333
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Einar Ogle",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 551.8,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 551.8,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Alex Ciuca",
+      "craftCategory": "Masters 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 661.9,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 661.9,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

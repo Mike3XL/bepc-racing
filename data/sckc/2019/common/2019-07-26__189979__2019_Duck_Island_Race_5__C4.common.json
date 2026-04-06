@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 189979,
+    "distance": "C4",
+    "name": "2019 Duck Island Race #5 \u2014 C4",
+    "displayURL": "https://www.webscorer.com/race?raceid=189979",
+    "date": "Jul 26, 2019",
+    "sport": "Paddling",
+    "startTime": "Friday, July 26, 2019 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.071429
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "C4 Hana N, Reidar J, Azusa M, Lydia",
+      "craftCategory": "Open",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 533.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 533.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

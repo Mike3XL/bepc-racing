@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 364460,
+    "distance": "SUP",
+    "name": "2024 Duck Island Race #7 \u2014 SUP",
+    "displayURL": "https://www.webscorer.com/race?raceid=364460",
+    "date": "Aug 23, 2024",
+    "sport": "Paddling",
+    "startTime": "Friday, August 23, 2024 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.083333
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Ivan Stork",
+      "craftCategory": "Masters 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 679.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 679.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "RaceInfo": {
+    "RaceId": 107258,
+    "Name": "2017 Duck Island Race #4",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=107258",
+    "Date": "Jul 14, 2017",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 14, 2017 6:45 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6718103714026,
+    "Longitude": -122.342784404755,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 6:08 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/107258_8d4b820b6bb31fb.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Doug Bosworth",
+          "TeamName2": "Marathon canoe",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "22:49.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Juraj Osusky",
+          "TeamName2": "Sprint K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "8:15.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "34.45%",
+          "PercentMedian": "35.50%"
+        },
+        {
+          "Place": "2",
+          "Name": "Simon Smith",
+          "TeamName2": "Sprint K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "9:35.0",
+          "Difference": "+1:20.0",
+          "PercentBack": "+16.16%",
+          "PercentWinning": "86.09%",
+          "PercentAverage": "23.85%",
+          "PercentMedian": "25.08%"
+        },
+        {
+          "Place": "3",
+          "Name": "Steve Small",
+          "TeamName2": "Sprint K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:10.0",
+          "Difference": "+1:55.0",
+          "PercentBack": "+23.23%",
+          "PercentWinning": "81.15%",
+          "PercentAverage": "19.22%",
+          "PercentMedian": "20.52%"
+        },
+        {
+          "Place": "4",
+          "Name": "Jim Erickson",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:05.0",
+          "Difference": "+2:50.0",
+          "PercentBack": "+34.34%",
+          "PercentWinning": "74.44%",
+          "PercentAverage": "11.94%",
+          "PercentMedian": "13.36%"
+        },
+        {
+          "Place": "5",
+          "Name": "Ian Page-Nichols",
+          "TeamName2": "Surf ski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "14:30.0",
+          "Difference": "+6:15.0",
+          "PercentBack": "+75.76%",
+          "PercentWinning": "56.90%",
+          "PercentAverage": "-15.21%",
+          "PercentMedian": "-13.36%"
+        },
+        {
+          "Place": "6",
+          "Name": "Philip Murphy",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "14:37.0",
+          "Difference": "+6:22.0",
+          "PercentBack": "+77.17%",
+          "PercentWinning": "56.44%",
+          "PercentAverage": "-16.14%",
+          "PercentMedian": "-14.27%"
+        },
+        {
+          "Place": "7",
+          "Name": "Elizabeth Erickson",
+          "TeamName2": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "15:43.0",
+          "Difference": "+7:28.0",
+          "PercentBack": "+90.51%",
+          "PercentWinning": "52.49%",
+          "PercentAverage": "-24.88%",
+          "PercentMedian": "-22.87%"
+        },
+        {
+          "Place": "8",
+          "Name": "Breona Gutschmidt",
+          "TeamName2": "Sprint K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "16:46.0",
+          "Difference": "+8:31.0",
+          "PercentBack": "+103.23%",
+          "PercentWinning": "49.20%",
+          "PercentAverage": "-33.22%",
+          "PercentMedian": "-31.07%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Doug Bosworth",
+          "TeamName2": "Marathon canoe",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "22:49.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Juraj Osusky",
+          "TeamName2": "Sprint K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "8:15.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "31.06%",
+          "PercentMedian": "25.56%"
+        },
+        {
+          "Place": "2",
+          "Name": "Steve Small",
+          "TeamName2": "Sprint K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:10.0",
+          "Difference": "+1:55.0",
+          "PercentBack": "+23.23%",
+          "PercentWinning": "81.15%",
+          "PercentAverage": "15.04%",
+          "PercentMedian": "8.27%"
+        },
+        {
+          "Place": "3",
+          "Name": "Jim Erickson",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:05.0",
+          "Difference": "+2:50.0",
+          "PercentBack": "+34.34%",
+          "PercentWinning": "74.44%",
+          "PercentAverage": "7.38%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Philip Murphy",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "14:37.0",
+          "Difference": "+6:22.0",
+          "PercentBack": "+77.17%",
+          "PercentWinning": "56.44%",
+          "PercentAverage": "-22.14%",
+          "PercentMedian": "-31.88%"
+        },
+        {
+          "Place": "5",
+          "Name": "Elizabeth Erickson",
+          "TeamName2": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "15:43.0",
+          "Difference": "+7:28.0",
+          "PercentBack": "+90.51%",
+          "PercentWinning": "52.49%",
+          "PercentAverage": "-31.34%",
+          "PercentMedian": "-41.80%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Simon Smith",
+          "TeamName2": "Sprint K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "9:35.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "29.62%",
+          "PercentMedian": "33.91%"
+        },
+        {
+          "Place": "2",
+          "Name": "Ian Page-Nichols",
+          "TeamName2": "Surf ski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "14:30.0",
+          "Difference": "+4:55.0",
+          "PercentBack": "+51.30%",
+          "PercentWinning": "66.09%",
+          "PercentAverage": "-6.49%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Breona Gutschmidt",
+          "TeamName2": "Sprint K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "16:46.0",
+          "Difference": "+7:11.0",
+          "PercentBack": "+74.96%",
+          "PercentWinning": "57.16%",
+          "PercentAverage": "-23.13%",
+          "PercentMedian": "-15.63%"
+        }
+      ]
+    }
+  ]
+}

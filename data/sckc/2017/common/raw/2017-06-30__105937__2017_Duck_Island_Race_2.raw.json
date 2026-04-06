@@ -1,0 +1,264 @@
+{
+  "RaceInfo": {
+    "RaceId": 105937,
+    "Name": "2017 Duck Island Race #2",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=105937",
+    "Date": "Jun 30, 2017",
+    "Sport": "Paddling",
+    "StartTime": "Friday, June 30, 2017 6:45 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6718103714026,
+    "Longitude": -122.342784404755,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 5:57 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/105937_8d4b820b6bb31fb.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "14:01.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Juraj Osusky",
+          "TeamName": "Nelo Vanquish K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "8:15.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "28.16%",
+          "PercentMedian": "27.04%"
+        },
+        {
+          "Place": "2",
+          "Name": "Kevin Olney",
+          "TeamName": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "8:26.0",
+          "Difference": "+0:11.0",
+          "PercentBack": "+2.22%",
+          "PercentWinning": "97.83%",
+          "PercentAverage": "26.56%",
+          "PercentMedian": "25.42%"
+        },
+        {
+          "Place": "3",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:17.0",
+          "Difference": "+3:02.0",
+          "PercentBack": "+36.77%",
+          "PercentWinning": "73.12%",
+          "PercentAverage": "1.74%",
+          "PercentMedian": "0.22%"
+        },
+        {
+          "Place": "4",
+          "Name": "Einar Ogle",
+          "TeamName": "Nelo Quattro Classic",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:20.0",
+          "Difference": "+3:05.0",
+          "PercentBack": "+37.37%",
+          "PercentWinning": "72.79%",
+          "PercentAverage": "1.31%",
+          "PercentMedian": "-0.22%"
+        },
+        {
+          "Place": "5",
+          "Name": "Karla Ogle",
+          "TeamName": "Viper 55",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "13:59.0",
+          "Difference": "+5:44.0",
+          "PercentBack": "+69.49%",
+          "PercentWinning": "59.00%",
+          "PercentAverage": "-21.77%",
+          "PercentMedian": "-23.66%"
+        },
+        {
+          "Place": "6",
+          "Name": "Soren Ogle",
+          "TeamName": "Tornado",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "15:37.0",
+          "Difference": "+7:22.0",
+          "PercentBack": "+89.29%",
+          "PercentWinning": "52.83%",
+          "PercentAverage": "-35.99%",
+          "PercentMedian": "-38.10%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "14:01.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Einar Ogle",
+          "TeamName": "Nelo Quattro Classic",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:20.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "15.89%",
+          "PercentMedian": "15.89%"
+        },
+        {
+          "Place": "2",
+          "Name": "Soren Ogle",
+          "TeamName": "Tornado",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "15:37.0",
+          "Difference": "+4:17.0",
+          "PercentBack": "+37.79%",
+          "PercentWinning": "72.57%",
+          "PercentAverage": "-15.89%",
+          "PercentMedian": "-15.89%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Juraj Osusky",
+          "TeamName": "Nelo Vanquish K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "8:15.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "21.33%",
+          "PercentMedian": "16.31%"
+        },
+        {
+          "Place": "2",
+          "Name": "Kevin Olney",
+          "TeamName": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "8:26.0",
+          "Difference": "+0:11.0",
+          "PercentBack": "+2.22%",
+          "PercentWinning": "97.83%",
+          "PercentAverage": "19.59%",
+          "PercentMedian": "14.45%"
+        },
+        {
+          "Place": "3",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:17.0",
+          "Difference": "+3:02.0",
+          "PercentBack": "+36.77%",
+          "PercentWinning": "73.12%",
+          "PercentAverage": "-7.59%",
+          "PercentMedian": "-14.45%"
+        },
+        {
+          "Place": "4",
+          "Name": "Karla Ogle",
+          "TeamName": "Viper 55",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "13:59.0",
+          "Difference": "+5:44.0",
+          "PercentBack": "+69.49%",
+          "PercentWinning": "59.00%",
+          "PercentAverage": "-33.33%",
+          "PercentMedian": "-41.84%"
+        }
+      ]
+    }
+  ]
+}

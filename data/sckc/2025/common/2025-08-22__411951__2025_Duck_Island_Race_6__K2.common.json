@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 411951,
+    "distance": "K2",
+    "name": "2025 Duck Island Race #6 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=411951",
+    "date": "Aug 22, 2025",
+    "sport": "Paddling",
+    "startTime": "Friday, August 22, 2025 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.111111
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Jake Zikan & Miles Parsons",
+      "craftCategory": "Open",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 476.3,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 476.3,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "K2 Delia Ward-Smith & Gretchen Ward-Smit",
+      "craftCategory": "Junior",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 753.8,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 753.8,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

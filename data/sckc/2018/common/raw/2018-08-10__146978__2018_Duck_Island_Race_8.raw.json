@@ -1,0 +1,604 @@
+{
+  "RaceInfo": {
+    "RaceId": 146978,
+    "Name": "2018 Duck Island Race #8",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=146978",
+    "Date": "Aug 10, 2018",
+    "Sport": "Paddling",
+    "StartTime": "Friday, August 10, 2018 6:45 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.685398,
+    "Longitude": -122.287201,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Wednesday, September 4, 2024 8:29 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/146978_8dcaf286ed3e343.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "Seattle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:58",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Greg Barton",
+          "TeamName": "Seattle",
+          "TeamName2": "Epic K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:07:26",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "25.69%",
+          "PercentMedian": "23.10%"
+        },
+        {
+          "Place": "2",
+          "Name": "Liam Jennings",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Quattro K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:27",
+          "Difference": "+1:01",
+          "PercentBack": "+13.68%",
+          "PercentWinning": "87.97%",
+          "PercentAverage": "15.53%",
+          "PercentMedian": "12.59%"
+        },
+        {
+          "Place": "3",
+          "Name": "Vaughn Schenk",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Quattro K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:33",
+          "Difference": "+1:07",
+          "PercentBack": "+15.02%",
+          "PercentWinning": "86.94%",
+          "PercentAverage": "14.53%",
+          "PercentMedian": "11.55%"
+        },
+        {
+          "Place": "4",
+          "Name": "Steve Small",
+          "TeamName": "Seattle",
+          "TeamName2": "Epic V12 Surf Ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:09:04",
+          "Difference": "+1:38",
+          "PercentBack": "+21.97%",
+          "PercentWinning": "81.99%",
+          "PercentAverage": "9.37%",
+          "PercentMedian": "6.21%"
+        },
+        {
+          "Place": "5",
+          "Name": "Mike Lawrence",
+          "TeamName": "Seattle",
+          "TeamName2": "Think Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:09:40",
+          "Difference": "+2:14",
+          "PercentBack": "+30.04%",
+          "PercentWinning": "76.90%",
+          "PercentAverage": "3.37%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "6",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Moskito 65",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:09:56",
+          "Difference": "+2:30",
+          "PercentBack": "+33.63%",
+          "PercentWinning": "74.83%",
+          "PercentAverage": "0.70%",
+          "PercentMedian": "-2.76%"
+        },
+        {
+          "Place": "7",
+          "Name": "Philip Murphy",
+          "TeamName": "Seattle",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:23",
+          "Difference": "+3:57",
+          "PercentBack": "+53.14%",
+          "PercentWinning": "65.30%",
+          "PercentAverage": "-13.79%",
+          "PercentMedian": "-17.76%"
+        },
+        {
+          "Place": "8",
+          "Name": "Karol Osusky",
+          "TeamName": "Kenmore",
+          "TeamName2": "Simon Fraser K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:12:27",
+          "Difference": "+5:01",
+          "PercentBack": "+67.49%",
+          "PercentWinning": "59.71%",
+          "PercentAverage": "-24.45%",
+          "PercentMedian": "-28.79%"
+        },
+        {
+          "Place": "9",
+          "Name": "Karla Ogle",
+          "TeamName": "Seattle",
+          "TeamName2": "Linagjin Tornado K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:13:06",
+          "Difference": "+5:40",
+          "PercentBack": "+76.23%",
+          "PercentWinning": "56.74%",
+          "PercentAverage": "-30.95%",
+          "PercentMedian": "-35.52%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Ben Karlinsey & Seth Karlinsey",
+          "TeamName": "Kenmore",
+          "TeamName2": "K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:09:32",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "32.11%",
+          "PercentMedian": "20.39%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 David Fort & Anna Fort",
+          "TeamName": "Seattle",
+          "TeamName2": "Haywood K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "0:09:49",
+          "Difference": "+0:17",
+          "PercentBack": "+2.97%",
+          "PercentWinning": "97.11%",
+          "PercentAverage": "30.09%",
+          "PercentMedian": "18.02%"
+        },
+        {
+          "Place": "3",
+          "Name": "K2 Bobo and Hana Ondrusek",
+          "TeamName": "Kenmore",
+          "TeamName2": "Plastic sea kayak",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "0:14:08",
+          "Difference": "+4:36",
+          "PercentBack": "+48.25%",
+          "PercentWinning": "67.45%",
+          "PercentAverage": "-0.65%",
+          "PercentMedian": "-18.02%"
+        },
+        {
+          "Place": "4",
+          "Name": "K2 Philip and Teresa Studenovka",
+          "TeamName": "Kenmore",
+          "TeamName2": "Plastic sea kayak",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "0:22:41",
+          "Difference": "+13:09",
+          "PercentBack": "+137.94%",
+          "PercentWinning": "42.03%",
+          "PercentAverage": "-61.54%",
+          "PercentMedian": "-89.42%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K4",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K4 Eric M, Hayden L, Ronan N, Einar O",
+          "TeamName": "Seattle",
+          "TeamName2": "Plastex K4",
+          "Distance": "K4",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:31",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Other",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "SUP Jitka and Nicole Studenovska",
+          "TeamName": "Kenmore",
+          "TeamName2": "SUP",
+          "Distance": "Other",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:23:26",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "Seattle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:58",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Liam Jennings",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Quattro K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:27",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.59%",
+          "PercentMedian": "0.59%"
+        },
+        {
+          "Place": "2",
+          "Name": "Vaughn Schenk",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Quattro K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:33",
+          "Difference": "+0:06",
+          "PercentBack": "+1.18%",
+          "PercentWinning": "98.83%",
+          "PercentAverage": "-0.59%",
+          "PercentMedian": "-0.59%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Greg Barton",
+          "TeamName": "Seattle",
+          "TeamName2": "Epic K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:07:26",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "28.75%",
+          "PercentMedian": "25.17%"
+        },
+        {
+          "Place": "2",
+          "Name": "Steve Small",
+          "TeamName": "Seattle",
+          "TeamName2": "Epic V12 Surf Ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:09:04",
+          "Difference": "+1:38",
+          "PercentBack": "+21.97%",
+          "PercentWinning": "81.99%",
+          "PercentAverage": "13.10%",
+          "PercentMedian": "8.72%"
+        },
+        {
+          "Place": "3",
+          "Name": "Mike Lawrence",
+          "TeamName": "Seattle",
+          "TeamName2": "Think Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:09:40",
+          "Difference": "+2:14",
+          "PercentBack": "+30.04%",
+          "PercentWinning": "76.90%",
+          "PercentAverage": "7.35%",
+          "PercentMedian": "2.68%"
+        },
+        {
+          "Place": "4",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Moskito 65",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:09:56",
+          "Difference": "+2:30",
+          "PercentBack": "+33.63%",
+          "PercentWinning": "74.83%",
+          "PercentAverage": "4.79%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "5",
+          "Name": "Philip Murphy",
+          "TeamName": "Seattle",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:23",
+          "Difference": "+3:57",
+          "PercentBack": "+53.14%",
+          "PercentWinning": "65.30%",
+          "PercentAverage": "-9.11%",
+          "PercentMedian": "-14.60%"
+        },
+        {
+          "Place": "6",
+          "Name": "Karol Osusky",
+          "TeamName": "Kenmore",
+          "TeamName2": "Simon Fraser K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:12:27",
+          "Difference": "+5:01",
+          "PercentBack": "+67.49%",
+          "PercentWinning": "59.71%",
+          "PercentAverage": "-19.33%",
+          "PercentMedian": "-25.34%"
+        },
+        {
+          "Place": "7",
+          "Name": "Karla Ogle",
+          "TeamName": "Seattle",
+          "TeamName2": "Linagjin Tornado K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:13:06",
+          "Difference": "+5:40",
+          "PercentBack": "+76.23%",
+          "PercentWinning": "56.74%",
+          "PercentAverage": "-25.56%",
+          "PercentMedian": "-31.88%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Philip and Teresa Studenovka",
+          "TeamName": "Kenmore",
+          "TeamName2": "Plastic sea kayak",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "0:22:41",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Ben Karlinsey & Seth Karlinsey",
+          "TeamName": "Kenmore",
+          "TeamName2": "K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:09:32",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.58%",
+          "PercentMedian": "2.89%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 David Fort & Anna Fort",
+          "TeamName": "Seattle",
+          "TeamName2": "Haywood K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "0:09:49",
+          "Difference": "+0:17",
+          "PercentBack": "+2.97%",
+          "PercentWinning": "97.11%",
+          "PercentAverage": "12.05%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "K2 Bobo and Hana Ondrusek",
+          "TeamName": "Kenmore",
+          "TeamName2": "Plastic sea kayak",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "0:14:08",
+          "Difference": "+4:36",
+          "PercentBack": "+48.25%",
+          "PercentWinning": "67.45%",
+          "PercentAverage": "-26.63%",
+          "PercentMedian": "-43.97%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K4",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K4 Eric M, Hayden L, Ronan N, Einar O",
+          "TeamName": "Seattle",
+          "TeamName2": "Plastex K4",
+          "Distance": "K4",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:31",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Other",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "SUP Jitka and Nicole Studenovska",
+          "TeamName": "Kenmore",
+          "TeamName2": "SUP",
+          "Distance": "Other",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:23:26",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

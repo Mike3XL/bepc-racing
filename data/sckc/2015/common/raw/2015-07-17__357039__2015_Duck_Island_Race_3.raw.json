@@ -1,0 +1,200 @@
+{
+  "RaceInfo": {
+    "RaceId": 357039,
+    "Name": "2015 Duck Island Race #3",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357039",
+    "Date": "Jul 17, 2015",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 17, 2015 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67440845993323,
+    "Longitude": -122.341495241365,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 10:24 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357039_8dc981d26357d57.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Mike Lawrence",
+          "TeamName2": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:17.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.77%",
+          "PercentMedian": "3.67%"
+        },
+        {
+          "Place": "2",
+          "Name": "Karol Osusky",
+          "TeamName2": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:38.0",
+          "Difference": "+0:21.0",
+          "PercentBack": "+3.40%",
+          "PercentWinning": "96.71%",
+          "PercentAverage": "2.56%",
+          "PercentMedian": "0.39%"
+        },
+        {
+          "Place": "3",
+          "Name": "Philip Murphy",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:43.0",
+          "Difference": "+0:26.0",
+          "PercentBack": "+4.21%",
+          "PercentWinning": "95.96%",
+          "PercentAverage": "1.79%",
+          "PercentMedian": "-0.39%"
+        },
+        {
+          "Place": "4",
+          "Name": "Bee Dietz",
+          "TeamName2": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:01.0",
+          "Difference": "+1:44.0",
+          "PercentBack": "+16.86%",
+          "PercentWinning": "85.58%",
+          "PercentAverage": "-10.12%",
+          "PercentMedian": "-12.57%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Kyrstin Szewczyk & Elizabeth Holmes",
+          "TeamName2": "Nelo Viper K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:32.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Mike Lawrence",
+          "TeamName2": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:17.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.77%",
+          "PercentMedian": "3.67%"
+        },
+        {
+          "Place": "2",
+          "Name": "Karol Osusky",
+          "TeamName2": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:38.0",
+          "Difference": "+0:21.0",
+          "PercentBack": "+3.40%",
+          "PercentWinning": "96.71%",
+          "PercentAverage": "2.56%",
+          "PercentMedian": "0.39%"
+        },
+        {
+          "Place": "3",
+          "Name": "Philip Murphy",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:43.0",
+          "Difference": "+0:26.0",
+          "PercentBack": "+4.21%",
+          "PercentWinning": "95.96%",
+          "PercentAverage": "1.79%",
+          "PercentMedian": "-0.39%"
+        },
+        {
+          "Place": "4",
+          "Name": "Bee Dietz",
+          "TeamName2": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:01.0",
+          "Difference": "+1:44.0",
+          "PercentBack": "+16.86%",
+          "PercentWinning": "85.58%",
+          "PercentAverage": "-10.12%",
+          "PercentMedian": "-12.57%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Kyrstin Szewczyk & Elizabeth Holmes",
+          "TeamName2": "Nelo Viper K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:32.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

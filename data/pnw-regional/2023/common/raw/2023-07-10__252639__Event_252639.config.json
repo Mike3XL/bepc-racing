@@ -1,0 +1,117 @@
+{
+  "key": "0523e496a04138884b53a1b447877fa1",
+  "contests": {
+    "1": "Gorge Downwind Champs",
+    "2": "***UNTIMED***"
+  },
+  "splits": [
+    {
+      "ID": 12,
+      "Name": "CheckIn",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 254
+    },
+    {
+      "ID": 11,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    }
+  ],
+  "eventname": "2023 Gorge Downwind Champs",
+  "TimerLogo": "",
+  "TimerURL": "",
+  "EventOver": true,
+  "Time": 53694,
+  "server": "my-us-1.raceresult.com",
+  "BrandColorDark": "",
+  "Tab": {
+    "Label": "",
+    "URLName": "results",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ActiveFrom": "2021-02-06T00:00:00-08:00",
+    "ActiveUntil": "2100-12-31T23:59:59-08:00",
+    "Type": "lists",
+    "Config": null
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "boxes",
+    "StandardDetails": "",
+    "Lists": [
+      {
+        "Name": "Participants|Participants List ABC",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "Start List",
+        "Format": "VP",
+        "Live": 0,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "1218BF"
+      },
+      {
+        "Name": "Result Lists|Overall Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "3EF1B7"
+      },
+      {
+        "Name": "Result Lists|Top 5 - Single - Surfski / OC",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "0641D7"
+      },
+      {
+        "Name": "Result Lists|Age Group Results - Single - Surfski / OC",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "666C44"
+      },
+      {
+        "Name": "Result Lists|Age Group Results - SUP",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "279E5D"
+      },
+      {
+        "Name": "Result Lists|Category Results - Doubles",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "D89BCA"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": true
+  }
+}

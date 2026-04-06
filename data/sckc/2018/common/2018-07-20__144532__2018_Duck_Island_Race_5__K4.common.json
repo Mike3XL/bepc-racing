@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 144532,
+    "distance": "K4",
+    "name": "2018 Duck Island Race #5 \u2014 K4",
+    "displayURL": "https://www.webscorer.com/race?raceid=144532",
+    "date": "Jul 20, 2018",
+    "sport": "Paddling",
+    "startTime": "Friday, July 20, 2018 6:45 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.05
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K4 Aaron S, Nevin H, Hana N, Naomi P",
+      "craftCategory": "Junior",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 766.4,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 766.4,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

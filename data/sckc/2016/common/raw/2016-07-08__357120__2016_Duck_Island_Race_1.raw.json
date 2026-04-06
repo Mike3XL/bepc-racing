@@ -1,0 +1,400 @@
+{
+  "RaceInfo": {
+    "RaceId": 357120,
+    "Name": "2016 Duck Island Race #1",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357120",
+    "Date": "Jul 8, 2016",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 8, 2016 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.674033043790566,
+    "Longitude": -122.33937123232423,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 7:37 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357120_8dc988ad5e5ad8d.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Karel Zikan",
+          "TeamName": "Clipper Canoe",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "13:25.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Claire Ritchie & Doug Ritchie",
+          "TeamName": "Garden Chair C2",
+          "Distance": "C2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "12:47.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "K1 Super Lancer",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "9:53.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.83%",
+          "PercentMedian": "8.06%"
+        },
+        {
+          "Place": "2",
+          "Name": "Parker Duff",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:28.0",
+          "Difference": "+0:35.0",
+          "PercentBack": "+5.90%",
+          "PercentWinning": "94.43%",
+          "PercentAverage": "3.45%",
+          "PercentMedian": "2.64%"
+        },
+        {
+          "Place": "3",
+          "Name": "Jupiter Grant",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:29.0",
+          "Difference": "+0:36.0",
+          "PercentBack": "+6.07%",
+          "PercentWinning": "94.28%",
+          "PercentAverage": "3.30%",
+          "PercentMedian": "2.48%"
+        },
+        {
+          "Place": "4",
+          "Name": "Kevin Armitano",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:44.0",
+          "Difference": "+0:51.0",
+          "PercentBack": "+8.60%",
+          "PercentWinning": "92.08%",
+          "PercentAverage": "0.99%",
+          "PercentMedian": "0.16%"
+        },
+        {
+          "Place": "5",
+          "Name": "Leana Girton",
+          "TeamName": "K1 Super Lancer",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:45.0",
+          "Difference": "+0:52.0",
+          "PercentBack": "+8.77%",
+          "PercentWinning": "91.94%",
+          "PercentAverage": "0.84%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "6",
+          "Name": "James Girton",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:46.0",
+          "Difference": "+0:53.0",
+          "PercentBack": "+8.94%",
+          "PercentWinning": "91.80%",
+          "PercentAverage": "0.68%",
+          "PercentMedian": "-0.16%"
+        },
+        {
+          "Place": "7",
+          "Name": "Nora Davis",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "10:59.0",
+          "Difference": "+1:06.0",
+          "PercentBack": "+11.13%",
+          "PercentWinning": "89.98%",
+          "PercentAverage": "-1.32%",
+          "PercentMedian": "-2.17%"
+        },
+        {
+          "Place": "8",
+          "Name": "Nathan Mitchell",
+          "TeamName": "Surfski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "11:28.0",
+          "Difference": "+1:35.0",
+          "PercentBack": "+16.02%",
+          "PercentWinning": "86.19%",
+          "PercentAverage": "-5.77%",
+          "PercentMedian": "-6.67%"
+        },
+        {
+          "Place": "9",
+          "Name": "Patrick Armitano",
+          "TeamName": "SRS K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "12:02.0",
+          "Difference": "+2:09.0",
+          "PercentBack": "+21.75%",
+          "PercentWinning": "82.13%",
+          "PercentAverage": "-11.00%",
+          "PercentMedian": "-11.94%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Karel Zikan",
+          "TeamName": "Clipper Canoe",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "13:25.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Claire Ritchie & Doug Ritchie",
+          "TeamName": "Garden Chair C2",
+          "Distance": "C2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "12:47.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Leana Girton",
+          "TeamName": "K1 Super Lancer",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:45.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "K1 Super Lancer",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "9:53.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "4.28%",
+          "PercentMedian": "4.28%"
+        },
+        {
+          "Place": "2",
+          "Name": "James Girton",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:46.0",
+          "Difference": "+0:53.0",
+          "PercentBack": "+8.94%",
+          "PercentWinning": "91.80%",
+          "PercentAverage": "-4.28%",
+          "PercentMedian": "-4.28%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Parker Duff",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:28.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.09%",
+          "PercentMedian": "3.61%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jupiter Grant",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:29.0",
+          "Difference": "+0:01.0",
+          "PercentBack": "+0.16%",
+          "PercentWinning": "99.84%",
+          "PercentAverage": "4.94%",
+          "PercentMedian": "3.45%"
+        },
+        {
+          "Place": "3",
+          "Name": "Kevin Armitano",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:44.0",
+          "Difference": "+0:16.0",
+          "PercentBack": "+2.55%",
+          "PercentWinning": "97.52%",
+          "PercentAverage": "2.67%",
+          "PercentMedian": "1.15%"
+        },
+        {
+          "Place": "4",
+          "Name": "Nora Davis",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "10:59.0",
+          "Difference": "+0:31.0",
+          "PercentBack": "+4.94%",
+          "PercentWinning": "95.30%",
+          "PercentAverage": "0.40%",
+          "PercentMedian": "-1.15%"
+        },
+        {
+          "Place": "5",
+          "Name": "Nathan Mitchell",
+          "TeamName": "Surfski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "11:28.0",
+          "Difference": "+1:00.0",
+          "PercentBack": "+9.55%",
+          "PercentWinning": "91.28%",
+          "PercentAverage": "-3.98%",
+          "PercentMedian": "-5.60%"
+        },
+        {
+          "Place": "6",
+          "Name": "Patrick Armitano",
+          "TeamName": "SRS K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "12:02.0",
+          "Difference": "+1:34.0",
+          "PercentBack": "+14.97%",
+          "PercentWinning": "86.98%",
+          "PercentAverage": "-9.12%",
+          "PercentMedian": "-10.82%"
+        }
+      ]
+    }
+  ]
+}

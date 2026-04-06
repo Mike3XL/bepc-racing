@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 357881,
+    "distance": "K2",
+    "name": "2024 Duck Island Race #2 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=357881",
+    "date": "Jul 5, 2024",
+    "sport": "Paddling",
+    "startTime": "Friday, July 5, 2024 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.25
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Peter Turcan & Juraj Osusky",
+      "craftCategory": "Masters 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 473.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 473.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "K2 Elizabeth Holmes & Breona Gutschmidt",
+      "craftCategory": "Masters 40+",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 609.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 609.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "K2 Lucas & Cooper Riley",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 970.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 970.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

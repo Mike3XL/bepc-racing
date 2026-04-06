@@ -9,11 +9,29 @@ clubs:
     type: org                          # org | league
     description: >
       Weekly race series at Shilshole Bay, Ballard, organized through Ballard Elks Lodge #827.
-      Open to the whole community — kayak, surfski, SUP, and outrigger.
+      All craft welcome — kayak, surfski, SUP, outrigger, and more.
+      Continues the tradition of the Rob Casey / Salmon Bay Paddle race series (2015–2018).
     homepage_url: https://www.ballardelks.org/paddle-club
     logo: null                         # path to logo image (future)
     gh_branch: gh-pages
     gh_url: https://mike3xl.github.io/bepc-racing/
+
+    # Where to find races and results — check in priority order
+    data_sources:
+      race_lists:
+        - url: https://www.webscorer.com/bepc827
+          notes: Primary — all BEPC races from 2019+
+        - url: https://www.webscorer.com/13754
+          notes: Rob Casey / Salmon Bay Paddle — early BEPC races (2015-2018) and some non-BEPC events
+      fetch_sources:
+        - type: webscorer_organizer
+          id: bepc827
+          cmd: "cli.py fetch --club bepc --year YYYY <race_ids>"
+          notes: Primary BEPC organizer (Ballard Elks Paddle Club)
+        - type: webscorer_organizer
+          id: "13754"
+          cmd: "cli.py fetch --club bepc --year YYYY <race_ids>"
+          notes: Rob Casey / Salmon Bay Paddle — ran early BEPC races 2015-2018; also non-BEPC events (filter carefully)
 
     race_inclusion:
       include_organizers:
@@ -25,7 +43,7 @@ clubs:
       exclude_patterns: []
 
     handicap:
-      establishment_races: 2          # races before handicap is established
+      num_races_to_establish: 1          # ineligible for first race; eligible from race 2
       update_faster: 0.30             # weight toward new result when faster than par
       update_slower: 0.15             # weight toward new result when slower than par
       carry_over: true                # carry handicap across seasons
@@ -54,6 +72,24 @@ clubs:
     gh_branch: gh-pages-sound-rowers
     gh_url: https://mike3xl.github.io/bepc-racing/
 
+    # Where to find races and results — check in priority order
+    data_sources:
+      race_lists:
+        - url: https://www.soundrowers.org/race-results/
+          notes: Primary — all Sound Rowers races with year-by-year result links
+        - url: https://www.soundrowers.org/race-schedule/
+          notes: Upcoming races and event names
+      fetch_sources:
+        - type: webscorer_organizer
+          id: soundrowers
+          cmd: "cli.py fetch --club sound-rowers --year YYYY <race_ids>"
+          notes: Most Sound Rowers races (Commencement, Rat Island, Elk River, Shaw, Budd Inlet, Bainbridge, Sausage Pull, Squaxin, Guano Rocks)
+        - type: pacificmultisports
+          url: https://register.pacificmultisports.com/Events/Results
+          catalog: data/sources/pacificmultisports_events.json
+          cmd: "cli.py fetch-raceresult --club sound-rowers --year YYYY <rr_ids>"
+          notes: La Conner (2024+), Lake Samish Salmon Row (2025+), Lake Whatcom Classic (2024+)
+
     race_inclusion:
       include_organizers:
         - soundrowers                  # Sound Rowers and Paddlers (primary)
@@ -63,7 +99,7 @@ clubs:
       exclude_patterns: []
 
     handicap:
-      establishment_races: 2
+      num_races_to_establish: 1
       update_faster: 0.30
       update_slower: 0.15
       carry_over: true
@@ -93,6 +129,67 @@ clubs:
     gh_branch: gh-pages-pnw-regional
     gh_url: https://mike3xl.github.io/bepc-racing/
 
+    # Where to find races and results — check in priority order
+    data_sources:
+      race_lists:
+        - url: https://register.pacificmultisports.com/Events/Results
+          notes: Peter Marcus, Narrows Challenge, Gorge Downwind, BBOP, Salmon Row, La Conner, Lake Whatcom
+        - url: https://www.soundrowers.org/race-results/
+          notes: Sound Rowers events (Commencement, Rat Island, Elk River, Shaw, Budd Inlet, Bainbridge, Sausage Pull)
+        - url: https://www.soundrowers.org/race-schedule/
+          notes: Upcoming Sound Rowers events and proper race names
+        - url: https://www.jerichooutrigger.com/
+          notes: LAST RESORT — BC/Canadian races (Keats Chop, Chicken, Da Grind, Whipper, WUTG, FLCC, Island Iron, Canadian Nationals, Round Bowen, NPI Attack, FGPC V12) and PNWORCA Winter Series
+        - url: https://www.ghckrt.com
+          notes: >
+            GHCKC (Gig Harbor Canoe & Kayak Racing Team) — two events relevant to PNW League:
+            1. Paddlers Cup (gigharborpaddlerscup.com) — annual April event at Skansie Park, Gig Harbor.
+               Inner Harbor 2.5K/5K/10K courses include surfski, SUP, OC, prone, sprint K/C.
+               Results: 2025 on gigharborpaddlerscup.com/event-info/results/ (HTML table, no API).
+               2018 on racehubhq.com. 2013-2017 PDFs only.
+               No WebScorer/raceresult — needs custom scraper or manual import.
+            2. Eric Hughes Memorial Regatta — open to all small craft at Green Lake, Seattle.
+               WebScorer raceid=202932 (2019 only so far). Already in pnw-regional/2019.
+               Check SCKC WebScorer for future years.
+      fetch_sources:
+        - type: pacificmultisports        # priority 1
+          url: https://register.pacificmultisports.com/Events/Results
+          catalog: data/sources/pacificmultisports_events.json
+          cmd: "cli.py fetch-raceresult --club pnw-regional --year YYYY <rr_ids>"
+          notes: Gorge Downwind, Peter Marcus, Narrows Challenge, BBOP, Salmon Row, La Conner, Lake Whatcom
+        - type: webscorer_direct          # priority 2
+          cmd: "cli.py fetch --club pnw-regional --year YYYY <race_ids>"
+          notes: >
+            Sound Rowers events on WebScorer (Commencement, Rat Island, Elk River, Shaw, Budd Inlet,
+            Bainbridge, Sausage Pull, Squaxin, Guano Rocks);
+            PNWORCA #7/Winter Championships (org 127 — see pnworca7_webscorer map above);
+            Salmon Bay Paddle (org 90102) for Alderbrook, Deception Pass etc.
+        - type: jericho                   # priority 3 — last resort
+          url: https://www.jerichooutrigger.com/
+          cmd: "cli.py fetch-jericho --year YYYY"
+          notes: BC/Canadian races only — use only when no WebScorer or raceresult source exists
+          # These race name slugs are confirmed Jericho-only (no better source exists):
+          accepted_slugs:
+            - Chicken          # Chicken Long Solo/Relay (BC)
+            - Dagrind          # Da Grind (BC)
+            - Keatschop        # Keats Chop (BC)
+            - Weapon           # Choose Your Weapon (BC)
+            - Whipper          # Whey-Ah-Wichen Whipper (BC)
+            - Wutg             # Wake Up the Gorge (BC)
+            - Flcc             # FLCC Fall Small Boat Race (BC)
+            - Islandironsmallboats  # Island Iron OC6 (BC)
+            - Roundbowen       # Round Bowen Island (BC)
+            - Npiattack        # NOPC NPI Attack (BC)
+            - Supchallenge     # SUP Challenge (co-located with Da Grind)
+            - Pnworca1         # PNWORCA Winter Series (OC6, no WebScorer)
+            - Pnworca2
+            - Pnworca3
+            - Pnworca4
+            - Pnworca5
+            - Pnworca6
+            - Pnworca7
+            - PNWORCA_Winter_Series  # PNWORCA #7 2024 (named differently in Jericho)
+
     race_inclusion:
       include_organizers:
         - 90102                        # Salmon Bay Paddle (Alderbrook, Deception Pass, etc.)
@@ -117,9 +214,31 @@ clubs:
       exclude_patterns:
         - OC6
         - "Dragon Boat"
+      # Races confirmed excluded (not small boats or too BC-specific):
+      excluded_races:
+        - slug: Gorge_V12
+          reason: V12 crew race (Heat 1/2/3/4/5 format) — not small boats
+        - slug: Cdnssmallboats
+          reason: Canadian Nationals — mostly BC club racers, name format inconsistent with PNW data, placeholder dates
+      # Known WebScorer IDs for PNWORCA #7 / Winter Championships (SPOCC-hosted, org 127):
+      pnworca7_webscorer:
+        2017: 96661    # 2017 PNWORCA Winter Championships
+        2018: 132161   # 2018 PNWORCA Championship Race
+        2019: 174420   # 2019 PNWORCA Championships: Sand Point
+        2021: 236897   # 2021 PNWORCA Winter Series Race #7: Sand Point
+        2022: 271793   # 2022 PNWORCA Winter Series #7 SPOCC
+        2023: 310250   # 2023 PNWORCA Winter Series #7: SPOCC Championships
+        2024: 347166   # 2024 PNWORCA Winter Series #7: SPOCC
+        2025: 384862   # 2025 PNWORCA Winter Series #7: SPOCC
+        2026: 426134   # 2026 PNWORCA Winter Series #7: SPOCC
+      # Excluded from organizer 127 (relay/OC6 format):
+      excluded_from_org_127:
+        - 402626   # 2025 Pacific Northwest Challenge — relay format
+        - 192273   # 2019 Pacific Northwest Outrigger Challenge — relay format
+        - 109926   # 2017 PNW Outrigger Challenge — relay format
 
     handicap:
-      establishment_races: 1          # only 1 race needed (racers do few events/year)
+      num_races_to_establish: 1          # ineligible for first race; eligible from race 2
       update_faster: 0.30
       update_slower: 0.15
       carry_over: true
@@ -155,6 +274,16 @@ clubs:
     gh_branch: gh-pages-coast-outdoors
     gh_url: null
 
+    data_sources:
+      race_lists:
+        - url: https://www.webscorer.com/deepcovekayak
+          notes: Primary — all Coast Outdoors races
+      fetch_sources:
+        - type: webscorer_organizer
+          id: deepcovekayak
+          cmd: "cli.py fetch --club coast-outdoors --year YYYY <race_ids>"
+          notes: All Coast Outdoors races
+
     race_inclusion:
       include_organizers:
         - deepcovekayak                # Coast Outdoors / Deep Cove Kayak
@@ -164,7 +293,7 @@ clubs:
       exclude_patterns: []
 
     handicap:
-      establishment_races: 2
+      num_races_to_establish: 1
       update_faster: 0.30
       update_slower: 0.15
       carry_over: true
@@ -186,12 +315,33 @@ clubs:
     short_name: SCKC
     type: org
     description: >
-      Duck Island Race series and Saturday sprints on Lake Washington, Seattle.
-      Organized by Seattle Canoe and Kayak Club.
+      Duck Island Race series on Lake Washington, Seattle.
+      Weekly open-water distance races organized by Seattle Canoe and Kayak Club.
     homepage_url: https://www.sckc.ws
     logo: null
     gh_branch: gh-pages-sckc
     gh_url: null
+
+    data_sources:
+      race_lists:
+        - url: https://www.webscorer.com/sckc
+          notes: Primary — all SCKC races
+      fetch_sources:
+        - type: webscorer_organizer
+          id: sckc
+          cmd: "cli.py fetch --club sckc --year YYYY <race_ids>"
+          notes: All SCKC races
+      excluded_races:
+        - ids: [386294, 386291, 386286]
+          reason: Saturday sprints — flat-water sprint format, not open-water distance
+        - ids: [372419, 161402, 157924, 135427]
+          reason: Frostbite/Spring 2k with turn — sprint format
+        - ids: [202932]
+          reason: Eric Hughes Memorial Regatta — moved to pnw-regional (Green Lake open event, all small craft)
+        - ids: [202613, 192105, 178411, 178403, 156775]
+          reason: 2k/800m/ODP — sprint/run format
+        - ids: [149186, 149177, 141800, 141794]
+          reason: Summer Sprints 200m/500m — sprint format
 
     race_inclusion:
       include_organizers:
@@ -202,7 +352,7 @@ clubs:
       exclude_patterns: []
 
     handicap:
-      establishment_races: 2
+      num_races_to_establish: 1
       update_faster: 0.30
       update_slower: 0.15
       carry_over: false
@@ -230,6 +380,16 @@ clubs:
     gh_branch: gh-pages-urban-surf
     gh_url: null
 
+    data_sources:
+      race_lists:
+        - url: https://www.webscorer.com/135348
+          notes: Primary — all Urban Surf races
+      fetch_sources:
+        - type: webscorer_organizer
+          id: "135348"
+          cmd: "cli.py fetch --club urban-surf --year YYYY <race_ids>"
+          notes: All Urban Surf races
+
     race_inclusion:
       include_organizers:
         - "135348"                     # Urban Surf / 2100 Project
@@ -239,7 +399,7 @@ clubs:
       exclude_patterns: []
 
     handicap:
-      establishment_races: 2
+      num_races_to_establish: 1
       update_faster: 0.30
       update_slower: 0.15
       carry_over: false

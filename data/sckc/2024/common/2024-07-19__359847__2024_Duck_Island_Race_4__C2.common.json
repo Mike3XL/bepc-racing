@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 359847,
+    "distance": "C2",
+    "name": "2024 Duck Island Race #4 \u2014 C2",
+    "displayURL": "https://www.webscorer.com/race?raceid=359847",
+    "date": "Jul 19, 2024",
+    "sport": "Paddling",
+    "startTime": "Friday, July 19, 2024 6:30 PM (GMT-4)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.3
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "C2 Andreea Ghzila & Emma Tsong",
+      "craftCategory": "Open",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 570.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 570.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "C2 Soren Ogle & Skye Davidson",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 620.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 620.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "C2 Sebastian Kanter & Gus Starkie",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1050.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1050.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

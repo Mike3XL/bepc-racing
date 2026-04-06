@@ -1,0 +1,344 @@
+{
+  "RaceInfo": {
+    "RaceId": 143456,
+    "Name": "2018 Duck Island Race #2",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=143456",
+    "Date": "Jun 29, 2018",
+    "Sport": "Paddling",
+    "StartTime": "Friday, June 29, 2018 5:16 PM (GMT+2)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67105054171593,
+    "Longitude": -122.33977132812498,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 7:01 PM (GMT+2)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/143456_8dcaf26e783c24e.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "Wood canoe",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "15:57.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Leana Girton",
+          "TeamName2": "Nelo Moskito K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "9:34.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.82%",
+          "PercentMedian": "17.05%"
+        },
+        {
+          "Place": "2",
+          "Name": "Cian Donovan",
+          "TeamName2": "Super Lancer K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:10.0",
+          "Difference": "+0:36.0",
+          "PercentBack": "+6.27%",
+          "PercentWinning": "94.10%",
+          "PercentAverage": "9.48%",
+          "PercentMedian": "11.85%"
+        },
+        {
+          "Place": "3",
+          "Name": "Jim Erickson",
+          "TeamName2": "V-10 Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:12.0",
+          "Difference": "+0:38.0",
+          "PercentBack": "+6.62%",
+          "PercentWinning": "93.79%",
+          "PercentAverage": "9.18%",
+          "PercentMedian": "11.56%"
+        },
+        {
+          "Place": "4",
+          "Name": "Ian Page-Nichols",
+          "TeamName2": "TK-1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "11:32.0",
+          "Difference": "+1:58.0",
+          "PercentBack": "+20.56%",
+          "PercentWinning": "82.95%",
+          "PercentAverage": "-2.69%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "5",
+          "Name": "Elizabeth Erickson",
+          "TeamName2": "V-12 Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "11:34.0",
+          "Difference": "+2:00.0",
+          "PercentBack": "+20.91%",
+          "PercentWinning": "82.71%",
+          "PercentAverage": "-2.99%",
+          "PercentMedian": "-0.29%"
+        },
+        {
+          "Place": "6",
+          "Name": "Soren Ogle",
+          "TeamName2": "Nelo Moskito K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "12:18.0",
+          "Difference": "+2:44.0",
+          "PercentBack": "+28.57%",
+          "PercentWinning": "77.78%",
+          "PercentAverage": "-9.52%",
+          "PercentMedian": "-6.65%"
+        },
+        {
+          "Place": "7",
+          "Name": "Breona Gutschmidt",
+          "TeamName2": "Tornado",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "13:17.0",
+          "Difference": "+3:43.0",
+          "PercentBack": "+38.85%",
+          "PercentWinning": "72.02%",
+          "PercentAverage": "-18.27%",
+          "PercentMedian": "-15.17%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Vaughn Schenk & Einar Ogle",
+          "TeamName2": "Plastex 150 K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:49.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "Wood canoe",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "15:57.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Leana Girton",
+          "TeamName2": "Nelo Moskito K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "9:34.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.41%",
+          "PercentMedian": "5.90%"
+        },
+        {
+          "Place": "2",
+          "Name": "Cian Donovan",
+          "TeamName2": "Super Lancer K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:10.0",
+          "Difference": "+0:36.0",
+          "PercentBack": "+6.27%",
+          "PercentWinning": "94.10%",
+          "PercentAverage": "4.79%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Soren Ogle",
+          "TeamName2": "Nelo Moskito K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "12:18.0",
+          "Difference": "+2:44.0",
+          "PercentBack": "+28.57%",
+          "PercentWinning": "77.78%",
+          "PercentAverage": "-15.19%",
+          "PercentMedian": "-20.98%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jim Erickson",
+          "TeamName2": "V-10 Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:12.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "6.28%",
+          "PercentMedian": "6.28%"
+        },
+        {
+          "Place": "2",
+          "Name": "Elizabeth Erickson",
+          "TeamName2": "V-12 Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "11:34.0",
+          "Difference": "+1:22.0",
+          "PercentBack": "+13.40%",
+          "PercentWinning": "88.18%",
+          "PercentAverage": "-6.28%",
+          "PercentMedian": "-6.28%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Ian Page-Nichols",
+          "TeamName2": "TK-1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "11:32.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.05%",
+          "PercentMedian": "7.05%"
+        },
+        {
+          "Place": "2",
+          "Name": "Breona Gutschmidt",
+          "TeamName2": "Tornado",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "13:17.0",
+          "Difference": "+1:45.0",
+          "PercentBack": "+15.17%",
+          "PercentWinning": "86.83%",
+          "PercentAverage": "-7.05%",
+          "PercentMedian": "-7.05%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Vaughn Schenk & Einar Ogle",
+          "TeamName2": "Plastex 150 K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:49.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

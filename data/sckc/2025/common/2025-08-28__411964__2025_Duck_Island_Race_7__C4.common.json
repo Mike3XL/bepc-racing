@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 411964,
+    "distance": "C4",
+    "name": "2025 Duck Island Race #7 \u2014 C4",
+    "displayURL": "https://www.webscorer.com/race?raceid=411964",
+    "date": "Aug 28, 2025",
+    "sport": "Paddling",
+    "startTime": "Thursday, August 28, 2025 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.047619
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "C6 Sebastian, Jane, Delia, Andy, Emma, N",
+      "craftCategory": "Open",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 655.4,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 655.4,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

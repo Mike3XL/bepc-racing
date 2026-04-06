@@ -1,0 +1,508 @@
+{
+  "RaceInfo": {
+    "RaceId": 357001,
+    "Name": "2024 Duck Island Race #1",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357001",
+    "Date": "Jun 28, 2024",
+    "Sport": "Paddling",
+    "StartTime": "Friday, June 28, 2024 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67287715313815,
+    "Longitude": -122.33971455507813,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 19, 2025 9:40 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357001_8dc97f609a600bc.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:57.64",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Nora Tsong & Emma Tsong",
+          "TeamName2": "Nelo C2",
+          "Distance": "C2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "11:03.03",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Soren Ogle",
+          "TeamName2": "Nelo Vanquish 3",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:32.18",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "19.59%",
+          "PercentMedian": "21.60%"
+        },
+        {
+          "Place": "2",
+          "Name": "Egor Klevak",
+          "TeamName2": "Yellow Surf ski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:33.28",
+          "Difference": "+0:01.10",
+          "PercentBack": "+0.24%",
+          "PercentWinning": "99.76%",
+          "PercentAverage": "19.39%",
+          "PercentMedian": "21.41%"
+        },
+        {
+          "Place": "3",
+          "Name": "Miles Cross-Whiter",
+          "TeamName2": "Nelo Quatro",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:34.71",
+          "Difference": "+0:02.53",
+          "PercentBack": "+0.56%",
+          "PercentWinning": "99.44%",
+          "PercentAverage": "19.14%",
+          "PercentMedian": "21.16%"
+        },
+        {
+          "Place": "4",
+          "Name": "Einar Ogle",
+          "TeamName2": "Nelo Quatro",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "9:35.78",
+          "Difference": "+2:03.60",
+          "PercentBack": "+27.33%",
+          "PercentWinning": "78.53%",
+          "PercentAverage": "-2.39%",
+          "PercentMedian": "0.17%"
+        },
+        {
+          "Place": "5",
+          "Name": "Miles Parsons",
+          "TeamName2": "K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "9:36.78",
+          "Difference": "+2:04.60",
+          "PercentBack": "+27.56%",
+          "PercentWinning": "78.40%",
+          "PercentAverage": "-2.57%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "6",
+          "Name": "Kevin Lentini",
+          "TeamName2": "Nelo Quatro Classic",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "9:38.14",
+          "Difference": "+2:05.96",
+          "PercentBack": "+27.86%",
+          "PercentWinning": "78.21%",
+          "PercentAverage": "-2.81%",
+          "PercentMedian": "-0.24%"
+        },
+        {
+          "Place": "7",
+          "Name": "Ethan Chin",
+          "TeamName2": "Liangjin K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:20.25",
+          "Difference": "+2:48.07",
+          "PercentBack": "+37.17%",
+          "PercentWinning": "72.90%",
+          "PercentAverage": "-10.30%",
+          "PercentMedian": "-7.54%"
+        },
+        {
+          "Place": "8",
+          "Name": "Gus Starkie",
+          "TeamName2": "Vandusen Hawk K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:29.43",
+          "Difference": "+2:57.25",
+          "PercentBack": "+39.20%",
+          "PercentWinning": "71.84%",
+          "PercentAverage": "-11.93%",
+          "PercentMedian": "-9.13%"
+        },
+        {
+          "Place": "9",
+          "Name": "Tai Flynn",
+          "TeamName2": "Superlancer",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "12:00.31",
+          "Difference": "+4:28.13",
+          "PercentBack": "+59.30%",
+          "PercentWinning": "62.78%",
+          "PercentAverage": "-28.10%",
+          "PercentMedian": "-24.88%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Elizabeth Holmes & Breona Gutschmidt",
+          "TeamName2": "Epic Surf ski K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:12.75",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.74%",
+          "PercentMedian": "8.11%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Delia Ward-Smith & Lillian Balet",
+          "TeamName2": "Epic K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "11:06.81",
+          "Difference": "+0:54.06",
+          "PercentBack": "+8.82%",
+          "PercentWinning": "91.89%",
+          "PercentAverage": "-0.40%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "K2 Melat Peterson & Cooper Riley",
+          "TeamName2": "Nelo Viper K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "11:52.86",
+          "Difference": "+1:40.11",
+          "PercentBack": "+16.34%",
+          "PercentWinning": "85.96%",
+          "PercentAverage": "-7.34%",
+          "PercentMedian": "-6.91%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:57.64",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Nora Tsong & Emma Tsong",
+          "TeamName2": "Nelo C2",
+          "Distance": "C2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "11:03.03",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Soren Ogle",
+          "TeamName2": "Nelo Vanquish 3",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:32.18",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "20.86%",
+          "PercentMedian": "21.79%"
+        },
+        {
+          "Place": "2",
+          "Name": "Miles Parsons",
+          "TeamName2": "K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "9:36.78",
+          "Difference": "+2:04.60",
+          "PercentBack": "+27.56%",
+          "PercentWinning": "78.40%",
+          "PercentAverage": "-0.95%",
+          "PercentMedian": "0.24%"
+        },
+        {
+          "Place": "3",
+          "Name": "Kevin Lentini",
+          "TeamName2": "Nelo Quatro Classic",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "9:38.14",
+          "Difference": "+2:05.96",
+          "PercentBack": "+27.86%",
+          "PercentWinning": "78.21%",
+          "PercentAverage": "-1.19%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Ethan Chin",
+          "TeamName2": "Liangjin K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:20.25",
+          "Difference": "+2:48.07",
+          "PercentBack": "+37.17%",
+          "PercentWinning": "72.90%",
+          "PercentAverage": "-8.56%",
+          "PercentMedian": "-7.28%"
+        },
+        {
+          "Place": "5",
+          "Name": "Gus Starkie",
+          "TeamName2": "Vandusen Hawk K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:29.43",
+          "Difference": "+2:57.25",
+          "PercentBack": "+39.20%",
+          "PercentWinning": "71.84%",
+          "PercentAverage": "-10.16%",
+          "PercentMedian": "-8.87%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Egor Klevak",
+          "TeamName2": "Yellow Surf ski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:33.28",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.74%",
+          "PercentMedian": "12.03%"
+        },
+        {
+          "Place": "2",
+          "Name": "Miles Cross-Whiter",
+          "TeamName2": "Nelo Quatro",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:34.71",
+          "Difference": "+0:01.43",
+          "PercentBack": "+0.32%",
+          "PercentWinning": "99.69%",
+          "PercentAverage": "17.48%",
+          "PercentMedian": "11.75%"
+        },
+        {
+          "Place": "3",
+          "Name": "Einar Ogle",
+          "TeamName2": "Nelo Quatro",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "9:35.78",
+          "Difference": "+2:02.50",
+          "PercentBack": "+27.03%",
+          "PercentWinning": "78.72%",
+          "PercentAverage": "-4.49%",
+          "PercentMedian": "-11.75%"
+        },
+        {
+          "Place": "4",
+          "Name": "Tai Flynn",
+          "TeamName2": "Superlancer",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "12:00.31",
+          "Difference": "+4:27.03",
+          "PercentBack": "+58.91%",
+          "PercentWinning": "62.93%",
+          "PercentAverage": "-30.72%",
+          "PercentMedian": "-39.80%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Melat Peterson & Cooper Riley",
+          "TeamName2": "Nelo Viper K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "11:52.86",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Elizabeth Holmes & Breona Gutschmidt",
+          "TeamName2": "Epic Surf ski K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:12.75",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Delia Ward-Smith & Lillian Balet",
+          "TeamName2": "Epic K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "11:06.81",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

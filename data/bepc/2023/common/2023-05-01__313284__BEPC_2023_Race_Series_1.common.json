@@ -9,7 +9,7 @@
     "startTime": "Monday, May 1, 2023 7:03 PM (GMT-7)",
     "country": "United States",
     "city": "Seattle",
-    "pointsWeight": 0.434783
+    "pointsWeight": 1.0
   },
   "racerResults": [
     {
@@ -280,6 +280,25 @@
     },
     {
       "originalPlace": 15,
+      "canonicalName": "Kerri Seger",
+      "craftCategory": "Kayak",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 2528.3,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2528.3,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 16,
       "canonicalName": "Rogan Carr",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -298,7 +317,26 @@
       "parRacer": false
     },
     {
-      "originalPlace": 16,
+      "originalPlace": 17,
+      "canonicalName": "Jessi Wasson",
+      "craftCategory": "SUP",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 2622.8,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2622.8,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 18,
       "canonicalName": "Ben Koltz",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -317,7 +355,26 @@
       "parRacer": false
     },
     {
-      "originalPlace": 17,
+      "originalPlace": 19,
+      "canonicalName": "Michele Black",
+      "craftCategory": "SUP",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 2711.5,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2711.5,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 20,
       "canonicalName": "Travis Harth",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -336,7 +393,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 18,
+      "originalPlace": 21,
       "canonicalName": "Alexandre Braure",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -355,7 +412,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 19,
+      "originalPlace": 22,
       "canonicalName": "Mike Breen",
       "craftCategory": "SUP",
       "gender": "Male",
@@ -374,7 +431,7 @@
       "parRacer": false
     },
     {
-      "originalPlace": 20,
+      "originalPlace": 23,
       "canonicalName": "Joe King",
       "craftCategory": "SUP",
       "gender": "Male",

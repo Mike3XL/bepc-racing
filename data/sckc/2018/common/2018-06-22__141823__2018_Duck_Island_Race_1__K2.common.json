@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 141823,
+    "distance": "K2",
+    "name": "2018 Duck Island Race #1 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=141823",
+    "date": "Jun 22, 2018",
+    "sport": "Paddling",
+    "startTime": "Friday, June 22, 2018 8:48 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.090909
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Vaughn Schenk & Eric McCluskey",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 495.4,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 495.4,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

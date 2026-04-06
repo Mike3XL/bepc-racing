@@ -1,0 +1,1858 @@
+{
+  "RaceInfo": {
+    "RaceId": 174420,
+    "Name": "2019 PNWORCA Championships: Sand Point",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=174420",
+    "Date": "Mar 30, 2019",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, March 30, 2019 10:58 AM (GMT-7)",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6887278951293,
+    "Longitude": -122.264519656687,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 3.1",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, March 30, 2019 1:09 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/images/stocksmall/paddling-64x48.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "394",
+          "Name": "Greg Barton",
+          "Distance": "Long Course",
+          "Category": "HPK-M Open",
+          "Time": "1:12:58.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "19.47%",
+          "PercentMedian": "17.72%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "1063",
+          "Name": "Kevin Olney",
+          "Distance": "Long Course",
+          "Category": "HPK-M Open",
+          "Time": "1:14:17.3",
+          "Difference": "+1:18.9",
+          "PercentBack": "+1.80%",
+          "PercentWinning": "98.23%",
+          "PercentAverage": "18.02%",
+          "PercentMedian": "16.24%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "620",
+          "Name": "Don Kiesling",
+          "Distance": "Long Course",
+          "Category": "HPK-M Masters",
+          "Time": "1:15:09.5",
+          "Difference": "+2:11.1",
+          "PercentBack": "+2.99%",
+          "PercentWinning": "97.09%",
+          "PercentAverage": "17.06%",
+          "PercentMedian": "15.26%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "4",
+          "Bib": "1017",
+          "Name": "John Mooney",
+          "Distance": "Long Course",
+          "Category": "HPK-M Senior Masters",
+          "Time": "1:15:33.9",
+          "Difference": "+2:35.5",
+          "PercentBack": "+3.55%",
+          "PercentWinning": "96.57%",
+          "PercentAverage": "16.61%",
+          "PercentMedian": "14.80%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "5",
+          "Bib": "3",
+          "Name": "Cascadia",
+          "Distance": "Long Course",
+          "Category": "OC2-M Masters",
+          "Time": "1:16:09.1",
+          "Difference": "+3:10.7",
+          "PercentBack": "+4.36%",
+          "PercentWinning": "95.83%",
+          "PercentAverage": "15.96%",
+          "PercentMedian": "14.14%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "6",
+          "Bib": "125",
+          "Name": "Marcus & Hammer",
+          "Distance": "Long Course",
+          "Category": "OC2-M Open",
+          "Time": "1:16:26.6",
+          "Difference": "+3:28.2",
+          "PercentBack": "+4.76%",
+          "PercentWinning": "95.46%",
+          "PercentAverage": "15.64%",
+          "PercentMedian": "13.81%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "7",
+          "Bib": "1080",
+          "Name": "Steeve Goodson",
+          "Distance": "Long Course",
+          "Category": "HPK-M Senior Masters",
+          "Time": "1:20:48.0",
+          "Difference": "+7:49.6",
+          "PercentBack": "+10.73%",
+          "PercentWinning": "90.31%",
+          "PercentAverage": "10.83%",
+          "PercentMedian": "8.90%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "8",
+          "Bib": "1020",
+          "Name": "Robbie Magus",
+          "Distance": "Long Course",
+          "Category": "V1-M Masters",
+          "Time": "1:21:12.1",
+          "Difference": "+8:13.7",
+          "PercentBack": "+11.28%",
+          "PercentWinning": "89.87%",
+          "PercentAverage": "10.39%",
+          "PercentMedian": "8.44%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "9",
+          "Bib": "1",
+          "Name": "Gottlieb & Tennille",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Masters",
+          "Time": "1:22:33.6",
+          "Difference": "+9:35.2",
+          "PercentBack": "+13.14%",
+          "PercentWinning": "88.39%",
+          "PercentAverage": "8.89%",
+          "PercentMedian": "6.91%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "10",
+          "Bib": "393",
+          "Name": "Erik Scharffenberg",
+          "Distance": "Long Course",
+          "Category": "OC1-M Open",
+          "Time": "1:23:01.0",
+          "Difference": "+10:02.6",
+          "PercentBack": "+13.76%",
+          "PercentWinning": "87.90%",
+          "PercentAverage": "8.39%",
+          "PercentMedian": "6.40%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "11",
+          "Bib": "605",
+          "Name": "Dos Tigre",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:23:43.0",
+          "Difference": "+10:44.6",
+          "PercentBack": "+14.72%",
+          "PercentWinning": "87.17%",
+          "PercentAverage": "7.61%",
+          "PercentMedian": "5.61%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "12",
+          "Bib": "1042",
+          "Name": "Gavin Godfrey",
+          "Distance": "Long Course",
+          "Category": "OC1-M Masters",
+          "Time": "1:23:50.6",
+          "Difference": "+10:52.2",
+          "PercentBack": "+14.90%",
+          "PercentWinning": "87.04%",
+          "PercentAverage": "7.47%",
+          "PercentMedian": "5.47%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "13",
+          "Bib": "206",
+          "Name": "Team Makeila",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:24:11.6",
+          "Difference": "+11:13.2",
+          "PercentBack": "+15.38%",
+          "PercentWinning": "86.67%",
+          "PercentAverage": "7.09%",
+          "PercentMedian": "5.07%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "14",
+          "Bib": "1011",
+          "Name": "Dan Moseley",
+          "Distance": "Long Course",
+          "Category": "OC1-M Masters",
+          "Time": "1:26:15.1",
+          "Difference": "+13:16.7",
+          "PercentBack": "+18.20%",
+          "PercentWinning": "84.61%",
+          "PercentAverage": "4.82%",
+          "PercentMedian": "2.75%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "15",
+          "Bib": "760",
+          "Name": "Tony Hodanic",
+          "Distance": "Long Course",
+          "Category": "OC1-M Open",
+          "Time": "1:26:30.4",
+          "Difference": "+13:32.0",
+          "PercentBack": "+18.55%",
+          "PercentWinning": "84.36%",
+          "PercentAverage": "4.54%",
+          "PercentMedian": "2.46%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "16",
+          "Bib": "880",
+          "Name": "Team Strobelua",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:27:06.4",
+          "Difference": "+14:08.0",
+          "PercentBack": "+19.37%",
+          "PercentWinning": "83.77%",
+          "PercentAverage": "3.87%",
+          "PercentMedian": "1.79%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "17",
+          "Bib": "1057",
+          "Name": "Sun & Mares",
+          "Distance": "Long Course",
+          "Category": "OC2-M Open",
+          "Time": "1:27:22.2",
+          "Difference": "+14:23.8",
+          "PercentBack": "+19.73%",
+          "PercentWinning": "83.52%",
+          "PercentAverage": "3.58%",
+          "PercentMedian": "1.49%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "18",
+          "Bib": "1073",
+          "Name": "Team Cock",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:27:24.7",
+          "Difference": "+14:26.3",
+          "PercentBack": "+19.79%",
+          "PercentWinning": "83.48%",
+          "PercentAverage": "3.54%",
+          "PercentMedian": "1.44%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "19",
+          "Bib": "1075",
+          "Name": "Ken Asano",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:27:27.3",
+          "Difference": "+14:28.9",
+          "PercentBack": "+19.85%",
+          "PercentWinning": "83.44%",
+          "PercentAverage": "3.49%",
+          "PercentMedian": "1.39%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "20",
+          "Bib": "12",
+          "Name": "Team Since Ever Since",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Masters",
+          "Time": "1:27:30.6",
+          "Difference": "+14:32.2",
+          "PercentBack": "+19.92%",
+          "PercentWinning": "83.39%",
+          "PercentAverage": "3.43%",
+          "PercentMedian": "1.33%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "21",
+          "Bib": "837",
+          "Name": "Gordon Martinez",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:27:46.1",
+          "Difference": "+14:47.7",
+          "PercentBack": "+20.27%",
+          "PercentWinning": "83.14%",
+          "PercentAverage": "3.14%",
+          "PercentMedian": "1.04%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "22",
+          "Bib": "1014",
+          "Name": "John Schalka",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:27:55.2",
+          "Difference": "+14:56.8",
+          "PercentBack": "+20.48%",
+          "PercentWinning": "83.00%",
+          "PercentAverage": "2.98%",
+          "PercentMedian": "0.87%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "23",
+          "Bib": "844",
+          "Name": "Lopaka & Dave Oreiro",
+          "Distance": "Long Course",
+          "Category": "OC2-M Kapuna Masters",
+          "Time": "1:28:12.3",
+          "Difference": "+15:13.9",
+          "PercentBack": "+20.87%",
+          "PercentWinning": "82.73%",
+          "PercentAverage": "2.66%",
+          "PercentMedian": "0.55%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "24",
+          "Bib": "1064",
+          "Name": "Andrew Biel",
+          "Distance": "Long Course",
+          "Category": "HPK-M Open",
+          "Time": "1:29:10.6",
+          "Difference": "+16:12.2",
+          "PercentBack": "+22.20%",
+          "PercentWinning": "81.83%",
+          "PercentAverage": "1.59%",
+          "PercentMedian": "-0.55%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "25",
+          "Bib": "1066",
+          "Name": "Traci Cole",
+          "Distance": "Long Course",
+          "Category": "HPK-W Senior Masters",
+          "Time": "1:30:31.4",
+          "Difference": "+17:33.0",
+          "PercentBack": "+24.05%",
+          "PercentWinning": "80.61%",
+          "PercentAverage": "0.10%",
+          "PercentMedian": "-2.07%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "26",
+          "Bib": "652",
+          "Name": "Hot Fuzz",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:32:52.8",
+          "Difference": "+19:54.4",
+          "PercentBack": "+27.28%",
+          "PercentWinning": "78.57%",
+          "PercentAverage": "-2.50%",
+          "PercentMedian": "-4.72%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "27",
+          "Bib": "2",
+          "Name": "Bob Stewart",
+          "Distance": "Long Course",
+          "Category": "OC1-W Kapuna Masters",
+          "Time": "1:33:13.9",
+          "Difference": "+20:15.5",
+          "PercentBack": "+27.76%",
+          "PercentWinning": "78.27%",
+          "PercentAverage": "-2.89%",
+          "PercentMedian": "-5.12%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "28",
+          "Bib": "863",
+          "Name": "Walt Woolf",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:33:20.4",
+          "Difference": "+20:22.0",
+          "PercentBack": "+27.91%",
+          "PercentWinning": "78.18%",
+          "PercentAverage": "-3.01%",
+          "PercentMedian": "-5.24%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "29",
+          "Bib": "1062",
+          "Name": "Leonard Duncan",
+          "Distance": "Long Course",
+          "Category": "OC1-M Masters",
+          "Time": "1:33:38.7",
+          "Difference": "+20:40.3",
+          "PercentBack": "+28.33%",
+          "PercentWinning": "77.93%",
+          "PercentAverage": "-3.34%",
+          "PercentMedian": "-5.59%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "30",
+          "Bib": "869",
+          "Name": "Kate Kauffman",
+          "Distance": "Long Course",
+          "Category": "OC1-W Open",
+          "Time": "1:33:54.7",
+          "Difference": "+20:56.3",
+          "PercentBack": "+28.69%",
+          "PercentWinning": "77.70%",
+          "PercentAverage": "-3.64%",
+          "PercentMedian": "-5.89%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "31",
+          "Bib": "755",
+          "Name": "Red Storm",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Kupuna Masters",
+          "Time": "1:33:56.1",
+          "Difference": "+20:57.7",
+          "PercentBack": "+28.73%",
+          "PercentWinning": "77.68%",
+          "PercentAverage": "-3.66%",
+          "PercentMedian": "-5.91%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "32",
+          "Bib": "131",
+          "Name": "Rick Renaud",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:34:34.9",
+          "Difference": "+21:36.5",
+          "PercentBack": "+29.61%",
+          "PercentWinning": "77.15%",
+          "PercentAverage": "-4.38%",
+          "PercentMedian": "-6.64%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "33",
+          "Bib": "810",
+          "Name": "Brian Flannelly",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:34:42.3",
+          "Difference": "+21:43.9",
+          "PercentBack": "+29.78%",
+          "PercentWinning": "77.05%",
+          "PercentAverage": "-4.51%",
+          "PercentMedian": "-6.78%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "34",
+          "Bib": "22",
+          "Name": "Blu Kanu",
+          "Distance": "Long Course",
+          "Category": "OC2-W Golden Master",
+          "Time": "1:34:56.6",
+          "Difference": "+21:58.2",
+          "PercentBack": "+30.11%",
+          "PercentWinning": "76.86%",
+          "PercentAverage": "-4.78%",
+          "PercentMedian": "-7.05%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "35",
+          "Bib": "72",
+          "Name": "Mignon Fontenelle",
+          "Distance": "Long Course",
+          "Category": "OC1-W Masters",
+          "Time": "1:35:30.7",
+          "Difference": "+22:32.3",
+          "PercentBack": "+30.89%",
+          "PercentWinning": "76.40%",
+          "PercentAverage": "-5.40%",
+          "PercentMedian": "-7.69%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "36",
+          "Bib": "639",
+          "Name": "Cynthia Conrad",
+          "Distance": "Long Course",
+          "Category": "OC1-W Open",
+          "Time": "1:36:27.5",
+          "Difference": "+23:29.1",
+          "PercentBack": "+32.18%",
+          "PercentWinning": "75.65%",
+          "PercentAverage": "-6.45%",
+          "PercentMedian": "-8.76%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "37",
+          "Bib": "803",
+          "Name": "Matthew Mar",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:39:53.5",
+          "Difference": "+26:55.1",
+          "PercentBack": "+36.89%",
+          "PercentWinning": "73.05%",
+          "PercentAverage": "-10.24%",
+          "PercentMedian": "-12.63%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "38",
+          "Bib": "42",
+          "Name": "Graeme Galves",
+          "Distance": "Long Course",
+          "Category": "V1-M Senior Masters",
+          "Time": "1:40:46.3",
+          "Difference": "+27:47.9",
+          "PercentBack": "+38.09%",
+          "PercentWinning": "72.41%",
+          "PercentAverage": "-11.21%",
+          "PercentMedian": "-13.62%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "39",
+          "Bib": "1072",
+          "Name": "Dot Hall",
+          "Distance": "Long Course",
+          "Category": "HPK-W Masters",
+          "Time": "1:41:46.4",
+          "Difference": "+28:48.0",
+          "PercentBack": "+39.47%",
+          "PercentWinning": "71.70%",
+          "PercentAverage": "-12.31%",
+          "PercentMedian": "-14.75%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "40",
+          "Bib": "1076",
+          "Name": "Jaye Kerzner",
+          "Distance": "Long Course",
+          "Category": "V1-W Kupuna Masters",
+          "Time": "1:42:15.2",
+          "Difference": "+29:16.8",
+          "PercentBack": "+40.12%",
+          "PercentWinning": "71.37%",
+          "PercentAverage": "-12.84%",
+          "PercentMedian": "-15.29%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "41",
+          "Bib": "811",
+          "Name": "Russ Woosley",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:42:27.1",
+          "Difference": "+29:28.7",
+          "PercentBack": "+40.40%",
+          "PercentWinning": "71.23%",
+          "PercentAverage": "-13.06%",
+          "PercentMedian": "-15.52%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "42",
+          "Bib": "1065",
+          "Name": "Blake Hanley",
+          "Distance": "Long Course",
+          "Category": "SUP14-M",
+          "Time": "1:42:36.2",
+          "Difference": "+29:37.8",
+          "PercentBack": "+40.60%",
+          "PercentWinning": "71.12%",
+          "PercentAverage": "-13.23%",
+          "PercentMedian": "-15.69%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "43",
+          "Bib": "1124",
+          "Name": "Kelli Arbey",
+          "Distance": "Long Course",
+          "Category": "OC1-W Senior Masters",
+          "Time": "1:43:09.3",
+          "Difference": "+30:10.9",
+          "PercentBack": "+41.36%",
+          "PercentWinning": "70.74%",
+          "PercentAverage": "-13.84%",
+          "PercentMedian": "-16.31%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "44",
+          "Bib": "95",
+          "Name": "Emma & Andria",
+          "Distance": "Long Course",
+          "Category": "OC2-W Open",
+          "Time": "1:43:38.6",
+          "Difference": "+30:40.2",
+          "PercentBack": "+42.03%",
+          "PercentWinning": "70.41%",
+          "PercentAverage": "-14.38%",
+          "PercentMedian": "-16.86%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "45",
+          "Bib": "262",
+          "Name": "Julia Swenson",
+          "Distance": "Long Course",
+          "Category": "OC1-W Open",
+          "Time": "1:44:37.8",
+          "Difference": "+31:39.4",
+          "PercentBack": "+43.38%",
+          "PercentWinning": "69.74%",
+          "PercentAverage": "-15.47%",
+          "PercentMedian": "-17.97%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "46",
+          "Bib": "1071",
+          "Name": "Michael Schutzler",
+          "Distance": "Long Course",
+          "Category": "Prone-M 14",
+          "Time": "2:06:54.7",
+          "Difference": "+53:56.3",
+          "PercentBack": "+73.92%",
+          "PercentWinning": "57.50%",
+          "PercentAverage": "-40.05%",
+          "PercentMedian": "-43.09%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "-",
+          "Bib": "2013",
+          "Name": "Charlie Butt",
+          "Distance": "Long Course",
+          "Category": "OC1-M Novice",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1068",
+          "Name": "Tarpps Rowing",
+          "Distance": "Short Course",
+          "Category": "Rowing2-Mx Open",
+          "Time": "33:38.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "28.15%",
+          "PercentMedian": "27.09%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "817",
+          "Name": "Walter & Suzanne",
+          "Distance": "Short Course",
+          "Category": "OC2-Mx Senior Masters",
+          "Time": "39:01.5",
+          "Difference": "+5:23.4",
+          "PercentBack": "+16.02%",
+          "PercentWinning": "86.19%",
+          "PercentAverage": "16.64%",
+          "PercentMedian": "15.41%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "1078",
+          "Name": "Christian Oliver",
+          "Distance": "Short Course",
+          "Category": "SUP14-M",
+          "Time": "43:03.3",
+          "Difference": "+9:25.2",
+          "PercentBack": "+28.01%",
+          "PercentWinning": "78.12%",
+          "PercentAverage": "8.03%",
+          "PercentMedian": "6.67%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "4",
+          "Bib": "812",
+          "Name": "Layne Stambaugh",
+          "Distance": "Short Course",
+          "Category": "SUP14-M",
+          "Time": "43:06.2",
+          "Difference": "+9:28.1",
+          "PercentBack": "+28.15%",
+          "PercentWinning": "78.03%",
+          "PercentAverage": "7.93%",
+          "PercentMedian": "6.57%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "5",
+          "Bib": "1070",
+          "Name": "Ivan Storck",
+          "Distance": "Short Course",
+          "Category": "SUP14-M",
+          "Time": "46:08.0",
+          "Difference": "+12:29.9",
+          "PercentBack": "+37.16%",
+          "PercentWinning": "72.91%",
+          "PercentAverage": "1.46%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "6",
+          "Bib": "681",
+          "Name": "Bren Trask",
+          "Distance": "Short Course",
+          "Category": "OC1-W Masters",
+          "Time": "50:20.9",
+          "Difference": "+16:42.8",
+          "PercentBack": "+49.69%",
+          "PercentWinning": "66.80%",
+          "PercentAverage": "-7.55%",
+          "PercentMedian": "-9.14%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "7",
+          "Bib": "89",
+          "Name": "Will Stiles",
+          "Distance": "Short Course",
+          "Category": "OC1-M Kupuna Masters",
+          "Time": "51:12.2",
+          "Difference": "+17:34.1",
+          "PercentBack": "+52.23%",
+          "PercentWinning": "65.69%",
+          "PercentAverage": "-9.37%",
+          "PercentMedian": "-10.99%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "8",
+          "Bib": "1079",
+          "Name": "Evan Vernon",
+          "Distance": "Short Course",
+          "Category": "SUP14-M",
+          "Time": "51:49.2",
+          "Difference": "+18:11.1",
+          "PercentBack": "+54.07%",
+          "PercentWinning": "64.91%",
+          "PercentAverage": "-10.69%",
+          "PercentMedian": "-12.33%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "9",
+          "Bib": "1069",
+          "Name": "Josh Waddell",
+          "Distance": "Short Course",
+          "Category": "SUP14-M",
+          "Time": "1:03:01.2",
+          "Difference": "+29:23.1",
+          "PercentBack": "+87.36%",
+          "PercentWinning": "53.37%",
+          "PercentAverage": "-34.61%",
+          "PercentMedian": "-36.60%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "HPK-M Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "620",
+          "Name": "Don Kiesling",
+          "Distance": "Long Course",
+          "Category": "HPK-M Masters",
+          "Time": "1:15:09.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "HPK-M Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "394",
+          "Name": "Greg Barton",
+          "Distance": "Long Course",
+          "Category": "HPK-M Open",
+          "Time": "1:12:58.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.41%",
+          "PercentMedian": "1.77%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "1063",
+          "Name": "Kevin Olney",
+          "Distance": "Long Course",
+          "Category": "HPK-M Open",
+          "Time": "1:14:17.3",
+          "Difference": "+1:18.9",
+          "PercentBack": "+1.80%",
+          "PercentWinning": "98.23%",
+          "PercentAverage": "5.74%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "1064",
+          "Name": "Andrew Biel",
+          "Distance": "Long Course",
+          "Category": "HPK-M Open",
+          "Time": "1:29:10.6",
+          "Difference": "+16:12.2",
+          "PercentBack": "+22.20%",
+          "PercentWinning": "81.83%",
+          "PercentAverage": "-13.15%",
+          "PercentMedian": "-20.04%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "HPK-M Senior Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1017",
+          "Name": "John Mooney",
+          "Distance": "Long Course",
+          "Category": "HPK-M Senior Masters",
+          "Time": "1:15:33.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.35%",
+          "PercentMedian": "3.35%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "1080",
+          "Name": "Steeve Goodson",
+          "Distance": "Long Course",
+          "Category": "HPK-M Senior Masters",
+          "Time": "1:20:48.0",
+          "Difference": "+5:14.1",
+          "PercentBack": "+6.93%",
+          "PercentWinning": "93.52%",
+          "PercentAverage": "-3.35%",
+          "PercentMedian": "-3.35%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "HPK-W Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1072",
+          "Name": "Dot Hall",
+          "Distance": "Long Course",
+          "Category": "HPK-W Masters",
+          "Time": "1:41:46.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "HPK-W Senior Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1066",
+          "Name": "Traci Cole",
+          "Distance": "Long Course",
+          "Category": "HPK-W Senior Masters",
+          "Time": "1:30:31.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC1-M Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1042",
+          "Name": "Gavin Godfrey",
+          "Distance": "Long Course",
+          "Category": "OC1-M Masters",
+          "Time": "1:23:50.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "4.63%",
+          "PercentMedian": "2.79%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "1011",
+          "Name": "Dan Moseley",
+          "Distance": "Long Course",
+          "Category": "OC1-M Masters",
+          "Time": "1:26:15.1",
+          "Difference": "+2:24.5",
+          "PercentBack": "+2.87%",
+          "PercentWinning": "97.21%",
+          "PercentAverage": "1.89%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "1062",
+          "Name": "Leonard Duncan",
+          "Distance": "Long Course",
+          "Category": "OC1-M Masters",
+          "Time": "1:33:38.7",
+          "Difference": "+9:48.1",
+          "PercentBack": "+11.69%",
+          "PercentWinning": "89.53%",
+          "PercentAverage": "-6.52%",
+          "PercentMedian": "-8.57%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC1-M Novice"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "2013",
+          "Name": "Charlie Butt",
+          "Distance": "Long Course",
+          "Category": "OC1-M Novice",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC1-M Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "393",
+          "Name": "Erik Scharffenberg",
+          "Distance": "Long Course",
+          "Category": "OC1-M Open",
+          "Time": "1:23:01.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "2.06%",
+          "PercentMedian": "2.06%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "760",
+          "Name": "Tony Hodanic",
+          "Distance": "Long Course",
+          "Category": "OC1-M Open",
+          "Time": "1:26:30.4",
+          "Difference": "+3:29.4",
+          "PercentBack": "+4.20%",
+          "PercentWinning": "95.97%",
+          "PercentAverage": "-2.06%",
+          "PercentMedian": "-2.06%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC1-M Senior Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1075",
+          "Name": "Ken Asano",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:27:27.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "6.48%",
+          "PercentMedian": "6.92%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "837",
+          "Name": "Gordon Martinez",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:27:46.1",
+          "Difference": "+0:18.8",
+          "PercentBack": "+0.36%",
+          "PercentWinning": "99.64%",
+          "PercentAverage": "6.14%",
+          "PercentMedian": "6.59%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "1014",
+          "Name": "John Schalka",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:27:55.2",
+          "Difference": "+0:27.9",
+          "PercentBack": "+0.53%",
+          "PercentWinning": "99.47%",
+          "PercentAverage": "5.98%",
+          "PercentMedian": "6.43%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "4",
+          "Bib": "863",
+          "Name": "Walt Woolf",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:33:20.4",
+          "Difference": "+5:53.1",
+          "PercentBack": "+6.73%",
+          "PercentWinning": "93.70%",
+          "PercentAverage": "0.19%",
+          "PercentMedian": "0.66%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "5",
+          "Bib": "131",
+          "Name": "Rick Renaud",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:34:34.9",
+          "Difference": "+7:07.6",
+          "PercentBack": "+8.15%",
+          "PercentWinning": "92.47%",
+          "PercentAverage": "-1.14%",
+          "PercentMedian": "-0.66%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "6",
+          "Bib": "810",
+          "Name": "Brian Flannelly",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:34:42.3",
+          "Difference": "+7:15.0",
+          "PercentBack": "+8.29%",
+          "PercentWinning": "92.34%",
+          "PercentAverage": "-1.27%",
+          "PercentMedian": "-0.79%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "7",
+          "Bib": "803",
+          "Name": "Matthew Mar",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:39:53.5",
+          "Difference": "+12:26.2",
+          "PercentBack": "+14.22%",
+          "PercentWinning": "87.55%",
+          "PercentAverage": "-6.82%",
+          "PercentMedian": "-6.31%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "8",
+          "Bib": "811",
+          "Name": "Russ Woosley",
+          "Distance": "Long Course",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:42:27.1",
+          "Difference": "+14:59.8",
+          "PercentBack": "+17.15%",
+          "PercentWinning": "85.36%",
+          "PercentAverage": "-9.56%",
+          "PercentMedian": "-9.04%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC1-W Kapuna Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "2",
+          "Name": "Bob Stewart",
+          "Distance": "Long Course",
+          "Category": "OC1-W Kapuna Masters",
+          "Time": "1:33:13.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC1-W Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "72",
+          "Name": "Mignon Fontenelle",
+          "Distance": "Long Course",
+          "Category": "OC1-W Masters",
+          "Time": "1:35:30.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC1-W Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "869",
+          "Name": "Kate Kauffman",
+          "Distance": "Long Course",
+          "Category": "OC1-W Open",
+          "Time": "1:33:54.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "4.50%",
+          "PercentMedian": "2.64%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "639",
+          "Name": "Cynthia Conrad",
+          "Distance": "Long Course",
+          "Category": "OC1-W Open",
+          "Time": "1:36:27.5",
+          "Difference": "+2:32.8",
+          "PercentBack": "+2.71%",
+          "PercentWinning": "97.36%",
+          "PercentAverage": "1.91%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "262",
+          "Name": "Julia Swenson",
+          "Distance": "Long Course",
+          "Category": "OC1-W Open",
+          "Time": "1:44:37.8",
+          "Difference": "+10:43.1",
+          "PercentBack": "+11.41%",
+          "PercentWinning": "89.76%",
+          "PercentAverage": "-6.40%",
+          "PercentMedian": "-8.47%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC1-W Senior Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1124",
+          "Name": "Kelli Arbey",
+          "Distance": "Long Course",
+          "Category": "OC1-W Senior Masters",
+          "Time": "1:43:09.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC2-M Kapuna Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "844",
+          "Name": "Lopaka & Dave Oreiro",
+          "Distance": "Long Course",
+          "Category": "OC2-M Kapuna Masters",
+          "Time": "1:28:12.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC2-M Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "3",
+          "Name": "Cascadia",
+          "Distance": "Long Course",
+          "Category": "OC2-M Masters",
+          "Time": "1:16:09.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC2-M Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "125",
+          "Name": "Marcus & Hammer",
+          "Distance": "Long Course",
+          "Category": "OC2-M Open",
+          "Time": "1:16:26.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "6.67%",
+          "PercentMedian": "6.67%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "1057",
+          "Name": "Sun & Mares",
+          "Distance": "Long Course",
+          "Category": "OC2-M Open",
+          "Time": "1:27:22.2",
+          "Difference": "+10:55.6",
+          "PercentBack": "+14.29%",
+          "PercentWinning": "87.49%",
+          "PercentAverage": "-6.67%",
+          "PercentMedian": "-6.67%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC2-Mx Kupuna Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "755",
+          "Name": "Red Storm",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Kupuna Masters",
+          "Time": "1:33:56.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC2-Mx Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "Gottlieb & Tennille",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Masters",
+          "Time": "1:22:33.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "2.91%",
+          "PercentMedian": "2.91%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "12",
+          "Name": "Team Since Ever Since",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Masters",
+          "Time": "1:27:30.6",
+          "Difference": "+4:57.0",
+          "PercentBack": "+6.00%",
+          "PercentWinning": "94.34%",
+          "PercentAverage": "-2.91%",
+          "PercentMedian": "-2.91%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC2-Mx Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "605",
+          "Name": "Dos Tigre",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:23:43.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.84%",
+          "PercentMedian": "3.89%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "206",
+          "Name": "Team Makeila",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:24:11.6",
+          "Difference": "+0:28.6",
+          "PercentBack": "+0.57%",
+          "PercentWinning": "99.43%",
+          "PercentAverage": "3.29%",
+          "PercentMedian": "3.34%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "880",
+          "Name": "Team Strobelua",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:27:06.4",
+          "Difference": "+3:23.4",
+          "PercentBack": "+4.05%",
+          "PercentWinning": "96.11%",
+          "PercentAverage": "-0.05%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "4",
+          "Bib": "1073",
+          "Name": "Team Cock",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:27:24.7",
+          "Difference": "+3:41.7",
+          "PercentBack": "+4.41%",
+          "PercentWinning": "95.77%",
+          "PercentAverage": "-0.40%",
+          "PercentMedian": "-0.35%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "5",
+          "Bib": "652",
+          "Name": "Hot Fuzz",
+          "Distance": "Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:32:52.8",
+          "Difference": "+9:09.8",
+          "PercentBack": "+10.95%",
+          "PercentWinning": "90.13%",
+          "PercentAverage": "-6.68%",
+          "PercentMedian": "-6.63%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC2-W Golden Master"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "22",
+          "Name": "Blu Kanu",
+          "Distance": "Long Course",
+          "Category": "OC2-W Golden Master",
+          "Time": "1:34:56.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC2-W Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "95",
+          "Name": "Emma & Andria",
+          "Distance": "Long Course",
+          "Category": "OC2-W Open",
+          "Time": "1:43:38.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "Prone-M 14"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1071",
+          "Name": "Michael Schutzler",
+          "Distance": "Long Course",
+          "Category": "Prone-M 14",
+          "Time": "2:06:54.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "SUP14-M"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1065",
+          "Name": "Blake Hanley",
+          "Distance": "Long Course",
+          "Category": "SUP14-M",
+          "Time": "1:42:36.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "V1-M Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1020",
+          "Name": "Robbie Magus",
+          "Distance": "Long Course",
+          "Category": "V1-M Masters",
+          "Time": "1:21:12.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "V1-M Senior Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "42",
+          "Name": "Graeme Galves",
+          "Distance": "Long Course",
+          "Category": "V1-M Senior Masters",
+          "Time": "1:40:46.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "V1-W Kupuna Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1076",
+          "Name": "Jaye Kerzner",
+          "Distance": "Long Course",
+          "Category": "V1-W Kupuna Masters",
+          "Time": "1:42:15.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "OC1-M Kupuna Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "89",
+          "Name": "Will Stiles",
+          "Distance": "Short Course",
+          "Category": "OC1-M Kupuna Masters",
+          "Time": "51:12.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "OC1-W Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "681",
+          "Name": "Bren Trask",
+          "Distance": "Short Course",
+          "Category": "OC1-W Masters",
+          "Time": "50:20.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "OC2-Mx Senior Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "817",
+          "Name": "Walter & Suzanne",
+          "Distance": "Short Course",
+          "Category": "OC2-Mx Senior Masters",
+          "Time": "39:01.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "Rowing2-Mx Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1068",
+          "Name": "Tarpps Rowing",
+          "Distance": "Short Course",
+          "Category": "Rowing2-Mx Open",
+          "Time": "33:38.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "SUP14-M"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1078",
+          "Name": "Christian Oliver",
+          "Distance": "Short Course",
+          "Category": "SUP14-M",
+          "Time": "43:03.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.89%",
+          "PercentMedian": "6.67%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "812",
+          "Name": "Layne Stambaugh",
+          "Distance": "Short Course",
+          "Category": "SUP14-M",
+          "Time": "43:06.2",
+          "Difference": "+0:02.9",
+          "PercentBack": "+0.11%",
+          "PercentWinning": "99.89%",
+          "PercentAverage": "12.79%",
+          "PercentMedian": "6.57%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "1070",
+          "Name": "Ivan Storck",
+          "Distance": "Short Course",
+          "Category": "SUP14-M",
+          "Time": "46:08.0",
+          "Difference": "+3:04.7",
+          "PercentBack": "+7.15%",
+          "PercentWinning": "93.33%",
+          "PercentAverage": "6.66%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "4",
+          "Bib": "1079",
+          "Name": "Evan Vernon",
+          "Distance": "Short Course",
+          "Category": "SUP14-M",
+          "Time": "51:49.2",
+          "Difference": "+8:45.9",
+          "PercentBack": "+20.36%",
+          "PercentWinning": "83.09%",
+          "PercentAverage": "-4.84%",
+          "PercentMedian": "-12.33%",
+          "StartTime": "10:58:36.7"
+        },
+        {
+          "Place": "5",
+          "Bib": "1069",
+          "Name": "Josh Waddell",
+          "Distance": "Short Course",
+          "Category": "SUP14-M",
+          "Time": "1:03:01.2",
+          "Difference": "+19:57.9",
+          "PercentBack": "+46.37%",
+          "PercentWinning": "68.32%",
+          "PercentAverage": "-27.50%",
+          "PercentMedian": "-36.60%",
+          "StartTime": "10:58:36.7"
+        }
+      ]
+    }
+  ]
+}

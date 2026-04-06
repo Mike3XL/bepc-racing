@@ -1,0 +1,396 @@
+{
+  "RaceInfo": {
+    "RaceId": 359847,
+    "Name": "2024 Duck Island Race #4",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=359847",
+    "Date": "Jul 19, 2024",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 19, 2024 6:30 PM (GMT-4)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.672230097832994,
+    "Longitude": -122.34048703127442,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 19, 2025 12:44 PM (GMT-4)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/359847_8dcae4596d4c138.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:06",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Andreea Ghzila & Emma Tsong",
+          "TeamName2": "Nelo Quarto C2",
+          "Distance": "C2",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:09:30",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.66%",
+          "PercentMedian": "8.06%"
+        },
+        {
+          "Place": "2",
+          "Name": "C2 Soren Ogle & Skye Davidson",
+          "TeamName2": "Marathon C2",
+          "Distance": "C2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:20",
+          "Difference": "+0:50",
+          "PercentBack": "+8.77%",
+          "PercentWinning": "91.94%",
+          "PercentAverage": "16.96%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "C2 Sebastian Kanter & Gus Starkie",
+          "TeamName2": "Marathon C2",
+          "Distance": "C2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:17:30",
+          "Difference": "+8:00",
+          "PercentBack": "+84.21%",
+          "PercentWinning": "54.29%",
+          "PercentAverage": "-40.63%",
+          "PercentMedian": "-69.35%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Holmes",
+          "TeamName2": "Zastera EasyMaster 90",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:14",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "24.10%",
+          "PercentMedian": "11.91%"
+        },
+        {
+          "Place": "2",
+          "Name": "Tai Flynn",
+          "TeamName2": "Nelo Mosquito",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:09",
+          "Difference": "+0:55",
+          "PercentBack": "+8.96%",
+          "PercentWinning": "91.78%",
+          "PercentAverage": "17.31%",
+          "PercentMedian": "4.02%"
+        },
+        {
+          "Place": "3",
+          "Name": "Lillian Balet",
+          "TeamName2": "Zastera Vector",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:11:37",
+          "Difference": "+1:23",
+          "PercentBack": "+13.52%",
+          "PercentWinning": "88.09%",
+          "PercentAverage": "13.84%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Calvin",
+          "TeamName2": "Liangjin Tornado K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:12:02",
+          "Difference": "+1:48",
+          "PercentBack": "+17.59%",
+          "PercentWinning": "85.04%",
+          "PercentAverage": "10.75%",
+          "PercentMedian": "-3.59%"
+        },
+        {
+          "Place": "5",
+          "Name": "Karla Ogle",
+          "TeamName2": "Liangjin Red Tornado K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:22:23",
+          "Difference": "+12:09",
+          "PercentBack": "+118.73%",
+          "PercentWinning": "45.72%",
+          "PercentAverage": "-66.01%",
+          "PercentMedian": "-92.68%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Kevin Lentini & Miles Parsons",
+          "TeamName2": "Epic ML K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:09:02",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:06",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Soren Ogle & Skye Davidson",
+          "TeamName2": "Marathon C2",
+          "Distance": "C2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:20",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "25.75%",
+          "PercentMedian": "25.75%"
+        },
+        {
+          "Place": "2",
+          "Name": "C2 Sebastian Kanter & Gus Starkie",
+          "TeamName2": "Marathon C2",
+          "Distance": "C2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:17:30",
+          "Difference": "+7:10",
+          "PercentBack": "+69.35%",
+          "PercentWinning": "59.05%",
+          "PercentAverage": "-25.75%",
+          "PercentMedian": "-25.75%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Andreea Ghzila & Emma Tsong",
+          "TeamName2": "Nelo Quarto C2",
+          "Distance": "C2",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:09:30",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Lillian Balet",
+          "TeamName2": "Zastera Vector",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:11:37",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "1.76%",
+          "PercentMedian": "1.76%"
+        },
+        {
+          "Place": "2",
+          "Name": "Calvin",
+          "TeamName2": "Liangjin Tornado K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:12:02",
+          "Difference": "+0:25",
+          "PercentBack": "+3.59%",
+          "PercentWinning": "96.54%",
+          "PercentAverage": "-1.76%",
+          "PercentMedian": "-1.76%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Holmes",
+          "TeamName2": "Zastera EasyMaster 90",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:14",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "37.25%",
+          "PercentMedian": "37.25%"
+        },
+        {
+          "Place": "2",
+          "Name": "Karla Ogle",
+          "TeamName2": "Liangjin Red Tornado K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:22:23",
+          "Difference": "+12:09",
+          "PercentBack": "+118.73%",
+          "PercentWinning": "45.72%",
+          "PercentAverage": "-37.25%",
+          "PercentMedian": "-37.25%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Tai Flynn",
+          "TeamName2": "Nelo Mosquito",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:09",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Kevin Lentini & Miles Parsons",
+          "TeamName2": "Epic ML K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:09:02",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 357044,
+    "distance": "C1",
+    "name": "2015 Duck Island Race #5 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=357044",
+    "date": "Aug 21, 2015",
+    "sport": "Paddling",
+    "startTime": "Friday, August 21, 2015 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.125
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Vadim Kin",
+      "craftCategory": "Masters 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 844.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 844.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

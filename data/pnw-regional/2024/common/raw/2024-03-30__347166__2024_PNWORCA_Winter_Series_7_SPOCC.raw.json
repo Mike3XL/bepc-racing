@@ -1,0 +1,2419 @@
+{
+  "RaceInfo": {
+    "RaceId": 347166,
+    "Name": "2024 PNWORCA Winter Series #7 : SPOCC",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=347166",
+    "Date": "Mar 30, 2024",
+    "Sport": "Paddling - outrigger",
+    "StartTime": "Saturday, March 30, 2024 10:47 AM (GMT-7)",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6876831054688,
+    "Longitude": -122.264160566503,
+    "StartType": "Wave",
+    "WaveGrouping": "Custom",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 6.8",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, March 30, 2024 2:07 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/images/stocksmall/paddling-outrigger-64x48.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "5 Mile Short Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1782",
+          "Name": "Peter Prinos",
+          "Distance": "5 Mile Short Course",
+          "Category": "HPK1-M Senior Master 50+",
+          "Time": "49:22.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.59%",
+          "PercentMedian": "17.25%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "875",
+          "Name": "Ivan Stork",
+          "Distance": "5 Mile Short Course",
+          "Category": "HPK1-M Senior Master 50+",
+          "Time": "50:20.5",
+          "Difference": "+0:58.0",
+          "PercentBack": "+1.96%",
+          "PercentWinning": "98.08%",
+          "PercentAverage": "15.98%",
+          "PercentMedian": "15.63%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "632",
+          "Name": "Scott Miller",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "53:44.8",
+          "Difference": "+4:22.3",
+          "PercentBack": "+8.85%",
+          "PercentWinning": "91.87%",
+          "PercentAverage": "10.30%",
+          "PercentMedian": "9.92%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "1771",
+          "Name": "Scott Harrington",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "53:47.0",
+          "Difference": "+4:24.5",
+          "PercentBack": "+8.93%",
+          "PercentWinning": "91.80%",
+          "PercentAverage": "10.24%",
+          "PercentMedian": "9.86%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "1747",
+          "Name": "Ned Bobo",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-M Open",
+          "Time": "54:24.2",
+          "Difference": "+5:01.7",
+          "PercentBack": "+10.18%",
+          "PercentWinning": "90.76%",
+          "PercentAverage": "9.20%",
+          "PercentMedian": "8.82%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "6",
+          "Bib": "1769",
+          "Name": "Pat Ogawa",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-M Kupuna Master 60+",
+          "Time": "56:15.6",
+          "Difference": "+6:53.1",
+          "PercentBack": "+13.94%",
+          "PercentWinning": "87.76%",
+          "PercentAverage": "6.10%",
+          "PercentMedian": "5.71%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "7",
+          "Bib": "1533",
+          "Name": "Selena Soo",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-W Master 40+",
+          "Time": "57:58.7",
+          "Difference": "+8:36.2",
+          "PercentBack": "+17.42%",
+          "PercentWinning": "85.16%",
+          "PercentAverage": "3.24%",
+          "PercentMedian": "2.83%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "8",
+          "Bib": "1767",
+          "Name": "Adam Tischler",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "59:06.1",
+          "Difference": "+9:43.6",
+          "PercentBack": "+19.70%",
+          "PercentWinning": "83.54%",
+          "PercentAverage": "1.36%",
+          "PercentMedian": "0.94%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "9",
+          "Bib": "322",
+          "Name": "Ryan Stringfellow",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-M Kupuna Master 60+",
+          "Time": "59:32.9",
+          "Difference": "+10:10.4",
+          "PercentBack": "+20.60%",
+          "PercentWinning": "82.92%",
+          "PercentAverage": "0.62%",
+          "PercentMedian": "0.20%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "10",
+          "Bib": "1377",
+          "Name": "David Alber",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Open",
+          "Time": "59:46.9",
+          "Difference": "+10:24.4",
+          "PercentBack": "+21.08%",
+          "PercentWinning": "82.59%",
+          "PercentAverage": "0.23%",
+          "PercentMedian": "-0.20%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "11",
+          "Bib": "1745",
+          "Name": "Alexander Vaughan",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "1:01:09.4",
+          "Difference": "+11:46.9",
+          "PercentBack": "+23.86%",
+          "PercentWinning": "80.74%",
+          "PercentAverage": "-2.07%",
+          "PercentMedian": "-2.50%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "12",
+          "Bib": "3",
+          "Name": "Evan Vernon",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "1:01:22.6",
+          "Difference": "+12:00.1",
+          "PercentBack": "+24.31%",
+          "PercentWinning": "80.45%",
+          "PercentAverage": "-2.44%",
+          "PercentMedian": "-2.87%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "13",
+          "Bib": "1504",
+          "Name": "Thomas Akeson",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Senior Master 50+",
+          "Time": "1:02:00.4",
+          "Difference": "+12:37.9",
+          "PercentBack": "+25.58%",
+          "PercentWinning": "79.63%",
+          "PercentAverage": "-3.49%",
+          "PercentMedian": "-3.92%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "14",
+          "Bib": "1770",
+          "Name": "Calvin Rowland",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Senior Master 50+",
+          "Time": "1:02:24.2",
+          "Difference": "+13:01.7",
+          "PercentBack": "+26.39%",
+          "PercentWinning": "79.12%",
+          "PercentAverage": "-4.15%",
+          "PercentMedian": "-4.59%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "15",
+          "Bib": "1784",
+          "Name": "Ahmed Salem",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "1:03:28.4",
+          "Difference": "+14:05.9",
+          "PercentBack": "+28.55%",
+          "PercentWinning": "77.79%",
+          "PercentAverage": "-5.94%",
+          "PercentMedian": "-6.38%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "16",
+          "Bib": "1744",
+          "Name": "Jeremy Clark",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "1:08:49.2",
+          "Difference": "+19:26.7",
+          "PercentBack": "+39.38%",
+          "PercentWinning": "71.75%",
+          "PercentAverage": "-14.86%",
+          "PercentMedian": "-15.34%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "17",
+          "Bib": "1773",
+          "Name": "Nellie Bell",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-W Kupuna Master 60+",
+          "Time": "1:10:08.3",
+          "Difference": "+20:45.8",
+          "PercentBack": "+42.05%",
+          "PercentWinning": "70.40%",
+          "PercentAverage": "-17.06%",
+          "PercentMedian": "-17.55%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "18",
+          "Bib": "1785",
+          "Name": "Alison Cardinal",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-W Master 40+",
+          "Time": "1:14:48.7",
+          "Difference": "+25:26.2",
+          "PercentBack": "+51.52%",
+          "PercentWinning": "66.00%",
+          "PercentAverage": "-24.86%",
+          "PercentMedian": "-25.39%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "394",
+          "Name": "Greg Barton",
+          "Distance": "9 Mile Long Course",
+          "Category": "HPK1-M Kupuna Master 60+",
+          "Time": "1:11:08.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "21.26%",
+          "PercentMedian": "21.48%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1778",
+          "Name": "Mark Chamberlain & Dan Mosely",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC2-M Master 40+",
+          "Time": "1:12:54.4",
+          "Difference": "+1:46.0",
+          "PercentBack": "+2.48%",
+          "PercentWinning": "97.58%",
+          "PercentAverage": "19.30%",
+          "PercentMedian": "19.53%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "1779",
+          "Name": "Kevin Olney",
+          "Distance": "9 Mile Long Course",
+          "Category": "HPK1-M Master 40+",
+          "Time": "1:15:21.7",
+          "Difference": "+4:13.3",
+          "PercentBack": "+5.93%",
+          "PercentWinning": "94.40%",
+          "PercentAverage": "16.59%",
+          "PercentMedian": "16.82%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "1786",
+          "Name": "Brent Campbell",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "1:15:52.1",
+          "Difference": "+4:43.7",
+          "PercentBack": "+6.65%",
+          "PercentWinning": "93.77%",
+          "PercentAverage": "16.03%",
+          "PercentMedian": "16.26%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "1215",
+          "Name": "Darian Hildreth",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Senior Master 50+",
+          "Time": "1:16:27.2",
+          "Difference": "+5:18.8",
+          "PercentBack": "+7.47%",
+          "PercentWinning": "93.05%",
+          "PercentAverage": "15.38%",
+          "PercentMedian": "15.61%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "6",
+          "Bib": "853",
+          "Name": "Jo Turgeon & Mike Bernemann",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC2-Mx Master 40+",
+          "Time": "1:16:52.7",
+          "Difference": "+5:44.3",
+          "PercentBack": "+8.07%",
+          "PercentWinning": "92.54%",
+          "PercentAverage": "14.91%",
+          "PercentMedian": "15.15%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "7",
+          "Bib": "1506",
+          "Name": "Alan Lipp",
+          "Distance": "9 Mile Long Course",
+          "Category": "HPK1-M Kupuna Master 60+",
+          "Time": "1:17:38.4",
+          "Difference": "+6:30.0",
+          "PercentBack": "+9.14%",
+          "PercentWinning": "91.63%",
+          "PercentAverage": "14.07%",
+          "PercentMedian": "14.30%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "8",
+          "Bib": "855",
+          "Name": "Robbie Magus",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Master 40+",
+          "Time": "1:18:23.4",
+          "Difference": "+7:15.0",
+          "PercentBack": "+10.19%",
+          "PercentWinning": "90.75%",
+          "PercentAverage": "13.24%",
+          "PercentMedian": "13.48%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "9",
+          "Bib": "2",
+          "Name": "Tony Hodanic",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Open",
+          "Time": "1:18:41.7",
+          "Difference": "+7:33.3",
+          "PercentBack": "+10.62%",
+          "PercentWinning": "90.40%",
+          "PercentAverage": "12.90%",
+          "PercentMedian": "13.14%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "10",
+          "Bib": "287",
+          "Name": "Beau Whitehead",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:19:09.6",
+          "Difference": "+8:01.2",
+          "PercentBack": "+11.27%",
+          "PercentWinning": "89.87%",
+          "PercentAverage": "12.38%",
+          "PercentMedian": "12.63%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "11",
+          "Bib": "1208",
+          "Name": "Matthew Sun",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Open",
+          "Time": "1:19:13.6",
+          "Difference": "+8:05.2",
+          "PercentBack": "+11.37%",
+          "PercentWinning": "89.79%",
+          "PercentAverage": "12.31%",
+          "PercentMedian": "12.55%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "12",
+          "Bib": "1775",
+          "Name": "Mike Liddell",
+          "Distance": "9 Mile Long Course",
+          "Category": "HPK1-M Master 40+",
+          "Time": "1:19:42.3",
+          "Difference": "+8:33.9",
+          "PercentBack": "+12.04%",
+          "PercentWinning": "89.25%",
+          "PercentAverage": "11.78%",
+          "PercentMedian": "12.03%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "13",
+          "Bib": "1",
+          "Name": "Mika Asano & Ken Asano",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:20:13.3",
+          "Difference": "+9:04.9",
+          "PercentBack": "+12.77%",
+          "PercentWinning": "88.68%",
+          "PercentAverage": "11.21%",
+          "PercentMedian": "11.46%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "14",
+          "Bib": "1192",
+          "Name": "William Rainey",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Open",
+          "Time": "1:21:07.9",
+          "Difference": "+9:59.5",
+          "PercentBack": "+14.05%",
+          "PercentWinning": "87.68%",
+          "PercentAverage": "10.20%",
+          "PercentMedian": "10.45%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "15",
+          "Bib": "1777",
+          "Name": "Michael Wyse",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Open",
+          "Time": "1:21:51.9",
+          "Difference": "+10:43.5",
+          "PercentBack": "+15.08%",
+          "PercentWinning": "86.90%",
+          "PercentAverage": "9.39%",
+          "PercentMedian": "9.64%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "16",
+          "Bib": "1788",
+          "Name": "Brian Kummer",
+          "Distance": "9 Mile Long Course",
+          "Category": "HPK1-M Kupuna Master 60+",
+          "Time": "1:24:58.9",
+          "Difference": "+13:50.5",
+          "PercentBack": "+19.46%",
+          "PercentWinning": "83.71%",
+          "PercentAverage": "5.94%",
+          "PercentMedian": "6.20%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "17",
+          "Bib": "935",
+          "Name": "Simon Corbaux",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Master 40+",
+          "Time": "1:25:01.2",
+          "Difference": "+13:52.8",
+          "PercentBack": "+19.51%",
+          "PercentWinning": "83.67%",
+          "PercentAverage": "5.90%",
+          "PercentMedian": "6.16%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "18",
+          "Bib": "1122",
+          "Name": "Makoto Tsukigase",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Open",
+          "Time": "1:25:02.3",
+          "Difference": "+13:53.9",
+          "PercentBack": "+19.54%",
+          "PercentWinning": "83.66%",
+          "PercentAverage": "5.88%",
+          "PercentMedian": "6.14%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "19",
+          "Bib": "1062",
+          "Name": "Leonard Duncan",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:25:13.1",
+          "Difference": "+14:04.7",
+          "PercentBack": "+19.79%",
+          "PercentWinning": "83.48%",
+          "PercentAverage": "5.68%",
+          "PercentMedian": "5.94%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "20",
+          "Bib": "671",
+          "Name": "Jason Park",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Senior Master 50+",
+          "Time": "1:25:23.4",
+          "Difference": "+14:15.0",
+          "PercentBack": "+20.03%",
+          "PercentWinning": "83.31%",
+          "PercentAverage": "5.49%",
+          "PercentMedian": "5.75%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "21",
+          "Bib": "1721",
+          "Name": "Noah Johnson-Greenough",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "1:25:44.6",
+          "Difference": "+14:36.2",
+          "PercentBack": "+20.53%",
+          "PercentWinning": "82.97%",
+          "PercentAverage": "5.10%",
+          "PercentMedian": "5.36%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "22",
+          "Bib": "1787",
+          "Name": "Gordon Martinez",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:26:35.8",
+          "Difference": "+15:27.4",
+          "PercentBack": "+21.73%",
+          "PercentWinning": "82.15%",
+          "PercentAverage": "4.15%",
+          "PercentMedian": "4.42%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "23",
+          "Bib": "1772",
+          "Name": "Manny De Leon",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:27:12.9",
+          "Difference": "+16:04.5",
+          "PercentBack": "+22.60%",
+          "PercentWinning": "81.57%",
+          "PercentAverage": "3.47%",
+          "PercentMedian": "3.74%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "24",
+          "Bib": "1299",
+          "Name": "Rob Varnel",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Kupuna Master 60+",
+          "Time": "1:27:19.8",
+          "Difference": "+16:11.4",
+          "PercentBack": "+22.76%",
+          "PercentWinning": "81.46%",
+          "PercentAverage": "3.34%",
+          "PercentMedian": "3.61%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "25",
+          "Bib": "151",
+          "Name": "Doug Thomas",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:27:42.5",
+          "Difference": "+16:34.1",
+          "PercentBack": "+23.29%",
+          "PercentWinning": "81.11%",
+          "PercentAverage": "2.92%",
+          "PercentMedian": "3.19%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "26",
+          "Bib": "1808",
+          "Name": "Gregario Mares",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "1:28:40.5",
+          "Difference": "+17:32.1",
+          "PercentBack": "+24.65%",
+          "PercentWinning": "80.23%",
+          "PercentAverage": "1.85%",
+          "PercentMedian": "2.12%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "27",
+          "Bib": "1225",
+          "Name": "Masato Tsukigase",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Novice",
+          "Time": "1:28:43.0",
+          "Difference": "+17:34.6",
+          "PercentBack": "+24.71%",
+          "PercentWinning": "80.19%",
+          "PercentAverage": "1.81%",
+          "PercentMedian": "2.08%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "28",
+          "Bib": "1774",
+          "Name": "Linda Murillo & John Murillo",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC2-Mx Kupuna Master 60+",
+          "Time": "1:30:07.2",
+          "Difference": "+18:58.8",
+          "PercentBack": "+26.68%",
+          "PercentWinning": "78.94%",
+          "PercentAverage": "0.25%",
+          "PercentMedian": "0.53%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "29",
+          "Bib": "1322",
+          "Name": "Darren Grant",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Master 40+",
+          "Time": "1:30:36.0",
+          "Difference": "+19:27.6",
+          "PercentBack": "+27.35%",
+          "PercentWinning": "78.52%",
+          "PercentAverage": "-0.28%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "30",
+          "Bib": "1393",
+          "Name": "Adam Becenti",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "1:31:02.3",
+          "Difference": "+19:53.9",
+          "PercentBack": "+27.97%",
+          "PercentWinning": "78.14%",
+          "PercentAverage": "-0.76%",
+          "PercentMedian": "-0.48%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "31",
+          "Bib": "12",
+          "Name": "Juliana Acuna & Cory Siler",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:31:19.7",
+          "Difference": "+20:11.3",
+          "PercentBack": "+28.38%",
+          "PercentWinning": "77.89%",
+          "PercentAverage": "-1.09%",
+          "PercentMedian": "-0.80%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "32",
+          "Bib": "747",
+          "Name": "Bob Stewart",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Kupuna Master 70+",
+          "Time": "1:31:23.3",
+          "Difference": "+20:14.9",
+          "PercentBack": "+28.46%",
+          "PercentWinning": "77.84%",
+          "PercentAverage": "-1.15%",
+          "PercentMedian": "-0.87%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "33",
+          "Bib": "1283",
+          "Name": "Fraser Shilling",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:31:24.7",
+          "Difference": "+20:16.3",
+          "PercentBack": "+28.50%",
+          "PercentWinning": "77.82%",
+          "PercentAverage": "-1.18%",
+          "PercentMedian": "-0.90%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "34",
+          "Bib": "1115",
+          "Name": "Bruce Diemert",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Kupuna Master 60+",
+          "Time": "1:31:33.2",
+          "Difference": "+20:24.8",
+          "PercentBack": "+28.69%",
+          "PercentWinning": "77.70%",
+          "PercentAverage": "-1.33%",
+          "PercentMedian": "-1.05%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "35",
+          "Bib": "1386",
+          "Name": "Mignon Fontenelle",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Senior Master 50+",
+          "Time": "1:31:44.4",
+          "Difference": "+20:36.0",
+          "PercentBack": "+28.96%",
+          "PercentWinning": "77.55%",
+          "PercentAverage": "-1.54%",
+          "PercentMedian": "-1.26%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "36",
+          "Bib": "1505",
+          "Name": "Richard Campbell",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Open",
+          "Time": "1:33:17.8",
+          "Difference": "+22:09.4",
+          "PercentBack": "+31.15%",
+          "PercentWinning": "76.25%",
+          "PercentAverage": "-3.26%",
+          "PercentMedian": "-2.98%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "37",
+          "Bib": "1973",
+          "Name": "Patrick Hwang",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:34:09.0",
+          "Difference": "+23:00.6",
+          "PercentBack": "+32.34%",
+          "PercentWinning": "75.56%",
+          "PercentAverage": "-4.21%",
+          "PercentMedian": "-3.92%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "38",
+          "Bib": "321",
+          "Name": "Paul Kendall",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:34:32.3",
+          "Difference": "+23:23.9",
+          "PercentBack": "+32.89%",
+          "PercentWinning": "75.25%",
+          "PercentAverage": "-4.64%",
+          "PercentMedian": "-4.35%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "39",
+          "Bib": "1066",
+          "Name": "Traci Cole",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Kupuna Master 60+",
+          "Time": "1:34:37.3",
+          "Difference": "+23:28.9",
+          "PercentBack": "+33.01%",
+          "PercentWinning": "75.18%",
+          "PercentAverage": "-4.73%",
+          "PercentMedian": "-4.44%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "40",
+          "Bib": "1749",
+          "Name": "Matt Kearney",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Open",
+          "Time": "1:34:53.6",
+          "Difference": "+23:45.2",
+          "PercentBack": "+33.39%",
+          "PercentWinning": "74.97%",
+          "PercentAverage": "-5.03%",
+          "PercentMedian": "-4.74%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "41",
+          "Bib": "1250",
+          "Name": "Ivan Pinzon",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "1:35:19.4",
+          "Difference": "+24:11.0",
+          "PercentBack": "+33.99%",
+          "PercentWinning": "74.63%",
+          "PercentAverage": "-5.51%",
+          "PercentMedian": "-5.21%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "42",
+          "Bib": "925",
+          "Name": "Kenneth Ang",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Master 40+",
+          "Time": "1:36:22.9",
+          "Difference": "+25:14.5",
+          "PercentBack": "+35.48%",
+          "PercentWinning": "73.81%",
+          "PercentAverage": "-6.68%",
+          "PercentMedian": "-6.38%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "43",
+          "Bib": "1382",
+          "Name": "Steven Kala Jr.",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:37:39.7",
+          "Difference": "+26:31.3",
+          "PercentBack": "+37.28%",
+          "PercentWinning": "72.84%",
+          "PercentAverage": "-8.10%",
+          "PercentMedian": "-7.79%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "44",
+          "Bib": "1546",
+          "Name": "Pam Watts Cornall",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Kupuna Master 60+",
+          "Time": "1:37:58.6",
+          "Difference": "+26:50.2",
+          "PercentBack": "+37.72%",
+          "PercentWinning": "72.61%",
+          "PercentAverage": "-8.44%",
+          "PercentMedian": "-8.14%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "45",
+          "Bib": "1108",
+          "Name": "Fay Tong & Lon Kincannon",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC2-Mx Kupuna Master 70+",
+          "Time": "1:38:30.0",
+          "Difference": "+27:21.6",
+          "PercentBack": "+38.46%",
+          "PercentWinning": "72.22%",
+          "PercentAverage": "-9.02%",
+          "PercentMedian": "-8.72%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "46",
+          "Bib": "111",
+          "Name": "Graeme Galves",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Senior Master 50+",
+          "Time": "1:38:41.5",
+          "Difference": "+27:33.1",
+          "PercentBack": "+38.73%",
+          "PercentWinning": "72.08%",
+          "PercentAverage": "-9.24%",
+          "PercentMedian": "-8.93%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "47",
+          "Bib": "1746",
+          "Name": "Christian Oliver",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "1:38:54.1",
+          "Difference": "+27:45.7",
+          "PercentBack": "+39.02%",
+          "PercentWinning": "71.93%",
+          "PercentAverage": "-9.47%",
+          "PercentMedian": "-9.16%",
+          "StartTime": "10:47:05.6"
+        },
+        {
+          "Place": "48",
+          "Bib": "1124",
+          "Name": "Kelli Arbey",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Senior Master 50+",
+          "Time": "1:39:47.9",
+          "Difference": "+28:39.5",
+          "PercentBack": "+40.28%",
+          "PercentWinning": "71.28%",
+          "PercentAverage": "-10.46%",
+          "PercentMedian": "-10.15%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "49",
+          "Bib": "1384",
+          "Name": "Brown Fihaki",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Senior Master 50+",
+          "Time": "1:40:10.5",
+          "Difference": "+29:02.1",
+          "PercentBack": "+40.81%",
+          "PercentWinning": "71.02%",
+          "PercentAverage": "-10.88%",
+          "PercentMedian": "-10.57%",
+          "StartTime": "10:47:05.6"
+        },
+        {
+          "Place": "50",
+          "Bib": "1783",
+          "Name": "Ahmed Fakhry",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Open",
+          "Time": "1:40:10.8",
+          "Difference": "+29:02.4",
+          "PercentBack": "+40.82%",
+          "PercentWinning": "71.01%",
+          "PercentAverage": "-10.88%",
+          "PercentMedian": "-10.57%",
+          "StartTime": "10:47:05.6"
+        },
+        {
+          "Place": "51",
+          "Bib": "1280",
+          "Name": "Lorri Stewart",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Kupuna Master 60+",
+          "Time": "1:40:55.8",
+          "Difference": "+29:47.4",
+          "PercentBack": "+41.88%",
+          "PercentWinning": "70.48%",
+          "PercentAverage": "-11.71%",
+          "PercentMedian": "-11.40%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "52",
+          "Bib": "1216",
+          "Name": "Julian Acuna",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:42:17.6",
+          "Difference": "+31:09.2",
+          "PercentBack": "+43.79%",
+          "PercentWinning": "69.55%",
+          "PercentAverage": "-13.22%",
+          "PercentMedian": "-12.91%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "53",
+          "Bib": "1780",
+          "Name": "Luz Delgado",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Senior Master 50+",
+          "Time": "1:42:18.3",
+          "Difference": "+31:09.9",
+          "PercentBack": "+43.81%",
+          "PercentWinning": "69.54%",
+          "PercentAverage": "-13.23%",
+          "PercentMedian": "-12.92%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "54",
+          "Bib": "1378",
+          "Name": "Dalen Hosley",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Open",
+          "Time": "1:48:47.1",
+          "Difference": "+37:38.7",
+          "PercentBack": "+52.92%",
+          "PercentWinning": "65.40%",
+          "PercentAverage": "-20.41%",
+          "PercentMedian": "-20.07%",
+          "StartTime": "10:47:05.6"
+        },
+        {
+          "Place": "55",
+          "Bib": "1392",
+          "Name": "Danielle Kala",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Senior Master 50+",
+          "Time": "1:48:56.5",
+          "Difference": "+37:48.1",
+          "PercentBack": "+53.14%",
+          "PercentWinning": "65.30%",
+          "PercentAverage": "-20.58%",
+          "PercentMedian": "-20.24%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "56",
+          "Bib": "1391",
+          "Name": "Jay Junio",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "1:59:30.8",
+          "Difference": "+48:22.4",
+          "PercentBack": "+68.00%",
+          "PercentWinning": "59.52%",
+          "PercentAverage": "-32.28%",
+          "PercentMedian": "-31.91%",
+          "StartTime": "10:47:05.6"
+        },
+        {
+          "Place": "57",
+          "Bib": "1781",
+          "Name": "Ben Koltz",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "2:00:30.4",
+          "Difference": "+49:22.0",
+          "PercentBack": "+69.39%",
+          "PercentWinning": "59.03%",
+          "PercentAverage": "-33.38%",
+          "PercentMedian": "-33.01%",
+          "StartTime": "10:47:05.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Nick Papa",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Open",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "5 Mile Short Course",
+        "Category": "HPK1-M Senior Master 50+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1782",
+          "Name": "Peter Prinos",
+          "Distance": "5 Mile Short Course",
+          "Category": "HPK1-M Senior Master 50+",
+          "Time": "49:22.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.97%",
+          "PercentMedian": "0.97%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "875",
+          "Name": "Ivan Stork",
+          "Distance": "5 Mile Short Course",
+          "Category": "HPK1-M Senior Master 50+",
+          "Time": "50:20.5",
+          "Difference": "+0:58.0",
+          "PercentBack": "+1.96%",
+          "PercentWinning": "98.08%",
+          "PercentAverage": "-0.97%",
+          "PercentMedian": "-0.97%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "5 Mile Short Course",
+        "Category": "OC1-M Kupuna Master 60+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1769",
+          "Name": "Pat Ogawa",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-M Kupuna Master 60+",
+          "Time": "56:15.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "2.84%",
+          "PercentMedian": "2.84%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "322",
+          "Name": "Ryan Stringfellow",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-M Kupuna Master 60+",
+          "Time": "59:32.9",
+          "Difference": "+3:17.3",
+          "PercentBack": "+5.84%",
+          "PercentWinning": "94.48%",
+          "PercentAverage": "-2.84%",
+          "PercentMedian": "-2.84%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "5 Mile Short Course",
+        "Category": "OC1-M Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "632",
+          "Name": "Scott Miller",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "53:44.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.03%",
+          "PercentMedian": "0.03%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1771",
+          "Name": "Scott Harrington",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "53:47.0",
+          "Difference": "+0:02.2",
+          "PercentBack": "+0.07%",
+          "PercentWinning": "99.93%",
+          "PercentAverage": "-0.03%",
+          "PercentMedian": "-0.03%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "5 Mile Short Course",
+        "Category": "OC1-M Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1747",
+          "Name": "Ned Bobo",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-M Open",
+          "Time": "54:24.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "5 Mile Short Course",
+        "Category": "OC1-W Kupuna Master 60+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1773",
+          "Name": "Nellie Bell",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-W Kupuna Master 60+",
+          "Time": "1:10:08.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "5 Mile Short Course",
+        "Category": "OC1-W Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1533",
+          "Name": "Selena Soo",
+          "Distance": "5 Mile Short Course",
+          "Category": "OC1-W Master 40+",
+          "Time": "57:58.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "5 Mile Short Course",
+        "Category": "SUP-M Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1767",
+          "Name": "Adam Tischler",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "59:06.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.87%",
+          "PercentMedian": "3.71%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1745",
+          "Name": "Alexander Vaughan",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "1:01:09.4",
+          "Difference": "+2:03.3",
+          "PercentBack": "+3.48%",
+          "PercentWinning": "96.64%",
+          "PercentAverage": "2.59%",
+          "PercentMedian": "0.36%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "3",
+          "Name": "Evan Vernon",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "1:01:22.6",
+          "Difference": "+2:16.5",
+          "PercentBack": "+3.85%",
+          "PercentWinning": "96.29%",
+          "PercentAverage": "2.24%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "1784",
+          "Name": "Ahmed Salem",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "1:03:28.4",
+          "Difference": "+4:22.3",
+          "PercentBack": "+7.40%",
+          "PercentWinning": "93.11%",
+          "PercentAverage": "-1.10%",
+          "PercentMedian": "-3.42%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "1744",
+          "Name": "Jeremy Clark",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "1:08:49.2",
+          "Difference": "+9:43.1",
+          "PercentBack": "+16.44%",
+          "PercentWinning": "85.88%",
+          "PercentAverage": "-9.61%",
+          "PercentMedian": "-12.13%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "5 Mile Short Course",
+        "Category": "SUP-M Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1377",
+          "Name": "David Alber",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Open",
+          "Time": "59:46.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "5 Mile Short Course",
+        "Category": "SUP-M Senior Master 50+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1504",
+          "Name": "Thomas Akeson",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Senior Master 50+",
+          "Time": "1:02:00.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.32%",
+          "PercentMedian": "0.32%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1770",
+          "Name": "Calvin Rowland",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-M Senior Master 50+",
+          "Time": "1:02:24.2",
+          "Difference": "+0:23.8",
+          "PercentBack": "+0.64%",
+          "PercentWinning": "99.36%",
+          "PercentAverage": "-0.32%",
+          "PercentMedian": "-0.32%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "5 Mile Short Course",
+        "Category": "SUP-W Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1785",
+          "Name": "Alison Cardinal",
+          "Distance": "5 Mile Short Course",
+          "Category": "SUP-W Master 40+",
+          "Time": "1:14:48.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "HPK1-M Kupuna Master 60+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "394",
+          "Name": "Greg Barton",
+          "Distance": "9 Mile Long Course",
+          "Category": "HPK1-M Kupuna Master 60+",
+          "Time": "1:11:08.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.70%",
+          "PercentMedian": "8.37%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1506",
+          "Name": "Alan Lipp",
+          "Distance": "9 Mile Long Course",
+          "Category": "HPK1-M Kupuna Master 60+",
+          "Time": "1:17:38.4",
+          "Difference": "+6:30.0",
+          "PercentBack": "+9.14%",
+          "PercentWinning": "91.63%",
+          "PercentAverage": "0.36%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "1788",
+          "Name": "Brian Kummer",
+          "Distance": "9 Mile Long Course",
+          "Category": "HPK1-M Kupuna Master 60+",
+          "Time": "1:24:58.9",
+          "Difference": "+13:50.5",
+          "PercentBack": "+19.46%",
+          "PercentWinning": "83.71%",
+          "PercentAverage": "-9.06%",
+          "PercentMedian": "-9.46%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "HPK1-M Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1779",
+          "Name": "Kevin Olney",
+          "Distance": "9 Mile Long Course",
+          "Category": "HPK1-M Master 40+",
+          "Time": "1:15:21.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "2.80%",
+          "PercentMedian": "2.80%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1775",
+          "Name": "Mike Liddell",
+          "Distance": "9 Mile Long Course",
+          "Category": "HPK1-M Master 40+",
+          "Time": "1:19:42.3",
+          "Difference": "+4:20.6",
+          "PercentBack": "+5.76%",
+          "PercentWinning": "94.55%",
+          "PercentAverage": "-2.80%",
+          "PercentMedian": "-2.80%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC1-M Kupuna Master 60+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1299",
+          "Name": "Rob Varnel",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Kupuna Master 60+",
+          "Time": "1:27:19.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "2.36%",
+          "PercentMedian": "2.36%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1115",
+          "Name": "Bruce Diemert",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Kupuna Master 60+",
+          "Time": "1:31:33.2",
+          "Difference": "+4:13.4",
+          "PercentBack": "+4.84%",
+          "PercentWinning": "95.39%",
+          "PercentAverage": "-2.36%",
+          "PercentMedian": "-2.36%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC1-M Kupuna Master 70+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "747",
+          "Name": "Bob Stewart",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Kupuna Master 70+",
+          "Time": "1:31:23.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC1-M Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1786",
+          "Name": "Brent Campbell",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "1:15:52.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.12%",
+          "PercentMedian": "14.44%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1721",
+          "Name": "Noah Johnson-Greenough",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "1:25:44.6",
+          "Difference": "+9:52.5",
+          "PercentBack": "+13.02%",
+          "PercentWinning": "88.48%",
+          "PercentAverage": "1.82%",
+          "PercentMedian": "3.31%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "1808",
+          "Name": "Gregario Mares",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "1:28:40.5",
+          "Difference": "+12:48.4",
+          "PercentBack": "+16.88%",
+          "PercentWinning": "85.56%",
+          "PercentAverage": "-1.54%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "1393",
+          "Name": "Adam Becenti",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "1:31:02.3",
+          "Difference": "+15:10.2",
+          "PercentBack": "+20.00%",
+          "PercentWinning": "83.34%",
+          "PercentAverage": "-4.25%",
+          "PercentMedian": "-2.67%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "1250",
+          "Name": "Ivan Pinzon",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Master 40+",
+          "Time": "1:35:19.4",
+          "Difference": "+19:27.3",
+          "PercentBack": "+25.64%",
+          "PercentWinning": "79.59%",
+          "PercentAverage": "-9.15%",
+          "PercentMedian": "-7.50%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC1-M Novice"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1225",
+          "Name": "Masato Tsukigase",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Novice",
+          "Time": "1:28:43.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC1-M Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1208",
+          "Name": "Matthew Sun",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Open",
+          "Time": "1:19:13.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.72%",
+          "PercentMedian": "6.83%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1122",
+          "Name": "Makoto Tsukigase",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Open",
+          "Time": "1:25:02.3",
+          "Difference": "+5:48.7",
+          "PercentBack": "+7.34%",
+          "PercentWinning": "93.17%",
+          "PercentAverage": "0.95%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "1505",
+          "Name": "Richard Campbell",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Open",
+          "Time": "1:33:17.8",
+          "Difference": "+14:04.2",
+          "PercentBack": "+17.76%",
+          "PercentWinning": "84.92%",
+          "PercentAverage": "-8.67%",
+          "PercentMedian": "-9.71%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC1-M Senior Master 50+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "287",
+          "Name": "Beau Whitehead",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:19:09.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.62%",
+          "PercentMedian": "11.61%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1062",
+          "Name": "Leonard Duncan",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:25:13.1",
+          "Difference": "+6:03.5",
+          "PercentBack": "+7.65%",
+          "PercentWinning": "92.89%",
+          "PercentAverage": "5.94%",
+          "PercentMedian": "4.85%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "1787",
+          "Name": "Gordon Martinez",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:26:35.8",
+          "Difference": "+7:26.2",
+          "PercentBack": "+9.39%",
+          "PercentWinning": "91.41%",
+          "PercentAverage": "4.41%",
+          "PercentMedian": "3.31%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "1772",
+          "Name": "Manny De Leon",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:27:12.9",
+          "Difference": "+8:03.3",
+          "PercentBack": "+10.18%",
+          "PercentWinning": "90.76%",
+          "PercentAverage": "3.73%",
+          "PercentMedian": "2.62%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "151",
+          "Name": "Doug Thomas",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:27:42.5",
+          "Difference": "+8:32.9",
+          "PercentBack": "+10.80%",
+          "PercentWinning": "90.25%",
+          "PercentAverage": "3.19%",
+          "PercentMedian": "2.07%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "6",
+          "Bib": "1283",
+          "Name": "Fraser Shilling",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:31:24.7",
+          "Difference": "+12:15.1",
+          "PercentBack": "+15.48%",
+          "PercentWinning": "86.60%",
+          "PercentAverage": "-0.90%",
+          "PercentMedian": "-2.07%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "7",
+          "Bib": "1973",
+          "Name": "Patrick Hwang",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:34:09.0",
+          "Difference": "+14:59.4",
+          "PercentBack": "+18.94%",
+          "PercentWinning": "84.08%",
+          "PercentAverage": "-3.92%",
+          "PercentMedian": "-5.13%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "8",
+          "Bib": "321",
+          "Name": "Paul Kendall",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:34:32.3",
+          "Difference": "+15:22.7",
+          "PercentBack": "+19.43%",
+          "PercentWinning": "83.73%",
+          "PercentAverage": "-4.35%",
+          "PercentMedian": "-5.56%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "9",
+          "Bib": "1382",
+          "Name": "Steven Kala Jr.",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:37:39.7",
+          "Difference": "+18:30.1",
+          "PercentBack": "+23.37%",
+          "PercentWinning": "81.06%",
+          "PercentAverage": "-7.80%",
+          "PercentMedian": "-9.05%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "10",
+          "Bib": "1216",
+          "Name": "Julian Acuna",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-M Senior Master 50+",
+          "Time": "1:42:17.6",
+          "Difference": "+23:08.0",
+          "PercentBack": "+29.22%",
+          "PercentWinning": "77.39%",
+          "PercentAverage": "-12.91%",
+          "PercentMedian": "-14.22%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC1-W Kupuna Master 60+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1066",
+          "Name": "Traci Cole",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Kupuna Master 60+",
+          "Time": "1:34:37.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.29%",
+          "PercentMedian": "3.42%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1546",
+          "Name": "Pam Watts Cornall",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Kupuna Master 60+",
+          "Time": "1:37:58.6",
+          "Difference": "+3:21.3",
+          "PercentBack": "+3.55%",
+          "PercentWinning": "96.58%",
+          "PercentAverage": "-0.14%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "1280",
+          "Name": "Lorri Stewart",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Kupuna Master 60+",
+          "Time": "1:40:55.8",
+          "Difference": "+6:18.5",
+          "PercentBack": "+6.67%",
+          "PercentWinning": "93.75%",
+          "PercentAverage": "-3.16%",
+          "PercentMedian": "-3.01%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC1-W Senior Master 50+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1386",
+          "Name": "Mignon Fontenelle",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Senior Master 50+",
+          "Time": "1:31:44.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.89%",
+          "PercentMedian": "9.21%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1124",
+          "Name": "Kelli Arbey",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Senior Master 50+",
+          "Time": "1:39:47.9",
+          "Difference": "+8:03.5",
+          "PercentBack": "+8.78%",
+          "PercentWinning": "91.93%",
+          "PercentAverage": "0.89%",
+          "PercentMedian": "1.24%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "1780",
+          "Name": "Luz Delgado",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Senior Master 50+",
+          "Time": "1:42:18.3",
+          "Difference": "+10:33.9",
+          "PercentBack": "+11.52%",
+          "PercentWinning": "89.67%",
+          "PercentAverage": "-1.60%",
+          "PercentMedian": "-1.24%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "1392",
+          "Name": "Danielle Kala",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC1-W Senior Master 50+",
+          "Time": "1:48:56.5",
+          "Difference": "+17:12.1",
+          "PercentBack": "+18.75%",
+          "PercentWinning": "84.21%",
+          "PercentAverage": "-8.19%",
+          "PercentMedian": "-7.81%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC2-M Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1778",
+          "Name": "Mark Chamberlain & Dan Mosely",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC2-M Master 40+",
+          "Time": "1:12:54.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC2-Mx Kupuna Master 60+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1774",
+          "Name": "Linda Murillo & John Murillo",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC2-Mx Kupuna Master 60+",
+          "Time": "1:30:07.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC2-Mx Kupuna Master 70+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1108",
+          "Name": "Fay Tong & Lon Kincannon",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC2-Mx Kupuna Master 70+",
+          "Time": "1:38:30.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC2-Mx Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "853",
+          "Name": "Jo Turgeon & Mike Bernemann",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC2-Mx Master 40+",
+          "Time": "1:16:52.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "OC2-Mx Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "Mika Asano & Ken Asano",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:20:13.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "6.47%",
+          "PercentMedian": "6.47%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "12",
+          "Name": "Juliana Acuna & Cory Siler",
+          "Distance": "9 Mile Long Course",
+          "Category": "OC2-Mx Open",
+          "Time": "1:31:19.7",
+          "Difference": "+11:06.4",
+          "PercentBack": "+13.84%",
+          "PercentWinning": "87.84%",
+          "PercentAverage": "-6.47%",
+          "PercentMedian": "-6.47%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "SUP-M Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1746",
+          "Name": "Christian Oliver",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "1:38:54.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.46%",
+          "PercentMedian": "17.25%",
+          "StartTime": "10:47:05.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1391",
+          "Name": "Jay Junio",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "1:59:30.8",
+          "Difference": "+20:36.7",
+          "PercentBack": "+20.84%",
+          "PercentWinning": "82.75%",
+          "PercentAverage": "-5.79%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:47:05.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "1781",
+          "Name": "Ben Koltz",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Master 40+",
+          "Time": "2:00:30.4",
+          "Difference": "+21:36.3",
+          "PercentBack": "+21.84%",
+          "PercentWinning": "82.07%",
+          "PercentAverage": "-6.67%",
+          "PercentMedian": "-0.83%",
+          "StartTime": "10:47:05.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "SUP-M Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1783",
+          "Name": "Ahmed Fakhry",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Open",
+          "Time": "1:40:10.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "4.12%",
+          "PercentMedian": "4.12%",
+          "StartTime": "10:47:05.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1378",
+          "Name": "Dalen Hosley",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Open",
+          "Time": "1:48:47.1",
+          "Difference": "+8:36.3",
+          "PercentBack": "+8.59%",
+          "PercentWinning": "92.09%",
+          "PercentAverage": "-4.12%",
+          "PercentMedian": "-4.12%",
+          "StartTime": "10:47:05.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Nick Papa",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Open",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "SUP-M Senior Master 50+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1384",
+          "Name": "Brown Fihaki",
+          "Distance": "9 Mile Long Course",
+          "Category": "SUP-M Senior Master 50+",
+          "Time": "1:40:10.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:47:05.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "V1-M Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "855",
+          "Name": "Robbie Magus",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Master 40+",
+          "Time": "1:18:23.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.51%",
+          "PercentMedian": "10.73%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "935",
+          "Name": "Simon Corbaux",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Master 40+",
+          "Time": "1:25:01.2",
+          "Difference": "+6:37.8",
+          "PercentBack": "+8.46%",
+          "PercentWinning": "92.20%",
+          "PercentAverage": "2.94%",
+          "PercentMedian": "3.18%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "1322",
+          "Name": "Darren Grant",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Master 40+",
+          "Time": "1:30:36.0",
+          "Difference": "+12:12.6",
+          "PercentBack": "+15.58%",
+          "PercentWinning": "86.52%",
+          "PercentAverage": "-3.43%",
+          "PercentMedian": "-3.18%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "925",
+          "Name": "Kenneth Ang",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Master 40+",
+          "Time": "1:36:22.9",
+          "Difference": "+17:59.5",
+          "PercentBack": "+22.95%",
+          "PercentWinning": "81.33%",
+          "PercentAverage": "-10.03%",
+          "PercentMedian": "-9.76%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "V1-M Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "2",
+          "Name": "Tony Hodanic",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Open",
+          "Time": "1:18:41.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "6.48%",
+          "PercentMedian": "3.44%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "1192",
+          "Name": "William Rainey",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Open",
+          "Time": "1:21:07.9",
+          "Difference": "+2:26.2",
+          "PercentBack": "+3.10%",
+          "PercentWinning": "97.00%",
+          "PercentAverage": "3.58%",
+          "PercentMedian": "0.45%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "1777",
+          "Name": "Michael Wyse",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Open",
+          "Time": "1:21:51.9",
+          "Difference": "+3:10.2",
+          "PercentBack": "+4.03%",
+          "PercentWinning": "96.13%",
+          "PercentAverage": "2.71%",
+          "PercentMedian": "-0.45%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "1749",
+          "Name": "Matt Kearney",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Open",
+          "Time": "1:34:53.6",
+          "Difference": "+16:11.9",
+          "PercentBack": "+20.58%",
+          "PercentWinning": "82.93%",
+          "PercentAverage": "-12.77%",
+          "PercentMedian": "-16.44%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "9 Mile Long Course",
+        "Category": "V1-M Senior Master 50+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1215",
+          "Name": "Darian Hildreth",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Senior Master 50+",
+          "Time": "1:16:27.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.97%",
+          "PercentMedian": "10.47%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "671",
+          "Name": "Jason Park",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Senior Master 50+",
+          "Time": "1:25:23.4",
+          "Difference": "+8:56.2",
+          "PercentBack": "+11.69%",
+          "PercentWinning": "89.53%",
+          "PercentAverage": "1.68%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:57:55.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "111",
+          "Name": "Graeme Galves",
+          "Distance": "9 Mile Long Course",
+          "Category": "V1-M Senior Master 50+",
+          "Time": "1:38:41.5",
+          "Difference": "+22:14.3",
+          "PercentBack": "+29.09%",
+          "PercentWinning": "77.47%",
+          "PercentAverage": "-13.64%",
+          "PercentMedian": "-15.58%",
+          "StartTime": "10:57:55.6"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "RaceInfo": {
+    "RaceId": 357355,
+    "Name": "2023 Duck Island Race #7",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357355",
+    "Date": "Aug 25, 2023",
+    "Sport": "Paddling",
+    "StartTime": "Friday, August 25, 2023 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.673298015649266,
+    "Longitude": -122.34108784609376,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 19, 2025 8:30 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357355_8dc99f33283f5d0.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:43.69",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Azamat Rustamov",
+          "TeamName2": "Zastera EasyMaster Blue",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "9:13.91",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.71%",
+          "PercentMedian": "8.06%"
+        },
+        {
+          "Place": "2",
+          "Name": "Girts Beitlers",
+          "TeamName2": "Prestol K1 Red",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "9:23.69",
+          "Difference": "+0:09.78",
+          "PercentBack": "+1.77%",
+          "PercentWinning": "98.27%",
+          "PercentAverage": "6.08%",
+          "PercentMedian": "6.43%"
+        },
+        {
+          "Place": "3",
+          "Name": "Miles Parsons",
+          "TeamName2": "Zastera Vector blue S",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:41.19",
+          "Difference": "+1:27.28",
+          "PercentBack": "+15.76%",
+          "PercentWinning": "86.39%",
+          "PercentAverage": "-6.83%",
+          "PercentMedian": "-6.43%"
+        },
+        {
+          "Place": "4",
+          "Name": "Skye Davidson",
+          "TeamName2": "Nelo K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:42.05",
+          "Difference": "+1:28.14",
+          "PercentBack": "+15.91%",
+          "PercentWinning": "86.27%",
+          "PercentAverage": "-6.97%",
+          "PercentMedian": "-6.57%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Soren Ogle & Miles Parsons",
+          "TeamName2": "Plastex K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:52.59",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.60%",
+          "PercentMedian": "23.60%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Delia Ward-Smith & Lillian Balet",
+          "TeamName2": "Epic K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "12:44.59",
+          "Difference": "+4:52.00",
+          "PercentBack": "+61.79%",
+          "PercentWinning": "61.81%",
+          "PercentAverage": "-23.60%",
+          "PercentMedian": "-23.60%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Other",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Rowing-Shell Owen, Evan, Sara, Caeline",
+          "TeamName2": "rowing shell",
+          "Distance": "Other",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "7:38.30",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:43.69",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Miles Parsons",
+          "TeamName2": "Zastera Vector blue S",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:41.19",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.07%",
+          "PercentMedian": "0.07%"
+        },
+        {
+          "Place": "2",
+          "Name": "Skye Davidson",
+          "TeamName2": "Nelo K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:42.05",
+          "Difference": "+0:00.86",
+          "PercentBack": "+0.13%",
+          "PercentWinning": "99.87%",
+          "PercentAverage": "-0.07%",
+          "PercentMedian": "-0.07%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Girts Beitlers",
+          "TeamName2": "Prestol K1 Red",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "9:23.69",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Azamat Rustamov",
+          "TeamName2": "Zastera EasyMaster Blue",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "9:13.91",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Soren Ogle & Miles Parsons",
+          "TeamName2": "Plastex K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:52.59",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.60%",
+          "PercentMedian": "23.60%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Delia Ward-Smith & Lillian Balet",
+          "TeamName2": "Epic K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "12:44.59",
+          "Difference": "+4:52.00",
+          "PercentBack": "+61.79%",
+          "PercentWinning": "61.81%",
+          "PercentAverage": "-23.60%",
+          "PercentMedian": "-23.60%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Other",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Rowing-Shell Owen, Evan, Sara, Caeline",
+          "TeamName2": "rowing shell",
+          "Distance": "Other",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "7:38.30",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

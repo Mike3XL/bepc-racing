@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 132161,
+    "distance": "4 mile Fun Racer",
+    "name": "2018 PNWORCA Championship Race \u2014 4 mile Fun Racer",
+    "displayURL": "https://www.webscorer.com/race?raceid=132161",
+    "date": "Apr 7, 2018",
+    "sport": "Paddling",
+    "startTime": "Saturday, April 7, 2018 11:06 AM (GMT-7)",
+    "country": "United States",
+    "city": "Bellevue",
+    "pointsWeight": 0.12
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Dorothy Hall",
+      "craftCategory": "HPK-W Novice",
+      "gender": "Unknown",
+      "handicap": 1.0,
+      "timeSeconds": 3375.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 3375.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "William Hall",
+      "craftCategory": "SeaKayak-M Novice",
+      "gender": "Unknown",
+      "handicap": 1.0,
+      "timeSeconds": 3485.4,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 3485.4,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "Harry Oesterreicher",
+      "craftCategory": "SUP14-M",
+      "gender": "Unknown",
+      "handicap": 1.0,
+      "timeSeconds": 5038.7,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 5038.7,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

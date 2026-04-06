@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 357355,
+    "distance": "Other",
+    "name": "2023 Duck Island Race #7 \u2014 Other",
+    "displayURL": "https://www.webscorer.com/race?raceid=357355",
+    "date": "Aug 25, 2023",
+    "sport": "Paddling",
+    "startTime": "Friday, August 25, 2023 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.125
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Rowing-Shell Owen, Evan, Sara, Caeline",
+      "craftCategory": "Junior",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 458.3,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 458.3,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

@@ -1,0 +1,400 @@
+{
+  "RaceInfo": {
+    "RaceId": 357122,
+    "Name": "2016 Duck Island Race #2",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357122",
+    "Date": "Jul 15, 2016",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 15, 2016 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67407181020064,
+    "Longitude": -122.34015514594968,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 10:18 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357122_8dc988c52b4b434.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Karel Zikan",
+          "TeamName": "Clipper C1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:14:06",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Doug Ritchie",
+          "TeamName": "Surfski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:08:38",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "30.10%",
+          "PercentMedian": "25.14%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jupiter Grant",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:10:29",
+          "Difference": "+1:51",
+          "PercentBack": "+21.43%",
+          "PercentWinning": "82.35%",
+          "PercentAverage": "15.13%",
+          "PercentMedian": "9.10%"
+        },
+        {
+          "Place": "3",
+          "Name": "Arthur Vernon",
+          "TeamName": "Epic V12 Surfski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:10:38",
+          "Difference": "+2:00",
+          "PercentBack": "+23.17%",
+          "PercentWinning": "81.19%",
+          "PercentAverage": "13.91%",
+          "PercentMedian": "7.80%"
+        },
+        {
+          "Place": "4",
+          "Name": "Nora Davis",
+          "TeamName": "SRS K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:10:49",
+          "Difference": "+2:11",
+          "PercentBack": "+25.29%",
+          "PercentWinning": "79.82%",
+          "PercentAverage": "12.43%",
+          "PercentMedian": "6.21%"
+        },
+        {
+          "Place": "5",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:32",
+          "Difference": "+2:54",
+          "PercentBack": "+33.59%",
+          "PercentWinning": "74.86%",
+          "PercentAverage": "6.63%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "6",
+          "Name": "Einar Ogle",
+          "TeamName": "Epic V10 Surfski",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:11:59",
+          "Difference": "+3:21",
+          "PercentBack": "+38.80%",
+          "PercentWinning": "72.04%",
+          "PercentAverage": "2.98%",
+          "PercentMedian": "-3.90%"
+        },
+        {
+          "Place": "7",
+          "Name": "Breona Gutschmidt",
+          "TeamName": "Red Langjin K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:13:17",
+          "Difference": "+4:39",
+          "PercentBack": "+53.86%",
+          "PercentWinning": "64.99%",
+          "PercentAverage": "-7.54%",
+          "PercentMedian": "-15.17%"
+        },
+        {
+          "Place": "8",
+          "Name": "Karla Ogle",
+          "TeamName": "Viper K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:16:51",
+          "Difference": "+8:13",
+          "PercentBack": "+95.17%",
+          "PercentWinning": "51.24%",
+          "PercentAverage": "-36.42%",
+          "PercentMedian": "-46.10%"
+        },
+        {
+          "Place": "9",
+          "Name": "Soren Ogle",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:16:57",
+          "Difference": "+8:19",
+          "PercentBack": "+96.33%",
+          "PercentWinning": "50.93%",
+          "PercentAverage": "-37.23%",
+          "PercentMedian": "-46.97%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Bee Dietz & Elizabeth Holmes",
+          "TeamName": "Clifford K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:09:39",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Karel Zikan",
+          "TeamName": "Clipper C1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:14:06",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Einar Ogle",
+          "TeamName": "Epic V10 Surfski",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:11:59",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.17%",
+          "PercentMedian": "17.17%"
+        },
+        {
+          "Place": "2",
+          "Name": "Soren Ogle",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:16:57",
+          "Difference": "+4:58",
+          "PercentBack": "+41.45%",
+          "PercentWinning": "70.70%",
+          "PercentAverage": "-17.17%",
+          "PercentMedian": "-17.17%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Doug Ritchie",
+          "TeamName": "Surfski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:08:38",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "32.24%",
+          "PercentMedian": "32.24%"
+        },
+        {
+          "Place": "2",
+          "Name": "Karla Ogle",
+          "TeamName": "Viper K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:16:51",
+          "Difference": "+8:13",
+          "PercentBack": "+95.17%",
+          "PercentWinning": "51.24%",
+          "PercentAverage": "-32.24%",
+          "PercentMedian": "-32.24%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jupiter Grant",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:10:29",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.64%",
+          "PercentMedian": "3.08%"
+        },
+        {
+          "Place": "2",
+          "Name": "Arthur Vernon",
+          "TeamName": "Epic V12 Surfski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:10:38",
+          "Difference": "+0:09",
+          "PercentBack": "+1.43%",
+          "PercentWinning": "98.59%",
+          "PercentAverage": "6.31%",
+          "PercentMedian": "1.69%"
+        },
+        {
+          "Place": "3",
+          "Name": "Nora Davis",
+          "TeamName": "SRS K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:10:49",
+          "Difference": "+0:20",
+          "PercentBack": "+3.18%",
+          "PercentWinning": "96.92%",
+          "PercentAverage": "4.70%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:32",
+          "Difference": "+1:03",
+          "PercentBack": "+10.02%",
+          "PercentWinning": "90.90%",
+          "PercentAverage": "-1.62%",
+          "PercentMedian": "-6.63%"
+        },
+        {
+          "Place": "5",
+          "Name": "Breona Gutschmidt",
+          "TeamName": "Red Langjin K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:13:17",
+          "Difference": "+2:48",
+          "PercentBack": "+26.71%",
+          "PercentWinning": "78.92%",
+          "PercentAverage": "-17.03%",
+          "PercentMedian": "-22.80%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Bee Dietz & Elizabeth Holmes",
+          "TeamName": "Clifford K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:09:39",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

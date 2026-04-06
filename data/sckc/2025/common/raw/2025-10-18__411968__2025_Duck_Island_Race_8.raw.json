@@ -1,0 +1,592 @@
+{
+  "RaceInfo": {
+    "RaceId": 411968,
+    "Name": "2025 Duck Island Race #8",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=411968",
+    "Date": "Oct 18, 2025",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, October 18, 2025 10:00 AM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67384023164026,
+    "Longitude": -122.3412362752154,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Friday, October 31, 2025 12:53 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/411968_8de18b6b675f875.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C4",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C3 Sebastian, Kevin, Jane",
+          "TeamName": "rec canoe",
+          "Distance": "C4",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "14:03.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Luis Buen Abad",
+          "TeamName": "Liangjin",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "9:44.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.80%",
+          "PercentMedian": "21.91%"
+        },
+        {
+          "Place": "2",
+          "Name": "James Girton",
+          "TeamName": "Epic Sport",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "10:18.7",
+          "Difference": "+0:34.3",
+          "PercentBack": "+5.87%",
+          "PercentWinning": "94.46%",
+          "PercentAverage": "19.33%",
+          "PercentMedian": "17.33%"
+        },
+        {
+          "Place": "3",
+          "Name": "Owen Lilleleth",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:42.5",
+          "Difference": "+0:58.1",
+          "PercentBack": "+9.94%",
+          "PercentWinning": "90.96%",
+          "PercentAverage": "16.22%",
+          "PercentMedian": "14.15%"
+        },
+        {
+          "Place": "4",
+          "Name": "Tai Flynn",
+          "TeamName": "Cinco",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:46.9",
+          "Difference": "+1:02.5",
+          "PercentBack": "+10.69%",
+          "PercentWinning": "90.34%",
+          "PercentAverage": "15.65%",
+          "PercentMedian": "13.56%"
+        },
+        {
+          "Place": "5",
+          "Name": "Cooper Riley",
+          "TeamName": "Moskito",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:08.9",
+          "Difference": "+1:24.5",
+          "PercentBack": "+14.46%",
+          "PercentWinning": "87.37%",
+          "PercentAverage": "12.78%",
+          "PercentMedian": "10.62%"
+        },
+        {
+          "Place": "6",
+          "Name": "Torsten",
+          "TeamName": null,
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "12:05.5",
+          "Difference": "+2:21.1",
+          "PercentBack": "+24.14%",
+          "PercentWinning": "80.55%",
+          "PercentAverage": "5.40%",
+          "PercentMedian": "3.06%"
+        },
+        {
+          "Place": "7",
+          "Name": "Sabine Mecking",
+          "TeamName": "V10 Sport",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Female",
+          "Time": "12:51.3",
+          "Difference": "+3:06.9",
+          "PercentBack": "+31.98%",
+          "PercentWinning": "75.77%",
+          "PercentAverage": "-0.57%",
+          "PercentMedian": "-3.06%"
+        },
+        {
+          "Place": "8",
+          "Name": "Mina",
+          "TeamName": null,
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "13:23.4",
+          "Difference": "+3:39.0",
+          "PercentBack": "+37.47%",
+          "PercentWinning": "72.74%",
+          "PercentAverage": "-4.76%",
+          "PercentMedian": "-7.35%"
+        },
+        {
+          "Place": "9",
+          "Name": "Tomaso",
+          "TeamName": "Simon Fraser",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "15:04.1",
+          "Difference": "+5:19.7",
+          "PercentBack": "+54.71%",
+          "PercentWinning": "64.64%",
+          "PercentAverage": "-17.89%",
+          "PercentMedian": "-20.80%"
+        },
+        {
+          "Place": "10",
+          "Name": "Paul Elrif",
+          "TeamName": "V10 Sport",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "15:15.3",
+          "Difference": "+5:30.9",
+          "PercentBack": "+56.62%",
+          "PercentWinning": "63.85%",
+          "PercentAverage": "-19.35%",
+          "PercentMedian": "-22.30%"
+        },
+        {
+          "Place": "11",
+          "Name": "Meg Ludlum",
+          "TeamName": "V8",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Female",
+          "Time": "15:47.7",
+          "Difference": "+6:03.3",
+          "PercentBack": "+62.17%",
+          "PercentWinning": "61.67%",
+          "PercentAverage": "-23.57%",
+          "PercentMedian": "-26.63%"
+        },
+        {
+          "Place": "12",
+          "Name": "Marta",
+          "TeamName": "Nipper",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "16:14.2",
+          "Difference": "+6:29.8",
+          "PercentBack": "+66.70%",
+          "PercentWinning": "59.99%",
+          "PercentAverage": "-27.03%",
+          "PercentMedian": "-30.17%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Soren Ogle & Nora Tsong",
+          "TeamName": "Epic ML",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "7:32.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "15.35%",
+          "PercentMedian": "1.87%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Girts Beitlers & Cooper Beitlers",
+          "TeamName": "Epic ML",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:41.1",
+          "Difference": "+0:08.6",
+          "PercentBack": "+1.90%",
+          "PercentWinning": "98.13%",
+          "PercentAverage": "13.74%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "K2 Jaden & Nolen",
+          "TeamName": "Clifford",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "11:30.0",
+          "Difference": "+3:57.5",
+          "PercentBack": "+52.49%",
+          "PercentWinning": "65.58%",
+          "PercentAverage": "-29.08%",
+          "PercentMedian": "-49.64%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K4",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K4 Eli, Breona, BeckyC, Liz",
+          "TeamName": "Hody",
+          "Distance": "K4",
+          "Category": "Master 40+",
+          "Gender": "Female",
+          "Time": "10:04.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C4",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C3 Sebastian, Kevin, Jane",
+          "TeamName": "rec canoe",
+          "Distance": "C4",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "14:03.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Cooper Riley",
+          "TeamName": "Moskito",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:08.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.95%",
+          "PercentMedian": "16.74%"
+        },
+        {
+          "Place": "2",
+          "Name": "Torsten",
+          "TeamName": null,
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "12:05.5",
+          "Difference": "+0:56.6",
+          "PercentBack": "+8.46%",
+          "PercentWinning": "92.20%",
+          "PercentAverage": "11.01%",
+          "PercentMedian": "9.70%"
+        },
+        {
+          "Place": "3",
+          "Name": "Mina",
+          "TeamName": null,
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "13:23.4",
+          "Difference": "+2:14.5",
+          "PercentBack": "+20.11%",
+          "PercentWinning": "83.26%",
+          "PercentAverage": "1.45%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Tomaso",
+          "TeamName": "Simon Fraser",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "15:04.1",
+          "Difference": "+3:55.2",
+          "PercentBack": "+35.16%",
+          "PercentWinning": "73.99%",
+          "PercentAverage": "-10.90%",
+          "PercentMedian": "-12.53%"
+        },
+        {
+          "Place": "5",
+          "Name": "Marta",
+          "TeamName": "Nipper",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "16:14.2",
+          "Difference": "+5:05.3",
+          "PercentBack": "+45.64%",
+          "PercentWinning": "68.66%",
+          "PercentAverage": "-19.50%",
+          "PercentMedian": "-21.26%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Luis Buen Abad",
+          "TeamName": "Liangjin",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "9:44.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.85%",
+          "PercentMedian": "24.23%"
+        },
+        {
+          "Place": "2",
+          "Name": "James Girton",
+          "TeamName": "Epic Sport",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "10:18.7",
+          "Difference": "+0:34.3",
+          "PercentBack": "+5.87%",
+          "PercentWinning": "94.46%",
+          "PercentAverage": "19.39%",
+          "PercentMedian": "19.78%"
+        },
+        {
+          "Place": "3",
+          "Name": "Sabine Mecking",
+          "TeamName": "V10 Sport",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Female",
+          "Time": "12:51.3",
+          "Difference": "+3:06.9",
+          "PercentBack": "+31.98%",
+          "PercentWinning": "75.77%",
+          "PercentAverage": "-0.50%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Paul Elrif",
+          "TeamName": "V10 Sport",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "15:15.3",
+          "Difference": "+5:30.9",
+          "PercentBack": "+56.62%",
+          "PercentWinning": "63.85%",
+          "PercentAverage": "-19.26%",
+          "PercentMedian": "-18.67%"
+        },
+        {
+          "Place": "5",
+          "Name": "Meg Ludlum",
+          "TeamName": "V8",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Female",
+          "Time": "15:47.7",
+          "Difference": "+6:03.3",
+          "PercentBack": "+62.17%",
+          "PercentWinning": "61.67%",
+          "PercentAverage": "-23.48%",
+          "PercentMedian": "-22.87%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Owen Lilleleth",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:42.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.34%",
+          "PercentMedian": "0.34%"
+        },
+        {
+          "Place": "2",
+          "Name": "Tai Flynn",
+          "TeamName": "Cinco",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:46.9",
+          "Difference": "+0:04.4",
+          "PercentBack": "+0.68%",
+          "PercentWinning": "99.32%",
+          "PercentAverage": "-0.34%",
+          "PercentMedian": "-0.34%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Soren Ogle & Nora Tsong",
+          "TeamName": "Epic ML",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "7:32.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Girts Beitlers & Cooper Beitlers",
+          "TeamName": "Epic ML",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:41.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "19.89%",
+          "PercentMedian": "19.89%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Jaden & Nolen",
+          "TeamName": "Clifford",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "11:30.0",
+          "Difference": "+3:48.9",
+          "PercentBack": "+49.64%",
+          "PercentWinning": "66.83%",
+          "PercentAverage": "-19.89%",
+          "PercentMedian": "-19.89%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K4",
+        "Category": "Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K4 Eli, Breona, BeckyC, Liz",
+          "TeamName": "Hody",
+          "Distance": "K4",
+          "Category": "Master 40+",
+          "Gender": "Female",
+          "Time": "10:04.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 106626,
+    "distance": "K2",
+    "name": "2017 Duck Island Race #3 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=106626",
+    "date": "Jul 7, 2017",
+    "sport": "Paddling",
+    "startTime": "Friday, July 7, 2017 6:45 PM (GMT+2)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.125
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Einar Ogle & Soren Ogle",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 669.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 669.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

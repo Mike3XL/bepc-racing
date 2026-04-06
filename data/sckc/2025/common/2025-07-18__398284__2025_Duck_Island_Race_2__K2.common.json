@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 398284,
+    "distance": "K2",
+    "name": "2025 Duck Island Race #2 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=398284",
+    "date": "Jul 18, 2025",
+    "sport": "Paddling",
+    "startTime": "Friday, July 18, 2025 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.1875
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Julie Roberts & Becky Bronstein",
+      "craftCategory": "Open",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 594.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 594.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "K2 Cooper Riley & Dave Riley",
+      "craftCategory": "Open",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 629.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 629.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "K2 David & Peter",
+      "craftCategory": "Open",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 663.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 663.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

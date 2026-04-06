@@ -58,7 +58,7 @@ def build_data_json() -> dict:
         club_id = club_dir.name
         cfg = clubs_cfg.get(club_id, {})
         hcap_cfg = cfg.get("handicap", {})
-        establishment_races = hcap_cfg.get("establishment_races", 2)
+        num_races_to_establish = hcap_cfg.get("num_races_to_establish", 1)
         do_carry_over = hcap_cfg.get("carry_over", False)
 
         seasons = {}
@@ -73,7 +73,7 @@ def build_data_json() -> dict:
                 continue
             races = load_all_common(common_dir)
             races = process_season(races, carry_over=carry_over,
-                                   establishment_races=establishment_races)
+                                   num_races_to_establish=num_races_to_establish)
             seasons[year] = {
                 "races": [
                     {
@@ -612,7 +612,152 @@ def cmd_scan(args):
     cmd_scan_sources(args)
 
 
-def cmd_search(args):
+def cmd_sync(args):
+    """Sync a club/year: discover missing races from data_sources, fetch them, reprocess."""
+    import urllib.request, re as _re
+    from datetime import datetime
+
+    club = args.club
+    year = args.year
+    dry_run = args.dry_run
+    clubs_cfg = _load_clubs_config()
+    cfg = clubs_cfg.get(club, {})
+    data_sources = cfg.get("data_sources", {})
+    fetch_sources = data_sources.get("fetch_sources", [])
+
+    if not fetch_sources:
+        print(f"No data_sources.fetch_sources configured for '{club}' in clubs.yaml.")
+        return
+
+    # Build set of accepted jericho slugs from config
+    accepted_jericho = set()
+    for src in fetch_sources:
+        if src.get("type") == "jericho":
+            for slug in src.get("accepted_slugs", []):
+                accepted_jericho.add(slug.lower())
+
+    # Existing race IDs for this club/year
+    club_year_dir = DATA_DIR / club / year / "common"
+    existing_ids = set()
+    suspect = []
+    if club_year_dir.exists():
+        for f in club_year_dir.glob("*.common.json"):
+            m = _re.search(r'__(\d+)__', f.name)
+            if m:
+                existing_ids.add(m.group(1))
+            # Flag suspects: placeholder date or unaccepted jericho source
+            if "-01-01__" in f.name:
+                suspect.append(f"  SUSPECT (placeholder date): {f.name}")
+            else:
+                import json as _json
+                ri = _json.loads(f.read_text()).get("raceInfo", {})
+                if "jericho" in ri.get("displayURL", ""):
+                    # Check if this slug is accepted (match against full name after ID)
+                    slug = _re.search(r'__\d+__(.+)\.common\.json$', f.name)
+                    slug_str = slug.group(1).lower() if slug else ""
+                    if not any(a.lower() in slug_str for a in accepted_jericho):
+                        suspect.append(f"  SUSPECT (jericho — check for better source): {f.name}")
+
+    print(f"Sync: {club} / {year}  [{'DRY RUN' if dry_run else 'LIVE'}]")
+    print(f"  Existing races: {len(existing_ids)}")
+
+    to_fetch_ws = []    # (race_id_str, name, date)
+    to_fetch_rr = []    # (rr_id_int, name, date)
+
+    for src in fetch_sources:
+        src_type = src.get("type", "")
+
+        if src_type == "webscorer_organizer":
+            org_id = src.get("id", "")
+            try:
+                url = f"https://www.webscorer.com/{org_id}"
+                req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+                with urllib.request.urlopen(req, timeout=15) as r:
+                    html = r.read().decode("utf-8", errors="replace")
+                pairs = _re.findall(r'raceid=(\d+)[^>]*>\s*([^<\n]{3,60})', html)
+                date_map = {}
+                for rid, date in _re.findall(r'raceid=(\d+)[^\n]*\n[^\n]*(\d{4}-\d{2}-\d{2}|\w+ \d+, \d{4})', html):
+                    date_map[rid] = date
+                seen = set()
+                for rid, name in pairs:
+                    name = name.strip()
+                    if rid in seen or not name or rid in existing_ids:
+                        continue
+                    seen.add(rid)
+                    d = date_map.get(rid, "")
+                    # Filter to requested year
+                    if year not in d and f"/{year}" not in d and not d.endswith(year):
+                        continue
+                    to_fetch_ws.append((rid, name, d))
+                print(f"  [{src_type}:{org_id}] {len([x for x in to_fetch_ws])} new race(s) found")
+            except Exception as e:
+                print(f"  [{src_type}:{org_id}] ERROR: {e}")
+
+        elif src_type == "pacificmultisports":
+            catalog_path = DATA_DIR / "sources" / "pacificmultisports_events.json"
+            if catalog_path.exists():
+                import json as _json
+                catalog = _json.loads(catalog_path.read_text())
+                for ev in catalog.get("events", []):
+                    if str(ev.get("year", "")) != year:
+                        continue
+                    if ev.get("type") and ev["type"] != club:
+                        continue  # skip events tagged for a different club
+                    rr_id = ev.get("rr_id")
+                    if not rr_id:
+                        continue
+                    if str(rr_id) not in existing_ids:
+                        to_fetch_rr.append((rr_id, ev.get("name", f"Event {rr_id}"), ev.get("date", f"Jan 1, {year}")))
+                print(f"  [{src_type}] {len(to_fetch_rr)} new raceresult event(s) from catalog")
+
+        # jericho: skip in sync — manual only
+
+    # Report suspects
+    if suspect:
+        print(f"\n  Suspect races ({len(suspect)}):")
+        for s in suspect:
+            print(s)
+
+    # Report what would be fetched
+    all_new = len(to_fetch_ws) + len(to_fetch_rr)
+    if not all_new:
+        print("\n  Nothing new to fetch.")
+    else:
+        print(f"\n  New races to fetch: {all_new}")
+        for rid, name, date in to_fetch_ws:
+            print(f"    ws:{rid}  {date:<14}  {name[:55]}")
+        for rr_id, name, date in to_fetch_rr:
+            print(f"    rr:{rr_id}  {date:<14}  {name[:55]}")
+
+    if dry_run or not all_new:
+        return
+
+    # Fetch
+    if to_fetch_ws:
+        from bepc.fetcher import fetch_race
+        out_dir = club_year_dir
+        out_dir.mkdir(parents=True, exist_ok=True)
+        for rid, name, date in to_fetch_ws:
+            print(f"  Fetching ws:{rid} {name}...")
+            fetch_race(int(rid), out_dir)
+
+    if to_fetch_rr:
+        from bepc.fetcher_raceresult import fetch_event
+        out_dir = club_year_dir
+        out_dir.mkdir(parents=True, exist_ok=True)
+        for rr_id, name, date in to_fetch_rr:
+            print(f"  Fetching rr:{rr_id} {name}...")
+            fetch_event(rr_id=rr_id, name=name, date=date, out_dir=out_dir)
+
+    # Reprocess and regenerate
+    print("\n  Reprocessing...")
+    import types
+    proc_args = types.SimpleNamespace()
+    cmd_process(proc_args)
+    gen_args = types.SimpleNamespace(club=club)
+    cmd_generate(gen_args)
+
+
     """Search configured organizers for new races not yet fetched for a club."""
     import urllib.request, re
 
@@ -712,6 +857,11 @@ def main():
     search_p.add_argument("--club", default=CURRENT_CLUB, help="Club to search for")
     audit_p.add_argument("--club", default=None)
 
+    sync_p = sub.add_parser("sync", help="Discover and fetch missing races for a club/year, then reprocess")
+    sync_p.add_argument("--club", default=CURRENT_CLUB)
+    sync_p.add_argument("--year", required=True, help="Season year e.g. 2025")
+    sync_p.add_argument("--dry-run", action="store_true", help="Report missing/suspect races without fetching")
+
     jericho_p = sub.add_parser("fetch-jericho", help="Fetch PNW smallboat races from Jericho year page")
     jericho_p.add_argument("year", help="Year e.g. 2025")
     jericho_p.add_argument("--club", default="pnw-regional")
@@ -771,6 +921,8 @@ def main():
         cmd_scan(args)
     elif args.command == "search":
         cmd_search(args)
+    elif args.command == "sync":
+        cmd_sync(args)
     else:
         parser.print_help()
 

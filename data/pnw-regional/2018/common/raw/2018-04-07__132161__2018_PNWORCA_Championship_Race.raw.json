@@ -1,0 +1,2110 @@
+{
+  "RaceInfo": {
+    "RaceId": 132161,
+    "Name": "2018 PNWORCA Championship Race",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=132161",
+    "Date": "Apr 7, 2018",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, April 7, 2018 11:06 AM (GMT-7)",
+    "Country": "United States",
+    "City": "Bellevue",
+    "StateOrProvince": "WA",
+    "Latitude": 47.605099,
+    "Longitude": -122.113403,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 2.9",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, April 7, 2018 10:39 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/images/stocksmall/paddling-64x48.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Overall": true,
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "809",
+          "Name": "Greg Barton",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "HPK-M Senior Masters",
+          "Time": "1:36:49.1",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "31:21.8",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "31:21.8",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:05:27.4",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:36:49.2",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "21.91%",
+          "PercentMedian": "20.88%",
+          "Pace(time / mile)": "8:04.1",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "1040",
+          "Name": "Kevin Olney",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "HPK-M Masters",
+          "Time": "1:44:05.3",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "32:41.6",
+              "LapRank": 2,
+              "LapBehind": "+1:19.8",
+              "RaceTime": "32:41.6",
+              "RaceRank": 2,
+              "RaceBehind": "+1:19.8"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:11:23.7",
+              "LapRank": 2,
+              "LapBehind": "+5:56.3",
+              "RaceTime": "1:44:05.3",
+              "RaceRank": 2,
+              "RaceBehind": "+7:16.1"
+            }
+          ],
+          "Difference": "+7:16.2",
+          "PercentBack": "+7.51%",
+          "PercentWinning": "93.02%",
+          "PercentAverage": "16.05%",
+          "PercentMedian": "14.94%",
+          "Pace(time / mile)": "8:40.4",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "555",
+          "Name": "Aimee Edwards & Erik Scharffenberg",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC2-Mx Masters",
+          "Time": "1:48:26.9",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "35:05.8",
+              "LapRank": 4,
+              "LapBehind": "+3:44.0",
+              "RaceTime": "35:05.8",
+              "RaceRank": 4,
+              "RaceBehind": "+3:44.0"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:13:21.1",
+              "LapRank": 3,
+              "LapBehind": "+7:53.7",
+              "RaceTime": "1:48:26.9",
+              "RaceRank": 3,
+              "RaceBehind": "+11:37.7"
+            }
+          ],
+          "Difference": "+11:37.8",
+          "PercentBack": "+12.01%",
+          "PercentWinning": "89.28%",
+          "PercentAverage": "12.53%",
+          "PercentMedian": "11.38%",
+          "Pace(time / mile)": "9:02.2",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "4",
+          "Bib": "1013",
+          "Name": "Rob Magus",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Masters",
+          "Time": "1:51:13.4",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "35:55.1",
+              "LapRank": 5,
+              "LapBehind": "+4:33.3",
+              "RaceTime": "35:55.1",
+              "RaceRank": 5,
+              "RaceBehind": "+4:33.3"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:15:18.3",
+              "LapRank": 4,
+              "LapBehind": "+9:50.9",
+              "RaceTime": "1:51:13.4",
+              "RaceRank": 4,
+              "RaceBehind": "+14:24.2"
+            }
+          ],
+          "Difference": "+14:24.3",
+          "PercentBack": "+14.88%",
+          "PercentWinning": "87.05%",
+          "PercentAverage": "10.30%",
+          "PercentMedian": "9.11%",
+          "Pace(time / mile)": "9:16.1",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "5",
+          "Bib": "1",
+          "Name": "Alan Goto",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Masters",
+          "Time": "1:53:15.6",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "36:01.7",
+              "LapRank": 6,
+              "LapBehind": "+4:39.9",
+              "RaceTime": "36:01.7",
+              "RaceRank": 6,
+              "RaceBehind": "+4:39.9"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:17:13.9",
+              "LapRank": 5,
+              "LapBehind": "+11:46.5",
+              "RaceTime": "1:53:15.6",
+              "RaceRank": 5,
+              "RaceBehind": "+16:26.4"
+            }
+          ],
+          "Difference": "+16:26.5",
+          "PercentBack": "+16.98%",
+          "PercentWinning": "85.48%",
+          "PercentAverage": "8.65%",
+          "PercentMedian": "7.45%",
+          "Pace(time / mile)": "9:26.3",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "6",
+          "Bib": "1042",
+          "Name": "Gavin Godfrey",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Masters",
+          "Time": "1:55:09.3",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "36:19.2",
+              "LapRank": 7,
+              "LapBehind": "+4:57.4",
+              "RaceTime": "36:19.2",
+              "RaceRank": 7,
+              "RaceBehind": "+4:57.4"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:18:50.1",
+              "LapRank": 6,
+              "LapBehind": "+13:22.7",
+              "RaceTime": "1:55:09.3",
+              "RaceRank": 6,
+              "RaceBehind": "+18:20.1"
+            }
+          ],
+          "Difference": "+18:20.2",
+          "PercentBack": "+18.94%",
+          "PercentWinning": "84.08%",
+          "PercentAverage": "7.13%",
+          "PercentMedian": "5.90%",
+          "Pace(time / mile)": "9:35.8",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "7",
+          "Bib": "804",
+          "Name": "Leonard Duncan",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "HPK-M Senior Masters",
+          "Time": "1:57:10.3",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "37:39.3",
+              "LapRank": 8,
+              "LapBehind": "+6:17.5",
+              "RaceTime": "37:39.3",
+              "RaceRank": 8,
+              "RaceBehind": "+6:17.5"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:19:31.0",
+              "LapRank": 7,
+              "LapBehind": "+14:03.6",
+              "RaceTime": "1:57:10.3",
+              "RaceRank": 7,
+              "RaceBehind": "+20:21.1"
+            }
+          ],
+          "Difference": "+20:21.2",
+          "PercentBack": "+21.02%",
+          "PercentWinning": "82.63%",
+          "PercentAverage": "5.50%",
+          "PercentMedian": "4.25%",
+          "Pace(time / mile)": "9:45.9",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "8",
+          "Bib": "837",
+          "Name": "Gordon Martinez",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:58:57.2",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "38:52.9",
+              "LapRank": 10,
+              "LapBehind": "+7:31.1",
+              "RaceTime": "38:52.9",
+              "RaceRank": 10,
+              "RaceBehind": "+7:31.1"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:20:04.3",
+              "LapRank": 8,
+              "LapBehind": "+14:36.9",
+              "RaceTime": "1:58:57.2",
+              "RaceRank": 8,
+              "RaceBehind": "+22:08.0"
+            }
+          ],
+          "Difference": "+22:08.1",
+          "PercentBack": "+22.86%",
+          "PercentWinning": "81.39%",
+          "PercentAverage": "4.06%",
+          "PercentMedian": "2.79%",
+          "Pace(time / mile)": "9:54.8",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "9",
+          "Bib": "760",
+          "Name": "Ken Asano",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Masters",
+          "Time": "2:00:04.6",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "39:16.3",
+              "LapRank": 11,
+              "LapBehind": "+7:54.5",
+              "RaceTime": "39:16.3",
+              "RaceRank": 11,
+              "RaceBehind": "+7:54.5"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:20:48.3",
+              "LapRank": 9,
+              "LapBehind": "+15:20.9",
+              "RaceTime": "2:00:04.6",
+              "RaceRank": 9,
+              "RaceBehind": "+23:15.4"
+            }
+          ],
+          "Difference": "+23:15.5",
+          "PercentBack": "+24.02%",
+          "PercentWinning": "80.63%",
+          "PercentAverage": "3.16%",
+          "PercentMedian": "1.88%",
+          "Pace(time / mile)": "10:00.4",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "10",
+          "Bib": "240",
+          "Name": "Tony Hodanic",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Open",
+          "Time": "2:01:14.4",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "38:50.1",
+              "LapRank": 9,
+              "LapBehind": "+7:28.3",
+              "RaceTime": "38:50.1",
+              "RaceRank": 9,
+              "RaceBehind": "+7:28.3"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:22:24.3",
+              "LapRank": 12,
+              "LapBehind": "+16:56.9",
+              "RaceTime": "2:01:14.4",
+              "RaceRank": 10,
+              "RaceBehind": "+24:25.2"
+            }
+          ],
+          "Difference": "+24:25.3",
+          "PercentBack": "+25.22%",
+          "PercentWinning": "79.86%",
+          "PercentAverage": "2.22%",
+          "PercentMedian": "0.93%",
+          "Pace(time / mile)": "10:06.2",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "11",
+          "Bib": "747",
+          "Name": "Bob Stewart",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Kupuna Masters",
+          "Time": "2:01:40.8",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "39:30.6",
+              "LapRank": 12,
+              "LapBehind": "+8:08.8",
+              "RaceTime": "39:30.6",
+              "RaceRank": 12,
+              "RaceBehind": "+8:08.8"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:22:10.2",
+              "LapRank": 10,
+              "LapBehind": "+16:42.8",
+              "RaceTime": "2:01:40.8",
+              "RaceRank": 11,
+              "RaceBehind": "+24:51.6"
+            }
+          ],
+          "Difference": "+24:51.7",
+          "PercentBack": "+25.68%",
+          "PercentWinning": "79.57%",
+          "PercentAverage": "1.86%",
+          "PercentMedian": "0.57%",
+          "Pace(time / mile)": "10:08.4",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "12",
+          "Bib": "131",
+          "Name": "Rick Renaud",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Senior Masters",
+          "Time": "2:03:03.9",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "40:50.8",
+              "LapRank": 14,
+              "LapBehind": "+9:29.0",
+              "RaceTime": "40:50.8",
+              "RaceRank": 14,
+              "RaceBehind": "+9:29.0"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:22:13.1",
+              "LapRank": 11,
+              "LapBehind": "+16:45.7",
+              "RaceTime": "2:03:03.9",
+              "RaceRank": 12,
+              "RaceBehind": "+26:14.7"
+            }
+          ],
+          "Difference": "+26:14.8",
+          "PercentBack": "+27.11%",
+          "PercentWinning": "78.67%",
+          "PercentAverage": "0.75%",
+          "PercentMedian": "-0.57%",
+          "Pace(time / mile)": "10:15.3",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "13",
+          "Bib": "151",
+          "Name": "Doug Thomas",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Senior Masters",
+          "Time": "2:05:52.0",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "40:23.1",
+              "LapRank": 13,
+              "LapBehind": "+9:01.3",
+              "RaceTime": "40:23.1",
+              "RaceRank": 13,
+              "RaceBehind": "+9:01.3"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:25:28.9",
+              "LapRank": 13,
+              "LapBehind": "+20:01.5",
+              "RaceTime": "2:05:52.0",
+              "RaceRank": 13,
+              "RaceBehind": "+29:02.8"
+            }
+          ],
+          "Difference": "+29:02.9",
+          "PercentBack": "+30.00%",
+          "PercentWinning": "76.92%",
+          "PercentAverage": "-1.51%",
+          "PercentMedian": "-2.86%",
+          "Pace(time / mile)": "10:29.3",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "14",
+          "Bib": "643",
+          "Name": "Greg Mares",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Open",
+          "Time": "2:07:31.6",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "41:04.0",
+              "LapRank": 15,
+              "LapBehind": "+9:42.2",
+              "RaceTime": "41:04.0",
+              "RaceRank": 15,
+              "RaceBehind": "+9:42.2"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:26:27.6",
+              "LapRank": 14,
+              "LapBehind": "+21:00.2",
+              "RaceTime": "2:07:31.6",
+              "RaceRank": 14,
+              "RaceBehind": "+30:42.4"
+            }
+          ],
+          "Difference": "+30:42.5",
+          "PercentBack": "+31.72%",
+          "PercentWinning": "75.92%",
+          "PercentAverage": "-2.85%",
+          "PercentMedian": "-4.21%",
+          "Pace(time / mile)": "10:37.6",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "15",
+          "Bib": "727",
+          "Name": "Ken Ang",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Masters",
+          "Time": "2:10:48.0",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "42:46.4",
+              "LapRank": 19,
+              "LapBehind": "+11:24.6",
+              "RaceTime": "42:46.4",
+              "RaceRank": 19,
+              "RaceBehind": "+11:24.6"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:28:01.7",
+              "LapRank": 15,
+              "LapBehind": "+22:34.3",
+              "RaceTime": "2:10:48.1",
+              "RaceRank": 15,
+              "RaceBehind": "+33:58.9"
+            }
+          ],
+          "Difference": "+33:58.9",
+          "PercentBack": "+35.10%",
+          "PercentWinning": "74.02%",
+          "PercentAverage": "-5.49%",
+          "PercentMedian": "-6.89%",
+          "Pace(time / mile)": "10:54.0",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "16",
+          "Bib": "95",
+          "Name": "Joan Martocello & Carin Rittby-Kane",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC2-W Kupuna Masters",
+          "Time": "2:11:08.2",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "41:49.8",
+              "LapRank": 16,
+              "LapBehind": "+10:28.0",
+              "RaceTime": "41:49.8",
+              "RaceRank": 16,
+              "RaceBehind": "+10:28.0"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:29:18.4",
+              "LapRank": 17,
+              "LapBehind": "+23:51.0",
+              "RaceTime": "2:11:08.2",
+              "RaceRank": 16,
+              "RaceBehind": "+34:19.0"
+            }
+          ],
+          "Difference": "+34:19.1",
+          "PercentBack": "+35.45%",
+          "PercentWinning": "73.83%",
+          "PercentAverage": "-5.76%",
+          "PercentMedian": "-7.16%",
+          "Pace(time / mile)": "10:55.7",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "17",
+          "Bib": "72",
+          "Name": "Mignon Fontenelle",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-W Masters",
+          "Time": "2:11:34.8",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "42:32.5",
+              "LapRank": 18,
+              "LapBehind": "+11:10.7",
+              "RaceTime": "42:32.5",
+              "RaceRank": 18,
+              "RaceBehind": "+11:10.7"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:29:02.2",
+              "LapRank": 16,
+              "LapBehind": "+23:34.8",
+              "RaceTime": "2:11:34.7",
+              "RaceRank": 17,
+              "RaceBehind": "+34:45.5"
+            }
+          ],
+          "Difference": "+34:45.7",
+          "PercentBack": "+35.90%",
+          "PercentWinning": "73.58%",
+          "PercentAverage": "-6.12%",
+          "PercentMedian": "-7.52%",
+          "Pace(time / mile)": "10:57.9",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "18",
+          "Bib": "755",
+          "Name": "Fay Tong & Lon Kincannon",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC2-Mx Kupuna Masters",
+          "Time": "2:13:51.4",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "42:21.2",
+              "LapRank": 17,
+              "LapBehind": "+10:59.4",
+              "RaceTime": "42:21.2",
+              "RaceRank": 17,
+              "RaceBehind": "+10:59.4"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:31:30.2",
+              "LapRank": 19,
+              "LapBehind": "+26:02.8",
+              "RaceTime": "2:13:51.4",
+              "RaceRank": 18,
+              "RaceBehind": "+37:02.2"
+            }
+          ],
+          "Difference": "+37:02.3",
+          "PercentBack": "+38.26%",
+          "PercentWinning": "72.33%",
+          "PercentAverage": "-7.96%",
+          "PercentMedian": "-9.38%",
+          "Pace(time / mile)": "11:09.3",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "19",
+          "Bib": "803",
+          "Name": "Matthew Mar",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Novice",
+          "Time": "2:14:58.3",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "43:46.1",
+              "LapRank": 20,
+              "LapBehind": "+12:24.3",
+              "RaceTime": "43:46.1",
+              "RaceRank": 20,
+              "RaceBehind": "+12:24.3"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:31:12.2",
+              "LapRank": 18,
+              "LapBehind": "+25:44.8",
+              "RaceTime": "2:14:58.3",
+              "RaceRank": 19,
+              "RaceBehind": "+38:09.1"
+            }
+          ],
+          "Difference": "+38:09.2",
+          "PercentBack": "+39.41%",
+          "PercentWinning": "71.73%",
+          "PercentAverage": "-8.86%",
+          "PercentMedian": "-10.30%",
+          "Pace(time / mile)": "11:14.9",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "20",
+          "Bib": "76",
+          "Name": "Jean-Paul Dewane",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Open",
+          "Time": "2:16:00.3",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "43:50.6",
+              "LapRank": 21,
+              "LapBehind": "+12:28.8",
+              "RaceTime": "43:50.6",
+              "RaceRank": 21,
+              "RaceBehind": "+12:28.8"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:32:09.7",
+              "LapRank": 20,
+              "LapBehind": "+26:42.3",
+              "RaceTime": "2:16:00.3",
+              "RaceRank": 20,
+              "RaceBehind": "+39:11.1"
+            }
+          ],
+          "Difference": "+39:11.2",
+          "PercentBack": "+40.47%",
+          "PercentWinning": "71.19%",
+          "PercentAverage": "-9.69%",
+          "PercentMedian": "-11.14%",
+          "Pace(time / mile)": "11:20.0",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "21",
+          "Bib": "765",
+          "Name": "Anne Renaud-Wilkinson",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-W Kapuna Masters",
+          "Time": "2:26:47.6",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "45:25.9",
+              "LapRank": 22,
+              "LapBehind": "+14:04.1",
+              "RaceTime": "45:25.9",
+              "RaceRank": 22,
+              "RaceBehind": "+14:04.1"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:41:21.7",
+              "LapRank": 21,
+              "LapBehind": "+35:54.3",
+              "RaceTime": "2:26:47.6",
+              "RaceRank": 21,
+              "RaceBehind": "+49:58.4"
+            }
+          ],
+          "Difference": "+49:58.5",
+          "PercentBack": "+51.62%",
+          "PercentWinning": "65.96%",
+          "PercentAverage": "-18.39%",
+          "PercentMedian": "-19.96%",
+          "Pace(time / mile)": "12:14.0",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "22",
+          "Bib": "42",
+          "Name": "Graeme Galves",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "V1-M Senior Masters",
+          "Time": "2:38:03.8",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "47:18.0",
+              "LapRank": 23,
+              "LapBehind": "+15:56.2",
+              "RaceTime": "47:18.0",
+              "RaceRank": 23,
+              "RaceBehind": "+15:56.2"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:50:45.7",
+              "LapRank": 22,
+              "LapBehind": "+45:18.3",
+              "RaceTime": "2:38:03.7",
+              "RaceRank": 22,
+              "RaceBehind": "+1:01:14.5"
+            }
+          ],
+          "Difference": "+1:01:14.7",
+          "PercentBack": "+63.26%",
+          "PercentWinning": "61.25%",
+          "PercentAverage": "-27.48%",
+          "PercentMedian": "-29.17%",
+          "Pace(time / mile)": "13:10.3",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "-",
+          "Bib": "852",
+          "Name": "John Mooney",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "HPK-M Senior Masters",
+          "Time": "DNF",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "33:50.2",
+              "LapRank": 3,
+              "LapBehind": "+2:28.4",
+              "RaceTime": "33:50.2",
+              "RaceRank": 3,
+              "RaceBehind": "+2:28.4"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "-",
+              "LapRank": "-",
+              "RaceTime": "-",
+              "RaceRank": "-",
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "Pace(time / mile)": "-",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Cary Morris",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Masters",
+          "Time": "DNS",
+          "LapTimes": [],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "Pace(time / mile)": "-",
+          "StartTime": ""
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "David Oreiro",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Kupuna Masters",
+          "Time": "DNS",
+          "LapTimes": [],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "Pace(time / mile)": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "4 mile Fun Racer",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "2908",
+          "Name": "Dorothy Hall",
+          "Distance": "4 mile Fun Racer",
+          "Category": "HPK-W Novice",
+          "Time": "56:15.0",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "56:15.0",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "56:15.0",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.91%",
+          "PercentMedian": "3.17%",
+          "Pace(time / mile)": "14:03.8",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "2807",
+          "Name": "William Hall",
+          "Distance": "4 mile Fun Racer",
+          "Category": "SeaKayak-M Novice",
+          "Time": "58:05.4",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "58:05.4",
+              "LapRank": 2,
+              "LapBehind": "+1:50.4",
+              "RaceTime": "58:05.4",
+              "RaceRank": 2,
+              "RaceBehind": "+1:50.4"
+            }
+          ],
+          "Difference": "+1:50.4",
+          "PercentBack": "+3.27%",
+          "PercentWinning": "96.83%",
+          "PercentAverage": "12.13%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "14:31.3",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "2922",
+          "Name": "Harry Oesterreicher",
+          "Distance": "4 mile Fun Racer",
+          "Category": "SUP14-M",
+          "Time": "1:23:58.7",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "1:23:58.7",
+              "LapRank": 3,
+              "LapBehind": "+27:43.7",
+              "RaceTime": "1:23:58.7",
+              "RaceRank": 3,
+              "RaceBehind": "+27:43.7"
+            }
+          ],
+          "Difference": "+27:43.7",
+          "PercentBack": "+49.29%",
+          "PercentWinning": "66.98%",
+          "PercentAverage": "-27.04%",
+          "PercentMedian": "-44.57%",
+          "Pace(time / mile)": "20:59.7",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "HPK-M Masters",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1040",
+          "Name": "Kevin Olney",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "HPK-M Masters",
+          "Time": "1:44:05.3",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "32:41.6",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "32:41.6",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:11:23.7",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:44:05.3",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "8:40.4",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "HPK-M Senior Masters",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "809",
+          "Name": "Greg Barton",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "HPK-M Senior Masters",
+          "Time": "1:36:49.1",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "31:21.8",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "31:21.8",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:05:27.4",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:36:49.2",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.51%",
+          "PercentMedian": "9.51%",
+          "Pace(time / mile)": "8:04.1",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "804",
+          "Name": "Leonard Duncan",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "HPK-M Senior Masters",
+          "Time": "1:57:10.3",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "37:39.3",
+              "LapRank": 3,
+              "LapBehind": "+6:17.5",
+              "RaceTime": "37:39.3",
+              "RaceRank": 3,
+              "RaceBehind": "+6:17.5"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:19:31.0",
+              "LapRank": 2,
+              "LapBehind": "+14:03.6",
+              "RaceTime": "1:57:10.3",
+              "RaceRank": 2,
+              "RaceBehind": "+20:21.1"
+            }
+          ],
+          "Difference": "+20:21.2",
+          "PercentBack": "+21.02%",
+          "PercentWinning": "82.63%",
+          "PercentAverage": "-9.51%",
+          "PercentMedian": "-9.51%",
+          "Pace(time / mile)": "9:45.9",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "-",
+          "Bib": "852",
+          "Name": "John Mooney",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "HPK-M Senior Masters",
+          "Time": "DNF",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "33:50.2",
+              "LapRank": 2,
+              "LapBehind": "+2:28.4",
+              "RaceTime": "33:50.2",
+              "RaceRank": 2,
+              "RaceBehind": "+2:28.4"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "-",
+              "LapRank": "-",
+              "RaceTime": "-",
+              "RaceRank": "-",
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "Pace(time / mile)": "-",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "OC1-M Kupuna Masters",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "747",
+          "Name": "Bob Stewart",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Kupuna Masters",
+          "Time": "2:01:40.8",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "39:30.6",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "39:30.6",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:22:10.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "2:01:40.8",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "10:08.4",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "David Oreiro",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Kupuna Masters",
+          "Time": "DNS",
+          "LapTimes": [],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "Pace(time / mile)": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "OC1-M Masters",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1013",
+          "Name": "Rob Magus",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Masters",
+          "Time": "1:51:13.4",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "35:55.1",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "35:55.1",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:15:18.3",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:51:13.4",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.83%",
+          "PercentMedian": "3.41%",
+          "Pace(time / mile)": "9:16.1",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "1",
+          "Name": "Alan Goto",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Masters",
+          "Time": "1:53:15.6",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "36:01.7",
+              "LapRank": 2,
+              "LapBehind": "+0:06.6",
+              "RaceTime": "36:01.7",
+              "RaceRank": 2,
+              "RaceBehind": "+0:06.6"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:17:13.9",
+              "LapRank": 2,
+              "LapBehind": "+1:55.6",
+              "RaceTime": "1:53:15.6",
+              "RaceRank": 2,
+              "RaceBehind": "+2:02.2"
+            }
+          ],
+          "Difference": "+2:02.2",
+          "PercentBack": "+1.83%",
+          "PercentWinning": "98.20%",
+          "PercentAverage": "4.10%",
+          "PercentMedian": "1.65%",
+          "Pace(time / mile)": "9:26.3",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "1042",
+          "Name": "Gavin Godfrey",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Masters",
+          "Time": "1:55:09.3",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "36:19.2",
+              "LapRank": 3,
+              "LapBehind": "+0:24.1",
+              "RaceTime": "36:19.2",
+              "RaceRank": 3,
+              "RaceBehind": "+0:24.1"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:18:50.1",
+              "LapRank": 3,
+              "LapBehind": "+3:31.8",
+              "RaceTime": "1:55:09.3",
+              "RaceRank": 3,
+              "RaceBehind": "+3:55.9"
+            }
+          ],
+          "Difference": "+3:55.9",
+          "PercentBack": "+3.53%",
+          "PercentWinning": "96.59%",
+          "PercentAverage": "2.50%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "9:35.8",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "4",
+          "Bib": "760",
+          "Name": "Ken Asano",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Masters",
+          "Time": "2:00:04.6",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "39:16.3",
+              "LapRank": 4,
+              "LapBehind": "+3:21.2",
+              "RaceTime": "39:16.3",
+              "RaceRank": 4,
+              "RaceBehind": "+3:21.2"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:20:48.3",
+              "LapRank": 4,
+              "LapBehind": "+5:30.0",
+              "RaceTime": "2:00:04.6",
+              "RaceRank": 4,
+              "RaceBehind": "+8:51.2"
+            }
+          ],
+          "Difference": "+8:51.2",
+          "PercentBack": "+7.96%",
+          "PercentWinning": "92.63%",
+          "PercentAverage": "-1.67%",
+          "PercentMedian": "-4.27%",
+          "Pace(time / mile)": "10:00.4",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "5",
+          "Bib": "727",
+          "Name": "Ken Ang",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Masters",
+          "Time": "2:10:48.0",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "42:46.4",
+              "LapRank": 5,
+              "LapBehind": "+6:51.3",
+              "RaceTime": "42:46.4",
+              "RaceRank": 5,
+              "RaceBehind": "+6:51.3"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:28:01.7",
+              "LapRank": 5,
+              "LapBehind": "+12:43.4",
+              "RaceTime": "2:10:48.1",
+              "RaceRank": 5,
+              "RaceBehind": "+19:34.7"
+            }
+          ],
+          "Difference": "+19:34.6",
+          "PercentBack": "+17.60%",
+          "PercentWinning": "85.03%",
+          "PercentAverage": "-10.75%",
+          "PercentMedian": "-13.59%",
+          "Pace(time / mile)": "10:54.0",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Cary Morris",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Masters",
+          "Time": "DNS",
+          "LapTimes": [],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "Pace(time / mile)": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "OC1-M Novice",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "803",
+          "Name": "Matthew Mar",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Novice",
+          "Time": "2:14:58.3",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "43:46.1",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "43:46.1",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:31:12.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "2:14:58.3",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "11:14.9",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "OC1-M Open",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "240",
+          "Name": "Tony Hodanic",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Open",
+          "Time": "2:01:14.4",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "38:50.1",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "38:50.1",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:22:24.3",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "2:01:14.4",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.47%",
+          "PercentMedian": "4.93%",
+          "Pace(time / mile)": "10:06.2",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "643",
+          "Name": "Greg Mares",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Open",
+          "Time": "2:07:31.6",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "41:04.0",
+              "LapRank": 2,
+              "LapBehind": "+2:13.9",
+              "RaceTime": "41:04.0",
+              "RaceRank": 2,
+              "RaceBehind": "+2:13.9"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:26:27.6",
+              "LapRank": 2,
+              "LapBehind": "+4:03.3",
+              "RaceTime": "2:07:31.6",
+              "RaceRank": 2,
+              "RaceBehind": "+6:17.2"
+            }
+          ],
+          "Difference": "+6:17.2",
+          "PercentBack": "+5.19%",
+          "PercentWinning": "95.07%",
+          "PercentAverage": "0.57%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "10:37.6",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "76",
+          "Name": "Jean-Paul Dewane",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Open",
+          "Time": "2:16:00.3",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "43:50.6",
+              "LapRank": 3,
+              "LapBehind": "+5:00.5",
+              "RaceTime": "43:50.6",
+              "RaceRank": 3,
+              "RaceBehind": "+5:00.5"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:32:09.7",
+              "LapRank": 3,
+              "LapBehind": "+9:45.4",
+              "RaceTime": "2:16:00.3",
+              "RaceRank": 3,
+              "RaceBehind": "+14:45.9"
+            }
+          ],
+          "Difference": "+14:45.9",
+          "PercentBack": "+12.18%",
+          "PercentWinning": "89.14%",
+          "PercentAverage": "-6.04%",
+          "PercentMedian": "-6.65%",
+          "Pace(time / mile)": "11:20.0",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "OC1-M Senior Masters",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "837",
+          "Name": "Gordon Martinez",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Senior Masters",
+          "Time": "1:58:57.2",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "38:52.9",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "38:52.9",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:20:04.3",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:58:57.2",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.00%",
+          "PercentMedian": "3.34%",
+          "Pace(time / mile)": "9:54.8",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "131",
+          "Name": "Rick Renaud",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Senior Masters",
+          "Time": "2:03:03.9",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "40:50.8",
+              "LapRank": 3,
+              "LapBehind": "+1:57.9",
+              "RaceTime": "40:50.8",
+              "RaceRank": 3,
+              "RaceBehind": "+1:57.9"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:22:13.1",
+              "LapRank": 2,
+              "LapBehind": "+2:08.8",
+              "RaceTime": "2:03:03.9",
+              "RaceRank": 2,
+              "RaceBehind": "+4:06.7"
+            }
+          ],
+          "Difference": "+4:06.7",
+          "PercentBack": "+3.46%",
+          "PercentWinning": "96.66%",
+          "PercentAverage": "-0.36%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "10:15.3",
+          "StartTime": "11:06:49.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "151",
+          "Name": "Doug Thomas",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-M Senior Masters",
+          "Time": "2:05:52.0",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "40:23.1",
+              "LapRank": 2,
+              "LapBehind": "+1:30.2",
+              "RaceTime": "40:23.1",
+              "RaceRank": 2,
+              "RaceBehind": "+1:30.2"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:25:28.9",
+              "LapRank": 3,
+              "LapBehind": "+5:24.6",
+              "RaceTime": "2:05:52.0",
+              "RaceRank": 3,
+              "RaceBehind": "+6:54.8"
+            }
+          ],
+          "Difference": "+6:54.8",
+          "PercentBack": "+5.81%",
+          "PercentWinning": "94.51%",
+          "PercentAverage": "-2.64%",
+          "PercentMedian": "-2.28%",
+          "Pace(time / mile)": "10:29.3",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "OC1-W Kapuna Masters",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "765",
+          "Name": "Anne Renaud-Wilkinson",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-W Kapuna Masters",
+          "Time": "2:26:47.6",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "45:25.9",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "45:25.9",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:41:21.7",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "2:26:47.6",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "12:14.0",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "OC1-W Masters",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "72",
+          "Name": "Mignon Fontenelle",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC1-W Masters",
+          "Time": "2:11:34.8",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "42:32.5",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "42:32.5",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:29:02.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "2:11:34.7",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "10:57.9",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "OC2-Mx Kupuna Masters",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "755",
+          "Name": "Fay Tong & Lon Kincannon",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC2-Mx Kupuna Masters",
+          "Time": "2:13:51.4",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "42:21.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "42:21.2",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:31:30.2",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "2:13:51.4",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "11:09.3",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "OC2-Mx Masters",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "555",
+          "Name": "Aimee Edwards & Erik Scharffenberg",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC2-Mx Masters",
+          "Time": "1:48:26.9",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "35:05.8",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "35:05.8",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:13:21.1",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:48:26.9",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "9:02.2",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "OC2-W Kupuna Masters",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "95",
+          "Name": "Joan Martocello & Carin Rittby-Kane",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "OC2-W Kupuna Masters",
+          "Time": "2:11:08.2",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "41:49.8",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "41:49.8",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:29:18.4",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "2:11:08.2",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "10:55.7",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "11 mile PNWORCA Champs",
+        "Category": "V1-M Senior Masters",
+        "LapCount": "2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "42",
+          "Name": "Graeme Galves",
+          "Distance": "11 mile PNWORCA Champs",
+          "Category": "V1-M Senior Masters",
+          "Time": "2:38:03.8",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "47:18.0",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "47:18.0",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapName": "520",
+              "LapTime": "1:50:45.7",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "2:38:03.7",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "13:10.3",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "4 mile Fun Racer",
+        "Category": "HPK-W Novice"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "2908",
+          "Name": "Dorothy Hall",
+          "Distance": "4 mile Fun Racer",
+          "Category": "HPK-W Novice",
+          "Time": "56:15.0",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "56:15.0",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "56:15.0",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "14:03.8",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "4 mile Fun Racer",
+        "Category": "SeaKayak-M Novice"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "2807",
+          "Name": "William Hall",
+          "Distance": "4 mile Fun Racer",
+          "Category": "SeaKayak-M Novice",
+          "Time": "58:05.4",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "58:05.4",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "58:05.4",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "14:31.3",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "4 mile Fun Racer",
+        "Category": "SUP14-M"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "2922",
+          "Name": "Harry Oesterreicher",
+          "Distance": "4 mile Fun Racer",
+          "Category": "SUP14-M",
+          "Time": "1:23:58.7",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapName": "Shark buoy",
+              "LapTime": "1:23:58.7",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "1:23:58.7",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "Pace(time / mile)": "20:59.7",
+          "StartTime": "11:06:49.7"
+        }
+      ]
+    }
+  ]
+}

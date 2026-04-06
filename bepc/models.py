@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 
 @dataclass
 class RaceInfo:
-    race_id: int
+    race_id: str
     name: str
     date: str
     display_url: str

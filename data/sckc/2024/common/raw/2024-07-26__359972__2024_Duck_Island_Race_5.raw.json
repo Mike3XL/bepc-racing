@@ -1,0 +1,472 @@
+{
+  "RaceInfo": {
+    "RaceId": 359972,
+    "Name": "2024 Duck Island Race #5",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=359972",
+    "Date": "Jul 26, 2024",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 26, 2024 6:30 PM (GMT-4)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.672291919482184,
+    "Longitude": -122.34134533815919,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 12:35 PM (GMT-4)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/359972_8dcaf1fd680c5e5.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Wilbert Lam",
+          "TeamName": "Sprint C1",
+          "Distance": "C1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:09",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.59%",
+          "PercentMedian": "0.59%"
+        },
+        {
+          "Place": "2",
+          "Name": "Caleb Chuck",
+          "TeamName": "Sprint C1",
+          "Distance": "C1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:17",
+          "Difference": "+0:08",
+          "PercentBack": "+1.20%",
+          "PercentWinning": "98.82%",
+          "PercentAverage": "-0.59%",
+          "PercentMedian": "-0.59%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Egor Klevak",
+          "TeamName": "Yellow surf ski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:07:46",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "36.91%",
+          "PercentMedian": "40.86%"
+        },
+        {
+          "Place": "2",
+          "Name": "Isaac Chan",
+          "TeamName": "Nelo Quatro",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:10:17",
+          "Difference": "+2:31",
+          "PercentBack": "+32.40%",
+          "PercentWinning": "75.53%",
+          "PercentAverage": "16.46%",
+          "PercentMedian": "21.70%"
+        },
+        {
+          "Place": "3",
+          "Name": "Skye Davidson",
+          "TeamName": "Liangjin Superlancer K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:12:29",
+          "Difference": "+4:43",
+          "PercentBack": "+60.73%",
+          "PercentWinning": "62.22%",
+          "PercentAverage": "-1.41%",
+          "PercentMedian": "4.95%"
+        },
+        {
+          "Place": "4",
+          "Name": "Tai Flynn",
+          "TeamName": "Epic surfski V10",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:13:08",
+          "Difference": "+5:22",
+          "PercentBack": "+69.10%",
+          "PercentWinning": "59.14%",
+          "PercentAverage": "-6.69%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "5",
+          "Name": "Karla Ogle",
+          "TeamName": "Nelo Viper 55",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:14:01",
+          "Difference": "+6:15",
+          "PercentBack": "+80.47%",
+          "PercentWinning": "55.41%",
+          "PercentAverage": "-13.87%",
+          "PercentMedian": "-6.73%"
+        },
+        {
+          "Place": "6",
+          "Name": "Torsten",
+          "TeamName": "Zastera Nipper",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:14:14",
+          "Difference": "+6:28",
+          "PercentBack": "+83.26%",
+          "PercentWinning": "54.57%",
+          "PercentAverage": "-15.63%",
+          "PercentMedian": "-8.38%"
+        },
+        {
+          "Place": "7",
+          "Name": "Jane Lentini",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:14:15",
+          "Difference": "+6:29",
+          "PercentBack": "+83.48%",
+          "PercentWinning": "54.50%",
+          "PercentAverage": "-15.76%",
+          "PercentMedian": "-8.50%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Kevin Lentini & Miles Parsons",
+          "TeamName": "Epic ML K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:44",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "15.21%",
+          "PercentMedian": "12.01%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Nora Tsong & Gus Starkie",
+          "TeamName": "Liangjin Peppermint K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "0:08:53",
+          "Difference": "+0:09",
+          "PercentBack": "+1.72%",
+          "PercentWinning": "98.31%",
+          "PercentAverage": "13.75%",
+          "PercentMedian": "10.50%"
+        },
+        {
+          "Place": "3",
+          "Name": "K2 Delia Ward-Smith & Lillian Balet",
+          "TeamName": "Epic Surfski K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:10:58",
+          "Difference": "+2:14",
+          "PercentBack": "+25.57%",
+          "PercentWinning": "79.64%",
+          "PercentAverage": "-6.47%",
+          "PercentMedian": "-10.50%"
+        },
+        {
+          "Place": "4",
+          "Name": "K2 Liz Graf-Brennen & Breona Gutschmidt",
+          "TeamName": "Nelo Clifford K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:12:37",
+          "Difference": "+3:53",
+          "PercentBack": "+44.47%",
+          "PercentWinning": "69.22%",
+          "PercentAverage": "-22.49%",
+          "PercentMedian": "-27.12%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Wilbert Lam",
+          "TeamName": "Sprint C1",
+          "Distance": "C1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:09",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.59%",
+          "PercentMedian": "0.59%"
+        },
+        {
+          "Place": "2",
+          "Name": "Caleb Chuck",
+          "TeamName": "Sprint C1",
+          "Distance": "C1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:17",
+          "Difference": "+0:08",
+          "PercentBack": "+1.20%",
+          "PercentWinning": "98.82%",
+          "PercentAverage": "-0.59%",
+          "PercentMedian": "-0.59%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Skye Davidson",
+          "TeamName": "Liangjin Superlancer K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:12:29",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.58%",
+          "PercentMedian": "12.30%"
+        },
+        {
+          "Place": "2",
+          "Name": "Torsten",
+          "TeamName": "Zastera Nipper",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:14:14",
+          "Difference": "+1:45",
+          "PercentBack": "+14.02%",
+          "PercentWinning": "87.70%",
+          "PercentAverage": "-4.23%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Jane Lentini",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:14:15",
+          "Difference": "+1:46",
+          "PercentBack": "+14.15%",
+          "PercentWinning": "87.60%",
+          "PercentAverage": "-4.35%",
+          "PercentMedian": "-0.12%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Karla Ogle",
+          "TeamName": "Nelo Viper 55",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:14:01",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Egor Klevak",
+          "TeamName": "Yellow surf ski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:07:46",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "25.28%",
+          "PercentMedian": "24.47%"
+        },
+        {
+          "Place": "2",
+          "Name": "Isaac Chan",
+          "TeamName": "Nelo Quatro",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:10:17",
+          "Difference": "+2:31",
+          "PercentBack": "+32.40%",
+          "PercentWinning": "75.53%",
+          "PercentAverage": "1.07%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Tai Flynn",
+          "TeamName": "Epic surfski V10",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:13:08",
+          "Difference": "+5:22",
+          "PercentBack": "+69.10%",
+          "PercentWinning": "59.14%",
+          "PercentAverage": "-26.35%",
+          "PercentMedian": "-27.71%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Kevin Lentini & Miles Parsons",
+          "TeamName": "Epic ML K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:44",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.85%",
+          "PercentMedian": "0.85%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Nora Tsong & Gus Starkie",
+          "TeamName": "Liangjin Peppermint K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "0:08:53",
+          "Difference": "+0:09",
+          "PercentBack": "+1.72%",
+          "PercentWinning": "98.31%",
+          "PercentAverage": "-0.85%",
+          "PercentMedian": "-0.85%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Liz Graf-Brennen & Breona Gutschmidt",
+          "TeamName": "Nelo Clifford K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:12:37",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Delia Ward-Smith & Lillian Balet",
+          "TeamName": "Epic Surfski K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:10:58",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

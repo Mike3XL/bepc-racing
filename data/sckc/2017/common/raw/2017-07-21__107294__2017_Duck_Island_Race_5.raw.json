@@ -1,0 +1,200 @@
+{
+  "RaceInfo": {
+    "RaceId": 107294,
+    "Name": "2017 Duck Island Race #5",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=107294",
+    "Date": "Jul 21, 2017",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 21, 2017 6:45 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6718103714026,
+    "Longitude": -122.342784404755,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 10:15 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/107294_8dcaf28e0b5b1bc.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Holmes",
+          "TeamName2": "Nelo Quattro Classic",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:04.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.16%",
+          "PercentMedian": "15.00%"
+        },
+        {
+          "Place": "2",
+          "Name": "Philip Murphy",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:17.3",
+          "Difference": "+1:12.7",
+          "PercentBack": "+12.02%",
+          "PercentWinning": "89.27%",
+          "PercentAverage": "2.71%",
+          "PercentMedian": "4.78%"
+        },
+        {
+          "Place": "3",
+          "Name": "Karla Ogle",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:25.3",
+          "Difference": "+2:20.7",
+          "PercentBack": "+23.27%",
+          "PercentWinning": "81.12%",
+          "PercentAverage": "-7.05%",
+          "PercentMedian": "-4.78%"
+        },
+        {
+          "Place": "4",
+          "Name": "Liz Graf-Brennen",
+          "TeamName2": "Tornado",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:37.6",
+          "Difference": "+2:33.0",
+          "PercentBack": "+25.31%",
+          "PercentWinning": "79.80%",
+          "PercentAverage": "-8.82%",
+          "PercentMedian": "-6.51%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Einar Ogle & Jake Zikan",
+          "TeamName2": "Epic ML K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:41.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Holmes",
+          "TeamName2": "Nelo Quattro Classic",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:04.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.16%",
+          "PercentMedian": "15.00%"
+        },
+        {
+          "Place": "2",
+          "Name": "Philip Murphy",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:17.3",
+          "Difference": "+1:12.7",
+          "PercentBack": "+12.02%",
+          "PercentWinning": "89.27%",
+          "PercentAverage": "2.71%",
+          "PercentMedian": "4.78%"
+        },
+        {
+          "Place": "3",
+          "Name": "Karla Ogle",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:25.3",
+          "Difference": "+2:20.7",
+          "PercentBack": "+23.27%",
+          "PercentWinning": "81.12%",
+          "PercentAverage": "-7.05%",
+          "PercentMedian": "-4.78%"
+        },
+        {
+          "Place": "4",
+          "Name": "Liz Graf-Brennen",
+          "TeamName2": "Tornado",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:37.6",
+          "Difference": "+2:33.0",
+          "PercentBack": "+25.31%",
+          "PercentWinning": "79.80%",
+          "PercentAverage": "-8.82%",
+          "PercentMedian": "-6.51%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Einar Ogle & Jake Zikan",
+          "TeamName2": "Epic ML K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:41.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

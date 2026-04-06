@@ -1,0 +1,440 @@
+{
+  "RaceInfo": {
+    "RaceId": 192105,
+    "Name": "2019 Duck Island Race #8",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=192105",
+    "Date": "Aug 23, 2019",
+    "Sport": "Paddling",
+    "StartTime": "Friday, August 23, 2019 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.685902,
+    "Longitude": -122.2994,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LM-X212(G)",
+    "TimedWith": "Webscorer PRO 4.1",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 9:59 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/192105_8dcaf269578ed6d.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Steve Small",
+          "TeamName": "V14",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "9:06.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "18.81%",
+          "PercentMedian": "16.40%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jupiter Grant",
+          "TeamName": "Orion",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "9:38.5",
+          "Difference": "+0:31.7",
+          "PercentBack": "+5.80%",
+          "PercentWinning": "94.52%",
+          "PercentAverage": "14.11%",
+          "PercentMedian": "11.56%"
+        },
+        {
+          "Place": "3",
+          "Name": "Leo Malmberg",
+          "TeamName": "Nelo Vanquish K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "9:42.2",
+          "Difference": "+0:35.4",
+          "PercentBack": "+6.47%",
+          "PercentWinning": "93.92%",
+          "PercentAverage": "13.56%",
+          "PercentMedian": "10.99%"
+        },
+        {
+          "Place": "4",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Tornado K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "9:56.6",
+          "Difference": "+0:49.8",
+          "PercentBack": "+9.11%",
+          "PercentWinning": "91.65%",
+          "PercentAverage": "11.42%",
+          "PercentMedian": "8.79%"
+        },
+        {
+          "Place": "5",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "V10",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:21.6",
+          "Difference": "+1:14.8",
+          "PercentBack": "+13.68%",
+          "PercentWinning": "87.97%",
+          "PercentAverage": "7.71%",
+          "PercentMedian": "4.97%"
+        },
+        {
+          "Place": "6",
+          "Name": "Nora Tsong",
+          "TeamName": "Nelo Moskito 65",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:47.9",
+          "Difference": "+1:41.1",
+          "PercentBack": "+18.49%",
+          "PercentWinning": "84.40%",
+          "PercentAverage": "3.80%",
+          "PercentMedian": "0.95%"
+        },
+        {
+          "Place": "7",
+          "Name": "Philip Murphy",
+          "TeamName": "TK",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:00.3",
+          "Difference": "+1:53.5",
+          "PercentBack": "+20.76%",
+          "PercentWinning": "82.81%",
+          "PercentAverage": "1.96%",
+          "PercentMedian": "-0.95%"
+        },
+        {
+          "Place": "8",
+          "Name": "Jim Erickson",
+          "TeamName": "Think sea kayak",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:09.9",
+          "Difference": "+2:03.1",
+          "PercentBack": "+22.51%",
+          "PercentWinning": "81.62%",
+          "PercentAverage": "0.54%",
+          "PercentMedian": "-2.42%"
+        },
+        {
+          "Place": "9",
+          "Name": "Elizabeth Erickson",
+          "TeamName": "V12",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "11:27.3",
+          "Difference": "+2:20.5",
+          "PercentBack": "+25.69%",
+          "PercentWinning": "79.56%",
+          "PercentAverage": "-2.05%",
+          "PercentMedian": "-5.08%"
+        },
+        {
+          "Place": "10",
+          "Name": "Jared Ogle",
+          "TeamName": "V8",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:56.7",
+          "Difference": "+3:49.9",
+          "PercentBack": "+42.04%",
+          "PercentWinning": "70.40%",
+          "PercentAverage": "-15.32%",
+          "PercentMedian": "-18.74%"
+        },
+        {
+          "Place": "11",
+          "Name": "Avery Brown",
+          "TeamName": "TK",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "13:59.3",
+          "Difference": "+4:52.5",
+          "PercentBack": "+53.49%",
+          "PercentWinning": "65.15%",
+          "PercentAverage": "-24.61%",
+          "PercentMedian": "-28.31%"
+        },
+        {
+          "Place": "12",
+          "Name": "Calvin Huo",
+          "TeamName": "Nelo Moskito 85",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "14:35.1",
+          "Difference": "+5:28.3",
+          "PercentBack": "+60.04%",
+          "PercentWinning": "62.48%",
+          "PercentAverage": "-29.93%",
+          "PercentMedian": "-33.79%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Vaughn Schenk & Liam Jennings",
+          "TeamName": "Epic ML K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:49.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Leo Malmberg",
+          "TeamName": "Nelo Vanquish K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "9:42.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.03%",
+          "PercentMedian": "10.14%"
+        },
+        {
+          "Place": "2",
+          "Name": "Nora Tsong",
+          "TeamName": "Nelo Moskito 65",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:47.9",
+          "Difference": "+1:05.7",
+          "PercentBack": "+11.28%",
+          "PercentWinning": "89.86%",
+          "PercentAverage": "7.67%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Calvin Huo",
+          "TeamName": "Nelo Moskito 85",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "14:35.1",
+          "Difference": "+4:52.9",
+          "PercentBack": "+50.31%",
+          "PercentWinning": "66.53%",
+          "PercentAverage": "-24.71%",
+          "PercentMedian": "-35.07%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Steve Small",
+          "TeamName": "V14",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "9:06.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "16.68%",
+          "PercentMedian": "17.79%"
+        },
+        {
+          "Place": "2",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Tornado K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "9:56.6",
+          "Difference": "+0:49.8",
+          "PercentBack": "+9.11%",
+          "PercentWinning": "91.65%",
+          "PercentAverage": "9.09%",
+          "PercentMedian": "10.30%"
+        },
+        {
+          "Place": "3",
+          "Name": "Philip Murphy",
+          "TeamName": "TK",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:00.3",
+          "Difference": "+1:53.5",
+          "PercentBack": "+20.76%",
+          "PercentWinning": "82.81%",
+          "PercentAverage": "-0.61%",
+          "PercentMedian": "0.72%"
+        },
+        {
+          "Place": "4",
+          "Name": "Jim Erickson",
+          "TeamName": "Think sea kayak",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:09.9",
+          "Difference": "+2:03.1",
+          "PercentBack": "+22.51%",
+          "PercentWinning": "81.62%",
+          "PercentAverage": "-2.08%",
+          "PercentMedian": "-0.72%"
+        },
+        {
+          "Place": "5",
+          "Name": "Elizabeth Erickson",
+          "TeamName": "V12",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "11:27.3",
+          "Difference": "+2:20.5",
+          "PercentBack": "+25.69%",
+          "PercentWinning": "79.56%",
+          "PercentAverage": "-4.73%",
+          "PercentMedian": "-3.34%"
+        },
+        {
+          "Place": "6",
+          "Name": "Jared Ogle",
+          "TeamName": "V8",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:56.7",
+          "Difference": "+3:49.9",
+          "PercentBack": "+42.04%",
+          "PercentWinning": "70.40%",
+          "PercentAverage": "-18.35%",
+          "PercentMedian": "-16.78%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jupiter Grant",
+          "TeamName": "Orion",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "9:38.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.90%",
+          "PercentMedian": "6.93%"
+        },
+        {
+          "Place": "2",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "V10",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:21.6",
+          "Difference": "+0:43.1",
+          "PercentBack": "+7.45%",
+          "PercentWinning": "93.07%",
+          "PercentAverage": "8.56%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Avery Brown",
+          "TeamName": "TK",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "13:59.3",
+          "Difference": "+4:20.8",
+          "PercentBack": "+45.08%",
+          "PercentWinning": "68.93%",
+          "PercentAverage": "-23.46%",
+          "PercentMedian": "-35.02%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Vaughn Schenk & Liam Jennings",
+          "TeamName": "Epic ML K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:49.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

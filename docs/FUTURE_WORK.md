@@ -11,7 +11,7 @@
 ### PNW Regional — data completion
 3. **Fetch 2024 Jericho data** — `cli.py fetch-jericho 2024` (same races as 2025)
 4. **Fetch 2023 Jericho data** — `cli.py fetch-jericho 2023`
-5. **Pacific Multisports PDFs** — Peter Marcus 2022-2025, Narrows Challenge 2022-2025 (manual download + `cli.py import-pdf`)
+5. **Pacific Multisports PDFs** — Peter Marcus 2022-2025, Narrows Challenge 2022-2025 (manual download + `cli.py import-pdf`) — note: Narrows Challenge is organized by GHCKC (same team as Paddlers Cup)
 6. **Gorge Challenge** — find results source (separate organizer from Gorge Downwind)
 7. **audit-names** — build name canonicalization audit for PNW Regional (many new racers, likely variants). Similar to `audit-crafts` — detect names appearing only once (possible typos), names with high similarity to others (possible duplicates). See normalization-principles.md for design guidance.
 
@@ -157,6 +157,8 @@ Two types of organizations to track separately:
 **Minimum distance: ~1 mile.** Sprint events (200m, 500m, 1000m, 1500m) are excluded — they are a separate discipline. Future work: PNW Canoe Sprint virtual club for sprint results.
 
 **TODO - Gorge Challenge:** Separate organizer from Jericho/PNWORCA. Need to find their results source and add to fetch-jericho or a new fetcher. Search for "Gorge Challenge paddle race Hood River" to find their site.
+
+**TODO - Gig Harbor (GHCKC) Paddlers Cup:** Organized by Gig Harbor Canoe & Kayak Club. Same team also runs the Narrows Challenge. Need to find their results source (WebScorer, PaddleGuru, or own site). Search "GHCKC Paddlers Cup" and "Gig Harbor Canoe Kayak Club" to find results.
 
 ## Done (removed from backlog)
 

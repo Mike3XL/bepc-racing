@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 357001,
+    "distance": "K2",
+    "name": "2024 Duck Island Race #1 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=357001",
+    "date": "Jun 28, 2024",
+    "sport": "Paddling",
+    "startTime": "Friday, June 28, 2024 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.214286
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Elizabeth Holmes & Breona Gutschmidt",
+      "craftCategory": "Masters 40+",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 612.75,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 612.75,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "K2 Delia Ward-Smith & Lillian Balet",
+      "craftCategory": "Open",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 666.81,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 666.81,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "K2 Melat Peterson & Cooper Riley",
+      "craftCategory": "Junior",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 712.86,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 712.86,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

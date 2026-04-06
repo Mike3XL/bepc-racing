@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 398279,
+    "distance": "K2",
+    "name": "2025 Duck Island Race #1 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=398279",
+    "date": "Jul 11, 2025",
+    "sport": "Paddling",
+    "startTime": "Friday, July 11, 2025 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.214286
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Kevin Lentini & Miles Parsons",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 487.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 487.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "K2 Elizabeth Holmes & Luis Buen Abad",
+      "craftCategory": "Master 40+",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 577.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 577.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "K2 Julie Roberts & Becky Bronstein",
+      "craftCategory": "Open",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 615.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 615.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

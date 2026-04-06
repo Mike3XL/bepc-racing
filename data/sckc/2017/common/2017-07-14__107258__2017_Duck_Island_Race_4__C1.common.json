@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 107258,
+    "distance": "C1",
+    "name": "2017 Duck Island Race #4 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=107258",
+    "date": "Jul 14, 2017",
+    "sport": "Paddling",
+    "startTime": "Friday, July 14, 2017 6:45 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.111111
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Doug Bosworth",
+      "craftCategory": "Masters 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1369.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1369.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

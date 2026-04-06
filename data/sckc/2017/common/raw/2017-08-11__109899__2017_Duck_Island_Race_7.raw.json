@@ -1,0 +1,224 @@
+{
+  "RaceInfo": {
+    "RaceId": 109899,
+    "Name": "2017 Duck Island Race #7",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=109899",
+    "Date": "Aug 11, 2017",
+    "Sport": "Paddling",
+    "StartTime": "Friday, August 11, 2017 6:45 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6718103714026,
+    "Longitude": -122.342784404755,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 10:16 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/109899_8dcaf29135eca73.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Vaa OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:44.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "James Girton",
+          "TeamName": "V10 surfski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:38.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "1.77%",
+          "PercentMedian": "1.77%"
+        },
+        {
+          "Place": "2",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:01.0",
+          "Difference": "+0:23.0",
+          "PercentBack": "+3.61%",
+          "PercentWinning": "96.52%",
+          "PercentAverage": "-1.77%",
+          "PercentMedian": "-1.77%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Aaron Small & Leana Girton",
+          "TeamName": "K2 Plastex",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "8:42.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.38%",
+          "PercentMedian": "9.38%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Steve Small & Noah Small",
+          "TeamName": "K2 Nelo Viper",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:30.0",
+          "Difference": "+1:48.0",
+          "PercentBack": "+20.69%",
+          "PercentWinning": "82.86%",
+          "PercentAverage": "-9.38%",
+          "PercentMedian": "-9.38%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Vaa OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:44.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "James Girton",
+          "TeamName": "V10 surfski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:38.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "1.77%",
+          "PercentMedian": "1.77%"
+        },
+        {
+          "Place": "2",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:01.0",
+          "Difference": "+0:23.0",
+          "PercentBack": "+3.61%",
+          "PercentWinning": "96.52%",
+          "PercentAverage": "-1.77%",
+          "PercentMedian": "-1.77%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Aaron Small & Leana Girton",
+          "TeamName": "K2 Plastex",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "8:42.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Steve Small & Noah Small",
+          "TeamName": "K2 Nelo Viper",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "10:30.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "RaceInfo": {
+    "RaceId": 143458,
+    "Name": "2018 Duck Island Race #3",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=143458",
+    "Date": "Jul 6, 2018",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 6, 2018 5:47 PM (GMT+2)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67255204603311,
+    "Longitude": -122.34042377841797,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 7:02 PM (GMT+2)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/143458_8dc9803eb5c0ee6.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Soren Ogle",
+          "TeamName2": "K1 with canoe paddle",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "21:34.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Einar Ogle & Cian Donovan",
+          "TeamName2": "K2 with canoe paddles",
+          "Distance": "C2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "18:33.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Breona Gutschmidt",
+          "TeamName2": "Tornado",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "15:00.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.21%",
+          "PercentMedian": "5.66%"
+        },
+        {
+          "Place": "2",
+          "Name": "Karla Ogle",
+          "TeamName2": "TK-1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "15:54.0",
+          "Difference": "+0:54.0",
+          "PercentBack": "+6.00%",
+          "PercentWinning": "94.34%",
+          "PercentAverage": "3.77%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Jared Ogle",
+          "TeamName2": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "18:40.0",
+          "Difference": "+3:40.0",
+          "PercentBack": "+24.44%",
+          "PercentWinning": "80.36%",
+          "PercentAverage": "-12.98%",
+          "PercentMedian": "-17.40%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Name": "K2 Vaughn Schenk & Hayden",
+          "TeamName2": "K2 with canoe paddles",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Soren Ogle",
+          "TeamName2": "K1 with canoe paddle",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "21:34.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Einar Ogle & Cian Donovan",
+          "TeamName2": "K2 with canoe paddles",
+          "Distance": "C2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "18:33.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Karla Ogle",
+          "TeamName2": "TK-1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "15:54.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "8.00%",
+          "PercentMedian": "8.00%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jared Ogle",
+          "TeamName2": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "18:40.0",
+          "Difference": "+2:46.0",
+          "PercentBack": "+17.40%",
+          "PercentWinning": "85.18%",
+          "PercentAverage": "-8.00%",
+          "PercentMedian": "-8.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Breona Gutschmidt",
+          "TeamName2": "Tornado",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "15:00.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Name": "K2 Vaughn Schenk & Hayden",
+          "TeamName2": "K2 with canoe paddles",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-"
+        }
+      ]
+    }
+  ]
+}

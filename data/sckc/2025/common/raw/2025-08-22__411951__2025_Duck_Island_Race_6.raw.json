@@ -1,0 +1,612 @@
+{
+  "RaceInfo": {
+    "RaceId": 411951,
+    "Name": "2025 Duck Island Race #6",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=411951",
+    "Date": "Aug 22, 2025",
+    "Sport": "Paddling",
+    "StartTime": "Friday, August 22, 2025 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67301685634944,
+    "Longitude": -122.34134674072266,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Friday, October 31, 2025 12:54 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/411951_8de18a7338b5943.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Mark Parrish",
+          "TeamName": "Nelo",
+          "Distance": "C1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "9:54.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "41.78%",
+          "PercentMedian": "43.28%"
+        },
+        {
+          "Place": "2",
+          "Name": "Gus Starkie",
+          "TeamName": "kayak w canoe paddle",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:48.0",
+          "Difference": "+1:53.5",
+          "PercentBack": "+19.09%",
+          "PercentWinning": "83.97%",
+          "PercentAverage": "30.66%",
+          "PercentMedian": "32.46%"
+        },
+        {
+          "Place": "3",
+          "Name": "Cooper Beitlers",
+          "TeamName": "Nelo",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "23:08.4",
+          "Difference": "+13:13.9",
+          "PercentBack": "+133.54%",
+          "PercentWinning": "42.82%",
+          "PercentAverage": "-35.97%",
+          "PercentMedian": "-32.46%"
+        },
+        {
+          "Place": "4",
+          "Name": "Ethan Chin",
+          "TeamName": "kayak w canoe paddle",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "23:13.5",
+          "Difference": "+13:19.0",
+          "PercentBack": "+134.40%",
+          "PercentWinning": "42.66%",
+          "PercentAverage": "-36.47%",
+          "PercentMedian": "-32.94%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Soren Ogle",
+          "TeamName": "Nelo Quattro",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:51.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "32.58%",
+          "PercentMedian": "28.55%"
+        },
+        {
+          "Place": "2",
+          "Name": "Girts Beitlers",
+          "TeamName": "Prestol",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "7:54.4",
+          "Difference": "+0:03.0",
+          "PercentBack": "+0.64%",
+          "PercentWinning": "99.37%",
+          "PercentAverage": "32.16%",
+          "PercentMedian": "28.10%"
+        },
+        {
+          "Place": "3",
+          "Name": "Kevin Lentini",
+          "TeamName": "Nelo",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "9:23.8",
+          "Difference": "+1:32.4",
+          "PercentBack": "+19.60%",
+          "PercentWinning": "83.61%",
+          "PercentAverage": "19.37%",
+          "PercentMedian": "14.55%"
+        },
+        {
+          "Place": "4",
+          "Name": "Luis Buen Abad",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "9:49.3",
+          "Difference": "+1:57.9",
+          "PercentBack": "+25.01%",
+          "PercentWinning": "79.99%",
+          "PercentAverage": "15.72%",
+          "PercentMedian": "10.69%"
+        },
+        {
+          "Place": "5",
+          "Name": "Paul Elrif",
+          "TeamName": "V10 Sport",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "10:23.1",
+          "Difference": "+2:31.7",
+          "PercentBack": "+32.18%",
+          "PercentWinning": "75.65%",
+          "PercentAverage": "10.89%",
+          "PercentMedian": "5.56%"
+        },
+        {
+          "Place": "6",
+          "Name": "Becky Bronstein",
+          "TeamName": "Epic Sport",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "10:28.0",
+          "Difference": "+2:36.6",
+          "PercentBack": "+33.22%",
+          "PercentWinning": "75.06%",
+          "PercentAverage": "10.19%",
+          "PercentMedian": "4.82%"
+        },
+        {
+          "Place": "7",
+          "Name": "Cooper Riley",
+          "TeamName": "Zastera Joker",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:31.6",
+          "Difference": "+3:40.2",
+          "PercentBack": "+46.71%",
+          "PercentWinning": "68.16%",
+          "PercentAverage": "1.09%",
+          "PercentMedian": "-4.82%"
+        },
+        {
+          "Place": "8",
+          "Name": "Dave",
+          "TeamName": "V10",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "12:45.7",
+          "Difference": "+4:54.3",
+          "PercentBack": "+62.43%",
+          "PercentWinning": "61.56%",
+          "PercentAverage": "-9.50%",
+          "PercentMedian": "-16.05%"
+        },
+        {
+          "Place": "9",
+          "Name": "Jared Ogle",
+          "TeamName": "V10 Sport",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "13:31.8",
+          "Difference": "+5:40.4",
+          "PercentBack": "+72.21%",
+          "PercentWinning": "58.07%",
+          "PercentAverage": "-16.10%",
+          "PercentMedian": "-23.04%"
+        },
+        {
+          "Place": "10",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "14:23.3",
+          "Difference": "+6:31.9",
+          "PercentBack": "+83.14%",
+          "PercentWinning": "54.60%",
+          "PercentAverage": "-23.46%",
+          "PercentMedian": "-30.84%"
+        },
+        {
+          "Place": "11",
+          "Name": "Liz Graf-Brennen",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Female",
+          "Time": "15:49.4",
+          "Difference": "+7:58.0",
+          "PercentBack": "+101.40%",
+          "PercentWinning": "49.65%",
+          "PercentAverage": "-35.78%",
+          "PercentMedian": "-43.89%"
+        },
+        {
+          "Place": "12",
+          "Name": "Becky Chan",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Female",
+          "Time": "15:59.1",
+          "Difference": "+8:07.7",
+          "PercentBack": "+103.46%",
+          "PercentWinning": "49.15%",
+          "PercentAverage": "-37.16%",
+          "PercentMedian": "-45.36%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Jake Zikan & Miles Parsons",
+          "TeamName": "Plastex",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:56.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "22.56%",
+          "PercentMedian": "22.56%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Delia Ward-Smith & Gretchen Ward-Smit",
+          "TeamName": "Clifford",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "12:33.8",
+          "Difference": "+4:37.5",
+          "PercentBack": "+58.26%",
+          "PercentWinning": "63.19%",
+          "PercentAverage": "-22.56%",
+          "PercentMedian": "-22.56%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Gus Starkie",
+          "TeamName": "kayak w canoe paddle",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:48.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "39.14%",
+          "PercentMedian": "49.01%"
+        },
+        {
+          "Place": "2",
+          "Name": "Cooper Beitlers",
+          "TeamName": "Nelo",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "23:08.4",
+          "Difference": "+11:20.4",
+          "PercentBack": "+96.10%",
+          "PercentWinning": "50.99%",
+          "PercentAverage": "-19.35%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Ethan Chin",
+          "TeamName": "kayak w canoe paddle",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "23:13.5",
+          "Difference": "+11:25.5",
+          "PercentBack": "+96.82%",
+          "PercentWinning": "50.81%",
+          "PercentAverage": "-19.79%",
+          "PercentMedian": "-0.37%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Mark Parrish",
+          "TeamName": "Nelo",
+          "Distance": "C1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "9:54.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Soren Ogle",
+          "TeamName": "Nelo Quattro",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:51.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "18.10%",
+          "PercentMedian": "16.39%"
+        },
+        {
+          "Place": "2",
+          "Name": "Kevin Lentini",
+          "TeamName": "Nelo",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "9:23.8",
+          "Difference": "+1:32.4",
+          "PercentBack": "+19.60%",
+          "PercentWinning": "83.61%",
+          "PercentAverage": "2.05%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Cooper Riley",
+          "TeamName": "Zastera Joker",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:31.6",
+          "Difference": "+3:40.2",
+          "PercentBack": "+46.71%",
+          "PercentWinning": "68.16%",
+          "PercentAverage": "-20.15%",
+          "PercentMedian": "-22.67%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Master 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Girts Beitlers",
+          "TeamName": "Prestol",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "7:54.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "37.12%",
+          "PercentMedian": "39.85%"
+        },
+        {
+          "Place": "2",
+          "Name": "Luis Buen Abad",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "9:49.3",
+          "Difference": "+1:54.9",
+          "PercentBack": "+24.22%",
+          "PercentWinning": "80.50%",
+          "PercentAverage": "21.90%",
+          "PercentMedian": "25.29%"
+        },
+        {
+          "Place": "3",
+          "Name": "Paul Elrif",
+          "TeamName": "V10 Sport",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "10:23.1",
+          "Difference": "+2:28.7",
+          "PercentBack": "+31.34%",
+          "PercentWinning": "76.14%",
+          "PercentAverage": "17.42%",
+          "PercentMedian": "21.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Dave",
+          "TeamName": "V10",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "12:45.7",
+          "Difference": "+4:51.3",
+          "PercentBack": "+61.40%",
+          "PercentWinning": "61.96%",
+          "PercentAverage": "-1.48%",
+          "PercentMedian": "2.92%"
+        },
+        {
+          "Place": "5",
+          "Name": "Jared Ogle",
+          "TeamName": "V10 Sport",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "13:31.8",
+          "Difference": "+5:37.4",
+          "PercentBack": "+71.12%",
+          "PercentWinning": "58.44%",
+          "PercentAverage": "-7.59%",
+          "PercentMedian": "-2.92%"
+        },
+        {
+          "Place": "6",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Male",
+          "Time": "14:23.3",
+          "Difference": "+6:28.9",
+          "PercentBack": "+81.98%",
+          "PercentWinning": "54.95%",
+          "PercentAverage": "-14.42%",
+          "PercentMedian": "-9.45%"
+        },
+        {
+          "Place": "7",
+          "Name": "Liz Graf-Brennen",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Female",
+          "Time": "15:49.4",
+          "Difference": "+7:55.0",
+          "PercentBack": "+100.13%",
+          "PercentWinning": "49.97%",
+          "PercentAverage": "-25.83%",
+          "PercentMedian": "-20.37%"
+        },
+        {
+          "Place": "8",
+          "Name": "Becky Chan",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Master 40+",
+          "Gender": "Female",
+          "Time": "15:59.1",
+          "Difference": "+8:04.7",
+          "PercentBack": "+102.17%",
+          "PercentWinning": "49.46%",
+          "PercentAverage": "-27.12%",
+          "PercentMedian": "-21.60%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Becky Bronstein",
+          "TeamName": "Epic Sport",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "10:28.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Delia Ward-Smith & Gretchen Ward-Smit",
+          "TeamName": "Clifford",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "12:33.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Jake Zikan & Miles Parsons",
+          "TeamName": "Plastex",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:56.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

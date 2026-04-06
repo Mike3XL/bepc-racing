@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 190076,
+    "distance": "C4",
+    "name": "2019 Duck Island Race #6 \u2014 C4",
+    "displayURL": "https://www.webscorer.com/race?raceid=190076",
+    "date": "Aug 3, 2019",
+    "sport": "Paddling",
+    "startTime": "Saturday, August 3, 2019 9:43 AM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.2
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "C6 Jake-Einar-Soren-Anna-Stephan-Ellenor",
+      "craftCategory": "Junior",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 685.4,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 685.4,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

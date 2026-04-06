@@ -1,0 +1,51 @@
+{
+  "raceInfo": {
+    "raceId": 20245503,
+    "name": "Pnworca2 \u2014 Short Course",
+    "date": "Jan 20, 2024",
+    "displayURL": "https://www.jerichooutrigger.com/races2024/pnworca2.html",
+    "distance": "Short Course",
+    "pointsWeight": 0.040816,
+    "sport": "Paddling"
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Anne Tomlinson",
+      "craftCategory": "OC-1",
+      "gender": "Unknown",
+      "handicap": 1.0,
+      "timeSeconds": 2018.1,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2018.1,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Lesley Rigby",
+      "craftCategory": "OC-1",
+      "gender": "Unknown",
+      "handicap": 1.0,
+      "timeSeconds": 2806.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2806.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

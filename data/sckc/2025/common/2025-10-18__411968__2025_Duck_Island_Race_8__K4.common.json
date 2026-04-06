@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 411968,
+    "distance": "K4",
+    "name": "2025 Duck Island Race #8 \u2014 K4",
+    "displayURL": "https://www.webscorer.com/race?raceid=411968",
+    "date": "Oct 18, 2025",
+    "sport": "Paddling",
+    "startTime": "Saturday, October 18, 2025 10:00 AM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.058824
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K4 Eli, Breona, BeckyC, Liz",
+      "craftCategory": "Master 40+",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 604.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 604.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 144532,
+    "distance": "C1",
+    "name": "2018 Duck Island Race #5 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=144532",
+    "date": "Jul 20, 2018",
+    "sport": "Paddling",
+    "startTime": "Friday, July 20, 2018 6:45 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.1
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Liam Jennings",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 700.2,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 700.2,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Vadim Kin",
+      "craftCategory": "Masters 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 835.1,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 835.1,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

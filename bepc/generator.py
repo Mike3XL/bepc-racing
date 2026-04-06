@@ -28,6 +28,7 @@ _ICONS = {
     "par":      _svg('<rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text>'),
     "consistent": _svg('<line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'),
     "est":      _svg('<rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text>'),
+    "outlier":  _svg('<text x="12" y="18" text-anchor="middle" font-size="16">🤷</text>'),
 }
 
 def _streak_icon(n):
@@ -112,6 +113,7 @@ def _head(title: str, extra_css: str = "") -> str:
   .hcap-consist{{ background:#E3F2FD; border:1px solid #42A5F5; }}
   .hcap-streak {{ background:#FFF3E0; border:1px solid #FF9800; }}
   .hcap-est    {{ background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }}
+  .hcap-outlier{{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }}
 </style>
 </head>
 <body>
@@ -125,7 +127,7 @@ def _nav(active: str = "", prefix: str = "", data: dict = None) -> str:
         ("index.html", "Results"),
         ("standings.html", "Standings"),
         ("trajectories.html", "Trajectories"),
-        ("racer/index.html", "Racers"),
+        (f"racer/{_current_racer_club}/index.html", "Racers"),
         ("about.html", "About"),
     ]
     items = ""
@@ -232,9 +234,21 @@ $(document).ready(function() {{
 </script>"""
 
 
+_valid_racer_slugs: set = set()
+_current_racer_club: str = ""
+
+
 def _racer_link(name: str, back: str = "") -> str:
     slug = _slug(name)
-    return f'<a href="racer/{slug}.html">{name}</a>'
+    if slug not in _valid_racer_slugs:
+        return name
+    return f'<a href="racer/{_current_racer_club}/{slug}.html">{name}</a>'
+
+
+def _racer_slugs_js() -> str:
+    """JS snippet declaring RACER_SLUGS set and RACER_CLUB for use in client-side templates."""
+    slugs_json = json.dumps(sorted(_valid_racer_slugs))
+    return f"const RACER_SLUGS = new Set({slugs_json});\nconst RACER_CLUB = {json.dumps(_current_racer_club)};"
 
 
 def _slug(name: str) -> str:
@@ -305,9 +319,9 @@ def generate_data_files(data: dict) -> None:
                 ("finish_1",    "finish_1",  "Overall 1st",        "plain-medal"),
                 ("finish_2",    "finish_2",  "Overall 2nd",        "plain-medal"),
                 ("finish_3",    "finish_3",  "Overall 3rd",        "plain-medal"),
-                ("consistent_1","consistent","Consistent performer","hcap-consist"),
-                ("consistent_2","consistent","Consistent performer","hcap-consist"),
-                ("consistent_3","consistent","Consistent performer","hcap-consist"),
+                ("consistent_1","consistent","Consistent performer (±1% of expectation)","hcap-consist"),
+                ("consistent_2","consistent","Consistent performer (±1% of expectation)","hcap-consist"),
+                ("consistent_3","consistent","Consistent performer (±1% of expectation)","hcap-consist"),
                 ("par",         "par",       "Par racer",          "hcap-par"),
             ]:
                 n = counts.get(code, 0)
@@ -429,6 +443,7 @@ def generate_standings(data: dict) -> None:
   </div>
 </div>
 <script>
+{_racer_slugs_js()}
 let SEASONS = null;
 let dtPts = null, dtHpts = null;
 function render(year) {{
@@ -436,7 +451,8 @@ function render(year) {{
   if (dtPts) {{ dtPts.destroy(); dtPts = null; }}
   if (dtHpts) {{ dtHpts.destroy(); dtHpts = null; }}
   const fmtGender = g => g === 'Female/Male' ? 'Mixed' : g;
-  const row = r => `<tr><td></td><td><a href="racer/${{r.name.toLowerCase().replace(/ /g,'-')}}.html">${{r.name}}</a></td><td>${{r.craft}}</td><td>${{fmtGender(r.gender)}}</td><td style="white-space:nowrap">${{r.trophies||''}}</td><td>${{r.races}}</td><td>${{r.hpts}}</td><td>${{r.hcap}}</td><td>${{r.points}}</td></tr>`;
+  const racerLink = (name, slug) => RACER_SLUGS.has(slug) ? `<a href="racer/{_current_racer_club}/${{slug}}.html">${{name}}</a>` : name;
+  const row = r => `<tr><td></td><td>${{racerLink(r.name, r.name.toLowerCase().replace(/ /g,'-'))}}</td><td>${{r.craft}}</td><td>${{fmtGender(r.gender)}}</td><td style="white-space:nowrap">${{r.trophies||''}}</td><td>${{r.races}}</td><td>${{r.hpts}}</td><td>${{r.hcap}}</td><td>${{r.points}}</td></tr>`;
   document.getElementById('body-hpts').innerHTML = s.hpts.map(row).join('');
   document.getElementById('body-pts').innerHTML = s.hpts.map(row).join('');
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => bootstrap.Tooltip.getOrCreateInstance(el));
@@ -490,11 +506,13 @@ def generate_races(data: dict) -> None:
   <div id="course-content"></div>
 </div>
 <script>
+{_racer_slugs_js()}
 let SEASONS = null;
 let currentYear = '{current_year}';
 let currentIndex = 0;
 
 function slug(name) {{ return name.toLowerCase().replace(/ /g, '-'); }}
+function racerLink(name) {{ const s = slug(name); return RACER_SLUGS.has(s) ? `<a href="racer/{_current_racer_club}/${{s}}.html">${{name}}</a>` : name; }}
 function display_craft_ui(cat) {{
   if (!cat || cat === 'Unknown') return '';
   const sprint = cat.match(/^Sprint-K(\\d+)$/); if (sprint) return 'K-' + sprint[1] + ' (sprint)';
@@ -531,6 +549,7 @@ function badges(trophies) {{
     par:      '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text></svg>',
     consistent: '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     est:      '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg>',
+    outlier:  '<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg>',
   }};
   const b = (key, cls, title) => `<span class="hcap-medal ${{cls}}" data-bs-toggle="tooltip" data-bs-title="${{title}}">${{I[key]}}</span>`;
   const streak = (n) => `<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="Improving streak: ${{n}} races"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">${{n}}</text></svg></span>`;
@@ -541,14 +560,15 @@ function badges(trophies) {{
     hcap_1:   () => b('hcap_1','hcap-gold','Handicap winner'),
     hcap_2:   () => b('hcap_2','hcap-silver','Handicap 2nd'),
     hcap_3:   () => b('hcap_3','hcap-bronze','Handicap 3rd'),
-    consistent_1: () => b('consistent','hcap-consist','Consistent performer'),
-    consistent_2: () => b('consistent','hcap-consist','Consistent performer'),
-    consistent_3: () => b('consistent','hcap-consist','Consistent performer'),
+    consistent_1: () => b('consistent','hcap-consist','Consistent performer (±1% of expectation)'),
+    consistent_2: () => b('consistent','hcap-consist','Consistent performer (±1% of expectation)'),
+    consistent_3: () => b('consistent','hcap-consist','Consistent performer (±1% of expectation)'),
     par:      () => b('par','hcap-par','Par racer'),
     fresh:    () => b('est','hcap-est','Establishing handicap — not yet eligible for handicap awards'),
+    outlier:  () => b('outlier','hcap-outlier','Outlier result — >10% off handicap prediction, handicap unchanged'),
   }};
   if (!trophies || !trophies.length) return '';
-  const ORDER = ['hcap_1','hcap_2','hcap_3','finish_1','finish_2','finish_3','consistent_1','consistent_2','consistent_3','par','fresh'];
+  const ORDER = ['hcap_1','hcap_2','hcap_3','finish_1','finish_2','finish_3','consistent_1','consistent_2','consistent_3','par','fresh','outlier'];
   const sorted = [...trophies].sort((a,b) => {{
     const ai = a.startsWith('streak_') ? ORDER.length + parseInt(a.split('_')[1]) : ORDER.indexOf(a);
     const bi = b.startsWith('streak_') ? ORDER.length + parseInt(b.split('_')[1]) : ORDER.indexOf(b);
@@ -604,18 +624,22 @@ function rows(results, placeField) {{
     const pct = r.adjusted_time_versus_par != null && !r.is_fresh_racer
       ? ((1 - r.adjusted_time_versus_par) * 100)
       : null;
+    const noOutlierDetect = !r.is_fresh_racer && pct != null && pct < -10 && !r.is_outlier;
+    const pctNote = noOutlierDetect ? ' data-bs-toggle="tooltip" data-bs-title="First race back this season — no outlier detection"' : '';
     const pctHtml = pct != null
-      ? `<td style="text-align:right;font-size:0.85em;color:${{pct >= 0 ? '#2E7D32' : '#666'}};font-weight:${{pct >= 0 ? 'bold' : 'normal'}}">${{pct >= 0 ? '+' : ''}}${{pct.toFixed(1)}}%</td>`
+      ? `<td style="text-align:right;font-size:0.85em;color:${{pct >= 0 ? '#2E7D32' : '#666'}};font-weight:${{pct >= 0 ? 'bold' : 'normal'}}">${{pct >= 0 ? '+' : ''}}${{pct.toFixed(1)}}%${{noOutlierDetect ? `<sup${{pctNote}}>^</sup>` : ''}}</td>`
       : '<td></td>';
+    const hcapPostNote = r.is_outlier ? ' data-bs-toggle="tooltip" data-bs-title="Outlier — result suppressed, handicap unchanged"' : '';
+    const hcapPostHtml = `<td>${{r.handicap_post.toFixed(3)}}${{r.is_outlier ? `<sup${{hcapPostNote}}>^</sup>` : ''}}</td>`;
     return `<tr><td>${{badges(r.trophies)}}</td>
     <td>${{r[placeField]}}</td>
-    <td><a href="racer/${{slug(r.canonical_name)}}.html">${{r.canonical_name}}</a></td>
+    <td>${{racerLink(r.canonical_name)}}</td>
     ${{craft_cell(r.craft_category, r.craft_specific)}}
     <td>${{isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}}</td>
     <td>${{r.handicap.toFixed(3)}}</td>
     ${{r.trophies && r.trophies.includes('par') ? '<td style="padding-left:2px"><span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:4px 6px 4px 2px;font-weight:bold;color:#1565C0">' + fmtTime(r.adjusted_time_seconds) + '</span></td>' : '<td style="padding-left:2px">' + (isHcap ? '<strong>' + fmtTime(r.adjusted_time_seconds) + '</strong>' : fmtTime(r.adjusted_time_seconds)) + '</td>'}}
     ${{pctHtml}}
-    <td>${{r.handicap_post.toFixed(3)}}</td>
+    ${{hcapPostHtml}}
     <td>${{r.race_points || 0}}</td>
     <td>${{r.handicap_points || 0}}</td>
     </tr>`;
@@ -663,8 +687,9 @@ function renderRace(index) {{
             <div style="display:flex;align-items:flex-end;gap:6px;flex-wrap:nowrap">`;
       podiumCfg.forEach(cfg => {{
         const r = pr[cfg.idx];
+        const s = r ? slug(r.canonical_name) : null;
         const name = r
-          ? `<a href="racer/${{slug(r.canonical_name)}}.html" style="color:${{cfg.nameColor}};font-weight:600;font-size:0.85em;text-decoration:none;text-align:center;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${{r.canonical_name}}</a>`
+          ? (RACER_SLUGS.has(s) ? `<a href="racer/{_current_racer_club}/${{s}}.html" style="color:${{cfg.nameColor}};font-weight:600;font-size:0.85em;text-decoration:none;text-align:center;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${{r.canonical_name}}</a>` : `<span style="font-weight:600;font-size:0.85em;text-align:center;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:${{cfg.nameColor}}">${{r.canonical_name}}</span>`)
           : `<span style="color:#bbb;font-size:0.85em">—</span>`;
         podiumHtml += `<div style="display:flex;flex-direction:column;align-items:center;gap:3px;width:${{cfg.width}};min-width:0;flex-shrink:1">
             ${{cfg.cup}}
@@ -1076,11 +1101,12 @@ def _racer_trophy_badges(trophies: list) -> str:
         "hcap_1":      ("hcap-gold",    "Handicap winner",    "hcap_1"),
         "hcap_2":      ("hcap-silver",  "Handicap 2nd",       "hcap_2"),
         "hcap_3":      ("hcap-bronze",  "Handicap 3rd",       "hcap_3"),
-        "consistent_1":("hcap-consist", "Consistent performer","consistent"),
-        "consistent_2":("hcap-consist", "Consistent performer","consistent"),
-        "consistent_3":("hcap-consist", "Consistent performer","consistent"),
+        "consistent_1":("hcap-consist", "Consistent performer (±1% of expectation)","consistent"),
+        "consistent_2":("hcap-consist", "Consistent performer (±1% of expectation)","consistent"),
+        "consistent_3":("hcap-consist", "Consistent performer (±1% of expectation)","consistent"),
         "par":         ("hcap-par",     "Par racer",          "par"),
         "fresh":       ("hcap-est",     "Establishing handicap — not yet eligible for handicap awards", "est"),
+        "outlier":     ("hcap-outlier", "Outlier result — >10% off handicap prediction, handicap unchanged", "outlier"),
     }
     parts = []
     for t in trophies:
@@ -1094,10 +1120,22 @@ def _racer_trophy_badges(trophies: list) -> str:
 
 
 def generate_racer_pages(data: dict) -> None:
+    global _valid_racer_slugs, _current_racer_club
     from collections import defaultdict
 
+    current_club = data["current_club"]
+    _current_racer_club = current_club
+
     # Per-club minimum races to generate a racer page
-    MIN_RACER_PAGES = data["clubs"].get(data["current_club"], {}).get("min_races_for_page", 1)
+    MIN_RACER_PAGES = data["clubs"].get(current_club, {}).get("min_races_for_page", 1)
+
+    # Remove stale racer pages for this club before regenerating
+    racer_club_dir = SITE_DIR / "racer" / current_club
+    racer_club_dir.mkdir(parents=True, exist_ok=True)
+    for stale in racer_club_dir.glob("*.html"):
+        if stale.name != "index.html":
+            stale.unlink()
+    _valid_racer_slugs = set()
 
     # racer_data[name][(club_id, year, craft)] = [race results...]
     racer_data: dict[str, dict[tuple, list]] = defaultdict(lambda: defaultdict(list))
@@ -1213,7 +1251,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 }});"""
 
                     rows = "".join(
-                        f'<tr><td><a href="../races.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
+                        f'<tr><td><a href="../../races.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
                         f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
                         f'<td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td>'
                         f'<td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td>'
@@ -1237,7 +1275,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
   <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
   <tbody>{"".join(
       f'<tr><td style="white-space:nowrap">{_racer_trophy_badges(r.get("trophies",[]))}</td>'
-      f'<td><a href="../index.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
+      f'<td><a href="../../index.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
       f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
       f'<td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td>'
       f'<td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td>'
@@ -1254,10 +1292,8 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 
         season_tab_js = f"""<script>
 (function() {{
-  var racer_clubs = {json.dumps(racer_clubs)};
-  var club = localStorage.getItem('bepc_club') || '{data["current_club"]}';
-  // If stored club not in this racer's clubs, use first available
-  if (racer_clubs.indexOf(club) === -1) club = racer_clubs[0];
+  var club = '{current_club}';
+  localStorage.setItem('bepc_club', club);
   var season = getSeason('{current_year}');
 
   function showClubSeason(c, s) {{
@@ -1291,10 +1327,13 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
       localStorage.setItem('bepc_craft', btn.getAttribute('data-bs-target').substring(1));
     }});
   }});
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function(el) {{
+    bootstrap.Tooltip.getOrCreateInstance(el);
+  }});
 }})();
 </script>"""
 
-        html = _head(name, _CHARTJS) + _nav("Racers", prefix="../", data=data) + _selector_bar(data) + f"""
+        html = _head(name, _CHARTJS) + _nav("Racers", prefix="../../", data=data) + _selector_bar(data) + f"""
 <div class="container">
   {racer_nav}
   <h2>{name}</h2>
@@ -1304,9 +1343,10 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 {nav_js}
 {season_tab_js}""" + _foot()
 
-        (SITE_DIR / "racer" / f"{slug}.html").write_text(html)
+        (racer_club_dir / f"{slug}.html").write_text(html)
+        _valid_racer_slugs.add(slug)
 
-    print(f"Generated: site/racer/ ({len(racer_data)} pages)")
+    print(f"Generated: site/racer/{current_club}/ ({len(racer_data)} pages)")
 
 
 def generate_about(data: dict = None) -> None:
@@ -1381,7 +1421,7 @@ def generate_racer_index(data: dict) -> None:
         r = racer_data[name]
         rows += f'<tr><td><a href="{_slug(name)}.html">{name}</a></td><td>{display_craft_ui(r["craft_category"])}</td></tr>\n'
 
-    html = _head("Racers") + _nav("Racers", prefix="../", data=data) + _selector_bar(data, show_season=False) + f"""
+    html = _head("Racers") + _nav("Racers", prefix="../../", data=data) + _selector_bar(data, show_season=False) + f"""
 <div class="container">
   <h1>Racers</h1>
   <table id="racer-index" class="table table-striped table-hover">
@@ -1389,8 +1429,9 @@ def generate_racer_index(data: dict) -> None:
     <tbody>{rows}</tbody>
   </table>
 </div>""" + _foot(_datatable_init("racer-index", 0, "asc"))
-    (SITE_DIR / "racer" / "index.html").write_text(html)
-    print("Generated: site/racer/index.html")
+    out = SITE_DIR / "racer" / _current_racer_club / "index.html"
+    out.write_text(html)
+    print(f"Generated: site/racer/{_current_racer_club}/index.html")
 
 
 def generate_platform_home(data: dict) -> None:
@@ -1453,6 +1494,8 @@ def generate_platform_home(data: dict) -> None:
         ctype = cfg.get("type", "org")
         desc = cfg.get("description", "").strip()
         latest_year = max(club["seasons"].keys())
+        earliest_year = min(club["seasons"].keys())
+        year_range = earliest_year if earliest_year == latest_year else f"{earliest_year}–{latest_year}"
         total_races = sum(len(s["races"]) for s in club["seasons"].values())
         total_racers = len({r["canonical_name"] for s in club["seasons"].values()
                             for race in s["races"] for r in race["results"]})
@@ -1466,7 +1509,7 @@ def generate_platform_home(data: dict) -> None:
                 {type_badge}
               </div>
               <p class="card-text text-muted small">{desc}</p>
-              <div class="small text-muted mb-3">{total_races} races · {total_racers} racers · through {latest_year}</div>
+              <div class="small text-muted mb-3">{total_races} races · {total_racers} racers · {year_range}</div>
               <a href="index.html" onclick="localStorage.setItem('bepc_club','{club_id}')" class="btn btn-outline-primary btn-sm">View Results →</a>
             </div>
           </div>
@@ -1475,18 +1518,20 @@ def generate_platform_home(data: dict) -> None:
     # Recent races feed
     feed_rows = ""
     for r in recent_races:
-        clubs_html = ""
+        club_links_html = ""
+        winners_html = ""
         for c in r["clubs"]:
-            winner_html = f'<a href="racer/{c["winner_slug"]}.html">{c["winner"]}</a>' if c.get("winner") else '<span class="text-muted">—</span>'
+            winner_html = _racer_link(c["winner"]) if c.get("winner") else '<span class="text-muted">—</span>'
             race_link = f'index.html#{c["race_id"]}'
             cls = "text-secondary" if c["type"] == "league" else ""
-            clubs_html += f'<div class="small"><a href="{race_link}" onclick="localStorage.setItem(\'bepc_club\',\'{c["id"]}\')" class="{cls} fw-semibold">{c["name"]}</a>: {winner_html}</div>'
+            club_links_html += f'<a href="{race_link}" onclick="localStorage.setItem(\'bepc_club\',\'{c["id"]}\')" class="badge bg-light text-dark border me-1 small fw-normal {cls}">{c["name"]} ↗</a>'
+            winners_html += f'<div class="small"><span class="text-muted">{c["name"]}:</span> {winner_html}</div>'
         feed_rows += f"""
         <tr>
           <td class="text-muted small text-nowrap">{r["date"]}</td>
-          <td>{r["name"]}</td>
+          <td><span class="fw-semibold me-2">{r["name"]}</span>{club_links_html}</td>
           <td class="text-muted small text-center">{r["starters"]}</td>
-          <td>{clubs_html}</td>
+          <td>{winners_html}</td>
         </tr>"""
 
     html = f"""<!DOCTYPE html>
@@ -1595,13 +1640,19 @@ const CUP = {
   <div id="races-content"></div>
 </div>
 <script>
+{_racer_slugs_js()}
 {cup_js}
 function podiumHtml(course) {{
   var w = course.winners;
   if (!w || Object.keys(w).length === 0) return '';
   var rows = '';
   [1,2,3].forEach(function(p) {{
-    if (w[p]) rows += '<div class="d-flex align-items-center gap-1 text-nowrap">' + CUP[p] + '<a href="racer/' + w[p].slug + '.html" class="small text-truncate" style="max-width:130px">' + w[p].name + '</a></div>';
+    if (w[p]) {{
+      var nameHtml = RACER_SLUGS.has(w[p].slug)
+        ? '<a href="racer/' + RACER_CLUB + '/' + w[p].slug + '.html" class="small text-truncate" style="max-width:130px">' + w[p].name + '</a>'
+        : '<span class="small text-truncate" style="max-width:130px">' + w[p].name + '</span>';
+      rows += '<div class="d-flex align-items-center gap-1 text-nowrap">' + CUP[p] + nameHtml + '</div>';
+    }}
   }});
   var lbl = course.label ? '<div class="text-muted small fw-semibold mb-1">' + course.label + '</div>' : '';
   return '<div class="me-3">' + lbl + rows + '</div>';
@@ -1647,15 +1698,58 @@ document.addEventListener('DOMContentLoaded', function() {{
     print("Generated: site/races.html")
 
 
+def generate_cross_club_links() -> None:
+    """Post-processing: add 'Also in X' buttons to racer pages that exist in multiple clubs."""
+    racer_dir = SITE_DIR / "racer"
+    if not racer_dir.exists():
+        return
+    # Build {slug: [club_id, ...]} map
+    slug_clubs: dict[str, list] = {}
+    for club_dir in sorted(racer_dir.iterdir()):
+        if not club_dir.is_dir():
+            continue
+        for page in club_dir.glob("*.html"):
+            if page.name == "index.html":
+                continue
+            slug_clubs.setdefault(page.stem, []).append(club_dir.name)
+
+    # For each slug in multiple clubs, rewrite club selector buttons as direct links
+    import re as _re
+    for slug, clubs in slug_clubs.items():
+        for club_id in clubs:
+            page = racer_dir / club_id / f"{slug}.html"
+            html = page.read_text()
+            # Remove placeholder div
+            html = html.replace('<div id="cross-club-nav"></div>', '')
+            # Replace each club button with a link if that club has a page for this racer
+            def replace_btn(m):
+                cid = m.group(1)
+                label = m.group(2)
+                if cid in slug_clubs.get(slug, []):
+                    active = ' active' if cid == club_id else ''
+                    return f'<a href="../../racer/{cid}/{slug}.html" class="btn btn-sm btn-outline-secondary{active}">{label}</a>'
+                return m.group(0)  # leave unchanged
+            html = _re.sub(
+                r'<button[^>]*data-club="([^"]+)"[^>]*>([^<]+)</button>',
+                replace_btn, html
+            )
+            page.write_text(html)
+
+    multi = sum(1 for clubs in slug_clubs.values() if len(clubs) > 1)
+    if multi:
+        print(f"Cross-club links: {multi} racers linked across clubs")
+
+
 def generate_all(data: dict) -> None:
     SITE_DIR.mkdir(exist_ok=True)
     (SITE_DIR / "racer").mkdir(exist_ok=True)
+    generate_racer_pages(data)
+    generate_racer_index(data)
     generate_data_files(data)
     generate_standings(data)
     generate_races(data)
     generate_races_list(data)
     generate_trajectories(data)
     generate_about(data)
-    generate_racer_pages(data)
-    generate_racer_index(data)
     generate_platform_home(data)
+    generate_cross_club_links()

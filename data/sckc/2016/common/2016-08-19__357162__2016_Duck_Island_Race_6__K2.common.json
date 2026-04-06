@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 357162,
+    "distance": "K2",
+    "name": "2016 Duck Island Race #6 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=357162",
+    "date": "Aug 19, 2016",
+    "sport": "Paddling",
+    "startTime": "Friday, August 19, 2016 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.1
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Karel Zikan & Elizabeth Holmes",
+      "craftCategory": "Masters 40+",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 629.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 629.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 146978,
+    "distance": "Other",
+    "name": "2018 Duck Island Race #8 \u2014 Other",
+    "displayURL": "https://www.webscorer.com/race?raceid=146978",
+    "date": "Aug 10, 2018",
+    "sport": "Paddling",
+    "startTime": "Friday, August 10, 2018 6:45 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.0625
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "SUP Jitka and Nicole Studenovska",
+      "craftCategory": "Open",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 1406.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1406.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

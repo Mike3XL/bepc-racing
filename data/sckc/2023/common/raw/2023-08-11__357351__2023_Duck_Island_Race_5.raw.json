@@ -1,0 +1,300 @@
+{
+  "RaceInfo": {
+    "RaceId": 357351,
+    "Name": "2023 Duck Island Race #5",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357351",
+    "Date": "Aug 11, 2023",
+    "Sport": "Paddling",
+    "StartTime": "Friday, August 11, 2023 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67324789508445,
+    "Longitude": -122.34091777033721,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 19, 2025 8:29 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357351_8dc99f0e17d7981.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:01",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Soren Ogle",
+          "TeamName2": "Nelo Vanquish 3",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:39",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.64%",
+          "PercentMedian": "16.29%"
+        },
+        {
+          "Place": "2",
+          "Name": "Azamat Rustamov",
+          "TeamName2": "Zastera EasyMaster",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:09:00",
+          "Difference": "+0:21",
+          "PercentBack": "+4.05%",
+          "PercentWinning": "96.11%",
+          "PercentAverage": "14.31%",
+          "PercentMedian": "12.90%"
+        },
+        {
+          "Place": "3",
+          "Name": "Girts Beitlers",
+          "TeamName2": "Prestol K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:09:11",
+          "Difference": "+0:32",
+          "PercentBack": "+6.17%",
+          "PercentWinning": "94.19%",
+          "PercentAverage": "12.56%",
+          "PercentMedian": "11.13%"
+        },
+        {
+          "Place": "4",
+          "Name": "Elizabeth Holmes",
+          "TeamName2": "Laingjin Torpedo",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:20",
+          "Difference": "+1:41",
+          "PercentBack": "+19.46%",
+          "PercentWinning": "83.71%",
+          "PercentAverage": "1.61%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "5",
+          "Name": "Miles Parsons",
+          "TeamName2": "Zastera Vector",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:30",
+          "Difference": "+1:51",
+          "PercentBack": "+21.39%",
+          "PercentWinning": "82.38%",
+          "PercentAverage": "0.02%",
+          "PercentMedian": "-1.61%"
+        },
+        {
+          "Place": "6",
+          "Name": "Delia Ward-Smith",
+          "TeamName2": "Nelo Quatro",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:12:21",
+          "Difference": "+3:42",
+          "PercentBack": "+42.77%",
+          "PercentWinning": "70.04%",
+          "PercentAverage": "-17.59%",
+          "PercentMedian": "-19.52%"
+        },
+        {
+          "Place": "7",
+          "Name": "Melat Peterson",
+          "TeamName2": "Nelo Quatro Classic",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:13:30",
+          "Difference": "+4:51",
+          "PercentBack": "+56.07%",
+          "PercentWinning": "64.07%",
+          "PercentAverage": "-28.54%",
+          "PercentMedian": "-30.65%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:01",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Soren Ogle",
+          "TeamName2": "Nelo Vanquish 3",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:39",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.11%",
+          "PercentMedian": "24.29%"
+        },
+        {
+          "Place": "2",
+          "Name": "Miles Parsons",
+          "TeamName2": "Zastera Vector",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:30",
+          "Difference": "+1:51",
+          "PercentBack": "+21.39%",
+          "PercentWinning": "82.38%",
+          "PercentAverage": "6.67%",
+          "PercentMedian": "8.10%"
+        },
+        {
+          "Place": "3",
+          "Name": "Delia Ward-Smith",
+          "TeamName2": "Nelo Quatro",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:12:21",
+          "Difference": "+3:42",
+          "PercentBack": "+42.77%",
+          "PercentWinning": "70.04%",
+          "PercentAverage": "-9.78%",
+          "PercentMedian": "-8.10%"
+        },
+        {
+          "Place": "4",
+          "Name": "Melat Peterson",
+          "TeamName2": "Nelo Quatro Classic",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:13:30",
+          "Difference": "+4:51",
+          "PercentBack": "+56.07%",
+          "PercentWinning": "64.07%",
+          "PercentAverage": "-20.00%",
+          "PercentMedian": "-18.16%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Girts Beitlers",
+          "TeamName2": "Prestol K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:09:11",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.89%",
+          "PercentMedian": "5.89%"
+        },
+        {
+          "Place": "2",
+          "Name": "Elizabeth Holmes",
+          "TeamName2": "Laingjin Torpedo",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:20",
+          "Difference": "+1:09",
+          "PercentBack": "+12.52%",
+          "PercentWinning": "88.87%",
+          "PercentAverage": "-5.89%",
+          "PercentMedian": "-5.89%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Azamat Rustamov",
+          "TeamName2": "Zastera EasyMaster",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:09:00",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

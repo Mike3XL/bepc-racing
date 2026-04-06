@@ -1,0 +1,490 @@
+{
+  "RaceInfo": {
+    "RaceId": 147395,
+    "Name": "2018 Duck Island Race #9",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=147395",
+    "Date": "Aug 17, 2018",
+    "Sport": "Paddling",
+    "StartTime": "Friday, August 17, 2018 10:36 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.685398,
+    "Longitude": -122.287201,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Wednesday, September 4, 2024 8:23 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/147395_8d604cddcb5f8b1.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Karel Zikan",
+          "TeamName": "Seattle",
+          "TeamName2": "Marathon Canoe",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:13:02",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Aaron Small",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Cinco K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:07:29",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "20.63%",
+          "PercentMedian": "23.51%"
+        },
+        {
+          "Place": "1",
+          "Name": "Jake Zikan",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Quattro",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:07:29",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "20.63%",
+          "PercentMedian": "23.51%"
+        },
+        {
+          "Place": "3",
+          "Name": "Vaughn Schenk",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Quattro K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:19",
+          "Difference": "+0:50",
+          "PercentBack": "+11.14%",
+          "PercentWinning": "89.98%",
+          "PercentAverage": "11.79%",
+          "PercentMedian": "14.99%"
+        },
+        {
+          "Place": "4",
+          "Name": "Steve Small",
+          "TeamName": "Seattle",
+          "TeamName2": "Epic V12 Surf Ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:08:48",
+          "Difference": "+1:19",
+          "PercentBack": "+17.59%",
+          "PercentWinning": "85.04%",
+          "PercentAverage": "6.66%",
+          "PercentMedian": "10.05%"
+        },
+        {
+          "Place": "5",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Moskito 65",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:09:34",
+          "Difference": "+2:05",
+          "PercentBack": "+27.84%",
+          "PercentWinning": "78.22%",
+          "PercentAverage": "-1.47%",
+          "PercentMedian": "2.21%"
+        },
+        {
+          "Place": "6",
+          "Name": "Cian Donovan",
+          "TeamName": "Seattle",
+          "TeamName2": "Superlancer K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:00",
+          "Difference": "+2:31",
+          "PercentBack": "+33.63%",
+          "PercentWinning": "74.83%",
+          "PercentAverage": "-6.06%",
+          "PercentMedian": "-2.21%"
+        },
+        {
+          "Place": "7",
+          "Name": "Owen Jennings",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:10",
+          "Difference": "+2:41",
+          "PercentBack": "+35.86%",
+          "PercentWinning": "73.61%",
+          "PercentAverage": "-7.83%",
+          "PercentMedian": "-3.92%"
+        },
+        {
+          "Place": "8",
+          "Name": "Einar Ogle",
+          "TeamName": "Seattle",
+          "TeamName2": "Epic K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:15",
+          "Difference": "+2:46",
+          "PercentBack": "+36.97%",
+          "PercentWinning": "73.01%",
+          "PercentAverage": "-8.71%",
+          "PercentMedian": "-4.77%"
+        },
+        {
+          "Place": "9",
+          "Name": "David Jennings",
+          "TeamName": "Seattle",
+          "TeamName2": "Epic Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:10:46",
+          "Difference": "+3:17",
+          "PercentBack": "+43.88%",
+          "PercentWinning": "69.50%",
+          "PercentAverage": "-14.19%",
+          "PercentMedian": "-10.05%"
+        },
+        {
+          "Place": "10",
+          "Name": "Soren Ogle",
+          "TeamName": "Seattle",
+          "TeamName2": "Epic K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:11:27",
+          "Difference": "+3:58",
+          "PercentBack": "+53.01%",
+          "PercentWinning": "65.36%",
+          "PercentAverage": "-21.44%",
+          "PercentMedian": "-17.04%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Leana Girton & James Girton",
+          "TeamName": "Seattle",
+          "TeamName2": "Haywood K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "0:09:06",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "SUP",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "Seattle",
+          "TeamName2": "SUP",
+          "Distance": "SUP",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:15:30",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Karel Zikan",
+          "TeamName": "Seattle",
+          "TeamName2": "Marathon Canoe",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:13:02",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Aaron Small",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Cinco K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:07:29",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "19.60%",
+          "PercentMedian": "25.17%"
+        },
+        {
+          "Place": "1",
+          "Name": "Jake Zikan",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Quattro",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:07:29",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "19.60%",
+          "PercentMedian": "25.17%"
+        },
+        {
+          "Place": "3",
+          "Name": "Vaughn Schenk",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Quattro K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:19",
+          "Difference": "+0:50",
+          "PercentBack": "+11.14%",
+          "PercentWinning": "89.98%",
+          "PercentAverage": "10.64%",
+          "PercentMedian": "16.83%"
+        },
+        {
+          "Place": "4",
+          "Name": "Cian Donovan",
+          "TeamName": "Seattle",
+          "TeamName2": "Superlancer K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:00",
+          "Difference": "+2:31",
+          "PercentBack": "+33.63%",
+          "PercentWinning": "74.83%",
+          "PercentAverage": "-7.44%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "5",
+          "Name": "Owen Jennings",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:10",
+          "Difference": "+2:41",
+          "PercentBack": "+35.86%",
+          "PercentWinning": "73.61%",
+          "PercentAverage": "-9.24%",
+          "PercentMedian": "-1.67%"
+        },
+        {
+          "Place": "6",
+          "Name": "Einar Ogle",
+          "TeamName": "Seattle",
+          "TeamName2": "Epic K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:15",
+          "Difference": "+2:46",
+          "PercentBack": "+36.97%",
+          "PercentWinning": "73.01%",
+          "PercentAverage": "-10.13%",
+          "PercentMedian": "-2.50%"
+        },
+        {
+          "Place": "7",
+          "Name": "Soren Ogle",
+          "TeamName": "Seattle",
+          "TeamName2": "Epic K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:11:27",
+          "Difference": "+3:58",
+          "PercentBack": "+53.01%",
+          "PercentWinning": "65.36%",
+          "PercentAverage": "-23.02%",
+          "PercentMedian": "-14.50%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Steve Small",
+          "TeamName": "Seattle",
+          "TeamName2": "Epic V12 Surf Ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:08:48",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.38%",
+          "PercentMedian": "8.01%"
+        },
+        {
+          "Place": "2",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Seattle",
+          "TeamName2": "Nelo Moskito 65",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:09:34",
+          "Difference": "+0:46",
+          "PercentBack": "+8.71%",
+          "PercentWinning": "91.99%",
+          "PercentAverage": "1.49%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "David Jennings",
+          "TeamName": "Seattle",
+          "TeamName2": "Epic Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:10:46",
+          "Difference": "+1:58",
+          "PercentBack": "+22.35%",
+          "PercentWinning": "81.73%",
+          "PercentAverage": "-10.87%",
+          "PercentMedian": "-12.54%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Leana Girton & James Girton",
+          "TeamName": "Seattle",
+          "TeamName2": "Haywood K2",
+          "Distance": "K2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "0:09:06",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "SUP",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "Seattle",
+          "TeamName2": "SUP",
+          "Distance": "SUP",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:15:30",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

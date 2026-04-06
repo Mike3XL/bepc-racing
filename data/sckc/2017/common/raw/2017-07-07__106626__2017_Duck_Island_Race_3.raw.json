@@ -1,0 +1,316 @@
+{
+  "RaceInfo": {
+    "RaceId": 106626,
+    "Name": "2017 Duck Island Race #3",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=106626",
+    "Date": "Jul 7, 2017",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 7, 2017 6:45 PM (GMT+2)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6718103714026,
+    "Longitude": -122.342784404755,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 7:14 PM (GMT+2)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/106626_8dcaf28b3f97d39.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:46.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Doug Ritchie & Rhonda Eastman",
+          "TeamName": "Rec canoe",
+          "Distance": "C2",
+          "Category": "Masters 40+",
+          "Gender": "Female/Male",
+          "Time": "14:20.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Mike Lawrence",
+          "TeamName": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "9:35.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "16.71%",
+          "PercentMedian": "15.81%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jim Erickson",
+          "TeamName": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:48.0",
+          "Difference": "+1:13.0",
+          "PercentBack": "+12.70%",
+          "PercentWinning": "88.73%",
+          "PercentAverage": "6.14%",
+          "PercentMedian": "5.12%"
+        },
+        {
+          "Place": "3",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:23.0",
+          "Difference": "+1:48.0",
+          "PercentBack": "+18.78%",
+          "PercentWinning": "84.19%",
+          "PercentAverage": "1.07%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Elizabeth Erickson",
+          "TeamName": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:23.0",
+          "Difference": "+2:48.0",
+          "PercentBack": "+29.22%",
+          "PercentWinning": "77.39%",
+          "PercentAverage": "-7.62%",
+          "PercentMedian": "-8.78%"
+        },
+        {
+          "Place": "5",
+          "Name": "Karla Ogle",
+          "TeamName": "Viper 55",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "13:23.0",
+          "Difference": "+3:48.0",
+          "PercentBack": "+39.65%",
+          "PercentWinning": "71.61%",
+          "PercentAverage": "-16.31%",
+          "PercentMedian": "-17.57%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Einar Ogle & Soren Ogle",
+          "TeamName": "Epic ML K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:09.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:46.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Doug Ritchie & Rhonda Eastman",
+          "TeamName": "Rec canoe",
+          "Distance": "C2",
+          "Category": "Masters 40+",
+          "Gender": "Female/Male",
+          "Time": "14:20.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Mike Lawrence",
+          "TeamName": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "9:35.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "16.71%",
+          "PercentMedian": "15.81%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jim Erickson",
+          "TeamName": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:48.0",
+          "Difference": "+1:13.0",
+          "PercentBack": "+12.70%",
+          "PercentWinning": "88.73%",
+          "PercentAverage": "6.14%",
+          "PercentMedian": "5.12%"
+        },
+        {
+          "Place": "3",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "11:23.0",
+          "Difference": "+1:48.0",
+          "PercentBack": "+18.78%",
+          "PercentWinning": "84.19%",
+          "PercentAverage": "1.07%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Elizabeth Erickson",
+          "TeamName": "Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:23.0",
+          "Difference": "+2:48.0",
+          "PercentBack": "+29.22%",
+          "PercentWinning": "77.39%",
+          "PercentAverage": "-7.62%",
+          "PercentMedian": "-8.78%"
+        },
+        {
+          "Place": "5",
+          "Name": "Karla Ogle",
+          "TeamName": "Viper 55",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "13:23.0",
+          "Difference": "+3:48.0",
+          "PercentBack": "+39.65%",
+          "PercentWinning": "71.61%",
+          "PercentAverage": "-16.31%",
+          "PercentMedian": "-17.57%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Einar Ogle & Soren Ogle",
+          "TeamName": "Epic ML K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:09.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

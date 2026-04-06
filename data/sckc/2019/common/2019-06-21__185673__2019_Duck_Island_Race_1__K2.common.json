@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 185673,
+    "distance": "K2",
+    "name": "2019 Duck Island Race #1 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=185673",
+    "date": "Jun 21, 2019",
+    "sport": "Paddling",
+    "startTime": "Friday, June 21, 2019 8:59 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.083333
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Calvin Huo & Liang-Yiiu",
+      "craftCategory": "Open",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 868.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 868.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 357353,
+    "distance": "K2",
+    "name": "2023 Duck Island Race #6 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=357353",
+    "date": "Aug 18, 2023",
+    "sport": "Paddling",
+    "startTime": "Friday, August 18, 2023 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.25
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Peter Turcan & Juraj Osusky",
+      "craftCategory": "Masters 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 481.4,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 481.4,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "K2 Soren Ogle & Azamat Rustamov",
+      "craftCategory": "Open",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 518.5,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 518.5,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

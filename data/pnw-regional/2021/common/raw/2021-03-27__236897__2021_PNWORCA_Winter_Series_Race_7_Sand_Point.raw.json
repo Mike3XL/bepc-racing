@@ -1,0 +1,1663 @@
+{
+  "RaceInfo": {
+    "RaceId": 236897,
+    "Name": "2021 PNWORCA Winter Series Race #7: Sand Point",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=236897",
+    "Date": "Mar 27, 2021",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, March 27, 2021 11:00 AM (GMT-7)",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6346316004108,
+    "Longitude": -122.280780570856,
+    "StartType": "Wave",
+    "WaveGrouping": "By distance",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 4.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, March 27, 2021 1:23 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/images/stocksmall/paddling-64x48.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "394",
+          "Name": "Greg Barton",
+          "FirstName": "Greg",
+          "LastName": "Barton (Surfski)",
+          "Distance": "Long",
+          "Category": "HPK-M Masters",
+          "Gender": "Male",
+          "Time": "1:15:57.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "19.87%",
+          "PercentMedian": "19.74%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "76",
+          "Name": "Alan Lipp",
+          "FirstName": "Alan",
+          "LastName": "Lipp (Surfski)",
+          "Distance": "Long",
+          "Category": "HPK-M Kupuna Masters",
+          "Gender": "Male",
+          "Time": "1:20:24.6",
+          "Difference": "+4:27.4",
+          "PercentBack": "+5.87%",
+          "PercentWinning": "94.46%",
+          "PercentAverage": "15.17%",
+          "PercentMedian": "15.03%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "134",
+          "Name": "Beau Whitehead",
+          "FirstName": "Beau",
+          "LastName": "Whitehead (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Senior Masters",
+          "Gender": "Male",
+          "Time": "1:25:10.3",
+          "Difference": "+9:13.1",
+          "PercentBack": "+12.14%",
+          "PercentWinning": "89.18%",
+          "PercentAverage": "10.15%",
+          "PercentMedian": "10.00%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "4",
+          "Bib(Alphanumeric)": "1042",
+          "Name": "Gavin Godfrey",
+          "FirstName": "Gavin",
+          "LastName": "Godfrey (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Masters",
+          "Gender": "Male",
+          "Time": "1:25:17.6",
+          "Difference": "+9:20.4",
+          "PercentBack": "+12.30%",
+          "PercentWinning": "89.05%",
+          "PercentAverage": "10.02%",
+          "PercentMedian": "9.87%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "5",
+          "Bib(Alphanumeric)": "624",
+          "Name": "Mark Chamberlain",
+          "FirstName": "Mark",
+          "LastName": "Chamberlain (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Masters",
+          "Gender": "Male",
+          "Time": "1:25:22.7",
+          "Difference": "+9:25.5",
+          "PercentBack": "+12.41%",
+          "PercentWinning": "88.96%",
+          "PercentAverage": "9.93%",
+          "PercentMedian": "9.78%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "6",
+          "Bib(Alphanumeric)": "37",
+          "Name": "Dan Moseley",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Long",
+          "Category": "OC1-M Masters",
+          "Gender": "Male",
+          "Time": "1:25:54.6",
+          "Difference": "+9:57.4",
+          "PercentBack": "+13.11%",
+          "PercentWinning": "88.41%",
+          "PercentAverage": "9.37%",
+          "PercentMedian": "9.22%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "7",
+          "Bib(Alphanumeric)": "gre gre bla",
+          "Name": "Joseph Rodriguez",
+          "FirstName": "Joseph",
+          "LastName": "Rodriguez (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Open",
+          "Gender": "Male",
+          "Time": "1:26:01.3",
+          "Difference": "+10:04.1",
+          "PercentBack": "+13.26%",
+          "PercentWinning": "88.30%",
+          "PercentAverage": "9.25%",
+          "PercentMedian": "9.10%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "8",
+          "Bib(Alphanumeric)": "epic orange",
+          "Name": "Brian Kummer",
+          "FirstName": "Brian",
+          "LastName": "Kummer (Surfski)",
+          "Distance": "Long",
+          "Category": "HPK-M Senior Masters",
+          "Gender": "Male",
+          "Time": "1:27:19.3",
+          "Difference": "+11:22.1",
+          "PercentBack": "+14.97%",
+          "PercentWinning": "86.98%",
+          "PercentAverage": "7.88%",
+          "PercentMedian": "7.73%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "9",
+          "Bib(Alphanumeric)": "pc",
+          "Name": "Paul Crivell",
+          "FirstName": "Paul",
+          "LastName": "Crivell (Surfski)",
+          "Distance": "Long",
+          "Category": "HPK-M Masters",
+          "Gender": "Male",
+          "Time": "1:28:29.6",
+          "Difference": "+12:32.4",
+          "PercentBack": "+16.51%",
+          "PercentWinning": "85.83%",
+          "PercentAverage": "6.64%",
+          "PercentMedian": "6.49%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "10",
+          "Bib(Alphanumeric)": "180",
+          "Name": "Chris Baker",
+          "FirstName": "Chris",
+          "LastName": "Baker (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Masters",
+          "Gender": "Male",
+          "Time": "1:28:42.6",
+          "Difference": "+12:45.4",
+          "PercentBack": "+16.80%",
+          "PercentWinning": "85.62%",
+          "PercentAverage": "6.42%",
+          "PercentMedian": "6.26%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "11",
+          "Bib(Alphanumeric)": "1084",
+          "Name": "Reivers Dustin",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Long",
+          "Category": "HPK-M Kupuna Masters",
+          "Gender": "Male",
+          "Time": "1:29:01.8",
+          "Difference": "+13:04.6",
+          "PercentBack": "+17.22%",
+          "PercentWinning": "85.31%",
+          "PercentAverage": "6.08%",
+          "PercentMedian": "5.93%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "12",
+          "Bib(Alphanumeric)": "whit deck blu",
+          "Name": "Allen Roberts",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Long",
+          "Category": "HPK-M Novice",
+          "Gender": "Male",
+          "Time": "1:30:12.4",
+          "Difference": "+14:15.2",
+          "PercentBack": "+18.77%",
+          "PercentWinning": "84.20%",
+          "PercentAverage": "4.84%",
+          "PercentMedian": "4.68%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "13",
+          "Bib(Alphanumeric)": "grey green",
+          "Name": "Dionisio Romero",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Long",
+          "Category": "OC1-M Open",
+          "Gender": "Male",
+          "Time": "1:33:29.1",
+          "Difference": "+17:31.9",
+          "PercentBack": "+23.08%",
+          "PercentWinning": "81.25%",
+          "PercentAverage": "1.38%",
+          "PercentMedian": "1.22%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "14",
+          "Bib(Alphanumeric)": "blu vega orang",
+          "Name": "Peter Prinos",
+          "FirstName": "Peter",
+          "LastName": "Prinos (Surfski)",
+          "Distance": "Long",
+          "Category": "HPK-M Masters",
+          "Gender": "Male",
+          "Time": "1:33:45.4",
+          "Difference": "+17:48.2",
+          "PercentBack": "+23.44%",
+          "PercentWinning": "81.01%",
+          "PercentAverage": "1.09%",
+          "PercentMedian": "0.93%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "15",
+          "Bib(Alphanumeric)": "hippo",
+          "Name": "Matt Kearney",
+          "FirstName": "Matt",
+          "LastName": "Kearney (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Open",
+          "Gender": "Male",
+          "Time": "1:34:11.5",
+          "Difference": "+18:14.3",
+          "PercentBack": "+24.01%",
+          "PercentWinning": "80.64%",
+          "PercentAverage": "0.63%",
+          "PercentMedian": "0.47%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "16",
+          "Bib(Alphanumeric)": "671",
+          "Name": "Jason Park",
+          "FirstName": "Jason",
+          "LastName": "Park (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Senior Masters",
+          "Gender": "Male",
+          "Time": "1:34:38.3",
+          "Difference": "+18:41.1",
+          "PercentBack": "+24.60%",
+          "PercentWinning": "80.26%",
+          "PercentAverage": "0.16%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "17",
+          "Bib(Alphanumeric)": "rowing",
+          "Name": "Tenar Hall",
+          "FirstName": "Tenar",
+          "LastName": "Hall (1Xowii)",
+          "Distance": "Long",
+          "Category": "1XOWII-W Open",
+          "Gender": "Female",
+          "Time": "1:35:07.7",
+          "Difference": "+19:10.5",
+          "PercentBack": "+25.25%",
+          "PercentWinning": "79.84%",
+          "PercentAverage": "-0.36%",
+          "PercentMedian": "-0.52%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "18",
+          "Bib(Alphanumeric)": "1066",
+          "Name": "Traci Cole",
+          "FirstName": "Traci",
+          "LastName": "Cole (Surfski)",
+          "Distance": "Long",
+          "Category": "HPK-W Senior Masters",
+          "Gender": "Female",
+          "Time": "1:35:36.1",
+          "Difference": "+19:38.9",
+          "PercentBack": "+25.87%",
+          "PercentWinning": "79.45%",
+          "PercentAverage": "-0.85%",
+          "PercentMedian": "-1.02%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "19",
+          "Bib(Alphanumeric)": "2013",
+          "Name": "Charlie Butt",
+          "FirstName": "Charlie",
+          "LastName": "Butt (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Masters",
+          "Gender": "Male",
+          "Time": "1:36:03.4",
+          "Difference": "+20:06.2",
+          "PercentBack": "+26.47%",
+          "PercentWinning": "79.07%",
+          "PercentAverage": "-1.33%",
+          "PercentMedian": "-1.50%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "20",
+          "Bib(Alphanumeric)": "131",
+          "Name": "Rick Renaud",
+          "FirstName": "Rick",
+          "LastName": "Renaud (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Senior Masters",
+          "Gender": "Male",
+          "Time": "1:36:14.7",
+          "Difference": "+20:17.5",
+          "PercentBack": "+26.72%",
+          "PercentWinning": "78.92%",
+          "PercentAverage": "-1.53%",
+          "PercentMedian": "-1.70%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "21",
+          "Bib(Alphanumeric)": "gre v1",
+          "Name": "Joseph Johnson",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Long",
+          "Category": "V1-M Open",
+          "Gender": "Male",
+          "Time": "1:36:58.6",
+          "Difference": "+21:01.4",
+          "PercentBack": "+27.68%",
+          "PercentWinning": "78.32%",
+          "PercentAverage": "-2.31%",
+          "PercentMedian": "-2.47%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "22",
+          "Bib(Alphanumeric)": "v1",
+          "Name": "Patrick Hwang",
+          "FirstName": "Patrick",
+          "LastName": "Hwang (Oc1)",
+          "Distance": "Long",
+          "Category": "V1-M Masters",
+          "Gender": "Male",
+          "Time": "1:37:12.8",
+          "Difference": "+21:15.6",
+          "PercentBack": "+27.99%",
+          "PercentWinning": "78.13%",
+          "PercentAverage": "-2.56%",
+          "PercentMedian": "-2.72%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "23",
+          "Bib(Alphanumeric)": "blu yellow pfd",
+          "Name": "Jeremy Roberts",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Long",
+          "Category": "OC1-M Open",
+          "Gender": "Male",
+          "Time": "1:38:27.7",
+          "Difference": "+22:30.5",
+          "PercentBack": "+29.63%",
+          "PercentWinning": "77.14%",
+          "PercentAverage": "-3.87%",
+          "PercentMedian": "-4.04%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "24",
+          "Bib(Alphanumeric)": "713",
+          "Name": "Mignon Fontenelle",
+          "FirstName": "Mignon",
+          "LastName": "Fontenelle (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-W Masters",
+          "Gender": "Female",
+          "Time": "1:39:53.2",
+          "Difference": "+23:56.0",
+          "PercentBack": "+31.51%",
+          "PercentWinning": "76.04%",
+          "PercentAverage": "-5.38%",
+          "PercentMedian": "-5.55%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "25",
+          "Bib(Alphanumeric)": "white red red",
+          "Name": "John Murillo",
+          "FirstName": "John",
+          "LastName": "Murillo (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Masters",
+          "Gender": "Male",
+          "Time": "1:42:08.4",
+          "Difference": "+26:11.2",
+          "PercentBack": "+34.48%",
+          "PercentWinning": "74.36%",
+          "PercentAverage": "-7.75%",
+          "PercentMedian": "-7.93%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "26",
+          "Bib(Alphanumeric)": "59",
+          "Name": "Gavin McWilliams",
+          "FirstName": "Gavin",
+          "LastName": "McWilliams (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Senior Masters",
+          "Gender": "Male",
+          "Time": "1:45:28.9",
+          "Difference": "+29:31.7",
+          "PercentBack": "+38.88%",
+          "PercentWinning": "72.01%",
+          "PercentAverage": "-11.28%",
+          "PercentMedian": "-11.46%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "27",
+          "Bib(Alphanumeric)": "1721",
+          "Name": "Cynthia Conrad",
+          "FirstName": "Cynthia",
+          "LastName": "Conrad (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-W Open",
+          "Gender": "Female",
+          "Time": "1:45:46.4",
+          "Difference": "+29:49.2",
+          "PercentBack": "+39.26%",
+          "PercentWinning": "71.81%",
+          "PercentAverage": "-11.59%",
+          "PercentMedian": "-11.77%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "28",
+          "Bib(Alphanumeric)": "1719",
+          "Name": "Jay Marshall",
+          "FirstName": "Jay",
+          "LastName": "Marshall (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-W Kupuna Masters",
+          "Gender": "Female",
+          "Time": "1:49:04.2",
+          "Difference": "+33:07.0",
+          "PercentBack": "+43.60%",
+          "PercentWinning": "69.64%",
+          "PercentAverage": "-15.06%",
+          "PercentMedian": "-15.25%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "29",
+          "Bib(Alphanumeric)": "1730",
+          "Name": "Rick Fraser",
+          "FirstName": "Rick",
+          "LastName": "Fraser (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Kupuna Masters",
+          "Gender": "Male",
+          "Time": "1:49:37.3",
+          "Difference": "+33:40.1",
+          "PercentBack": "+44.33%",
+          "PercentWinning": "69.29%",
+          "PercentAverage": "-15.65%",
+          "PercentMedian": "-15.83%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "30",
+          "Bib(Alphanumeric)": "1124",
+          "Name": "Kelli Arbey",
+          "FirstName": "Kelli",
+          "LastName": "Arbey (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-W Masters",
+          "Gender": "Female",
+          "Time": "1:50:48.6",
+          "Difference": "+34:51.4",
+          "PercentBack": "+45.89%",
+          "PercentWinning": "68.54%",
+          "PercentAverage": "-16.90%",
+          "PercentMedian": "-17.09%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "31",
+          "Bib(Alphanumeric)": "wht/yel/blu",
+          "Name": "Kj Jackson",
+          "FirstName": "Kj",
+          "LastName": "Jackson (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-W Novice",
+          "Gender": "Female",
+          "Time": "1:56:05.4",
+          "Difference": "+40:08.2",
+          "PercentBack": "+52.84%",
+          "PercentWinning": "65.43%",
+          "PercentAverage": "-22.47%",
+          "PercentMedian": "-22.67%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "592",
+          "Name": "Eric Nordstrom",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Short",
+          "Category": "HPK-M Senior Masters",
+          "Gender": "Male",
+          "Time": "43:44.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "20.97%",
+          "PercentMedian": "20.70%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "pueo",
+          "Name": "Jake Sando",
+          "FirstName": "Jake",
+          "LastName": "Sando (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-M Open",
+          "Gender": "Male",
+          "Time": "44:06.5",
+          "Difference": "+0:22.5",
+          "PercentBack": "+0.86%",
+          "PercentWinning": "99.15%",
+          "PercentAverage": "20.30%",
+          "PercentMedian": "20.02%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "sup",
+          "Name": "Tyler Peterson",
+          "FirstName": "Tyler",
+          "LastName": "Peterson",
+          "Distance": "Short",
+          "Category": "SUP-M Open",
+          "Gender": "Male",
+          "Time": "47:35.3",
+          "Difference": "+3:51.3",
+          "PercentBack": "+8.81%",
+          "PercentWinning": "91.90%",
+          "PercentAverage": "14.01%",
+          "PercentMedian": "13.71%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "4",
+          "Bib(Alphanumeric)": "b",
+          "Name": "Barb Schubert",
+          "FirstName": "Barb",
+          "LastName": "Schubert (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-W Novice",
+          "Gender": "Female",
+          "Time": "47:56.6",
+          "Difference": "+4:12.6",
+          "PercentBack": "+9.63%",
+          "PercentWinning": "91.22%",
+          "PercentAverage": "13.37%",
+          "PercentMedian": "13.06%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "5",
+          "Bib(Alphanumeric)": "mak",
+          "Name": "Makoto Tsukigase",
+          "FirstName": "Makoto",
+          "LastName": "Tsukigase (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-M Novice",
+          "Gender": "Male",
+          "Time": "52:27.5",
+          "Difference": "+8:43.5",
+          "PercentBack": "+19.95%",
+          "PercentWinning": "83.37%",
+          "PercentAverage": "5.21%",
+          "PercentMedian": "4.87%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "6",
+          "Bib(Alphanumeric)": "su",
+          "Name": "John Hansen",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Short",
+          "Category": "SUP-M Senior Masters",
+          "Gender": "Male",
+          "Time": "57:50.1",
+          "Difference": "+14:06.1",
+          "PercentBack": "+32.24%",
+          "PercentWinning": "75.62%",
+          "PercentAverage": "-4.51%",
+          "PercentMedian": "-4.87%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "7",
+          "Bib(Alphanumeric)": "mas",
+          "Name": "Masato Tsukigase",
+          "FirstName": "Masato",
+          "LastName": "Tsukigase (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-M Novice",
+          "Gender": "Male",
+          "Time": "1:04:37.0",
+          "Difference": "+20:53.0",
+          "PercentBack": "+47.75%",
+          "PercentWinning": "67.68%",
+          "PercentAverage": "-16.76%",
+          "PercentMedian": "-17.17%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "8",
+          "Bib(Alphanumeric)": "338",
+          "Name": "Debbie Howard",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Short",
+          "Category": "OC1-W Open",
+          "Gender": "Female",
+          "Time": "1:04:49.0",
+          "Difference": "+21:05.0",
+          "PercentBack": "+48.21%",
+          "PercentWinning": "67.47%",
+          "PercentAverage": "-17.12%",
+          "PercentMedian": "-17.54%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "9",
+          "Bib(Alphanumeric)": "586",
+          "Name": "Olivier Arbey",
+          "FirstName": "Olivier",
+          "LastName": "Arbey (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-M Novice",
+          "Gender": "Male",
+          "Time": "1:05:07.7",
+          "Difference": "+21:23.7",
+          "PercentBack": "+48.92%",
+          "PercentWinning": "67.15%",
+          "PercentAverage": "-17.69%",
+          "PercentMedian": "-18.10%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "10",
+          "Bib(Alphanumeric)": "matt",
+          "Name": "Matthew Mar",
+          "FirstName": "Matthew",
+          "LastName": "Mar (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-M Senior Masters",
+          "Gender": "Male",
+          "Time": "1:05:10.6",
+          "Difference": "+21:26.6",
+          "PercentBack": "+49.03%",
+          "PercentWinning": "67.10%",
+          "PercentAverage": "-17.77%",
+          "PercentMedian": "-18.19%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "-",
+          "Bib(Alphanumeric)": "juliana",
+          "Name": "Juliana Acuna",
+          "FirstName": "Juliana",
+          "LastName": "Acuna (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-W Novice",
+          "Gender": "Female",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "1XOWII-W Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "rowing",
+          "Name": "Tenar Hall",
+          "FirstName": "Tenar",
+          "LastName": "Hall (1Xowii)",
+          "Distance": "Long",
+          "Category": "1XOWII-W Open",
+          "Gender": "Female",
+          "Time": "1:35:07.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "HPK-M Kupuna Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "76",
+          "Name": "Alan Lipp",
+          "FirstName": "Alan",
+          "LastName": "Lipp (Surfski)",
+          "Distance": "Long",
+          "Category": "HPK-M Kupuna Masters",
+          "Gender": "Male",
+          "Time": "1:20:24.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.09%",
+          "PercentMedian": "5.09%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "1084",
+          "Name": "Reivers Dustin",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Long",
+          "Category": "HPK-M Kupuna Masters",
+          "Gender": "Male",
+          "Time": "1:29:01.8",
+          "Difference": "+8:37.2",
+          "PercentBack": "+10.72%",
+          "PercentWinning": "90.32%",
+          "PercentAverage": "-5.09%",
+          "PercentMedian": "-5.09%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "HPK-M Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "394",
+          "Name": "Greg Barton",
+          "FirstName": "Greg",
+          "LastName": "Barton (Surfski)",
+          "Distance": "Long",
+          "Category": "HPK-M Masters",
+          "Gender": "Male",
+          "Time": "1:15:57.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.75%",
+          "PercentMedian": "14.17%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "pc",
+          "Name": "Paul Crivell",
+          "FirstName": "Paul",
+          "LastName": "Crivell (Surfski)",
+          "Distance": "Long",
+          "Category": "HPK-M Masters",
+          "Gender": "Male",
+          "Time": "1:28:29.6",
+          "Difference": "+12:32.4",
+          "PercentBack": "+16.51%",
+          "PercentWinning": "85.83%",
+          "PercentAverage": "-2.82%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "blu vega orang",
+          "Name": "Peter Prinos",
+          "FirstName": "Peter",
+          "LastName": "Prinos (Surfski)",
+          "Distance": "Long",
+          "Category": "HPK-M Masters",
+          "Gender": "Male",
+          "Time": "1:33:45.4",
+          "Difference": "+17:48.2",
+          "PercentBack": "+23.44%",
+          "PercentWinning": "81.01%",
+          "PercentAverage": "-8.93%",
+          "PercentMedian": "-5.95%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "HPK-M Novice"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "whit deck blu",
+          "Name": "Allen Roberts",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Long",
+          "Category": "HPK-M Novice",
+          "Gender": "Male",
+          "Time": "1:30:12.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "HPK-M Senior Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "epic orange",
+          "Name": "Brian Kummer",
+          "FirstName": "Brian",
+          "LastName": "Kummer (Surfski)",
+          "Distance": "Long",
+          "Category": "HPK-M Senior Masters",
+          "Gender": "Male",
+          "Time": "1:27:19.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "HPK-W Senior Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "1066",
+          "Name": "Traci Cole",
+          "FirstName": "Traci",
+          "LastName": "Cole (Surfski)",
+          "Distance": "Long",
+          "Category": "HPK-W Senior Masters",
+          "Gender": "Female",
+          "Time": "1:35:36.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "OC1-M Kupuna Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "1730",
+          "Name": "Rick Fraser",
+          "FirstName": "Rick",
+          "LastName": "Fraser (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Kupuna Masters",
+          "Gender": "Male",
+          "Time": "1:49:37.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "OC1-M Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "1042",
+          "Name": "Gavin Godfrey",
+          "FirstName": "Gavin",
+          "LastName": "Godfrey (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Masters",
+          "Gender": "Male",
+          "Time": "1:25:17.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.84%",
+          "PercentMedian": "2.31%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "624",
+          "Name": "Mark Chamberlain",
+          "FirstName": "Mark",
+          "LastName": "Chamberlain (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Masters",
+          "Gender": "Male",
+          "Time": "1:25:22.7",
+          "Difference": "+0:05.1",
+          "PercentBack": "+0.10%",
+          "PercentWinning": "99.90%",
+          "PercentAverage": "5.74%",
+          "PercentMedian": "2.21%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "37",
+          "Name": "Dan Moseley",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Long",
+          "Category": "OC1-M Masters",
+          "Gender": "Male",
+          "Time": "1:25:54.6",
+          "Difference": "+0:37.0",
+          "PercentBack": "+0.72%",
+          "PercentWinning": "99.28%",
+          "PercentAverage": "5.16%",
+          "PercentMedian": "1.60%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "4",
+          "Bib(Alphanumeric)": "180",
+          "Name": "Chris Baker",
+          "FirstName": "Chris",
+          "LastName": "Baker (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Masters",
+          "Gender": "Male",
+          "Time": "1:28:42.6",
+          "Difference": "+3:25.0",
+          "PercentBack": "+4.01%",
+          "PercentWinning": "96.15%",
+          "PercentAverage": "2.07%",
+          "PercentMedian": "-1.60%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "5",
+          "Bib(Alphanumeric)": "2013",
+          "Name": "Charlie Butt",
+          "FirstName": "Charlie",
+          "LastName": "Butt (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Masters",
+          "Gender": "Male",
+          "Time": "1:36:03.4",
+          "Difference": "+10:45.8",
+          "PercentBack": "+12.62%",
+          "PercentWinning": "88.79%",
+          "PercentAverage": "-6.04%",
+          "PercentMedian": "-10.02%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "6",
+          "Bib(Alphanumeric)": "white red red",
+          "Name": "John Murillo",
+          "FirstName": "John",
+          "LastName": "Murillo (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Masters",
+          "Gender": "Male",
+          "Time": "1:42:08.4",
+          "Difference": "+16:50.8",
+          "PercentBack": "+19.75%",
+          "PercentWinning": "83.51%",
+          "PercentAverage": "-12.76%",
+          "PercentMedian": "-16.99%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "OC1-M Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "gre gre bla",
+          "Name": "Joseph Rodriguez",
+          "FirstName": "Joseph",
+          "LastName": "Rodriguez (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Open",
+          "Gender": "Male",
+          "Time": "1:26:01.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.54%",
+          "PercentMedian": "8.33%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "grey green",
+          "Name": "Dionisio Romero",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Long",
+          "Category": "OC1-M Open",
+          "Gender": "Male",
+          "Time": "1:33:29.1",
+          "Difference": "+7:27.8",
+          "PercentBack": "+8.68%",
+          "PercentWinning": "92.02%",
+          "PercentAverage": "-0.48%",
+          "PercentMedian": "0.38%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "hippo",
+          "Name": "Matt Kearney",
+          "FirstName": "Matt",
+          "LastName": "Kearney (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Open",
+          "Gender": "Male",
+          "Time": "1:34:11.5",
+          "Difference": "+8:10.2",
+          "PercentBack": "+9.50%",
+          "PercentWinning": "91.33%",
+          "PercentAverage": "-1.24%",
+          "PercentMedian": "-0.38%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "4",
+          "Bib(Alphanumeric)": "blu yellow pfd",
+          "Name": "Jeremy Roberts",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Long",
+          "Category": "OC1-M Open",
+          "Gender": "Male",
+          "Time": "1:38:27.7",
+          "Difference": "+12:26.4",
+          "PercentBack": "+14.46%",
+          "PercentWinning": "87.37%",
+          "PercentAverage": "-5.83%",
+          "PercentMedian": "-4.93%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "OC1-M Senior Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "134",
+          "Name": "Beau Whitehead",
+          "FirstName": "Beau",
+          "LastName": "Whitehead (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Senior Masters",
+          "Gender": "Male",
+          "Time": "1:25:10.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.71%",
+          "PercentMedian": "10.76%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "671",
+          "Name": "Jason Park",
+          "FirstName": "Jason",
+          "LastName": "Park (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Senior Masters",
+          "Gender": "Male",
+          "Time": "1:34:38.3",
+          "Difference": "+9:28.0",
+          "PercentBack": "+11.11%",
+          "PercentWinning": "90.00%",
+          "PercentAverage": "0.78%",
+          "PercentMedian": "0.84%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "131",
+          "Name": "Rick Renaud",
+          "FirstName": "Rick",
+          "LastName": "Renaud (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Senior Masters",
+          "Gender": "Male",
+          "Time": "1:36:14.7",
+          "Difference": "+11:04.4",
+          "PercentBack": "+13.00%",
+          "PercentWinning": "88.49%",
+          "PercentAverage": "-0.90%",
+          "PercentMedian": "-0.84%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "4",
+          "Bib(Alphanumeric)": "59",
+          "Name": "Gavin McWilliams",
+          "FirstName": "Gavin",
+          "LastName": "McWilliams (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-M Senior Masters",
+          "Gender": "Male",
+          "Time": "1:45:28.9",
+          "Difference": "+20:18.6",
+          "PercentBack": "+23.85%",
+          "PercentWinning": "80.75%",
+          "PercentAverage": "-10.59%",
+          "PercentMedian": "-10.52%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "OC1-W Kupuna Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "1719",
+          "Name": "Jay Marshall",
+          "FirstName": "Jay",
+          "LastName": "Marshall (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-W Kupuna Masters",
+          "Gender": "Female",
+          "Time": "1:49:04.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "OC1-W Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "713",
+          "Name": "Mignon Fontenelle",
+          "FirstName": "Mignon",
+          "LastName": "Fontenelle (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-W Masters",
+          "Gender": "Female",
+          "Time": "1:39:53.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.18%",
+          "PercentMedian": "5.18%",
+          "StartTime": "11:00:05.4"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "1124",
+          "Name": "Kelli Arbey",
+          "FirstName": "Kelli",
+          "LastName": "Arbey (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-W Masters",
+          "Gender": "Female",
+          "Time": "1:50:48.6",
+          "Difference": "+10:55.4",
+          "PercentBack": "+10.94%",
+          "PercentWinning": "90.14%",
+          "PercentAverage": "-5.18%",
+          "PercentMedian": "-5.18%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "OC1-W Novice"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "wht/yel/blu",
+          "Name": "Kj Jackson",
+          "FirstName": "Kj",
+          "LastName": "Jackson (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-W Novice",
+          "Gender": "Female",
+          "Time": "1:56:05.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "OC1-W Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "1721",
+          "Name": "Cynthia Conrad",
+          "FirstName": "Cynthia",
+          "LastName": "Conrad (Oc1)",
+          "Distance": "Long",
+          "Category": "OC1-W Open",
+          "Gender": "Female",
+          "Time": "1:45:46.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "V1-M Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "v1",
+          "Name": "Patrick Hwang",
+          "FirstName": "Patrick",
+          "LastName": "Hwang (Oc1)",
+          "Distance": "Long",
+          "Category": "V1-M Masters",
+          "Gender": "Male",
+          "Time": "1:37:12.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long",
+        "Category": "V1-M Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "gre v1",
+          "Name": "Joseph Johnson",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Long",
+          "Category": "V1-M Open",
+          "Gender": "Male",
+          "Time": "1:36:58.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:05.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short",
+        "Category": "HPK-M Senior Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "592",
+          "Name": "Eric Nordstrom",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Short",
+          "Category": "HPK-M Senior Masters",
+          "Gender": "Male",
+          "Time": "43:44.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:05:44.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short",
+        "Category": "OC1-M Novice"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "mak",
+          "Name": "Makoto Tsukigase",
+          "FirstName": "Makoto",
+          "LastName": "Tsukigase (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-M Novice",
+          "Gender": "Male",
+          "Time": "52:27.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.63%",
+          "PercentMedian": "18.82%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "mas",
+          "Name": "Masato Tsukigase",
+          "FirstName": "Masato",
+          "LastName": "Tsukigase (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-M Novice",
+          "Gender": "Male",
+          "Time": "1:04:37.0",
+          "Difference": "+12:09.5",
+          "PercentBack": "+23.18%",
+          "PercentWinning": "81.18%",
+          "PercentAverage": "-6.39%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "586",
+          "Name": "Olivier Arbey",
+          "FirstName": "Olivier",
+          "LastName": "Arbey (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-M Novice",
+          "Gender": "Male",
+          "Time": "1:05:07.7",
+          "Difference": "+12:40.2",
+          "PercentBack": "+24.15%",
+          "PercentWinning": "80.55%",
+          "PercentAverage": "-7.23%",
+          "PercentMedian": "-0.79%",
+          "StartTime": "11:05:44.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short",
+        "Category": "OC1-M Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "pueo",
+          "Name": "Jake Sando",
+          "FirstName": "Jake",
+          "LastName": "Sando (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-M Open",
+          "Gender": "Male",
+          "Time": "44:06.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:05:44.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short",
+        "Category": "OC1-M Senior Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "matt",
+          "Name": "Matthew Mar",
+          "FirstName": "Matthew",
+          "LastName": "Mar (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-M Senior Masters",
+          "Gender": "Male",
+          "Time": "1:05:10.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:05:44.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short",
+        "Category": "OC1-W Novice"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "b",
+          "Name": "Barb Schubert",
+          "FirstName": "Barb",
+          "LastName": "Schubert (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-W Novice",
+          "Gender": "Female",
+          "Time": "47:56.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:05:44.4"
+        },
+        {
+          "Place": "-",
+          "Bib(Alphanumeric)": "juliana",
+          "Name": "Juliana Acuna",
+          "FirstName": "Juliana",
+          "LastName": "Acuna (Oc1)",
+          "Distance": "Short",
+          "Category": "OC1-W Novice",
+          "Gender": "Female",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short",
+        "Category": "OC1-W Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "338",
+          "Name": "Debbie Howard",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Short",
+          "Category": "OC1-W Open",
+          "Gender": "Female",
+          "Time": "1:04:49.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:05:44.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short",
+        "Category": "SUP-M Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "sup",
+          "Name": "Tyler Peterson",
+          "FirstName": "Tyler",
+          "LastName": "Peterson",
+          "Distance": "Short",
+          "Category": "SUP-M Open",
+          "Gender": "Male",
+          "Time": "47:35.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:05:44.4"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short",
+        "Category": "SUP-M Senior Masters"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "su",
+          "Name": "John Hansen",
+          "FirstName": null,
+          "LastName": null,
+          "Distance": "Short",
+          "Category": "SUP-M Senior Masters",
+          "Gender": "Male",
+          "Time": "57:50.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:05:44.4"
+        }
+      ]
+    }
+  ]
+}

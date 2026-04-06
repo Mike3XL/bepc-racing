@@ -1,0 +1,408 @@
+{
+  "RaceInfo": {
+    "RaceId": 321286,
+    "Name": "2023 Duck Island Race #1",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=321286",
+    "Date": "Jul 14, 2023",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 14, 2023 9:57 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6733,
+    "Longitude": -122.3426,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Google Pixel 2 XL",
+    "TimedWith": "Webscorer PRO 6.4",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 9:52 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/321286_8db84f13f246a45.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Emma Tsong",
+          "TeamName2": "Nelo C1",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:52.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.15%",
+          "PercentMedian": "7.15%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:33.4",
+          "Difference": "+1:40.5",
+          "PercentBack": "+15.39%",
+          "PercentWinning": "86.66%",
+          "PercentAverage": "-7.15%",
+          "PercentMedian": "-7.15%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Aaron Small",
+          "TeamName2": "Nelo Sete K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:37.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "41.30%",
+          "PercentMedian": "34.42%"
+        },
+        {
+          "Place": "2",
+          "Name": "Soren Ogle",
+          "TeamName2": "Nelo Vanquish 3",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:15.7",
+          "Difference": "+0:38.5",
+          "PercentBack": "+8.42%",
+          "PercentWinning": "92.23%",
+          "PercentAverage": "36.35%",
+          "PercentMedian": "28.90%"
+        },
+        {
+          "Place": "3",
+          "Name": "Azamat Rustamov",
+          "TeamName2": "Tornado K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "9:48.9",
+          "Difference": "+2:11.7",
+          "PercentBack": "+28.81%",
+          "PercentWinning": "77.64%",
+          "PercentAverage": "24.39%",
+          "PercentMedian": "15.53%"
+        },
+        {
+          "Place": "4",
+          "Name": "Elizabeth Holmes",
+          "TeamName2": "Zastera Master K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:14.6",
+          "Difference": "+2:37.4",
+          "PercentBack": "+34.43%",
+          "PercentWinning": "74.39%",
+          "PercentAverage": "21.09%",
+          "PercentMedian": "11.85%"
+        },
+        {
+          "Place": "5",
+          "Name": "Breona Gutschmidt",
+          "TeamName2": "Super Lancer",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:59.8",
+          "Difference": "+5:22.6",
+          "PercentBack": "+70.56%",
+          "PercentWinning": "58.63%",
+          "PercentAverage": "-0.12%",
+          "PercentMedian": "-11.85%"
+        },
+        {
+          "Place": "6",
+          "Name": "Philip Murphy",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "14:50.4",
+          "Difference": "+7:13.2",
+          "PercentBack": "+94.75%",
+          "PercentWinning": "51.35%",
+          "PercentAverage": "-14.32%",
+          "PercentMedian": "-27.71%"
+        },
+        {
+          "Place": "7",
+          "Name": "Reuben Stambaugh",
+          "TeamName2": "Surf ski V7",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "15:47.3",
+          "Difference": "+8:10.1",
+          "PercentBack": "+107.20%",
+          "PercentWinning": "48.26%",
+          "PercentAverage": "-21.63%",
+          "PercentMedian": "-35.87%"
+        },
+        {
+          "Place": "8",
+          "Name": "Hugo Barribeau",
+          "TeamName2": "Surf ski V7",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "24:16.9",
+          "Difference": "+16:39.7",
+          "PercentBack": "+218.66%",
+          "PercentWinning": "31.38%",
+          "PercentAverage": "-87.06%",
+          "PercentMedian": "-108.96%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Melat Peterson & Nora Tsong",
+          "TeamName2": "Epic ML K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:08.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Emma Tsong",
+          "TeamName2": "Nelo C1",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:52.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "12:33.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Soren Ogle",
+          "TeamName2": "Nelo Vanquish 3",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:15.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "48.72%",
+          "PercentMedian": "47.67%"
+        },
+        {
+          "Place": "2",
+          "Name": "Reuben Stambaugh",
+          "TeamName2": "Surf ski V7",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "15:47.3",
+          "Difference": "+7:31.6",
+          "PercentBack": "+91.10%",
+          "PercentWinning": "52.33%",
+          "PercentAverage": "2.00%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Hugo Barribeau",
+          "TeamName2": "Surf ski V7",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "24:16.9",
+          "Difference": "+16:01.2",
+          "PercentBack": "+193.91%",
+          "PercentWinning": "34.02%",
+          "PercentAverage": "-50.72%",
+          "PercentMedian": "-53.79%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Holmes",
+          "TeamName2": "Zastera Master K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "10:14.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "19.30%",
+          "PercentMedian": "21.18%"
+        },
+        {
+          "Place": "2",
+          "Name": "Breona Gutschmidt",
+          "TeamName2": "Super Lancer",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "12:59.8",
+          "Difference": "+2:45.2",
+          "PercentBack": "+26.88%",
+          "PercentWinning": "78.82%",
+          "PercentAverage": "-2.39%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "Philip Murphy",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "14:50.4",
+          "Difference": "+4:35.8",
+          "PercentBack": "+44.87%",
+          "PercentWinning": "69.03%",
+          "PercentAverage": "-16.91%",
+          "PercentMedian": "-14.18%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Aaron Small",
+          "TeamName2": "Nelo Sete K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "7:37.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.59%",
+          "PercentMedian": "12.59%"
+        },
+        {
+          "Place": "2",
+          "Name": "Azamat Rustamov",
+          "TeamName2": "Tornado K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "9:48.9",
+          "Difference": "+2:11.7",
+          "PercentBack": "+28.81%",
+          "PercentWinning": "77.64%",
+          "PercentAverage": "-12.59%",
+          "PercentMedian": "-12.59%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Melat Peterson & Nora Tsong",
+          "TeamName2": "Epic ML K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:08.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

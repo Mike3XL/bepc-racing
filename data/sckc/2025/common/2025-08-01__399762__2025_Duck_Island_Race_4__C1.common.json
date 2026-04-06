@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 399762,
+    "distance": "C1",
+    "name": "2025 Duck Island Race #4 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=399762",
+    "date": "Aug 1, 2025",
+    "sport": "Paddling",
+    "startTime": "Friday, August 1, 2025 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.130435
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Jared Ogle",
+      "craftCategory": "Master 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 659.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 659.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Karel Zikan",
+      "craftCategory": "Master 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 810.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 810.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "Cooper Beitlers",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1774.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1774.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 364460,
+    "distance": "C1",
+    "name": "2024 Duck Island Race #7 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=364460",
+    "date": "Aug 23, 2024",
+    "sport": "Paddling",
+    "startTime": "Friday, August 23, 2024 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.25
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Aaron Scull",
+      "craftCategory": "Open",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 820.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 820.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Sebastian Kanter",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1476.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1476.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "Lillian Balet",
+      "craftCategory": "Junior",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 1851.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1851.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

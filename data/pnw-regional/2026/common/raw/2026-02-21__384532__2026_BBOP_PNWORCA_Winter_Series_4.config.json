@@ -1,0 +1,103 @@
+{
+  "key": "e2b411706a511cc71b21f5c80a3ec139",
+  "contests": {
+    "1": "Long Course",
+    "2": "Short Course"
+  },
+  "splits": [
+    {
+      "ID": 1,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 4,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 255
+    },
+    {
+      "ID": 5,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 2,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    }
+  ],
+  "eventname": "2026  PNWORCA #4 - Hosted by BBOP",
+  "TimerLogo": "pacificmultisports_logo_type_792x792.png",
+  "TimerURL": "pacificmultisports.com",
+  "EventOver": true,
+  "Time": 53060,
+  "server": "my-us-1.raceresult.com",
+  "BrandColorDark": "",
+  "Tab": {
+    "Label": "",
+    "URLName": "results",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ActiveFrom": "2022-02-26T00:00:00-08:00",
+    "ActiveUntil": "2100-12-31T23:59:59-08:00",
+    "Type": "lists",
+    "Config": null
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "boxes",
+    "StandardDetails": "",
+    "Lists": [
+      {
+        "Name": "Online|Participants",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "default",
+        "ID": "5AF122"
+      },
+      {
+        "Name": "Result Lists|Overall Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "default",
+        "ID": "3EF1B7"
+      },
+      {
+        "Name": "Result Lists|Boat Class Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "Details": "default",
+        "ID": "117197"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": true
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 145273,
+    "distance": "C1",
+    "name": "2018 Duck Island Race #6 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=145273",
+    "date": "Jul 27, 2018",
+    "sport": "Paddling",
+    "startTime": "Friday, July 27, 2018 6:45 PM (GMT-5)",
+    "country": "United States",
+    "city": "Houston",
+    "pointsWeight": 0.0625
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Jake Zikan",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 786.5,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 786.5,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

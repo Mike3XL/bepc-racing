@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 143456,
+    "distance": "C1",
+    "name": "2018 Duck Island Race #2 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=143456",
+    "date": "Jun 29, 2018",
+    "sport": "Paddling",
+    "startTime": "Friday, June 29, 2018 5:16 PM (GMT+2)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.111111
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Jared Ogle",
+      "craftCategory": "Masters 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 957.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 957.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

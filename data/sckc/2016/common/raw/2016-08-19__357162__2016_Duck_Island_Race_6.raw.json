@@ -1,0 +1,364 @@
+{
+  "RaceInfo": {
+    "RaceId": 357162,
+    "Name": "2016 Duck Island Race #6",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357162",
+    "Date": "Aug 19, 2016",
+    "Sport": "Paddling",
+    "StartTime": "Friday, August 19, 2016 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.673911370564596,
+    "Longitude": -122.34082583533798,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 5:47 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357162_8dc989f80a8a0db.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Doug Ritchie, Claire and Adam",
+          "TeamName": "Garden chair C3",
+          "Distance": "C2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "0:17:37",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Kevin Olney",
+          "TeamName": "Surfski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:08:35",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "25.95%",
+          "PercentMedian": "27.82%"
+        },
+        {
+          "Place": "2",
+          "Name": "Steve Small",
+          "TeamName": "Surfski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:09:13",
+          "Difference": "+0:38",
+          "PercentBack": "+7.38%",
+          "PercentWinning": "93.13%",
+          "PercentAverage": "20.49%",
+          "PercentMedian": "22.49%"
+        },
+        {
+          "Place": "3",
+          "Name": "Parker Duff",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:04",
+          "Difference": "+2:29",
+          "PercentBack": "+28.93%",
+          "PercentWinning": "77.56%",
+          "PercentAverage": "4.53%",
+          "PercentMedian": "6.94%"
+        },
+        {
+          "Place": "4",
+          "Name": "Karol Osusky",
+          "TeamName": "SRS K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:46",
+          "Difference": "+3:11",
+          "PercentBack": "+37.09%",
+          "PercentWinning": "72.95%",
+          "PercentAverage": "-1.51%",
+          "PercentMedian": "1.05%"
+        },
+        {
+          "Place": "5",
+          "Name": "Bee Dietz",
+          "TeamName": "Tor K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:12:01",
+          "Difference": "+3:26",
+          "PercentBack": "+40.00%",
+          "PercentWinning": "71.43%",
+          "PercentAverage": "-3.67%",
+          "PercentMedian": "-1.05%"
+        },
+        {
+          "Place": "6",
+          "Name": "Amber Zipperer",
+          "TeamName": "V8 Surfski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:12:15",
+          "Difference": "+3:40",
+          "PercentBack": "+42.72%",
+          "PercentWinning": "70.07%",
+          "PercentAverage": "-5.68%",
+          "PercentMedian": "-3.01%"
+        },
+        {
+          "Place": "7",
+          "Name": "Abigail Maxey",
+          "TeamName": "V12 Surfski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:13:15",
+          "Difference": "+4:40",
+          "PercentBack": "+54.37%",
+          "PercentWinning": "64.78%",
+          "PercentAverage": "-14.31%",
+          "PercentMedian": "-11.42%"
+        },
+        {
+          "Place": "8",
+          "Name": "Amanda Royac",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:14:35",
+          "Difference": "+6:00",
+          "PercentBack": "+69.90%",
+          "PercentWinning": "58.86%",
+          "PercentAverage": "-25.81%",
+          "PercentMedian": "-22.63%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Karel Zikan & Elizabeth Holmes",
+          "TeamName": "Viper K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female/Male",
+          "Time": "0:10:29",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Doug Ritchie, Claire and Adam",
+          "TeamName": "Garden chair C3",
+          "Distance": "C2",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "0:17:37",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Kevin Olney",
+          "TeamName": "Surfski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:08:35",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.43%",
+          "PercentMedian": "18.19%"
+        },
+        {
+          "Place": "2",
+          "Name": "Steve Small",
+          "TeamName": "Surfski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:09:13",
+          "Difference": "+0:38",
+          "PercentBack": "+7.38%",
+          "PercentWinning": "93.13%",
+          "PercentAverage": "11.34%",
+          "PercentMedian": "12.15%"
+        },
+        {
+          "Place": "3",
+          "Name": "Karol Osusky",
+          "TeamName": "SRS K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:46",
+          "Difference": "+3:11",
+          "PercentBack": "+37.09%",
+          "PercentWinning": "72.95%",
+          "PercentAverage": "-13.19%",
+          "PercentMedian": "-12.15%"
+        },
+        {
+          "Place": "4",
+          "Name": "Bee Dietz",
+          "TeamName": "Tor K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:12:01",
+          "Difference": "+3:26",
+          "PercentBack": "+40.00%",
+          "PercentWinning": "71.43%",
+          "PercentAverage": "-15.59%",
+          "PercentMedian": "-14.54%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Parker Duff",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:04",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.46%",
+          "PercentMedian": "13.20%"
+        },
+        {
+          "Place": "2",
+          "Name": "Amber Zipperer",
+          "TeamName": "V8 Surfski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:12:15",
+          "Difference": "+1:11",
+          "PercentBack": "+10.69%",
+          "PercentWinning": "90.34%",
+          "PercentAverage": "4.20%",
+          "PercentMedian": "3.92%"
+        },
+        {
+          "Place": "3",
+          "Name": "Abigail Maxey",
+          "TeamName": "V12 Surfski",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:13:15",
+          "Difference": "+2:11",
+          "PercentBack": "+19.73%",
+          "PercentWinning": "83.52%",
+          "PercentAverage": "-3.62%",
+          "PercentMedian": "-3.92%"
+        },
+        {
+          "Place": "4",
+          "Name": "Amanda Royac",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:14:35",
+          "Difference": "+3:31",
+          "PercentBack": "+31.78%",
+          "PercentWinning": "75.89%",
+          "PercentAverage": "-14.04%",
+          "PercentMedian": "-14.38%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Karel Zikan & Elizabeth Holmes",
+          "TeamName": "Viper K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female/Male",
+          "Time": "0:10:29",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

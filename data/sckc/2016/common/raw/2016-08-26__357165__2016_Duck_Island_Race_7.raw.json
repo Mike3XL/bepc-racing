@@ -1,0 +1,580 @@
+{
+  "RaceInfo": {
+    "RaceId": 357165,
+    "Name": "2016 Duck Island Race #7",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357165",
+    "Date": "Aug 26, 2016",
+    "Sport": "Paddling",
+    "StartTime": "Friday, August 26, 2016 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6737087336106,
+    "Longitude": -122.34067536619509,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 5:51 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357165_8dc98a0a37f120e.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Karel Zikan",
+          "TeamName": "Marathon C1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:13:26",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jake Zikan",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:59",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "26.95%",
+          "PercentMedian": "17.08%"
+        },
+        {
+          "Place": "2",
+          "Name": "Mike Lawrence",
+          "TeamName": "Surfski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:09:24",
+          "Difference": "+0:25",
+          "PercentBack": "+4.64%",
+          "PercentWinning": "95.57%",
+          "PercentAverage": "23.57%",
+          "PercentMedian": "13.23%"
+        },
+        {
+          "Place": "3",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:07",
+          "Difference": "+1:08",
+          "PercentBack": "+12.62%",
+          "PercentWinning": "88.80%",
+          "PercentAverage": "17.74%",
+          "PercentMedian": "6.62%"
+        },
+        {
+          "Place": "4",
+          "Name": "Jim Erickson",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:10:10",
+          "Difference": "+1:11",
+          "PercentBack": "+13.17%",
+          "PercentWinning": "88.36%",
+          "PercentAverage": "17.33%",
+          "PercentMedian": "6.15%"
+        },
+        {
+          "Place": "5",
+          "Name": "Einar Ogle",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:38",
+          "Difference": "+1:39",
+          "PercentBack": "+18.37%",
+          "PercentWinning": "84.48%",
+          "PercentAverage": "13.54%",
+          "PercentMedian": "1.85%"
+        },
+        {
+          "Place": "5",
+          "Name": "Elizabeth Erickson",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:38",
+          "Difference": "+1:39",
+          "PercentBack": "+18.37%",
+          "PercentWinning": "84.48%",
+          "PercentAverage": "13.54%",
+          "PercentMedian": "1.85%"
+        },
+        {
+          "Place": "7",
+          "Name": "Owen White",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:41",
+          "Difference": "+1:42",
+          "PercentBack": "+18.92%",
+          "PercentWinning": "84.09%",
+          "PercentAverage": "13.13%",
+          "PercentMedian": "1.38%"
+        },
+        {
+          "Place": "8",
+          "Name": "Karol Osusky",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:10:44",
+          "Difference": "+1:45",
+          "PercentBack": "+19.48%",
+          "PercentWinning": "83.70%",
+          "PercentAverage": "12.72%",
+          "PercentMedian": "0.92%"
+        },
+        {
+          "Place": "9",
+          "Name": "Oscar White",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:50",
+          "Difference": "+1:51",
+          "PercentBack": "+20.59%",
+          "PercentWinning": "82.92%",
+          "PercentAverage": "11.91%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "10",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:05",
+          "Difference": "+2:06",
+          "PercentBack": "+23.38%",
+          "PercentWinning": "81.05%",
+          "PercentAverage": "9.88%",
+          "PercentMedian": "-2.31%"
+        },
+        {
+          "Place": "11",
+          "Name": "Abigail Maxey",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:12:07",
+          "Difference": "+3:08",
+          "PercentBack": "+34.88%",
+          "PercentWinning": "74.14%",
+          "PercentAverage": "1.47%",
+          "PercentMedian": "-11.85%"
+        },
+        {
+          "Place": "12",
+          "Name": "Karla Ogle",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:12:32",
+          "Difference": "+3:33",
+          "PercentBack": "+39.52%",
+          "PercentWinning": "71.68%",
+          "PercentAverage": "-1.91%",
+          "PercentMedian": "-15.69%"
+        },
+        {
+          "Place": "13",
+          "Name": "Liz Graf-Brennen",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:13:32",
+          "Difference": "+4:33",
+          "PercentBack": "+50.65%",
+          "PercentWinning": "66.38%",
+          "PercentAverage": "-10.04%",
+          "PercentMedian": "-24.92%"
+        },
+        {
+          "Place": "14",
+          "Name": "Breona Gutschmidt",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:14:43",
+          "Difference": "+5:44",
+          "PercentBack": "+63.82%",
+          "PercentWinning": "61.04%",
+          "PercentAverage": "-19.67%",
+          "PercentMedian": "-35.85%"
+        },
+        {
+          "Place": "15",
+          "Name": "Soren Ogle",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:15:37",
+          "Difference": "+6:38",
+          "PercentBack": "+73.84%",
+          "PercentWinning": "57.52%",
+          "PercentAverage": "-26.99%",
+          "PercentMedian": "-44.15%"
+        },
+        {
+          "Place": "16",
+          "Name": "Bee Dietz",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:17:05",
+          "Difference": "+8:06",
+          "PercentBack": "+90.17%",
+          "PercentWinning": "52.59%",
+          "PercentAverage": "-38.91%",
+          "PercentMedian": "-57.69%"
+        },
+        {
+          "Place": "17",
+          "Name": "David Hilubek",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:20:12",
+          "Difference": "+11:13",
+          "PercentBack": "+124.86%",
+          "PercentWinning": "44.47%",
+          "PercentAverage": "-64.25%",
+          "PercentMedian": "-86.46%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Karel Zikan",
+          "TeamName": "Marathon C1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:13:26",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jake Zikan",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:08:59",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "20.85%",
+          "PercentMedian": "15.91%"
+        },
+        {
+          "Place": "2",
+          "Name": "Einar Ogle",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:38",
+          "Difference": "+1:39",
+          "PercentBack": "+18.37%",
+          "PercentWinning": "84.48%",
+          "PercentAverage": "6.31%",
+          "PercentMedian": "0.47%"
+        },
+        {
+          "Place": "3",
+          "Name": "Owen White",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:41",
+          "Difference": "+1:42",
+          "PercentBack": "+18.92%",
+          "PercentWinning": "84.09%",
+          "PercentAverage": "5.87%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Oscar White",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:50",
+          "Difference": "+1:51",
+          "PercentBack": "+20.59%",
+          "PercentWinning": "82.92%",
+          "PercentAverage": "4.55%",
+          "PercentMedian": "-1.40%"
+        },
+        {
+          "Place": "5",
+          "Name": "Soren Ogle",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:15:37",
+          "Difference": "+6:38",
+          "PercentBack": "+73.84%",
+          "PercentWinning": "57.52%",
+          "PercentAverage": "-37.59%",
+          "PercentMedian": "-46.18%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Mike Lawrence",
+          "TeamName": "Surfski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:09:24",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "20.17%",
+          "PercentMedian": "12.01%"
+        },
+        {
+          "Place": "2",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:07",
+          "Difference": "+0:43",
+          "PercentBack": "+7.62%",
+          "PercentWinning": "92.92%",
+          "PercentAverage": "14.08%",
+          "PercentMedian": "5.30%"
+        },
+        {
+          "Place": "3",
+          "Name": "Jim Erickson",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:10:10",
+          "Difference": "+0:46",
+          "PercentBack": "+8.16%",
+          "PercentWinning": "92.46%",
+          "PercentAverage": "13.66%",
+          "PercentMedian": "4.84%"
+        },
+        {
+          "Place": "4",
+          "Name": "Elizabeth Erickson",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:38",
+          "Difference": "+1:14",
+          "PercentBack": "+13.12%",
+          "PercentWinning": "88.40%",
+          "PercentAverage": "9.70%",
+          "PercentMedian": "0.47%"
+        },
+        {
+          "Place": "5",
+          "Name": "Karol Osusky",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:10:44",
+          "Difference": "+1:20",
+          "PercentBack": "+14.18%",
+          "PercentWinning": "87.58%",
+          "PercentAverage": "8.85%",
+          "PercentMedian": "-0.47%"
+        },
+        {
+          "Place": "6",
+          "Name": "Karla Ogle",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:12:32",
+          "Difference": "+3:08",
+          "PercentBack": "+33.33%",
+          "PercentWinning": "75.00%",
+          "PercentAverage": "-6.44%",
+          "PercentMedian": "-17.32%"
+        },
+        {
+          "Place": "7",
+          "Name": "Liz Graf-Brennen",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:13:32",
+          "Difference": "+4:08",
+          "PercentBack": "+43.97%",
+          "PercentWinning": "69.46%",
+          "PercentAverage": "-14.93%",
+          "PercentMedian": "-26.68%"
+        },
+        {
+          "Place": "8",
+          "Name": "Bee Dietz",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:17:05",
+          "Difference": "+7:41",
+          "PercentBack": "+81.74%",
+          "PercentWinning": "55.02%",
+          "PercentAverage": "-45.08%",
+          "PercentMedian": "-59.91%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:05",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.72%",
+          "PercentMedian": "17.39%"
+        },
+        {
+          "Place": "2",
+          "Name": "Abigail Maxey",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:12:07",
+          "Difference": "+1:02",
+          "PercentBack": "+9.32%",
+          "PercentWinning": "91.47%",
+          "PercentAverage": "16.60%",
+          "PercentMedian": "9.69%"
+        },
+        {
+          "Place": "3",
+          "Name": "Breona Gutschmidt",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:14:43",
+          "Difference": "+3:38",
+          "PercentBack": "+32.78%",
+          "PercentWinning": "75.31%",
+          "PercentAverage": "-1.29%",
+          "PercentMedian": "-9.69%"
+        },
+        {
+          "Place": "4",
+          "Name": "David Hilubek",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:20:12",
+          "Difference": "+9:07",
+          "PercentBack": "+82.26%",
+          "PercentWinning": "54.87%",
+          "PercentAverage": "-39.03%",
+          "PercentMedian": "-50.56%"
+        }
+      ]
+    }
+  ]
+}

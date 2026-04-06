@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 104940,
+    "distance": "K2",
+    "name": "2017 Duck Island Race #1 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=104940",
+    "date": "Jun 23, 2017",
+    "sport": "Paddling",
+    "startTime": "Friday, June 23, 2017 6:45 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.090909
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Karla Ogle & Soren Ogle",
+      "craftCategory": "Open",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 841.6,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 841.6,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

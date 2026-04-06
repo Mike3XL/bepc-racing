@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 357357,
+    "distance": "K1",
+    "name": "2023 Duck Island Race #2 \u2014 K1",
+    "displayURL": "https://www.webscorer.com/race?raceid=357357",
+    "date": "Jul 21, 2023",
+    "sport": "Paddling",
+    "startTime": "Friday, July 21, 2023 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.6
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Azamat Rustamov",
+      "craftCategory": "Open",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 575.08,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 575.08,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Philip Murphy",
+      "craftCategory": "Masters 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 773.02,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 773.02,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "Torsten",
+      "craftCategory": "Open",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1141.89,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1141.89,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

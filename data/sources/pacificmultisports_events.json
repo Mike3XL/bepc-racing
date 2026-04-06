@@ -179,6 +179,38 @@
       "date": "Feb 21, 2026",
       "name": "2026 BBOP PNWORCA Winter Series #4",
       "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1088,
+      "rr_id": 252639,
+      "year": 2023,
+      "date": "Jul 10, 2023",
+      "name": "2023 Gorge Downwind Champs",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1303,
+      "rr_id": 362841,
+      "year": 2025,
+      "date": "Sep 20, 2025",
+      "name": "2025 Salmon Row and Paddle",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1129,
+      "rr_id": 266106,
+      "year": 2023,
+      "date": "Oct 14, 2023",
+      "name": "2023 Narrows Challenge",
+      "type": "pnw-regional"
+    },
+    {
+      "gbrc_id": 1027,
+      "rr_id": 222365,
+      "year": 2022,
+      "date": "Oct 8, 2022",
+      "name": "2022 Narrows Challenge",
+      "type": "pnw-regional"
     }
   ]
 }

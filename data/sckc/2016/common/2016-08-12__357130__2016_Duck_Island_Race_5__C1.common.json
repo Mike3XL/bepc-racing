@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 357130,
+    "distance": "C1",
+    "name": "2016 Duck Island Race #5 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=357130",
+    "date": "Aug 12, 2016",
+    "sport": "Paddling",
+    "startTime": "Friday, August 12, 2016 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.181818
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Hana Neutz",
+      "craftCategory": "Junior",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 943.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 943.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Aaron Small",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 954.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 954.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

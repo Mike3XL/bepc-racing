@@ -1,0 +1,400 @@
+{
+  "RaceInfo": {
+    "RaceId": 190187,
+    "Name": "2019 Duck Island Race #4",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=190187",
+    "Date": "Jul 19, 2019",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 19, 2019 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.673302,
+    "Longitude": -122.342598,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LM-X212(G)",
+    "TimedWith": "Webscorer PRO 4.1",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 9:57 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/190187_8d4b820b6bb31fb.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Hana Neutz & Naomi Prahl",
+          "TeamName": "Nelo C2",
+          "Distance": "C2",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "10:55.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Einar Ogle",
+          "TeamName": "Epic Legacy",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:33.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.87%",
+          "PercentMedian": "12.93%"
+        },
+        {
+          "Place": "2",
+          "Name": "Soren Ogle",
+          "TeamName": "Nelo Scorpion",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:40.0",
+          "Difference": "+0:07.0",
+          "PercentBack": "+1.11%",
+          "PercentWinning": "98.91%",
+          "PercentAverage": "9.89%",
+          "PercentMedian": "11.97%"
+        },
+        {
+          "Place": "3",
+          "Name": "Jim Erickson",
+          "TeamName": "V10",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:50.0",
+          "Difference": "+0:17.0",
+          "PercentBack": "+2.69%",
+          "PercentWinning": "97.38%",
+          "PercentAverage": "8.48%",
+          "PercentMedian": "10.59%"
+        },
+        {
+          "Place": "4",
+          "Name": "Nora Tsong",
+          "TeamName": "Nelo Mosquito 65",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:57.0",
+          "Difference": "+0:24.0",
+          "PercentBack": "+3.79%",
+          "PercentWinning": "96.35%",
+          "PercentAverage": "7.49%",
+          "PercentMedian": "9.63%"
+        },
+        {
+          "Place": "5",
+          "Name": "Stephen Harris",
+          "TeamName": "Super Lancer",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "12:07.0",
+          "Difference": "+1:34.0",
+          "PercentBack": "+14.85%",
+          "PercentWinning": "87.07%",
+          "PercentAverage": "-2.36%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "6",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "Tornado",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "12:30.0",
+          "Difference": "+1:57.0",
+          "PercentBack": "+18.48%",
+          "PercentWinning": "84.40%",
+          "PercentAverage": "-5.60%",
+          "PercentMedian": "-3.16%"
+        },
+        {
+          "Place": "7",
+          "Name": "Emma Tsong",
+          "TeamName": "Nelo Quattro Classic",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "12:50.0",
+          "Difference": "+2:17.0",
+          "PercentBack": "+21.64%",
+          "PercentWinning": "82.21%",
+          "PercentAverage": "-8.42%",
+          "PercentMedian": "-5.91%"
+        },
+        {
+          "Place": "8",
+          "Name": "Elizabeth Erickson",
+          "TeamName": "V12",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "13:00.0",
+          "Difference": "+2:27.0",
+          "PercentBack": "+23.22%",
+          "PercentWinning": "81.15%",
+          "PercentAverage": "-9.82%",
+          "PercentMedian": "-7.29%"
+        },
+        {
+          "Place": "9",
+          "Name": "Eliza",
+          "TeamName": "Tornado",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "13:05.0",
+          "Difference": "+2:32.0",
+          "PercentBack": "+24.01%",
+          "PercentWinning": "80.64%",
+          "PercentAverage": "-10.53%",
+          "PercentMedian": "-7.98%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Eric McCluskey & Owen White",
+          "TeamName": "Clifford K2 with canoe paddles",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Hana Neutz & Naomi Prahl",
+          "TeamName": "Nelo C2",
+          "Distance": "C2",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "10:55.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Einar Ogle",
+          "TeamName": "Epic Legacy",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:33.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.83%",
+          "PercentMedian": "8.53%"
+        },
+        {
+          "Place": "2",
+          "Name": "Soren Ogle",
+          "TeamName": "Nelo Scorpion",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:40.0",
+          "Difference": "+0:07.0",
+          "PercentBack": "+1.11%",
+          "PercentWinning": "98.91%",
+          "PercentAverage": "8.83%",
+          "PercentMedian": "7.51%"
+        },
+        {
+          "Place": "3",
+          "Name": "Nora Tsong",
+          "TeamName": "Nelo Mosquito 65",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "10:57.0",
+          "Difference": "+0:24.0",
+          "PercentBack": "+3.79%",
+          "PercentWinning": "96.35%",
+          "PercentAverage": "6.41%",
+          "PercentMedian": "5.06%"
+        },
+        {
+          "Place": "4",
+          "Name": "Stephen Harris",
+          "TeamName": "Super Lancer",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "12:07.0",
+          "Difference": "+1:34.0",
+          "PercentBack": "+14.85%",
+          "PercentWinning": "87.07%",
+          "PercentAverage": "-3.56%",
+          "PercentMedian": "-5.06%"
+        },
+        {
+          "Place": "5",
+          "Name": "Emma Tsong",
+          "TeamName": "Nelo Quattro Classic",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "12:50.0",
+          "Difference": "+2:17.0",
+          "PercentBack": "+21.64%",
+          "PercentWinning": "82.21%",
+          "PercentAverage": "-9.69%",
+          "PercentMedian": "-11.27%"
+        },
+        {
+          "Place": "6",
+          "Name": "Eliza",
+          "TeamName": "Tornado",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "13:05.0",
+          "Difference": "+2:32.0",
+          "PercentBack": "+24.01%",
+          "PercentWinning": "80.64%",
+          "PercentAverage": "-11.82%",
+          "PercentMedian": "-13.44%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jim Erickson",
+          "TeamName": "V10",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:50.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.09%",
+          "PercentMedian": "9.09%"
+        },
+        {
+          "Place": "2",
+          "Name": "Elizabeth Erickson",
+          "TeamName": "V12",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "13:00.0",
+          "Difference": "+2:10.0",
+          "PercentBack": "+20.00%",
+          "PercentWinning": "83.33%",
+          "PercentAverage": "-9.09%",
+          "PercentMedian": "-9.09%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "Tornado",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "12:30.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Eric McCluskey & Owen White",
+          "TeamName": "Clifford K2 with canoe paddles",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "10:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

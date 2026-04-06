@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 190187,
+    "distance": "C2",
+    "name": "2019 Duck Island Race #4 \u2014 C2",
+    "displayURL": "https://www.webscorer.com/race?raceid=190187",
+    "date": "Jul 19, 2019",
+    "sport": "Paddling",
+    "startTime": "Friday, July 19, 2019 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.090909
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "C2 Hana Neutz & Naomi Prahl",
+      "craftCategory": "Open",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 655.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 655.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

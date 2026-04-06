@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 146978,
+    "distance": "C1",
+    "name": "2018 Duck Island Race #8 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=146978",
+    "date": "Aug 10, 2018",
+    "sport": "Paddling",
+    "startTime": "Friday, August 10, 2018 6:45 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.0625
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Jared Ogle",
+      "craftCategory": "Masters 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 718.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 718.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

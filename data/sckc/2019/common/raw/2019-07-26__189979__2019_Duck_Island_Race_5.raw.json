@@ -1,0 +1,516 @@
+{
+  "RaceInfo": {
+    "RaceId": 189979,
+    "Name": "2019 Duck Island Race #5",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=189979",
+    "Date": "Jul 26, 2019",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 26, 2019 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.673302,
+    "Longitude": -122.342598,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LM-X212(G)",
+    "TimedWith": "Webscorer PRO 3.1",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 19, 2025 9:38 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/189979_8d717c33f6f12e8.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Owen Jennings & Owen White",
+          "TeamName": "Clifford w canoe paddles",
+          "Distance": "C2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:11:02",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C4",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C4 Hana N, Reidar J, Azusa M, Lydia",
+          "TeamName": "Plastex C4",
+          "Distance": "C4",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "0:08:53",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Miles Cross-Whiter",
+          "TeamName": "Nelo Quattro",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:07:30",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "28.24%",
+          "PercentMedian": "28.34%"
+        },
+        {
+          "Place": "2",
+          "Name": "Juraj Osusky",
+          "TeamName": "Nelo Vanquish III",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:08:17",
+          "Difference": "+0:47",
+          "PercentBack": "+10.44%",
+          "PercentWinning": "90.54%",
+          "PercentAverage": "20.75%",
+          "PercentMedian": "20.86%"
+        },
+        {
+          "Place": "3",
+          "Name": "Soren Ogle",
+          "TeamName": "Nelo Scorpion",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:00",
+          "Difference": "+2:30",
+          "PercentBack": "+33.33%",
+          "PercentWinning": "75.00%",
+          "PercentAverage": "4.32%",
+          "PercentMedian": "4.46%"
+        },
+        {
+          "Place": "4",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Nelo Quattro Classic",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:03",
+          "Difference": "+2:33",
+          "PercentBack": "+34.00%",
+          "PercentWinning": "74.63%",
+          "PercentAverage": "3.84%",
+          "PercentMedian": "3.98%"
+        },
+        {
+          "Place": "5",
+          "Name": "Jim Erickson",
+          "TeamName": "V10",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:10:22",
+          "Difference": "+2:52",
+          "PercentBack": "+38.22%",
+          "PercentWinning": "72.35%",
+          "PercentAverage": "0.81%",
+          "PercentMedian": "0.96%"
+        },
+        {
+          "Place": "6",
+          "Name": "David Jennings",
+          "TeamName": "V10",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:10:34",
+          "Difference": "+3:04",
+          "PercentBack": "+40.89%",
+          "PercentWinning": "70.98%",
+          "PercentAverage": "-1.10%",
+          "PercentMedian": "-0.96%"
+        },
+        {
+          "Place": "7",
+          "Name": "Stephen Harris",
+          "TeamName": "Super Lancer",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:04",
+          "Difference": "+3:34",
+          "PercentBack": "+47.56%",
+          "PercentWinning": "67.77%",
+          "PercentAverage": "-5.88%",
+          "PercentMedian": "-5.73%"
+        },
+        {
+          "Place": "8",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:23",
+          "Difference": "+3:53",
+          "PercentBack": "+51.78%",
+          "PercentWinning": "65.89%",
+          "PercentAverage": "-8.91%",
+          "PercentMedian": "-8.76%"
+        },
+        {
+          "Place": "9",
+          "Name": "Elizabeth Erickson",
+          "TeamName": "V12",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:12:07",
+          "Difference": "+4:37",
+          "PercentBack": "+61.56%",
+          "PercentWinning": "61.90%",
+          "PercentAverage": "-15.93%",
+          "PercentMedian": "-15.76%"
+        },
+        {
+          "Place": "10",
+          "Name": "Karla Ogle",
+          "TeamName": "Delphine",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:13:11",
+          "Difference": "+5:41",
+          "PercentBack": "+75.78%",
+          "PercentWinning": "56.89%",
+          "PercentAverage": "-26.14%",
+          "PercentMedian": "-25.96%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Nora Tsong & Emma Tsong",
+          "TeamName": "Haywood K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:10:04",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K4",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K4 Vaughn S, Liam J, Jake Z, Einar O",
+          "TeamName": "Plastex K4",
+          "Distance": "K4",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:07:00",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C2 Owen Jennings & Owen White",
+          "TeamName": "Clifford w canoe paddles",
+          "Distance": "C2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:11:02",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C4",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C4 Hana N, Reidar J, Azusa M, Lydia",
+          "TeamName": "Plastex C4",
+          "Distance": "C4",
+          "Category": "Open",
+          "Gender": "Female/Male",
+          "Time": "0:08:53",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Soren Ogle",
+          "TeamName": "Nelo Scorpion",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:10:00",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Juraj Osusky",
+          "TeamName": "Nelo Vanquish III",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:08:17",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.66%",
+          "PercentMedian": "21.61%"
+        },
+        {
+          "Place": "2",
+          "Name": "Elizabeth Holmes",
+          "TeamName": "Nelo Quattro Classic",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:03",
+          "Difference": "+1:46",
+          "PercentBack": "+21.33%",
+          "PercentWinning": "82.42%",
+          "PercentAverage": "7.37%",
+          "PercentMedian": "4.89%"
+        },
+        {
+          "Place": "3",
+          "Name": "Jim Erickson",
+          "TeamName": "V10",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:10:22",
+          "Difference": "+2:05",
+          "PercentBack": "+25.15%",
+          "PercentWinning": "79.90%",
+          "PercentAverage": "4.45%",
+          "PercentMedian": "1.89%"
+        },
+        {
+          "Place": "4",
+          "Name": "David Jennings",
+          "TeamName": "V10",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:10:34",
+          "Difference": "+2:17",
+          "PercentBack": "+27.57%",
+          "PercentWinning": "78.39%",
+          "PercentAverage": "2.61%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "5",
+          "Name": "Philip Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:23",
+          "Difference": "+3:06",
+          "PercentBack": "+37.42%",
+          "PercentWinning": "72.77%",
+          "PercentAverage": "-4.92%",
+          "PercentMedian": "-7.73%"
+        },
+        {
+          "Place": "6",
+          "Name": "Elizabeth Erickson",
+          "TeamName": "V12",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:12:07",
+          "Difference": "+3:50",
+          "PercentBack": "+46.28%",
+          "PercentWinning": "68.36%",
+          "PercentAverage": "-11.67%",
+          "PercentMedian": "-14.67%"
+        },
+        {
+          "Place": "7",
+          "Name": "Karla Ogle",
+          "TeamName": "Delphine",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:13:11",
+          "Difference": "+4:54",
+          "PercentBack": "+59.15%",
+          "PercentWinning": "62.83%",
+          "PercentAverage": "-21.51%",
+          "PercentMedian": "-24.76%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Miles Cross-Whiter",
+          "TeamName": "Nelo Quattro",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:07:30",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "19.21%",
+          "PercentMedian": "19.21%"
+        },
+        {
+          "Place": "2",
+          "Name": "Stephen Harris",
+          "TeamName": "Super Lancer",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:11:04",
+          "Difference": "+3:34",
+          "PercentBack": "+47.56%",
+          "PercentWinning": "67.77%",
+          "PercentAverage": "-19.21%",
+          "PercentMedian": "-19.21%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Nora Tsong & Emma Tsong",
+          "TeamName": "Haywood K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:10:04",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K4",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K4 Vaughn S, Liam J, Jake Z, Einar O",
+          "TeamName": "Plastex K4",
+          "Distance": "K4",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:07:00",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 399129,
+    "distance": "K4",
+    "name": "2025 Duck Island Race #3 \u2014 K4",
+    "displayURL": "https://www.webscorer.com/race?raceid=399129",
+    "date": "Jul 25, 2025",
+    "sport": "Paddling",
+    "startTime": "Friday, July 25, 2025 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.05
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K4 Delia W, Emma T, Nora T, Melat P",
+      "craftCategory": "Junior",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 515.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 515.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

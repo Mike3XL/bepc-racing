@@ -1,0 +1,460 @@
+{
+  "RaceInfo": {
+    "RaceId": 357881,
+    "Name": "2024 Duck Island Race #2",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357881",
+    "Date": "Jul 5, 2024",
+    "Sport": "Paddling",
+    "StartTime": "Friday, July 5, 2024 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.67387624042052,
+    "Longitude": -122.34097141059863,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 19, 2025 9:28 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357881_8dc9d6cd68b5065.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:38",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C4",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C6 Soren-Miles-Kevin-Gus-Nora-Emma",
+          "TeamName2": "C4 w six",
+          "Distance": "C4",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "0:12:33",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Ivan Stork",
+          "TeamName2": "Epic V12",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:09:30",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "42.90%",
+          "PercentMedian": "36.24%"
+        },
+        {
+          "Place": "2",
+          "Name": "George Lipps",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:14:02",
+          "Difference": "+4:32",
+          "PercentBack": "+47.72%",
+          "PercentWinning": "67.70%",
+          "PercentAverage": "15.65%",
+          "PercentMedian": "5.82%"
+        },
+        {
+          "Place": "3",
+          "Name": "Jane Lentini",
+          "TeamName2": "Tornado",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:14:53",
+          "Difference": "+5:23",
+          "PercentBack": "+56.67%",
+          "PercentWinning": "63.83%",
+          "PercentAverage": "10.54%",
+          "PercentMedian": "0.11%"
+        },
+        {
+          "Place": "4",
+          "Name": "Liz Graf-Brennen",
+          "TeamName2": "Tornado",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:14:55",
+          "Difference": "+5:25",
+          "PercentBack": "+57.02%",
+          "PercentWinning": "63.69%",
+          "PercentAverage": "10.34%",
+          "PercentMedian": "-0.11%"
+        },
+        {
+          "Place": "5",
+          "Name": "Philip Murphy",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:15:40",
+          "Difference": "+6:10",
+          "PercentBack": "+64.91%",
+          "PercentWinning": "60.64%",
+          "PercentAverage": "5.83%",
+          "PercentMedian": "-5.15%"
+        },
+        {
+          "Place": "6",
+          "Name": "Karla Ogle",
+          "TeamName2": "Zastera EasyMaster 90",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:30:49",
+          "Difference": "+21:19",
+          "PercentBack": "+224.39%",
+          "PercentWinning": "30.83%",
+          "PercentAverage": "-85.24%",
+          "PercentMedian": "-106.82%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Peter Turcan & Juraj Osusky",
+          "TeamName2": "Fenn Surf Ski K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:07:53",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "30.85%",
+          "PercentMedian": "22.33%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Elizabeth Holmes & Breona Gutschmidt",
+          "TeamName2": "Liangjin K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:09",
+          "Difference": "+2:16",
+          "PercentBack": "+28.75%",
+          "PercentWinning": "77.67%",
+          "PercentAverage": "10.96%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Name": "K2 Lucas & Cooper Riley",
+          "TeamName2": "Viper K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:16:10",
+          "Difference": "+8:17",
+          "PercentBack": "+105.07%",
+          "PercentWinning": "48.76%",
+          "PercentAverage": "-41.81%",
+          "PercentMedian": "-59.28%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "SUP",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Carl Delio",
+          "TeamName2": "SUP foil",
+          "Distance": "SUP",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:18:39",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jared Ogle",
+          "TeamName2": "OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:11:38",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C4",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "C6 Soren-Miles-Kevin-Gus-Nora-Emma",
+          "TeamName2": "C4 w six",
+          "Distance": "C4",
+          "Category": "Junior",
+          "Gender": "Female/Male",
+          "Time": "0:12:33",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "George Lipps",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:14:02",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "2.94%",
+          "PercentMedian": "2.94%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jane Lentini",
+          "TeamName2": "Tornado",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:14:53",
+          "Difference": "+0:51",
+          "PercentBack": "+6.06%",
+          "PercentWinning": "94.29%",
+          "PercentAverage": "-2.94%",
+          "PercentMedian": "-2.94%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Ivan Stork",
+          "TeamName2": "Epic V12",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:09:30",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "46.40%",
+          "PercentMedian": "37.87%"
+        },
+        {
+          "Place": "2",
+          "Name": "Liz Graf-Brennen",
+          "TeamName2": "Tornado",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:14:55",
+          "Difference": "+5:25",
+          "PercentBack": "+57.02%",
+          "PercentWinning": "63.69%",
+          "PercentAverage": "15.84%",
+          "PercentMedian": "2.45%"
+        },
+        {
+          "Place": "3",
+          "Name": "Philip Murphy",
+          "TeamName2": "TK1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:15:40",
+          "Difference": "+6:10",
+          "PercentBack": "+64.91%",
+          "PercentWinning": "60.64%",
+          "PercentAverage": "11.61%",
+          "PercentMedian": "-2.45%"
+        },
+        {
+          "Place": "4",
+          "Name": "Karla Ogle",
+          "TeamName2": "Zastera EasyMaster 90",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:30:49",
+          "Difference": "+21:19",
+          "PercentBack": "+224.39%",
+          "PercentWinning": "30.83%",
+          "PercentAverage": "-73.86%",
+          "PercentMedian": "-101.53%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Lucas & Cooper Riley",
+          "TeamName2": "Viper K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:16:10",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Peter Turcan & Juraj Osusky",
+          "TeamName2": "Fenn Surf Ski K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:07:53",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.57%",
+          "PercentMedian": "12.57%"
+        },
+        {
+          "Place": "2",
+          "Name": "K2 Elizabeth Holmes & Breona Gutschmidt",
+          "TeamName2": "Liangjin K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:09",
+          "Difference": "+2:16",
+          "PercentBack": "+28.75%",
+          "PercentWinning": "77.67%",
+          "PercentAverage": "-12.57%",
+          "PercentMedian": "-12.57%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "SUP",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Carl Delio",
+          "TeamName2": "SUP foil",
+          "Distance": "SUP",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:18:39",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

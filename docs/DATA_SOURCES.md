@@ -29,6 +29,7 @@ Each race must appear in exactly one `data/<club>/<year>/common/*.common.json` f
 - **Source:** WebScorer (most races), Pacific Multisports (La Conner 2024+, Peter Marcus 2024+)
 - **WebScorer organizer:** https://www.webscorer.com/bepc827 (some races)
 - **Results page:** https://www.soundrowers.org/race-results/
+- **Race schedule:** https://www.soundrowers.org/race-schedule/ (use to find event names when not clear from Pacific Multisports)
 - **Fetch:** `cli.py fetch --club sound-rowers --year YYYY <race_ids...>`
 - **Notes:** La Conner and Peter Marcus moved to Pacific Multisports ~2024. Rat Island, Commencement, Squaxin, Budd Inlet, Round Shaw, Bainbridge, Sausage Pull on WebScorer.
 

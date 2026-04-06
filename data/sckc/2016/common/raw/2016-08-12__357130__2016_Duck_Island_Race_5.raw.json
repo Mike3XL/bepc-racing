@@ -1,0 +1,400 @@
+{
+  "RaceInfo": {
+    "RaceId": 357130,
+    "Name": "2016 Duck Island Race #5",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=357130",
+    "Date": "Aug 12, 2016",
+    "Sport": "Paddling",
+    "StartTime": "Friday, August 12, 2016 6:30 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.674524081536454,
+    "Longitude": -122.34040120058594,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, July 27, 2024 5:45 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357130_8dc988f83fed04f.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Hana Neutz",
+          "TeamName": "C1",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:15:43",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.58%",
+          "PercentMedian": "0.58%"
+        },
+        {
+          "Place": "2",
+          "Name": "Aaron Small",
+          "TeamName": "C1",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:15:54",
+          "Difference": "+0:11",
+          "PercentBack": "+1.17%",
+          "PercentWinning": "98.85%",
+          "PercentAverage": "-0.58%",
+          "PercentMedian": "-0.58%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jupiter Grant",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:10:08",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.61%",
+          "PercentMedian": "9.66%"
+        },
+        {
+          "Place": "2",
+          "Name": "Lydia Sampson",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:10:12",
+          "Difference": "+0:04",
+          "PercentBack": "+0.66%",
+          "PercentWinning": "99.35%",
+          "PercentAverage": "11.03%",
+          "PercentMedian": "9.06%"
+        },
+        {
+          "Place": "3",
+          "Name": "Chris Flynn",
+          "TeamName": "SRS K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:41",
+          "Difference": "+0:33",
+          "PercentBack": "+5.43%",
+          "PercentWinning": "94.85%",
+          "PercentAverage": "6.81%",
+          "PercentMedian": "4.75%"
+        },
+        {
+          "Place": "4",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "Surfski 10",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:10:53",
+          "Difference": "+0:45",
+          "PercentBack": "+7.40%",
+          "PercentWinning": "93.11%",
+          "PercentAverage": "5.07%",
+          "PercentMedian": "2.97%"
+        },
+        {
+          "Place": "5",
+          "Name": "Azusa Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:11:33",
+          "Difference": "+1:25",
+          "PercentBack": "+13.98%",
+          "PercentWinning": "87.73%",
+          "PercentAverage": "-0.75%",
+          "PercentMedian": "-2.97%"
+        },
+        {
+          "Place": "6",
+          "Name": "Ella Bloomquist",
+          "TeamName": "K1 Superlancer",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:11:59",
+          "Difference": "+1:51",
+          "PercentBack": "+18.26%",
+          "PercentWinning": "84.56%",
+          "PercentAverage": "-4.52%",
+          "PercentMedian": "-6.84%"
+        },
+        {
+          "Place": "7",
+          "Name": "Lorenzo Flynn",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:13:07",
+          "Difference": "+2:59",
+          "PercentBack": "+29.44%",
+          "PercentWinning": "77.26%",
+          "PercentAverage": "-14.41%",
+          "PercentMedian": "-16.94%"
+        },
+        {
+          "Place": "8",
+          "Name": "Doug Ritchie",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:13:10",
+          "Difference": "+3:02",
+          "PercentBack": "+29.93%",
+          "PercentWinning": "76.96%",
+          "PercentAverage": "-14.85%",
+          "PercentMedian": "-17.38%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Bee Dietz & Karol Osusky",
+          "TeamName": "Clifford K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female/Male",
+          "Time": "0:10:54",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Hana Neutz",
+          "TeamName": "C1",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:15:43",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.58%",
+          "PercentMedian": "0.58%"
+        },
+        {
+          "Place": "2",
+          "Name": "Aaron Small",
+          "TeamName": "C1",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "0:15:54",
+          "Difference": "+0:11",
+          "PercentBack": "+1.17%",
+          "PercentWinning": "98.85%",
+          "PercentAverage": "-0.58%",
+          "PercentMedian": "-0.58%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Ella Bloomquist",
+          "TeamName": "K1 Superlancer",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "0:11:59",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Chris Flynn",
+          "TeamName": "SRS K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "0:10:41",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.41%",
+          "PercentMedian": "10.41%"
+        },
+        {
+          "Place": "2",
+          "Name": "Doug Ritchie",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "0:13:10",
+          "Difference": "+2:29",
+          "PercentBack": "+23.24%",
+          "PercentWinning": "81.14%",
+          "PercentAverage": "-10.41%",
+          "PercentMedian": "-10.41%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Open"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jupiter Grant",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:10:08",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.33%",
+          "PercentMedian": "6.89%"
+        },
+        {
+          "Place": "2",
+          "Name": "Lydia Sampson",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:10:12",
+          "Difference": "+0:04",
+          "PercentBack": "+0.66%",
+          "PercentWinning": "99.35%",
+          "PercentAverage": "8.74%",
+          "PercentMedian": "6.28%"
+        },
+        {
+          "Place": "3",
+          "Name": "Ian Page-Nichols",
+          "TeamName": "Surfski 10",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:10:53",
+          "Difference": "+0:45",
+          "PercentBack": "+7.40%",
+          "PercentWinning": "93.11%",
+          "PercentAverage": "2.62%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Name": "Azusa Murphy",
+          "TeamName": "TK1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Female",
+          "Time": "0:11:33",
+          "Difference": "+1:25",
+          "PercentBack": "+13.98%",
+          "PercentWinning": "87.73%",
+          "PercentAverage": "-3.34%",
+          "PercentMedian": "-6.13%"
+        },
+        {
+          "Place": "5",
+          "Name": "Lorenzo Flynn",
+          "TeamName": "K1",
+          "Distance": "K1",
+          "Category": "Open",
+          "Gender": "Male",
+          "Time": "0:13:07",
+          "Difference": "+2:59",
+          "PercentBack": "+29.44%",
+          "PercentWinning": "77.26%",
+          "PercentAverage": "-17.36%",
+          "PercentMedian": "-20.52%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Bee Dietz & Karol Osusky",
+          "TeamName": "Clifford K2",
+          "Distance": "K2",
+          "Category": "Masters 40+",
+          "Gender": "Female/Male",
+          "Time": "0:10:54",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

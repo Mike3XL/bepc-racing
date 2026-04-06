@@ -1,0 +1,400 @@
+{
+  "RaceInfo": {
+    "RaceId": 141823,
+    "Name": "2018 Duck Island Race #1",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=141823",
+    "Date": "Jun 22, 2018",
+    "Sport": "Paddling",
+    "StartTime": "Friday, June 22, 2018 8:48 PM (GMT-7)",
+    "OrganizerName": "Seattle Canoe and Kayak Club",
+    "OrganizerUrl": "http://www.seattlecanoekayak.club",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.673801,
+    "Longitude": -122.341904,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "LGE LG-M210",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, July 28, 2024 10:00 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/141823_8dcaf26c183ddfd.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Liam Jennings",
+          "TeamName2": "Vaa OC-1",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "12:21.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.34%",
+          "PercentMedian": "5.34%"
+        },
+        {
+          "Place": "2",
+          "Name": "Vadim Kin",
+          "TeamName2": "Vaa OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "13:44.6",
+          "Difference": "+1:23.6",
+          "PercentBack": "+11.28%",
+          "PercentWinning": "89.86%",
+          "PercentAverage": "-5.34%",
+          "PercentMedian": "-5.34%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Greg Barton",
+          "TeamName2": "Legacy L K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "7:32.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "24.02%",
+          "PercentMedian": "25.34%"
+        },
+        {
+          "Place": "2",
+          "Name": "Jake Zikan",
+          "TeamName2": "Nelo Vanquish III K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:38.5",
+          "Difference": "+0:06.5",
+          "PercentBack": "+1.44%",
+          "PercentWinning": "98.58%",
+          "PercentAverage": "22.92%",
+          "PercentMedian": "24.26%"
+        },
+        {
+          "Place": "3",
+          "Name": "Elizabeth Holmes",
+          "TeamName2": "Tornado K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "9:47.3",
+          "Difference": "+2:15.3",
+          "PercentBack": "+29.93%",
+          "PercentWinning": "76.96%",
+          "PercentAverage": "1.27%",
+          "PercentMedian": "2.99%"
+        },
+        {
+          "Place": "4",
+          "Name": "Cian Donovan",
+          "TeamName2": "Super Lancer K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "9:47.4",
+          "Difference": "+2:15.4",
+          "PercentBack": "+29.96%",
+          "PercentWinning": "76.95%",
+          "PercentAverage": "1.25%",
+          "PercentMedian": "2.97%"
+        },
+        {
+          "Place": "5",
+          "Name": "Jim Erickson",
+          "TeamName2": "V-10 Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:23.4",
+          "Difference": "+2:51.4",
+          "PercentBack": "+37.92%",
+          "PercentWinning": "72.51%",
+          "PercentAverage": "-4.80%",
+          "PercentMedian": "-2.97%"
+        },
+        {
+          "Place": "6",
+          "Name": "Elizabeth Erickson",
+          "TeamName2": "V-12 Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "11:21.8",
+          "Difference": "+3:49.8",
+          "PercentBack": "+50.84%",
+          "PercentWinning": "66.30%",
+          "PercentAverage": "-14.61%",
+          "PercentMedian": "-12.62%"
+        },
+        {
+          "Place": "7",
+          "Name": "Ella Bloomquist",
+          "TeamName2": "Nelo Moskito K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "11:23.0",
+          "Difference": "+3:51.0",
+          "PercentBack": "+51.11%",
+          "PercentWinning": "66.18%",
+          "PercentAverage": "-14.82%",
+          "PercentMedian": "-12.82%"
+        },
+        {
+          "Place": "8",
+          "Name": "Owen White",
+          "TeamName2": "Nelo Quattro Classic K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:25.5",
+          "Difference": "+3:53.5",
+          "PercentBack": "+51.66%",
+          "PercentWinning": "65.94%",
+          "PercentAverage": "-15.24%",
+          "PercentMedian": "-13.23%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Vaughn Schenk & Eric McCluskey",
+          "TeamName2": "Plastex 150 K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:15.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Liam Jennings",
+          "TeamName2": "Vaa OC-1",
+          "Distance": "C1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "12:21.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "C1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Vadim Kin",
+          "TeamName2": "Vaa OC-1",
+          "Distance": "C1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "13:44.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jake Zikan",
+          "TeamName2": "Nelo Vanquish III K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "7:38.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "24.04%",
+          "PercentMedian": "27.82%"
+        },
+        {
+          "Place": "2",
+          "Name": "Cian Donovan",
+          "TeamName2": "Super Lancer K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "9:47.4",
+          "Difference": "+2:08.9",
+          "PercentBack": "+28.11%",
+          "PercentWinning": "78.06%",
+          "PercentAverage": "2.68%",
+          "PercentMedian": "7.53%"
+        },
+        {
+          "Place": "3",
+          "Name": "Ella Bloomquist",
+          "TeamName2": "Nelo Moskito K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Female",
+          "Time": "11:23.0",
+          "Difference": "+3:44.5",
+          "PercentBack": "+48.96%",
+          "PercentWinning": "67.13%",
+          "PercentAverage": "-13.15%",
+          "PercentMedian": "-7.53%"
+        },
+        {
+          "Place": "4",
+          "Name": "Owen White",
+          "TeamName2": "Nelo Quattro Classic K1",
+          "Distance": "K1",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "11:25.5",
+          "Difference": "+3:47.0",
+          "PercentBack": "+49.51%",
+          "PercentWinning": "66.89%",
+          "PercentAverage": "-13.57%",
+          "PercentMedian": "-7.92%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K1",
+        "Category": "Masters 40+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Greg Barton",
+          "TeamName2": "Legacy L K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "7:32.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "22.88%",
+          "PercentMedian": "25.33%"
+        },
+        {
+          "Place": "2",
+          "Name": "Elizabeth Holmes",
+          "TeamName2": "Tornado K1",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "9:47.3",
+          "Difference": "+2:15.3",
+          "PercentBack": "+29.93%",
+          "PercentWinning": "76.96%",
+          "PercentAverage": "-0.20%",
+          "PercentMedian": "2.98%"
+        },
+        {
+          "Place": "3",
+          "Name": "Jim Erickson",
+          "TeamName2": "V-10 Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Male",
+          "Time": "10:23.4",
+          "Difference": "+2:51.4",
+          "PercentBack": "+37.92%",
+          "PercentWinning": "72.51%",
+          "PercentAverage": "-6.36%",
+          "PercentMedian": "-2.98%"
+        },
+        {
+          "Place": "4",
+          "Name": "Elizabeth Erickson",
+          "TeamName2": "V-12 Surf ski",
+          "Distance": "K1",
+          "Category": "Masters 40+",
+          "Gender": "Female",
+          "Time": "11:21.8",
+          "Difference": "+3:49.8",
+          "PercentBack": "+50.84%",
+          "PercentWinning": "66.30%",
+          "PercentAverage": "-16.32%",
+          "PercentMedian": "-12.63%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "K2",
+        "Category": "Junior"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "K2 Vaughn Schenk & Eric McCluskey",
+          "TeamName2": "Plastex 150 K2",
+          "Distance": "K2",
+          "Category": "Junior",
+          "Gender": "Male",
+          "Time": "8:15.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

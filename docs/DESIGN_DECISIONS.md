@@ -174,6 +174,29 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 
 ## Known Data Quality Issues (to fix)
 
-- **Race ID collisions in PNW Regional** — some races share the same `race_id`, causing wrong links on the Races page (e.g. "2025 Paddle 4 Food Relay" links to PNWORCA #7). Root cause: Jericho and raceresult use different ID namespaces but both get stored as `race_id`. Need to namespace IDs by source (e.g. prefix Jericho IDs).
+- ~~**Race ID collisions in PNW Regional**~~ ✅ Fixed 2026-04-06 — `race_id` is now a namespaced string (`ws-{id}`, `jericho-{id}`, `pm-{id}`) derived from displayURL in `loader.py`. `RaceInfo.race_id` changed from `int` to `str`.
 - **audit-sources cross-source matching** — "Gorgedownwind" vs "2025 Gorge Downwind Champs" similarity 0.67 < 0.70 threshold, not auto-detected. Consider lowering threshold or adding alias mapping.
 - **Racer name canonicalization** — many duplicate/variant names across sources (e.g. "Mick Liddell" vs "Mike Liddell"). aliases.json handles some but not all.
+
+---
+
+## Outlier detection: faster results (2026-04-06)
+
+**Problem:** Outlier suppression was firing for both fast and slow results (>10% from prediction in either direction), blocking genuine improvement jumps from updating the handicap.
+
+**Decision:** Outlier detection only fires for results >10% **slower** than predicted. Faster results — including large improvement jumps — always get the normal 30% update. Rationale: a racer genuinely improving should have their handicap reflect that immediately; the risk of false positives (e.g. wind-assisted) is acceptable.
+
+**Status:** Implemented 2026-04-06.
+
+---
+
+## Slow outlier / sandbagging (2026-04-06) — TABLED
+
+**Problem:** When a racer is >10% slower than predicted, the handicap is frozen. This prevents sandbagging but also means a racer who has genuinely declined (injury, age, equipment change) can be stuck with an unachievable handicap indefinitely.
+
+**Options considered:**
+- Partial update on slow outlier (e.g. 5% toward result) — allows slow drift but opens sandbagging
+- Consecutive slow outlier rule — update only after N consecutive outlier races
+- Time-based decay — handicap drifts toward 1.0 if racer is consistently slow
+
+**Decision:** Tabled. No change to slow outlier behavior for now. Revisit when we have more data on how often racers are genuinely stuck.

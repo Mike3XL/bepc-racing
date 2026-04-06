@@ -4,7 +4,7 @@ from .points import race_points, handicap_points
 
 
 def process_season(races: list[RaceResult], carry_over: dict | None = None,
-                   establishment_races: int = 2) -> list[RaceResult]:
+                   num_races_to_establish: int = 1) -> list[RaceResult]:
     """Process races in order, computing handicaps and points. Returns enriched races."""
     running: dict[tuple, RunningRecord] = {}
     if carry_over:
@@ -14,7 +14,7 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
                 hcap, carried = val
             else:
                 hcap, carried = val, True
-            # Seed num_races at establishment_races so carried-over racers are immediately established
+            # Seed num_races at num_races_to_establish so carried-over racers are immediately established
             running[key] = RunningRecord(handicap=hcap, carried_over=carried,
                                          num_races=0)  # reset for fast updates at season start
 
@@ -61,7 +61,7 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
 
             # New handicap
             for r in racers:
-                compute_new_handicap(r, par_time, establishment_races=establishment_races)
+                compute_new_handicap(r, par_time, num_races_to_establish=num_races_to_establish)
         else:
             # Small group: no handicap update, mark as fresh
             for r in racers:
@@ -97,18 +97,20 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
         if len(eligible) >= MIN_ELIGIBLE:
             for i, r in enumerate(eligible[:3]):
                 r.trophies.append(hcap_podium[i])
-        # Consistent: top 3 closest to adjusted_time_vs_par == 1.0, excluding par racer
+        # Consistent: top 3 eligible racers within ±1% of adjusted_time_vs_par == 1.0
         consistent_eligible = [r for r in racers
                                 if not r.is_fresh_racer and not r.is_outlier
-                                and not r.is_par_racer and not small_group
-                                and r.time_versus_par > 0]
+                                and not small_group
+                                and r.time_versus_par > 0
+                                and abs(r.adjusted_time_versus_par - 1.0) <= 0.01]
         consistent_eligible.sort(key=lambda x: abs(x.adjusted_time_versus_par - 1.0))
-        if len(consistent_eligible) >= MIN_ELIGIBLE:
-            for i, r in enumerate(consistent_eligible[:3]):
-                r.trophies.append(consistent_awards[i])
+        for i, r in enumerate(consistent_eligible[:3]):
+            r.trophies.append(consistent_awards[i])
         for r in racers:
             if r.is_fresh_racer:
                 r.trophies.append("fresh")
+            if r.is_outlier:
+                r.trophies.append("outlier")
             if r.original_place in finish_podium:
                 r.trophies.append(finish_podium[r.original_place])
             if r.is_par_racer:

@@ -1,8 +1,25 @@
 import json
 import re
 from pathlib import Path
+from urllib.parse import urlparse
 from .models import RaceInfo, RacerResult, RaceResult
 from .craft import normalize_craft
+
+
+def _source_prefix(display_url: str) -> str:
+    """Return a short source prefix based on the displayURL domain."""
+    host = urlparse(display_url).netloc
+    if "webscorer" in host:
+        return "ws"
+    if "jericho" in host:
+        return "jericho"
+    if "pacificmultisports" in host:
+        return "pm"
+    return "race"
+
+
+def _namespaced_id(raw_id: int, display_url: str) -> str:
+    return f"{_source_prefix(display_url)}-{raw_id}"
 
 
 def _load_aliases(folder: Path) -> dict:
@@ -35,7 +52,7 @@ def load_common_json(path: Path, aliases: dict | None = None, race_names: dict |
     suffix = raw_name[len(base):]  # " — Course" or ""
     display_name = (race_names or {}).get(base, base) + suffix
     race_info = RaceInfo(
-        race_id=info["raceId"],
+        race_id=_namespaced_id(info["raceId"], info["displayURL"]),
         name=display_name,
         date=info["date"],
         display_url=info["displayURL"],
