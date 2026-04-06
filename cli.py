@@ -35,14 +35,35 @@ CLUB_META = {
 CURRENT_CLUB = "bepc"
 
 
+def _load_clubs_config() -> dict:
+    """Load data/clubs.yaml, return {club_id: config_dict}."""
+    cfg_path = DATA_DIR / "clubs.yaml"
+    if not cfg_path.exists():
+        return {}
+    try:
+        import yaml
+        with open(cfg_path) as f:
+            return yaml.safe_load(f).get("clubs", {})
+    except Exception:
+        return {}
+
+
 def build_data_json() -> dict:
     """Scan data/<club>/<year>/common/ and build full multi-club/season structure."""
+    clubs_cfg = _load_clubs_config()
     clubs = {}
     for club_dir in sorted(DATA_DIR.iterdir()):
-        if not club_dir.is_dir():
+        if not club_dir.is_dir() or club_dir.name == "sources":
             continue
         club_id = club_dir.name
+        cfg = clubs_cfg.get(club_id, {})
+        hcap_cfg = cfg.get("handicap", {})
+        establishment_races = hcap_cfg.get("establishment_races", 2)
+        do_carry_over = hcap_cfg.get("carry_over", False)
+
         seasons = {}
+        carry_over: dict = {}  # {(name, craft): (handicap, carried_over_flag)}
+
         for season_dir in sorted(club_dir.iterdir()):
             if not season_dir.is_dir():
                 continue
@@ -51,7 +72,8 @@ def build_data_json() -> dict:
             if not common_dir.exists():
                 continue
             races = load_all_common(common_dir)
-            races = process_season(races, carry_over={})
+            races = process_season(races, carry_over=carry_over,
+                                   establishment_races=establishment_races)
             seasons[year] = {
                 "races": [
                     {
@@ -67,12 +89,24 @@ def build_data_json() -> dict:
                 ]
             }
             print(f"  {club_id}/{year}: {len(races)} races")
+
+            # Build carry_over for next season from final handicap of each racer
+            if do_carry_over:
+                carry_over = {}
+                for race in races:
+                    for r in race.racer_results:
+                        key = (r.canonical_name, r.craft_category)
+                        # Keep the most recent handicap_post for each racer
+                        carry_over[key] = (r.handicap_post, True)
+
         if seasons:
             current_season = max(seasons.keys())
+            meta = CLUB_META.get(club_id, {})
             clubs[club_id] = {
-                "name": CLUB_META.get(club_id, {}).get("name", club_id),
+                "name": cfg.get("name", meta.get("name", club_id)),
                 "current_season": current_season,
-                "min_races_for_page": CLUB_META.get(club_id, {}).get("min_races_for_page", 1),
+                "min_races_for_page": cfg.get("display", {}).get("min_races_for_page",
+                                      meta.get("min_races_for_page", 1)),
                 "seasons": seasons,
             }
     return {"clubs": clubs, "current_club": CURRENT_CLUB}

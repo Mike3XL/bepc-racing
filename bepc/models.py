@@ -38,6 +38,7 @@ class RacerResult:
     is_par_racer: bool = False
     is_fresh_racer: bool = False
     is_outlier: bool = False
+    carried_over: bool = False  # True if handicap was carried from previous season
     craft_specific: str = ""  # original craft string from source data
     trophies: list = field(default_factory=list)  # e.g. ["finish_1", "hcap_2", "par"]
 
@@ -52,10 +53,11 @@ class RaceResult:
 class RunningRecord:
     num_races: int = 0
     handicap: float = 1.0
+    carried_over: bool = False  # True if seeded from previous season carry-over
     season_points: int = 0
     season_handicap_points: int = 0
     handicap_sequence: list = field(default_factory=list)
     handicap_points_sequence: list = field(default_factory=list)
     handicap_std_dev: float = 0.0
-    last_atvp: float = 0.0   # last adjusted_time_versus_par for streak tracking
-    streak: int = 0          # current consecutive improvement streak
+    last_atvp: float = 0.0
+    streak: int = 0

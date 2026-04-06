@@ -3,12 +3,18 @@ from .handicap import calculate_par_racer, compute_new_handicap, std_dev
 from .points import race_points, handicap_points
 
 
-def process_season(races: list[RaceResult], carry_over: dict | None = None) -> list[RaceResult]:
+def process_season(races: list[RaceResult], carry_over: dict | None = None,
+                   establishment_races: int = 2) -> list[RaceResult]:
     """Process races in order, computing handicaps and points. Returns enriched races."""
     running: dict[tuple, RunningRecord] = {}
     if carry_over:
-        for key, hcap in carry_over.items():
-            running[key] = RunningRecord(handicap=hcap)
+        for key, val in carry_over.items():
+            # val is either a float (legacy) or (handicap, carried_over_flag)
+            if isinstance(val, tuple):
+                hcap, carried = val
+            else:
+                hcap, carried = val, True
+            running[key] = RunningRecord(handicap=hcap, carried_over=carried)
 
     for race in races:
         racers = race.racer_results
@@ -26,6 +32,7 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None) -> l
             rec = running[key]
             r.num_races = rec.num_races + 1
             r.handicap = rec.handicap
+            r.carried_over = rec.carried_over
             r.season_points = rec.season_points
             r.season_handicap_points = rec.season_handicap_points
 
@@ -52,7 +59,7 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None) -> l
 
             # New handicap
             for r in racers:
-                compute_new_handicap(r, par_time)
+                compute_new_handicap(r, par_time, establishment_races=establishment_races)
         else:
             # Small group: no handicap update, mark as fresh
             for r in racers:
@@ -130,6 +137,7 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None) -> l
             running[key] = RunningRecord(
                 num_races=r.num_races,
                 handicap=r.handicap_post,
+                carried_over=False,  # once raced this season, no longer "just carried over"
                 season_points=r.season_points,
                 season_handicap_points=r.season_handicap_points,
                 handicap_sequence=r.handicap_sequence,
