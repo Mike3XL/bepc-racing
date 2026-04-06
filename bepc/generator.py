@@ -1140,6 +1140,7 @@ document.getElementById('racer-select').addEventListener('change', function() {
 
         for club_id, years in sorted(by_club.items()):
             club_name = data["clubs"][club_id]["name"]
+            body_html += f'<div data-club="{club_id}" style="display:none">'
             body_html += f'<h4 class="mt-4">{club_name}</h4>'
 
             # Season tabs
@@ -1232,6 +1233,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
                 body_html += f"{wrap_open}{craft_tabs}{craft_content}{wrap_close}"
 
             body_html += "</div>"  # close tab-content
+            body_html += "</div>"  # close data-club div
 
         # Build list of available (club, year) tab IDs for JS
         available_tabs = json.dumps([
@@ -1263,7 +1265,7 @@ window.addEventListener('load', () => {{
 }});
 </script>"""
 
-        html = _head(name, _CHARTJS) + _nav("Racers", prefix="../", data=data) + _selector_bar(data, show_season=False) + f"""
+        html = _head(name, _CHARTJS) + _nav("Racers", prefix="../", data=data) + _selector_bar(data) + f"""
 <div class="container">
   {racer_nav}
   <h2>{name}</h2>
@@ -1271,7 +1273,15 @@ window.addEventListener('load', () => {{
 </div>
 <script>{all_charts_js}</script>
 {nav_js}
-{season_tab_js}""" + _foot()
+{season_tab_js}
+<script>
+(function() {{
+  var club = localStorage.getItem('bepc_club') || '{data["current_club"]}';
+  document.querySelectorAll('[data-club]').forEach(function(el) {{
+    el.style.display = el.dataset.club === club ? '' : 'none';
+  }});
+}})();
+</script>""" + _foot()
 
         (SITE_DIR / "racer" / f"{slug}.html").write_text(html)
 
