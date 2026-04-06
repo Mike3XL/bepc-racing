@@ -130,3 +130,21 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 - Separate repos per club — too much duplication
 - Separate generated sites — can't share racer pages across clubs
 - URL-based club routing — requires server-side routing, incompatible with GitHub Pages static hosting
+
+---
+
+## Season vs Year Terminology
+**Date:** 2026-04-05  
+**Context:** `cli.py`, `bepc/generator.py`, `data/clubs.yaml`
+
+**Current state:** "Season" and "year" are used interchangeably. Season keys in the data model are 4-digit year strings ("2024", "2025"). All current clubs run one season per calendar year.
+
+**JS dependency on year-as-number:** The racer page JS does `parseInt(a.split('-').pop())` to extract a numeric year from tab IDs like `s-bepc-2024`. This assumes the season key is a sortable integer. Season keys like "2024-Summer" would break this.
+
+**To support non-year seasons in future** (e.g. "2024-Summer", "2024-Winter"):
+- Change tab ID format to avoid relying on `parseInt` of the season key
+- Update `sorted(years.keys())` to use explicit sort order rather than string sort
+- Update `getSeason()`/`setSeason()` localStorage to handle non-numeric keys
+- Update `current_season` logic in `build_data_json`
+
+**Decision:** No change now. Season = year for all current clubs. Note as technical debt if non-annual seasons are ever needed.
