@@ -6,7 +6,14 @@ Follow the architecture and conventions described in #[[file:SPEC.md]]
 - Mike is a BEPC member and surfski racer — this is his club's race analytics site
 - Chicago 17th edition for any document citations
 
-## CRITICAL: Name aliases — always check before discussing racers
+## CRITICAL: Before making any code change
+
+1. **Analyze** — understand the root cause fully before touching anything
+2. **Plan** — write out the specific changes needed
+3. **Decide** — is this a design decision requiring discussion? Does Mike need to approve the approach?
+4. **Only then implement** — after analysis, plan, and any needed go-decision
+
+Never start editing code to "try something" — always analyze first.
 
 **Whenever a racer name is mentioned** (in conversation, debugging, or analysis), ALWAYS:
 1. Check `data/<club>/aliases.json` — the name Mike uses may not be the canonical name

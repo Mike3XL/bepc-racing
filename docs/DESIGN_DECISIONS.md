@@ -223,3 +223,38 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 - Option A (year in filename): file explosion (4 clubs × 7 years × 3 types = 84 files)
 - Option C (localStorage only): year not bookmarkable, root cause of bugs we've been fixing
 - Option D (keep single files): inconsistent with racer pages, all-clubs data bloat
+
+---
+
+## Per-race result pages + URL/state design (2026-04-07)
+
+**Problem:** `results.html` used `location.hash` for race ID navigation, conflicting with year-in-hash on other pages. Also mixed "browse races" and "view race" concerns in one page.
+
+**Decision:** Per-race HTML files with human-readable slugs.
+
+**URL patterns:**
+- `/index.html` — home (global)
+- `/about.html` — about (global)
+- `/{club}/races.html` — race list
+- `/{club}/results/{date}-{short-name}.html` — individual race result (e.g. `2025-04-06-monday-18.html`)
+- `/{club}/standings.html` — standings
+- `/{club}/trajectories.html` — trajectories
+- `/{club}/racer/{slug}.html` — racer page
+- `/{club}/racer/index.html` — racer index
+
+**Slug generation:** date + short label slugified. Collision check at generation time — warn and fall back to race ID suffix if collision detected.
+
+**Hash usage:** Year only, on races/standings/trajectories pages (`#2025`). No hash on result pages or racer pages.
+
+**localStorage:**
+- `pc_club` — last visited club (used by global pages to resolve nav links)
+- `pc_year` — last selected year (carried across page-type and club switches)
+- `pc_distance` — last selected course tab (race-specific UI preference, persists naturally)
+- `pc_result_tab` — last selected Handicap/Finish tab (UI preference)
+
+**Why both hash and pc_year for year:**
+- Hash = URL state (bookmarkable, back button works within page)
+- pc_year = session context (carries year when navigating away to a different page)
+- They are kept in sync: pc_year is written whenever hash changes
+
+**`results.html` removed** — replaced entirely by per-race files.
