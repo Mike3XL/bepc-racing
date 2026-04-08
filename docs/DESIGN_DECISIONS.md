@@ -200,3 +200,26 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 - Time-based decay — handicap drifts toward 1.0 if racer is consistently slow
 
 **Decision:** Tabled. No change to slow outlier behavior for now. Revisit when we have more data on how often racers are genuinely stuck.
+
+---
+
+## URL Structure and Club/Year Navigation (2026-04-07)
+
+**Problem:** Standings, races, and trajectories pages embed all clubs' data in one file with JS show/hide, inconsistent with racer pages (per-club files). Caused season selector bugs and stale localStorage state.
+
+**Decision:** Option B — per-club files, year in URL hash.
+
+**URL pattern:** `/standings-bepc.html#2025`, `/index-bepc.html#2024`, `/trajectories-pnw-regional.html#2025`, `/racer/bepc/mike-liddell.html#2025`
+
+**Rules:**
+- Club selector → `<a>` navigation to different file (real page load)
+- Year selector → hash change only (no page reload, instant, bookmarkable)
+- `pc_club` localStorage — remembers club when navigating to a new page type
+- `pc_year` localStorage — remembers year across ALL navigation (club switches AND page type switches)
+- On page load: read hash first, fall back to `pc_year`, fall back to club's current season
+- `home.html` and `about.html` — global/cross-club, no per-club versions
+
+**Rejected alternatives:**
+- Option A (year in filename): file explosion (4 clubs × 7 years × 3 types = 84 files)
+- Option C (localStorage only): year not bookmarkable, root cause of bugs we've been fixing
+- Option D (keep single files): inconsistent with racer pages, all-clubs data bloat

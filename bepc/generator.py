@@ -63,10 +63,13 @@ def _club_name(data: dict) -> str:
 _SEASON_JS = """
 <script>
 function getSeason(fallback) {
-  return localStorage.getItem('pc_season') || fallback;
+  var h = location.hash.replace('#', '');
+  if (h && /^\d{4}$/.test(h)) return h;
+  return localStorage.getItem('pc_year') || fallback;
 }
 function setSeason(year) {
-  localStorage.setItem('pc_season', year);
+  localStorage.setItem('pc_year', year);
+  location.hash = year;
 }
 function getDistance() {
   return localStorage.getItem('pc_distance') || '';
@@ -120,20 +123,40 @@ def _head(title: str, extra_css: str = "") -> str:
 {_SEASON_JS}"""
 
 
-def _nav(active: str = "", prefix: str = "", data: dict = None) -> str:
-    pages = [
-        ("home.html", "Home"),
-        ("races.html", "Races"),
-        ("index.html", "Results"),
-        ("standings.html", "Standings"),
-        ("trajectories.html", "Trajectories"),
-        (f"racer/{_current_racer_club}/index.html", "Racers"),
-        ("about.html", "About"),
-    ]
+def _nav(active: str = "", prefix: str = "", data: dict = None, is_global: bool = False) -> str:
+    club = data["current_club"] if data else "bepc"
+    if is_global:
+        # On global pages (home, about), per-club links are resolved via JS onclick
+        pages = [
+            ("home.html", "Home"),
+            (f"races-{club}.html", "Races", True),
+            (f"index-{club}.html", "Results", True),
+            (f"standings-{club}.html", "Standings", True),
+            (f"trajectories-{club}.html", "Trajectories", True),
+            (f"racer/{_current_racer_club}/index.html", "Racers"),
+            ("about.html", "About"),
+        ]
+    else:
+        pages = [
+            ("home.html", "Home"),
+            (f"races-{club}.html", "Races"),
+            (f"index-{club}.html", "Results"),
+            (f"standings-{club}.html", "Standings"),
+            (f"trajectories-{club}.html", "Trajectories"),
+            (f"racer/{_current_racer_club}/index.html", "Racers"),
+            ("about.html", "About"),
+        ]
     items = ""
-    for href, label in pages:
+    for entry in pages:
+        href, label = entry[0], entry[1]
+        dynamic = len(entry) > 2 and entry[2]
         cls = "nav-link active" if label == active else "nav-link"
-        items += f'<li class="nav-item"><a class="{cls}" href="{prefix}{href}">{label}</a></li>\n'
+        if dynamic:
+            # JS resolves correct club at click time
+            base = href.split(f"-{club}.html")[0]
+            items += f'<li class="nav-item"><a class="{cls}" href="{prefix}{href}" onclick="var c=localStorage.getItem(\'pc_club\')||\'{club}\'; this.href=\'{prefix}{base}-\'+c+\'.html\'">{label}</a></li>\n'
+        else:
+            items += f'<li class="nav-item"><a class="{cls}" href="{prefix}{href}">{label}</a></li>\n'
 
     return f"""<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
   <div class="container">
@@ -148,13 +171,14 @@ def _nav(active: str = "", prefix: str = "", data: dict = None) -> str:
 </nav>"""
 
 
-def _selector_bar(data: dict, show_season: bool = True, racer_clubs: list = None) -> str:
-    """Horizontal selector bar below navbar: club pills + season dropdown."""
+def _selector_bar(data: dict, show_season: bool = True, racer_clubs: list = None, page: str = None) -> str:
+    """Horizontal selector bar below navbar: club pills + season dropdown.
+    page: page base name (e.g. 'standings', 'races', 'index', 'trajectories') for per-club <a> links.
+          If None, club buttons use JS reload (global pages / racer pages).
+    """
     if not data:
         return ""
 
-    # Club pill buttons — only show clubs the racer has data for (if racer_clubs specified)
-    club_btns = ""
     cfg_path = Path(__file__).parent.parent / "data" / "clubs.yaml"
     clubs_cfg = {}
     if cfg_path.exists():
@@ -164,22 +188,93 @@ def _selector_bar(data: dict, show_season: bool = True, racer_clubs: list = None
                 clubs_cfg = yaml.safe_load(f).get("clubs", {})
         except Exception:
             pass
-    for club_id, club in data["clubs"].items():
-        if racer_clubs is not None and club_id not in racer_clubs:
-            continue
-        short = clubs_cfg.get(club_id, {}).get("short_name", club.get("name", club_id))
-        club_btns += f'<button type="button" class="btn btn-sm btn-outline-secondary" data-club="{club_id}">{short}</button>\n'
 
-    season_sel = ""  # populated by JS from ALL_CLUB_SEASONS
-    if show_season:
-        pass  # season select rendered empty, filled by JS below
-
-    # Build seasons data for all clubs for JS
+    current_club = data["current_club"]
     import json as _json
     all_seasons_js = "{" + ",".join(
         f'"{cid}":{{"years":{_json.dumps(sorted(club["seasons"].keys(), reverse=True))},"current":"{club["current_season"]}"}}'
         for cid, club in data["clubs"].items()
     ) + "}"
+
+    # Build club buttons — <a> links for per-club pages, buttons for global/racer pages
+    club_btns = ""
+    for club_id, club in data["clubs"].items():
+        if racer_clubs is not None and club_id not in racer_clubs:
+            continue
+        short = clubs_cfg.get(club_id, {}).get("short_name", club.get("name", club_id))
+        active_cls = " active" if club_id == current_club else ""
+        if page:
+            club_btns += f'<a class="btn btn-sm btn-outline-secondary{active_cls}" data-club="{club_id}" href="{page}-{club_id}.html">{short}</a>\n'
+        else:
+            club_btns += f'<button type="button" class="btn btn-sm btn-outline-secondary{active_cls}" data-club="{club_id}">{short}</button>\n'
+
+    season_html = ""
+    if show_season:
+        season_html = "<div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='width:auto'></select></div>"
+
+    if page:
+        # Per-club page: year from hash, club buttons are plain <a> links
+        # JS: populate season selector, update hash+pc_year on change, update club button hrefs with current year
+        club_js = f"""
+(function() {{
+  var ALL_CLUB_SEASONS = {all_seasons_js};
+  var info = ALL_CLUB_SEASONS['{current_club}'];
+  var hash = location.hash.replace('#', '');
+  var saved = localStorage.getItem('pc_year');
+  var active = (hash && info.years.indexOf(hash) >= 0) ? hash
+             : (saved && info.years.indexOf(saved) >= 0) ? saved
+             : info.current;
+  var sel = document.getElementById('season-select');
+  if (sel) {{
+    sel.innerHTML = info.years.map(function(y) {{
+      return '<option value="' + y + '"' + (y === active ? ' selected' : '') + '>' + y + ' Season</option>';
+    }}).join('');
+    sel.addEventListener('change', function() {{
+      var yr = this.value;
+      localStorage.setItem('pc_year', yr);
+      location.hash = yr;
+      // Update club button hrefs to carry new year
+      document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {{
+        a.href = a.href.split('#')[0] + '#' + yr;
+      }});
+    }});
+  }}
+  // Set initial hash and pc_year; update club button hrefs
+  if (location.hash !== '#' + active) location.replace(location.pathname + '#' + active);
+  localStorage.setItem('pc_year', active);
+  document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {{
+    a.href = a.href.split('#')[0] + '#' + active;
+  }});
+}})();"""
+    else:
+        # Global/racer page: club buttons use JS reload, year from pc_year
+        club_js = f"""
+(function() {{
+  var ALL_CLUB_SEASONS = {all_seasons_js};
+  var stored = localStorage.getItem('pc_club') || '{current_club}';
+  if (!ALL_CLUB_SEASONS[stored]) stored = '{current_club}';
+  document.querySelectorAll('#club-btn-group button').forEach(function(btn) {{
+    var clubId = btn.dataset.club;
+    if (!clubId) return;
+    if (clubId === stored) btn.classList.add('active');
+    btn.addEventListener('click', function() {{
+      var yr = document.getElementById('season-select');
+      localStorage.setItem('pc_club', clubId);
+      if (yr) localStorage.setItem('pc_year', yr.value);
+      window.location.reload();
+    }});
+  }});
+  var sel = document.getElementById('season-select');
+  if (sel) {{
+    var info = ALL_CLUB_SEASONS[stored];
+    var saved = localStorage.getItem('pc_year');
+    var active = (saved && info.years.indexOf(saved) >= 0) ? saved : info.current;
+    sel.innerHTML = info.years.map(function(y) {{
+      return '<option value="' + y + '"' + (y === active ? ' selected' : '') + '>' + y + ' Season</option>';
+    }}).join('');
+    localStorage.setItem('pc_year', active);
+  }}
+}})();"""
 
     return f"""<div class="bg-light border-bottom mb-4">
   <div class="container py-2">
@@ -188,39 +283,11 @@ def _selector_bar(data: dict, show_season: bool = True, racer_clubs: list = None
         <span class="text-muted small fw-semibold">Club</span>
         <div class="btn-group flex-wrap" id="club-btn-group" role="group">{club_btns}</div>
       </div>
-      {"<div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='width:auto'></select></div>" if show_season else ""}
+      {season_html}
     </div>
   </div>
 </div>
-<script>
-(function() {{
-  var ALL_CLUB_SEASONS = {all_seasons_js};
-  var stored = localStorage.getItem('pc_club') || '{data["current_club"]}';
-  if (!ALL_CLUB_SEASONS[stored]) stored = '{data["current_club"]}';
-  document.querySelectorAll('#club-btn-group button').forEach(function(btn) {{
-    if (btn.dataset.club === stored) btn.classList.add('active');
-    btn.addEventListener('click', function() {{
-      var newClub = btn.dataset.club;
-      var currentYear = sel ? sel.value : null;
-      localStorage.setItem('pc_club', newClub);
-      // Carry current year to new club (selector bar will validate on reload)
-      if (currentYear) localStorage.setItem('pc_season', currentYear);
-      window.location.reload();
-    }});
-  }});
-  var sel = document.getElementById('season-select');
-  if (sel) {{
-    var info = ALL_CLUB_SEASONS[stored];
-    var saved = localStorage.getItem('pc_season');
-    // Use saved year if valid for this club, else fall back to current
-    var active = (saved && info.years.indexOf(saved) >= 0) ? saved : info.current;
-    sel.innerHTML = info.years.map(function(y) {{
-      return '<option value="' + y + '"' + (y === active ? ' selected' : '') + '>' + y + ' Season</option>';
-    }}).join('');
-    localStorage.setItem('pc_season', active);
-  }}
-}})();
-</script>"""
+<script>{club_js}</script>"""
 
 
 def _foot(extra_js: str = "") -> str:
@@ -422,10 +489,9 @@ def _loading_spinner() -> str:
 
 
 def generate_standings(data: dict) -> None:
-    club = data["clubs"][data["current_club"]]
-    current_year = club["current_season"]
-
-    html = _head("Standings") + _nav("Standings", data=data) + _selector_bar(data) + f"""
+    for club_id in data["clubs"]:
+        data["current_club"] = club_id
+        html = _head("Standings") + _nav("Standings", data=data) + _selector_bar(data, page="standings") + f"""
 <div class="container">
   <h1 class="mb-3">Standings</h1>
   <ul class="nav nav-tabs mb-3">
@@ -477,31 +543,31 @@ function render(year) {{
   addRowNumbers(dtPts);
 }}
 window.addEventListener('DOMContentLoaded', () => {{
-  function getClub() {{ return localStorage.getItem('pc_club') || '{data["current_club"]}'; }}
-  function setClub(c) {{ localStorage.setItem('pc_club', c); }}
-  function loadClub(club) {{
-    fetchData(`standings-data-${{club}}.json`, d => {{
-      SEASONS = d.seasons;
-      const sel = document.getElementById('season-select');
-      sel.innerHTML = Object.keys(d.seasons).sort().reverse().map(y => `<option value="${{y}}">${{y}} Season</option>`).join('');
-      const yr = getSeason(d.current_year);
-      if (SEASONS[yr]) sel.value = yr;
-      render(sel.value);
-      sel.onchange = e => {{ setSeason(e.target.value); render(e.target.value); }};
+  fetchData('standings-data-{club_id}.json', d => {{
+    SEASONS = d.seasons;
+    const yr = getSeason(d.current_year);
+    const sel = document.getElementById('season-select');
+    if (sel && SEASONS[yr]) sel.value = yr;
+    render(SEASONS[yr] ? yr : d.current_year);
+    window.addEventListener('hashchange', () => {{
+      const y = location.hash.replace('#','');
+      if (SEASONS[y]) {{ if (sel) sel.value = y; render(y); }}
     }});
-  }}
-  loadClub(getClub());
+    if (sel) sel.addEventListener('change', e => render(e.target.value));
+  }});
 }});
 </script>""" + _foot()
-    (SITE_DIR / "standings.html").write_text(html)
-    print("Generated: site/standings.html")
+        (SITE_DIR / f"standings-{club_id}.html").write_text(html)
+        print(f"Generated: site/standings-{club_id}.html")
 
 
 def generate_races(data: dict) -> None:
-    club = data["clubs"][data["current_club"]]
-    current_year = club["current_season"]
+    for club_id in data["clubs"]:
+        data["current_club"] = club_id
+        club = data["clubs"][club_id]
+        current_year = club["current_season"]
 
-    html = _head("Results") + _nav("Results", data=data) + _selector_bar(data) + f"""
+        html = _head("Results") + _nav("Results", data=data) + _selector_bar(data, page="index") + f"""
 <div class="container">
   <h1 class="mb-3">Results</h1>
   <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
@@ -753,8 +819,8 @@ document.addEventListener('DOMContentLoaded', () => {{
   document.getElementById('btn-next').addEventListener('click', () => renderRace(currentIndex + 1));
   document.getElementById('race-select').addEventListener('change', e => renderRace(parseInt(e.target.value)));
   document.getElementById('season-select').addEventListener('change', e => {{ setSeason(e.target.value); loadSeason(e.target.value); }});
-  const club = localStorage.getItem('pc_club') || '{data["current_club"]}';
-  fetchData(`races-data-${{club}}.json`, d => {{
+  const club = localStorage.getItem('pc_club') || '{club_id}';
+  fetchData(`races-data-{club_id}.json`, d => {{
     SEASONS = d.seasons;
     const sel = document.getElementById('season-select');
     const yr = getSeason(d.current_year);
@@ -772,8 +838,8 @@ document.addEventListener('DOMContentLoaded', () => {{
   }});
 }});
 </script>""" + _foot()
-    (SITE_DIR / "index.html").write_text(html)
-    print("Generated: site/index.html")
+        (SITE_DIR / f"index-{club_id}.html").write_text(html)
+        print(f"Generated: site/index-{club_id}.html")
 
 _SHORT_LABELS = {
     'Pnworca1': 'PNWORCA #1', 'Pnworca2': 'PNWORCA #2', 'Pnworca3': 'PNWORCA #3',
@@ -891,11 +957,13 @@ def _build_traj_series(races: list, colors: list) -> tuple:
 
 
 def generate_trajectories(data: dict) -> None:
-    club = data["clubs"][data["current_club"]]
-    current_year = club["current_season"]
+    for club_id in data["clubs"]:
+        data["current_club"] = club_id
+        club = data["clubs"][club_id]
+        current_year = club["current_season"]
 
-    # Shared chart options JS — sorted tooltip, skip nulls, highlight hovered line, inline end labels
-    chart_options_js = """
+        # Shared chart options JS — sorted tooltip, skip nulls, highlight hovered line, inline end labels
+        chart_options_js = """
 const endLabelPlugin = {
   id: 'endLabel',
   _labelRects: [],
@@ -1032,9 +1100,9 @@ function resetHighlight(chart) {
   });
   chart.update('none');
 }
-"""
+        """
 
-    html = _head("Trajectories", _CHARTJS) + _nav("Trajectories", data=data) + _selector_bar(data) + f"""
+        html = _head("Trajectories", _CHARTJS) + _nav("Trajectories", data=data) + _selector_bar(data, page="trajectories") + f"""
 <div class="container">
   <h1 class="mb-3">Trajectories</h1>
   <div id="traj-content">
@@ -1072,24 +1140,22 @@ function loadTrajSeason(year) {{
   }});
 }}
 window.addEventListener('DOMContentLoaded', () => {{
-  function getClub() {{ return localStorage.getItem('pc_club') || '{data["current_club"]}'; }}
-  function setClub(c) {{ localStorage.setItem('pc_club', c); }}
-  function loadClub(club) {{
-    fetchData(`trajectories-data-${{club}}.json`, d => {{
-      ALL_SEASONS = d.seasons;
-      const sel = document.getElementById('season-select');
-      sel.innerHTML = Object.keys(d.seasons).sort().reverse().map(y => `<option value="${{y}}">${{y}} Season</option>`).join('');
-      const yr = getSeason(d.current_year);
-      if (ALL_SEASONS[yr]) sel.value = yr;
-      loadTrajSeason(sel.value);
-      sel.onchange = e => {{ setSeason(e.target.value); loadTrajSeason(e.target.value); }};
+  fetchData('trajectories-data-{club_id}.json', d => {{
+    ALL_SEASONS = d.seasons;
+    const sel = document.getElementById('season-select');
+    const yr = getSeason(d.current_year);
+    if (ALL_SEASONS[yr]) sel.value = yr;
+    loadTrajSeason(ALL_SEASONS[yr] ? yr : d.current_year);
+    window.addEventListener('hashchange', () => {{
+      const y = location.hash.replace('#','');
+      if (ALL_SEASONS[y]) {{ if (sel) sel.value = y; loadTrajSeason(y); }}
     }});
-  }}
-  loadClub(getClub());
+    if (sel) sel.addEventListener('change', e => loadTrajSeason(e.target.value));
+  }});
 }});
 </script>""" + _foot()
-    (SITE_DIR / "trajectories.html").write_text(html)
-    print("Generated: site/trajectories.html")
+        (SITE_DIR / f"trajectories-{club_id}.html").write_text(html)
+        print(f"Generated: site/trajectories-{club_id}.html")
 
 
 def _fmt_time(seconds: float) -> str:
@@ -1258,7 +1324,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 }});"""
 
                     rows = "".join(
-                        f'<tr><td><a href="../../races.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
+                        f'<tr><td><a href="../../index-{data["current_club"]}.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
                         f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
                         f'<td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td>'
                         f'<td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td>'
@@ -1282,7 +1348,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
   <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
   <tbody>{"".join(
       f'<tr><td style="white-space:nowrap">{_racer_trophy_badges(r.get("trophies",[]))}</td>'
-      f'<td><a href="../../index.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
+      f'<td><a href="../../index-{data["current_club"]}.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
       f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
       f'<td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td>'
       f'<td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td>'
@@ -1354,7 +1420,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 
 
 def generate_about(data: dict = None) -> None:
-    html = _head("About — BEPC Handicap System") + _nav("About", data=data) + _selector_bar(data, show_season=False) + """
+    html = _head("About — BEPC Handicap System") + _nav("About", data=data, is_global=True) + _selector_bar(data, show_season=False) + """
 <div class="container" style="max-width:720px">
   <h1>About the Handicap System</h1>
   <p class="lead">BEPC uses a dynamic handicap system so all racers can compete and be scored on their relative performance.</p>
@@ -1518,7 +1584,7 @@ def generate_platform_home(data: dict) -> None:
               </div>
               <p class="card-text text-muted small">{desc}</p>
               <div class="small text-muted mb-3">{total_races} races · {total_racers} racers · {year_range}</div>
-              <a href="index.html" onclick="localStorage.setItem('pc_club','{club_id}')" class="btn btn-outline-primary btn-sm">View Results →</a>
+              <a href="index-{club_id}.html" onclick="localStorage.setItem('pc_club','{club_id}')" class="btn btn-outline-primary btn-sm">View Results →</a>
             </div>
           </div>
         </div>"""
@@ -1529,7 +1595,7 @@ def generate_platform_home(data: dict) -> None:
         club_links_html = ""
         winners_html = ""
         for c in r["clubs"]:
-            race_link = f'index.html#{c["race_id"]}'
+            race_link = f'index-{c["id"]}.html#{c["race_id"]}'
             cls = "text-secondary" if c["type"] == "league" else ""
             club_links_html += f'<a href="{race_link}" onclick="localStorage.setItem(\'pc_club\',\'{c["id"]}\')" class="badge bg-light text-dark border me-1 small fw-normal {cls}">{c["name"]} ↗</a>'
             winners = c.get("winners", [])
@@ -1609,7 +1675,7 @@ def generate_platform_home(data: dict) -> None:
 
 
 def generate_races_list(data: dict) -> None:
-    """Generate races.html + per-club races-list-{club}.json data files."""
+    """Generate per-club races-{club}.html + races-list-{club}.json data files."""
     import json as _json
     from collections import defaultdict
 
@@ -1650,16 +1716,20 @@ def generate_races_list(data: dict) -> None:
             seasons_data[year] = race_list
         (SITE_DIR / f"races-list-{club_id}.json").write_text(_json.dumps({"seasons": seasons_data, "current": club["current_season"]}))
 
-    # Cup SVGs as JS strings
-    cup_js = """
+    # Generate per-club HTML pages
+    for club_id in data["clubs"]:
+        data["current_club"] = club_id
+
+        # Cup SVGs as JS strings
+        cup_js = """
 const CUP = {
   1: '<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.5"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.3"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.3"/><rect x="11" y="15" width="2" height="3" fill="#B8860B"/><rect x="7" y="18" width="10" height="1.5" rx="0.75" fill="#B8860B"/></svg>',
   2: '<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.5"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.3"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.3"/><rect x="11" y="15" width="2" height="3" fill="#707070"/><rect x="7" y="18" width="10" height="1.5" rx="0.75" fill="#707070"/></svg>',
   3: '<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.5"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.3"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.3"/><rect x="11" y="15" width="2" height="3" fill="#B07020"/><rect x="7" y="18" width="10" height="1.5" rx="0.75" fill="#B07020"/></svg>',
 };
-"""
+        """
 
-    html = _head("Races") + _nav("Races", data=data) + _selector_bar(data) + f"""
+        html = _head("Races") + _nav("Races", data=data) + _selector_bar(data, page="races") + f"""
 <div class="container">
   <h1 class="mb-3">Races</h1>
   <div id="races-content"></div>
@@ -1683,12 +1753,12 @@ function podiumHtml(course) {{
   return '<div class="me-3">' + lbl + rows + '</div>';
 }}
 
-function renderRacesList(data, year) {{
-  var races = (data.seasons[year] || []).slice().reverse();  // newest first
+function renderRacesList(d, year) {{
+  var races = (d.seasons[year] || []).slice().reverse();  // newest first
   var rows = races.map(function(r) {{
     var podiums = r.courses.map(podiumHtml).join('');
     return '<tr><td class="text-muted small text-nowrap">' + r.date + '</td>'
-      + '<td><a href="index.html#' + r.race_id + '">' + r.name + '</a></td>'
+      + '<td><a href="index-{club_id}.html#' + r.race_id + '">' + r.name + '</a></td>'
       + '<td class="text-muted small text-center">' + r.starters + '</td>'
       + '<td><div class="d-flex flex-wrap">' + podiums + '</div></td></tr>';
   }}).join('');
@@ -1699,28 +1769,23 @@ function renderRacesList(data, year) {{
 }}
 
 var _racesData = null;
-function loadRacesClub(club) {{
-  fetchData('races-list-' + club + '.json', function(d) {{
+document.addEventListener('DOMContentLoaded', function() {{
+  fetchData('races-list-{club_id}.json', function(d) {{
     _racesData = d;
     var yr = getSeason(d.current);
     var sel = document.getElementById('season-select');
     if (sel) sel.value = yr;
     renderRacesList(d, yr);
-  }});
-}}
-
-document.addEventListener('DOMContentLoaded', function() {{
-  var club = localStorage.getItem('pc_club') || '{data["current_club"]}';
-  loadRacesClub(club);
-  var sel = document.getElementById('season-select');
-  if (sel) sel.addEventListener('change', function() {{
-    setSeason(this.value);
-    if (_racesData) renderRacesList(_racesData, this.value);
+    window.addEventListener('hashchange', function() {{
+      var y = location.hash.replace('#','');
+      if (d.seasons[y]) {{ if (sel) sel.value = y; renderRacesList(d, y); }}
+    }});
+    if (sel) sel.addEventListener('change', function() {{ renderRacesList(d, this.value); }});
   }});
 }});
 </script>""" + _foot()
-    (SITE_DIR / "races.html").write_text(html)
-    print("Generated: site/races.html")
+        (SITE_DIR / f"races-{club_id}.html").write_text(html)
+        print(f"Generated: site/races-{club_id}.html")
 
 
 def generate_cross_club_links() -> None:
@@ -1752,7 +1817,7 @@ def generate_cross_club_links() -> None:
                 label = m.group(2)
                 if cid in slug_clubs.get(slug, []):
                     active = ' active' if cid == club_id else ''
-                    return f'<a href="../../racer/{cid}/{slug}.html" class="btn btn-sm btn-outline-secondary{active}">{label}</a>'
+                    return f'<a href="../../racer/{cid}/{slug}.html" class="btn btn-sm btn-outline-secondary{active}" data-club="{cid}">{label}</a>'
                 return m.group(0)  # leave unchanged
             html = _re.sub(
                 r'<button[^>]*data-club="([^"]+)"[^>]*>([^<]+)</button>',
@@ -1779,9 +1844,13 @@ def generate_all(data: dict) -> None:
     _current_racer_club = original_club
     generate_data_files(data)
     generate_standings(data)
+    data["current_club"] = original_club
     generate_races(data)
+    data["current_club"] = original_club
     generate_races_list(data)
+    data["current_club"] = original_club
     generate_trajectories(data)
+    data["current_club"] = original_club
     generate_about(data)
     generate_platform_home(data)
     generate_cross_club_links()
