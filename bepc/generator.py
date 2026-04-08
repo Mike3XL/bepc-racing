@@ -658,10 +658,17 @@ function podiumForCourse(course) {
 
 function tableHtml(id_suffix) {
   return `
-  <ul class="nav nav-tabs" id="result-tabs-${id_suffix}">
-    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-handicap-${id_suffix}">Handicap Order</button></li>
-    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-finish-${id_suffix}">Finish Order</button></li>
-  </ul>
+  <div class="d-flex align-items-end gap-2 mb-0">
+    <ul class="nav nav-tabs border-bottom-0 mb-0" id="result-tabs-${id_suffix}">
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-handicap-${id_suffix}">Handicap Order</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-finish-${id_suffix}">Finish Order</button></li>
+    </ul>
+    <select id="racer-filter" class="form-select form-select-sm ms-auto" style="width:auto;margin-bottom:1px">
+      <option value="all">All racers</option>
+      <option value="eligible">Eligible only</option>
+      <option value="regular">Regulars only</option>
+    </select>
+  </div>
   <div class="tab-content border border-top-0 p-3 mb-3">
     <div class="tab-pane active" id="tab-handicap-${id_suffix}">
       <table class="table table-sm table-striped" style="table-layout:fixed">
@@ -783,8 +790,7 @@ document.addEventListener('DOMContentLoaded', () => {{
     tabNav += `<li class="nav-item"><button class="nav-link ${{active}}" data-bs-toggle="tab" data-bs-target="#course-${{origIdx}}">${{course.label || 'Results'}}</button></li>`;
     tabContent += `<div class="tab-pane ${{active}} p-3 border border-top-0" id="course-${{origIdx}}">${{podiumForCourse(course)}}${{tableHtml(origIdx)}}</div>`;
   }});
-  const filterHtml = '<select id="racer-filter" class="form-select form-select-sm ms-auto" style="width:auto;align-self:flex-end;margin-bottom:1px"><option value="all">All racers</option><option value="eligible">Eligible only</option><option value="regular">Regulars only</option></select>';
-  tabNav = '<div class="d-flex align-items-end gap-2">' + tabNav + '</ul>' + filterHtml + '</div>';
+  tabNav += '</ul>';
   tabContent += '</div>';
   document.getElementById('course-content').innerHTML = tabNav + tabContent;
   COURSES.forEach((course, i) => {{
