@@ -491,7 +491,7 @@ def generate_data_files(data: dict) -> None:
     (SITE_DIR / f"trajectories-data-{data['current_club']}.json").write_text(json.dumps(traj_data))
     (SITE_DIR / data['current_club'] / "trajectories-data.json").write_text(json.dumps(traj_data))
 
-    print("Generated: site/*-data.json (3 files)")
+    print(f"Generated: site/{data['current_club']}/*-data.json")
 
 
 def _loading_spinner() -> str:
@@ -1403,7 +1403,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 
 
 def generate_about(data: dict = None) -> None:
-    html = _head("About — BEPC Handicap System") + _nav("About", data=data, depth=0) + _selector_bar(data, show_season=False) + """
+    html = _head("About — BEPC Handicap System") + _nav("About", data=data, depth=0) + """
 <div class="container" style="max-width:720px">
   <h1>About the Handicap System</h1>
   <p class="lead">BEPC uses a dynamic handicap system so all racers can compete and be scored on their relative performance.</p>
@@ -1836,8 +1836,9 @@ def generate_all(data: dict) -> None:
         generate_racer_index(data)
     data["current_club"] = original_club
     _current_racer_club = original_club
-    generate_data_files(data)
-    generate_standings(data)
+    for club_id in data["clubs"]:
+        data["current_club"] = club_id
+        generate_data_files(data)
     data["current_club"] = original_club
     generate_races(data)
     data["current_club"] = original_club
