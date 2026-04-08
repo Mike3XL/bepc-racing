@@ -1431,12 +1431,32 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 
 
 def generate_about(data: dict = None) -> None:
-    html = _head("About — BEPC Handicap System") + _nav("About", data=data, depth=0) + """
+    html = _head("About — PaddleClub") + _nav("About", data=data, depth=0) + """
 <div class="container" style="max-width:720px">
-  <h1>About the Handicap System</h1>
-  <p class="lead">BEPC uses a dynamic handicap system so all racers can compete and be scored on their relative performance.</p>
+  <h1>About PaddleClub</h1>
+  <p class="lead">Race results, standings, and handicap tracking for open-water paddling clubs and community leagues in the Pacific Northwest.</p>
 
-  <h2>How it works</h2>
+  <h2>What's here</h2>
+  <p>PaddleClub covers four clubs and leagues:</p>
+  <ul>
+    <li><strong>BEPC</strong> — Ballard Elks Paddle Club Monday night race series, Seattle (2015–present)</li>
+    <li><strong>Sound Rowers</strong> — Washington State open-water racing series (2022–present)</li>
+    <li><strong>PNW League</strong> — An informal community league tracking regional events: PNWORCA, Gorge Downwind, Peter Marcus, Narrows Challenge, and all Sound Rowers events (2017–present)</li>
+    <li><strong>SCKC</strong> — Seattle Canoe and Kayak Club Duck Island Race series, Lake Washington (2015–present)</li>
+  </ul>
+  <p>Craft covered includes surfski, outrigger canoe (OC-1, OC-2), kayak, canoe, SUP, and prone paddleboard.</p>
+
+  <h2>How to use this site</h2>
+  <ul>
+    <li>Use the <strong>Club</strong> buttons to switch between clubs. The <strong>Season</strong> dropdown filters by year.</li>
+    <li><strong>Races</strong> — browse all races for a club/season, click any race to see full results and podium.</li>
+    <li><strong>Standings</strong> — season points leaderboard, sortable by handicap or overall points.</li>
+    <li><strong>Trajectories</strong> — charts showing how points and handicap evolved over the season.</li>
+    <li><strong>Racers</strong> — find any racer, see their history across seasons and clubs.</li>
+  </ul>
+  <p>Racer pages show results per craft type (e.g. surfski and OC-1 are tracked separately). Use the craft tabs to switch.</p>
+
+  <h2>The handicap system</h2>
 
   <h5>Par racer</h5>
   <p>Each race has a <em>par racer</em> — the finisher at roughly the 33rd percentile by finish time.
