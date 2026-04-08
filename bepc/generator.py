@@ -252,7 +252,12 @@ def _selector_bar(data: dict, show_season: bool = True, page: str = None) -> str
 
     season_html = ""
     if show_season:
-        season_html = "<div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='min-width:110px'></select></div>"
+        season_html = """<div class='d-flex align-items-center gap-2'>
+        <span class='text-muted small fw-semibold'>Season</span>
+        <button id='season-prev' class='btn btn-sm btn-outline-secondary' disabled>&larr;</button>
+        <select id='season-select' class='form-select form-select-sm' style='min-width:110px'></select>
+        <button id='season-next' class='btn btn-sm btn-outline-secondary' disabled>&rarr;</button>
+      </div>"""
 
     if page:
         club_js = f"""
@@ -265,22 +270,40 @@ def _selector_bar(data: dict, show_season: bool = True, page: str = None) -> str
              : (saved && info.years.indexOf(saved) >= 0) ? saved
              : info.current;
   var sel = document.getElementById('season-select');
+  var prevBtn = document.getElementById('season-prev');
+  var nextBtn = document.getElementById('season-next');
+  function updateNavBtns(yr) {{
+    var idx = info.years.indexOf(yr);
+    if (prevBtn) prevBtn.disabled = idx >= info.years.length - 1;
+    if (nextBtn) nextBtn.disabled = idx <= 0;
+  }}
+  function goYear(yr) {{
+    if (sel) sel.value = yr;
+    localStorage.setItem('pc_year', yr);
+    location.hash = yr;
+    updateNavBtns(yr);
+    document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {{
+      a.href = a.href.split('#')[0] + '#' + yr;
+    }});
+  }}
   if (sel) {{
     sel.innerHTML = info.years.map(function(y) {{
       return '<option value="' + y + '"' + (y === active ? ' selected' : '') + '>' + y + ' Season</option>';
     }}).join('');
-    sel.addEventListener('change', function() {{
-      var yr = this.value;
-      localStorage.setItem('pc_year', yr);
-      location.hash = yr;
-      document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {{
-        a.href = a.href.split('#')[0] + '#' + yr;
-      }});
-    }});
+    sel.addEventListener('change', function() {{ goYear(this.value); }});
   }}
+  if (prevBtn) prevBtn.addEventListener('click', function() {{
+    var idx = info.years.indexOf(sel ? sel.value : active);
+    if (idx < info.years.length - 1) goYear(info.years[idx + 1]);
+  }});
+  if (nextBtn) nextBtn.addEventListener('click', function() {{
+    var idx = info.years.indexOf(sel ? sel.value : active);
+    if (idx > 0) goYear(info.years[idx - 1]);
+  }});
   if (location.hash !== '#' + active) location.replace(location.pathname + '#' + active);
   localStorage.setItem('pc_year', active);
   localStorage.setItem('pc_club', '{current_club}');
+  updateNavBtns(active);
   document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {{
     a.href = a.href.split('#')[0] + '#' + active;
   }});
@@ -1411,16 +1434,34 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
   showSeason(season);
 
   var sel = document.getElementById('season-select');
+  var prevBtn = document.getElementById('season-prev');
+  var nextBtn = document.getElementById('season-next');
+  function updateNavBtns(yr) {{
+    var idx = availYears.indexOf(yr);
+    if (prevBtn) prevBtn.disabled = idx >= availYears.length - 1;
+    if (nextBtn) nextBtn.disabled = idx <= 0;
+  }}
+  function goSeason(yr) {{
+    if (sel) sel.value = yr;
+    localStorage.setItem('pc_year', yr);
+    showSeason(yr);
+    updateNavBtns(yr);
+  }}
   if (sel) {{
     sel.innerHTML = availYears.map(function(y) {{
       return '<option value="' + y + '"' + (y === season ? ' selected' : '') + '>' + y + ' Season</option>';
     }}).join('');
-    sel.addEventListener('change', function() {{
-      var yr = this.value;
-      localStorage.setItem('pc_year', yr);
-      showSeason(yr);
-    }});
+    sel.addEventListener('change', function() {{ goSeason(this.value); }});
   }}
+  if (prevBtn) prevBtn.addEventListener('click', function() {{
+    var idx = availYears.indexOf(sel ? sel.value : season);
+    if (idx < availYears.length - 1) goSeason(availYears[idx + 1]);
+  }});
+  if (nextBtn) nextBtn.addEventListener('click', function() {{
+    var idx = availYears.indexOf(sel ? sel.value : season);
+    if (idx > 0) goSeason(availYears[idx - 1]);
+  }});
+  updateNavBtns(season);
 
   // Restore saved craft tab
   var savedCraft = localStorage.getItem('pc_craft');
@@ -1449,7 +1490,9 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
       </div>
       <div class="d-flex align-items-center gap-2">
         <span class="text-muted small fw-semibold">Season</span>
+        <button id="season-prev" class="btn btn-sm btn-outline-secondary" disabled>&larr;</button>
         <select id="season-select" class="form-select form-select-sm" style="min-width:110px"></select>
+        <button id="season-next" class="btn btn-sm btn-outline-secondary" disabled>&rarr;</button>
       </div>
     </div>
   </div>
@@ -1983,6 +2026,8 @@ def generate_all(data: dict) -> None:
         generate_data_files(data)
     data["current_club"] = original_club
     generate_races(data)
+    data["current_club"] = original_club
+    generate_standings(data)
     data["current_club"] = original_club
     generate_races_list(data)
     data["current_club"] = original_club
