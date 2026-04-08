@@ -1987,7 +1987,7 @@ def generate_platform_home(data: dict) -> None:
                 if len(club_podiums) == 1:
                     club_name, podium = club_podiums[0]
                     cid = next((c["id"] for c in r["clubs"] if c["name"] == club_name), "")
-                    prefix = club_badge.get(cid, f'<span class="text-muted small me-1">{club_name}:</span> ') if multi_club else ""
+                    prefix = club_badge.get(cid, f'<span class="text-muted small me-1">{club_name}:</span> ')
                     names = " · ".join(f'{_place_labels.get(trophy,"")}{_racer_link(name)}' for name, trophy in podium)
                     podium_html += f'<div class="small"><span class="text-muted small fw-semibold me-1">{short_label}:</span>{prefix}{names}</div>'
                     continue
@@ -1995,7 +1995,7 @@ def generate_platform_home(data: dict) -> None:
                     podium_html += f'<div class="text-muted small fw-semibold mt-1">{short_label}</div>'
             for club_name, podium in club_podiums:
                 cid = next((c["id"] for c in r["clubs"] if c["name"] == club_name), "")
-                prefix = club_badge.get(cid, f'<span class="text-muted small me-1">{club_name}:</span> ') if multi_club else ""
+                prefix = club_badge.get(cid, f'<span class="text-muted small me-1">{club_name}:</span> ')
                 names = " · ".join(
                     f'{_place_labels.get(trophy,"")}{_racer_link(name)}'
                     for name, trophy in podium
