@@ -244,7 +244,10 @@ def _selector_bar(data: dict, show_season: bool = True, page: str = None) -> str
         for club_id, club in data["clubs"].items():
             short = clubs_cfg.get(club_id, {}).get("short_name", club.get("name", club_id))
             active_cls = " active" if club_id == current_club else ""
-            href = f"../{club_id}/{page}.html" if club_id != current_club else f"{page}.html"
+            if club_id == current_club:
+                href = "index.html" if page == "racer/index" else f"{page}.html"
+            else:
+                href = f"../../{club_id}/racer/index.html" if page == "racer/index" else f"../{club_id}/{page}.html"
             club_btns += f'<a class="btn btn-sm btn-outline-secondary{active_cls}" data-club="{club_id}" href="{href}">{short}</a>\n'
 
     season_html = ""
@@ -1458,14 +1461,17 @@ def generate_about(data: dict = None) -> None:
 
 def generate_racer_index(data: dict) -> None:
     from collections import defaultdict
-    # Collect all racers across all clubs and seasons
+    current_club = _current_racer_club
+    # Only list racers that have a page in the current club
+    racer_club_dir = SITE_DIR / current_club / "racer"
+    valid_slugs = {p.stem for p in racer_club_dir.glob("*.html") if p.name != "index.html"}
+
     racer_data: dict[str, dict] = defaultdict(dict)
-    for club_id, club in data["clubs"].items():
-        for year, season in club["seasons"].items():
-            for race in season["races"]:
-                for r in race["results"]:
-                    key = r["canonical_name"]
-                    # Keep entry with most races
+    for year, season in data["clubs"][current_club]["seasons"].items():
+        for race in season["races"]:
+            for r in race["results"]:
+                key = r["canonical_name"]
+                if _slug(key) in valid_slugs:
                     if not racer_data[key] or r["num_races"] > racer_data[key].get("num_races", 0):
                         racer_data[key] = r
 
@@ -1474,7 +1480,7 @@ def generate_racer_index(data: dict) -> None:
         r = racer_data[name]
         rows += f'<tr><td><a href="{_slug(name)}.html">{name}</a></td><td>{display_craft_ui(r["craft_category"])}</td></tr>\n'
 
-    html = _head("Racers") + _nav("Racers", data=data, depth=2) + _selector_bar(data, show_season=False) + f"""
+    html = _head("Racers") + _nav("Racers", data=data, depth=2) + _selector_bar(data, show_season=False, page="racer/index") + f"""
 <div class="container">
   <h1>Racers</h1>
   <table id="racer-index" class="table table-striped table-hover">
