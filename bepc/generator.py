@@ -1276,6 +1276,26 @@ document.getElementById('racer-select').addEventListener('change', function() {
         all_charts_js = ""
         body_html = ""
 
+        # Personal stats summary (feature #2)
+        club_results = by_club.get(current_club, {})
+        all_results = [r for year_crafts in club_results.values() for results in year_crafts.values() for r in results]
+        if all_results:
+            total_races = len(all_results)
+            best_hcap = min((r["handicap_post"] for r in all_results if r["handicap_post"] > 0), default=None)
+            current_hcap = all_results[-1]["handicap_post"] if all_results else None
+            best_finish = min((r["adjusted_place"] for r in all_results), default=None)
+            wins = sum(1 for r in all_results if "hcap_1" in r.get("trophies", []))
+            podiums = sum(1 for r in all_results if any(t in r.get("trophies", []) for t in ["hcap_1","hcap_2","hcap_3"]))
+            stats_html = f"""<div class="d-flex flex-wrap gap-3 mb-3 p-3 bg-light rounded">
+  <div class="text-center"><div class="fw-bold fs-5">{total_races}</div><div class="text-muted small">Races</div></div>
+  <div class="text-center"><div class="fw-bold fs-5">{wins}</div><div class="text-muted small">Wins</div></div>
+  <div class="text-center"><div class="fw-bold fs-5">{podiums}</div><div class="text-muted small">Podiums</div></div>
+  {f'<div class="text-center"><div class="fw-bold fs-5">{best_hcap:.3f}</div><div class="text-muted small">Best Handicap</div></div>' if best_hcap else ''}
+  {f'<div class="text-center"><div class="fw-bold fs-5">{current_hcap:.3f}</div><div class="text-muted small">Current Handicap</div></div>' if current_hcap else ''}
+</div>"""
+        else:
+            stats_html = ""
+
         racer_clubs = list(by_club.keys())  # clubs this racer has data for
 
         for club_id, years in sorted(by_club.items()):
@@ -1352,6 +1372,25 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 </table>{cw_close}"""
 
                 craft_content += "</div>"  # close tab-content div
+
+                # "Also raced" — racers who appeared in ≥2 same races this season (feature #3)
+                season_races = data["clubs"][current_club]["seasons"].get(year, {}).get("races", [])
+                racer_race_ids = {race["race_id"] for race in season_races for r in race["results"] if r["canonical_name"] == name}
+                co_racers: dict[str, int] = {}
+                for race in season_races:
+                    if race["race_id"] in racer_race_ids:
+                        for r in race["results"]:
+                            n = r["canonical_name"]
+                            if n != name:
+                                co_racers[n] = co_racers.get(n, 0) + 1
+                frequent = sorted([(n, c) for n, c in co_racers.items() if c >= 2], key=lambda x: -x[1])[:12]
+                if frequent:
+                    also_links = " ".join(
+                        f'<a href="{_slug(n)}.html" class="badge bg-light text-dark border text-decoration-none">{n}</a>'
+                        for n, _ in frequent
+                    )
+                    craft_content += f'<div class="mt-3 pt-2 border-top"><span class="text-muted small fw-semibold">Also raced this season: </span>{also_links}</div>'
+
                 body_html += f"{craft_tabs}{craft_content}</div>"  # close data-season div
 
         season_tab_js = f"""<script>
@@ -1418,6 +1457,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 <div class="container">
   {racer_nav}
   <h2>{name}</h2>
+  {stats_html}
   {body_html}
 </div>
 <script>{all_charts_js}</script>
@@ -1540,14 +1580,29 @@ def generate_racer_index(data: dict) -> None:
 
 def generate_platform_home(data: dict) -> None:
     """Generate the PaddleClub platform home page with club list and recent race feed."""
-    import yaml
+    import yaml, json as _json
     clubs_config_path = Path(__file__).parent.parent / "data" / "clubs.yaml"
     clubs_cfg = {}
     if clubs_config_path.exists():
         with open(clubs_config_path) as f:
             clubs_cfg = yaml.safe_load(f).get("clubs", {})
 
-    # Build recent races feed — collect all races, track which clubs each appears in
+    # Build racer search map: [{name, slug, clubs: [club_id,...]}]
+    racer_clubs: dict[str, set] = {}
+    for club_id, club in data["clubs"].items():
+        racer_dir = SITE_DIR / club_id / "racer"
+        for page in racer_dir.glob("*.html"):
+            if page.name == "index.html": continue
+            # Find canonical name from data
+            for year, season in club["seasons"].items():
+                for race in season["races"]:
+                    for r in race["results"]:
+                        if _slug(r["canonical_name"]) == page.stem:
+                            racer_clubs.setdefault(r["canonical_name"], set()).add(club_id)
+    racer_search_map = _json.dumps([
+        {"name": name, "slug": _slug(name), "clubs": sorted(clubs)}
+        for name, clubs in sorted(racer_clubs.items())
+    ])
     race_map = {}  # (base_name, date) -> entry
     for club_id, club in data["clubs"].items():
         cfg = clubs_cfg.get(club_id, {})
@@ -1674,6 +1729,7 @@ def generate_platform_home(data: dict) -> None:
   .hero {{ background: #1a1a2e; color: white; padding: 3rem 0 2rem; margin-bottom: 2rem; }}
   .hero h1 {{ font-size: 2.5rem; font-weight: 700; }}
   .hero p {{ font-size: 1.1rem; opacity: 0.85; }}
+  #racer-results {{ max-height: 260px; overflow-y: auto; }}
 </style>
 </head>
 <body>
@@ -1683,6 +1739,14 @@ def generate_platform_home(data: dict) -> None:
   <div class="container">
     <h1>PaddleClub</h1>
     <p>Handicap racing results, standings, and trajectories for paddling clubs and community leagues.</p>
+    <div class="row justify-content-center mt-3">
+      <div class="col-12 col-md-6 position-relative">
+        <input id="racer-search" type="text" class="form-control form-control-lg"
+               placeholder="Find a racer..." autocomplete="off"
+               style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:white;">
+        <div id="racer-results" class="list-group position-absolute w-100 shadow" style="z-index:100;display:none"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1698,6 +1762,37 @@ def generate_platform_home(data: dict) -> None:
     </table>
   </div>
 </div>
+<script>
+(function() {{
+  var RACERS = {racer_search_map};
+  var CLUB_NAMES = {_json.dumps({cid: clubs_cfg.get(cid, {}).get('short_name', cid) for cid in data['clubs']})};
+  var inp = document.getElementById('racer-search');
+  var res = document.getElementById('racer-results');
+  inp.addEventListener('input', function() {{
+    var q = this.value.trim().toLowerCase();
+    res.innerHTML = '';
+    if (q.length < 2) {{ res.style.display = 'none'; return; }}
+    var matches = RACERS.filter(function(r) {{ return r.name.toLowerCase().includes(q); }}).slice(0, 10);
+    if (!matches.length) {{ res.style.display = 'none'; return; }}
+    matches.forEach(function(r) {{
+      var badges = r.clubs.map(function(c) {{
+        return '<a href="' + c + '/racer/' + r.slug + '.html" class="badge bg-secondary text-decoration-none me-1">' + (CLUB_NAMES[c] || c) + '</a>';
+      }}).join('');
+      var item = document.createElement('div');
+      item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+      item.innerHTML = '<span>' + r.name + '</span><span>' + badges + '</span>';
+      res.appendChild(item);
+    }});
+    res.style.display = 'block';
+  }});
+  document.addEventListener('click', function(e) {{
+    if (!inp.contains(e.target) && !res.contains(e.target)) res.style.display = 'none';
+  }});
+  inp.addEventListener('keydown', function(e) {{
+    if (e.key === 'Escape') res.style.display = 'none';
+  }});
+}})();
+</script>
 </body>
 </html>"""
 
