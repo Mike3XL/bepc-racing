@@ -751,6 +751,16 @@ function rows(results, placeField) {
             for race in season["races"]:
                 race_courses[race["race_id"]].append(race)
 
+        # Build name-suffix → [(year, slug)] map for "other years" links
+        import re as _re2
+        name_to_slugs: dict[str, list] = defaultdict(list)
+        for yr, rid in all_races:
+            s = id_to_slug.get(rid, str(rid))
+            # Name suffix = everything after YYYY-MM-DD-
+            m = _re2.match(r'\d{4}-\d{2}-\d{2}-(.*)', s)
+            if m:
+                name_to_slugs[m.group(1)].append((yr, s))
+
         count = 0
         for i, (year, race_id) in enumerate(all_races):
             slug_name = id_to_slug.get(race_id, str(race_id))
@@ -772,6 +782,16 @@ function rows(results, placeField) {
 
             prev_link = f'<a href="{prev_slug}.html" class="btn btn-outline-secondary btn-sm">&larr; Prev</a>' if prev_slug else '<span class="btn btn-outline-secondary btn-sm disabled">&larr; Prev</span>'
             next_link = f'<a href="{next_slug}.html" class="btn btn-outline-secondary btn-sm">Next &rarr;</a>' if next_slug else '<span class="btn btn-outline-secondary btn-sm disabled">Next &rarr;</span>'
+
+            # Other years links
+            import re as _re3
+            m = _re3.match(r'\d{4}-\d{2}-\d{2}-(.*)', slug_name)
+            name_suffix = m.group(1) if m else ""
+            other_years = [(yr, s) for yr, s in name_to_slugs.get(name_suffix, []) if s != slug_name]
+            other_years_html = ""
+            if other_years:
+                links = " ".join(f'<a href="{s}.html" class="btn btn-outline-secondary btn-sm">{yr}</a>' for yr, s in sorted(other_years))
+                other_years_html = f'<span class="text-muted small ms-2">Other years:</span> {links}'
             source_link = f'<a href="{display_url}" target="_blank" class="btn btn-outline-secondary btn-sm">Source ↗</a>' if display_url else ''
 
             html = _head(base_name) + _nav("Results", data=data, depth=2) + f"""
@@ -781,6 +801,7 @@ function rows(results, placeField) {
       {prev_link}
       {next_link}
       <a href="../races.html#{year}" class="btn btn-outline-secondary btn-sm">{year} Races ↑</a>
+      {other_years_html}
     </div>
   </div>
 </div>
