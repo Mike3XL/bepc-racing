@@ -6,6 +6,17 @@ Follow the architecture and conventions described in #[[file:SPEC.md]]
 - Mike is a BEPC member and surfski racer — this is his club's race analytics site
 - Chicago 17th edition for any document citations
 
+## CRITICAL: Name aliases — always check before discussing racers
+
+**Whenever a racer name is mentioned** (in conversation, debugging, or analysis), ALWAYS:
+1. Check `data/<club>/aliases.json` — the name Mike uses may not be the canonical name
+2. Common patterns: Matt → Matthew, Eli → Elizabeth, typos (MAtthew), last-first format (Sun, Matthew)
+3. Search for the canonical name in `site/data.json`, not the colloquial name
+4. If a racer "has no page", first verify their canonical name before concluding the page is missing
+
+Example: "Matt Sun" → canonical is "Matthew Sun" (page: matthew-sun.html)
+Example: "Eli Holmes" → canonical is "Elizabeth Holmes" (page: elizabeth-holmes.html)
+
 ## Conventions
 
 - Handicap result is the primary competition — always default to handicap view

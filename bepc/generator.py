@@ -128,7 +128,7 @@ def _nav(active: str = "", prefix: str = "", data: dict = None, is_global: bool 
     if is_global:
         # On global pages (home, about), per-club links are resolved via JS onclick
         pages = [
-            ("home.html", "Home"),
+            ("index.html", "Home"),
             (f"races-{club}.html", "Races", True),
             (f"index-{club}.html", "Results", True),
             (f"standings-{club}.html", "Standings", True),
@@ -138,7 +138,7 @@ def _nav(active: str = "", prefix: str = "", data: dict = None, is_global: bool 
         ]
     else:
         pages = [
-            ("home.html", "Home"),
+            ("index.html", "Home"),
             (f"races-{club}.html", "Races"),
             (f"index-{club}.html", "Results"),
             (f"standings-{club}.html", "Standings"),
@@ -160,7 +160,7 @@ def _nav(active: str = "", prefix: str = "", data: dict = None, is_global: bool 
 
     return f"""<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
   <div class="container">
-    <a class="navbar-brand" href="{prefix}home.html">🏄 PaddleClub</a>
+    <a class="navbar-brand" href="{prefix}index.html">🏄 PaddleClub</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -1670,8 +1670,8 @@ def generate_platform_home(data: dict) -> None:
 </body>
 </html>"""
 
-    (SITE_DIR / "home.html").write_text(html)
-    print("Generated: site/home.html")
+    (SITE_DIR / "index.html").write_text(html)
+    print("Generated: site/index.html")
 
 
 def generate_races_list(data: dict) -> None:
