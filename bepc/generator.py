@@ -123,44 +123,49 @@ def _head(title: str, extra_css: str = "") -> str:
 {_SEASON_JS}"""
 
 
-def _nav(active: str = "", prefix: str = "", data: dict = None, is_global: bool = False) -> str:
+def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
+    """depth: 0=global (index/about), 1=club page, 2=racer page"""
     club = data["current_club"] if data else "bepc"
-    if is_global:
-        # On global pages (home, about), per-club links are resolved via JS onclick
+    # Relative prefix to site root
+    root = "../" * depth  # depth=0 → "", depth=1 → "../", depth=2 → "../../"
+    # Relative prefix to club dir from current page
+    club_prefix = "" if depth == 1 else ("../" if depth == 2 else f"{club}/")
+
+    if depth == 0:
+        # Global page — club links resolved via JS
         pages = [
-            ("index.html", "Home"),
-            (f"races-{club}.html", "Races", True),
-            (f"index-{club}.html", "Results", True),
-            (f"standings-{club}.html", "Standings", True),
-            (f"trajectories-{club}.html", "Trajectories", True),
-            (f"racer/{_current_racer_club}/index.html", "Racers"),
-            ("about.html", "About"),
+            (f"{root}index.html", "Home"),
+            (f"{club}/races.html", "Races", True),
+            (f"{club}/results.html", "Results", True),
+            (f"{club}/standings.html", "Standings", True),
+            (f"{club}/trajectories.html", "Trajectories", True),
+            (f"{club}/racer/index.html", "Racers", True),
+            (f"{root}about.html", "About"),
         ]
     else:
         pages = [
-            ("index.html", "Home"),
-            (f"races-{club}.html", "Races"),
-            (f"index-{club}.html", "Results"),
-            (f"standings-{club}.html", "Standings"),
-            (f"trajectories-{club}.html", "Trajectories"),
-            (f"racer/{_current_racer_club}/index.html", "Racers"),
-            ("about.html", "About"),
+            (f"{root}index.html", "Home"),
+            (f"{club_prefix}races.html", "Races"),
+            (f"{club_prefix}results.html", "Results"),
+            (f"{club_prefix}standings.html", "Standings"),
+            (f"{club_prefix}trajectories.html", "Trajectories"),
+            (f"{club_prefix}racer/index.html", "Racers"),
+            (f"{root}about.html", "About"),
         ]
+
     items = ""
     for entry in pages:
         href, label = entry[0], entry[1]
         dynamic = len(entry) > 2 and entry[2]
         cls = "nav-link active" if label == active else "nav-link"
         if dynamic:
-            # JS resolves correct club at click time
-            base = href.split(f"-{club}.html")[0]
-            items += f'<li class="nav-item"><a class="{cls}" href="{prefix}{href}" onclick="var c=localStorage.getItem(\'pc_club\')||\'{club}\'; this.href=\'{prefix}{base}-\'+c+\'.html\'">{label}</a></li>\n'
+            items += f'<li class="nav-item"><a class="{cls}" href="{href}" onclick="var c=localStorage.getItem(\'pc_club\')||\'{club}\'; this.href=c+\'/{label.lower()}.html\'">{label}</a></li>\n'
         else:
-            items += f'<li class="nav-item"><a class="{cls}" href="{prefix}{href}">{label}</a></li>\n'
+            items += f'<li class="nav-item"><a class="{cls}" href="{href}">{label}</a></li>\n'
 
     return f"""<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
   <div class="container">
-    <a class="navbar-brand" href="{prefix}index.html">🏄 PaddleClub</a>
+    <a class="navbar-brand" href="{root}index.html">🏄 PaddleClub</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -171,10 +176,10 @@ def _nav(active: str = "", prefix: str = "", data: dict = None, is_global: bool 
 </nav>"""
 
 
-def _selector_bar(data: dict, show_season: bool = True, racer_clubs: list = None, page: str = None) -> str:
-    """Horizontal selector bar below navbar: club pills + season dropdown.
-    page: page base name (e.g. 'standings', 'races', 'index', 'trajectories') for per-club <a> links.
-          If None, club buttons use JS reload (global pages / racer pages).
+def _selector_bar(data: dict, show_season: bool = True, page: str = None) -> str:
+    """Horizontal selector bar: club pills + season dropdown.
+    page: page name within club dir (e.g. 'races', 'results', 'standings', 'trajectories').
+          Club buttons link to '../{club}/{page}.html'. If None, no club buttons shown.
     """
     if not data:
         return ""
@@ -196,25 +201,20 @@ def _selector_bar(data: dict, show_season: bool = True, racer_clubs: list = None
         for cid, club in data["clubs"].items()
     ) + "}"
 
-    # Build club buttons — <a> links for per-club pages, buttons for global/racer pages
+    # Club buttons — <a> links to sibling club dirs
     club_btns = ""
-    for club_id, club in data["clubs"].items():
-        if racer_clubs is not None and club_id not in racer_clubs:
-            continue
-        short = clubs_cfg.get(club_id, {}).get("short_name", club.get("name", club_id))
-        active_cls = " active" if club_id == current_club else ""
-        if page:
-            club_btns += f'<a class="btn btn-sm btn-outline-secondary{active_cls}" data-club="{club_id}" href="{page}-{club_id}.html">{short}</a>\n'
-        else:
-            club_btns += f'<button type="button" class="btn btn-sm btn-outline-secondary{active_cls}" data-club="{club_id}">{short}</button>\n'
+    if page:
+        for club_id, club in data["clubs"].items():
+            short = clubs_cfg.get(club_id, {}).get("short_name", club.get("name", club_id))
+            active_cls = " active" if club_id == current_club else ""
+            href = f"../{club_id}/{page}.html" if club_id != current_club else f"{page}.html"
+            club_btns += f'<a class="btn btn-sm btn-outline-secondary{active_cls}" data-club="{club_id}" href="{href}">{short}</a>\n'
 
     season_html = ""
     if show_season:
         season_html = "<div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='width:auto'></select></div>"
 
     if page:
-        # Per-club page: year from hash, club buttons are plain <a> links
-        # JS: populate season selector, update hash+pc_year on change, update club button hrefs with current year
         club_js = f"""
 (function() {{
   var ALL_CLUB_SEASONS = {all_seasons_js};
@@ -233,61 +233,35 @@ def _selector_bar(data: dict, show_season: bool = True, racer_clubs: list = None
       var yr = this.value;
       localStorage.setItem('pc_year', yr);
       location.hash = yr;
-      // Update club button hrefs to carry new year
       document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {{
         a.href = a.href.split('#')[0] + '#' + yr;
       }});
     }});
   }}
-  // Set initial hash and pc_year; update club button hrefs
   if (location.hash !== '#' + active) location.replace(location.pathname + '#' + active);
   localStorage.setItem('pc_year', active);
+  localStorage.setItem('pc_club', '{current_club}');
   document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {{
     a.href = a.href.split('#')[0] + '#' + active;
   }});
 }})();"""
     else:
-        # Global/racer page: club buttons use JS reload, year from pc_year
-        club_js = f"""
-(function() {{
-  var ALL_CLUB_SEASONS = {all_seasons_js};
-  var stored = localStorage.getItem('pc_club') || '{current_club}';
-  if (!ALL_CLUB_SEASONS[stored]) stored = '{current_club}';
-  document.querySelectorAll('#club-btn-group button').forEach(function(btn) {{
-    var clubId = btn.dataset.club;
-    if (!clubId) return;
-    if (clubId === stored) btn.classList.add('active');
-    btn.addEventListener('click', function() {{
-      var yr = document.getElementById('season-select');
-      localStorage.setItem('pc_club', clubId);
-      if (yr) localStorage.setItem('pc_year', yr.value);
-      window.location.reload();
-    }});
-  }});
-  var sel = document.getElementById('season-select');
-  if (sel) {{
-    var info = ALL_CLUB_SEASONS[stored];
-    var saved = localStorage.getItem('pc_year');
-    var active = (saved && info.years.indexOf(saved) >= 0) ? saved : info.current;
-    sel.innerHTML = info.years.map(function(y) {{
-      return '<option value="' + y + '"' + (y === active ? ' selected' : '') + '>' + y + ' Season</option>';
-    }}).join('');
-    localStorage.setItem('pc_year', active);
-  }}
-}})();"""
+        club_js = ""
+
+    club_row = f"""<div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Club</span>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group">{club_btns}</div>
+      </div>""" if club_btns else ""
 
     return f"""<div class="bg-light border-bottom mb-4">
   <div class="container py-2">
     <div class="d-flex flex-wrap align-items-center gap-3">
-      <div class="d-flex align-items-center gap-2">
-        <span class="text-muted small fw-semibold">Club</span>
-        <div class="btn-group flex-wrap" id="club-btn-group" role="group">{club_btns}</div>
-      </div>
+      {club_row}
       {season_html}
     </div>
   </div>
 </div>
-<script>{club_js}</script>"""
+{"<script>" + club_js + "</script>" if club_js else ""}"""
 
 
 def _foot(extra_js: str = "") -> str:
@@ -316,13 +290,13 @@ def _racer_link(name: str, back: str = "") -> str:
     slug = _slug(name)
     if slug not in _valid_racer_slugs:
         return name
-    return f'<a href="racer/{_current_racer_club}/{slug}.html">{name}</a>'
+    return f'<a href="racer/{slug}.html">{name}</a>'
 
 
 def _racer_slugs_js() -> str:
-    """JS snippet declaring RACER_SLUGS set and RACER_CLUB for use in client-side templates."""
+    """JS snippet declaring RACER_SLUGS set for use in client-side templates."""
     slugs_json = json.dumps(sorted(_valid_racer_slugs))
-    return f"const RACER_SLUGS = new Set({slugs_json});\nconst RACER_CLUB = {json.dumps(_current_racer_club)};"
+    return f"const RACER_SLUGS = new Set({slugs_json});"
 
 
 def _slug(name: str) -> str:
@@ -434,8 +408,7 @@ def generate_data_files(data: dict) -> None:
                       "points": r["season_points"]} for r in hpts],
         }
     (SITE_DIR / f"standings-data-{data['current_club']}.json").write_text(json.dumps(standings_data))
-    # Keep legacy filename for current club for backward compat
-    (SITE_DIR / "standings-data.json").write_text(json.dumps(standings_data))
+    (SITE_DIR / data['current_club'] / "standings-data.json").write_text(json.dumps(standings_data))
 
     # races-data.json
     from collections import defaultdict
@@ -468,7 +441,7 @@ def generate_data_files(data: dict) -> None:
             })
         races_data["seasons"][year] = race_days
     (SITE_DIR / f"races-data-{data['current_club']}.json").write_text(json.dumps(races_data))
-    (SITE_DIR / "races-data.json").write_text(json.dumps(races_data))
+    (SITE_DIR / data['current_club'] / "races-data.json").write_text(json.dumps(races_data))
 
     # trajectories-data.json
     colors = ["#e6194b","#3cb44b","#4363d8","#f58231","#911eb4","#42d4f4","#f032e6",
@@ -479,7 +452,7 @@ def generate_data_files(data: dict) -> None:
         pts, hpts, hnum = _build_traj_series(season["races"], colors)
         traj_data["seasons"][year] = {"pts": pts, "hpts": hpts, "hnum": hnum}
     (SITE_DIR / f"trajectories-data-{data['current_club']}.json").write_text(json.dumps(traj_data))
-    (SITE_DIR / "trajectories-data.json").write_text(json.dumps(traj_data))
+    (SITE_DIR / data['current_club'] / "trajectories-data.json").write_text(json.dumps(traj_data))
 
     print("Generated: site/*-data.json (3 files)")
 
@@ -491,7 +464,7 @@ def _loading_spinner() -> str:
 def generate_standings(data: dict) -> None:
     for club_id in data["clubs"]:
         data["current_club"] = club_id
-        html = _head("Standings") + _nav("Standings", data=data) + _selector_bar(data, page="standings") + f"""
+        html = _head("Standings") + _nav("Standings", data=data, depth=1) + _selector_bar(data, page="standings") + f"""
 <div class="container">
   <h1 class="mb-3">Standings</h1>
   <ul class="nav nav-tabs mb-3">
@@ -524,7 +497,7 @@ function render(year) {{
   if (dtPts) {{ dtPts.destroy(); dtPts = null; }}
   if (dtHpts) {{ dtHpts.destroy(); dtHpts = null; }}
   const fmtGender = g => g === 'Female/Male' ? 'Mixed' : g;
-  const racerLink = (name, slug) => RACER_SLUGS.has(slug) ? `<a href="racer/{_current_racer_club}/${{slug}}.html">${{name}}</a>` : name;
+  const racerLink = (name, slug) => RACER_SLUGS.has(slug) ? `<a href="racer/${{slug}}.html">${{name}}</a>` : name;
   const row = r => `<tr><td></td><td>${{racerLink(r.name, r.name.toLowerCase().replace(/ /g,'-'))}}</td><td>${{r.craft}}</td><td>${{fmtGender(r.gender)}}</td><td style="white-space:nowrap">${{r.trophies||''}}</td><td>${{r.races}}</td><td>${{r.hpts}}</td><td>${{r.hcap}}</td><td>${{r.points}}</td></tr>`;
   document.getElementById('body-hpts').innerHTML = s.hpts.map(row).join('');
   document.getElementById('body-pts').innerHTML = s.hpts.map(row).join('');
@@ -543,7 +516,7 @@ function render(year) {{
   addRowNumbers(dtPts);
 }}
 window.addEventListener('DOMContentLoaded', () => {{
-  fetchData('standings-data-{club_id}.json', d => {{
+  fetchData('standings-data.json', d => {{
     SEASONS = d.seasons;
     const yr = getSeason(d.current_year);
     const sel = document.getElementById('season-select');
@@ -557,8 +530,8 @@ window.addEventListener('DOMContentLoaded', () => {{
   }});
 }});
 </script>""" + _foot()
-        (SITE_DIR / f"standings-{club_id}.html").write_text(html)
-        print(f"Generated: site/standings-{club_id}.html")
+        (SITE_DIR / club_id / "standings.html").write_text(html)
+        print(f"Generated: site/{club_id}/standings.html")
 
 
 def generate_races(data: dict) -> None:
@@ -567,7 +540,7 @@ def generate_races(data: dict) -> None:
         club = data["clubs"][club_id]
         current_year = club["current_season"]
 
-        html = _head("Results") + _nav("Results", data=data) + _selector_bar(data, page="index") + f"""
+        html = _head("Results") + _nav("Results", data=data, depth=1) + _selector_bar(data, page="results") + f"""
 <div class="container">
   <h1 class="mb-3">Results</h1>
   <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
@@ -585,7 +558,7 @@ let currentYear = '{current_year}';
 let currentIndex = 0;
 
 function slug(name) {{ return name.toLowerCase().replace(/ /g, '-'); }}
-function racerLink(name) {{ const s = slug(name); return RACER_SLUGS.has(s) ? `<a href="racer/{_current_racer_club}/${{s}}.html">${{name}}</a>` : name; }}
+function racerLink(name) {{ const s = slug(name); return RACER_SLUGS.has(s) ? `<a href="racer/${{s}}.html">${{name}}</a>` : name; }}
 function display_craft_ui(cat) {{
   if (!cat || cat === 'Unknown') return '';
   const sprint = cat.match(/^Sprint-K(\\d+)$/); if (sprint) return 'K-' + sprint[1] + ' (sprint)';
@@ -762,7 +735,7 @@ function renderRace(index) {{
         const r = pr[cfg.idx];
         const s = r ? slug(r.canonical_name) : null;
         const name = r
-          ? (RACER_SLUGS.has(s) ? `<a href="racer/{_current_racer_club}/${{s}}.html" style="color:${{cfg.nameColor}};font-weight:600;font-size:0.85em;text-decoration:none;text-align:center;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${{r.canonical_name}}</a>` : `<span style="font-weight:600;font-size:0.85em;text-align:center;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:${{cfg.nameColor}}">${{r.canonical_name}}</span>`)
+          ? (RACER_SLUGS.has(s) ? `<a href="racer/${{s}}.html" style="color:${{cfg.nameColor}};font-weight:600;font-size:0.85em;text-decoration:none;text-align:center;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${{r.canonical_name}}</a>` : `<span style="font-weight:600;font-size:0.85em;text-align:center;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:${{cfg.nameColor}}">${{r.canonical_name}}</span>`)
           : `<span style="color:#bbb;font-size:0.85em">—</span>`;
         podiumHtml += `<div style="display:flex;flex-direction:column;align-items:center;gap:3px;width:${{cfg.width}};min-width:0;flex-shrink:1">
             ${{cfg.cup}}
@@ -820,7 +793,7 @@ document.addEventListener('DOMContentLoaded', () => {{
   document.getElementById('race-select').addEventListener('change', e => renderRace(parseInt(e.target.value)));
   document.getElementById('season-select').addEventListener('change', e => {{ setSeason(e.target.value); loadSeason(e.target.value); }});
   const club = localStorage.getItem('pc_club') || '{club_id}';
-  fetchData(`races-data-{club_id}.json`, d => {{
+  fetchData(`races-data.json`, d => {{
     SEASONS = d.seasons;
     const sel = document.getElementById('season-select');
     const yr = getSeason(d.current_year);
@@ -838,8 +811,8 @@ document.addEventListener('DOMContentLoaded', () => {{
   }});
 }});
 </script>""" + _foot()
-        (SITE_DIR / f"index-{club_id}.html").write_text(html)
-        print(f"Generated: site/index-{club_id}.html")
+        (SITE_DIR / club_id / "results.html").write_text(html)
+        print(f"Generated: site/{club_id}/results.html")
 
 _SHORT_LABELS = {
     'Pnworca1': 'PNWORCA #1', 'Pnworca2': 'PNWORCA #2', 'Pnworca3': 'PNWORCA #3',
@@ -1102,7 +1075,7 @@ function resetHighlight(chart) {
 }
         """
 
-        html = _head("Trajectories", _CHARTJS) + _nav("Trajectories", data=data) + _selector_bar(data, page="trajectories") + f"""
+        html = _head("Trajectories", _CHARTJS) + _nav("Trajectories", data=data, depth=1) + _selector_bar(data, page="trajectories") + f"""
 <div class="container">
   <h1 class="mb-3">Trajectories</h1>
   <div id="traj-content">
@@ -1140,7 +1113,7 @@ function loadTrajSeason(year) {{
   }});
 }}
 window.addEventListener('DOMContentLoaded', () => {{
-  fetchData('trajectories-data-{club_id}.json', d => {{
+  fetchData('trajectories-data.json', d => {{
     ALL_SEASONS = d.seasons;
     const sel = document.getElementById('season-select');
     const yr = getSeason(d.current_year);
@@ -1154,8 +1127,8 @@ window.addEventListener('DOMContentLoaded', () => {{
   }});
 }});
 </script>""" + _foot()
-        (SITE_DIR / f"trajectories-{club_id}.html").write_text(html)
-        print(f"Generated: site/trajectories-{club_id}.html")
+        (SITE_DIR / club_id / "trajectories.html").write_text(html)
+        print(f"Generated: site/{club_id}/trajectories.html")
 
 
 def _fmt_time(seconds: float) -> str:
@@ -1203,7 +1176,7 @@ def generate_racer_pages(data: dict) -> None:
     MIN_RACER_PAGES = data["clubs"].get(current_club, {}).get("min_races_for_page", 1)
 
     # Remove stale racer pages for this club before regenerating
-    racer_club_dir = SITE_DIR / "racer" / current_club
+    racer_club_dir = SITE_DIR / current_club / "racer"
     racer_club_dir.mkdir(parents=True, exist_ok=True)
     for stale in racer_club_dir.glob("*.html"):
         if stale.name != "index.html":
@@ -1324,7 +1297,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 }});"""
 
                     rows = "".join(
-                        f'<tr><td><a href="../../index-{data["current_club"]}.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
+                        f'<tr><td><a href="../results.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
                         f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
                         f'<td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td>'
                         f'<td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td>'
@@ -1348,7 +1321,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
   <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Adj</th><th>Time</th><th>Adj Time</th><th>Hcap</th><th>New</th><th>Pts</th><th>HPts</th></tr></thead>
   <tbody>{"".join(
       f'<tr><td style="white-space:nowrap">{_racer_trophy_badges(r.get("trophies",[]))}</td>'
-      f'<td><a href="../../index-{data["current_club"]}.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
+      f'<td><a href="../results.html#{r["race_id"]}">{r["name"].split(" — ")[0]}</a></td>'
       f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
       f'<td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td>'
       f'<td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td>'
@@ -1403,7 +1376,17 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 }})();
 </script>"""
 
-        html = _head(name, _CHARTJS) + _nav("Racers", prefix="../../", data=data) + _selector_bar(data) + f"""
+        html = _head(name, _CHARTJS) + _nav("Racers", data=data, depth=2) + f"""
+<div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Club</span>
+        <div class="btn-group flex-wrap" id="club-nav"></div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container">
   {racer_nav}
   <h2>{name}</h2>
@@ -1416,11 +1399,11 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
         (racer_club_dir / f"{slug}.html").write_text(html)
         _valid_racer_slugs.add(slug)
 
-    print(f"Generated: site/racer/{current_club}/ ({len(racer_data)} pages)")
+    print(f"Generated: site/{current_club}/racer/ ({len(racer_data)} pages)")
 
 
 def generate_about(data: dict = None) -> None:
-    html = _head("About — BEPC Handicap System") + _nav("About", data=data, is_global=True) + _selector_bar(data, show_season=False) + """
+    html = _head("About — BEPC Handicap System") + _nav("About", data=data, depth=0) + _selector_bar(data, show_season=False) + """
 <div class="container" style="max-width:720px">
   <h1>About the Handicap System</h1>
   <p class="lead">BEPC uses a dynamic handicap system so all racers can compete and be scored on their relative performance.</p>
@@ -1491,7 +1474,7 @@ def generate_racer_index(data: dict) -> None:
         r = racer_data[name]
         rows += f'<tr><td><a href="{_slug(name)}.html">{name}</a></td><td>{display_craft_ui(r["craft_category"])}</td></tr>\n'
 
-    html = _head("Racers") + _nav("Racers", prefix="../../", data=data) + _selector_bar(data, show_season=False) + f"""
+    html = _head("Racers") + _nav("Racers", data=data, depth=2) + _selector_bar(data, show_season=False) + f"""
 <div class="container">
   <h1>Racers</h1>
   <table id="racer-index" class="table table-striped table-hover">
@@ -1499,9 +1482,9 @@ def generate_racer_index(data: dict) -> None:
     <tbody>{rows}</tbody>
   </table>
 </div>""" + _foot(_datatable_init("racer-index", 0, "asc"))
-    out = SITE_DIR / "racer" / _current_racer_club / "index.html"
+    out = SITE_DIR / _current_racer_club / "racer" / "index.html"
     out.write_text(html)
-    print(f"Generated: site/racer/{_current_racer_club}/index.html")
+    print(f"Generated: site/{_current_racer_club}/racer/index.html")
 
 
 def generate_platform_home(data: dict) -> None:
@@ -1584,7 +1567,7 @@ def generate_platform_home(data: dict) -> None:
               </div>
               <p class="card-text text-muted small">{desc}</p>
               <div class="small text-muted mb-3">{total_races} races · {total_racers} racers · {year_range}</div>
-              <a href="index-{club_id}.html" onclick="localStorage.setItem('pc_club','{club_id}')" class="btn btn-outline-primary btn-sm">View Results →</a>
+              <a href="{club_id}/results.html" onclick="localStorage.setItem('pc_club','{club_id}')" class="btn btn-outline-primary btn-sm">View Results →</a>
             </div>
           </div>
         </div>"""
@@ -1595,7 +1578,7 @@ def generate_platform_home(data: dict) -> None:
         club_links_html = ""
         winners_html = ""
         for c in r["clubs"]:
-            race_link = f'index-{c["id"]}.html#{c["race_id"]}'
+            race_link = f'{c["id"]}/results.html#{c["race_id"]}'
             cls = "text-secondary" if c["type"] == "league" else ""
             club_links_html += f'<a href="{race_link}" onclick="localStorage.setItem(\'pc_club\',\'{c["id"]}\')" class="badge bg-light text-dark border me-1 small fw-normal {cls}">{c["name"]} ↗</a>'
             winners = c.get("winners", [])
@@ -1714,7 +1697,7 @@ def generate_races_list(data: dict) -> None:
                     "courses": courses_data,
                 })
             seasons_data[year] = race_list
-        (SITE_DIR / f"races-list-{club_id}.json").write_text(_json.dumps({"seasons": seasons_data, "current": club["current_season"]}))
+        (SITE_DIR / club_id / "races-list.json").write_text(_json.dumps({"seasons": seasons_data, "current": club["current_season"]}))
 
     # Generate per-club HTML pages
     for club_id in data["clubs"]:
@@ -1729,7 +1712,7 @@ const CUP = {
 };
         """
 
-        html = _head("Races") + _nav("Races", data=data) + _selector_bar(data, page="races") + f"""
+        html = _head("Races") + _nav("Races", data=data, depth=1) + _selector_bar(data, page="races") + f"""
 <div class="container">
   <h1 class="mb-3">Races</h1>
   <div id="races-content"></div>
@@ -1744,7 +1727,7 @@ function podiumHtml(course) {{
   [1,2,3].forEach(function(p) {{
     if (w[p]) {{
       var nameHtml = RACER_SLUGS.has(w[p].slug)
-        ? '<a href="racer/' + RACER_CLUB + '/' + w[p].slug + '.html" class="small text-truncate" style="max-width:130px">' + w[p].name + '</a>'
+        ? '<a href="racer/' + w[p].slug + '.html" class="small text-truncate" style="max-width:130px">' + w[p].name + '</a>'
         : '<span class="small text-truncate" style="max-width:130px">' + w[p].name + '</span>';
       rows += '<div class="d-flex align-items-center gap-1 text-nowrap">' + CUP[p] + nameHtml + '</div>';
     }}
@@ -1758,7 +1741,7 @@ function renderRacesList(d, year) {{
   var rows = races.map(function(r) {{
     var podiums = r.courses.map(podiumHtml).join('');
     return '<tr><td class="text-muted small text-nowrap">' + r.date + '</td>'
-      + '<td><a href="index-{club_id}.html#' + r.race_id + '">' + r.name + '</a></td>'
+      + '<td><a href="results.html#' + r.race_id + '">' + r.name + '</a></td>'
       + '<td class="text-muted small text-center">' + r.starters + '</td>'
       + '<td><div class="d-flex flex-wrap">' + podiums + '</div></td></tr>';
   }}).join('');
@@ -1770,7 +1753,7 @@ function renderRacesList(d, year) {{
 
 var _racesData = null;
 document.addEventListener('DOMContentLoaded', function() {{
-  fetchData('races-list-{club_id}.json', function(d) {{
+  fetchData('races-list.json', function(d) {{
     _racesData = d;
     var yr = getSeason(d.current);
     var sel = document.getElementById('season-select');
@@ -1784,56 +1767,60 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }});
 </script>""" + _foot()
-        (SITE_DIR / f"races-{club_id}.html").write_text(html)
-        print(f"Generated: site/races-{club_id}.html")
+        (SITE_DIR / club_id / "races.html").write_text(html)
+        print(f"Generated: site/{club_id}/races.html")
 
 
 def generate_cross_club_links() -> None:
-    """Post-processing: add 'Also in X' buttons to racer pages that exist in multiple clubs."""
-    racer_dir = SITE_DIR / "racer"
-    if not racer_dir.exists():
-        return
-    # Build {slug: [club_id, ...]} map
+    """Post-processing: inject correct club nav buttons into racer page placeholders."""
+    import yaml
+    cfg_path = Path(__file__).parent.parent / "data" / "clubs.yaml"
+    clubs_cfg = {}
+    if cfg_path.exists():
+        with open(cfg_path) as f:
+            clubs_cfg = yaml.safe_load(f).get("clubs", {})
+
+    # Build {slug: [club_id, ...]} from site/{club}/racer/*.html
     slug_clubs: dict[str, list] = {}
-    for club_dir in sorted(racer_dir.iterdir()):
+    for club_dir in sorted(SITE_DIR.iterdir()):
         if not club_dir.is_dir():
             continue
-        for page in club_dir.glob("*.html"):
+        racer_dir = club_dir / "racer"
+        if not racer_dir.exists():
+            continue
+        for page in racer_dir.glob("*.html"):
             if page.name == "index.html":
                 continue
             slug_clubs.setdefault(page.stem, []).append(club_dir.name)
 
-    # For each slug in multiple clubs, rewrite club selector buttons as direct links
-    import re as _re
+    # Inject club nav into every racer page
     for slug, clubs in slug_clubs.items():
         for club_id in clubs:
-            page = racer_dir / club_id / f"{slug}.html"
+            page = SITE_DIR / club_id / "racer" / f"{slug}.html"
             html = page.read_text()
-            # Remove placeholder div
-            html = html.replace('<div id="cross-club-nav"></div>', '')
-            # Replace each club button with a link if that club has a page for this racer
-            def replace_btn(m):
-                cid = m.group(1)
-                label = m.group(2)
-                if cid in slug_clubs.get(slug, []):
-                    active = ' active' if cid == club_id else ''
-                    return f'<a href="../../racer/{cid}/{slug}.html" class="btn btn-sm btn-outline-secondary{active}" data-club="{cid}">{label}</a>'
-                return m.group(0)  # leave unchanged
-            html = _re.sub(
-                r'<button[^>]*data-club="([^"]+)"[^>]*>([^<]+)</button>',
-                replace_btn, html
-            )
+            # Build buttons — active for current club, links for others
+            btns = ""
+            for cid in sorted(slug_clubs.get(slug, [])):
+                short = clubs_cfg.get(cid, {}).get("short_name", cid)
+                active = " active" if cid == club_id else ""
+                if cid == club_id:
+                    btns += f'<a class="btn btn-sm btn-outline-secondary{active}" href="{slug}.html">{short}</a>\n'
+                else:
+                    btns += f'<a class="btn btn-sm btn-outline-secondary{active}" href="../../{cid}/racer/{slug}.html">{short}</a>\n'
+            html = html.replace('<div class="btn-group flex-wrap" id="club-nav"></div>',
+                                f'<div class="btn-group flex-wrap" id="club-nav">{btns}</div>')
             page.write_text(html)
 
     multi = sum(1 for clubs in slug_clubs.values() if len(clubs) > 1)
-    if multi:
-        print(f"Cross-club links: {multi} racers linked across clubs")
+    print(f"Cross-club links: {multi} racers linked across clubs")
 
 
 def generate_all(data: dict) -> None:
     global _current_racer_club
     SITE_DIR.mkdir(exist_ok=True)
-    (SITE_DIR / "racer").mkdir(exist_ok=True)
+    # Create per-club subdirs
+    for club_id in data["clubs"]:
+        (SITE_DIR / club_id / "racer").mkdir(parents=True, exist_ok=True)
     # Generate racer pages for all clubs
     original_club = data["current_club"]
     for club_id in data["clubs"]:
