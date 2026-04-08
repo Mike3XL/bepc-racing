@@ -358,7 +358,14 @@ def _racer_link(name: str, back: str = "") -> str:
 
 def _racer_slugs_js() -> str:
     """JS snippet declaring RACER_SLUGS set for use in client-side templates."""
-    slugs_json = json.dumps(sorted(_valid_racer_slugs))
+    # Use current_club from data context — read from the racer dir for that club
+    club = _current_racer_club or "bepc"
+    racer_dir = SITE_DIR / club / "racer"
+    if racer_dir.exists():
+        slugs = sorted(p.stem for p in racer_dir.glob("*.html") if p.name != "index.html")
+    else:
+        slugs = sorted(_valid_racer_slugs)
+    slugs_json = json.dumps(slugs)
     return f"const RACER_SLUGS = new Set({slugs_json});"
 
 
@@ -525,8 +532,10 @@ def _loading_spinner() -> str:
 
 
 def generate_standings(data: dict) -> None:
+    global _current_racer_club
     for club_id in data["clubs"]:
         data["current_club"] = club_id
+        _current_racer_club = club_id
         html = _head("Standings") + _nav("Standings", data=data, depth=1) + _selector_bar(data, page="standings") + f"""
 <div class="container">
   <h1 class="mb-3">Standings</h1>
@@ -599,6 +608,7 @@ window.addEventListener('DOMContentLoaded', () => {{
 
 def generate_races(data: dict) -> None:
     """Generate per-race HTML files: site/{club}/results/{slug}.html"""
+    global _current_racer_club
     import json as _json
     from collections import defaultdict
 
@@ -715,6 +725,7 @@ function rows(results, placeField) {
 
     for club_id in data["clubs"]:
         data["current_club"] = club_id
+        _current_racer_club = club_id
         club = data["clubs"][club_id]
         results_dir = SITE_DIR / club_id / "results"
         results_dir.mkdir(parents=True, exist_ok=True)
@@ -995,8 +1006,10 @@ def _build_traj_series(races: list, colors: list) -> tuple:
 
 
 def generate_trajectories(data: dict) -> None:
+    global _current_racer_club
     for club_id in data["clubs"]:
         data["current_club"] = club_id
+        _current_racer_club = club_id
         club = data["clubs"][club_id]
         current_year = club["current_season"]
 
@@ -1908,8 +1921,10 @@ def generate_races_list(data: dict) -> None:
         (SITE_DIR / club_id / "races-list.json").write_text(_json.dumps({"seasons": seasons_data, "current": club["current_season"]}))
 
     # Generate per-club HTML pages
+    global _current_racer_club
     for club_id in data["clubs"]:
         data["current_club"] = club_id
+        _current_racer_club = club_id
         import json as _json2
         slug_map_js = "const raceSlugMap = " + _json2.dumps(data.get("race_slugs", {}).get(club_id, {})) + ";"
 
