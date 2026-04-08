@@ -767,13 +767,6 @@ function rows(results, placeField) {
 <div class="container">
   <h1 class="mb-1">{base_name}</h1>
   <p class="text-muted">{date} · {total_starters} starters{(' · <a href="' + display_url + '" target="_blank">Source ↗</a>') if display_url else ''}</p>
-  <div class="mb-2">
-    <select id="racer-filter" class="form-select form-select-sm w-auto d-inline-block">
-      <option value="all">All racers</option>
-      <option value="eligible">Eligible only</option>
-      <option value="regular">Regulars only</option>
-    </select>
-  </div>
   <div id="course-content"></div>
 </div>
 <script>
@@ -790,7 +783,9 @@ document.addEventListener('DOMContentLoaded', () => {{
     tabNav += `<li class="nav-item"><button class="nav-link ${{active}}" data-bs-toggle="tab" data-bs-target="#course-${{origIdx}}">${{course.label || 'Results'}}</button></li>`;
     tabContent += `<div class="tab-pane ${{active}} p-3 border border-top-0" id="course-${{origIdx}}">${{podiumForCourse(course)}}${{tableHtml(origIdx)}}</div>`;
   }});
-  tabNav += '</ul>'; tabContent += '</div>';
+  const filterHtml = '<select id="racer-filter" class="form-select form-select-sm ms-auto" style="width:auto;align-self:flex-end;margin-bottom:1px"><option value="all">All racers</option><option value="eligible">Eligible only</option><option value="regular">Regulars only</option></select>';
+  tabNav = '<div class="d-flex align-items-end gap-2">' + tabNav + '</ul>' + filterHtml + '</div>';
+  tabContent += '</div>';
   document.getElementById('course-content').innerHTML = tabNav + tabContent;
   COURSES.forEach((course, i) => {{
     document.getElementById(`body-finish-${{i}}`).innerHTML = rows(course.finish, 'original_place');
