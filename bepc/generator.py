@@ -1817,18 +1817,23 @@ def generate_platform_home(data: dict) -> None:
                 continue
             if race_date < today:
                 continue
-            club_id = race.get("club", "")
-            if club_counts[club_id] >= 4:
+            # Support both 'club' (single) and 'clubs' (list)
+            race_clubs = race.get("clubs", [race.get("club", "")] if race.get("club") else [])
+            # Use first club for count limiting (primary club)
+            primary = race_clubs[0] if race_clubs else ""
+            if club_counts[primary] >= 4:
                 continue
             if len(upcoming_races) >= 10:
                 break
-            club_counts[club_id] += 1
-            cfg = clubs_cfg.get(club_id, {})
+            club_counts[primary] += 1
+            club_badges = " ".join(
+                f'<span class="badge bg-light text-dark border" style="font-size:0.75em">{clubs_cfg.get(c, {}).get("short_name", c)}</span>'
+                for c in race_clubs
+            )
             upcoming_races.append({
                 "name": race["name"],
                 "date": race_date.strftime("%b %d, %Y"),
-                "club": cfg.get("short_name", club_id),
-                "club_id": club_id,
+                "clubs_html": club_badges,
                 "distance": race.get("distance", ""),
                 "url": race.get("url", ""),
             })
@@ -1836,7 +1841,7 @@ def generate_platform_home(data: dict) -> None:
     upcoming_rows = ""
     for r in upcoming_races:
         link = f'<a href="{r["url"]}" target="_blank">{r["name"]}</a>' if r["url"] else r["name"]
-        upcoming_rows += f'<tr><td class="text-muted small text-nowrap">{r["date"]}</td><td>{link}</td><td class="text-muted small">{r["club"]}</td><td class="text-muted small">{r["distance"]}</td></tr>'
+        upcoming_rows += f'<tr><td class="text-muted small text-nowrap">{r["date"]}</td><td>{link}</td><td>{r["clubs_html"]}</td><td class="text-muted small">{r["distance"]}</td></tr>'
 
     # Compact club strip
     club_strip = ""
