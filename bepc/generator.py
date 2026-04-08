@@ -691,7 +691,10 @@ function rows(results, placeField) {
       : '<td></td>';
     const hcapPostNote = r.is_outlier ? ' data-bs-toggle="tooltip" data-bs-title="Outlier — result suppressed"' : '';
     const hcapPostHtml = `<td>${r.handicap_post.toFixed(3)}${r.is_outlier ? `<sup${hcapPostNote}>^</sup>` : ''}</td>`;
-    return `<tr><td>${badges(r.trophies)}</td>
+    const s = slug(r.canonical_name);
+    const isFresh = r.is_fresh_racer ? 'true' : 'false';
+    const isRegular = RACER_SLUGS.has(s) ? 'true' : 'false';
+    return `<tr data-fresh="${isFresh}" data-regular="${isRegular}"><td>${badges(r.trophies)}</td>
     <td>${r[placeField]}</td><td>${racerLink(r.canonical_name)}</td>
     ${craft_cell(r.craft_category, r.craft_specific)}
     <td>${isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}</td>
@@ -764,6 +767,13 @@ function rows(results, placeField) {
 <div class="container">
   <h1 class="mb-1">{base_name}</h1>
   <p class="text-muted">{date} · {total_starters} starters{(' · <a href="' + display_url + '" target="_blank">Source ↗</a>') if display_url else ''}</p>
+  <div class="mb-2">
+    <select id="racer-filter" class="form-select form-select-sm w-auto d-inline-block">
+      <option value="all">All racers</option>
+      <option value="eligible">Eligible only</option>
+      <option value="regular">Regulars only</option>
+    </select>
+  </div>
   <div id="course-content"></div>
 </div>
 <script>
@@ -800,6 +810,17 @@ document.addEventListener('DOMContentLoaded', () => {{
       tb.addEventListener('shown.bs.tab', () => setResultTab(tb.textContent));
     }});
   }});
+  // Racer filter
+  function applyFilter() {{
+    var f = document.getElementById('racer-filter').value;
+    document.querySelectorAll('#course-content tr[data-fresh]').forEach(function(tr) {{
+      var show = f === 'all'
+        || (f === 'eligible' && tr.dataset.fresh === 'false')
+        || (f === 'regular' && tr.dataset.regular === 'true');
+      tr.style.display = show ? '' : 'none';
+    }});
+  }}
+  document.getElementById('racer-filter').addEventListener('change', applyFilter);
 }});
 </script>""" + _foot()
             (results_dir / f"{slug_name}.html").write_text(html)
