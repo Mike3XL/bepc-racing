@@ -619,7 +619,7 @@ function podiumForCourse(course) {
     {idx:0, label:'1st', bg:'#FFF8DC', border:'#FFD700', nameColor:'#7A5C00', h:'64px', w:'180px', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>'},
     {idx:2, label:'3rd', bg:'#FDF0E0', border:'#DDA84A', nameColor:'#5C2E00', h:'44px', w:'135px', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>'},
   ];
-  let html = '<div class="d-flex justify-content-center mb-3"><div style="display:flex;align-items:flex-end;gap:6px">';
+  let html = '<div class="d-flex justify-content-center mb-3"><div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:flex-end;gap:6px">';
   cfg.forEach(c => {
     const r = pr[c.idx];
     const s = r ? slug(r.canonical_name) : null;
@@ -629,7 +629,7 @@ function podiumForCourse(course) {
       : '<span style="color:#bbb;font-size:0.85em">—</span>';
     html += `<div style="display:flex;flex-direction:column;align-items:center;gap:3px;width:${c.w};min-width:0;flex-shrink:1">${c.cup}${name}<div style="width:100%;height:${c.h};background:${c.bg};border:1px solid ${c.border};border-bottom:none;border-radius:4px 4px 0 0;display:flex;align-items:center;justify-content:center;font-weight:bold;color:${c.nameColor};font-size:0.85em">${c.label}</div></div>`;
   });
-  html += '</div><div style="height:3px;background:#CCC;border-radius:2px;width:100%"></div></div>';
+  html += '</div><div style="height:3px;background:#CCC;border-radius:2px;width:calc(100% + 90px)"></div></div></div>';
   return html;
 }
 
