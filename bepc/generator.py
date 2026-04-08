@@ -1331,9 +1331,8 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 (function() {{
   var club = '{current_club}';
   localStorage.setItem('pc_club', club);
-  // Use stored season if valid for this club, else fall back to current year
   var availYears = {list(sorted(data["clubs"][current_club]["seasons"].keys(), reverse=True))};
-  var storedSeason = localStorage.getItem('pc_season');
+  var storedSeason = localStorage.getItem('pc_year');
   var season = (storedSeason && availYears.indexOf(storedSeason) >= 0) ? storedSeason : '{current_year}';
 
   function showSeason(s) {{
@@ -1344,13 +1343,17 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 
   showSeason(season);
 
-  // Season selector change
   var sel = document.getElementById('season-select');
-  if (sel) sel.addEventListener('change', function() {{
-    var yr = this.value;
-    setSeason(yr);
-    showSeason(yr);
-  }});
+  if (sel) {{
+    sel.innerHTML = availYears.map(function(y) {{
+      return '<option value="' + y + '"' + (y === season ? ' selected' : '') + '>' + y + ' Season</option>';
+    }}).join('');
+    sel.addEventListener('change', function() {{
+      var yr = this.value;
+      localStorage.setItem('pc_year', yr);
+      showSeason(yr);
+    }});
+  }}
 
   // Restore saved craft tab
   var savedCraft = localStorage.getItem('pc_craft');
@@ -1376,6 +1379,10 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
       <div class="d-flex align-items-center gap-2">
         <span class="text-muted small fw-semibold">Club</span>
         <div class="btn-group flex-wrap" id="club-nav"></div>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Season</span>
+        <select id="season-select" class="form-select form-select-sm" style="width:auto"></select>
       </div>
     </div>
   </div>
