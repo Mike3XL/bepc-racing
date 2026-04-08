@@ -2039,7 +2039,7 @@ def generate_platform_home(data: dict) -> None:
   </div>
 </div>
 
-<div class="container">
+<div class="container-fluid px-2 px-sm-3">
   {"<h2 class='h5 mb-2'>Upcoming Races</h2><div class='table-responsive mb-4'><table class='table table-sm table-hover'><thead><tr><th>Date</th><th>Race</th><th>Club</th><th>Distance</th></tr></thead><tbody>" + upcoming_rows + "</tbody></table></div>" if upcoming_rows else ""}
   <h2 class="h5 mb-2">Recent Races</h2>
   <div class="table-responsive">
