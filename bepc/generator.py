@@ -174,6 +174,7 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
         # Global page — club links resolved via JS
         pages = [
             (f"{root}index.html", "Home"),
+            (f"{root}clubs.html", "Clubs"),
             (f"{club}/races.html", "Races", True),
             (f"{club}/standings.html", "Standings", True),
             (f"{club}/trajectories.html", "Trajectories", True),
@@ -183,6 +184,7 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
     else:
         pages = [
             (f"{root}index.html", "Home"),
+            (f"{root}clubs.html", "Clubs"),
             (f"{club_prefix}races.html", "Races"),
             (f"{club_prefix}standings.html", "Standings"),
             (f"{club_prefix}trajectories.html", "Trajectories"),
@@ -1548,6 +1550,79 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
     print(f"Generated: site/{current_club}/racer/ ({len(racer_data)} pages)")
 
 
+def generate_clubs_page(data: dict) -> None:
+    """Generate clubs.html — one section per club with expanded stats."""
+    import yaml
+    clubs_config_path = Path(__file__).parent.parent / "data" / "clubs.yaml"
+    clubs_cfg = {}
+    if clubs_config_path.exists():
+        with open(clubs_config_path) as f:
+            clubs_cfg = yaml.safe_load(f).get("clubs", {})
+
+    sections = ""
+    for club_id, club in data["clubs"].items():
+        cfg = clubs_cfg.get(club_id, {})
+        name = cfg.get("name", club.get("name", club_id))
+        short = cfg.get("short_name", name)
+        ctype = cfg.get("type", "org")
+        desc = cfg.get("description", "").strip()
+        homepage = cfg.get("homepage_url", "")
+        earliest_year = min(club["seasons"].keys())
+        latest_year = max(club["seasons"].keys())
+        year_range = f"{earliest_year}–{latest_year}"
+        total_races = sum(len(s["races"]) for s in club["seasons"].values())
+        total_racers = len({r["canonical_name"] for s in club["seasons"].values()
+                            for race in s["races"] for r in race["results"]})
+        type_badge = '<span class="badge bg-secondary ms-2">League</span>' if ctype == "league" else '<span class="badge bg-primary ms-2">Club</span>'
+
+        # Top 5 racers by handicap points in current season
+        current_year = club["current_season"]
+        season_racers = {}
+        for race in club["seasons"].get(current_year, {}).get("races", []):
+            for r in race["results"]:
+                n = r["canonical_name"]
+                if n not in season_racers or r["season_handicap_points"] > season_racers[n]:
+                    season_racers[n] = r["season_handicap_points"]
+        top_racers = sorted(season_racers.items(), key=lambda x: -x[1])[:5]
+        top_html = ""
+        if top_racers:
+            top_html = f'<p class="text-muted small mb-1 fw-semibold">{current_year} top racers (handicap pts):</p><div class="d-flex flex-wrap gap-2 mb-3">'
+            for n, pts in top_racers:
+                s = _slug(n)
+                link = f'<a href="{club_id}/racer/{s}.html" class="badge bg-light text-dark border text-decoration-none">{n} <span class="text-muted">({pts})</span></a>'
+                top_html += link
+            top_html += "</div>"
+
+        homepage_link = f' · <a href="{homepage}" target="_blank">Website ↗</a>' if homepage else ""
+        sections += f"""
+<div class="mb-5">
+  <h2>{name}{type_badge}</h2>
+  <p class="text-muted">{desc}</p>
+  <div class="d-flex flex-wrap gap-3 mb-3">
+    <span><strong>{total_races}</strong> races</span>
+    <span><strong>{total_racers}</strong> racers</span>
+    <span><strong>{year_range}</strong></span>
+  </div>
+  {top_html}
+  <div class="d-flex flex-wrap gap-2">
+    <a href="{club_id}/races.html" class="btn btn-outline-primary btn-sm">Races</a>
+    <a href="{club_id}/standings.html" class="btn btn-outline-secondary btn-sm">Standings</a>
+    <a href="{club_id}/trajectories.html" class="btn btn-outline-secondary btn-sm">Trajectories</a>
+    <a href="{club_id}/racer/index.html" class="btn btn-outline-secondary btn-sm">Racers</a>
+    {f'<a href="{homepage}" target="_blank" class="btn btn-outline-secondary btn-sm">Website ↗</a>' if homepage else ''}
+  </div>
+  <hr class="mt-4">
+</div>"""
+
+    html = _head("Clubs — PaddleClub") + _nav("Clubs", data=data, depth=0) + f"""
+<div class="container" style="max-width:800px">
+  <h1 class="mb-4">Clubs &amp; Leagues</h1>
+  {sections}
+</div>""" + _foot()
+    (SITE_DIR / "clubs.html").write_text(html)
+    print("Generated: site/clubs.html")
+
+
 def generate_about(data: dict = None) -> None:
     html = _head("About — PaddleClub") + _nav("About", data=data, depth=0) + """
 <div class="container" style="max-width:720px">
@@ -2096,5 +2171,6 @@ def generate_all(data: dict) -> None:
     generate_trajectories(data)
     data["current_club"] = original_club
     generate_about(data)
+    generate_clubs_page(data)
     generate_platform_home(data)
     generate_cross_club_links()
