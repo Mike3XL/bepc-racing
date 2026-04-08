@@ -1573,7 +1573,7 @@ def generate_clubs_page(data: dict) -> None:
         total_races = sum(len(s["races"]) for s in club["seasons"].values())
         total_racers = len({r["canonical_name"] for s in club["seasons"].values()
                             for race in s["races"] for r in race["results"]})
-        type_badge = '<span class="badge bg-secondary ms-2">League</span>' if ctype == "league" else '<span class="badge bg-primary ms-2">Club</span>'
+        type_badge = '<span class="badge bg-secondary ms-2" style="font-size:0.6em;vertical-align:middle">League</span>' if ctype == "league" else '<span class="badge bg-primary ms-2" style="font-size:0.6em;vertical-align:middle">Club</span>'
 
         # Top 5 racers by handicap points in current season
         current_year = club["current_season"]
