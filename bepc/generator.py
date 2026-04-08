@@ -1927,22 +1927,22 @@ def generate_platform_home(data: dict) -> None:
 </div>
 
 <div class="container">
-  <div class="row g-4">
+  <div class="row g-4 mb-3">
     <div class="col-12 col-lg-8">
       {"<h2 class='h5 mb-2'>Upcoming Races</h2><div class='table-responsive mb-4'><table class='table table-sm table-hover'><thead><tr><th>Date</th><th>Race</th><th>Club</th><th>Distance</th></tr></thead><tbody>" + upcoming_rows + "</tbody></table></div>" if upcoming_rows else ""}
-      <h2 class="h5 mb-2">Recent Races</h2>
-      <div class="table-responsive">
-        <table class="table table-sm table-striped">
-          <thead><tr><th>Date</th><th>Race</th><th class="text-center">Starters</th><th>Handicap Winner</th></tr></thead>
-          <tbody>{feed_rows}</tbody>
-        </table>
-      </div>
     </div>
     <div class="col-12 col-lg-4">
       <h2 class="h5 mb-2">Clubs &amp; Leagues</h2>
       <div class="list-group list-group-flush border rounded">{club_strip}</div>
       <p class="text-muted small mt-2"><a href="about.html">About PaddleClub →</a></p>
     </div>
+  </div>
+  <h2 class="h5 mb-2">Recent Races</h2>
+  <div class="table-responsive">
+    <table class="table table-sm table-striped">
+      <thead><tr><th>Date</th><th>Race</th><th class="text-center">Starters</th><th>Handicap Winner</th></tr></thead>
+      <tbody>{feed_rows}</tbody>
+    </table>
   </div>
 </div>
 <script>
