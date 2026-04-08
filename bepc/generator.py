@@ -895,14 +895,14 @@ def _short_label(name: str, date: str = "") -> str:
         return date_prefix + f'PNWORCA #{n}'
     if '#' in base:
         num = base.rsplit('#', 1)[-1].strip()
-        # BEPC series: "BEPC 2025 Race Series #18" -> "Monday #18"
+        # BEPC series: "BEPC 2025 Race Series #18" -> "#18"
         if 'Race Series' in base or 'Monday' in base.lower():
-            return date_prefix + f'Monday #{num.zfill(2)}'
+            return date_prefix + f'#{num.zfill(2)}'
         return date_prefix + f'#{num}'
-    # Date-suffixed: "Salmon Bay Paddle Monday Race 20170501" -> use date_prefix only + "Monday"
+    # Date-suffixed: "Salmon Bay Paddle Monday Race 20170501" -> use date_prefix only
     m = _re_module.search(r'20\d{2}(\d{2})(\d{2})$', base)
     if m:
-        return f'{m.group(1)}/{m.group(2)} - Monday'
+        return f'{m.group(1)}/{m.group(2)}'
     # Strip "Sound Rowers: " prefix and year suffix
     base = _re_module.sub(r'^Sound Rowers:\s*', '', base)
     base = _re_module.sub(r'\s+\d{4}.*$', '', base).strip()
