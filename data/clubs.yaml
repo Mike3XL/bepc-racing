@@ -120,6 +120,8 @@ clubs:
     name: PNW Small Boats Community League
     short_name: PNW League
     type: league                       # community league — no formal organizing body
+    include_clubs:
+      - sound-rowers                   # all Sound Rowers races are included in PNW league
     description: >
       An informal, community-curated league tracking open-water small boat racing
       across the Pacific Northwest. Includes events from PNWORCA, Sound Rowers,

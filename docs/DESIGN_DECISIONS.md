@@ -258,3 +258,15 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 - They are kept in sync: pc_year is written whenever hash changes
 
 **`results.html` removed** — replaced entirely by per-race files.
+
+---
+
+## PNW League includes Sound Rowers races (2026-04-08)
+
+**Decision:** All Sound Rowers races are included in the PNW Regional league.
+
+**Implementation:** `include_clubs: [sound-rowers]` in clubs.yaml for pnw-regional. `build_data_json` merges included club races into the host club's seasons before processing.
+
+**Handicap:** PNW uses its own independent handicap system — separate from Sound Rowers. PNW is treated as an independent club of racers who happen to attend Sound Rowers and other events. Handicap state is not shared between clubs.
+
+**Ordering:** Races are merged by date across all included clubs before handicap processing, so the handicap progression reflects the actual chronological order racers competed.

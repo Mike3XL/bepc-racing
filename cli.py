@@ -72,6 +72,23 @@ def build_data_json() -> dict:
             if not common_dir.exists():
                 continue
             races = load_all_common(common_dir)
+
+            # Merge races from included clubs for the same year
+            for inc_club in cfg.get("include_clubs", []):
+                inc_common = DATA_DIR / inc_club / year / "common"
+                if inc_common.exists():
+                    inc_races = load_all_common(inc_common)
+                    races = races + inc_races
+
+            # Sort merged races by date before handicap processing
+            from datetime import datetime
+            def _parse_date(r):
+                for fmt in ("%b %d, %Y", "%B %d, %Y"):
+                    try: return datetime.strptime(r.race_info.date, fmt)
+                    except: pass
+                return datetime.min
+            races = sorted(races, key=_parse_date)
+
             races = process_season(races, carry_over=carry_over,
                                    num_races_to_establish=num_races_to_establish)
             seasons[year] = {
