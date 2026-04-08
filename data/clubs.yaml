@@ -227,6 +227,11 @@ clubs:
           reason: V12 crew race (Heat 1/2/3/4/5 format) — not small boats
         - slug: Cdnssmallboats
           reason: Canadian Nationals — mostly BC club racers, name format inconsistent with PNW data, placeholder dates
+        - name: SEVENTY48
+          reason: >
+            70-mile Tacoma→Port Townsend endurance race (nwmaritime.org / seventy48.com).
+            Results only on maprogress.com tracker — no structured data source (WebScorer/raceresult).
+            Team format, most racers ineligible. Not included.
       # Known WebScorer IDs for PNWORCA #7 / Winter Championships (SPOCC-hosted, org 127):
       pnworca7_webscorer:
         2017: 96661    # 2017 PNWORCA Winter Championships
