@@ -14,6 +14,7 @@ _JQUERY = '<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>'
 _DATATABLES_JS = '<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>'
 _DATATABLES_BS5_JS = '<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>'
 _CHARTJS = '<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>'
+_RACER_SEARCH_MAP = "[]"  # populated by generate_index_page
 
 # Shared JS for badge rendering — used in both per-race pages and racer pages
 _BADGES_JS = r"""
@@ -198,7 +199,8 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
         dynamic = len(entry) > 2 and entry[2]
         cls = "nav-link active" if label == active else "nav-link"
         if dynamic:
-            items += f'<li class="nav-item"><a class="{cls}" href="{href}" onclick="var c=localStorage.getItem(\'pc_club\')||\'{club}\'; this.href=c+\'/{label.lower()}.html\'">{label}</a></li>\n'
+            dyn_path = "racer/index.html" if label == "Racers" else f"{label.lower()}.html"
+            items += f'<li class="nav-item"><a class="{cls}" href="{href}" onclick="var c=localStorage.getItem(\'pc_club\')||\'{club}\'; this.href=c+\'/{dyn_path}\'">{label}</a></li>\n'
         else:
             items += f'<li class="nav-item"><a class="{cls}" href="{href}">{label}</a></li>\n'
 
@@ -209,10 +211,43 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav ms-auto">{items}</ul>
+      <ul class="navbar-nav me-auto">{items}</ul>
+      <div class="position-relative ms-2" style="min-width:180px;max-width:260px">
+        <input id="nav-racer-search" type="text" class="form-control form-control-sm"
+               placeholder="Find racer..." autocomplete="off">
+        <div id="nav-racer-results" class="list-group position-absolute shadow"
+             style="z-index:1050;display:none;min-width:260px;right:0"></div>
+      </div>
     </div>
   </div>
-</nav>"""
+</nav>
+<script>
+(function(){{
+  var RACERS={_RACER_SEARCH_MAP};
+  var depth={depth};
+  var inp=document.getElementById('nav-racer-search');
+  var res=document.getElementById('nav-racer-results');
+  if(!inp)return;
+  inp.addEventListener('input',function(){{
+    var q=this.value.trim().toLowerCase();
+    res.innerHTML='';
+    if(q.length<2){{res.style.display='none';return;}}
+    var matches=RACERS.filter(function(r){{return r.name.toLowerCase().includes(q);}}).slice(0,8);
+    if(!matches.length){{res.style.display='none';return;}}
+    var prefix=depth===0?'':depth===1?'../':'../../';
+    matches.forEach(function(r){{
+      var link=prefix+r.clubs[0]+'/racer/'+r.slug+'.html';
+      var item=document.createElement('a');
+      item.className='list-group-item list-group-item-action py-1 small';
+      item.href=link;
+      item.textContent=r.name;
+      res.appendChild(item);
+    }});
+    res.style.display='';
+  }});
+  document.addEventListener('click',function(e){{if(!inp.contains(e.target)&&!res.contains(e.target))res.style.display='none';}});
+}})();
+</script>"""
 
 
 def _selector_bar(data: dict, show_season: bool = True, page: str = None) -> str:
@@ -1367,15 +1402,26 @@ document.getElementById('racer-select').addEventListener('change', function() {
             best_finish = min((r["adjusted_place"] for r in all_results), default=None)
             wins = sum(1 for r in all_results if "hcap_1" in r.get("trophies", []))
             podiums = sum(1 for r in all_results if any(t in r.get("trophies", []) for t in ["hcap_1","hcap_2","hcap_3"]))
-            stats_html = f"""<div class="d-flex flex-wrap gap-3 mb-3 p-3 bg-light rounded">
-  <div class="text-center"><div class="fw-bold fs-5">{total_races}</div><div class="text-muted small">Races</div></div>
-  <div class="text-center"><div class="fw-bold fs-5">{wins}</div><div class="text-muted small">Wins</div></div>
-  <div class="text-center"><div class="fw-bold fs-5">{podiums}</div><div class="text-muted small">Podiums</div></div>
-  {f'<div class="text-center"><div class="fw-bold fs-5">{best_hcap:.3f}</div><div class="text-muted small">Best Handicap</div></div>' if best_hcap else ''}
-  {f'<div class="text-center"><div class="fw-bold fs-5">{current_hcap:.3f}</div><div class="text-muted small">Current Handicap</div></div>' if current_hcap else ''}
-</div>"""
+            # Per-season stats for dynamic update when year selector changes
+            season_stats = {}
+            for yr, year_crafts in club_results.items():
+                yr_results = [r for results in year_crafts.values() for r in results]
+                season_stats[yr] = {
+                    "races": len(yr_results),
+                    "wins": sum(1 for r in yr_results if "hcap_1" in r.get("trophies", [])),
+                    "podiums": sum(1 for r in yr_results if any(t in r.get("trophies", []) for t in ["hcap_1","hcap_2","hcap_3"])),
+                }
+            season_stats_js = str(season_stats).replace("'", '"').replace("True","true").replace("False","false")
+            stats_html = f"""<div class="text-muted small" id="racer-stats-bar">
+  <span id="stat-season-label">{max(club_results.keys())} season:</span>
+  <span id="stat-races">{season_stats[max(club_results.keys())]['races']}</span> races,
+  <span id="stat-wins">{season_stats[max(club_results.keys())]['wins']}</span> wins,
+  <span id="stat-podiums">{season_stats[max(club_results.keys())]['podiums']}</span> podiums
+</div>
+<script>var racerSeasonStats = {season_stats_js};</script>"""
         else:
             stats_html = ""
+            season_stats_js = "{}"
 
         racer_clubs = list(by_club.keys())  # clubs this racer has data for
 
@@ -1487,6 +1533,14 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
     document.querySelectorAll('[data-season]').forEach(function(el) {{
       el.style.display = el.dataset.season === s ? '' : 'none';
     }});
+    if (typeof racerSeasonStats !== 'undefined' && racerSeasonStats[s]) {{
+      var st = racerSeasonStats[s];
+      var el;
+      if ((el = document.getElementById('stat-season-label'))) el.textContent = s + ' season:';
+      if ((el = document.getElementById('stat-races'))) el.textContent = st.races;
+      if ((el = document.getElementById('stat-wins'))) el.textContent = st.wins;
+      if ((el = document.getElementById('stat-podiums'))) el.textContent = st.podiums;
+    }}
   }}
 
   showSeason(season);
@@ -1557,8 +1611,10 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 </div>
 <div class="container">
   {racer_nav}
-  <h2>{name}</h2>
-  {stats_html}
+  <div class="d-flex flex-wrap align-items-baseline gap-3 mb-2">
+    <h2 class="mb-0">{name}</h2>
+    {stats_html}
+  </div>
   {body_html}
 </div>
 <script>{all_charts_js}</script>
@@ -1648,29 +1704,21 @@ def generate_about(data: dict = None) -> None:
     html = _head("About — PaddleClub") + _nav("About", data=data, depth=0) + """
 <div class="container" style="max-width:720px">
   <h1>About PaddleClub</h1>
-  <p class="lead">Race results, standings, and handicap tracking for open-water paddling clubs and community leagues in the Pacific Northwest.</p>
 
-  <h2>What's here</h2>
-  <p>PaddleClub covers four clubs and leagues:</p>
-  <ul>
-    <li><strong>BEPC</strong> — Ballard Elks Paddle Club Monday night race series, Seattle (2015–present)</li>
-    <li><strong>Sound Rowers</strong> — Washington State open-water racing series (2022–present)</li>
-    <li><strong>PNW League</strong> — An informal community league tracking regional events: PNWORCA, Gorge Downwind, Peter Marcus, Narrows Challenge, and all Sound Rowers events (2017–present)</li>
-    <li><strong>SCKC</strong> — Seattle Canoe and Kayak Club Duck Island Race series, Lake Washington (2015–present)</li>
-  </ul>
-  <p>Craft covered includes surfski, outrigger canoe (OC-1, OC-2), kayak, canoe, SUP, and prone paddleboard.</p>
+  <p class="lead">PaddleClub is an automated handicap system for open-water paddling clubs. The core idea is to let racers measure their performance and to recognize racers who achieve high performance against their established trends. </p>
+  
+  <p> We are community-driven and not officially affiliated with the clubs or results management systems.</p>
 
-  <h2>How to use this site</h2>
-  <ul>
-    <li>Use the <strong>Club</strong> buttons to switch between clubs. The <strong>Season</strong> dropdown filters by year.</li>
-    <li><strong>Races</strong> — browse all races for a club/season, click any race to see full results and podium.</li>
-    <li><strong>Standings</strong> — season points leaderboard, sortable by handicap or overall points.</li>
-    <li><strong>Trajectories</strong> — charts showing how points and handicap evolved over the season.</li>
-    <li><strong>Racers</strong> — find any racer, see their history across seasons and clubs.</li>
-  </ul>
-  <p>Racer pages show results per craft type (e.g. surfski and OC-1 are tracked separately). Use the craft tabs to switch.</p>
+  <p> Please send feedback to <a href="mailto:mike.liddell@gmail.com">mike.liddell@gmail.com</a>, or <a href="https://github.com/Mike3XL/bepc-racing/issues" target="_blank">create an issue on GitHub</a>.</p>
 
-  <h2>The handicap system</h2>
+ <h2>The club & league system</h2>
+ Open-water races are not directly comparable due to unique courses and weather and so predicting expected performance for a racer in isolation is difficult.  Our handicapping calculations rely on a consistent field of competitors to gather information over a series of races.
+ 
+ Clubs that run a large number of races, such as BEPC, have sufficient data for handicapping.  Unaffiliated races, and clubs with infrequent races, provide less information to establish trends. To help with this we create virtual clubs, aka leagues, by curating races that attract a common field of racers. As a result, some races are listed for both their organizing club and for relevant leagues.
+
+ Each club and league maintain separate race lists, competitor lists, and handicap data. Each club and league should be considered as completely independent.
+
+ <h2>The handicap system</h2>
 
   <h5>Par racer</h5>
   <p>Each race has a <em>par racer</em> — the finisher at roughly the 33rd percentile by finish time.
@@ -1705,10 +1753,30 @@ def generate_about(data: dict = None) -> None:
   the Long Course winner earns <code>round(10 × 26/39)</code> = 7 pts and the Short Course winner earns
   <code>round(10 × 13/39)</code> = 3 pts. This keeps the total points available per race day roughly constant.</p>
 
+  <h2>Race Organizers</h2>
+  <p>PNW Regional draws from events organized by:</p>
+  <ul>
+    <li><a href="https://www.pnworca.org" target="_blank">PNWORCA</a> — Pacific Northwest Outrigger Racing Canoe Association. Runs the annual Winter Series (7 races) and other regional events.</li>
+    <li><a href="https://www.soundrowers.org" target="_blank">Sound Rowers</a> — open-water paddling club running a full season of distance races across Puget Sound and beyond.</li>
+    <li><a href="https://www.soundrowers.org/race-schedule/bellingham-bay-rough-water-race/" target="_blank">Bellingham Bay Outrigger Paddlers (BBOP)</a> — organizes the Peter Marcus Rough Water Race on Bellingham Bay. Race director: Kevin Olney.</li>
+    <li><a href="https://www.gorgedownwindchamps.com" target="_blank">Gorge Downwind Champs</a> — independent race organization running the annual downwind race on the Columbia River Gorge, based in Stevenson, WA.</li>
+    <li><a href="https://www.ghckrt.com" target="_blank">Gig Harbor Canoe &amp; Kayak Racing Team (GHCKC)</a> — organizes the Paddlers Cup at Skansie Park, Gig Harbor, and the Eric Hughes Memorial Regatta at Green Lake, Seattle.</li>
+    <li><a href="https://www.jerichooutrigger.com" target="_blank">Jericho Beach Outrigger Canoe Club</a> — hosts results for BC-based events including Da Grind, Keats Chop, Whipper Snapper, and Wake Up the Gorge.</li>
+    <li><a href="https://www.ballardelks.org/paddle-club" target="_blank">Ballard Elks Paddle Club (BEPC)</a> — weekly race series at Shilshole Bay, Seattle.</li>
+    <li><a href="https://www.sckc.ws" target="_blank">Seattle Canoe and Kayak Club (SCKC)</a> — Duck Island Race series on Green Lake, Seattle.</li>
+  </ul>
+
+  <h2>Data Sources</h2>
+  <p>Race results are collected from several timing platforms depending on the organizer:</p>
+  <ul>
+    <li><a href="https://www.webscorer.com" target="_blank">WebScorer</a> — online race timing and results platform used by BEPC, Sound Rowers, SCKC, and many PNW Regional events.</li>
+    <li><a href="https://www.raceresult.com" target="_blank">Race Result</a> — race timing platform used by Gorge Downwind Champs and other events via Pacific Multisports registration.</li>
+    <li><a href="https://register.pacificmultisports.com" target="_blank">Pacific Multisports</a> — race registration platform (not an organizer) used by Peter Marcus, Narrows Challenge, Gorge Downwind, and other PNW events.</li>
+    <li><a href="https://www.jerichooutrigger.com" target="_blank">Jericho Beach Outrigger Canoe Club</a> — hosts results for PNWORCA and BC races.</li>
+  </ul>
+
   <h2>References</h2>
-  <p>The BEPC handicap system uses the same multiplicative time-correction approach as established sailing clubs.
-  Raw race times are recorded via <a href="https://www.webscorer.com" target="_blank">WebScorer</a>;
-  the handicap calculation is applied separately by this system.</p>
+  <p>The BEPC handicap system uses the same multiplicative time-correction approach as established sailing clubs.</p>
   <ul>
     <li><a href="https://topyacht.com.au/web/" target="_blank">TopYacht</a> — the leading sailing results and handicapping software, whose Back Calculated Handicap (BCH) methodology directly inspired BEPC's approach.</li>
     <li><a href="https://rycv.com.au/sailing/rules-handicaps/" target="_blank">Royal Yacht Club of Victoria</a> — a well-documented example of the AHC/BCH/CHC system in practice.</li>
@@ -1777,6 +1845,8 @@ def generate_platform_home(data: dict) -> None:
         {"name": name, "slug": _slug(name), "clubs": sorted(clubs)}
         for name, clubs in sorted(racer_clubs.items())
     ])
+    global _RACER_SEARCH_MAP
+    _RACER_SEARCH_MAP = racer_search_map
     race_map = {}  # (base_name, date) -> entry
     for club_id, club in data["clubs"].items():
         cfg = clubs_cfg.get(club_id, {})
@@ -1795,10 +1865,11 @@ def generate_platform_home(data: dict) -> None:
                     }
                 else:
                     race_map[key]["starters"] = max(race_map[key]["starters"], len(race["results"]))
-                # Find winner for this club/course
-                winners = [r["canonical_name"] for r in race["results"]
-                           if "hcap_1" in r.get("trophies", [])]
+                # Find podium (top 3) for this club/course
                 course_label = race["name"].split(" — ")[1] if " — " in race["name"] else None
+                podium = [(r["canonical_name"], next((t for t in r.get("trophies",[]) if t in ("hcap_1","hcap_2","hcap_3")), None))
+                          for r in race["results"] if any(t in r.get("trophies",[]) for t in ("hcap_1","hcap_2","hcap_3"))]
+                podium.sort(key=lambda x: x[1] or "z")
                 entry = race_map[key]
                 existing = next((c for c in entry["clubs"] if c["id"] == club_id), None)
                 if existing is None:
@@ -1806,12 +1877,11 @@ def generate_platform_home(data: dict) -> None:
                         "id": club_id,
                         "name": club_name,
                         "type": club_type,
-                        "winners": [],
+                        "courses": [],
                         "race_id": race["race_id"],
                     }
                     entry["clubs"].append(existing)
-                if winners:
-                    existing["winners"].append((course_label, winners[0]))
+                existing["courses"].append({"label": course_label, "podium": podium})
 
     from datetime import datetime
     def _parse_date(d):
@@ -1877,39 +1947,61 @@ def generate_platform_home(data: dict) -> None:
 
     # Recent races feed
     feed_rows = ""
+    _re = __import__('re')
+    _place_labels = {"hcap_1": "🥇", "hcap_2": "🥈", "hcap_3": "🥉"}
     for r in recent_races:
         club_links_html = ""
-        winners_html = ""
         for c in r["clubs"]:
             slug = data.get("race_slugs", {}).get(c["id"], {}).get(c["race_id"], str(c["race_id"]))
             race_link = f'{c["id"]}/results/{slug}.html'
             cls = "text-secondary" if c["type"] == "league" else ""
             club_links_html += f'<a href="{race_link}" onclick="localStorage.setItem(\'pc_club\',\'{c["id"]}\')" class="badge bg-light text-dark border me-1 small fw-normal {cls}">{c["name"]} ↗</a>'
-            winners = c.get("winners", [])
-            if not winners:
-                winner_line = '<span class="text-muted">—</span>'
-            elif len(winners) == 1 or all(w[0] is None for w in winners):
-                # Single course or no labels — just show name
-                winner_line = _racer_link(winners[0][1])
+
+        # Reorganize: course_label -> [(club, podium)]
+        course_map = {}  # label -> list of (club_name, podium)
+        for c in r["clubs"]:
+            for course in c.get("courses", []):
+                if not course["podium"]:
+                    continue
+                lbl = course["label"] or ""
+                course_map.setdefault(lbl, []).append((c["name"], course["podium"]))
+
+        multi_club = len(r["clubs"]) > 1
+        multi_course = len(course_map) > 1
+        podium_html = ""
+        for lbl, club_podiums in course_map.items():
+            if lbl:
+                m = _re.search(r'(\d+(?:\.\d+)?)\s*(?:mi|mile|km)', lbl, _re.I)
+                unit = 'km' if m and 'km' in m.group(0).lower() else 'mi'
+                short_label = f"{m.group(1)}{unit}" if m else lbl.split()[0]
             else:
-                # Multiple courses — show label: name for each
-                parts = []
-                for label, name in winners:
-                    if label:
-                        m = __import__('re').search(r'(\d+(?:\.\d+)?)\s*(?:mi|mile|km)', label, __import__('re').I)
-                        unit = 'km' if m and 'km' in m.group(0).lower() else 'mi'
-                        short = f"{m.group(1)}{unit}" if m else label.split()[0]
-                    else:
-                        short = ""
-                    parts.append(f'<span class="text-muted small">{short}:</span> {_racer_link(name)}')
-                winner_line = " · ".join(parts)
-            winners_html += f'<div class="small"><span class="text-muted">{c["name"]}:</span> {winner_line}</div>'
+                short_label = ""
+            if multi_course and short_label:
+                if len(club_podiums) == 1:
+                    # single club — inline with course label
+                    club_name, podium = club_podiums[0]
+                    prefix = f'<span class="text-muted small me-1">{club_name}:</span> ' if multi_club else ""
+                    names = " · ".join(f'{_place_labels.get(trophy,"")}{_racer_link(name)}' for name, trophy in podium)
+                    podium_html += f'<div class="small"><span class="text-muted small fw-semibold me-1">{short_label}:</span>{prefix}{names}</div>'
+                    continue
+                else:
+                    podium_html += f'<div class="text-muted small fw-semibold mt-1">{short_label}</div>'
+            for club_name, podium in club_podiums:
+                prefix = f'<span class="text-muted small me-1">{club_name}:</span> ' if multi_club else ""
+                names = " · ".join(
+                    f'{_place_labels.get(trophy,"")}{_racer_link(name)}'
+                    for name, trophy in podium
+                )
+                podium_html += f'<div class="small">{prefix}{names}</div>'
+
+        if not podium_html:
+            podium_html = '<span class="text-muted small">—</span>'
         feed_rows += f"""
         <tr>
           <td class="text-muted small text-nowrap">{r["date"]}</td>
           <td><span class="fw-semibold me-2">{r["name"]}</span>{club_links_html}</td>
           <td class="text-muted small text-center">{r["starters"]}</td>
-          <td>{winners_html}</td>
+          <td>{podium_html}</td>
         </tr>"""
 
     html = f"""<!DOCTYPE html>
@@ -1936,14 +2028,6 @@ def generate_platform_home(data: dict) -> None:
   <div class="container">
     <h1>PaddleClub</h1>
     <p>Handicap racing results, standings, and trajectories for paddling clubs and community leagues.</p>
-    <div class="row justify-content-center mt-3">
-      <div class="col-12 col-md-6 position-relative">
-        <input id="racer-search" type="text" class="form-control form-control-lg"
-               placeholder="Find a racer..." autocomplete="off"
-               style="background:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.6);color:#333;">
-        <div id="racer-results" class="list-group position-absolute w-100 shadow" style="z-index:100;display:none"></div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -1967,35 +2051,6 @@ def generate_platform_home(data: dict) -> None:
   </div>
 </div>
 <script>
-(function() {{
-  var RACERS = {racer_search_map};
-  var CLUB_NAMES = {_json.dumps({cid: clubs_cfg.get(cid, {}).get('short_name', cid) for cid in data['clubs']})};
-  var inp = document.getElementById('racer-search');
-  var res = document.getElementById('racer-results');
-  inp.addEventListener('input', function() {{
-    var q = this.value.trim().toLowerCase();
-    res.innerHTML = '';
-    if (q.length < 2) {{ res.style.display = 'none'; return; }}
-    var matches = RACERS.filter(function(r) {{ return r.name.toLowerCase().includes(q); }}).slice(0, 10);
-    if (!matches.length) {{ res.style.display = 'none'; return; }}
-    matches.forEach(function(r) {{
-      var badges = r.clubs.map(function(c) {{
-        return '<a href="' + c + '/racer/' + r.slug + '.html" class="badge bg-secondary text-decoration-none me-1">' + (CLUB_NAMES[c] || c) + '</a>';
-      }}).join('');
-      var item = document.createElement('div');
-      item.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
-      item.innerHTML = '<span>' + r.name + '</span><span>' + badges + '</span>';
-      res.appendChild(item);
-    }});
-    res.style.display = 'block';
-  }});
-  document.addEventListener('click', function(e) {{
-    if (!inp.contains(e.target) && !res.contains(e.target)) res.style.display = 'none';
-  }});
-  inp.addEventListener('keydown', function(e) {{
-    if (e.key === 'Escape') res.style.display = 'none';
-  }});
-}})();
 </script>
 </body>
 </html>"""

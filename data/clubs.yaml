@@ -125,7 +125,8 @@ clubs:
     description: >
       An informal, community-curated league tracking open-water small boat racing
       across the Pacific Northwest. Includes events from PNWORCA, Sound Rowers,
-      Gorge Downwind, Peter Marcus, and other regional organizers.
+      Gorge Downwind Champs (gorgedownwindchamps.com), Peter Marcus Rough Water Race
+      (organized by Bellingham Bay Outrigger Paddlers / BBOP), and other regional organizers.
     homepage_url: null
     logo: null
     gh_branch: gh-pages-pnw-regional
@@ -158,7 +159,11 @@ clubs:
           url: https://register.pacificmultisports.com/Events/Results
           catalog: data/sources/pacificmultisports_events.json
           cmd: "cli.py fetch-raceresult --club pnw-regional --year YYYY <rr_ids>"
-          notes: Gorge Downwind, Peter Marcus, Narrows Challenge, BBOP, Salmon Row, La Conner, Lake Whatcom
+          notes: >
+            Peter Marcus Rough Water Race (org: Bellingham Bay Outrigger Paddlers / BBOP,
+            race director Kevin Olney, https://www.soundrowers.org/race-schedule/bellingham-bay-rough-water-race/);
+            Gorge Downwind Champs (org: gorgedownwindchamps.com, Stevenson WA);
+            Narrows Challenge, BBOP events, Salmon Row, La Conner, Lake Whatcom
         - type: webscorer_direct          # priority 2
           cmd: "cli.py fetch --club pnw-regional --year YYYY <race_ids>"
           notes: >
@@ -317,7 +322,7 @@ clubs:
     short_name: SCKC
     type: org
     description: >
-      Duck Island Race series on Lake Washington, Seattle.
+      Duck Island Race series on Green Lake, Seattle.
       Weekly open-water distance races organized by Seattle Canoe and Kayak Club.
     homepage_url: https://www.sckc.ws
     logo: null
