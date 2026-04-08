@@ -2036,7 +2036,7 @@ def generate_platform_home(data: dict) -> None:
   <h2 class="h5 mb-2">Recent Races</h2>
   <div class="table-responsive">
     <table class="table table-sm table-striped">
-      <thead><tr><th>Date</th><th>Race</th><th class="text-center">Starters</th><th>Handicap Winner</th></tr></thead>
+      <thead><tr><th style="width:90px">Date</th><th style="width:25%">Race</th><th class="text-center" style="width:60px">Starters</th><th>Handicap Winner</th></tr></thead>
       <tbody>{feed_rows}</tbody>
     </table>
   </div>
