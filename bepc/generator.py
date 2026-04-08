@@ -1447,7 +1447,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
                         f'<a href="{_slug(n)}.html" class="badge bg-light text-dark border text-decoration-none">{n}</a>'
                         for n, _ in frequent
                     )
-                    craft_content += f'<div class="mt-3 pt-2 border-top"><span class="text-muted small fw-semibold">Also raced this season: </span>{also_links}</div>'
+                    craft_content += f'<div class="mt-3 pt-2 border-top"><span class="text-muted small fw-semibold">Frequent competitors this season: </span>{also_links}</div>'
 
                 body_html += f"{craft_tabs}{craft_content}</div>"  # close data-season div
 
@@ -1821,7 +1821,7 @@ def generate_platform_home(data: dict) -> None:
       <div class="col-12 col-md-6 position-relative">
         <input id="racer-search" type="text" class="form-control form-control-lg"
                placeholder="Find a racer..." autocomplete="off"
-               style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);color:white;">
+               style="background:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.6);color:#333;">
         <div id="racer-results" class="list-group position-absolute w-100 shadow" style="z-index:100;display:none"></div>
       </div>
     </div>
