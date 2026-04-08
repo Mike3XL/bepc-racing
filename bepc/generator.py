@@ -252,7 +252,7 @@ def _selector_bar(data: dict, show_season: bool = True, page: str = None) -> str
 
     season_html = ""
     if show_season:
-        season_html = "<div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='width:auto'></select></div>"
+        season_html = "<div class='d-flex align-items-center gap-2'><span class='text-muted small fw-semibold'>Season</span><select id='season-select' class='form-select form-select-sm' style='min-width:110px'></select></div>"
 
     if page:
         club_js = f"""
@@ -1385,7 +1385,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
       </div>
       <div class="d-flex align-items-center gap-2">
         <span class="text-muted small fw-semibold">Season</span>
-        <select id="season-select" class="form-select form-select-sm" style="width:auto"></select>
+        <select id="season-select" class="form-select form-select-sm" style="min-width:110px"></select>
       </div>
     </div>
   </div>
