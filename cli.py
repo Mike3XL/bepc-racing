@@ -74,11 +74,13 @@ def build_data_json() -> dict:
             races = load_all_common(common_dir)
 
             # Merge races from included clubs for the same year
+            own_ids = {r.race_info.race_id for r in races}
             for inc_club in cfg.get("include_clubs", []):
                 inc_common = DATA_DIR / inc_club / year / "common"
                 if inc_common.exists():
-                    inc_races = load_all_common(inc_common)
-                    races = races + inc_races
+                    for r in load_all_common(inc_common):
+                        if r.race_info.race_id not in own_ids:
+                            races.append(r)
 
             # Sort merged races by date before handicap processing
             from datetime import datetime
