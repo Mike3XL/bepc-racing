@@ -1337,6 +1337,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
   var availYears = {list(sorted(by_club[current_club].keys(), reverse=True))};
   var storedSeason = localStorage.getItem('pc_year');
   var season = (storedSeason && availYears.indexOf(storedSeason) >= 0) ? storedSeason : availYears[0];
+  localStorage.setItem('pc_year', season);
 
   function showSeason(s) {{
     document.querySelectorAll('[data-season]').forEach(function(el) {{
