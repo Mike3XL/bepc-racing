@@ -1966,6 +1966,13 @@ def generate_platform_home(data: dict) -> None:
                 lbl = course["label"] or ""
                 course_map.setdefault(lbl, []).append((c["name"], course["podium"]))
 
+        # Build club badge map for podium prefixes
+        race_slugs_map = data.get("race_slugs", {})
+        club_badge = {}
+        for c in r["clubs"]:
+            slug = race_slugs_map.get(c["id"], {}).get(c["race_id"], str(c["race_id"]))
+            club_badge[c["id"]] = f'<a href="{c["id"]}/results/{slug}.html" onclick="localStorage.setItem(\'pc_club\',\'{c["id"]}\')" class="badge bg-light text-dark border me-1 small fw-normal">{c["name"]} ↗</a>'
+
         multi_club = len(r["clubs"]) > 1
         multi_course = len(course_map) > 1
         podium_html = ""
@@ -1978,16 +1985,17 @@ def generate_platform_home(data: dict) -> None:
                 short_label = ""
             if multi_course and short_label:
                 if len(club_podiums) == 1:
-                    # single club — inline with course label
                     club_name, podium = club_podiums[0]
-                    prefix = f'<span class="text-muted small me-1">{club_name}:</span> ' if multi_club else ""
+                    cid = next((c["id"] for c in r["clubs"] if c["name"] == club_name), "")
+                    prefix = club_badge.get(cid, f'<span class="text-muted small me-1">{club_name}:</span> ') if multi_club else ""
                     names = " · ".join(f'{_place_labels.get(trophy,"")}{_racer_link(name)}' for name, trophy in podium)
                     podium_html += f'<div class="small"><span class="text-muted small fw-semibold me-1">{short_label}:</span>{prefix}{names}</div>'
                     continue
                 else:
                     podium_html += f'<div class="text-muted small fw-semibold mt-1">{short_label}</div>'
             for club_name, podium in club_podiums:
-                prefix = f'<span class="text-muted small me-1">{club_name}:</span> ' if multi_club else ""
+                cid = next((c["id"] for c in r["clubs"] if c["name"] == club_name), "")
+                prefix = club_badge.get(cid, f'<span class="text-muted small me-1">{club_name}:</span> ') if multi_club else ""
                 names = " · ".join(
                     f'{_place_labels.get(trophy,"")}{_racer_link(name)}'
                     for name, trophy in podium
@@ -1999,7 +2007,7 @@ def generate_platform_home(data: dict) -> None:
         feed_rows += f"""
         <tr>
           <td class="text-muted small text-nowrap">{r["date"]}</td>
-          <td><span class="fw-semibold me-2">{r["name"]}</span>{club_links_html}</td>
+          <td><span class="small">{r["name"]}</span></td>
           <td class="text-muted small text-center">{r["starters"]}</td>
           <td>{podium_html}</td>
         </tr>"""
@@ -2036,7 +2044,7 @@ def generate_platform_home(data: dict) -> None:
   <h2 class="h5 mb-2">Recent Races</h2>
   <div class="table-responsive">
     <table class="table table-sm table-striped">
-      <thead><tr><th style="width:90px">Date</th><th style="width:25%">Race</th><th class="text-center" style="width:60px">Starters</th><th>Handicap Winner</th></tr></thead>
+      <thead><tr><th style="width:90px">Date</th><th style="width:30%">Race</th><th class="text-center" style="width:60px">Starters</th><th>Handicap Winner</th></tr></thead>
       <tbody>{feed_rows}</tbody>
     </table>
   </div>
