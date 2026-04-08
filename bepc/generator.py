@@ -63,22 +63,22 @@ def _club_name(data: dict) -> str:
 _SEASON_JS = """
 <script>
 function getSeason(fallback) {
-  return localStorage.getItem('bepc_season') || fallback;
+  return localStorage.getItem('pc_season') || fallback;
 }
 function setSeason(year) {
-  localStorage.setItem('bepc_season', year);
+  localStorage.setItem('pc_season', year);
 }
 function getDistance() {
-  return localStorage.getItem('bepc_distance') || '';
+  return localStorage.getItem('pc_distance') || '';
 }
 function setDistance(dist) {
-  if (dist) localStorage.setItem('bepc_distance', dist);
+  if (dist) localStorage.setItem('pc_distance', dist);
 }
 function getResultTab() {
-  return localStorage.getItem('bepc_result_tab') || '';
+  return localStorage.getItem('pc_result_tab') || '';
 }
 function setResultTab(tab) {
-  if (tab) localStorage.setItem('bepc_result_tab', tab);
+  if (tab) localStorage.setItem('pc_result_tab', tab);
 }
 function fetchData(url, cb) {
   fetch(url).then(r => r.json()).then(cb);
@@ -195,22 +195,29 @@ def _selector_bar(data: dict, show_season: bool = True, racer_clubs: list = None
 <script>
 (function() {{
   var ALL_CLUB_SEASONS = {all_seasons_js};
-  var stored = localStorage.getItem('bepc_club') || '{data["current_club"]}';
+  var stored = localStorage.getItem('pc_club') || '{data["current_club"]}';
   if (!ALL_CLUB_SEASONS[stored]) stored = '{data["current_club"]}';
   document.querySelectorAll('#club-btn-group button').forEach(function(btn) {{
     if (btn.dataset.club === stored) btn.classList.add('active');
     btn.addEventListener('click', function() {{
-      localStorage.setItem('bepc_club', btn.dataset.club);
+      var newClub = btn.dataset.club;
+      var currentYear = sel ? sel.value : null;
+      localStorage.setItem('pc_club', newClub);
+      // Carry current year to new club (selector bar will validate on reload)
+      if (currentYear) localStorage.setItem('pc_season', currentYear);
       window.location.reload();
     }});
   }});
   var sel = document.getElementById('season-select');
   if (sel) {{
     var info = ALL_CLUB_SEASONS[stored];
-    var saved = localStorage.getItem('bepc_season');
+    var saved = localStorage.getItem('pc_season');
+    // Use saved year if valid for this club, else fall back to current
+    var active = (saved && info.years.indexOf(saved) >= 0) ? saved : info.current;
     sel.innerHTML = info.years.map(function(y) {{
-      return '<option value="' + y + '"' + (y === (saved || info.current) ? ' selected' : '') + '>' + y + ' Season</option>';
+      return '<option value="' + y + '"' + (y === active ? ' selected' : '') + '>' + y + ' Season</option>';
     }}).join('');
+    localStorage.setItem('pc_season', active);
   }}
 }})();
 </script>"""
@@ -470,8 +477,8 @@ function render(year) {{
   addRowNumbers(dtPts);
 }}
 window.addEventListener('DOMContentLoaded', () => {{
-  function getClub() {{ return localStorage.getItem('bepc_club') || '{data["current_club"]}'; }}
-  function setClub(c) {{ localStorage.setItem('bepc_club', c); }}
+  function getClub() {{ return localStorage.getItem('pc_club') || '{data["current_club"]}'; }}
+  function setClub(c) {{ localStorage.setItem('pc_club', c); }}
   function loadClub(club) {{
     fetchData(`standings-data-${{club}}.json`, d => {{
       SEASONS = d.seasons;
@@ -746,7 +753,7 @@ document.addEventListener('DOMContentLoaded', () => {{
   document.getElementById('btn-next').addEventListener('click', () => renderRace(currentIndex + 1));
   document.getElementById('race-select').addEventListener('change', e => renderRace(parseInt(e.target.value)));
   document.getElementById('season-select').addEventListener('change', e => {{ setSeason(e.target.value); loadSeason(e.target.value); }});
-  const club = localStorage.getItem('bepc_club') || '{data["current_club"]}';
+  const club = localStorage.getItem('pc_club') || '{data["current_club"]}';
   fetchData(`races-data-${{club}}.json`, d => {{
     SEASONS = d.seasons;
     const sel = document.getElementById('season-select');
@@ -1065,8 +1072,8 @@ function loadTrajSeason(year) {{
   }});
 }}
 window.addEventListener('DOMContentLoaded', () => {{
-  function getClub() {{ return localStorage.getItem('bepc_club') || '{data["current_club"]}'; }}
-  function setClub(c) {{ localStorage.setItem('bepc_club', c); }}
+  function getClub() {{ return localStorage.getItem('pc_club') || '{data["current_club"]}'; }}
+  function setClub(c) {{ localStorage.setItem('pc_club', c); }}
   function loadClub(club) {{
     fetchData(`trajectories-data-${{club}}.json`, d => {{
       ALL_SEASONS = d.seasons;
@@ -1200,9 +1207,11 @@ document.getElementById('racer-select').addEventListener('change', function() {
   {next_btn}
 </div>"""
 
-        # Group by club → year → craft
+        # Only include current club's data — other clubs have their own racer pages
         by_club: dict[str, dict[str, dict[str, list]]] = {}
         for (club_id, year, craft), results in sorted(keys.items()):
+            if club_id != current_club:
+                continue
             by_club.setdefault(club_id, {}).setdefault(year, {})[craft] = results
 
         all_charts_js = ""
@@ -1211,8 +1220,6 @@ document.getElementById('racer-select').addEventListener('change', function() {
         racer_clubs = list(by_club.keys())  # clubs this racer has data for
 
         for club_id, years in sorted(by_club.items()):
-            body_html += f'<div data-club="{club_id}" style="display:none">'
-
             for year, crafts in sorted(years.items()):
                 body_html += f'<div data-season="{year}" style="display:none">'
 
@@ -1288,43 +1295,40 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
                 craft_content += "</div>"  # close tab-content div
                 body_html += f"{craft_tabs}{craft_content}</div>"  # close data-season div
 
-            body_html += "</div>"  # close data-club div
-
         season_tab_js = f"""<script>
 (function() {{
   var club = '{current_club}';
-  localStorage.setItem('bepc_club', club);
-  var season = localStorage.getItem('bepc_season_' + club) || '{current_year}';
+  localStorage.setItem('pc_club', club);
+  // Use stored season if valid for this club, else fall back to current year
+  var availYears = {list(sorted(data["clubs"][current_club]["seasons"].keys(), reverse=True))};
+  var storedSeason = localStorage.getItem('pc_season');
+  var season = (storedSeason && availYears.indexOf(storedSeason) >= 0) ? storedSeason : '{current_year}';
 
-  function showClubSeason(c, s) {{
-    // Show correct club
-    document.querySelectorAll('[data-club]').forEach(function(el) {{
-      el.style.display = el.dataset.club === c ? '' : 'none';
-    }});
-    // Show correct season within that club
-    document.querySelectorAll('[data-club="' + c + '"] [data-season]').forEach(function(el) {{
+  function showSeason(s) {{
+    document.querySelectorAll('[data-season]').forEach(function(el) {{
       el.style.display = el.dataset.season === s ? '' : 'none';
     }});
   }}
 
-  showClubSeason(club, season);
+  showSeason(season);
 
   // Season selector change
   var sel = document.getElementById('season-select');
   if (sel) sel.addEventListener('change', function() {{
-    setSeason(this.value);
-    showClubSeason(localStorage.getItem('bepc_club') || '{data["current_club"]}', this.value);
+    var yr = this.value;
+    setSeason(yr);
+    showSeason(yr);
   }});
 
   // Restore saved craft tab
-  var savedCraft = localStorage.getItem('bepc_craft');
+  var savedCraft = localStorage.getItem('pc_craft');
   if (savedCraft) {{
     var craftBtn = document.querySelector('[data-bs-target="#' + savedCraft + '"]');
     if (craftBtn) bootstrap.Tab.getOrCreateInstance(craftBtn).show();
   }}
   document.querySelectorAll('[data-bs-target^="#c-"]').forEach(function(btn) {{
     btn.addEventListener('shown.bs.tab', function() {{
-      localStorage.setItem('bepc_craft', btn.getAttribute('data-bs-target').substring(1));
+      localStorage.setItem('pc_craft', btn.getAttribute('data-bs-target').substring(1));
     }});
   }});
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function(el) {{
@@ -1514,7 +1518,7 @@ def generate_platform_home(data: dict) -> None:
               </div>
               <p class="card-text text-muted small">{desc}</p>
               <div class="small text-muted mb-3">{total_races} races · {total_racers} racers · {year_range}</div>
-              <a href="index.html" onclick="localStorage.setItem('bepc_club','{club_id}')" class="btn btn-outline-primary btn-sm">View Results →</a>
+              <a href="index.html" onclick="localStorage.setItem('pc_club','{club_id}')" class="btn btn-outline-primary btn-sm">View Results →</a>
             </div>
           </div>
         </div>"""
@@ -1527,7 +1531,7 @@ def generate_platform_home(data: dict) -> None:
         for c in r["clubs"]:
             race_link = f'index.html#{c["race_id"]}'
             cls = "text-secondary" if c["type"] == "league" else ""
-            club_links_html += f'<a href="{race_link}" onclick="localStorage.setItem(\'bepc_club\',\'{c["id"]}\')" class="badge bg-light text-dark border me-1 small fw-normal {cls}">{c["name"]} ↗</a>'
+            club_links_html += f'<a href="{race_link}" onclick="localStorage.setItem(\'pc_club\',\'{c["id"]}\')" class="badge bg-light text-dark border me-1 small fw-normal {cls}">{c["name"]} ↗</a>'
             winners = c.get("winners", [])
             if not winners:
                 winner_line = '<span class="text-muted">—</span>'
@@ -1706,7 +1710,7 @@ function loadRacesClub(club) {{
 }}
 
 document.addEventListener('DOMContentLoaded', function() {{
-  var club = localStorage.getItem('bepc_club') || '{data["current_club"]}';
+  var club = localStorage.getItem('pc_club') || '{data["current_club"]}';
   loadRacesClub(club);
   var sel = document.getElementById('season-select');
   if (sel) sel.addEventListener('change', function() {{
@@ -1762,6 +1766,7 @@ def generate_cross_club_links() -> None:
 
 
 def generate_all(data: dict) -> None:
+    global _current_racer_club
     SITE_DIR.mkdir(exist_ok=True)
     (SITE_DIR / "racer").mkdir(exist_ok=True)
     # Generate racer pages for all clubs
@@ -1771,6 +1776,7 @@ def generate_all(data: dict) -> None:
         generate_racer_pages(data)
         generate_racer_index(data)
     data["current_club"] = original_club
+    _current_racer_club = original_club
     generate_data_files(data)
     generate_standings(data)
     generate_races(data)
