@@ -1726,35 +1726,53 @@ def generate_platform_home(data: dict) -> None:
 
     recent_races = sorted(race_map.values(), key=lambda x: _parse_date(x["date"]), reverse=True)[:15]
 
-    # Club cards
-    club_cards = ""
+    # Load upcoming races
+    upcoming_path = Path(__file__).parent.parent / "data" / "upcoming.yaml"
+    upcoming_races = []
+    if upcoming_path.exists():
+        with open(upcoming_path) as f:
+            upcoming_data = yaml.safe_load(f) or {}
+        today = datetime.today().date()
+        from collections import Counter
+        club_counts: Counter = Counter()
+        for race in sorted(upcoming_data.get("upcoming", []), key=lambda x: x.get("date", "")):
+            try:
+                race_date = datetime.strptime(race["date"], "%Y-%m-%d").date()
+            except Exception:
+                continue
+            if race_date < today:
+                continue
+            club_id = race.get("club", "")
+            if club_counts[club_id] >= 4:
+                continue
+            if len(upcoming_races) >= 10:
+                break
+            club_counts[club_id] += 1
+            cfg = clubs_cfg.get(club_id, {})
+            upcoming_races.append({
+                "name": race["name"],
+                "date": race_date.strftime("%b %d, %Y"),
+                "club": cfg.get("short_name", club_id),
+                "club_id": club_id,
+                "distance": race.get("distance", ""),
+                "url": race.get("url", ""),
+            })
+
+    upcoming_rows = ""
+    for r in upcoming_races:
+        link = f'<a href="{r["url"]}" target="_blank">{r["name"]}</a>' if r["url"] else r["name"]
+        upcoming_rows += f'<tr><td class="text-muted small text-nowrap">{r["date"]}</td><td>{link}</td><td class="text-muted small">{r["club"]}</td><td class="text-muted small">{r["distance"]}</td></tr>'
+
+    # Compact club strip
+    club_strip = ""
     for club_id, club in data["clubs"].items():
         cfg = clubs_cfg.get(club_id, {})
-        name = cfg.get("name", club.get("name", club_id))
-        short = cfg.get("short_name", name)
-        ctype = cfg.get("type", "org")
-        desc = cfg.get("description", "").strip()
-        latest_year = max(club["seasons"].keys())
+        short = cfg.get("short_name", cfg.get("name", club_id))
         earliest_year = min(club["seasons"].keys())
-        year_range = earliest_year if earliest_year == latest_year else f"{earliest_year}–{latest_year}"
+        latest_year = max(club["seasons"].keys())
+        year_range = f"{earliest_year}–{latest_year}"
         total_races = sum(len(s["races"]) for s in club["seasons"].values())
-        total_racers = len({r["canonical_name"] for s in club["seasons"].values()
-                            for race in s["races"] for r in race["results"]})
-        type_badge = '<span class="badge bg-secondary">Community League</span>' if ctype == "league" else '<span class="badge bg-primary">Club</span>'
-        club_cards += f"""
-        <div class="col-12 col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h5 class="card-title mb-0">{name}</h5>
-                {type_badge}
-              </div>
-              <p class="card-text text-muted small">{desc}</p>
-              <div class="small text-muted mb-3">{total_races} races · {total_racers} racers · {year_range}</div>
-              <a href="{club_id}/races.html" onclick="localStorage.setItem('pc_club','{club_id}')" class="btn btn-outline-primary btn-sm">View Races →</a>
-            </div>
-          </div>
-        </div>"""
+        club_strip += f'<a href="{club_id}/races.html" onclick="localStorage.setItem(\'pc_club\',\'{club_id}\')" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-2"><span class="fw-semibold">{short}</span><span class="text-muted small">{total_races} races · {year_range}</span></a>'
 
     # Recent races feed
     feed_rows = ""
@@ -1829,15 +1847,22 @@ def generate_platform_home(data: dict) -> None:
 </div>
 
 <div class="container">
-  <h2 class="h4 mb-3">Clubs &amp; Leagues</h2>
-  <div class="row">{club_cards}</div>
-
-  <h2 class="h4 mb-3 mt-2">Recent Races</h2>
-  <div class="table-responsive">
-    <table class="table table-sm table-striped">
-      <thead><tr><th>Date</th><th>Race</th><th class="text-center">Starters</th><th>Handicap Winner (by club)</th></tr></thead>
-      <tbody>{feed_rows}</tbody>
-    </table>
+  <div class="row g-4">
+    <div class="col-12 col-lg-8">
+      {"<h2 class='h5 mb-2'>Upcoming Races</h2><div class='table-responsive mb-4'><table class='table table-sm table-hover'><thead><tr><th>Date</th><th>Race</th><th>Club</th><th>Distance</th></tr></thead><tbody>" + upcoming_rows + "</tbody></table></div>" if upcoming_rows else ""}
+      <h2 class="h5 mb-2">Recent Races</h2>
+      <div class="table-responsive">
+        <table class="table table-sm table-striped">
+          <thead><tr><th>Date</th><th>Race</th><th class="text-center">Starters</th><th>Handicap Winner</th></tr></thead>
+          <tbody>{feed_rows}</tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <h2 class="h5 mb-2">Clubs &amp; Leagues</h2>
+      <div class="list-group list-group-flush border rounded">{club_strip}</div>
+      <p class="text-muted small mt-2"><a href="about.html">About PaddleClub →</a></p>
+    </div>
   </div>
 </div>
 <script>

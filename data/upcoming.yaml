@@ -1,0 +1,75 @@
+# Upcoming races — manually maintained, update with sync-upcoming or by hand
+# Sources: soundrowers.org/race-schedule/, register.pacificmultisports.com, webscorer organizer pages
+
+upcoming:
+  - name: Squaxin Island
+    date: "2026-04-11"
+    club: sound-rowers
+    distance: "13/8 mi"
+    url: https://www.soundrowers.org/race-schedule/
+
+  - name: Lake Whatcom Classic
+    date: "2026-05-02"
+    club: sound-rowers
+    distance: "5.5/12 mi"
+    url: https://www.soundrowers.org/race-schedule/
+
+  - name: Commencement Bay
+    date: "2026-05-09"
+    club: sound-rowers
+    distance: "6 mi"
+    url: https://www.soundrowers.org/race-schedule/
+
+  - name: Guano Rocks
+    date: "2026-05-30"
+    club: sound-rowers
+    distance: "3.2/5.5 mi"
+    url: https://www.soundrowers.org/race-schedule/
+
+  - name: Rat Island Regatta
+    date: "2026-06-20"
+    club: sound-rowers
+    distance: "2.5/6.8 NM"
+    url: https://www.soundrowers.org/race-schedule/
+
+  - name: Budd Inlet
+    date: "2026-07-18"
+    club: sound-rowers
+    distance: "3.5/8 mi"
+    url: https://www.soundrowers.org/race-schedule/
+
+  - name: Elk River Challenge
+    date: "2026-07-25"
+    club: sound-rowers
+    distance: "3/7 mi"
+    url: https://www.soundrowers.org/race-schedule/
+
+  - name: Round Shaw Row
+    date: "2026-08-22"
+    club: sound-rowers
+    distance: "14 mi"
+    url: https://www.soundrowers.org/race-schedule/
+
+  - name: Bainbridge Island Marathon
+    date: "2026-09-05"
+    club: sound-rowers
+    distance: "12/26.2 mi"
+    url: https://www.soundrowers.org/race-schedule/
+
+  - name: Lake Samish Salmon Row
+    date: "2026-09-26"
+    club: sound-rowers
+    distance: "6 mi"
+    url: https://www.soundrowers.org/race-schedule/
+
+  - name: Mercer Island Sausage Pull
+    date: "2026-10-10"
+    club: sound-rowers
+    distance: "14.3/6.5 mi"
+    url: https://www.soundrowers.org/race-schedule/
+
+  - name: Port Angeles Coastal Endurance
+    date: "2026-10-25"
+    club: sound-rowers
+    distance: "12k/5k"
+    url: https://www.soundrowers.org/race-schedule/
