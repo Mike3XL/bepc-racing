@@ -708,15 +708,13 @@ function rows(results, placeField) {
     <div class="d-flex flex-wrap align-items-center gap-2">
       {prev_link}
       {next_link}
-      <span class="text-muted small ms-2">{date} · {total_starters} starters</span>
-      {source_link}
-      <a href="../races.html#{year}" class="btn btn-outline-secondary btn-sm ms-auto">{year} Races ↑</a>
+      <a href="../races.html#{year}" class="btn btn-outline-secondary btn-sm">{year} Races ↑</a>
     </div>
   </div>
 </div>
 <div class="container">
   <h1 class="mb-1">{base_name}</h1>
-  <p class="text-muted">{date}</p>
+  <p class="text-muted">{date} · {total_starters} starters{(' · <a href="' + display_url + '" target="_blank">Source ↗</a>') if display_url else ''}</p>
   <div id="course-content"></div>
 </div>
 <script>
