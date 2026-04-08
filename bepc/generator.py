@@ -1677,11 +1677,7 @@ def generate_platform_home(data: dict) -> None:
 </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <span class="navbar-brand">🏄 PaddleClub</span>
-  </div>
-</nav>
+{_nav("Home", data=data, depth=0)}
 
 <div class="hero">
   <div class="container">
