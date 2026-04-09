@@ -577,7 +577,7 @@ def generate_standings(data: dict) -> None:
         data["current_club"] = club_id
         _current_racer_club = club_id
         html = _head("Standings") + _nav("Standings", data=data, depth=1) + _selector_bar(data, page="standings") + f"""
-<div class="container">
+<div class="container-fluid px-2 px-sm-3">
   <h1 class="mb-3">Standings</h1>
   <ul class="nav nav-tabs mb-3">
     <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-hpts">Handicap Points</button></li>
@@ -843,7 +843,7 @@ function rows(results, placeField) {
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container-fluid px-2 px-sm-3">
   <h1 class="mb-1">{base_name}</h1>
   <p class="text-muted">{date} · {total_starters} starters{(' · <a href="' + display_url + '" target="_blank">Source ↗</a>') if display_url else ''}</p>
   <div id="course-content"></div>
@@ -1612,7 +1612,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container-fluid px-2 px-sm-3">
   {racer_nav}
   <div class="d-flex flex-wrap align-items-baseline gap-3 mb-2">
     <h2 class="mb-0">{name}</h2>
