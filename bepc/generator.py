@@ -2038,7 +2038,7 @@ def generate_platform_home(data: dict) -> None:
 <div class="hero">
   <div class="container">
     <h1>PaddleClub</h1>
-    <p>Handicap racing results, standings, and trajectories for paddling clubs and community leagues.</p>
+    <p>Racing results for paddling clubs in the Pacific Northwest.</p>
   </div>
 </div>
 
