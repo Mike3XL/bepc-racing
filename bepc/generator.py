@@ -386,11 +386,14 @@ _valid_racer_slugs: set = set()
 _current_racer_club: str = ""
 
 
-def _racer_link(name: str, back: str = "") -> str:
+def _racer_link(name: str, back: str = "", club_id: str = "") -> str:
     slug = _slug(name)
-    if slug not in _valid_racer_slugs:
+    club = club_id or _current_racer_club
+    # Check if racer has a page in the specified club
+    racer_dir = SITE_DIR / club / "racer"
+    if not (racer_dir / f"{slug}.html").exists():
         return name
-    return f'<a href="racer/{slug}.html">{name}</a>'
+    return f'<a href="{club}/racer/{slug}.html">{name}</a>'
 
 
 def _racer_slugs_js() -> str:
@@ -1988,7 +1991,7 @@ def generate_platform_home(data: dict) -> None:
                     club_name, podium = club_podiums[0]
                     cid = next((c["id"] for c in r["clubs"] if c["name"] == club_name), "")
                     prefix = club_badge.get(cid, f'<span class="text-muted small me-1">{club_name}:</span> ')
-                    names = " · ".join(f'{_place_labels.get(trophy,"")}{_racer_link(name)}' for name, trophy in podium)
+                    names = " · ".join(f'{_place_labels.get(trophy,"")}{_racer_link(name, club_id=cid)}' for name, trophy in podium)
                     podium_html += f'<div class="small"><span class="text-muted small fw-semibold me-1">{short_label}:</span>{prefix}{names}</div>'
                     continue
                 else:
@@ -1997,7 +2000,7 @@ def generate_platform_home(data: dict) -> None:
                 cid = next((c["id"] for c in r["clubs"] if c["name"] == club_name), "")
                 prefix = club_badge.get(cid, f'<span class="text-muted small me-1">{club_name}:</span> ')
                 names = " · ".join(
-                    f'{_place_labels.get(trophy,"")}{_racer_link(name)}'
+                    f'{_place_labels.get(trophy,"")}{_racer_link(name, club_id=cid)}'
                     for name, trophy in podium
                 )
                 podium_html += f'<div class="small">{prefix}{names}</div>'
