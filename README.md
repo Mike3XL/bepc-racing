@@ -1,10 +1,10 @@
 # PaddleClub
 
-Race results, standings, and handicap tracking for open-water paddling clubs and regional leagues.
+Race results, standings, and performance tracking for open-water paddling clubs and regional leagues in the Pacific Northwest. Built for the data-curious paddlers who love stats, trends, and friendly competition.
 
 **Live site:** https://pnw.paddlerace.org/
 
-Clubs currently tracked: BEPC, Sound Rowers, SCKC, PNW Regional (league).
+**Clubs tracked:** BEPC (2015–2026), Sound Rowers (2012–2026), SCKC (2015–2026), PNW Regional league (2017–2026) — 960+ races across 4 clubs.
 
 ## Quick Start
 

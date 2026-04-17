@@ -5,6 +5,20 @@
 ## Performance
 - **Generation/publish is slow — possible 4x redundant work.** When running `cli.py generate --club X` for each of 4 clubs, the output log shows all 4 clubs being regenerated each time (not just the specified club). Investigate whether `generate` ignores the `--club` flag and always regenerates everything, and whether `publish` also re-runs generation. Fix so each `generate --club X` only generates that club, and `publish` only generates once.
 
+## Alias Transparency
+When a racer's name is corrected via aliases.json, the original source name is lost. Add transparency so viewers can see when a result was listed under a different name in the source data.
+- Store `original_name` in race result data when an alias is applied
+- Option A: footnote on result page (e.g. "Listed as Ahmed Salem in source data")
+- Option B: note on racer page listing all name variants seen
+- Option C: both
+Requires storing original name through the loader → processor → generator pipeline.
+
+## Streak Trophy Definition (decided 2026-04-17)
+**Definition:** N consecutive races beating par (adjusted_time_versus_par < 1.0). Trophy awarded at N≥3.
+- Analysed B (decreasing atvp) vs C (beating par): C gives 425 instances max streak 9; B-fixed gives 51 instances max streak 4.
+- C chosen: more achievable, longer streaks, clearly meaningful ("beat my predicted performance N races in a row").
+- Note: beating par means beating *your own* predicted performance, not being the fastest racer.
+
 ## Small Field Race Presentation
 Small group races (< threshold racers) have no par time, so "% from par" shows -100% which is misleading. Tidy up the result page display for small field races:
 - Hide or replace the vs. Par column (show "—" or "n/a")

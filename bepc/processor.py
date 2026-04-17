@@ -124,22 +124,19 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
             if r.is_par_racer:
                 r.trophies.append("par")
 
-        # Streaks — consecutive races with improving adjusted_time_vs_par
+        # Streaks — consecutive races beating par (adjusted_time_versus_par < 1.0)
         streak_state: dict[tuple, tuple[int, float]] = {}  # key -> (streak, last_atvp)
         for r in racers:
             key = (r.canonical_name, r.craft_category)
             rec = running[key]
-            if not r.is_fresh_racer and not r.is_outlier and not small_group and r.adjusted_time_versus_par > 0:
-                if rec.last_atvp > 0 and r.adjusted_time_versus_par < rec.last_atvp:
-                    r_streak = rec.streak + 1
-                else:
-                    r_streak = 1
+            if not r.is_fresh_racer and not r.is_outlier and not small_group and r.adjusted_time_versus_par < 1.0:
+                r_streak = rec.streak + 1
                 if r_streak >= 3:
                     r.trophies.append(f"streak_{r_streak}")
                 new_atvp = r.adjusted_time_versus_par
             else:
                 r_streak = 0
-                new_atvp = rec.last_atvp  # preserve last valid atvp through outlier/fresh races
+                new_atvp = rec.last_atvp
             streak_state[key] = (r_streak, new_atvp)
 
         # Save running state

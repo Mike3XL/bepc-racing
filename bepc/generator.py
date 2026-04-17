@@ -33,7 +33,7 @@ function badges(trophies) {
     outlier:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg>',
   };
   const b = (key, cls, title) => `<span class="hcap-medal ${cls}" data-bs-toggle="tooltip" data-bs-title="${title}">${I[key]}</span>`;
-  const streak = (n) => `<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="${n} consecutive races performing better vs par"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">${n}</text></svg></span>`;
+  const streak = (n) => `<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="${n} consecutive races beating par"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">${n}</text></svg></span>`;
   const render = {
     finish_1:()=>b('finish_1','plain-medal','1st Place (Finish time)'), finish_2:()=>b('finish_2','plain-medal','2nd Place (Finish time)'), finish_3:()=>b('finish_3','plain-medal','3rd Place (Finish time)'),
     hcap_1:()=>b('hcap_1','hcap-gold','1st Place (Corrected time)'), hcap_2:()=>b('hcap_2','hcap-silver','2nd Place (Corrected time)'), hcap_3:()=>b('hcap_3','hcap-bronze','3rd Place (Corrected time)'),
@@ -249,6 +249,16 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
       res.appendChild(item);
     }});
     res.style.display='';
+  }});
+  inp.addEventListener('keydown',function(e){{
+    var items=res.querySelectorAll('a');
+    if(!items.length)return;
+    var active=res.querySelector('a.active');
+    var idx=Array.from(items).indexOf(active);
+    if(e.key==='ArrowDown'){{e.preventDefault();var next=items[idx+1]||items[0];if(active)active.classList.remove('active');next.classList.add('active');next.focus();inp.focus();}}
+    else if(e.key==='ArrowUp'){{e.preventDefault();var prev=items[idx-1]||items[items.length-1];if(active)active.classList.remove('active');prev.classList.add('active');prev.focus();inp.focus();}}
+    else if(e.key==='Enter'&&active){{window.location.href=active.href;}}
+    else if(e.key==='Escape'){{res.style.display='none';}}
   }});
   document.addEventListener('click',function(e){{if(!inp.contains(e.target)&&!res.contains(e.target))res.style.display='none';}});
   }});
@@ -511,7 +521,7 @@ def generate_data_files(data: dict) -> None:
             if streak_codes:
                 for code, cnt in sorted(streak_codes.items(), key=lambda x: int(x[0].split('_')[1])):
                     n = int(code.split('_')[1])
-                    tooltip = f"{n} consecutive races performing better vs par"
+                    tooltip = f"{n} consecutive races beating par"
                     if cnt >= 4:
                         badge = f'<span style="position:absolute;top:-4px;right:-4px;background:#555;color:#fff;border-radius:8px;font-size:0.6em;font-weight:bold;padding:1px 4px;line-height:1.4">{cnt}</span>'
                         parts.append(f'<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="{tooltip}" style="white-space:nowrap;position:relative;padding-right:6px">{_streak_icon(n)}{badge}</span>')
@@ -1360,7 +1370,7 @@ def _racer_trophy_badges(trophies: list) -> str:
     for t in trophies:
         if t.startswith('streak_'):
             n = t.split('_')[1]
-            parts.append(f'<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="{n} consecutive races performing better vs par">{_streak_icon(n)}</span>')
+            parts.append(f'<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="{n} consecutive races beating par">{_streak_icon(n)}</span>')
         elif t in icon_map:
             cls, title, key = icon_map[t]
             parts.append(_icon_span(key, cls, title))
@@ -1770,88 +1780,125 @@ def generate_clubs_page(data: dict) -> None:
 
 def generate_about(data: dict = None) -> None:
     html = _head("About — PaddleRace") + _nav("About", data=data, depth=0) + """
+<style>
+dl dt { font-weight: 600; margin-top: 1.2em; }
+dl dd { margin-left: 0; color: #333; }
+dl dt:first-child { margin-top: 0; }
+</style>
 <div class="container" style="max-width:720px">
   <h1>About PaddleRace</h1>
 
-  <p class="lead">PaddleRace tracks open water paddle racing results, standings, and handicaps. 
-    Our primary purpose is to help racers track their performance and to celebrate great results against established norms.  When the system is working as designed, every racer could be the winner on handicap at any given race.
-  </p>
-  
-  <p> We are community-driven site and not affiliated with the clubs or results management systems.</p>
+  <p>PaddleRace tracks open water paddle racing results, standings, and performance trends for clubs and leagues in the Pacific Northwest. We're community-driven and not affiliated with any club or timing platform. Our goal is to make race performance data accessible and meaningful for every paddler in the region.</p>
 
-  <p> Please send feedback to <a href="mailto:mike.liddell@gmail.com">mike.liddell@gmail.com</a>, or <a href="https://github.com/Mike3XL/bepc-racing/issues" target="_blank">create an issue on GitHub</a>.</p>
+  <p>We have data from 2015, tracking over 960 races and 6,000 athletes across four clubs and leagues.</p>
 
- <h2>The club & league system</h2>
- Our handicapping calculations rely on a reasonably consistent field of competitors who collectively participate in a whole bunch of races.  Clubs that run 10+ races have enough data on their own for a viable handicapping system. For smaller organizers, we can group their races into Leagues.
- 
- Some races are included by both a club and a league. For example, the Sound Rowers races are a major component of the PNW League.
- As a result, athletes who attend Sound Rowers events have both club results and PNW league results.
- 
- <h2>The handicap system</h2>
- <p>
-  The general idea is to measure each racer against their expected performance at a given race.  But how to know what to expect when the conditions are always different?  The solution from <a href="#references">yacht racing</a> is to observe how the whole field performed and then work backwards to decide what was a "par" result and how each competitor compared.
-</p>
-  <h5>Handicap factors</h5>
-<p> Each racer, per club and per craft category, has a handicap factor.  Everyone starts at 1.0 and the number is updated each race.  After two races the handicap is <em>established</em> and considered indicative of future performance.
-</p> 
-  <h5>Par</h5>
-  <p>After a race, each racer's time is adjusted by their handicap factor. In a perfect world everyone's adjusted time would be identical and that would obviously be the "par" result but we can expect there to be a range of adjusted times.  We select the <em>par racer</em> as the finisher at the 33rd percentile by adjusted time. We can generally expect that the par racer performed very close to their historical norm and thus can define par for the day. The <em>par time</em> is par racer's adjusted time, and the benchmark for everyone else.
+  <p>Contact: <a href="mailto:mike.liddell@gmail.com">mike.liddell@gmail.com</a> &middot; <a href="https://github.com/Mike3XL/bepc-racing/issues" target="_blank">GitHub issues</a>.</p>
 
-  <h5>Adjusted time</h5>
-  <p style="text-align:center"><b>Adjusted time = finish time ÷ handicap.</b></p>
-  <p></p>
-  A handicap of 1.0 means no adjustment and a handicap below 1.0 indicates one of the fastest racers in the club.</p>
+  <h2>How the corrected results work</h2>
 
-  <h5>Updating handicaps</h5>
-  <p>After each race your handicap is updated based on how your adjusted time compared to par:</p>
-  <table class="table table-bordered table-sm">
-    <thead><tr><th>Situation</th><th>Update rule</th></tr></thead>
-    <tbody>
-      <tr><td>Race #1</td><td>Handicap set to your time-vs-par (no prior history)</td></tr>
-      <tr><td>Race #2</td><td>50% blend of old handicap and new result</td></tr>
-      <tr><td>Faster than expected (&le;100% of par)</td><td>30% shift toward new result</td></tr>
-      <tr><td>Slower than expected (&gt;100% of par)</td><td>15% shift toward new result</td></tr>
-      <tr><td>Outlier (&gt;10% outside prediction)</td><td>No change — result ignored</td></tr>
-    </tbody>
-  </table>
-  <p>Handicaps adjust smoothly, and respond more quickly to good days than to off days. This helps to level the playing field and allows for occasional rough days. By adjusting smoothly, a handicap-improvement streak of three or more is a significant but achievable accomplishment.</p>
+  <p>All results are calculated automatically from official race timing data. There is no manual adjustment or subjective scoring — the same algorithm applies to every racer, every race.</p>
 
-  <h5>Points</h5>
-  <p>The points system rewards performance over whole seasons, based on handicap and outright placing. This is similar to how many clubs track results week-over-week towards a season ladder.</p>
-  <p><strong>Overall points</strong> are awarded for finishing position (10 pts for 1st, 9 for 2nd … 1 pt for 10th).</p>
-  <p><strong>Handicap points</strong> use the same scale but based on <em>adjusted</em> finishing position.
-  Handicap points are not awarded while your handicap is being established (typically first two races in a club or league).</p>
-  <p>When a race day has multiple distance groups (e.g. Long Course and Short Course), points are weighted
-  proportionally by group size. For example, if the Long Course has 26 racers and Short Course has 13,
-  the Long Course winner earns <code>round(10 × 26/39)</code> = 7 pts and the Short Course winner earns
-  <code>round(10 × 13/39)</code> = 3 pts. This keeps the total points available per race day roughly constant.</p>
+  <p>Each racer has a performance index for each club and craft category they race with — a number that reflects their typical pace. An index below 1.0 means you're faster; above 1.0 means slower. Each performance index starts at 1.0 and adjusts gradually after each race.</p>
 
-  <h2>Race Organizers</h2>
-  <p>PNW Regional draws from events organized by:</p>
+  <p>After a race, each racer's finish time is divided by their index to produce a <em>corrected time</em>. The racer with the best corrected time wins on corrected time, regardless of who crossed the line first. This lets a slower craft or a newer racer compete meaningfully against the fastest paddlers.</p>
+
+  <p>The <em>par racer</em> is the finisher about one-third of the way down the corrected time list — someone who performed close to their predicted performance. Everyone else's result is expressed as a percentage above or below par.</p>
+
+  <p>Your index updates after each race based on how you performed vs par. It responds faster to good days than bad ones, so an occasional off day has limited impact.</p>
+
+  <h2>Clubs &amp; Leagues</h2>
+
+  <p>We track clubs that run their own race series (BEPC, Sound Rowers, SCKC). We also maintain a PNW Regional league that draws from events across multiple organizers. Racers who attend Sound Rowers events appear in both Sound Rowers and PNW Regional standings, with separate indexes for each.</p>
+
+  <h2>FAQ</h2>
+
+  <dl>
+    <dt>How do I get my results added?</dt>
+    <dd>For clubs we already track, results are added automatically after each race — provided we can locate the upcoming race information and the results are hosted on a supported platform (WebScorer, Race Result, or Jericho). If your results aren't appearing, or you'd like to add a new club, series, or region, please let us know.</dd>
+
+    <dt>Why aren't Sprint Kayak, SK, FSK, and HPK separate categories?</dt>
+    <dd>Two reasons. First, most PNW fields are too small — splitting K-1 into sub-categories would leave each with too few racers for a reliable index. Second, many racers choose whichever boat suits the conditions on the day. We're tracking K-1 performance more than performance in a specific flavor of K-1. See <a href="http://www.soundrowers.org/boat-classes/determining-kayak-classifications/" target="_blank">Sound Rowers kayak classifications</a> for definitions of SK, FSK, and HPK.</dd>
+
+    <dt>What do the craft abbreviations mean?</dt>
+    <dd>K-1 and K-2 are single and double kayaks. OC-1, OC-2, OC-6 are outrigger canoes. Va'a is a style of rudderless outrigger canoe used in Polynesian paddling traditions. SUP is stand-up paddleboard. Prone is prone paddleboard. Where a specific boat model is known (e.g. "Surfski"), it's shown in parentheses alongside the category.</dd>
+
+    <dt>What does the ^ symbol mean on a result?</dt>
+    <dd>A ^ next to a corrected time or index value indicates an outlier result — the performance was more than 10% outside prediction and the index was not updated. It may also indicate a racer returning after a long absence, where the first result back is treated conservatively.</dd>
+
+    <dt>What is the par racer trophy?</dt>
+    <dd>The par racer is the finisher whose corrected time is closest to the par time — the benchmark for the day. It's awarded to the racer who most closely matched their predicted performance, which is a meaningful achievement in its own right.</dd>
+
+    <dt>What is the streak trophy?</dt>
+    <dd>A streak is three or more consecutive races where a racer beat par — finishing with a negative vs par result. The streak trophy shows the current streak length. It resets when a racer fails to beat par or misses a race.</dd>
+
+    <dt>Why track corrected time?</dt>
+    <dd>Finish time tells you who was fastest on the day. Corrected time tells you who performed best relative to their own history. A racer who beats their predicted performance by 3% may have had a better race than someone who finished ahead of them outright. Corrected time rewards consistency and improvement, not just raw speed — which means every racer has a shot at the top of the corrected time list, regardless of craft or experience level.</dd>
+
+    <dt>Why are there different craft categories?</dt>
+    <dd>An athlete who competes in both SUP and K-1 races will have meaningfully different performance profiles in each. Grouping them together would mean the index is trying to track two different things at once. Craft are grouped into categories (K-1, K-2, OC-1, OC-2, OC-6, Va'a, SUP, Prone, and others). Within a category, different specific boats are treated as equivalent for corrected time purposes.</dd>
+
+    <dt>Why are there no gender or age groups?</dt>
+    <dd>Personal performance indexes generally remove the rationale for age and gender categories. A racer with a well-established index is competing against their own predicted performance, not against others directly. When all athletes have a well-calibrated index, each race is a level playing field.</dd>
+
+    <dt>What does "establishing index" mean?</dt>
+    <dd>Your first two races in a club are used to set your initial index. You're eligible for finish trophies but not corrected time awards during this period.</dd>
+
+    <dt>What is an outlier?</dt>
+    <dd>If your corrected time is more than 10% outside what your index predicted, the result is flagged as an outlier and your index doesn't change. This protects against equipment failures, wrong turns, or other anomalies.</dd>
+
+    <dt>Can people game the system?</dt>
+    <dd>Yes, intentionally or accidentally. If a racer regularly underperforms — sandbagging, testing new gear, or racing casually — their index drifts high and they receive more correction in future races. If something looks off, review the result history on their racer page. Results more than 10% outside prediction are automatically ignored and don't affect the index.</dd>
+
+    <dt>Why do I appear in both Sound Rowers and PNW Regional?</dt>
+    <dd>Sound Rowers races are included in the PNW Regional league. Your index and points are tracked separately for each — your Sound Rowers index reflects your performance in that club's field, while your PNW Regional index reflects the broader league field.</dd>
+
+    <dt>How is the index updated after each race?</dt>
+    <dd>
+      <table class="table table-bordered table-sm mt-2">
+        <thead><tr><th>Situation</th><th>Update</th></tr></thead>
+        <tbody>
+          <tr><td>First race</td><td>Index set from your corrected time vs par</td></tr>
+          <tr><td>Second race</td><td>50% blend of old index and new result</td></tr>
+          <tr><td>Faster than predicted</td><td>30% shift toward new result</td></tr>
+          <tr><td>Slower than predicted</td><td>15% shift toward new result</td></tr>
+          <tr><td>Outlier (&gt;10% off)</td><td>No change</td></tr>
+        </tbody>
+      </table>
+    </dd>
+
+    <dt>What are corrected points and finish points?</dt>
+    <dd>Finish points are awarded for crossing the line: 10 pts for 1st, 9 for 2nd, down to 1 pt for 10th. Corrected points use the same scale but based on corrected time order. Points aren't awarded during your first two races while your index is being established. When a race has multiple distance groups, points are weighted by group size so the total available per race day stays roughly constant.</dd>
+  </dl>
+
+  <h2>Updates &amp; Roadmap</h2>
+  <p>PaddleRace is an ongoing project. See the <a href="https://github.com/Mike3XL/bepc-racing" target="_blank">GitHub repository</a> for source code, open issues, and planned improvements. Feedback and contributions welcome.</p>
+
+  <h2>References</h2>
+
+  <h5>Race organizers</h5>
   <ul>
-    <li><a href="https://www.pnworca.org" target="_blank">PNWORCA</a> — Pacific Northwest Outrigger Racing Canoe Association. Runs the annual Winter Series (7 races) and other regional events.</li>
+    <li><a href="https://www.pnworca.org" target="_blank">PNWORCA</a> — Pacific Northwest Outrigger Racing Canoe Association. Runs the annual Winter Series and other regional events.</li>
     <li><a href="https://www.soundrowers.org" target="_blank">Sound Rowers</a> — open-water paddling club running a full season of distance races across Puget Sound and beyond.</li>
-    <li><a href="https://www.soundrowers.org/race-schedule/bellingham-bay-rough-water-race/" target="_blank">Bellingham Bay Outrigger Paddlers (BBOP)</a> — organizes the Peter Marcus Rough Water Race on Bellingham Bay. Race director: Kevin Olney.</li>
-    <li><a href="https://www.gorgedownwindchamps.com" target="_blank">Gorge Downwind Champs</a> — independent race organization running the annual downwind race on the Columbia River Gorge, based in Stevenson, WA.</li>
-    <li><a href="https://www.ghckrt.com" target="_blank">Gig Harbor Canoe &amp; Kayak Racing Team (GHCKC)</a> — organizes the Paddlers Cup at Skansie Park, Gig Harbor, and the Eric Hughes Memorial Regatta at Green Lake, Seattle.</li>
-    <li><a href="https://www.jerichooutrigger.com" target="_blank">Jericho Beach Outrigger Canoe Club</a> — hosts results for BC-based events including Da Grind, Keats Chop, Whipper Snapper, and Wake Up the Gorge.</li>
+    <li><a href="https://www.soundrowers.org/race-schedule/bellingham-bay-rough-water-race/" target="_blank">Bellingham Bay Outrigger Paddlers (BBOP)</a> — organizes the Peter Marcus Rough Water Race on Bellingham Bay.</li>
+    <li><a href="https://www.gorgedownwindchamps.com" target="_blank">Gorge Downwind Champs</a> — annual downwind race on the Columbia River Gorge, Stevenson, WA.</li>
+    <li><a href="https://www.ghckrt.com" target="_blank">Gig Harbor Canoe &amp; Kayak Racing Team</a> — organizes the Paddlers Cup and Eric Hughes Memorial Regatta.</li>
+    <li><a href="https://www.jerichooutrigger.com" target="_blank">Jericho Beach Outrigger Canoe Club</a> — hosts BC-based events including Da Grind, Keats Chop, Whipper Snapper, and Wake Up the Gorge.</li>
     <li><a href="https://www.ballardelks.org/paddle-club" target="_blank">Ballard Elks Paddle Club (BEPC)</a> — weekly race series at Shilshole Bay, Seattle.</li>
     <li><a href="https://www.sckc.ws" target="_blank">Seattle Canoe and Kayak Club (SCKC)</a> — Duck Island Race series on Green Lake, Seattle.</li>
   </ul>
 
-  <h2>Data Sources</h2>
-  <p>Race results are collected from several timing platforms depending on the organizer:</p>
+  <h5>Data sources</h5>
   <ul>
-    <li><a href="https://www.webscorer.com" target="_blank">WebScorer</a> — online race timing and results platform used by BEPC, Sound Rowers, SCKC, and many PNW Regional events.</li>
-    <li><a href="https://www.raceresult.com" target="_blank">Race Result</a> — race timing platform used by Gorge Downwind Champs and other events via Pacific Multisports registration.</li>
-    <li><a href="https://register.pacificmultisports.com" target="_blank">Pacific Multisports</a> — race registration platform used by Peter Marcus, Narrows Challenge, Gorge Downwind, and other PNW events.</li>
+    <li><a href="https://www.webscorer.com" target="_blank">WebScorer</a> — used by BEPC, Sound Rowers, SCKC, and many PNW Regional events.</li>
+    <li><a href="https://www.raceresult.com" target="_blank">Race Result</a> — used by Gorge Downwind Champs and other Pacific Multisports events.</li>
+    <li><a href="https://register.pacificmultisports.com" target="_blank">Pacific Multisports</a> — registration platform for Peter Marcus, Narrows Challenge, Gorge Downwind, and others.</li>
     <li><a href="https://www.jerichooutrigger.com" target="_blank">Jericho Beach Outrigger Canoe Club</a> — hosts results for PNWORCA and BC races.</li>
   </ul>
 
-  <h2 id="references">References</h2>
-  <p>The BEPC handicap system uses the same multiplicative time-correction approach as established sailing clubs.</p>
+  <h5>Methodology</h5>
+  <p>The index system uses the same multiplicative time-correction approach as established sailing clubs.</p>
   <ul>
-    <li><a href="https://topyacht.com.au/web/" target="_blank">TopYacht</a> — the leading sailing results and handicapping software, whose Back Calculated Handicap (BCH) methodology directly inspired BEPC's approach.</li>
+    <li><a href="https://topyacht.com.au/web/" target="_blank">TopYacht</a> — sailing results and handicapping software whose Back Calculated Handicap (BCH) methodology inspired this approach.</li>
     <li><a href="https://rycv.com.au/sailing/rules-handicaps/" target="_blank">Royal Yacht Club of Victoria</a> — a well-documented example of the AHC/BCH/CHC system in practice.</li>
   </ul>
 </div>""" + _foot()
@@ -1905,8 +1952,8 @@ def _cross_club_nav(slug: str, current_club: str, clubs_cfg: dict) -> str:
     return btns
 
 
-def _build_search_map(data: dict) -> None:
-    """Build the global racer search map from race data (no disk scan needed)."""
+def _build_search_map(data: dict, verify_files: bool = False) -> None:
+    """Build the global racer search map from race data."""
     global _RACER_SEARCH_MAP, _SLUG_CLUBS
     racer_clubs: dict[str, set] = {}
     for club_id, club in data["clubs"].items():
@@ -1914,11 +1961,13 @@ def _build_search_map(data: dict) -> None:
             for race in season["races"]:
                 for r in race["results"]:
                     racer_clubs.setdefault(r["canonical_name"], set()).add(club_id)
-    # Only include clubs where the racer page actually exists
     _SLUG_CLUBS = {}
     for name, clubs in racer_clubs.items():
         s = _slug(name)
-        valid = sorted(c for c in clubs if (SITE_DIR / c / "racer" / f"{s}.html").exists())
+        if verify_files:
+            valid = sorted(c for c in clubs if (SITE_DIR / c / "racer" / f"{s}.html").exists())
+        else:
+            valid = sorted(clubs)
         if valid:
             _SLUG_CLUBS[s] = valid
     _RACER_SEARCH_MAP = json.dumps([
@@ -2481,7 +2530,7 @@ def generate_all(data: dict) -> None:
     _t("about", generate_about, data)
     _t("clubs page", generate_clubs_page, data)
     # Rebuild search map now that racer pages exist — filters to only pages that exist
-    _build_search_map(data)
+    _build_search_map(data, verify_files=True)
     _t("platform home", generate_platform_home, data)
     _t("cross-club links", generate_cross_club_links)
     # Always write CNAME so GitHub Pages custom domain survives every push
