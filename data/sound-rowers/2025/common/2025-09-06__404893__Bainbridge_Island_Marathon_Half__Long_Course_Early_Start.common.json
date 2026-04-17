@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 404893,
+    "distance": "Long Course - Early Start",
+    "name": "Bainbridge Island Marathon / Half \u2014 Long Course - Early Start",
+    "displayURL": "https://www.webscorer.com/race?raceid=404893",
+    "date": "Sep 6, 2025",
+    "sport": "Rowing",
+    "startTime": "Saturday, September 6, 2025 9:00 AM (GMT-7)",
+    "country": "United States",
+    "city": "Bainbridge Island",
+    "pointsWeight": 0.052632
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Janna Gross",
+      "craftCategory": "1x-OWII (Open Water shell, 19-21\u2019)",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 23120.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 23120.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

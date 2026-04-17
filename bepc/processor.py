@@ -16,7 +16,8 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
                 hcap, carried = val, True
             # Seed num_races at num_races_to_establish so carried-over racers are immediately established
             running[key] = RunningRecord(handicap=hcap, carried_over=carried,
-                                         num_races=0)  # reset for fast updates at season start
+                                         num_races=0,
+                                         streak=0, last_atvp=0.0)  # reset streak at season start
 
     for race in races:
         racers = race.racer_results
@@ -42,7 +43,7 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
         for r in racers:
             r.adjusted_time_seconds = r.time_seconds / r.handicap
 
-        # Compute adjusted places
+        # Compute adjusted places (all racers, for display)
         for i, r in enumerate(sorted(racers, key=lambda x: x.adjusted_time_seconds), 1):
             r.adjusted_place = i
 
@@ -63,13 +64,20 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
             for r in racers:
                 compute_new_handicap(r, par_time, num_races_to_establish=num_races_to_establish)
         else:
-            # Small group: no handicap update, mark as fresh
+            # Small group: no handicap update, mark truly new racers as fresh
             for r in racers:
                 r.time_versus_par = 0.0
                 r.adjusted_time_versus_par = 0.0
                 r.handicap_post = r.handicap  # no change
-                r.is_fresh_racer = True
+                if r.num_races <= num_races_to_establish:
+                    r.is_fresh_racer = True
                 r.handicap_note = f"Small group ({len(racers)} racers) — no handicap update"
+
+        # Eligible adjusted place (among non-fresh, non-outlier racers only, for points)
+        eligible_sorted = [r for r in sorted(racers, key=lambda x: x.adjusted_time_seconds)
+                           if not r.is_fresh_racer and not r.is_outlier]
+        for i, r in enumerate(eligible_sorted, 1):
+            r.eligible_adjusted_place = i
 
         # Points (scaled by weight)
         for r in racers:

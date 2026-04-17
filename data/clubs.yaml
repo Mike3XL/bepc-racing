@@ -1,6 +1,14 @@
 # PaddleClub — Club Configuration
 # Each club entry defines identity, race inclusion rules, handicap settings, and display options.
 
+# Named sites — each site is a collection of clubs published together
+sites:
+  pnw:
+    domain: pnw.paddlerace.org
+    clubs: [bepc, sound-rowers, pnw-regional, sckc]
+    gh_branch: gh-pages
+    gh_url: https://pnw.paddlerace.org/
+
 clubs:
 
   bepc:
@@ -14,7 +22,7 @@ clubs:
     homepage_url: https://www.ballardelks.org/paddle-club
     logo: null                         # path to logo image (future)
     gh_branch: gh-pages
-    gh_url: https://mike3xl.github.io/bepc-racing/
+    gh_url: https://pnw.paddlerace.org/
 
     # Where to find races and results — check in priority order
     data_sources:
@@ -41,6 +49,15 @@ clubs:
       exclude_urls: []
       include_patterns: []
       exclude_patterns: []
+
+    # Monday race season config — used by cli.py sync-upcoming
+    monday_season:
+      start: "2026-05-04"             # First Monday of season (update each year)
+      end: "2026-10-26"               # Last Monday of season
+      skip: []                        # Dates to skip e.g. ["2026-07-04"]
+      notes: ""                       # set dynamically by month in fetcher_upcoming.py
+      info_url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/
+      race_url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
 
     handicap:
       num_races_to_establish: 1          # ineligible for first race; eligible from race 2
@@ -70,7 +87,7 @@ clubs:
     homepage_url: https://www.soundrowers.org
     logo: null
     gh_branch: gh-pages-sound-rowers
-    gh_url: https://mike3xl.github.io/bepc-racing/
+    gh_url: https://pnw.paddlerace.org/
 
     # Where to find races and results — check in priority order
     data_sources:
@@ -130,7 +147,7 @@ clubs:
     homepage_url: null
     logo: null
     gh_branch: gh-pages-pnw-regional
-    gh_url: https://mike3xl.github.io/bepc-racing/
+    gh_url: https://pnw.paddlerace.org/
 
     # Where to find races and results — check in priority order
     data_sources:

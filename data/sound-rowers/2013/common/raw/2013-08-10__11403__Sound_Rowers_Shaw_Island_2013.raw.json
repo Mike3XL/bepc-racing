@@ -1,0 +1,691 @@
+{
+  "RaceInfo": {
+    "RaceId": 11403,
+    "Name": "Sound Rowers Shaw Island 2013",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=11403",
+    "Date": "Aug 10, 2013",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, August 10, 2013 10:32 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers",
+    "OrganizerUrl": "http:/soundrowers.org",
+    "Country": "United States",
+    "City": "Lopez Island",
+    "StateOrProvince": "WA",
+    "Latitude": 48.56479402807604,
+    "Longitude": -122.93598175048811,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 1.6",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Monday, August 12, 2013 8:46 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/11403.jpg?635119372180000000"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "21",
+          "Name": "Tyler Peterson",
+          "Category": "M OW-II",
+          "Gender": "",
+          "Time": "1:51:53.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "25.01%",
+          "PercentMedian": "15.63%"
+        },
+        {
+          "Place": "2",
+          "Bib": "20",
+          "Name": "KC Dietz/Susan Kinne",
+          "Category": "W OW-2x",
+          "Gender": "",
+          "Time": "1:52:23.9",
+          "Difference": "+0:30.2",
+          "PercentBack": "+0.45%",
+          "PercentWinning": "99.55%",
+          "PercentAverage": "24.67%",
+          "PercentMedian": "15.25%"
+        },
+        {
+          "Place": "3",
+          "Bib": "53",
+          "Name": "Steve Chapin",
+          "Category": "M 1X-OW-III",
+          "Gender": "",
+          "Time": "1:52:59.2",
+          "Difference": "+1:05.5",
+          "PercentBack": "+0.98%",
+          "PercentWinning": "99.03%",
+          "PercentAverage": "24.28%",
+          "PercentMedian": "14.80%"
+        },
+        {
+          "Place": "4",
+          "Bib": "8",
+          "Name": "Storb, Rainer & Adrian",
+          "Category": "M 2X-OW",
+          "Gender": "",
+          "Time": "1:57:11.2",
+          "Difference": "+5:17.5",
+          "PercentBack": "+4.73%",
+          "PercentWinning": "95.48%",
+          "PercentAverage": "21.46%",
+          "PercentMedian": "11.64%"
+        },
+        {
+          "Place": "5",
+          "Bib": "12",
+          "Name": "Kirk Christensen",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "1:57:14.4",
+          "Difference": "+5:20.7",
+          "PercentBack": "+4.78%",
+          "PercentWinning": "95.44%",
+          "PercentAverage": "21.43%",
+          "PercentMedian": "11.60%"
+        },
+        {
+          "Place": "6",
+          "Bib": "18",
+          "Name": "Steve/Sasha Tilles",
+          "Category": "MX 2X-OW",
+          "Gender": "",
+          "Time": "1:58:58.8",
+          "Difference": "+7:05.1",
+          "PercentBack": "+6.33%",
+          "PercentWinning": "94.05%",
+          "PercentAverage": "20.26%",
+          "PercentMedian": "10.29%"
+        },
+        {
+          "Place": "7",
+          "Bib": "16",
+          "Name": "John Day",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "2:07:40.1",
+          "Difference": "+15:46.4",
+          "PercentBack": "+14.10%",
+          "PercentWinning": "87.65%",
+          "PercentAverage": "14.44%",
+          "PercentMedian": "3.73%"
+        },
+        {
+          "Place": "8",
+          "Bib": "52",
+          "Name": "Brown,  Russell",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "2:09:03.7",
+          "Difference": "+17:10.0",
+          "PercentBack": "+15.34%",
+          "PercentWinning": "86.70%",
+          "PercentAverage": "13.50%",
+          "PercentMedian": "2.68%"
+        },
+        {
+          "Place": "9",
+          "Bib": "9",
+          "Name": "Joost Zeegers",
+          "Category": "M FSK",
+          "Gender": "",
+          "Time": "2:10:41.9",
+          "Difference": "+18:48.2",
+          "PercentBack": "+16.80%",
+          "PercentWinning": "85.61%",
+          "PercentAverage": "12.41%",
+          "PercentMedian": "1.45%"
+        },
+        {
+          "Place": "10",
+          "Bib": "14",
+          "Name": "Tom Kreyche",
+          "Category": "M 1X-OW-III",
+          "Gender": "",
+          "Time": "2:11:08.4",
+          "Difference": "+19:14.7",
+          "PercentBack": "+17.20%",
+          "PercentWinning": "85.32%",
+          "PercentAverage": "12.11%",
+          "PercentMedian": "1.12%"
+        },
+        {
+          "Place": "11",
+          "Bib": "15",
+          "Name": "Theresa Batty",
+          "Category": "W OW-III",
+          "Gender": "",
+          "Time": "2:11:56.0",
+          "Difference": "+20:02.3",
+          "PercentBack": "+17.91%",
+          "PercentWinning": "84.81%",
+          "PercentAverage": "11.58%",
+          "PercentMedian": "0.52%"
+        },
+        {
+          "Place": "12",
+          "Bib": "6",
+          "Name": "Bill Jaquette",
+          "Category": "M 1X-OW-III",
+          "Gender": "",
+          "Time": "2:13:18.5",
+          "Difference": "+21:24.8",
+          "PercentBack": "+19.14%",
+          "PercentWinning": "83.94%",
+          "PercentAverage": "10.66%",
+          "PercentMedian": "-0.52%"
+        },
+        {
+          "Place": "13",
+          "Bib": "17",
+          "Name": "Michael Dee",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "2:14:31.0",
+          "Difference": "+22:37.3",
+          "PercentBack": "+20.22%",
+          "PercentWinning": "83.18%",
+          "PercentAverage": "9.85%",
+          "PercentMedian": "-1.43%"
+        },
+        {
+          "Place": "14",
+          "Bib": "13",
+          "Name": "Mark Miller",
+          "Category": "M 1X-OW-III",
+          "Gender": "",
+          "Time": "2:15:40.0",
+          "Difference": "+23:46.3",
+          "PercentBack": "+21.24%",
+          "PercentWinning": "82.48%",
+          "PercentAverage": "9.08%",
+          "PercentMedian": "-2.30%"
+        },
+        {
+          "Place": "15",
+          "Bib": "7",
+          "Name": "Theresa Knakal",
+          "Category": "W OW-III",
+          "Gender": "Female",
+          "Time": "2:17:02.0",
+          "Difference": "+25:08.3",
+          "PercentBack": "+22.47%",
+          "PercentWinning": "81.66%",
+          "PercentAverage": "8.16%",
+          "PercentMedian": "-3.33%"
+        },
+        {
+          "Place": "16",
+          "Bib": "10",
+          "Name": "Steve Scoggins",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "2:29:51.9",
+          "Difference": "+37:58.2",
+          "PercentBack": "+33.93%",
+          "PercentWinning": "74.66%",
+          "PercentAverage": "-0.44%",
+          "PercentMedian": "-13.00%"
+        },
+        {
+          "Place": "17",
+          "Bib": "2",
+          "Name": "Shane Baker",
+          "Category": "M OC 1",
+          "Gender": "",
+          "Time": "2:34:42.3",
+          "Difference": "+42:48.6",
+          "PercentBack": "+38.26%",
+          "PercentWinning": "72.33%",
+          "PercentAverage": "-3.68%",
+          "PercentMedian": "-16.65%"
+        },
+        {
+          "Place": "18",
+          "Bib": "11",
+          "Name": "Walter Horton",
+          "Category": "M FSK",
+          "Gender": "",
+          "Time": "2:38:52.2",
+          "Difference": "+46:58.5",
+          "PercentBack": "+41.98%",
+          "PercentWinning": "70.43%",
+          "PercentAverage": "-6.48%",
+          "PercentMedian": "-19.79%"
+        },
+        {
+          "Place": "19",
+          "Bib": "5",
+          "Name": "Peter Hirtle",
+          "Category": "M 1X-FS",
+          "Gender": "",
+          "Time": "2:57:26.7",
+          "Difference": "+1:05:33.0",
+          "PercentBack": "+58.58%",
+          "PercentWinning": "63.06%",
+          "PercentAverage": "-18.92%",
+          "PercentMedian": "-33.80%"
+        },
+        {
+          "Place": "20",
+          "Bib": "4",
+          "Name": "Carrie Weisse",
+          "Category": "W OW-II",
+          "Gender": "",
+          "Time": "3:25:21.2",
+          "Difference": "+1:33:27.5",
+          "PercentBack": "+83.52%",
+          "PercentWinning": "54.49%",
+          "PercentAverage": "-37.63%",
+          "PercentMedian": "-54.84%"
+        },
+        {
+          "Place": "21",
+          "Bib": "3",
+          "Name": "Herbie Weisse",
+          "Category": "M 1X-OW-III",
+          "Gender": "",
+          "Time": "3:31:37.5",
+          "Difference": "+1:39:43.8",
+          "PercentBack": "+89.13%",
+          "PercentWinning": "52.87%",
+          "PercentAverage": "-41.83%",
+          "PercentMedian": "-59.57%"
+        },
+        {
+          "Place": "22",
+          "Bib": "19",
+          "Name": "Jael Finney/Laren Czvaar",
+          "Category": "W C2",
+          "Gender": "",
+          "Time": "5:43:00.0",
+          "Difference": "+3:51:06.3",
+          "PercentBack": "+206.54%",
+          "PercentWinning": "32.62%",
+          "PercentAverage": "-129.88%",
+          "PercentMedian": "-158.63%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M 1X-FS"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Peter Hirtle",
+          "Category": "M 1X-FS",
+          "Gender": "",
+          "Time": "2:57:26.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M 1X-OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "53",
+          "Name": "Steve Chapin",
+          "Category": "M 1X-OW-III",
+          "Gender": "",
+          "Time": "1:52:59.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "22.05%",
+          "PercentMedian": "15.24%"
+        },
+        {
+          "Place": "2",
+          "Bib": "14",
+          "Name": "Tom Kreyche",
+          "Category": "M 1X-OW-III",
+          "Gender": "",
+          "Time": "2:11:08.4",
+          "Difference": "+18:09.2",
+          "PercentBack": "+16.07%",
+          "PercentWinning": "86.16%",
+          "PercentAverage": "9.52%",
+          "PercentMedian": "1.63%"
+        },
+        {
+          "Place": "3",
+          "Bib": "6",
+          "Name": "Bill Jaquette",
+          "Category": "M 1X-OW-III",
+          "Gender": "",
+          "Time": "2:13:18.5",
+          "Difference": "+20:19.3",
+          "PercentBack": "+17.99%",
+          "PercentWinning": "84.76%",
+          "PercentAverage": "8.03%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Bib": "13",
+          "Name": "Mark Miller",
+          "Category": "M 1X-OW-III",
+          "Gender": "",
+          "Time": "2:15:40.0",
+          "Difference": "+22:40.8",
+          "PercentBack": "+20.07%",
+          "PercentWinning": "83.28%",
+          "PercentAverage": "6.40%",
+          "PercentMedian": "-1.77%"
+        },
+        {
+          "Place": "5",
+          "Bib": "3",
+          "Name": "Herbie Weisse",
+          "Category": "M 1X-OW-III",
+          "Gender": "",
+          "Time": "3:31:37.5",
+          "Difference": "+1:38:38.3",
+          "PercentBack": "+87.30%",
+          "PercentWinning": "53.39%",
+          "PercentAverage": "-46.00%",
+          "PercentMedian": "-58.75%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M 2X-OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "8",
+          "Name": "Storb, Rainer & Adrian",
+          "Category": "M 2X-OW",
+          "Gender": "",
+          "Time": "1:57:11.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M FSK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "9",
+          "Name": "Joost Zeegers",
+          "Category": "M FSK",
+          "Gender": "",
+          "Time": "2:10:41.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.73%",
+          "PercentMedian": "9.73%"
+        },
+        {
+          "Place": "2",
+          "Bib": "11",
+          "Name": "Walter Horton",
+          "Category": "M FSK",
+          "Gender": "",
+          "Time": "2:38:52.2",
+          "Difference": "+28:10.3",
+          "PercentBack": "+21.55%",
+          "PercentWinning": "82.27%",
+          "PercentAverage": "-9.73%",
+          "PercentMedian": "-9.73%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "12",
+          "Name": "Kirk Christensen",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "1:57:14.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.96%",
+          "PercentMedian": "9.16%"
+        },
+        {
+          "Place": "2",
+          "Bib": "16",
+          "Name": "John Day",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "2:07:40.1",
+          "Difference": "+10:25.7",
+          "PercentBack": "+8.89%",
+          "PercentWinning": "91.83%",
+          "PercentAverage": "3.04%",
+          "PercentMedian": "1.08%"
+        },
+        {
+          "Place": "3",
+          "Bib": "52",
+          "Name": "Brown,  Russell",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "2:09:03.7",
+          "Difference": "+11:49.3",
+          "PercentBack": "+10.08%",
+          "PercentWinning": "90.84%",
+          "PercentAverage": "1.98%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "4",
+          "Bib": "17",
+          "Name": "Michael Dee",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "2:14:31.0",
+          "Difference": "+17:16.6",
+          "PercentBack": "+14.74%",
+          "PercentWinning": "87.16%",
+          "PercentAverage": "-2.16%",
+          "PercentMedian": "-4.23%"
+        },
+        {
+          "Place": "5",
+          "Bib": "10",
+          "Name": "Steve Scoggins",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "2:29:51.9",
+          "Difference": "+32:37.5",
+          "PercentBack": "+27.83%",
+          "PercentWinning": "78.23%",
+          "PercentAverage": "-13.82%",
+          "PercentMedian": "-16.12%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M OC 1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "2",
+          "Name": "Shane Baker",
+          "Category": "M OC 1",
+          "Gender": "",
+          "Time": "2:34:42.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "21",
+          "Name": "Tyler Peterson",
+          "Category": "M OW-II",
+          "Gender": "",
+          "Time": "1:51:53.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "MX 2X-OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "18",
+          "Name": "Steve/Sasha Tilles",
+          "Category": "MX 2X-OW",
+          "Gender": "",
+          "Time": "1:58:58.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "W C2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "19",
+          "Name": "Jael Finney/Laren Czvaar",
+          "Category": "W C2",
+          "Gender": "",
+          "Time": "5:43:00.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "W OW-2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "20",
+          "Name": "KC Dietz/Susan Kinne",
+          "Category": "W OW-2x",
+          "Gender": "",
+          "Time": "1:52:23.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "W OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "4",
+          "Name": "Carrie Weisse",
+          "Category": "W OW-II",
+          "Gender": "",
+          "Time": "3:25:21.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "W OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "15",
+          "Name": "Theresa Batty",
+          "Category": "W OW-III",
+          "Gender": "",
+          "Time": "2:11:56.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "1.90%",
+          "PercentMedian": "1.90%"
+        },
+        {
+          "Place": "2",
+          "Bib": "7",
+          "Name": "Theresa Knakal",
+          "Category": "W OW-III",
+          "Gender": "Female",
+          "Time": "2:17:02.0",
+          "Difference": "+5:06.0",
+          "PercentBack": "+3.87%",
+          "PercentWinning": "96.28%",
+          "PercentAverage": "-1.90%",
+          "PercentMedian": "-1.90%"
+        }
+      ]
+    }
+  ]
+}

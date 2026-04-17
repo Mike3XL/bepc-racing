@@ -1,0 +1,604 @@
+{
+  "RaceInfo": {
+    "RaceId": 112198,
+    "Name": "Sound Rowers: Bainbridge Island 2017",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=112198",
+    "Date": "Sep 9, 2017",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, September 9, 2017 8:50 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers and Paddlers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "Bainbridge Island",
+    "StateOrProvince": "WA",
+    "Latitude": 47.7036392261534,
+    "Longitude": -122.506935596466,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 2.7",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, September 9, 2017 3:48 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/112198.jpg?636405689140000000"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "6",
+          "Name": "Greg Barton /  Tracy Landboe",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Epic V10 Double",
+          "Distance": "Long Course",
+          "Category": "HPK-2",
+          "Age": null,
+          "Gender": "Female/Male",
+          "Time": "3:12:33.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "28.08%",
+          "PercentMedian": "23.01%",
+          "StartTime": "08:50:03.5"
+        },
+        {
+          "Place": "2",
+          "Bib": "10",
+          "Name": "Rainer & Adrian Storb/Rod Sternagel/Zach",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle/Woodinville/Mt Vernon, WA",
+          "TeamName2": "Mass OW 4X",
+          "Distance": "Long Course",
+          "Category": "4x OW",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "3:39:21.4",
+          "Difference": "+26:47.8",
+          "PercentBack": "+13.92%",
+          "PercentWinning": "87.78%",
+          "PercentAverage": "18.07%",
+          "PercentMedian": "12.30%",
+          "StartTime": "08:50:03.5"
+        },
+        {
+          "Place": "3",
+          "Bib": "5",
+          "Name": "Jeff/Theresa Knakal",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Mill Creek",
+          "TeamName2": "Maas 2X",
+          "Distance": "Long Course",
+          "Category": "2x OW",
+          "Age": null,
+          "Gender": "Female/Male",
+          "Time": "3:45:45.6",
+          "Difference": "+33:12.0",
+          "PercentBack": "+17.24%",
+          "PercentWinning": "85.29%",
+          "PercentAverage": "15.68%",
+          "PercentMedian": "9.74%",
+          "StartTime": "08:50:03.5"
+        },
+        {
+          "Place": "4",
+          "Bib": "11",
+          "Name": "Peter Hirtle",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle, Lake Forest Park, WA",
+          "TeamName2": "Maas 2X",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "3:54:33.5",
+          "Difference": "+41:59.9",
+          "PercentBack": "+21.81%",
+          "PercentWinning": "82.09%",
+          "PercentAverage": "12.39%",
+          "PercentMedian": "6.22%",
+          "StartTime": "08:50:03.5"
+        },
+        {
+          "Place": "5",
+          "Bib": "13",
+          "Name": "Michael Walsh",
+          "FirstName": "Michael",
+          "LastName": "Walsh",
+          "TeamName": "Renton",
+          "TeamName2": "Maas 24",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Age": 55,
+          "Gender": "Male",
+          "Time": "4:25:41.4",
+          "Difference": "+1:13:07.8",
+          "PercentBack": "+37.98%",
+          "PercentWinning": "72.48%",
+          "PercentAverage": "0.77%",
+          "PercentMedian": "-6.22%",
+          "StartTime": "08:50:03.5"
+        },
+        {
+          "Place": "6",
+          "Bib": "8",
+          "Name": "Tom Kreyche",
+          "FirstName": "Tom",
+          "LastName": "Kreyche",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Maas 24",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Age": 66,
+          "Gender": "Male",
+          "Time": "5:00:57.4",
+          "Difference": "+1:48:23.8",
+          "PercentBack": "+56.29%",
+          "PercentWinning": "63.98%",
+          "PercentAverage": "-12.40%",
+          "PercentMedian": "-20.32%",
+          "StartTime": "08:50:03.5"
+        },
+        {
+          "Place": "7",
+          "Bib": "4",
+          "Name": "Janna Gross",
+          "FirstName": "Janna",
+          "LastName": "Gross",
+          "TeamName": "Snohomish, WA",
+          "TeamName2": "Bay 21",
+          "Distance": "Long Course",
+          "Category": "1x OW-II",
+          "Age": 55,
+          "Gender": "Female",
+          "Time": "5:33:33.3",
+          "Difference": "+2:20:59.7",
+          "PercentBack": "+73.22%",
+          "PercentWinning": "57.73%",
+          "PercentAverage": "-24.58%",
+          "PercentMedian": "-33.36%",
+          "StartTime": "08:50:03.5"
+        },
+        {
+          "Place": "8",
+          "Bib": "14",
+          "Name": "TAL OL MITH THUT",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Chilliwack",
+          "TeamName2": "OC-2",
+          "Distance": "Long Course",
+          "Category": "OC-2",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "6:09:31.5",
+          "Difference": "+2:56:57.9",
+          "PercentBack": "+91.90%",
+          "PercentWinning": "52.11%",
+          "PercentAverage": "-38.01%",
+          "PercentMedian": "-47.74%",
+          "StartTime": "08:50:03.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "20",
+          "Name": "Traci Cole",
+          "FirstName": "Traci",
+          "LastName": "Cole",
+          "TeamName": "Kenmore, WA",
+          "TeamName2": "Fenn Swordfish",
+          "Distance": "Short Course",
+          "Category": "HPK",
+          "Age": 57,
+          "Gender": "Female",
+          "Time": "2:05:19.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.22%",
+          "PercentMedian": "4.16%",
+          "StartTime": "08:50:03.5"
+        },
+        {
+          "Place": "2",
+          "Bib": "2",
+          "Name": "Shane Baker",
+          "FirstName": "Shane",
+          "LastName": "Baker",
+          "TeamName": "Port Orchard, WA",
+          "TeamName2": "Kamanu Pueo",
+          "Distance": "Short Course",
+          "Category": "OC-1",
+          "Age": 69,
+          "Gender": "Male",
+          "Time": "2:08:36.2",
+          "Difference": "+3:16.4",
+          "PercentBack": "+2.61%",
+          "PercentWinning": "97.45%",
+          "PercentAverage": "2.74%",
+          "PercentMedian": "1.66%",
+          "StartTime": "08:50:03.5"
+        },
+        {
+          "Place": "3",
+          "Bib": "15",
+          "Name": "Amber Zipperer",
+          "FirstName": "Amber",
+          "LastName": "Zipperer",
+          "TeamName": "Bellingham, WA",
+          "TeamName2": "Epic 18X",
+          "Distance": "Short Course",
+          "Category": "FSK",
+          "Age": 39,
+          "Gender": "Female",
+          "Time": "2:12:56.9",
+          "Difference": "+7:37.1",
+          "PercentBack": "+6.08%",
+          "PercentWinning": "94.27%",
+          "PercentAverage": "-0.54%",
+          "PercentMedian": "-1.66%",
+          "StartTime": "08:50:03.5"
+        },
+        {
+          "Place": "4",
+          "Bib": "22",
+          "Name": "Tom Hammel",
+          "FirstName": "Tom",
+          "LastName": "Hammel",
+          "TeamName": "Bainbridge, WA",
+          "TeamName2": "Mad River Monarch",
+          "Distance": "Short Course",
+          "Category": "C1",
+          "Age": 66,
+          "Gender": "Male",
+          "Time": "2:22:02.2",
+          "Difference": "+16:42.4",
+          "PercentBack": "+13.33%",
+          "PercentWinning": "88.24%",
+          "PercentAverage": "-7.42%",
+          "PercentMedian": "-8.61%",
+          "StartTime": "08:50:03.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "1x OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "4",
+          "Name": "Janna Gross",
+          "FirstName": "Janna",
+          "LastName": "Gross",
+          "TeamName": "Snohomish, WA",
+          "TeamName2": "Bay 21",
+          "Distance": "Long Course",
+          "Category": "1x OW-II",
+          "Age": 55,
+          "Gender": "Female",
+          "Time": "5:33:33.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:50:03.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "1x OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "11",
+          "Name": "Peter Hirtle",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle, Lake Forest Park, WA",
+          "TeamName2": "Maas 2X",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "3:54:33.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.17%",
+          "PercentMedian": "11.72%",
+          "StartTime": "08:50:03.5"
+        },
+        {
+          "Place": "2",
+          "Bib": "13",
+          "Name": "Michael Walsh",
+          "FirstName": "Michael",
+          "LastName": "Walsh",
+          "TeamName": "Renton",
+          "TeamName2": "Maas 24",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Age": 55,
+          "Gender": "Male",
+          "Time": "4:25:41.4",
+          "Difference": "+31:07.9",
+          "PercentBack": "+13.27%",
+          "PercentWinning": "88.28%",
+          "PercentAverage": "0.52%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:50:03.5"
+        },
+        {
+          "Place": "3",
+          "Bib": "8",
+          "Name": "Tom Kreyche",
+          "FirstName": "Tom",
+          "LastName": "Kreyche",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Maas 24",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Age": 66,
+          "Gender": "Male",
+          "Time": "5:00:57.4",
+          "Difference": "+1:06:23.9",
+          "PercentBack": "+28.31%",
+          "PercentWinning": "77.94%",
+          "PercentAverage": "-12.69%",
+          "PercentMedian": "-13.27%",
+          "StartTime": "08:50:03.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "2x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Jeff/Theresa Knakal",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Mill Creek",
+          "TeamName2": "Maas 2X",
+          "Distance": "Long Course",
+          "Category": "2x OW",
+          "Age": null,
+          "Gender": "Female/Male",
+          "Time": "3:45:45.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:50:03.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "4x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Rainer & Adrian Storb/Rod Sternagel/Zach",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle/Woodinville/Mt Vernon, WA",
+          "TeamName2": "Mass OW 4X",
+          "Distance": "Long Course",
+          "Category": "4x OW",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "3:39:21.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:50:03.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "HPK-2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "6",
+          "Name": "Greg Barton /  Tracy Landboe",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Epic V10 Double",
+          "Distance": "Long Course",
+          "Category": "HPK-2",
+          "Age": null,
+          "Gender": "Female/Male",
+          "Time": "3:12:33.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:50:03.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC-2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "14",
+          "Name": "TAL OL MITH THUT",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Chilliwack",
+          "TeamName2": "OC-2",
+          "Distance": "Long Course",
+          "Category": "OC-2",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "6:09:31.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:50:03.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "C1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "22",
+          "Name": "Tom Hammel",
+          "FirstName": "Tom",
+          "LastName": "Hammel",
+          "TeamName": "Bainbridge, WA",
+          "TeamName2": "Mad River Monarch",
+          "Distance": "Short Course",
+          "Category": "C1",
+          "Age": 66,
+          "Gender": "Male",
+          "Time": "2:22:02.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:50:03.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "FSK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "15",
+          "Name": "Amber Zipperer",
+          "FirstName": "Amber",
+          "LastName": "Zipperer",
+          "TeamName": "Bellingham, WA",
+          "TeamName2": "Epic 18X",
+          "Distance": "Short Course",
+          "Category": "FSK",
+          "Age": 39,
+          "Gender": "Female",
+          "Time": "2:12:56.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:50:03.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "20",
+          "Name": "Traci Cole",
+          "FirstName": "Traci",
+          "LastName": "Cole",
+          "TeamName": "Kenmore, WA",
+          "TeamName2": "Fenn Swordfish",
+          "Distance": "Short Course",
+          "Category": "HPK",
+          "Age": 57,
+          "Gender": "Female",
+          "Time": "2:05:19.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:50:03.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "OC-1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "2",
+          "Name": "Shane Baker",
+          "FirstName": "Shane",
+          "LastName": "Baker",
+          "TeamName": "Port Orchard, WA",
+          "TeamName2": "Kamanu Pueo",
+          "Distance": "Short Course",
+          "Category": "OC-1",
+          "Age": 69,
+          "Gender": "Male",
+          "Time": "2:08:36.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "08:50:03.5"
+        }
+      ]
+    }
+  ]
+}

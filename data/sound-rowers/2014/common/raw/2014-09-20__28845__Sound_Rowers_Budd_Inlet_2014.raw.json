@@ -1,0 +1,991 @@
+{
+  "RaceInfo": {
+    "RaceId": 28845,
+    "Name": "Sound Rowers: Budd Inlet 2014",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=28845",
+    "Date": "Sep 20, 2014",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, September 20, 2014 10:05 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers and Paddlers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "Olympia",
+    "StateOrProvince": "WA",
+    "Latitude": 47.037899,
+    "Longitude": -122.900703,
+    "StartType": "Wave",
+    "WaveGrouping": "Custom",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 1.6",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, September 20, 2014 3:53 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/28845.jpg?635468252120000000"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "30",
+          "Name": "OAR Varsity Jr Boys",
+          "TeamName": "Olympia",
+          "TeamName2": null,
+          "Category": "4x",
+          "Age": 18,
+          "Gender": "Male",
+          "Time": "52:34.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.14%",
+          "PercentMedian": "21.60%",
+          "StartTime": "10:14:55.1"
+        },
+        {
+          "Place": "2",
+          "Bib": "16",
+          "Name": "Vancouver Lake Crew Boys",
+          "TeamName": "Vancouver, WA",
+          "TeamName2": "Jr Boys 8+",
+          "Category": "8+",
+          "Age": 18,
+          "Gender": "Male",
+          "Time": "53:16.0",
+          "Difference": "+0:42.0",
+          "PercentBack": "+1.33%",
+          "PercentWinning": "98.69%",
+          "PercentAverage": "22.12%",
+          "PercentMedian": "20.56%",
+          "StartTime": "10:14:55.1"
+        },
+        {
+          "Place": "3",
+          "Bib": "15",
+          "Name": "OAR Jr Boys plus Richard Ramsey",
+          "TeamName": "Olympia",
+          "TeamName2": "Pocock",
+          "Category": "4x+",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "56:31.0",
+          "Difference": "+3:57.0",
+          "PercentBack": "+7.51%",
+          "PercentWinning": "93.01%",
+          "PercentAverage": "17.37%",
+          "PercentMedian": "15.71%",
+          "StartTime": "10:14:55.1"
+        },
+        {
+          "Place": "4",
+          "Bib": "24",
+          "Name": "Robert Meenk",
+          "TeamName": "Olympia",
+          "TeamName2": "MAAS 24",
+          "Category": "1x OW-III",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:00:02.0",
+          "Difference": "+7:28.0",
+          "PercentBack": "+14.20%",
+          "PercentWinning": "87.56%",
+          "PercentAverage": "12.22%",
+          "PercentMedian": "10.46%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "5",
+          "Bib": "4",
+          "Name": "Peter Hirtle, Iris Kam Fu",
+          "TeamName": "Lake Forest Park, Seattle",
+          "TeamName2": "Fluidesign 2X",
+          "Category": "2x Flatwater",
+          "Age": null,
+          "Gender": "Female/Male",
+          "Time": "1:01:05.0",
+          "Difference": "+8:31.0",
+          "PercentBack": "+16.20%",
+          "PercentWinning": "86.06%",
+          "PercentAverage": "10.69%",
+          "PercentMedian": "8.90%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "6",
+          "Bib": "7",
+          "Name": "Nicholas Cryder",
+          "TeamName": null,
+          "TeamName2": "Epic V-12",
+          "Category": "HPK",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:01:49.0",
+          "Difference": "+9:15.0",
+          "PercentBack": "+17.60%",
+          "PercentWinning": "85.04%",
+          "PercentAverage": "9.62%",
+          "PercentMedian": "7.81%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "7",
+          "Bib": "36",
+          "Name": "Leslie and Angus Brodie",
+          "TeamName": "Olympia",
+          "TeamName2": null,
+          "Category": "2x Flatwater",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:02:00.0",
+          "Difference": "+9:26.0",
+          "PercentBack": "+17.95%",
+          "PercentWinning": "84.78%",
+          "PercentAverage": "9.35%",
+          "PercentMedian": "7.53%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "8",
+          "Bib": "10",
+          "Name": "Ann and Steve Wade",
+          "TeamName": "Olympia",
+          "TeamName2": "Pocock Sculling 2X",
+          "Category": "2x Flatwater",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:03:58.5",
+          "Difference": "+11:24.5",
+          "PercentBack": "+21.70%",
+          "PercentWinning": "82.17%",
+          "PercentAverage": "6.46%",
+          "PercentMedian": "4.59%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "9",
+          "Bib": "13",
+          "Name": "Bob Maki",
+          "TeamName": "Olympia",
+          "TeamName2": "Fluidesign 1X",
+          "Category": "1x Flatwater",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:04:58.0",
+          "Difference": "+12:24.0",
+          "PercentBack": "+23.59%",
+          "PercentWinning": "80.91%",
+          "PercentAverage": "5.01%",
+          "PercentMedian": "3.11%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "10",
+          "Bib": "54",
+          "Name": "Jeff Maloney",
+          "TeamName": null,
+          "TeamName2": "Fenn Elite Sl",
+          "Category": "HPK",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:05:38.0",
+          "Difference": "+13:04.0",
+          "PercentBack": "+24.86%",
+          "PercentWinning": "80.09%",
+          "PercentAverage": "4.04%",
+          "PercentMedian": "2.11%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "11",
+          "Bib": "17",
+          "Name": "Vancouver Lake Crew Girls",
+          "TeamName": "Vancouver, WA",
+          "TeamName2": "Jr Girls 8+",
+          "Category": "8+",
+          "Age": 18,
+          "Gender": "Female",
+          "Time": "1:05:43.0",
+          "Difference": "+13:09.0",
+          "PercentBack": "+25.02%",
+          "PercentWinning": "79.99%",
+          "PercentAverage": "3.91%",
+          "PercentMedian": "1.99%",
+          "StartTime": "10:14:55.1"
+        },
+        {
+          "Place": "12",
+          "Bib": "1",
+          "Name": "Don Anderson and Cindy Shirts",
+          "TeamName": "Coeur D Alene",
+          "TeamName2": "Mass 2X",
+          "Category": "2x OW",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:06:57.0",
+          "Difference": "+14:23.0",
+          "PercentBack": "+27.36%",
+          "PercentWinning": "78.52%",
+          "PercentAverage": "2.11%",
+          "PercentMedian": "0.15%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "13",
+          "Bib": "3",
+          "Name": "Alexandra Smith",
+          "TeamName": "Olympia",
+          "TeamName2": "Fluidesign 1X",
+          "Category": "1x Flatwater",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:07:09.0",
+          "Difference": "+14:35.0",
+          "PercentBack": "+27.74%",
+          "PercentWinning": "78.28%",
+          "PercentAverage": "1.82%",
+          "PercentMedian": "-0.15%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "14",
+          "Bib": "14",
+          "Name": "OAR - Masters Women",
+          "TeamName": "Olympia",
+          "TeamName2": null,
+          "Category": "4x",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:08:04.0",
+          "Difference": "+15:30.0",
+          "PercentBack": "+29.49%",
+          "PercentWinning": "77.23%",
+          "PercentAverage": "0.48%",
+          "PercentMedian": "-1.52%",
+          "StartTime": "10:14:55.1"
+        },
+        {
+          "Place": "15",
+          "Bib": "21",
+          "Name": "Olympia Area Rowing - Mixed Masters",
+          "TeamName": "Olympia",
+          "TeamName2": "Vespoli",
+          "Category": "8+",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:08:24.0",
+          "Difference": "+15:50.0",
+          "PercentBack": "+30.12%",
+          "PercentWinning": "76.85%",
+          "PercentAverage": "-0.01%",
+          "PercentMedian": "-2.01%",
+          "StartTime": "10:14:55.1"
+        },
+        {
+          "Place": "16",
+          "Bib": "87",
+          "Name": "Jim Schulz",
+          "TeamName": "Duvall",
+          "TeamName2": "Epic/V10",
+          "Category": "HPK",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:08:43.0",
+          "Difference": "+16:09.0",
+          "PercentBack": "+30.72%",
+          "PercentWinning": "76.50%",
+          "PercentAverage": "-0.47%",
+          "PercentMedian": "-2.49%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "17",
+          "Bib": "66",
+          "Name": "Kiirsten Flynn",
+          "TeamName": "Olympia",
+          "TeamName2": "Single Scull",
+          "Category": "1x Flatwater",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:10:22.0",
+          "Difference": "+17:48.0",
+          "PercentBack": "+33.86%",
+          "PercentWinning": "74.70%",
+          "PercentAverage": "-2.88%",
+          "PercentMedian": "-4.95%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "18",
+          "Bib": "6",
+          "Name": "ELE PAIO",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "OC-6",
+          "Age": null,
+          "Gender": "Female/Male",
+          "Time": "1:11:54.0",
+          "Difference": "+19:20.0",
+          "PercentBack": "+36.78%",
+          "PercentWinning": "73.11%",
+          "PercentAverage": "-5.13%",
+          "PercentMedian": "-7.23%",
+          "StartTime": "10:14:55.1"
+        },
+        {
+          "Place": "19",
+          "Bib": "5",
+          "Name": "Michael Lampi",
+          "TeamName": "Bellevue",
+          "TeamName2": "V15-6M",
+          "Category": "Pedalboat",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:15:03.0",
+          "Difference": "+22:29.0",
+          "PercentBack": "+42.77%",
+          "PercentWinning": "70.04%",
+          "PercentAverage": "-9.73%",
+          "PercentMedian": "-11.93%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "20",
+          "Bib": "23",
+          "Name": "Samantha Richie",
+          "TeamName": "Olympia",
+          "TeamName2": "Echo Open Water Rowing Single",
+          "Category": "1x OW-I",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:19:16.0",
+          "Difference": "+26:42.0",
+          "PercentBack": "+50.79%",
+          "PercentWinning": "66.32%",
+          "PercentAverage": "-15.90%",
+          "PercentMedian": "-18.22%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "21",
+          "Bib": "88",
+          "Name": "Lance Kahn",
+          "TeamName": "Bremerton, WA",
+          "TeamName2": null,
+          "Category": "V-1",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:20:32.0",
+          "Difference": "+27:58.0",
+          "PercentBack": "+53.20%",
+          "PercentWinning": "65.27%",
+          "PercentAverage": "-17.75%",
+          "PercentMedian": "-20.11%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "22",
+          "Bib": "18",
+          "Name": "Andy Michels And Rick Olson",
+          "TeamName": "Lakewood, WA",
+          "TeamName2": "OC-2",
+          "Category": "OC-2",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:21:40.0",
+          "Difference": "+29:06.0",
+          "PercentBack": "+55.36%",
+          "PercentWinning": "64.37%",
+          "PercentAverage": "-19.41%",
+          "PercentMedian": "-21.80%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "23",
+          "Bib": "81",
+          "Name": "Riley O'Brien",
+          "TeamName": "Marblemount, Wa",
+          "TeamName2": "Little River Cambridge Rec Rowing Shell",
+          "Category": "1x OW-II",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:24:15.0",
+          "Difference": "+31:41.0",
+          "PercentBack": "+60.27%",
+          "PercentWinning": "62.39%",
+          "PercentAverage": "-23.18%",
+          "PercentMedian": "-25.65%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "24",
+          "Bib": "621",
+          "Name": "Laurie Aardel",
+          "TeamName": "Bremerton, WA",
+          "TeamName2": "hurricane oc-1",
+          "Category": "OC-1",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:31:34.0",
+          "Difference": "+39:00.0",
+          "PercentBack": "+74.19%",
+          "PercentWinning": "57.41%",
+          "PercentAverage": "-33.88%",
+          "PercentMedian": "-36.56%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "-",
+          "Bib": "65",
+          "Name": "Paul Hirsh",
+          "TeamName": null,
+          "TeamName2": "Huki S1X",
+          "Category": "HPK",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:05:08.8"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "1x Flatwater"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "13",
+          "Name": "Bob Maki",
+          "TeamName": "Olympia",
+          "TeamName2": "Fluidesign 1X",
+          "Category": "1x Flatwater",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:04:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.75%",
+          "PercentMedian": "3.25%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "2",
+          "Bib": "3",
+          "Name": "Alexandra Smith",
+          "TeamName": "Olympia",
+          "TeamName2": "Fluidesign 1X",
+          "Category": "1x Flatwater",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:07:09.0",
+          "Difference": "+2:11.0",
+          "PercentBack": "+3.36%",
+          "PercentWinning": "96.75%",
+          "PercentAverage": "0.51%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "3",
+          "Bib": "66",
+          "Name": "Kiirsten Flynn",
+          "TeamName": "Olympia",
+          "TeamName2": "Single Scull",
+          "Category": "1x Flatwater",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:10:22.0",
+          "Difference": "+5:24.0",
+          "PercentBack": "+8.31%",
+          "PercentWinning": "92.33%",
+          "PercentAverage": "-4.26%",
+          "PercentMedian": "-4.79%",
+          "StartTime": "10:05:08.8"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "1x OW-I"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "23",
+          "Name": "Samantha Richie",
+          "TeamName": "Olympia",
+          "TeamName2": "Echo Open Water Rowing Single",
+          "Category": "1x OW-I",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:19:16.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:05:08.8"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "1x OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "81",
+          "Name": "Riley O'Brien",
+          "TeamName": "Marblemount, Wa",
+          "TeamName2": "Little River Cambridge Rec Rowing Shell",
+          "Category": "1x OW-II",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:24:15.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:05:08.8"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "1x OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "24",
+          "Name": "Robert Meenk",
+          "TeamName": "Olympia",
+          "TeamName2": "MAAS 24",
+          "Category": "1x OW-III",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:00:02.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:05:08.8"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "2x Flatwater"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "4",
+          "Name": "Peter Hirtle, Iris Kam Fu",
+          "TeamName": "Lake Forest Park, Seattle",
+          "TeamName2": "Fluidesign 2X",
+          "Category": "2x Flatwater",
+          "Age": null,
+          "Gender": "Female/Male",
+          "Time": "1:01:05.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "2.04%",
+          "PercentMedian": "1.48%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "2",
+          "Bib": "36",
+          "Name": "Leslie and Angus Brodie",
+          "TeamName": "Olympia",
+          "TeamName2": null,
+          "Category": "2x Flatwater",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:02:00.0",
+          "Difference": "+0:55.0",
+          "PercentBack": "+1.50%",
+          "PercentWinning": "98.52%",
+          "PercentAverage": "0.57%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "3",
+          "Bib": "10",
+          "Name": "Ann and Steve Wade",
+          "TeamName": "Olympia",
+          "TeamName2": "Pocock Sculling 2X",
+          "Category": "2x Flatwater",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:03:58.5",
+          "Difference": "+2:53.5",
+          "PercentBack": "+4.73%",
+          "PercentWinning": "95.48%",
+          "PercentAverage": "-2.60%",
+          "PercentMedian": "-3.19%",
+          "StartTime": "10:05:08.8"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "2x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "Don Anderson and Cindy Shirts",
+          "TeamName": "Coeur D Alene",
+          "TeamName2": "Mass 2X",
+          "Category": "2x OW",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:06:57.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:05:08.8"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "4x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "30",
+          "Name": "OAR Varsity Jr Boys",
+          "TeamName": "Olympia",
+          "TeamName2": null,
+          "Category": "4x",
+          "Age": 18,
+          "Gender": "Male",
+          "Time": "52:34.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.85%",
+          "PercentMedian": "12.85%",
+          "StartTime": "10:14:55.1"
+        },
+        {
+          "Place": "2",
+          "Bib": "14",
+          "Name": "OAR - Masters Women",
+          "TeamName": "Olympia",
+          "TeamName2": null,
+          "Category": "4x",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:08:04.0",
+          "Difference": "+15:30.0",
+          "PercentBack": "+29.49%",
+          "PercentWinning": "77.23%",
+          "PercentAverage": "-12.85%",
+          "PercentMedian": "-12.85%",
+          "StartTime": "10:14:55.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "4x+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "15",
+          "Name": "OAR Jr Boys plus Richard Ramsey",
+          "TeamName": "Olympia",
+          "TeamName2": "Pocock",
+          "Category": "4x+",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "56:31.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:14:55.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "8+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "16",
+          "Name": "Vancouver Lake Crew Boys",
+          "TeamName": "Vancouver, WA",
+          "TeamName2": "Jr Boys 8+",
+          "Category": "8+",
+          "Age": 18,
+          "Gender": "Male",
+          "Time": "53:16.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.72%",
+          "PercentMedian": "18.94%",
+          "StartTime": "10:14:55.1"
+        },
+        {
+          "Place": "2",
+          "Bib": "17",
+          "Name": "Vancouver Lake Crew Girls",
+          "TeamName": "Vancouver, WA",
+          "TeamName2": "Jr Girls 8+",
+          "Category": "8+",
+          "Age": 18,
+          "Gender": "Female",
+          "Time": "1:05:43.0",
+          "Difference": "+12:27.0",
+          "PercentBack": "+23.37%",
+          "PercentWinning": "81.06%",
+          "PercentAverage": "-5.21%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:14:55.1"
+        },
+        {
+          "Place": "3",
+          "Bib": "21",
+          "Name": "Olympia Area Rowing - Mixed Masters",
+          "TeamName": "Olympia",
+          "TeamName2": "Vespoli",
+          "Category": "8+",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:08:24.0",
+          "Difference": "+15:08.0",
+          "PercentBack": "+28.41%",
+          "PercentWinning": "77.88%",
+          "PercentAverage": "-9.51%",
+          "PercentMedian": "-4.08%",
+          "StartTime": "10:14:55.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "7",
+          "Name": "Nicholas Cryder",
+          "TeamName": null,
+          "TeamName2": "Epic V-12",
+          "Category": "HPK",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:01:49.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.46%",
+          "PercentMedian": "5.82%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "2",
+          "Bib": "54",
+          "Name": "Jeff Maloney",
+          "TeamName": null,
+          "TeamName2": "Fenn Elite Sl",
+          "Category": "HPK",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:05:38.0",
+          "Difference": "+3:49.0",
+          "PercentBack": "+6.17%",
+          "PercentWinning": "94.18%",
+          "PercentAverage": "-0.37%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "3",
+          "Bib": "87",
+          "Name": "Jim Schulz",
+          "TeamName": "Duvall",
+          "TeamName2": "Epic/V10",
+          "Category": "HPK",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:08:43.0",
+          "Difference": "+6:54.0",
+          "PercentBack": "+11.16%",
+          "PercentWinning": "89.96%",
+          "PercentAverage": "-5.09%",
+          "PercentMedian": "-4.70%",
+          "StartTime": "10:05:08.8"
+        },
+        {
+          "Place": "-",
+          "Bib": "65",
+          "Name": "Paul Hirsh",
+          "TeamName": null,
+          "TeamName2": "Huki S1X",
+          "Category": "HPK",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:05:08.8"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC-1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "621",
+          "Name": "Laurie Aardel",
+          "TeamName": "Bremerton, WA",
+          "TeamName2": "hurricane oc-1",
+          "Category": "OC-1",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:31:34.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:05:08.8"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC-2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "18",
+          "Name": "Andy Michels And Rick Olson",
+          "TeamName": "Lakewood, WA",
+          "TeamName2": "OC-2",
+          "Category": "OC-2",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:21:40.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:05:08.8"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC-6"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "6",
+          "Name": "ELE PAIO",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "OC-6",
+          "Age": null,
+          "Gender": "Female/Male",
+          "Time": "1:11:54.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:14:55.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Pedalboat"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Michael Lampi",
+          "TeamName": "Bellevue",
+          "TeamName2": "V15-6M",
+          "Category": "Pedalboat",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:15:03.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:05:08.8"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "V-1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "88",
+          "Name": "Lance Kahn",
+          "TeamName": "Bremerton, WA",
+          "TeamName2": null,
+          "Category": "V-1",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:20:32.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:05:08.8"
+        }
+      ]
+    }
+  ]
+}

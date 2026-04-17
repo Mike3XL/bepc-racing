@@ -1,5 +1,5 @@
 {
-  "source": "Pacific Multisports (gbrc.pacificmultisports.com)",
+  "source": "Pacific Multisports (register.pacificmultisports.com)",
   "note": "gbrc_id = Pacific Multisports event ID, rr_id = raceresult.com event ID (used for API access). rr_id fetched by inspecting page source.",
   "excluded": [
     {

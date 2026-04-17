@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 10230,
+    "distance": "2.5 miles",
+    "name": "Rat Island Regatta 2013 \u2014 2.5 miles",
+    "displayURL": "https://www.webscorer.com/race?raceid=10230",
+    "date": "Jun 29, 2013",
+    "sport": "Paddling",
+    "startTime": "Saturday, June 29, 2013 10:04 AM (GMT-7)",
+    "country": "United States",
+    "city": "Port Townsend",
+    "pointsWeight": 0.052632
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Pertold, Jiri",
+      "craftCategory": "M SK",
+      "gender": "Unknown",
+      "handicap": 1.0,
+      "timeSeconds": 1732.4,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1732.4,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Lampi, Kate",
+      "craftCategory": "W Pedal",
+      "gender": "Unknown",
+      "handicap": 1.0,
+      "timeSeconds": 2514.4,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2514.4,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "Maupin, Jim",
+      "craftCategory": "M SUP-14'",
+      "gender": "Unknown",
+      "handicap": 1.0,
+      "timeSeconds": 2529.2,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2529.2,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

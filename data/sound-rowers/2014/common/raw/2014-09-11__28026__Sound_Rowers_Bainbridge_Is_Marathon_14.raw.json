@@ -1,0 +1,672 @@
+{
+  "RaceInfo": {
+    "RaceId": 28026,
+    "Name": "Sound Rowers Bainbridge Is. Marathon '14",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=28026",
+    "Date": "Sep 11, 2014",
+    "Sport": "Paddling",
+    "StartTime": "Thursday, September 11, 2014 3:24 PM (GMT-7)",
+    "OrganizerName": "Sound Rowers and Paddlers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "Lynnwood",
+    "StateOrProvince": "WA",
+    "Latitude": 47.8209,
+    "Longitude": -122.315102,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 1.6",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Thursday, September 11, 2014 3:42 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/28026.jpg?635460469250000000"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Long Course (26mi)",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Austin Nichols/Elliot Skopin",
+          "Distance": "Long Course (26mi)",
+          "Category": "2x OW",
+          "Gender": "Male",
+          "Time": "3:17:06.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "16.32%",
+          "PercentMedian": "16.57%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "2",
+          "Name": "Peter Hirtle, Conal Groom",
+          "Distance": "Long Course (26mi)",
+          "Category": "2x OW",
+          "Gender": "Male",
+          "Time": "3:27:32.0",
+          "Difference": "+10:26.0",
+          "PercentBack": "+5.29%",
+          "PercentWinning": "94.97%",
+          "PercentAverage": "11.89%",
+          "PercentMedian": "12.16%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "3",
+          "Name": "Jeff/Theresa Knakal",
+          "Distance": "Long Course (26mi)",
+          "Category": "2x OW",
+          "Gender": "Female/Male",
+          "Time": "3:47:53.0",
+          "Difference": "+30:47.0",
+          "PercentBack": "+15.62%",
+          "PercentWinning": "86.49%",
+          "PercentAverage": "3.25%",
+          "PercentMedian": "3.54%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "4",
+          "Name": "Jeff Maloney",
+          "Distance": "Long Course (26mi)",
+          "Category": "HPK",
+          "Gender": "Male",
+          "Time": "3:53:45.0",
+          "Difference": "+36:39.0",
+          "PercentBack": "+18.59%",
+          "PercentWinning": "84.32%",
+          "PercentAverage": "0.76%",
+          "PercentMedian": "1.06%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "5",
+          "Name": "Rainer/Adrian Storb/T. Batty/One Other",
+          "Distance": "Long Course (26mi)",
+          "Category": "4x OW",
+          "Gender": "Female/Male",
+          "Time": "3:56:15.0",
+          "Difference": "+39:09.0",
+          "PercentBack": "+19.86%",
+          "PercentWinning": "83.43%",
+          "PercentAverage": "-0.30%",
+          "PercentMedian": "0.00%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "6",
+          "Name": "Tom Kreyche/Chris Jones",
+          "Distance": "Long Course (26mi)",
+          "Category": "2x OW",
+          "Gender": "Male",
+          "Time": "3:57:34.0",
+          "Difference": "+40:28.0",
+          "PercentBack": "+20.53%",
+          "PercentWinning": "82.97%",
+          "PercentAverage": "-0.86%",
+          "PercentMedian": "-0.56%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "7",
+          "Name": "Kevin Olney",
+          "Distance": "Long Course (26mi)",
+          "Category": "HPK",
+          "Gender": "Male",
+          "Time": "4:08:09.0",
+          "Difference": "+51:03.0",
+          "PercentBack": "+25.90%",
+          "PercentWinning": "79.43%",
+          "PercentAverage": "-5.35%",
+          "PercentMedian": "-5.04%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "8",
+          "Name": "Kristian Tollefson",
+          "Distance": "Long Course (26mi)",
+          "Category": "HPK",
+          "Gender": "Male",
+          "Time": "4:20:20.0",
+          "Difference": "+1:03:14.0",
+          "PercentBack": "+32.08%",
+          "PercentWinning": "75.71%",
+          "PercentAverage": "-10.53%",
+          "PercentMedian": "-10.19%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "9",
+          "Name": "Mark Miller",
+          "Distance": "Long Course (26mi)",
+          "Category": "1x OW-III",
+          "Gender": "Male",
+          "Time": "4:31:18.0",
+          "Difference": "+1:14:12.0",
+          "PercentBack": "+37.65%",
+          "PercentWinning": "72.65%",
+          "PercentAverage": "-15.18%",
+          "PercentMedian": "-14.84%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "-",
+          "Name": "Dean Williams Jr",
+          "Distance": "Long Course (26mi)",
+          "Category": "OC-1",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (12mi)",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Barbara Trafton/Sharon Borgios",
+          "Distance": "Short Course (12mi)",
+          "Category": "2x OW",
+          "Gender": "Female",
+          "Time": "2:09:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "27.77%",
+          "PercentMedian": "33.30%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "2",
+          "Name": "Steve Scoggins",
+          "Distance": "Short Course (12mi)",
+          "Category": "HPK",
+          "Gender": "Male",
+          "Time": "2:11:03.0",
+          "Difference": "+1:05.0",
+          "PercentBack": "+0.83%",
+          "PercentWinning": "99.17%",
+          "PercentAverage": "27.17%",
+          "PercentMedian": "32.75%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "3",
+          "Name": "Ted Scherrer",
+          "Distance": "Short Course (12mi)",
+          "Category": "FSK",
+          "Gender": "Male",
+          "Time": "2:31:27.0",
+          "Difference": "+21:29.0",
+          "PercentBack": "+16.53%",
+          "PercentWinning": "85.81%",
+          "PercentAverage": "15.83%",
+          "PercentMedian": "22.28%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "4",
+          "Name": "Debbie Natalson",
+          "Distance": "Short Course (12mi)",
+          "Category": "1x OW-II",
+          "Gender": "Female",
+          "Time": "3:14:50.0",
+          "Difference": "+1:04:52.0",
+          "PercentBack": "+49.91%",
+          "PercentWinning": "66.71%",
+          "PercentAverage": "-8.28%",
+          "PercentMedian": "0.02%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "5",
+          "Name": "Laurie Aardal",
+          "Distance": "Short Course (12mi)",
+          "Category": "OC-1",
+          "Gender": "Female",
+          "Time": "3:14:52.0",
+          "Difference": "+1:04:54.0",
+          "PercentBack": "+49.94%",
+          "PercentWinning": "66.70%",
+          "PercentAverage": "-8.30%",
+          "PercentMedian": "0.00%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "6",
+          "Name": "Zach Williams/Raven Hillaire",
+          "Distance": "Short Course (12mi)",
+          "Category": "C2",
+          "Gender": "Female/Male",
+          "Time": "3:19:58.0",
+          "Difference": "+1:10:00.0",
+          "PercentBack": "+53.86%",
+          "PercentWinning": "64.99%",
+          "PercentAverage": "-11.14%",
+          "PercentMedian": "-2.62%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "7",
+          "Name": "Amy Hammer",
+          "Distance": "Short Course (12mi)",
+          "Category": "FSK",
+          "Gender": "Female",
+          "Time": "3:23:33.0",
+          "Difference": "+1:13:35.0",
+          "PercentBack": "+56.62%",
+          "PercentWinning": "63.85%",
+          "PercentAverage": "-13.13%",
+          "PercentMedian": "-4.46%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "8",
+          "Name": "Riley O'Brien",
+          "Distance": "Short Course (12mi)",
+          "Category": "1x OW-III",
+          "Gender": "Male",
+          "Time": "3:26:33.0",
+          "Difference": "+1:16:35.0",
+          "PercentBack": "+58.93%",
+          "PercentWinning": "62.92%",
+          "PercentAverage": "-14.80%",
+          "PercentMedian": "-6.00%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "9",
+          "Name": "Paul Rollinger",
+          "Distance": "Short Course (12mi)",
+          "Category": "HPK",
+          "Gender": "Male",
+          "Time": "3:27:07.0",
+          "Difference": "+1:17:09.0",
+          "PercentBack": "+59.36%",
+          "PercentWinning": "62.75%",
+          "PercentAverage": "-15.11%",
+          "PercentMedian": "-6.29%",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (26mi)",
+        "Category": "1x OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Mark Miller",
+          "Distance": "Long Course (26mi)",
+          "Category": "1x OW-III",
+          "Gender": "Male",
+          "Time": "4:31:18.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (26mi)",
+        "Category": "2x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Austin Nichols/Elliot Skopin",
+          "Distance": "Long Course (26mi)",
+          "Category": "2x OW",
+          "Gender": "Male",
+          "Time": "3:17:06.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.39%",
+          "PercentMedian": "9.47%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "2",
+          "Name": "Peter Hirtle, Conal Groom",
+          "Distance": "Long Course (26mi)",
+          "Category": "2x OW",
+          "Gender": "Male",
+          "Time": "3:27:32.0",
+          "Difference": "+10:26.0",
+          "PercentBack": "+5.29%",
+          "PercentWinning": "94.97%",
+          "PercentAverage": "4.59%",
+          "PercentMedian": "4.67%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "3",
+          "Name": "Jeff/Theresa Knakal",
+          "Distance": "Long Course (26mi)",
+          "Category": "2x OW",
+          "Gender": "Female/Male",
+          "Time": "3:47:53.0",
+          "Difference": "+30:47.0",
+          "PercentBack": "+15.62%",
+          "PercentWinning": "86.49%",
+          "PercentAverage": "-4.76%",
+          "PercentMedian": "-4.67%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "4",
+          "Name": "Tom Kreyche/Chris Jones",
+          "Distance": "Long Course (26mi)",
+          "Category": "2x OW",
+          "Gender": "Male",
+          "Time": "3:57:34.0",
+          "Difference": "+40:28.0",
+          "PercentBack": "+20.53%",
+          "PercentWinning": "82.97%",
+          "PercentAverage": "-9.22%",
+          "PercentMedian": "-9.12%",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (26mi)",
+        "Category": "4x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Rainer/Adrian Storb/T. Batty/One Other",
+          "Distance": "Long Course (26mi)",
+          "Category": "4x OW",
+          "Gender": "Female/Male",
+          "Time": "3:56:15.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (26mi)",
+        "Category": "HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jeff Maloney",
+          "Distance": "Long Course (26mi)",
+          "Category": "HPK",
+          "Gender": "Male",
+          "Time": "3:53:45.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.52%",
+          "PercentMedian": "5.80%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "2",
+          "Name": "Kevin Olney",
+          "Distance": "Long Course (26mi)",
+          "Category": "HPK",
+          "Gender": "Male",
+          "Time": "4:08:09.0",
+          "Difference": "+14:24.0",
+          "PercentBack": "+6.16%",
+          "PercentWinning": "94.20%",
+          "PercentAverage": "-0.30%",
+          "PercentMedian": "0.00%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "3",
+          "Name": "Kristian Tollefson",
+          "Distance": "Long Course (26mi)",
+          "Category": "HPK",
+          "Gender": "Male",
+          "Time": "4:20:20.0",
+          "Difference": "+26:35.0",
+          "PercentBack": "+11.37%",
+          "PercentWinning": "89.79%",
+          "PercentAverage": "-5.22%",
+          "PercentMedian": "-4.91%",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (26mi)",
+        "Category": "OC-1"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Name": "Dean Williams Jr",
+          "Distance": "Long Course (26mi)",
+          "Category": "OC-1",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (12mi)",
+        "Category": "1x OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Debbie Natalson",
+          "Distance": "Short Course (12mi)",
+          "Category": "1x OW-II",
+          "Gender": "Female",
+          "Time": "3:14:50.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (12mi)",
+        "Category": "1x OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Riley O'Brien",
+          "Distance": "Short Course (12mi)",
+          "Category": "1x OW-III",
+          "Gender": "Male",
+          "Time": "3:26:33.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (12mi)",
+        "Category": "2x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Barbara Trafton/Sharon Borgios",
+          "Distance": "Short Course (12mi)",
+          "Category": "2x OW",
+          "Gender": "Female",
+          "Time": "2:09:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (12mi)",
+        "Category": "C2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Zach Williams/Raven Hillaire",
+          "Distance": "Short Course (12mi)",
+          "Category": "C2",
+          "Gender": "Female/Male",
+          "Time": "3:19:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (12mi)",
+        "Category": "FSK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Ted Scherrer",
+          "Distance": "Short Course (12mi)",
+          "Category": "FSK",
+          "Gender": "Male",
+          "Time": "2:31:27.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.68%",
+          "PercentMedian": "14.68%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "2",
+          "Name": "Amy Hammer",
+          "Distance": "Short Course (12mi)",
+          "Category": "FSK",
+          "Gender": "Female",
+          "Time": "3:23:33.0",
+          "Difference": "+52:06.0",
+          "PercentBack": "+34.40%",
+          "PercentWinning": "74.40%",
+          "PercentAverage": "-14.68%",
+          "PercentMedian": "-14.68%",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (12mi)",
+        "Category": "HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Steve Scoggins",
+          "Distance": "Short Course (12mi)",
+          "Category": "HPK",
+          "Gender": "Male",
+          "Time": "2:11:03.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "22.49%",
+          "PercentMedian": "22.49%",
+          "StartTime": "15:24:48.1"
+        },
+        {
+          "Place": "2",
+          "Name": "Paul Rollinger",
+          "Distance": "Short Course (12mi)",
+          "Category": "HPK",
+          "Gender": "Male",
+          "Time": "3:27:07.0",
+          "Difference": "+1:16:04.0",
+          "PercentBack": "+58.04%",
+          "PercentWinning": "63.27%",
+          "PercentAverage": "-22.49%",
+          "PercentMedian": "-22.49%",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (12mi)",
+        "Category": "OC-1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Laurie Aardal",
+          "Distance": "Short Course (12mi)",
+          "Category": "OC-1",
+          "Gender": "Female",
+          "Time": "3:14:52.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "15:24:48.1"
+        }
+      ]
+    }
+  ]
+}

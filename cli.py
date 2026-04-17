@@ -8,7 +8,7 @@ from pathlib import Path
 
 from bepc.loader import load_all_common
 from bepc.processor import process_season
-from bepc.generator import generate_all
+from bepc.generator import generate_all, generate_club
 from bepc.fetcher import fetch_season
 
 DATA_DIR = Path(__file__).parent / "data"
@@ -33,6 +33,19 @@ CLUB_META = {
     },
 }
 CURRENT_CLUB = "bepc"
+
+
+def _load_sites_config() -> dict:
+    """Load sites: section from data/clubs.yaml, return {site_id: config_dict}."""
+    cfg_path = DATA_DIR / "clubs.yaml"
+    if not cfg_path.exists():
+        return {}
+    try:
+        import yaml
+        with open(cfg_path) as f:
+            return yaml.safe_load(f).get("sites", {})
+    except Exception:
+        return {}
 
 
 def _load_clubs_config() -> dict:
@@ -126,7 +139,13 @@ def build_data_json() -> dict:
                         carry_over = {k: (v[0] / p33_val, v[1]) for k, v in carry_over.items()}
 
         if seasons:
+            from datetime import date as _date
+            current_year = str(_date.today().year)
             current_season = max(seasons.keys())
+            # If current calendar year is ahead of latest data, add empty season and use it
+            if current_year > current_season:
+                seasons[current_year] = {"races": []}
+                current_season = current_year
             meta = CLUB_META.get(club_id, {})
             clubs[club_id] = {
                 "name": cfg.get("name", meta.get("name", club_id)),
@@ -283,13 +302,21 @@ def cmd_import_pdf(args):
 
 def cmd_serve(args):
     import http.server
+    import posixpath
     import threading
+    import urllib.parse
     port = args.port
     site = Path(__file__).parent / "site"
     os.chdir(site)
-    handler = http.server.SimpleHTTPRequestHandler
-    handler.log_message = lambda *a: None  # suppress request logs
-    with http.server.HTTPServer(("", port), handler) as httpd:
+
+    class _Handler(http.server.SimpleHTTPRequestHandler):
+        def translate_path(self, path):
+            p = urllib.parse.unquote(urllib.parse.urlparse(path).path)
+            self.path = posixpath.normpath(p)
+            return super().translate_path(self.path)
+        log_message = lambda *a: None
+
+    with http.server.HTTPServer(("", port), _Handler) as httpd:
         print(f"Serving site/ at http://localhost:{port}  (Ctrl+C to stop)")
         import webbrowser
         webbrowser.open(f"http://localhost:{port}")
@@ -300,6 +327,131 @@ def cmd_fetch(args):
     out_dir = DATA_DIR / args.club / args.year / "common"
     print(f"Fetching {len(args.race_ids)} races → {out_dir}")
     fetch_season([int(r) for r in args.race_ids], out_dir)
+
+
+def _process() -> dict:
+    """Rebuild site/data.json from raw files. Returns the data dict."""
+    output = build_data_json()
+    SITE_DIR.mkdir(exist_ok=True)
+    (SITE_DIR / "data.json").write_text(json.dumps(output, indent=2))
+    total = sum(len(s["races"]) for c in output["clubs"].values() for s in c["seasons"].values())
+    print(f"Processed: {total} total races → site/data.json")
+    return output
+
+
+def cmd_build_club(args):
+    """Generate pages for a single club only (fast, skips site-wide pages)."""
+    club = args.club
+    data = _process()
+    if club not in data["clubs"]:
+        print(f"ERROR: club '{club}' not found")
+        sys.exit(1)
+    data["current_club"] = club
+    generate_club(data)
+
+
+def cmd_build_site(args):
+    """Generate full site for a named site config (all clubs + crosslinking + search)."""
+    import time as _time
+    site_id = args.site
+    sites = _load_sites_config()
+    if site_id not in sites:
+        print(f"ERROR: site '{site_id}' not found in clubs.yaml sites: section")
+        print(f"Available: {list(sites.keys())}")
+        sys.exit(1)
+    site_cfg = sites[site_id]
+    t0 = _time.perf_counter()
+    data = _process()
+    print(f"  {_time.perf_counter()-t0:5.1f}s  data load + process")
+    # Restrict to clubs in this site
+    site_clubs = site_cfg.get("clubs", list(data["clubs"].keys()))
+    data["site_clubs"] = site_clubs
+    data["current_club"] = site_clubs[0]
+    generate_all(data)
+
+
+def cmd_publish_site(args):
+    """Push built site to GitHub Pages (no generation)."""
+    import subprocess
+    site_id = args.site
+    sites = _load_sites_config()
+    if site_id not in sites:
+        print(f"ERROR: site '{site_id}' not found in clubs.yaml sites: section")
+        sys.exit(1)
+    site_cfg = sites[site_id]
+    branch = site_cfg.get("gh_branch", "gh-pages")
+    url = site_cfg.get("gh_url", f"https://mike3xl.github.io/bepc-racing/")
+    root = Path(__file__).parent
+    site = root / "site"
+    msg = f"chore: publish {site_id} site"
+    script = f"""set -e
+cd {root}
+git read-tree --empty
+git --work-tree={site} add --all
+TREE=$(git write-tree)
+COMMIT=$(git commit-tree $TREE -m "{msg}")
+git push origin $COMMIT:refs/heads/{branch} --force
+git read-tree HEAD
+echo "Published → {url}"
+"""
+    result = subprocess.run(["bash", "-c", script])
+    sys.exit(result.returncode)
+
+
+def cmd_update_club(args):
+    """Auto-discover and fetch new races for a single club."""
+    cmd_sync(args)
+
+
+def cmd_update_site(args):
+    """Auto-discover and fetch new races for all clubs in a named site."""
+    import types, yaml
+    from datetime import date
+    from bepc.fetcher_upcoming import sync_upcoming
+
+    site_id = args.site
+    sites = _load_sites_config()
+    if site_id not in sites:
+        print(f"ERROR: site '{site_id}' not found")
+        sys.exit(1)
+    site_clubs = sites[site_id].get("clubs", [])
+    year = str(date.today().year)
+
+    # Sync upcoming
+    upcoming_path = DATA_DIR.parent / "data" / "upcoming.yaml"
+    print("=== Syncing upcoming races ===")
+    sync_upcoming(upcoming_path)
+
+    # Sync each club
+    fetched_any = False
+    for club in site_clubs:
+        print(f"\n=== Syncing {club} {year} ===")
+        sync_args = types.SimpleNamespace(club=club, year=year, dry_run=getattr(args, 'dry_run', False))
+        before = _count_race_files(club)
+        cmd_sync(sync_args)
+        after = _count_race_files(club)
+        if after > before:
+            fetched_any = True
+
+    # Report BEPC races needing manual fetch
+    upcoming_data = yaml.safe_load(upcoming_path.read_text())
+    today = date.today()
+    manual_needed = []
+    for r in upcoming_data.get("upcoming", []):
+        d = r.get("date")
+        if isinstance(d, str):
+            d = date.fromisoformat(d)
+        if d and d <= today and not r.get("source_id") and any(c in site_clubs for c in r.get("clubs", [])):
+            manual_needed.append(r)
+    if manual_needed:
+        print(f"\n⚠️  {len(manual_needed)} race(s) past today with no source_id — fetch manually:")
+        for r in manual_needed:
+            print(f"   {r['date']} {r['name']} clubs={r.get('clubs',[])} → cli.py fetch webscorer --club <club> --year {year} <race_id>")
+
+    if fetched_any:
+        print(f"\n✓ New races fetched. Run: cli.py build-site {site_id} && cli.py publish-site {site_id}")
+    else:
+        print(f"\n✓ No new races found.")
 
 
 def cmd_process(args):
@@ -640,6 +792,67 @@ def cmd_scan(args):
     cmd_scan_sources(args)
 
 
+def cmd_update(args):
+    """Update site: sync upcoming, auto-fetch new results for all clubs, process, publish."""
+    import types, yaml
+    from datetime import date
+    from bepc.fetcher_upcoming import sync_upcoming
+
+    year = str(date.today().year)
+    clubs_cfg = _load_clubs_config()
+    auto_clubs = [c for c, d in clubs_cfg.items()
+                  if d.get("data_sources", {}).get("fetch_sources")]
+
+    # 1. Sync upcoming
+    upcoming_path = DATA_DIR.parent / "data" / "upcoming.yaml"
+    print("=== Syncing upcoming races ===")
+    sync_upcoming(upcoming_path)
+
+    # 2. Auto-sync all clubs with fetch_sources
+    fetched_any = False
+    for club in auto_clubs:
+        print(f"\n=== Syncing {club} {year} ===")
+        sync_args = types.SimpleNamespace(club=club, year=year, dry_run=False)
+        before = _count_race_files(club)
+        cmd_sync(sync_args)
+        after = _count_race_files(club)
+        if after > before:
+            fetched_any = True
+            print(f"  → {after - before} new race(s) fetched for {club}")
+
+    # 3. Report BEPC races needing manual fetch (past, no source_id)
+    upcoming_data = yaml.safe_load(upcoming_path.read_text())
+    today = date.today()
+    manual_needed = []
+    for r in upcoming_data.get("upcoming", []):
+        d = r.get("date")
+        if isinstance(d, str):
+            d = date.fromisoformat(d)
+        if d and d <= today and not r.get("source_id") and "bepc" in r.get("clubs", []):
+            manual_needed.append(r)
+    if manual_needed:
+        print(f"\n⚠️  {len(manual_needed)} BEPC race(s) past today with no source_id — fetch manually:")
+        for r in manual_needed:
+            print(f"   {r['date']} {r['name']}")
+            print(f"   → python3.13 cli.py fetch --club bepc --year {year} <race_id>")
+
+    # 4. Process + publish if anything changed (or --force)
+    if fetched_any or getattr(args, 'force', False):
+        print("\n=== Processing ===")
+        cmd_process(args)
+        print("\n=== Publishing ===")
+        cmd_publish(args)
+    else:
+        print("\n✓ No new races found. Site is up to date.")
+
+
+def _count_race_files(club: str) -> int:
+    club_dir = DATA_DIR / club
+    if not club_dir.exists():
+        return 0
+    return sum(1 for f in club_dir.rglob("*.common.json"))
+
+
 def cmd_sync(args):
     """Sync a club/year: discover missing races from data_sources, fetch them, reprocess."""
     import urllib.request, re as _re
@@ -857,102 +1070,133 @@ def cmd_sync(args):
 def main():
     parser = argparse.ArgumentParser(prog="bepc")
     sub = parser.add_subparsers(dest="command")
-    sub.add_parser("process", help="Process common JSON → site/data.json")
 
-    gen_p = sub.add_parser("generate", help="Generate HTML pages from site/data.json")
-    gen_p.add_argument("--club", default=None, help="Scope site to one club")
+    # --- Data refresh ---
+    uc_p = sub.add_parser("update-club", help="Auto-discover and fetch new races for a club")
+    uc_p.add_argument("club", help="Club ID e.g. bepc, sound-rowers")
+    uc_p.add_argument("--year", default=None, help="Season year (default: current year)")
+    uc_p.add_argument("--dry-run", action="store_true", help="Report without fetching")
 
-    pub_p = sub.add_parser("publish", help="Generate and push site to GitHub Pages")
-    pub_p.add_argument("--club", default=None, help="Club to publish, or omit for full multi-club site on gh-pages")
-    pub_p.add_argument("--branch", default=None, help="Override gh-pages branch name")
+    us_p = sub.add_parser("update-site", help="Auto-discover and fetch new races for all clubs in a site")
+    us_p.add_argument("site", help="Site ID e.g. pnw")
+    us_p.add_argument("--dry-run", action="store_true", help="Report without fetching")
 
-    audit_p = sub.add_parser("audit-crafts", help="List unrecognized craft values")
-    audit_src_p = sub.add_parser("audit-sources", help="Detect duplicate race sources and generate manifests")
-    audit_src_p.add_argument("--club", default=CURRENT_CLUB, help="Club to audit")
+    # --- Build ---
+    bc_p = sub.add_parser("build-club", help="Generate pages for a single club (fast, skips site-wide pages)")
+    bc_p.add_argument("club", help="Club ID e.g. bepc")
 
-    rr_p = sub.add_parser("fetch-raceresult", help="Fetch events from raceresult.com (Pacific Multisports)")
-    rr_p.add_argument("rr_ids", nargs="+", type=int, help="raceresult event ID(s)")
-    rr_p.add_argument("--club", default="pnw-regional")
-    rr_p.add_argument("--year", required=True, help="Year folder e.g. 2025")
+    bs_p = sub.add_parser("build-site", help="Generate full site for a named site config")
+    bs_p.add_argument("site", help="Site ID e.g. pnw")
 
-    scan_src_p = sub.add_parser("scan-sources", help="Scan a result source for new events")
-    scan_src_p.add_argument("--source", default="all", choices=["all", "pacificmultisports"],
-                            help="Source to scan (default: all)")
+    # --- Publish ---
+    ps_p = sub.add_parser("publish-site", help="Push built site to GitHub Pages")
+    ps_p.add_argument("site", help="Site ID e.g. pnw")
 
-    sub.add_parser("scan", help="Scan all result sources for new events")
+    # --- Manual fetch (when you have the ID/file) ---
+    fetch_p = sub.add_parser("fetch", help="Manually fetch races by source type")
+    fetch_sub = fetch_p.add_subparsers(dest="fetch_source")
 
-    search_p = sub.add_parser("search", help="Search club's configured organizers for new races")
-    search_p.add_argument("--club", default=CURRENT_CLUB, help="Club to search for")
-    audit_p.add_argument("--club", default=None)
+    fw = fetch_sub.add_parser("webscorer", help="Fetch races from WebScorer by race ID")
+    fw.add_argument("--club", default="bepc")
+    fw.add_argument("--year", required=True)
+    fw.add_argument("race_ids", nargs="+", help="WebScorer race IDs")
 
-    sync_p = sub.add_parser("sync", help="Discover and fetch missing races for a club/year, then reprocess")
-    sync_p.add_argument("--club", default=CURRENT_CLUB)
-    sync_p.add_argument("--year", required=True, help="Season year e.g. 2025")
-    sync_p.add_argument("--dry-run", action="store_true", help="Report missing/suspect races without fetching")
+    fj = fetch_sub.add_parser("jericho", help="Fetch PNW smallboat races from Jericho year page")
+    fj.add_argument("year", help="Year e.g. 2025")
+    fj.add_argument("--club", default="pnw-regional")
+    fj.add_argument("--dry-run", action="store_true")
 
-    jericho_p = sub.add_parser("fetch-jericho", help="Fetch PNW smallboat races from Jericho year page")
-    jericho_p.add_argument("year", help="Year e.g. 2025")
-    jericho_p.add_argument("--club", default="pnw-regional")
-    jericho_p.add_argument("--dry-run", action="store_true", help="List races without importing")
+    fju = fetch_sub.add_parser("jericho-url", help="Import Jericho-format HTML results from URL")
+    fju.add_argument("url")
+    fju.add_argument("--club", default="pnw-regional")
+    fju.add_argument("--year", required=True)
+    fju.add_argument("--race-id", required=True)
+    fju.add_argument("--name", required=True)
+    fju.add_argument("--date", required=True)
 
-    url_p = sub.add_parser("import-url", help="Import Jericho-format HTML results from URL")
-    url_p.add_argument("url", help="URL of results page")
-    url_p.add_argument("--club", default="pnw-regional")
-    url_p.add_argument("--year", required=True)
-    url_p.add_argument("--race-id", required=True)
-    url_p.add_argument("--name", required=True)
-    url_p.add_argument("--date", required=True)
+    frr = fetch_sub.add_parser("raceresult", help="Fetch events from raceresult.com (Pacific Multisports)")
+    frr.add_argument("rr_ids", nargs="+", type=int, help="raceresult event ID(s)")
+    frr.add_argument("--club", default="pnw-regional")
+    frr.add_argument("--year", required=True)
 
-    pdf_p = sub.add_parser("import-pdf", help="Import Pacific Multisports PDF results")
-    pdf_p.add_argument("pdf", help="Path to PDF file")
-    pdf_p.add_argument("--club", default="pnw-regional")
-    pdf_p.add_argument("--year", required=True)
-    pdf_p.add_argument("--race-id", required=True)
-    pdf_p.add_argument("--name", required=True, help="Race name")
-    pdf_p.add_argument("--date", required=True, help="Race date e.g. 'Mar 14, 2026'")
-    pdf_p.add_argument("--url", default=None)
+    fpdf = fetch_sub.add_parser("pdf", help="Import Pacific Multisports PDF results")
+    fpdf.add_argument("pdf", help="Path to PDF file")
+    fpdf.add_argument("--club", default="pnw-regional")
+    fpdf.add_argument("--year", required=True)
+    fpdf.add_argument("--race-id", required=True)
+    fpdf.add_argument("--name", required=True)
+    fpdf.add_argument("--date", required=True)
+    fpdf.add_argument("--url", default=None)
 
+    # --- Diagnostics ---
+    sub.add_parser("audit-crafts", help="List unrecognized craft values")
+    audit_src_p = sub.add_parser("audit-sources", help="Detect duplicate race sources")
+    audit_src_p.add_argument("--club", default=CURRENT_CLUB)
+
+    # --- Dev ---
     serve_p = sub.add_parser("serve", help="Serve site/ locally for testing")
     serve_p.add_argument("--port", type=int, default=8080)
 
-    fetch_p = sub.add_parser("fetch", help="Fetch races from WebScorer API")
-    fetch_p.add_argument("--club", default="bepc")
-    fetch_p.add_argument("--year", required=True)
-    fetch_p.add_argument("race_ids", nargs="+", help="WebScorer race IDs")
+    # --- Legacy aliases (kept for backward compat) ---
+    sub.add_parser("process", help="[legacy] Rebuild data.json (now called automatically)")
+    gen_p = sub.add_parser("generate", help="[legacy] Use build-site instead")
+    gen_p.add_argument("--club", default=None)
+    pub_p = sub.add_parser("publish", help="[legacy] Use build-site + publish-site instead")
+    pub_p.add_argument("--club", default=None)
+    pub_p.add_argument("--branch", default=None)
+    sync_p = sub.add_parser("sync", help="[legacy] Use update-club instead")
+    sync_p.add_argument("--club", default=CURRENT_CLUB)
+    sync_p.add_argument("--year", required=True)
+    sync_p.add_argument("--dry-run", action="store_true")
 
     args = parser.parse_args()
-    if args.command == "process":
-        cmd_process(args)
-    elif args.command == "generate":
-        cmd_generate(args)
-    elif args.command == "publish":
-        cmd_publish(args)
+
+    from datetime import date as _date
+    if args.command == "update-club":
+        if not args.year:
+            args.year = str(_date.today().year)
+        cmd_update_club(args)
+    elif args.command == "update-site":
+        cmd_update_site(args)
+    elif args.command == "build-club":
+        cmd_build_club(args)
+    elif args.command == "build-site":
+        cmd_build_site(args)
+    elif args.command == "publish-site":
+        cmd_publish_site(args)
+    elif args.command == "fetch":
+        if args.fetch_source == "webscorer":
+            cmd_fetch(args)
+        elif args.fetch_source == "jericho":
+            cmd_fetch_jericho(args)
+        elif args.fetch_source == "jericho-url":
+            cmd_import_url(args)
+        elif args.fetch_source == "raceresult":
+            cmd_fetch_raceresult(args)
+        elif args.fetch_source == "pdf":
+            cmd_import_pdf(args)
+        else:
+            fetch_p.print_help()
     elif args.command == "audit-crafts":
         cmd_audit_crafts(args)
-    elif args.command == "fetch-jericho":
-        cmd_fetch_jericho(args)
-    elif args.command == "import-url":
-        cmd_import_url(args)
-    elif args.command == "import-pdf":
-        cmd_import_pdf(args)
-    elif args.command == "serve":
-        cmd_serve(args)
-    elif args.command == "fetch":
-        cmd_fetch(args)
     elif args.command == "audit-sources":
         cmd_audit_sources(args)
-    elif args.command == "fetch-raceresult":
-        cmd_fetch_raceresult(args)
-    elif args.command == "scan-sources":
-        cmd_scan_sources(args)
-    elif args.command == "scan":
-        cmd_scan(args)
-    elif args.command == "search":
-        cmd_search(args)
+    elif args.command == "serve":
+        cmd_serve(args)
+    # Legacy aliases
+    elif args.command == "process":
+        cmd_process(args)
+    elif args.command == "generate":
+        print("⚠️  'generate' is deprecated — use 'build-site pnw' instead")
+        cmd_generate(args)
+    elif args.command == "publish":
+        print("⚠️  'publish' is deprecated — use 'build-site pnw && publish-site pnw' instead")
+        cmd_publish(args)
     elif args.command == "sync":
         cmd_sync(args)
     else:
         parser.print_help()
+
 
 
 if __name__ == "__main__":

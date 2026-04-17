@@ -1,0 +1,106 @@
+{
+  "key": "18e5a3453706e3d443fa8f2a5e83e6d7",
+  "contests": {
+    "1": "7 - Mile",
+    "2": "2.7 - Mile"
+  },
+  "splits": [
+    {
+      "ID": 14,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 12,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 1,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 15,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 3,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 13,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 11,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    }
+  ],
+  "eventname": "2025 La Conner - Sound Rowers and Paddlers",
+  "TimerLogo": "",
+  "TimerURL": "",
+  "EventOver": true,
+  "Time": 84442,
+  "server": "my-us-1.raceresult.com",
+  "BrandColorDark": "",
+  "Tab": {
+    "Label": "",
+    "URLName": "results",
+    "Enabled": true,
+    "ShowInMenu": false,
+    "ShowInMenu2": "always",
+    "ActiveFrom": "2021-02-06T00:00:00-08:00",
+    "ActiveUntil": "2100-12-31T23:59:59-08:00",
+    "Type": "lists",
+    "Config": null
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "boxes",
+    "StandardDetails": "",
+    "Lists": [
+      {
+        "Name": "Result Lists|Overall Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "3EF1B7"
+      },
+      {
+        "Name": "Result Lists|Boat Class Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "117197"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": true
+  }
+}

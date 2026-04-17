@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 153928,
+    "distance": "Little Turtle - 2.5 miles",
+    "name": "Sound Rowers: Wenatchee Guano Rocks 2018 \u2014 Little Turtle - 2.5 miles",
+    "displayURL": "https://www.webscorer.com/race?raceid=153928",
+    "date": "Sep 29, 2018",
+    "sport": "Paddling",
+    "startTime": "Saturday, September 29, 2018 10:34 AM (GMT-7)",
+    "country": "United States",
+    "city": "East Wenatchee",
+    "pointsWeight": 0.064516
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "John Hansen",
+      "craftCategory": "SUP",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 2484.9,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2484.9,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Avalon Robinson",
+      "craftCategory": "SUP",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 3214.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 3214.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

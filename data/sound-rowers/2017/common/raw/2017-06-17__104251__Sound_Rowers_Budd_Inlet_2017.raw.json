@@ -1,0 +1,724 @@
+{
+  "RaceInfo": {
+    "RaceId": 104251,
+    "Name": "Sound Rowers: Budd Inlet 2017",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=104251",
+    "Date": "Jun 17, 2017",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, June 17, 2017 9:56 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers and Paddlers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "Olympia",
+    "StateOrProvince": "WA",
+    "Latitude": 47.0553295130214,
+    "Longitude": -122.898688316346,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 2.3",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Sunday, June 18, 2017 6:48 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/104251_8d4b5ea95ffe44e.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "14",
+          "Name": "Rod And Shane",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Rod, Shane",
+          "TeamName2": "Woodinville, Maas Double",
+          "Category": "2x OW",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "57:36.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "24.73%",
+          "PercentMedian": "25.49%"
+        },
+        {
+          "Place": "2",
+          "Bib": "13",
+          "Name": "LWRC",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "T Batty J Bernard, A & R Storb",
+          "TeamName2": "Seattle, Maas OW Quad",
+          "Category": "4x OW",
+          "Age": null,
+          "Gender": "Female/Male",
+          "Time": "57:39.9",
+          "Difference": "+0:03.3",
+          "PercentBack": "+0.10%",
+          "PercentWinning": "99.90%",
+          "PercentAverage": "24.65%",
+          "PercentMedian": "25.42%"
+        },
+        {
+          "Place": "3",
+          "Bib": "20",
+          "Name": "Peter Hirtle",
+          "FirstName": "Peter",
+          "LastName": "Hirtle",
+          "TeamName": null,
+          "TeamName2": "Lake Forest Park - Hudson 1X",
+          "Category": "1x Flatwater",
+          "Age": 65,
+          "Gender": "Male",
+          "Time": "1:03:13.1",
+          "Difference": "+5:36.5",
+          "PercentBack": "+9.73%",
+          "PercentWinning": "91.13%",
+          "PercentAverage": "17.40%",
+          "PercentMedian": "18.24%"
+        },
+        {
+          "Place": "4",
+          "Bib": "8",
+          "Name": "HMS KOLOA",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Vern, Jan, Jon, Jeff, Rich, Traci",
+          "TeamName2": "Lots of places, WA; Vern's Wooden Bullet",
+          "Category": "OC-6",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:09:44.5",
+          "Difference": "+12:07.9",
+          "PercentBack": "+21.06%",
+          "PercentWinning": "82.60%",
+          "PercentAverage": "8.87%",
+          "PercentMedian": "9.81%"
+        },
+        {
+          "Place": "5",
+          "Bib": "196",
+          "Name": "Geoff Briggs, Barb Schleiger",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "OC-2",
+          "Age": 50,
+          "Gender": "Female/Male",
+          "Time": "1:11:46.8",
+          "Difference": "+14:10.2",
+          "PercentBack": "+24.60%",
+          "PercentWinning": "80.26%",
+          "PercentAverage": "6.21%",
+          "PercentMedian": "7.17%"
+        },
+        {
+          "Place": "6",
+          "Bib": "15",
+          "Name": "Ray Trudgeon",
+          "FirstName": "Ray",
+          "LastName": "Trudgeon",
+          "TeamName": null,
+          "TeamName2": "Seattle, Antares",
+          "Category": "OC-1",
+          "Age": 35,
+          "Gender": "Male",
+          "Time": "1:15:11.4",
+          "Difference": "+17:34.8",
+          "PercentBack": "+30.52%",
+          "PercentWinning": "76.62%",
+          "PercentAverage": "1.76%",
+          "PercentMedian": "2.76%"
+        },
+        {
+          "Place": "7",
+          "Bib": "10",
+          "Name": "Jacob Selander",
+          "FirstName": "Jacob",
+          "LastName": "Selander",
+          "TeamName": null,
+          "TeamName2": "Walla Walla; Huki S1-R/ Revo 1",
+          "Category": "HPK",
+          "Age": 36,
+          "Gender": "Male",
+          "Time": "1:15:12.3",
+          "Difference": "+17:35.7",
+          "PercentBack": "+30.54%",
+          "PercentWinning": "76.60%",
+          "PercentAverage": "1.74%",
+          "PercentMedian": "2.74%"
+        },
+        {
+          "Place": "8",
+          "Bib": "4",
+          "Name": "Alex Denny",
+          "FirstName": "Alex",
+          "LastName": "Denny",
+          "TeamName": null,
+          "TeamName2": "University City/Clc Oxford",
+          "Category": "1x OW-II",
+          "Age": 32,
+          "Gender": "Male",
+          "Time": "1:16:56.9",
+          "Difference": "+19:20.3",
+          "PercentBack": "+33.57%",
+          "PercentWinning": "74.87%",
+          "PercentAverage": "-0.54%",
+          "PercentMedian": "0.48%"
+        },
+        {
+          "Place": "9",
+          "Bib": "19",
+          "Name": "Bob Rhoades",
+          "FirstName": "Bob",
+          "LastName": "Rhoades",
+          "TeamName": null,
+          "TeamName2": "Ocean Shores, Maas Aero Grandad",
+          "Category": "1x OW-II",
+          "Age": 75,
+          "Gender": "Male",
+          "Time": "1:17:19.4",
+          "Difference": "+19:42.8",
+          "PercentBack": "+34.22%",
+          "PercentWinning": "74.51%",
+          "PercentAverage": "-1.03%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "10",
+          "Bib": "11",
+          "Name": "Janna Gross",
+          "FirstName": "Janna",
+          "LastName": "Gross",
+          "TeamName": null,
+          "TeamName2": "Snohomish Bay 21",
+          "Category": "1x OW-II",
+          "Age": 55,
+          "Gender": "Female",
+          "Time": "1:17:34.7",
+          "Difference": "+19:58.1",
+          "PercentBack": "+34.66%",
+          "PercentWinning": "74.26%",
+          "PercentAverage": "-1.36%",
+          "PercentMedian": "-0.33%"
+        },
+        {
+          "Place": "11",
+          "Bib": "6",
+          "Name": "Arne Denny",
+          "FirstName": "Arne",
+          "LastName": "Denny",
+          "TeamName": null,
+          "TeamName2": "Oak Harbor/Maas 24",
+          "Category": "1x OW-III",
+          "Age": 65,
+          "Gender": "Male",
+          "Time": "1:19:04.6",
+          "Difference": "+21:28.0",
+          "PercentBack": "+37.26%",
+          "PercentWinning": "72.85%",
+          "PercentAverage": "-3.32%",
+          "PercentMedian": "-2.27%"
+        },
+        {
+          "Place": "12",
+          "Bib": "5",
+          "Name": "Alex Parkman",
+          "FirstName": "Alex",
+          "LastName": "Parkman",
+          "TeamName": null,
+          "TeamName2": "Seattle   Bay 24",
+          "Category": "1x OW-III",
+          "Age": 64,
+          "Gender": "Male",
+          "Time": "1:19:41.1",
+          "Difference": "+22:04.5",
+          "PercentBack": "+38.32%",
+          "PercentWinning": "72.30%",
+          "PercentAverage": "-4.12%",
+          "PercentMedian": "-3.05%"
+        },
+        {
+          "Place": "13",
+          "Bib": "37",
+          "Name": "Rod Lake",
+          "FirstName": "Rod",
+          "LastName": "Lake",
+          "TeamName": null,
+          "TeamName2": "Ocosta, Epic 16X",
+          "Category": "SK",
+          "Age": 49,
+          "Gender": "Male",
+          "Time": "1:21:51.3",
+          "Difference": "+24:14.7",
+          "PercentBack": "+42.08%",
+          "PercentWinning": "70.38%",
+          "PercentAverage": "-6.95%",
+          "PercentMedian": "-5.86%"
+        },
+        {
+          "Place": "14",
+          "Bib": "21",
+          "Name": "Shane Baker",
+          "FirstName": "Shane",
+          "LastName": "Baker",
+          "TeamName": null,
+          "TeamName2": "Port Orchard      Kamanu/Aukahi",
+          "Category": "V-1",
+          "Age": 68,
+          "Gender": "Male",
+          "Time": "1:25:09.6",
+          "Difference": "+27:33.0",
+          "PercentBack": "+47.82%",
+          "PercentWinning": "67.65%",
+          "PercentAverage": "-11.27%",
+          "PercentMedian": "-10.13%"
+        },
+        {
+          "Place": "15",
+          "Bib": "17",
+          "Name": "Tom Cartmill",
+          "FirstName": "Tom",
+          "LastName": "Cartmill",
+          "TeamName": null,
+          "TeamName2": "Seattle  Epic 16",
+          "Category": "SK",
+          "Age": 66,
+          "Gender": "Male",
+          "Time": "1:28:16.5",
+          "Difference": "+30:39.9",
+          "PercentBack": "+53.23%",
+          "PercentWinning": "65.26%",
+          "PercentAverage": "-15.34%",
+          "PercentMedian": "-14.16%"
+        },
+        {
+          "Place": "16",
+          "Bib": "18",
+          "Name": "Wendy Carter",
+          "FirstName": "Wendy",
+          "LastName": "Carter",
+          "TeamName": null,
+          "TeamName2": "Bremerton Huki Outrigger",
+          "Category": "OC-1",
+          "Age": 53,
+          "Gender": "Female",
+          "Time": "1:30:37.6",
+          "Difference": "+33:01.0",
+          "PercentBack": "+57.31%",
+          "PercentWinning": "63.57%",
+          "PercentAverage": "-18.41%",
+          "PercentMedian": "-17.20%"
+        },
+        {
+          "Place": "17",
+          "Bib": "7",
+          "Name": "Carrie Weisse",
+          "FirstName": "Carrie",
+          "LastName": "Weisse",
+          "TeamName": null,
+          "TeamName2": "Mukilteo",
+          "Category": "1x OW-II",
+          "Age": 99,
+          "Gender": "Female",
+          "Time": "1:34:08.1",
+          "Difference": "+36:31.5",
+          "PercentBack": "+63.40%",
+          "PercentWinning": "61.20%",
+          "PercentAverage": "-23.00%",
+          "PercentMedian": "-21.74%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "1x Flatwater"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "20",
+          "Name": "Peter Hirtle",
+          "FirstName": "Peter",
+          "LastName": "Hirtle",
+          "TeamName": null,
+          "TeamName2": "Lake Forest Park - Hudson 1X",
+          "Category": "1x Flatwater",
+          "Age": 65,
+          "Gender": "Male",
+          "Time": "1:03:13.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "1x OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "4",
+          "Name": "Alex Denny",
+          "FirstName": "Alex",
+          "LastName": "Denny",
+          "TeamName": null,
+          "TeamName2": "University City/Clc Oxford",
+          "Category": "1x OW-II",
+          "Age": 32,
+          "Gender": "Male",
+          "Time": "1:16:56.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.58%",
+          "PercentMedian": "0.65%"
+        },
+        {
+          "Place": "2",
+          "Bib": "19",
+          "Name": "Bob Rhoades",
+          "FirstName": "Bob",
+          "LastName": "Rhoades",
+          "TeamName": null,
+          "TeamName2": "Ocean Shores, Maas Aero Grandad",
+          "Category": "1x OW-II",
+          "Age": 75,
+          "Gender": "Male",
+          "Time": "1:17:19.4",
+          "Difference": "+0:22.5",
+          "PercentBack": "+0.49%",
+          "PercentWinning": "99.52%",
+          "PercentAverage": "5.12%",
+          "PercentMedian": "0.16%"
+        },
+        {
+          "Place": "3",
+          "Bib": "11",
+          "Name": "Janna Gross",
+          "FirstName": "Janna",
+          "LastName": "Gross",
+          "TeamName": null,
+          "TeamName2": "Snohomish Bay 21",
+          "Category": "1x OW-II",
+          "Age": 55,
+          "Gender": "Female",
+          "Time": "1:17:34.7",
+          "Difference": "+0:37.8",
+          "PercentBack": "+0.82%",
+          "PercentWinning": "99.19%",
+          "PercentAverage": "4.81%",
+          "PercentMedian": "-0.16%"
+        },
+        {
+          "Place": "4",
+          "Bib": "7",
+          "Name": "Carrie Weisse",
+          "FirstName": "Carrie",
+          "LastName": "Weisse",
+          "TeamName": null,
+          "TeamName2": "Mukilteo",
+          "Category": "1x OW-II",
+          "Age": 99,
+          "Gender": "Female",
+          "Time": "1:34:08.1",
+          "Difference": "+17:11.2",
+          "PercentBack": "+22.34%",
+          "PercentWinning": "81.74%",
+          "PercentAverage": "-15.51%",
+          "PercentMedian": "-21.54%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "1x OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "6",
+          "Name": "Arne Denny",
+          "FirstName": "Arne",
+          "LastName": "Denny",
+          "TeamName": null,
+          "TeamName2": "Oak Harbor/Maas 24",
+          "Category": "1x OW-III",
+          "Age": 65,
+          "Gender": "Male",
+          "Time": "1:19:04.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.38%",
+          "PercentMedian": "0.38%"
+        },
+        {
+          "Place": "2",
+          "Bib": "5",
+          "Name": "Alex Parkman",
+          "FirstName": "Alex",
+          "LastName": "Parkman",
+          "TeamName": null,
+          "TeamName2": "Seattle   Bay 24",
+          "Category": "1x OW-III",
+          "Age": 64,
+          "Gender": "Male",
+          "Time": "1:19:41.1",
+          "Difference": "+0:36.5",
+          "PercentBack": "+0.77%",
+          "PercentWinning": "99.24%",
+          "PercentAverage": "-0.38%",
+          "PercentMedian": "-0.38%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "2x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "14",
+          "Name": "Rod And Shane",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Rod, Shane",
+          "TeamName2": "Woodinville, Maas Double",
+          "Category": "2x OW",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "57:36.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "4x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "13",
+          "Name": "LWRC",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "T Batty J Bernard, A & R Storb",
+          "TeamName2": "Seattle, Maas OW Quad",
+          "Category": "4x OW",
+          "Age": null,
+          "Gender": "Female/Male",
+          "Time": "57:39.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Jacob Selander",
+          "FirstName": "Jacob",
+          "LastName": "Selander",
+          "TeamName": null,
+          "TeamName2": "Walla Walla; Huki S1-R/ Revo 1",
+          "Category": "HPK",
+          "Age": 36,
+          "Gender": "Male",
+          "Time": "1:15:12.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC-1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "15",
+          "Name": "Ray Trudgeon",
+          "FirstName": "Ray",
+          "LastName": "Trudgeon",
+          "TeamName": null,
+          "TeamName2": "Seattle, Antares",
+          "Category": "OC-1",
+          "Age": 35,
+          "Gender": "Male",
+          "Time": "1:15:11.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.31%",
+          "PercentMedian": "9.31%"
+        },
+        {
+          "Place": "2",
+          "Bib": "18",
+          "Name": "Wendy Carter",
+          "FirstName": "Wendy",
+          "LastName": "Carter",
+          "TeamName": null,
+          "TeamName2": "Bremerton Huki Outrigger",
+          "Category": "OC-1",
+          "Age": 53,
+          "Gender": "Female",
+          "Time": "1:30:37.6",
+          "Difference": "+15:26.2",
+          "PercentBack": "+20.53%",
+          "PercentWinning": "82.97%",
+          "PercentAverage": "-9.31%",
+          "PercentMedian": "-9.31%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC-2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "196",
+          "Name": "Geoff Briggs, Barb Schleiger",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "OC-2",
+          "Age": 50,
+          "Gender": "Female/Male",
+          "Time": "1:11:46.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC-6"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "8",
+          "Name": "HMS KOLOA",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Vern, Jan, Jon, Jeff, Rich, Traci",
+          "TeamName2": "Lots of places, WA; Vern's Wooden Bullet",
+          "Category": "OC-6",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "1:09:44.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "37",
+          "Name": "Rod Lake",
+          "FirstName": "Rod",
+          "LastName": "Lake",
+          "TeamName": null,
+          "TeamName2": "Ocosta, Epic 16X",
+          "Category": "SK",
+          "Age": 49,
+          "Gender": "Male",
+          "Time": "1:21:51.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.77%",
+          "PercentMedian": "3.77%"
+        },
+        {
+          "Place": "2",
+          "Bib": "17",
+          "Name": "Tom Cartmill",
+          "FirstName": "Tom",
+          "LastName": "Cartmill",
+          "TeamName": null,
+          "TeamName2": "Seattle  Epic 16",
+          "Category": "SK",
+          "Age": 66,
+          "Gender": "Male",
+          "Time": "1:28:16.5",
+          "Difference": "+6:25.2",
+          "PercentBack": "+7.84%",
+          "PercentWinning": "92.73%",
+          "PercentAverage": "-3.77%",
+          "PercentMedian": "-3.77%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "V-1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "21",
+          "Name": "Shane Baker",
+          "FirstName": "Shane",
+          "LastName": "Baker",
+          "TeamName": null,
+          "TeamName2": "Port Orchard      Kamanu/Aukahi",
+          "Category": "V-1",
+          "Age": 68,
+          "Gender": "Male",
+          "Time": "1:25:09.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

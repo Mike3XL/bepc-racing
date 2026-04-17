@@ -1,5 +1,5 @@
 """
-Fetcher for my.raceresult.com — used by Pacific Multisports (gbrc.pacificmultisports.com).
+Fetcher for my.raceresult.com — used by Pacific Multisports (register.pacificmultisports.com).
 
 No API key required. The per-event key is fetched dynamically from the public config endpoint.
 
@@ -152,7 +152,7 @@ def fetch_event(rr_id: int, name: str, date: str, out_dir: Path,
                 "raceId": rr_id,
                 "name": f"{event_name}{suffix}",
                 "date": date,
-                "displayURL": f"https://gbrc.pacificmultisports.com/Events/Results/{rr_id}",
+                "displayURL": f"https://register.pacificmultisports.com/Events/Results/{rr_id}",
                 "distance": course_label if multi else "",
                 "pointsWeight": weight,
                 "sport": "Paddling",
@@ -169,7 +169,7 @@ def fetch_event(rr_id: int, name: str, date: str, out_dir: Path,
         "date": date,
         "source": "raceresult",
         "method": "api",
-        "url": f"https://gbrc.pacificmultisports.com/Events/Results/{rr_id}",
+        "url": f"https://register.pacificmultisports.com/Events/Results/{rr_id}",
         "raw_files": [raw_config_fname, raw_results_fname],
         "common_files": written,
     })

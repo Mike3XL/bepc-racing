@@ -1,0 +1,2506 @@
+{
+  "RaceInfo": {
+    "RaceId": 1848,
+    "Name": "Sound Rowers: La Conner 2012",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=1848",
+    "Date": "Feb 4, 2012",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, February 4, 2012 10:00 AM (GMT-8)",
+    "OrganizerName": "Sound Rowers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "La Conner",
+    "StateOrProvince": "WA",
+    "Latitude": 48.3863300086669,
+    "Longitude": -122.501332117017,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, May 19, 2012 2:20 PM (GMT-8)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/1848.jpg?634730340500000000"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "8",
+          "Name": "P Turcan + J Cross",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK2",
+          "Time": "49:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "22.34%",
+          "PercentMedian": "20.03%"
+        },
+        {
+          "Place": "2",
+          "Bib": "12",
+          "Name": "David Jacobson",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "49:59.2",
+          "Difference": "+0:01.2",
+          "PercentBack": "+0.04%",
+          "PercentWinning": "99.96%",
+          "PercentAverage": "22.31%",
+          "PercentMedian": "20.00%"
+        },
+        {
+          "Place": "3",
+          "Bib": "92",
+          "Name": "Evan Jacobs",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Maas 1x",
+          "Category": "M OW-III",
+          "Time": "50:11.3",
+          "Difference": "+0:13.3",
+          "PercentBack": "+0.44%",
+          "PercentWinning": "99.56%",
+          "PercentAverage": "22.00%",
+          "PercentMedian": "19.68%"
+        },
+        {
+          "Place": "4",
+          "Bib": "1",
+          "Name": "P Hirtle + C Mills",
+          "TeamName": "Lake Forest Park",
+          "TeamName2": "Maas 2X",
+          "Category": "Mx OW-2x",
+          "Time": "50:41.2",
+          "Difference": "+0:43.2",
+          "PercentBack": "+1.44%",
+          "PercentWinning": "98.58%",
+          "PercentAverage": "21.22%",
+          "PercentMedian": "18.88%"
+        },
+        {
+          "Place": "5",
+          "Bib": "104",
+          "Name": "Pete Wells + Erik Wermus",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK2",
+          "Time": "51:07.7",
+          "Difference": "+1:09.7",
+          "PercentBack": "+2.32%",
+          "PercentWinning": "97.73%",
+          "PercentAverage": "20.53%",
+          "PercentMedian": "18.17%"
+        },
+        {
+          "Place": "6",
+          "Bib": "124",
+          "Name": "Tyler Peterson",
+          "TeamName": "Burien",
+          "TeamName2": "Bay Shells Rowing / Bay 21",
+          "Category": "M OW-II",
+          "Time": "51:24.2",
+          "Difference": "+1:26.2",
+          "PercentBack": "+2.88%",
+          "PercentWinning": "97.21%",
+          "PercentAverage": "20.11%",
+          "PercentMedian": "17.73%"
+        },
+        {
+          "Place": "7",
+          "Bib": "109",
+          "Name": "R Storb + A Storb",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OW-2x",
+          "Time": "53:27.5",
+          "Difference": "+3:29.5",
+          "PercentBack": "+6.99%",
+          "PercentWinning": "93.47%",
+          "PercentAverage": "16.91%",
+          "PercentMedian": "14.44%"
+        },
+        {
+          "Place": "8",
+          "Bib": "6",
+          "Name": "Ludovit Tatos",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "53:54.5",
+          "Difference": "+3:56.5",
+          "PercentBack": "+7.89%",
+          "PercentWinning": "92.69%",
+          "PercentAverage": "16.21%",
+          "PercentMedian": "13.72%"
+        },
+        {
+          "Place": "9",
+          "Bib": "120",
+          "Name": "Erik Borgnes",
+          "TeamName": "Sequim, WA",
+          "TeamName2": "Epic V12",
+          "Category": "M HPK",
+          "Time": "53:56.2",
+          "Difference": "+3:58.2",
+          "PercentBack": "+7.95%",
+          "PercentWinning": "92.64%",
+          "PercentAverage": "16.17%",
+          "PercentMedian": "13.68%"
+        },
+        {
+          "Place": "10",
+          "Bib": "114",
+          "Name": "Eric Moll",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "53:59.9",
+          "Difference": "+4:01.9",
+          "PercentBack": "+8.07%",
+          "PercentWinning": "92.53%",
+          "PercentAverage": "16.07%",
+          "PercentMedian": "13.58%"
+        },
+        {
+          "Place": "11",
+          "Bib": "118",
+          "Name": "Shane Martin",
+          "TeamName": "Vancouver, BC",
+          "TeamName2": "Epic V10",
+          "Category": "M HPK",
+          "Time": "54:37.1",
+          "Difference": "+4:39.1",
+          "PercentBack": "+9.31%",
+          "PercentWinning": "91.48%",
+          "PercentAverage": "15.11%",
+          "PercentMedian": "12.59%"
+        },
+        {
+          "Place": "12",
+          "Bib": "93",
+          "Name": "Sullivan + Goolsby",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK2",
+          "Time": "54:40.3",
+          "Difference": "+4:42.3",
+          "PercentBack": "+9.42%",
+          "PercentWinning": "91.39%",
+          "PercentAverage": "15.03%",
+          "PercentMedian": "12.50%"
+        },
+        {
+          "Place": "13",
+          "Bib": "13",
+          "Name": "Kirk Christensen",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "54:41.1",
+          "Difference": "+4:43.1",
+          "PercentBack": "+9.44%",
+          "PercentWinning": "91.37%",
+          "PercentAverage": "15.01%",
+          "PercentMedian": "12.48%"
+        },
+        {
+          "Place": "14",
+          "Bib": "9",
+          "Name": "Don Kiesling",
+          "TeamName": "Seattle",
+          "TeamName2": "Allwave CX",
+          "Category": "M HPK",
+          "Time": "54:43.3",
+          "Difference": "+4:45.3",
+          "PercentBack": "+9.52%",
+          "PercentWinning": "91.31%",
+          "PercentAverage": "14.95%",
+          "PercentMedian": "12.42%"
+        },
+        {
+          "Place": "15",
+          "Bib": "101",
+          "Name": "Joost Zeegers",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "54:43.5",
+          "Difference": "+4:45.5",
+          "PercentBack": "+9.52%",
+          "PercentWinning": "91.31%",
+          "PercentAverage": "14.94%",
+          "PercentMedian": "12.42%"
+        },
+        {
+          "Place": "16",
+          "Bib": "98",
+          "Name": "Peter Marcus",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "54:45.3",
+          "Difference": "+4:47.3",
+          "PercentBack": "+9.58%",
+          "PercentWinning": "91.25%",
+          "PercentAverage": "14.90%",
+          "PercentMedian": "12.37%"
+        },
+        {
+          "Place": "17",
+          "Bib": "108",
+          "Name": "Armstrong + Hoffman",
+          "TeamName": "Marysville",
+          "TeamName2": "Maas 2X",
+          "Category": "M OW-2x",
+          "Time": "55:32.3",
+          "Difference": "+5:34.3",
+          "PercentBack": "+11.15%",
+          "PercentWinning": "89.97%",
+          "PercentAverage": "13.68%",
+          "PercentMedian": "11.12%"
+        },
+        {
+          "Place": "18",
+          "Bib": "110",
+          "Name": "R Lingbloom + M Whitlock",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK2",
+          "Time": "55:45.9",
+          "Difference": "+5:47.9",
+          "PercentBack": "+11.60%",
+          "PercentWinning": "89.60%",
+          "PercentAverage": "13.33%",
+          "PercentMedian": "10.75%"
+        },
+        {
+          "Place": "19",
+          "Bib": "4",
+          "Name": "Hugh Conroy",
+          "TeamName": "Bellingham, WA",
+          "TeamName2": "Peinert Dolphin",
+          "Category": "M OW-III",
+          "Time": "55:49.5",
+          "Difference": "+5:51.5",
+          "PercentBack": "+11.72%",
+          "PercentWinning": "89.51%",
+          "PercentAverage": "13.23%",
+          "PercentMedian": "10.66%"
+        },
+        {
+          "Place": "19",
+          "Bib": "79",
+          "Name": "Paul Clement",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "55:49.5",
+          "Difference": "+5:51.5",
+          "PercentBack": "+11.72%",
+          "PercentWinning": "89.51%",
+          "PercentAverage": "13.23%",
+          "PercentMedian": "10.66%"
+        },
+        {
+          "Place": "21",
+          "Bib": "2",
+          "Name": "Jeff Knakal",
+          "TeamName": "Mill Creek, WA",
+          "TeamName2": "Maas 24",
+          "Category": "M OW-III",
+          "Time": "55:50.6",
+          "Difference": "+5:52.6",
+          "PercentBack": "+11.76%",
+          "PercentWinning": "89.48%",
+          "PercentAverage": "13.21%",
+          "PercentMedian": "10.63%"
+        },
+        {
+          "Place": "22",
+          "Bib": "38",
+          "Name": "Chris Dobrovolny",
+          "TeamName": "Vancouver, BC",
+          "TeamName2": "Think Uno",
+          "Category": "M HPK",
+          "Time": "55:59.8",
+          "Difference": "+6:01.8",
+          "PercentBack": "+12.07%",
+          "PercentWinning": "89.23%",
+          "PercentAverage": "12.97%",
+          "PercentMedian": "10.38%"
+        },
+        {
+          "Place": "23",
+          "Bib": "26",
+          "Name": "Dean Bumstead",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "56:07.0",
+          "Difference": "+6:09.0",
+          "PercentBack": "+12.31%",
+          "PercentWinning": "89.04%",
+          "PercentAverage": "12.78%",
+          "PercentMedian": "10.19%"
+        },
+        {
+          "Place": "24",
+          "Bib": "111",
+          "Name": "L Pitts + M Lipi",
+          "TeamName": "Redmond, WA",
+          "TeamName2": "Hudson 2x",
+          "Category": "M 2x",
+          "Time": "56:27.4",
+          "Difference": "+6:29.4",
+          "PercentBack": "+12.99%",
+          "PercentWinning": "88.50%",
+          "PercentAverage": "12.25%",
+          "PercentMedian": "9.65%"
+        },
+        {
+          "Place": "25",
+          "Bib": "18",
+          "Name": "Steve Thompson",
+          "TeamName": "Redmond",
+          "TeamName2": "Maas 24",
+          "Category": "M OW-III",
+          "Time": "58:28.1",
+          "Difference": "+8:30.1",
+          "PercentBack": "+17.01%",
+          "PercentWinning": "85.46%",
+          "PercentAverage": "9.13%",
+          "PercentMedian": "6.43%"
+        },
+        {
+          "Place": "26",
+          "Bib": "115",
+          "Name": "Michael Walsh",
+          "TeamName": "Renton, WA",
+          "TeamName2": "Maas 24",
+          "Category": "M OW-III",
+          "Time": "58:48.6",
+          "Difference": "+8:50.6",
+          "PercentBack": "+17.70%",
+          "PercentWinning": "84.96%",
+          "PercentAverage": "8.60%",
+          "PercentMedian": "5.88%"
+        },
+        {
+          "Place": "27",
+          "Bib": "14",
+          "Name": "Steve Oien + Hanne Thiede",
+          "TeamName": "Sammamish",
+          "TeamName2": "Maas 2X",
+          "Category": "Mx OW-2x",
+          "Time": "58:53.7",
+          "Difference": "+8:55.7",
+          "PercentBack": "+17.87%",
+          "PercentWinning": "84.84%",
+          "PercentAverage": "8.46%",
+          "PercentMedian": "5.74%"
+        },
+        {
+          "Place": "28",
+          "Bib": "11",
+          "Name": "T Roller + J Gifford",
+          "TeamName": "Kirkland",
+          "TeamName2": "Filippi 2X",
+          "Category": "W 2x",
+          "Time": "59:44.5",
+          "Difference": "+9:46.5",
+          "PercentBack": "+19.56%",
+          "PercentWinning": "83.64%",
+          "PercentAverage": "7.15%",
+          "PercentMedian": "4.39%"
+        },
+        {
+          "Place": "29",
+          "Bib": "102",
+          "Name": "Theresa Batty",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "W OW-III",
+          "Time": "59:59.7",
+          "Difference": "+10:01.7",
+          "PercentBack": "+20.07%",
+          "PercentWinning": "83.28%",
+          "PercentAverage": "6.75%",
+          "PercentMedian": "3.98%"
+        },
+        {
+          "Place": "30",
+          "Bib": "59",
+          "Name": "Scott Wanless",
+          "TeamName": "North Vancouver, British Columbia",
+          "TeamName2": "Think / Legend  (HPK)",
+          "Category": "M HPK",
+          "Time": "1:00:15.8",
+          "Difference": "+10:17.8",
+          "PercentBack": "+20.61%",
+          "PercentWinning": "82.91%",
+          "PercentAverage": "6.34%",
+          "PercentMedian": "3.55%"
+        },
+        {
+          "Place": "31",
+          "Bib": "122",
+          "Name": "Reivers Dustin",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:00:16.5",
+          "Difference": "+10:18.5",
+          "PercentBack": "+20.63%",
+          "PercentWinning": "82.90%",
+          "PercentAverage": "6.32%",
+          "PercentMedian": "3.54%"
+        },
+        {
+          "Place": "32",
+          "Bib": "99",
+          "Name": "Mike Gregory",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:00:17.8",
+          "Difference": "+10:19.8",
+          "PercentBack": "+20.67%",
+          "PercentWinning": "82.87%",
+          "PercentAverage": "6.28%",
+          "PercentMedian": "3.50%"
+        },
+        {
+          "Place": "33",
+          "Bib": "106",
+          "Name": "Kim Cantrell",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:01:05.8",
+          "Difference": "+11:07.8",
+          "PercentBack": "+22.27%",
+          "PercentWinning": "81.78%",
+          "PercentAverage": "5.04%",
+          "PercentMedian": "2.22%"
+        },
+        {
+          "Place": "34",
+          "Bib": "119",
+          "Name": "David Scherrer",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:01:06.0",
+          "Difference": "+11:08.0",
+          "PercentBack": "+22.28%",
+          "PercentWinning": "81.78%",
+          "PercentAverage": "5.04%",
+          "PercentMedian": "2.22%"
+        },
+        {
+          "Place": "35",
+          "Bib": "24",
+          "Name": "Duncan Howat",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:01:15.7",
+          "Difference": "+11:17.7",
+          "PercentBack": "+22.61%",
+          "PercentWinning": "81.56%",
+          "PercentAverage": "4.79%",
+          "PercentMedian": "1.96%"
+        },
+        {
+          "Place": "36",
+          "Bib": "7",
+          "Name": "Michael Dee",
+          "TeamName": "Maple Falls WA",
+          "TeamName2": "Think Legend",
+          "Category": "M HPK",
+          "Time": "1:01:16.2",
+          "Difference": "+11:18.2",
+          "PercentBack": "+22.62%",
+          "PercentWinning": "81.55%",
+          "PercentAverage": "4.77%",
+          "PercentMedian": "1.94%"
+        },
+        {
+          "Place": "37",
+          "Bib": "88",
+          "Name": "Dan Wakeland",
+          "TeamName": "Bellingham",
+          "TeamName2": "Huki s1x special",
+          "Category": "M HPK",
+          "Time": "1:01:33.1",
+          "Difference": "+11:35.1",
+          "PercentBack": "+23.19%",
+          "PercentWinning": "81.18%",
+          "PercentAverage": "4.33%",
+          "PercentMedian": "1.49%"
+        },
+        {
+          "Place": "38",
+          "Bib": "113",
+          "Name": "Brian Boatman",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OC1",
+          "Time": "1:01:57.7",
+          "Difference": "+11:59.7",
+          "PercentBack": "+24.01%",
+          "PercentWinning": "80.64%",
+          "PercentAverage": "3.70%",
+          "PercentMedian": "0.84%"
+        },
+        {
+          "Place": "39",
+          "Bib": "20",
+          "Name": "Alan Lipp",
+          "TeamName": "Bellingham",
+          "TeamName2": "PSI Kaolele",
+          "Category": "M OC1",
+          "Time": "1:02:24.4",
+          "Difference": "+12:26.4",
+          "PercentBack": "+24.90%",
+          "PercentWinning": "80.07%",
+          "PercentAverage": "3.01%",
+          "PercentMedian": "0.12%"
+        },
+        {
+          "Place": "40",
+          "Bib": "96",
+          "Name": "Howard Lee",
+          "TeamName": "Seattle",
+          "TeamName2": "Maas 24",
+          "Category": "M OW-III",
+          "Time": "1:02:28.3",
+          "Difference": "+12:30.3",
+          "PercentBack": "+25.03%",
+          "PercentWinning": "79.98%",
+          "PercentAverage": "2.90%",
+          "PercentMedian": "0.02%"
+        },
+        {
+          "Place": "41",
+          "Bib": "27",
+          "Name": "Jim Schulz",
+          "TeamName": "Duvall",
+          "TeamName2": "Think EVO",
+          "Category": "M HPK",
+          "Time": "1:02:29.8",
+          "Difference": "+12:31.8",
+          "PercentBack": "+25.08%",
+          "PercentWinning": "79.95%",
+          "PercentAverage": "2.87%",
+          "PercentMedian": "-0.02%"
+        },
+        {
+          "Place": "42",
+          "Bib": "123",
+          "Name": "Linda Gromko + Kim Biggs",
+          "TeamName": "Seattle",
+          "TeamName2": "Maas Open Water Double",
+          "Category": "W OW-2x",
+          "Time": "1:02:43.3",
+          "Difference": "+12:45.3",
+          "PercentBack": "+25.53%",
+          "PercentWinning": "79.66%",
+          "PercentAverage": "2.52%",
+          "PercentMedian": "-0.38%"
+        },
+        {
+          "Place": "43",
+          "Bib": "105",
+          "Name": "Rainer Straka",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OW-III",
+          "Time": "1:03:09.1",
+          "Difference": "+13:11.1",
+          "PercentBack": "+26.39%",
+          "PercentWinning": "79.12%",
+          "PercentAverage": "1.85%",
+          "PercentMedian": "-1.07%"
+        },
+        {
+          "Place": "44",
+          "Bib": "10",
+          "Name": "Roger Lamb",
+          "TeamName": "Bellingham",
+          "TeamName2": "Huki S1-X",
+          "Category": "M HPK",
+          "Time": "1:03:54.6",
+          "Difference": "+13:56.6",
+          "PercentBack": "+27.91%",
+          "PercentWinning": "78.18%",
+          "PercentAverage": "0.67%",
+          "PercentMedian": "-2.28%"
+        },
+        {
+          "Place": "45",
+          "Bib": "112",
+          "Name": "Douglas Peele",
+          "TeamName": "Gig Harbor",
+          "TeamName2": "Looksha ll",
+          "Category": "M FSK",
+          "Time": "1:04:21.9",
+          "Difference": "+14:23.9",
+          "PercentBack": "+28.82%",
+          "PercentWinning": "77.63%",
+          "PercentAverage": "-0.04%",
+          "PercentMedian": "-3.01%"
+        },
+        {
+          "Place": "46",
+          "Bib": "5",
+          "Name": "Lance Kahn",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OC1",
+          "Time": "1:04:22.3",
+          "Difference": "+14:24.3",
+          "PercentBack": "+28.83%",
+          "PercentWinning": "77.62%",
+          "PercentAverage": "-0.05%",
+          "PercentMedian": "-3.02%"
+        },
+        {
+          "Place": "47",
+          "Bib": "126",
+          "Name": "Linda Warren",
+          "TeamName": "Vancouver",
+          "TeamName2": "Epic V10L Surfski",
+          "Category": "W HPK",
+          "Time": "1:04:37.4",
+          "Difference": "+14:39.4",
+          "PercentBack": "+29.33%",
+          "PercentWinning": "77.32%",
+          "PercentAverage": "-0.44%",
+          "PercentMedian": "-3.42%"
+        },
+        {
+          "Place": "48",
+          "Bib": "264",
+          "Name": "Shane Baker",
+          "TeamName": "Port Orchard (actual is Taupo, NZ)",
+          "TeamName2": "Epic V10 Sport",
+          "Category": "M HPK",
+          "Time": "1:04:57.6",
+          "Difference": "+14:59.6",
+          "PercentBack": "+30.01%",
+          "PercentWinning": "76.92%",
+          "PercentAverage": "-0.96%",
+          "PercentMedian": "-3.96%"
+        },
+        {
+          "Place": "49",
+          "Bib": "116",
+          "Name": "Kevin Olney",
+          "TeamName": "Edison, WA",
+          "TeamName2": "Epic 18x sport",
+          "Category": "M FSK",
+          "Time": "1:04:58.8",
+          "Difference": "+15:00.8",
+          "PercentBack": "+30.05%",
+          "PercentWinning": "76.90%",
+          "PercentAverage": "-0.99%",
+          "PercentMedian": "-3.99%"
+        },
+        {
+          "Place": "50",
+          "Bib": "17",
+          "Name": "McBeath + Whitacre",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "Mx OC2",
+          "Time": "1:05:33.6",
+          "Difference": "+15:35.6",
+          "PercentBack": "+31.21%",
+          "PercentWinning": "76.22%",
+          "PercentAverage": "-1.90%",
+          "PercentMedian": "-4.92%"
+        },
+        {
+          "Place": "51",
+          "Bib": "15",
+          "Name": "Edoh Amiran + Ann Thistle",
+          "TeamName": "Lynden, WA",
+          "TeamName2": "Tempest",
+          "Category": "Mx OC2",
+          "Time": "1:05:40.2",
+          "Difference": "+15:42.2",
+          "PercentBack": "+31.43%",
+          "PercentWinning": "76.09%",
+          "PercentAverage": "-2.07%",
+          "PercentMedian": "-5.10%"
+        },
+        {
+          "Place": "52",
+          "Bib": "22",
+          "Name": "Michael Lampi",
+          "TeamName": "Bellevue",
+          "TeamName2": "V15-6M",
+          "Category": "M Pedal+Ama",
+          "Time": "1:05:40.6",
+          "Difference": "+15:42.6",
+          "PercentBack": "+31.44%",
+          "PercentWinning": "76.08%",
+          "PercentAverage": "-2.08%",
+          "PercentMedian": "-5.11%"
+        },
+        {
+          "Place": "53",
+          "Bib": "107",
+          "Name": "Steve Wells",
+          "TeamName": "Tacoma",
+          "TeamName2": "Maas 24",
+          "Category": "M OW-III",
+          "Time": "1:06:22.5",
+          "Difference": "+16:24.5",
+          "PercentBack": "+32.84%",
+          "PercentWinning": "75.28%",
+          "PercentAverage": "-3.16%",
+          "PercentMedian": "-6.23%"
+        },
+        {
+          "Place": "54",
+          "Bib": "28",
+          "Name": "John Holtman",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M SK",
+          "Time": "1:06:31.4",
+          "Difference": "+16:33.4",
+          "PercentBack": "+33.14%",
+          "PercentWinning": "75.11%",
+          "PercentAverage": "-3.39%",
+          "PercentMedian": "-6.46%"
+        },
+        {
+          "Place": "55",
+          "Bib": "83",
+          "Name": "Howard + Fox",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "MX Wherry 2x",
+          "Time": "1:07:06.2",
+          "Difference": "+17:08.2",
+          "PercentBack": "+34.30%",
+          "PercentWinning": "74.46%",
+          "PercentAverage": "-4.29%",
+          "PercentMedian": "-7.39%"
+        },
+        {
+          "Place": "56",
+          "Bib": "19",
+          "Name": "Debbie Arthur",
+          "TeamName": "Bellingham",
+          "TeamName2": null,
+          "Category": "W HPK",
+          "Time": "1:07:15.7",
+          "Difference": "+17:17.7",
+          "PercentBack": "+34.61%",
+          "PercentWinning": "74.29%",
+          "PercentAverage": "-4.54%",
+          "PercentMedian": "-7.65%"
+        },
+        {
+          "Place": "57",
+          "Bib": "91",
+          "Name": "Wisniewski + Waller",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "W OC2",
+          "Time": "1:07:37.4",
+          "Difference": "+17:39.4",
+          "PercentBack": "+35.34%",
+          "PercentWinning": "73.89%",
+          "PercentAverage": "-5.10%",
+          "PercentMedian": "-8.22%"
+        },
+        {
+          "Place": "58",
+          "Bib": "86",
+          "Name": "Thomas Davies",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:07:39.2",
+          "Difference": "+17:41.2",
+          "PercentBack": "+35.40%",
+          "PercentWinning": "73.86%",
+          "PercentAverage": "-5.15%",
+          "PercentMedian": "-8.27%"
+        },
+        {
+          "Place": "59",
+          "Bib": "97",
+          "Name": "Lance Romo",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OC1",
+          "Time": "1:08:06.5",
+          "Difference": "+18:08.5",
+          "PercentBack": "+36.31%",
+          "PercentWinning": "73.36%",
+          "PercentAverage": "-5.86%",
+          "PercentMedian": "-9.00%"
+        },
+        {
+          "Place": "60",
+          "Bib": "16",
+          "Name": "Troy Nishikawa",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OC1",
+          "Time": "1:08:45.7",
+          "Difference": "+18:47.7",
+          "PercentBack": "+37.62%",
+          "PercentWinning": "72.67%",
+          "PercentAverage": "-6.87%",
+          "PercentMedian": "-10.05%"
+        },
+        {
+          "Place": "61",
+          "Bib": "55",
+          "Name": "Ernie Wong",
+          "TeamName": "Seattle",
+          "TeamName2": "Kamanu Composites Pueo",
+          "Category": "M OC1",
+          "Time": "1:09:23.0",
+          "Difference": "+19:25.0",
+          "PercentBack": "+38.86%",
+          "PercentWinning": "72.02%",
+          "PercentAverage": "-7.84%",
+          "PercentMedian": "-11.04%"
+        },
+        {
+          "Place": "62",
+          "Bib": "100",
+          "Name": "Vanessa Haycock",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "W HPK",
+          "Time": "1:09:25.2",
+          "Difference": "+19:27.2",
+          "PercentBack": "+38.93%",
+          "PercentWinning": "71.98%",
+          "PercentAverage": "-7.89%",
+          "PercentMedian": "-11.10%"
+        },
+        {
+          "Place": "63",
+          "Bib": "125",
+          "Name": "Beau Whitehead",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M SUP",
+          "Time": "1:10:38.1",
+          "Difference": "+20:40.1",
+          "PercentBack": "+41.36%",
+          "PercentWinning": "70.74%",
+          "PercentAverage": "-9.78%",
+          "PercentMedian": "-13.04%"
+        },
+        {
+          "Place": "64",
+          "Bib": "23",
+          "Name": "Torgersen Gig",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M Gig",
+          "Time": "1:11:16.1",
+          "Difference": "+21:18.1",
+          "PercentBack": "+42.63%",
+          "PercentWinning": "70.11%",
+          "PercentAverage": "-10.77%",
+          "PercentMedian": "-14.06%"
+        },
+        {
+          "Place": "65",
+          "Bib": "25",
+          "Name": "Abe Lloyd",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M FSK",
+          "Time": "1:11:44.7",
+          "Difference": "+21:46.7",
+          "PercentBack": "+43.59%",
+          "PercentWinning": "69.64%",
+          "PercentAverage": "-11.51%",
+          "PercentMedian": "-14.82%"
+        },
+        {
+          "Place": "66",
+          "Bib": "94",
+          "Name": "Bart Maupin",
+          "TeamName": "Bellingham",
+          "TeamName2": "Epic V8",
+          "Category": "M FSK",
+          "Time": "1:11:54.2",
+          "Difference": "+21:56.2",
+          "PercentBack": "+43.90%",
+          "PercentWinning": "69.49%",
+          "PercentAverage": "-11.75%",
+          "PercentMedian": "-15.07%"
+        },
+        {
+          "Place": "67",
+          "Bib": "84",
+          "Name": "Dean Williams Jr.",
+          "TeamName": "Chilliwack",
+          "TeamName2": "Stingray",
+          "Category": "M OC1",
+          "Time": "1:11:58.9",
+          "Difference": "+22:00.9",
+          "PercentBack": "+44.06%",
+          "PercentWinning": "69.42%",
+          "PercentAverage": "-11.88%",
+          "PercentMedian": "-15.20%"
+        },
+        {
+          "Place": "68",
+          "Bib": "300",
+          "Name": "Tom Halsted",
+          "TeamName": "Bellingham",
+          "TeamName2": "Think EVO",
+          "Category": "M HPK",
+          "Time": "1:12:59.4",
+          "Difference": "+23:01.4",
+          "PercentBack": "+46.08%",
+          "PercentWinning": "68.46%",
+          "PercentAverage": "-13.44%",
+          "PercentMedian": "-16.81%"
+        },
+        {
+          "Place": "69",
+          "Bib": "72",
+          "Name": "Minnie Fontenelle",
+          "TeamName": "Seattle",
+          "TeamName2": "Kamanu Composites Pueo",
+          "Category": "W OC1",
+          "Time": "1:13:45.3",
+          "Difference": "+23:47.3",
+          "PercentBack": "+47.61%",
+          "PercentWinning": "67.75%",
+          "PercentAverage": "-14.63%",
+          "PercentMedian": "-18.04%"
+        },
+        {
+          "Place": "70",
+          "Bib": "82",
+          "Name": "Carrie Weisse",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "W OW-II",
+          "Time": "1:14:17.3",
+          "Difference": "+24:19.3",
+          "PercentBack": "+48.68%",
+          "PercentWinning": "67.26%",
+          "PercentAverage": "-15.46%",
+          "PercentMedian": "-18.89%"
+        },
+        {
+          "Place": "71",
+          "Bib": "87",
+          "Name": "Todd Looney",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M Pedal",
+          "Time": "1:18:18.2",
+          "Difference": "+28:20.2",
+          "PercentBack": "+56.71%",
+          "PercentWinning": "63.81%",
+          "PercentAverage": "-21.70%",
+          "PercentMedian": "-25.32%"
+        },
+        {
+          "Place": "72",
+          "Bib": "81",
+          "Name": "Ross Anderson",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:19:06.6",
+          "Difference": "+29:08.6",
+          "PercentBack": "+58.33%",
+          "PercentWinning": "63.16%",
+          "PercentAverage": "-22.96%",
+          "PercentMedian": "-26.61%"
+        },
+        {
+          "Place": "73",
+          "Bib": "90",
+          "Name": "Darrell Bednark",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M PDBD",
+          "Time": "1:19:32.0",
+          "Difference": "+29:34.0",
+          "PercentBack": "+59.17%",
+          "PercentWinning": "62.82%",
+          "PercentAverage": "-23.61%",
+          "PercentMedian": "-27.29%"
+        },
+        {
+          "Place": "74",
+          "Bib": "95",
+          "Name": "Dan Baharav + Adams",
+          "TeamName": "Bellingham",
+          "TeamName2": "Looksha T",
+          "Category": "Mx SK2",
+          "Time": "1:19:41.5",
+          "Difference": "+29:43.5",
+          "PercentBack": "+59.49%",
+          "PercentWinning": "62.70%",
+          "PercentAverage": "-23.86%",
+          "PercentMedian": "-27.54%"
+        },
+        {
+          "Place": "75",
+          "Bib": "121",
+          "Name": "Mx Gig",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "Mx Gig",
+          "Time": "1:24:07.2",
+          "Difference": "+34:09.2",
+          "PercentBack": "+68.35%",
+          "PercentWinning": "59.40%",
+          "PercentAverage": "-30.74%",
+          "PercentMedian": "-34.63%"
+        },
+        {
+          "Place": "76",
+          "Bib": "80",
+          "Name": "Herb Weisse",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OW-III",
+          "Time": "1:24:58.9",
+          "Difference": "+35:00.9",
+          "PercentBack": "+70.08%",
+          "PercentWinning": "58.80%",
+          "PercentAverage": "-32.08%",
+          "PercentMedian": "-36.01%"
+        },
+        {
+          "Place": "77",
+          "Bib": "89",
+          "Name": "Scott Bender",
+          "TeamName": "Camano Island",
+          "TeamName2": "Whitehall",
+          "Category": "M OW-I",
+          "Time": "1:27:03.9",
+          "Difference": "+37:05.9",
+          "PercentBack": "+74.25%",
+          "PercentWinning": "57.39%",
+          "PercentAverage": "-35.32%",
+          "PercentMedian": "-39.34%"
+        },
+        {
+          "Place": "78",
+          "Bib": "3",
+          "Name": "Vadim Kin",
+          "TeamName": "Seattle",
+          "TeamName2": "Mariner II",
+          "Category": "M ParaCanoe",
+          "Time": "1:30:40.2",
+          "Difference": "+40:42.2",
+          "PercentBack": "+81.46%",
+          "PercentWinning": "55.11%",
+          "PercentAverage": "-40.92%",
+          "PercentMedian": "-45.11%"
+        },
+        {
+          "Place": "79",
+          "Bib": "117",
+          "Name": "Bill Jacquette",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M FS 1x",
+          "Time": "1:32:31.5",
+          "Difference": "+42:33.5",
+          "PercentBack": "+85.17%",
+          "PercentWinning": "54.00%",
+          "PercentAverage": "-43.81%",
+          "PercentMedian": "-48.08%"
+        },
+        {
+          "Place": "80",
+          "Bib": "103",
+          "Name": "Matt Nelson",
+          "TeamName": "Bellingham",
+          "TeamName2": "Starboard race 12'6\"\" SUP",
+          "Category": "M SUP",
+          "Time": "1:37:53.7",
+          "Difference": "+47:55.7",
+          "PercentBack": "+95.92%",
+          "PercentWinning": "51.04%",
+          "PercentAverage": "-52.15%",
+          "PercentMedian": "-56.67%"
+        },
+        {
+          "Place": "-",
+          "Bib": "30",
+          "Name": "Arne Denny",
+          "TeamName": "Oak Harbor, WA",
+          "TeamName2": "Maas 24",
+          "Category": "M OW-III",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M 2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "111",
+          "Name": "L Pitts + M Lipi",
+          "TeamName": "Redmond, WA",
+          "TeamName2": "Hudson 2x",
+          "Category": "M 2x",
+          "Time": "56:27.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M FS 1x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "117",
+          "Name": "Bill Jacquette",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M FS 1x",
+          "Time": "1:32:31.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M FSK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "112",
+          "Name": "Douglas Peele",
+          "TeamName": "Gig Harbor",
+          "TeamName2": "Looksha ll",
+          "Category": "M FSK",
+          "Time": "1:04:21.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.69%",
+          "PercentMedian": "5.85%"
+        },
+        {
+          "Place": "2",
+          "Bib": "116",
+          "Name": "Kevin Olney",
+          "TeamName": "Edison, WA",
+          "TeamName2": "Epic 18x sport",
+          "Category": "M FSK",
+          "Time": "1:04:58.8",
+          "Difference": "+0:36.9",
+          "PercentBack": "+0.96%",
+          "PercentWinning": "99.05%",
+          "PercentAverage": "4.79%",
+          "PercentMedian": "4.95%"
+        },
+        {
+          "Place": "3",
+          "Bib": "25",
+          "Name": "Abe Lloyd",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M FSK",
+          "Time": "1:11:44.7",
+          "Difference": "+7:22.8",
+          "PercentBack": "+11.47%",
+          "PercentWinning": "89.71%",
+          "PercentAverage": "-5.12%",
+          "PercentMedian": "-4.95%"
+        },
+        {
+          "Place": "4",
+          "Bib": "94",
+          "Name": "Bart Maupin",
+          "TeamName": "Bellingham",
+          "TeamName2": "Epic V8",
+          "Category": "M FSK",
+          "Time": "1:11:54.2",
+          "Difference": "+7:32.3",
+          "PercentBack": "+11.71%",
+          "PercentWinning": "89.52%",
+          "PercentAverage": "-5.36%",
+          "PercentMedian": "-5.18%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M Gig"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "23",
+          "Name": "Torgersen Gig",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M Gig",
+          "Time": "1:11:16.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "12",
+          "Name": "David Jacobson",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "49:59.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "16.23%",
+          "PercentMedian": "17.06%"
+        },
+        {
+          "Place": "2",
+          "Bib": "6",
+          "Name": "Ludovit Tatos",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "53:54.5",
+          "Difference": "+3:55.3",
+          "PercentBack": "+7.85%",
+          "PercentWinning": "92.73%",
+          "PercentAverage": "9.66%",
+          "PercentMedian": "10.55%"
+        },
+        {
+          "Place": "3",
+          "Bib": "120",
+          "Name": "Erik Borgnes",
+          "TeamName": "Sequim, WA",
+          "TeamName2": "Epic V12",
+          "Category": "M HPK",
+          "Time": "53:56.2",
+          "Difference": "+3:57.0",
+          "PercentBack": "+7.90%",
+          "PercentWinning": "92.68%",
+          "PercentAverage": "9.61%",
+          "PercentMedian": "10.51%"
+        },
+        {
+          "Place": "4",
+          "Bib": "114",
+          "Name": "Eric Moll",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "53:59.9",
+          "Difference": "+4:00.7",
+          "PercentBack": "+8.03%",
+          "PercentWinning": "92.57%",
+          "PercentAverage": "9.51%",
+          "PercentMedian": "10.40%"
+        },
+        {
+          "Place": "5",
+          "Bib": "118",
+          "Name": "Shane Martin",
+          "TeamName": "Vancouver, BC",
+          "TeamName2": "Epic V10",
+          "Category": "M HPK",
+          "Time": "54:37.1",
+          "Difference": "+4:37.9",
+          "PercentBack": "+9.27%",
+          "PercentWinning": "91.52%",
+          "PercentAverage": "8.47%",
+          "PercentMedian": "9.38%"
+        },
+        {
+          "Place": "6",
+          "Bib": "13",
+          "Name": "Kirk Christensen",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "54:41.1",
+          "Difference": "+4:41.9",
+          "PercentBack": "+9.40%",
+          "PercentWinning": "91.41%",
+          "PercentAverage": "8.36%",
+          "PercentMedian": "9.27%"
+        },
+        {
+          "Place": "7",
+          "Bib": "9",
+          "Name": "Don Kiesling",
+          "TeamName": "Seattle",
+          "TeamName2": "Allwave CX",
+          "Category": "M HPK",
+          "Time": "54:43.3",
+          "Difference": "+4:44.1",
+          "PercentBack": "+9.47%",
+          "PercentWinning": "91.35%",
+          "PercentAverage": "8.30%",
+          "PercentMedian": "9.20%"
+        },
+        {
+          "Place": "8",
+          "Bib": "101",
+          "Name": "Joost Zeegers",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "54:43.5",
+          "Difference": "+4:44.3",
+          "PercentBack": "+9.48%",
+          "PercentWinning": "91.34%",
+          "PercentAverage": "8.29%",
+          "PercentMedian": "9.20%"
+        },
+        {
+          "Place": "9",
+          "Bib": "98",
+          "Name": "Peter Marcus",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "54:45.3",
+          "Difference": "+4:46.1",
+          "PercentBack": "+9.54%",
+          "PercentWinning": "91.29%",
+          "PercentAverage": "8.24%",
+          "PercentMedian": "9.15%"
+        },
+        {
+          "Place": "10",
+          "Bib": "79",
+          "Name": "Paul Clement",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "55:49.5",
+          "Difference": "+5:50.3",
+          "PercentBack": "+11.68%",
+          "PercentWinning": "89.54%",
+          "PercentAverage": "6.45%",
+          "PercentMedian": "7.37%"
+        },
+        {
+          "Place": "11",
+          "Bib": "38",
+          "Name": "Chris Dobrovolny",
+          "TeamName": "Vancouver, BC",
+          "TeamName2": "Think Uno",
+          "Category": "M HPK",
+          "Time": "55:59.8",
+          "Difference": "+6:00.6",
+          "PercentBack": "+12.02%",
+          "PercentWinning": "89.27%",
+          "PercentAverage": "6.16%",
+          "PercentMedian": "7.09%"
+        },
+        {
+          "Place": "12",
+          "Bib": "26",
+          "Name": "Dean Bumstead",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "56:07.0",
+          "Difference": "+6:07.8",
+          "PercentBack": "+12.26%",
+          "PercentWinning": "89.08%",
+          "PercentAverage": "5.96%",
+          "PercentMedian": "6.89%"
+        },
+        {
+          "Place": "13",
+          "Bib": "59",
+          "Name": "Scott Wanless",
+          "TeamName": "North Vancouver, British Columbia",
+          "TeamName2": "Think / Legend  (HPK)",
+          "Category": "M HPK",
+          "Time": "1:00:15.8",
+          "Difference": "+10:16.6",
+          "PercentBack": "+20.56%",
+          "PercentWinning": "82.95%",
+          "PercentAverage": "-0.99%",
+          "PercentMedian": "0.01%"
+        },
+        {
+          "Place": "14",
+          "Bib": "122",
+          "Name": "Reivers Dustin",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:00:16.5",
+          "Difference": "+10:17.3",
+          "PercentBack": "+20.58%",
+          "PercentWinning": "82.93%",
+          "PercentAverage": "-1.01%",
+          "PercentMedian": "-0.01%"
+        },
+        {
+          "Place": "15",
+          "Bib": "99",
+          "Name": "Mike Gregory",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:00:17.8",
+          "Difference": "+10:18.6",
+          "PercentBack": "+20.63%",
+          "PercentWinning": "82.90%",
+          "PercentAverage": "-1.04%",
+          "PercentMedian": "-0.05%"
+        },
+        {
+          "Place": "16",
+          "Bib": "106",
+          "Name": "Kim Cantrell",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:01:05.8",
+          "Difference": "+11:06.6",
+          "PercentBack": "+22.23%",
+          "PercentWinning": "81.82%",
+          "PercentAverage": "-2.39%",
+          "PercentMedian": "-1.37%"
+        },
+        {
+          "Place": "17",
+          "Bib": "119",
+          "Name": "David Scherrer",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:01:06.0",
+          "Difference": "+11:06.8",
+          "PercentBack": "+22.23%",
+          "PercentWinning": "81.81%",
+          "PercentAverage": "-2.39%",
+          "PercentMedian": "-1.38%"
+        },
+        {
+          "Place": "18",
+          "Bib": "24",
+          "Name": "Duncan Howat",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:01:15.7",
+          "Difference": "+11:16.5",
+          "PercentBack": "+22.56%",
+          "PercentWinning": "81.60%",
+          "PercentAverage": "-2.66%",
+          "PercentMedian": "-1.65%"
+        },
+        {
+          "Place": "19",
+          "Bib": "7",
+          "Name": "Michael Dee",
+          "TeamName": "Maple Falls WA",
+          "TeamName2": "Think Legend",
+          "Category": "M HPK",
+          "Time": "1:01:16.2",
+          "Difference": "+11:17.0",
+          "PercentBack": "+22.57%",
+          "PercentWinning": "81.58%",
+          "PercentAverage": "-2.68%",
+          "PercentMedian": "-1.66%"
+        },
+        {
+          "Place": "20",
+          "Bib": "88",
+          "Name": "Dan Wakeland",
+          "TeamName": "Bellingham",
+          "TeamName2": "Huki s1x special",
+          "Category": "M HPK",
+          "Time": "1:01:33.1",
+          "Difference": "+11:33.9",
+          "PercentBack": "+23.14%",
+          "PercentWinning": "81.21%",
+          "PercentAverage": "-3.15%",
+          "PercentMedian": "-2.13%"
+        },
+        {
+          "Place": "21",
+          "Bib": "27",
+          "Name": "Jim Schulz",
+          "TeamName": "Duvall",
+          "TeamName2": "Think EVO",
+          "Category": "M HPK",
+          "Time": "1:02:29.8",
+          "Difference": "+12:30.6",
+          "PercentBack": "+25.03%",
+          "PercentWinning": "79.98%",
+          "PercentAverage": "-4.73%",
+          "PercentMedian": "-3.70%"
+        },
+        {
+          "Place": "22",
+          "Bib": "10",
+          "Name": "Roger Lamb",
+          "TeamName": "Bellingham",
+          "TeamName2": "Huki S1-X",
+          "Category": "M HPK",
+          "Time": "1:03:54.6",
+          "Difference": "+13:55.4",
+          "PercentBack": "+27.85%",
+          "PercentWinning": "78.21%",
+          "PercentAverage": "-7.10%",
+          "PercentMedian": "-6.04%"
+        },
+        {
+          "Place": "23",
+          "Bib": "264",
+          "Name": "Shane Baker",
+          "TeamName": "Port Orchard (actual is Taupo, NZ)",
+          "TeamName2": "Epic V10 Sport",
+          "Category": "M HPK",
+          "Time": "1:04:57.6",
+          "Difference": "+14:58.4",
+          "PercentBack": "+29.95%",
+          "PercentWinning": "76.95%",
+          "PercentAverage": "-8.86%",
+          "PercentMedian": "-7.78%"
+        },
+        {
+          "Place": "24",
+          "Bib": "86",
+          "Name": "Thomas Davies",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:07:39.2",
+          "Difference": "+17:40.0",
+          "PercentBack": "+35.34%",
+          "PercentWinning": "73.89%",
+          "PercentAverage": "-13.37%",
+          "PercentMedian": "-12.25%"
+        },
+        {
+          "Place": "25",
+          "Bib": "300",
+          "Name": "Tom Halsted",
+          "TeamName": "Bellingham",
+          "TeamName2": "Think EVO",
+          "Category": "M HPK",
+          "Time": "1:12:59.4",
+          "Difference": "+23:00.2",
+          "PercentBack": "+46.02%",
+          "PercentWinning": "68.48%",
+          "PercentAverage": "-22.32%",
+          "PercentMedian": "-21.11%"
+        },
+        {
+          "Place": "26",
+          "Bib": "81",
+          "Name": "Ross Anderson",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK",
+          "Time": "1:19:06.6",
+          "Difference": "+29:07.4",
+          "PercentBack": "+58.26%",
+          "PercentWinning": "63.19%",
+          "PercentAverage": "-32.57%",
+          "PercentMedian": "-31.26%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M HPK2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "8",
+          "Name": "P Turcan + J Cross",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK2",
+          "Time": "49:58.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.51%",
+          "PercentMedian": "5.55%"
+        },
+        {
+          "Place": "2",
+          "Bib": "104",
+          "Name": "Pete Wells + Erik Wermus",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK2",
+          "Time": "51:07.7",
+          "Difference": "+1:09.7",
+          "PercentBack": "+2.32%",
+          "PercentWinning": "97.73%",
+          "PercentAverage": "3.32%",
+          "PercentMedian": "3.35%"
+        },
+        {
+          "Place": "3",
+          "Bib": "93",
+          "Name": "Sullivan + Goolsby",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK2",
+          "Time": "54:40.3",
+          "Difference": "+4:42.3",
+          "PercentBack": "+9.42%",
+          "PercentWinning": "91.39%",
+          "PercentAverage": "-3.38%",
+          "PercentMedian": "-3.35%"
+        },
+        {
+          "Place": "4",
+          "Bib": "110",
+          "Name": "R Lingbloom + M Whitlock",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M HPK2",
+          "Time": "55:45.9",
+          "Difference": "+5:47.9",
+          "PercentBack": "+11.60%",
+          "PercentWinning": "89.60%",
+          "PercentAverage": "-5.45%",
+          "PercentMedian": "-5.42%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M OC1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "113",
+          "Name": "Brian Boatman",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OC1",
+          "Time": "1:01:57.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.12%",
+          "PercentMedian": "9.02%"
+        },
+        {
+          "Place": "2",
+          "Bib": "20",
+          "Name": "Alan Lipp",
+          "TeamName": "Bellingham",
+          "TeamName2": "PSI Kaolele",
+          "Category": "M OC1",
+          "Time": "1:02:24.4",
+          "Difference": "+0:26.7",
+          "PercentBack": "+0.72%",
+          "PercentWinning": "99.29%",
+          "PercentAverage": "6.45%",
+          "PercentMedian": "8.37%"
+        },
+        {
+          "Place": "3",
+          "Bib": "5",
+          "Name": "Lance Kahn",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OC1",
+          "Time": "1:04:22.3",
+          "Difference": "+2:24.6",
+          "PercentBack": "+3.89%",
+          "PercentWinning": "96.26%",
+          "PercentAverage": "3.51%",
+          "PercentMedian": "5.49%"
+        },
+        {
+          "Place": "4",
+          "Bib": "97",
+          "Name": "Lance Romo",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OC1",
+          "Time": "1:08:06.5",
+          "Difference": "+6:08.8",
+          "PercentBack": "+9.92%",
+          "PercentWinning": "90.98%",
+          "PercentAverage": "-2.10%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "5",
+          "Bib": "16",
+          "Name": "Troy Nishikawa",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OC1",
+          "Time": "1:08:45.7",
+          "Difference": "+6:48.0",
+          "PercentBack": "+10.97%",
+          "PercentWinning": "90.11%",
+          "PercentAverage": "-3.07%",
+          "PercentMedian": "-0.96%"
+        },
+        {
+          "Place": "6",
+          "Bib": "55",
+          "Name": "Ernie Wong",
+          "TeamName": "Seattle",
+          "TeamName2": "Kamanu Composites Pueo",
+          "Category": "M OC1",
+          "Time": "1:09:23.0",
+          "Difference": "+7:25.3",
+          "PercentBack": "+11.98%",
+          "PercentWinning": "89.30%",
+          "PercentAverage": "-4.01%",
+          "PercentMedian": "-1.87%"
+        },
+        {
+          "Place": "7",
+          "Bib": "84",
+          "Name": "Dean Williams Jr.",
+          "TeamName": "Chilliwack",
+          "TeamName2": "Stingray",
+          "Category": "M OC1",
+          "Time": "1:11:58.9",
+          "Difference": "+10:01.2",
+          "PercentBack": "+16.17%",
+          "PercentWinning": "86.08%",
+          "PercentAverage": "-7.90%",
+          "PercentMedian": "-5.69%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M OW-2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "109",
+          "Name": "R Storb + A Storb",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OW-2x",
+          "Time": "53:27.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "1.91%",
+          "PercentMedian": "1.91%"
+        },
+        {
+          "Place": "2",
+          "Bib": "108",
+          "Name": "Armstrong + Hoffman",
+          "TeamName": "Marysville",
+          "TeamName2": "Maas 2X",
+          "Category": "M OW-2x",
+          "Time": "55:32.3",
+          "Difference": "+2:04.8",
+          "PercentBack": "+3.89%",
+          "PercentWinning": "96.25%",
+          "PercentAverage": "-1.91%",
+          "PercentMedian": "-1.91%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M OW-I"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "89",
+          "Name": "Scott Bender",
+          "TeamName": "Camano Island",
+          "TeamName2": "Whitehall",
+          "Category": "M OW-I",
+          "Time": "1:27:03.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "124",
+          "Name": "Tyler Peterson",
+          "TeamName": "Burien",
+          "TeamName2": "Bay Shells Rowing / Bay 21",
+          "Category": "M OW-II",
+          "Time": "51:24.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "92",
+          "Name": "Evan Jacobs",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Maas 1x",
+          "Category": "M OW-III",
+          "Time": "50:11.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "18.78%",
+          "PercentMedian": "14.66%"
+        },
+        {
+          "Place": "2",
+          "Bib": "4",
+          "Name": "Hugh Conroy",
+          "TeamName": "Bellingham, WA",
+          "TeamName2": "Peinert Dolphin",
+          "Category": "M OW-III",
+          "Time": "55:49.5",
+          "Difference": "+5:38.2",
+          "PercentBack": "+11.23%",
+          "PercentWinning": "89.90%",
+          "PercentAverage": "9.65%",
+          "PercentMedian": "5.08%"
+        },
+        {
+          "Place": "3",
+          "Bib": "2",
+          "Name": "Jeff Knakal",
+          "TeamName": "Mill Creek, WA",
+          "TeamName2": "Maas 24",
+          "Category": "M OW-III",
+          "Time": "55:50.6",
+          "Difference": "+5:39.3",
+          "PercentBack": "+11.27%",
+          "PercentWinning": "89.87%",
+          "PercentAverage": "9.62%",
+          "PercentMedian": "5.04%"
+        },
+        {
+          "Place": "4",
+          "Bib": "18",
+          "Name": "Steve Thompson",
+          "TeamName": "Redmond",
+          "TeamName2": "Maas 24",
+          "Category": "M OW-III",
+          "Time": "58:28.1",
+          "Difference": "+8:16.8",
+          "PercentBack": "+16.50%",
+          "PercentWinning": "85.84%",
+          "PercentAverage": "5.38%",
+          "PercentMedian": "0.58%"
+        },
+        {
+          "Place": "5",
+          "Bib": "115",
+          "Name": "Michael Walsh",
+          "TeamName": "Renton, WA",
+          "TeamName2": "Maas 24",
+          "Category": "M OW-III",
+          "Time": "58:48.6",
+          "Difference": "+8:37.3",
+          "PercentBack": "+17.18%",
+          "PercentWinning": "85.34%",
+          "PercentAverage": "4.82%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "6",
+          "Bib": "96",
+          "Name": "Howard Lee",
+          "TeamName": "Seattle",
+          "TeamName2": "Maas 24",
+          "Category": "M OW-III",
+          "Time": "1:02:28.3",
+          "Difference": "+12:17.0",
+          "PercentBack": "+24.47%",
+          "PercentWinning": "80.34%",
+          "PercentAverage": "-1.10%",
+          "PercentMedian": "-6.23%"
+        },
+        {
+          "Place": "7",
+          "Bib": "105",
+          "Name": "Rainer Straka",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OW-III",
+          "Time": "1:03:09.1",
+          "Difference": "+12:57.8",
+          "PercentBack": "+25.83%",
+          "PercentWinning": "79.47%",
+          "PercentAverage": "-2.20%",
+          "PercentMedian": "-7.38%"
+        },
+        {
+          "Place": "8",
+          "Bib": "107",
+          "Name": "Steve Wells",
+          "TeamName": "Tacoma",
+          "TeamName2": "Maas 24",
+          "Category": "M OW-III",
+          "Time": "1:06:22.5",
+          "Difference": "+16:11.2",
+          "PercentBack": "+32.25%",
+          "PercentWinning": "75.61%",
+          "PercentAverage": "-7.42%",
+          "PercentMedian": "-12.86%"
+        },
+        {
+          "Place": "9",
+          "Bib": "80",
+          "Name": "Herb Weisse",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OW-III",
+          "Time": "1:24:58.9",
+          "Difference": "+34:47.6",
+          "PercentBack": "+69.33%",
+          "PercentWinning": "59.06%",
+          "PercentAverage": "-37.53%",
+          "PercentMedian": "-44.50%"
+        },
+        {
+          "Place": "-",
+          "Bib": "30",
+          "Name": "Arne Denny",
+          "TeamName": "Oak Harbor, WA",
+          "TeamName2": "Maas 24",
+          "Category": "M OW-III",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M ParaCanoe"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "3",
+          "Name": "Vadim Kin",
+          "TeamName": "Seattle",
+          "TeamName2": "Mariner II",
+          "Category": "M ParaCanoe",
+          "Time": "1:30:40.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M PDBD"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "90",
+          "Name": "Darrell Bednark",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M PDBD",
+          "Time": "1:19:32.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M Pedal"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "87",
+          "Name": "Todd Looney",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M Pedal",
+          "Time": "1:18:18.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M Pedal+Ama"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "22",
+          "Name": "Michael Lampi",
+          "TeamName": "Bellevue",
+          "TeamName2": "V15-6M",
+          "Category": "M Pedal+Ama",
+          "Time": "1:05:40.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M SK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "28",
+          "Name": "John Holtman",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M SK",
+          "Time": "1:06:31.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M SUP"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "125",
+          "Name": "Beau Whitehead",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M SUP",
+          "Time": "1:10:38.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "16.18%",
+          "PercentMedian": "16.18%"
+        },
+        {
+          "Place": "2",
+          "Bib": "103",
+          "Name": "Matt Nelson",
+          "TeamName": "Bellingham",
+          "TeamName2": "Starboard race 12'6\"\" SUP",
+          "Category": "M SUP",
+          "Time": "1:37:53.7",
+          "Difference": "+27:15.6",
+          "PercentBack": "+38.59%",
+          "PercentWinning": "72.15%",
+          "PercentAverage": "-16.18%",
+          "PercentMedian": "-16.18%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Mx Gig"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "121",
+          "Name": "Mx Gig",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "Mx Gig",
+          "Time": "1:24:07.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Mx OC2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "17",
+          "Name": "McBeath + Whitacre",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "Mx OC2",
+          "Time": "1:05:33.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.08%",
+          "PercentMedian": "0.08%"
+        },
+        {
+          "Place": "2",
+          "Bib": "15",
+          "Name": "Edoh Amiran + Ann Thistle",
+          "TeamName": "Lynden, WA",
+          "TeamName2": "Tempest",
+          "Category": "Mx OC2",
+          "Time": "1:05:40.2",
+          "Difference": "+0:06.6",
+          "PercentBack": "+0.17%",
+          "PercentWinning": "99.83%",
+          "PercentAverage": "-0.08%",
+          "PercentMedian": "-0.08%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Mx OW-2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "P Hirtle + C Mills",
+          "TeamName": "Lake Forest Park",
+          "TeamName2": "Maas 2X",
+          "Category": "Mx OW-2x",
+          "Time": "50:41.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.49%",
+          "PercentMedian": "7.49%"
+        },
+        {
+          "Place": "2",
+          "Bib": "14",
+          "Name": "Steve Oien + Hanne Thiede",
+          "TeamName": "Sammamish",
+          "TeamName2": "Maas 2X",
+          "Category": "Mx OW-2x",
+          "Time": "58:53.7",
+          "Difference": "+8:12.5",
+          "PercentBack": "+16.19%",
+          "PercentWinning": "86.06%",
+          "PercentAverage": "-7.49%",
+          "PercentMedian": "-7.49%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Mx SK2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "95",
+          "Name": "Dan Baharav + Adams",
+          "TeamName": "Bellingham",
+          "TeamName2": "Looksha T",
+          "Category": "Mx SK2",
+          "Time": "1:19:41.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "MX Wherry 2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "83",
+          "Name": "Howard + Fox",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "MX Wherry 2x",
+          "Time": "1:07:06.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "W 2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "11",
+          "Name": "T Roller + J Gifford",
+          "TeamName": "Kirkland",
+          "TeamName2": "Filippi 2X",
+          "Category": "W 2x",
+          "Time": "59:44.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "W HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "126",
+          "Name": "Linda Warren",
+          "TeamName": "Vancouver",
+          "TeamName2": "Epic V10L Surfski",
+          "Category": "W HPK",
+          "Time": "1:04:37.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.69%",
+          "PercentMedian": "3.92%"
+        },
+        {
+          "Place": "2",
+          "Bib": "19",
+          "Name": "Debbie Arthur",
+          "TeamName": "Bellingham",
+          "TeamName2": null,
+          "Category": "W HPK",
+          "Time": "1:07:15.7",
+          "Difference": "+2:38.3",
+          "PercentBack": "+4.08%",
+          "PercentWinning": "96.08%",
+          "PercentAverage": "-0.24%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Bib": "100",
+          "Name": "Vanessa Haycock",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "W HPK",
+          "Time": "1:09:25.2",
+          "Difference": "+4:47.8",
+          "PercentBack": "+7.42%",
+          "PercentWinning": "93.09%",
+          "PercentAverage": "-3.45%",
+          "PercentMedian": "-3.21%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "W OC1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "72",
+          "Name": "Minnie Fontenelle",
+          "TeamName": "Seattle",
+          "TeamName2": "Kamanu Composites Pueo",
+          "Category": "W OC1",
+          "Time": "1:13:45.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "W OC2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "91",
+          "Name": "Wisniewski + Waller",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "W OC2",
+          "Time": "1:07:37.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "W OW-2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "123",
+          "Name": "Linda Gromko + Kim Biggs",
+          "TeamName": "Seattle",
+          "TeamName2": "Maas Open Water Double",
+          "Category": "W OW-2x",
+          "Time": "1:02:43.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "W OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "82",
+          "Name": "Carrie Weisse",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "W OW-II",
+          "Time": "1:14:17.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "W OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "102",
+          "Name": "Theresa Batty",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "W OW-III",
+          "Time": "59:59.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

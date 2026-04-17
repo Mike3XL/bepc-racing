@@ -1,0 +1,563 @@
+{
+  "RaceInfo": {
+    "RaceId": 289639,
+    "Name": "Bainbridge Island Marathon / Half Marathon",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=289639",
+    "Date": "Sep 10, 2022",
+    "Sport": "Rowing",
+    "StartTime": "Saturday, September 10, 2022 9:05 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers and Paddlers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "Bainbridge Island",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6765441894531,
+    "Longitude": -122.559788664144,
+    "StartType": "Wave",
+    "WaveGrouping": "By distance",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 5.6",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, September 10, 2022 9:21 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/289639.jpg?637984416800000000"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "3",
+          "Name": "Egor Klevak / Ivan Medvedev",
+          "Distance": "Long Course",
+          "Category": "HPK-2 (Double HPK)",
+          "Gender": "Male",
+          "Time": "3:27.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "32.08%",
+          "PercentMedian": "35.61%",
+          "StartTime": "10:00:44.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "7",
+          "Name": "Rod Sternagel",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Gender": "Male",
+          "Time": "5:13.0",
+          "Difference": "+1:46.0",
+          "PercentBack": "+51.21%",
+          "PercentWinning": "66.13%",
+          "PercentAverage": "-2.71%",
+          "PercentMedian": "2.64%",
+          "StartTime": "10:00:44.3"
+        },
+        {
+          "Place": "3",
+          "Bib": "9",
+          "Name": "Oliver Lawrence / Angie Gabel",
+          "Distance": "Long Course",
+          "Category": "2x OW",
+          "Gender": "Female/Male",
+          "Time": "5:30.0",
+          "Difference": "+2:03.0",
+          "PercentBack": "+59.42%",
+          "PercentWinning": "62.73%",
+          "PercentAverage": "-8.29%",
+          "PercentMedian": "-2.64%",
+          "StartTime": "10:00:44.3"
+        },
+        {
+          "Place": "4",
+          "Bib": "5",
+          "Name": "Janna Gross",
+          "Distance": "Long Course",
+          "Category": "1x OW-II",
+          "Gender": "Female",
+          "Time": "6:09.0",
+          "Difference": "+2:42.0",
+          "PercentBack": "+78.26%",
+          "PercentWinning": "56.10%",
+          "PercentAverage": "-21.08%",
+          "PercentMedian": "-14.77%",
+          "StartTime": "10:00:44.3"
+        },
+        {
+          "Place": "-",
+          "Bib": "10",
+          "Name": "Rainer Storb Quad",
+          "Distance": "Long Course",
+          "Category": "OW 4x",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:44.3"
+        },
+        {
+          "Place": "-",
+          "Bib": "1",
+          "Name": "Andrew Biel",
+          "Distance": "Long Course",
+          "Category": "HPK (Surfski/High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        },
+        {
+          "Place": "-",
+          "Bib": "8",
+          "Name": "Philip Coates/ Tatum Coates",
+          "Distance": "Long Course",
+          "Category": "SK-2 (Double Sea Kayak)",
+          "Gender": "Female/Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Janna Gross",
+          "Distance": "Long Course",
+          "Category": "1x OW-II",
+          "Gender": "Female",
+          "Time": "6:09.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:44.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "3",
+          "Name": "Egor Klevak / Ivan Medvedev",
+          "Distance": "Long Course",
+          "Category": "HPK-2 (Double HPK)",
+          "Gender": "Male",
+          "Time": "3:27.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "20.38%",
+          "PercentMedian": "20.38%",
+          "StartTime": "10:00:44.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "7",
+          "Name": "Rod Sternagel",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Gender": "Male",
+          "Time": "5:13.0",
+          "Difference": "+1:46.0",
+          "PercentBack": "+51.21%",
+          "PercentWinning": "66.13%",
+          "PercentAverage": "-20.38%",
+          "PercentMedian": "-20.38%",
+          "StartTime": "10:00:44.3"
+        },
+        {
+          "Place": "-",
+          "Bib": "10",
+          "Name": "Rainer Storb Quad",
+          "Distance": "Long Course",
+          "Category": "OW 4x",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:44.3"
+        },
+        {
+          "Place": "-",
+          "Bib": "1",
+          "Name": "Andrew Biel",
+          "Distance": "Long Course",
+          "Category": "HPK (Surfski/High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "9",
+          "Name": "Oliver Lawrence / Angie Gabel",
+          "Distance": "Long Course",
+          "Category": "2x OW",
+          "Gender": "Female/Male",
+          "Time": "5:30.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:44.3"
+        },
+        {
+          "Place": "-",
+          "Bib": "8",
+          "Name": "Philip Coates/ Tatum Coates",
+          "Distance": "Long Course",
+          "Category": "SK-2 (Double Sea Kayak)",
+          "Gender": "Female/Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "4",
+          "Name": "Kevin Olney",
+          "Distance": "Short Course",
+          "Category": "HPK (Surfski/High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "2:26.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "12:00:01.3"
+        },
+        {
+          "Place": "-",
+          "Bib": "6",
+          "Name": "Michael Lampi",
+          "Distance": "Short Course",
+          "Category": "Pedal Boat",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "12:00:01.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "4",
+          "Name": "Kevin Olney",
+          "Distance": "Short Course",
+          "Category": "HPK (Surfski/High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "2:26.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "12:00:01.3"
+        },
+        {
+          "Place": "-",
+          "Bib": "6",
+          "Name": "Michael Lampi",
+          "Distance": "Short Course",
+          "Category": "Pedal Boat",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "12:00:01.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "1x OW-II",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Janna Gross",
+          "Distance": "Long Course",
+          "Category": "1x OW-II",
+          "Gender": "Female",
+          "Time": "6:09.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:44.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "1x OW-III",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "7",
+          "Name": "Rod Sternagel",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Gender": "Male",
+          "Time": "5:13.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:44.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "2x OW",
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "9",
+          "Name": "Oliver Lawrence / Angie Gabel",
+          "Distance": "Long Course",
+          "Category": "2x OW",
+          "Gender": "Female/Male",
+          "Time": "5:30.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:44.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "HPK (Surfski/High Performance Kayak)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "1",
+          "Name": "Andrew Biel",
+          "Distance": "Long Course",
+          "Category": "HPK (Surfski/High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "HPK-2 (Double HPK)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "3",
+          "Name": "Egor Klevak / Ivan Medvedev",
+          "Distance": "Long Course",
+          "Category": "HPK-2 (Double HPK)",
+          "Gender": "Male",
+          "Time": "3:27.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:44.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OW 4x",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "10",
+          "Name": "Rainer Storb Quad",
+          "Distance": "Long Course",
+          "Category": "OW 4x",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:44.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "SK-2 (Double Sea Kayak)",
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "8",
+          "Name": "Philip Coates/ Tatum Coates",
+          "Distance": "Long Course",
+          "Category": "SK-2 (Double Sea Kayak)",
+          "Gender": "Female/Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "HPK (Surfski/High Performance Kayak)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "4",
+          "Name": "Kevin Olney",
+          "Distance": "Short Course",
+          "Category": "HPK (Surfski/High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "2:26.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "12:00:01.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "Pedal Boat",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "6",
+          "Name": "Michael Lampi",
+          "Distance": "Short Course",
+          "Category": "Pedal Boat",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "12:00:01.3"
+        }
+      ]
+    }
+  ]
+}

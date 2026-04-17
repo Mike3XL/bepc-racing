@@ -1,0 +1,681 @@
+{
+  "RaceInfo": {
+    "RaceId": 317981,
+    "Name": "Sound Rowers_ Wenatchee Guano Rocks 2023",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=317981",
+    "Date": "Jun 10, 2023",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, June 10, 2023 10:00 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers and Paddlers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "Sunnyslope",
+    "StateOrProvince": "WA",
+    "Latitude": 47.53876012943107,
+    "Longitude": -120.28518676757812,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Saturday, June 10, 2023 5:47 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/317981_8db6a15656d215b.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Evan Jacobs",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle",
+          "TeamName2": null,
+          "Category": "2x OW",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "37:59.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "26.07%",
+          "PercentMedian": "24.09%"
+        },
+        {
+          "Place": "2",
+          "Bib": "11",
+          "Name": "Wrpc Crew",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Mass 2X",
+          "Category": "2x OW",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "39:40.9",
+          "Difference": "+1:41.5",
+          "PercentBack": "+4.45%",
+          "PercentWinning": "95.74%",
+          "PercentAverage": "22.77%",
+          "PercentMedian": "20.71%"
+        },
+        {
+          "Place": "3",
+          "Bib": "7",
+          "Name": "Juraj Osusky & Peter Turcan",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle",
+          "TeamName2": "Fenn Elite",
+          "Category": "HPK-2",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "42:09.1",
+          "Difference": "+4:09.7",
+          "PercentBack": "+10.95%",
+          "PercentWinning": "90.13%",
+          "PercentAverage": "17.97%",
+          "PercentMedian": "15.78%"
+        },
+        {
+          "Place": "4",
+          "Bib": "12",
+          "Name": "Peter Hirtle",
+          "FirstName": "Peter",
+          "LastName": "Hirtle",
+          "TeamName": "Lake Forest Park",
+          "TeamName2": "Hudson 1X",
+          "Category": "1x Flatwater",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "43:39.0",
+          "Difference": "+5:39.6",
+          "PercentBack": "+14.90%",
+          "PercentWinning": "87.03%",
+          "PercentAverage": "15.05%",
+          "PercentMedian": "12.78%"
+        },
+        {
+          "Place": "5",
+          "Bib": "3",
+          "Name": "Ken Barnes",
+          "FirstName": "Ken",
+          "LastName": "Barnes",
+          "TeamName": "Seattle",
+          "TeamName2": "Maas Aero",
+          "Category": "1x OW-I",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "48:36.6",
+          "Difference": "+10:37.2",
+          "PercentBack": "+27.95%",
+          "PercentWinning": "78.15%",
+          "PercentAverage": "5.40%",
+          "PercentMedian": "2.87%"
+        },
+        {
+          "Place": "6",
+          "Bib": "8",
+          "Name": "Hugh Owen",
+          "FirstName": "Hugh",
+          "LastName": "Owen",
+          "TeamName": "East Wenatchee",
+          "TeamName2": "Epic V9",
+          "Category": "HPK",
+          "Age": 67,
+          "Gender": "Male",
+          "Time": "48:56.8",
+          "Difference": "+10:57.4",
+          "PercentBack": "+28.84%",
+          "PercentWinning": "77.62%",
+          "PercentAverage": "4.74%",
+          "PercentMedian": "2.20%"
+        },
+        {
+          "Place": "7",
+          "Bib": "9",
+          "Name": "Larry Tobiska",
+          "FirstName": "Larry",
+          "LastName": "Tobiska",
+          "TeamName": "Wenatchee",
+          "TeamName2": "Maas 24",
+          "Category": "1x OW-II",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "49:45.6",
+          "Difference": "+11:46.2",
+          "PercentBack": "+30.98%",
+          "PercentWinning": "76.35%",
+          "PercentAverage": "3.16%",
+          "PercentMedian": "0.57%"
+        },
+        {
+          "Place": "8",
+          "Bib": "1",
+          "Name": "Shaun Koos",
+          "FirstName": "Shaun",
+          "LastName": "Koos",
+          "TeamName": "Wenatchee",
+          "TeamName2": "Huki V-1X",
+          "Category": "OC-1",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "50:20.0",
+          "Difference": "+12:20.6",
+          "PercentBack": "+32.49%",
+          "PercentWinning": "75.48%",
+          "PercentAverage": "2.04%",
+          "PercentMedian": "-0.57%"
+        },
+        {
+          "Place": "9",
+          "Bib": "2",
+          "Name": "John Schalka",
+          "FirstName": "John",
+          "LastName": "Schalka",
+          "TeamName": "Shoreline",
+          "TeamName2": "Surfski",
+          "Category": "HPK",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "52:31.4",
+          "Difference": "+14:32.0",
+          "PercentBack": "+38.26%",
+          "PercentWinning": "72.33%",
+          "PercentAverage": "-2.22%",
+          "PercentMedian": "-4.95%"
+        },
+        {
+          "Place": "10",
+          "Bib": "5",
+          "Name": "Michael Lampi",
+          "FirstName": "Michael",
+          "LastName": "Lampi",
+          "TeamName": "Bellevue",
+          "TeamName2": "Lampi V8-64D",
+          "Category": "PedalBoat",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "56:14.5",
+          "Difference": "+18:15.1",
+          "PercentBack": "+48.04%",
+          "PercentWinning": "67.55%",
+          "PercentAverage": "-9.46%",
+          "PercentMedian": "-12.38%"
+        },
+        {
+          "Place": "11",
+          "Bib": "6",
+          "Name": "Herbie Weisse",
+          "FirstName": "Herbie",
+          "LastName": "Weisse",
+          "TeamName": "Mukilteo",
+          "TeamName2": "Peinert Dolphin",
+          "Category": "1x OW-III",
+          "Age": 1,
+          "Gender": "Male",
+          "Time": "56:46.9",
+          "Difference": "+18:47.5",
+          "PercentBack": "+49.46%",
+          "PercentWinning": "66.91%",
+          "PercentAverage": "-10.51%",
+          "PercentMedian": "-13.46%"
+        },
+        {
+          "Place": "12",
+          "Bib": "13",
+          "Name": "Janna Gross",
+          "FirstName": "Janna",
+          "LastName": "Gross",
+          "TeamName": "Snohomish",
+          "TeamName2": "Bay 21",
+          "Category": "1x OW-II",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:01:20.8",
+          "Difference": "+23:21.4",
+          "PercentBack": "+61.48%",
+          "PercentWinning": "61.93%",
+          "PercentAverage": "-19.39%",
+          "PercentMedian": "-22.58%"
+        },
+        {
+          "Place": "13",
+          "Bib": "4",
+          "Name": "Francine Rose",
+          "FirstName": "Francine",
+          "LastName": "Rose",
+          "TeamName": "Quilcene",
+          "TeamName2": "Maas Aero",
+          "Category": "1x OW-II",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:02:12.9",
+          "Difference": "+24:13.5",
+          "PercentBack": "+63.77%",
+          "PercentWinning": "61.06%",
+          "PercentAverage": "-21.08%",
+          "PercentMedian": "-24.31%"
+        },
+        {
+          "Place": "14",
+          "Bib": "14",
+          "Name": "Carrie Weisse",
+          "FirstName": "Carrie",
+          "LastName": "Weisse",
+          "TeamName": "Mukilteo",
+          "TeamName2": "Maas Aero",
+          "Category": "1x OW-II",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:09:08.0",
+          "Difference": "+31:08.6",
+          "PercentBack": "+81.98%",
+          "PercentWinning": "54.95%",
+          "PercentAverage": "-34.54%",
+          "PercentMedian": "-38.14%"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Kristy & Lauren",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle",
+          "TeamName2": "Wenonah Spirit II (Fiberglass)",
+          "Category": "C2",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Steve Bennett",
+          "FirstName": "Steve",
+          "LastName": "Bennett",
+          "TeamName": "Tulalip WA",
+          "TeamName2": "Huki V-1X",
+          "Category": "OC-1",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "1x Flatwater"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "12",
+          "Name": "Peter Hirtle",
+          "FirstName": "Peter",
+          "LastName": "Hirtle",
+          "TeamName": "Lake Forest Park",
+          "TeamName2": "Hudson 1X",
+          "Category": "1x Flatwater",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "43:39.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "1x OW-I"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "3",
+          "Name": "Ken Barnes",
+          "FirstName": "Ken",
+          "LastName": "Barnes",
+          "TeamName": "Seattle",
+          "TeamName2": "Maas Aero",
+          "Category": "1x OW-I",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "48:36.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "1x OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "9",
+          "Name": "Larry Tobiska",
+          "FirstName": "Larry",
+          "LastName": "Tobiska",
+          "TeamName": "Wenatchee",
+          "TeamName2": "Maas 24",
+          "Category": "1x OW-II",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "49:45.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "17.91%",
+          "PercentMedian": "19.46%"
+        },
+        {
+          "Place": "2",
+          "Bib": "13",
+          "Name": "Janna Gross",
+          "FirstName": "Janna",
+          "LastName": "Gross",
+          "TeamName": "Snohomish",
+          "TeamName2": "Bay 21",
+          "Category": "1x OW-II",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:01:20.8",
+          "Difference": "+11:35.2",
+          "PercentBack": "+23.29%",
+          "PercentWinning": "81.11%",
+          "PercentAverage": "-1.21%",
+          "PercentMedian": "0.70%"
+        },
+        {
+          "Place": "3",
+          "Bib": "4",
+          "Name": "Francine Rose",
+          "FirstName": "Francine",
+          "LastName": "Rose",
+          "TeamName": "Quilcene",
+          "TeamName2": "Maas Aero",
+          "Category": "1x OW-II",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:02:12.9",
+          "Difference": "+12:27.3",
+          "PercentBack": "+25.03%",
+          "PercentWinning": "79.98%",
+          "PercentAverage": "-2.64%",
+          "PercentMedian": "-0.70%"
+        },
+        {
+          "Place": "4",
+          "Bib": "14",
+          "Name": "Carrie Weisse",
+          "FirstName": "Carrie",
+          "LastName": "Weisse",
+          "TeamName": "Mukilteo",
+          "TeamName2": "Maas Aero",
+          "Category": "1x OW-II",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "1:09:08.0",
+          "Difference": "+19:22.4",
+          "PercentBack": "+38.93%",
+          "PercentWinning": "71.98%",
+          "PercentAverage": "-14.06%",
+          "PercentMedian": "-11.90%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "1x OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "6",
+          "Name": "Herbie Weisse",
+          "FirstName": "Herbie",
+          "LastName": "Weisse",
+          "TeamName": "Mukilteo",
+          "TeamName2": "Peinert Dolphin",
+          "Category": "1x OW-III",
+          "Age": 1,
+          "Gender": "Male",
+          "Time": "56:46.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "2x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Evan Jacobs",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle",
+          "TeamName2": null,
+          "Category": "2x OW",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "37:59.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "2.18%",
+          "PercentMedian": "2.18%"
+        },
+        {
+          "Place": "2",
+          "Bib": "11",
+          "Name": "Wrpc Crew",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Mass 2X",
+          "Category": "2x OW",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "39:40.9",
+          "Difference": "+1:41.5",
+          "PercentBack": "+4.45%",
+          "PercentWinning": "95.74%",
+          "PercentAverage": "-2.18%",
+          "PercentMedian": "-2.18%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "C2"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Kristy & Lauren",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle",
+          "TeamName2": "Wenonah Spirit II (Fiberglass)",
+          "Category": "C2",
+          "Age": null,
+          "Gender": "Female",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "8",
+          "Name": "Hugh Owen",
+          "FirstName": "Hugh",
+          "LastName": "Owen",
+          "TeamName": "East Wenatchee",
+          "TeamName2": "Epic V9",
+          "Category": "HPK",
+          "Age": 67,
+          "Gender": "Male",
+          "Time": "48:56.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.52%",
+          "PercentMedian": "3.52%"
+        },
+        {
+          "Place": "2",
+          "Bib": "2",
+          "Name": "John Schalka",
+          "FirstName": "John",
+          "LastName": "Schalka",
+          "TeamName": "Shoreline",
+          "TeamName2": "Surfski",
+          "Category": "HPK",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "52:31.4",
+          "Difference": "+3:34.6",
+          "PercentBack": "+7.31%",
+          "PercentWinning": "93.19%",
+          "PercentAverage": "-3.52%",
+          "PercentMedian": "-3.52%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "HPK-2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "7",
+          "Name": "Juraj Osusky & Peter Turcan",
+          "FirstName": null,
+          "LastName": null,
+          "TeamName": "Seattle",
+          "TeamName2": "Fenn Elite",
+          "Category": "HPK-2",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "42:09.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC-1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "Shaun Koos",
+          "FirstName": "Shaun",
+          "LastName": "Koos",
+          "TeamName": "Wenatchee",
+          "TeamName2": "Huki V-1X",
+          "Category": "OC-1",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "50:20.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Steve Bennett",
+          "FirstName": "Steve",
+          "LastName": "Bennett",
+          "TeamName": "Tulalip WA",
+          "TeamName2": "Huki V-1X",
+          "Category": "OC-1",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "PedalBoat"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Michael Lampi",
+          "FirstName": "Michael",
+          "LastName": "Lampi",
+          "TeamName": "Bellevue",
+          "TeamName2": "Lampi V8-64D",
+          "Category": "PedalBoat",
+          "Age": null,
+          "Gender": "Male",
+          "Time": "56:14.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

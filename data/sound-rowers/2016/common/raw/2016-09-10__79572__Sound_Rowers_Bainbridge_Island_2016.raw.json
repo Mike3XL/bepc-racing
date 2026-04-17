@@ -1,0 +1,539 @@
+{
+  "RaceInfo": {
+    "RaceId": 79572,
+    "Name": "Sound Rowers: Bainbridge Island 2016",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=79572",
+    "Date": "Sep 10, 2016",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, September 10, 2016 10:00 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers and Paddlers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "Bainbridge Island",
+    "StateOrProvince": "WA",
+    "Latitude": 47.58173661653957,
+    "Longitude": -122.52674102783203,
+    "StartType": "Wave",
+    "WaveGrouping": "By distance & category",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "Other",
+    "TimedWith": "By hand",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Monday, September 12, 2016 10:02 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/79572_8d3da7d751d8aac.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "P Hirtle,C Groom,R Storb,A Storb",
+          "Distance": "Long Course",
+          "Category": "4x OW",
+          "Gender": "Male",
+          "Time": "3:21:08",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "20.78%",
+          "PercentMedian": "17.81%"
+        },
+        {
+          "Place": "2",
+          "Name": "Kevin Olney/Rod Clement",
+          "Distance": "Long Course",
+          "Category": "HPK-2",
+          "Gender": "Male",
+          "Time": "3:23:59",
+          "Difference": "+2:51",
+          "PercentBack": "+1.42%",
+          "PercentWinning": "98.60%",
+          "PercentAverage": "19.65%",
+          "PercentMedian": "16.65%"
+        },
+        {
+          "Place": "3",
+          "Name": "Theresa Batty/Jeff Bernard",
+          "Distance": "Long Course",
+          "Category": "2x OW",
+          "Gender": "Female/Male",
+          "Time": "3:50:50",
+          "Difference": "+29:42",
+          "PercentBack": "+14.77%",
+          "PercentWinning": "87.13%",
+          "PercentAverage": "9.08%",
+          "PercentMedian": "5.67%"
+        },
+        {
+          "Place": "4",
+          "Name": "Tracy Landboe",
+          "Distance": "Long Course",
+          "Category": "HPK",
+          "Gender": "Female",
+          "Time": "4:02:58",
+          "Difference": "+41:50",
+          "PercentBack": "+20.80%",
+          "PercentWinning": "82.78%",
+          "PercentAverage": "4.30%",
+          "PercentMedian": "0.72%"
+        },
+        {
+          "Place": "5",
+          "Name": "Rod Sternagel",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Gender": "Male",
+          "Time": "4:06:28",
+          "Difference": "+45:20",
+          "PercentBack": "+22.54%",
+          "PercentWinning": "81.61%",
+          "PercentAverage": "2.92%",
+          "PercentMedian": "-0.72%"
+        },
+        {
+          "Place": "6",
+          "Name": "Mark Miller",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Gender": "Male",
+          "Time": "4:19:01",
+          "Difference": "+57:53",
+          "PercentBack": "+28.78%",
+          "PercentWinning": "77.65%",
+          "PercentAverage": "-2.02%",
+          "PercentMedian": "-5.84%"
+        },
+        {
+          "Place": "7",
+          "Name": "Kristian Tollefson",
+          "Distance": "Long Course",
+          "Category": "FSK",
+          "Gender": "Male",
+          "Time": "4:31:20",
+          "Difference": "+1:10:12",
+          "PercentBack": "+34.90%",
+          "PercentWinning": "74.13%",
+          "PercentAverage": "-6.87%",
+          "PercentMedian": "-10.88%"
+        },
+        {
+          "Place": "8",
+          "Name": "Sara Poor",
+          "Distance": "Long Course",
+          "Category": "Sliding seat wherry",
+          "Gender": "Female",
+          "Time": "6:15:20",
+          "Difference": "+2:54:12",
+          "PercentBack": "+86.61%",
+          "PercentWinning": "53.59%",
+          "PercentAverage": "-47.84%",
+          "PercentMedian": "-53.37%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jordan Tigani & Matthias Broecheler",
+          "Distance": "Short Course",
+          "Category": "2x OW",
+          "Gender": "Male",
+          "Time": "1:26:10",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "37.98%",
+          "PercentMedian": "39.31%"
+        },
+        {
+          "Place": "2",
+          "Name": "Steve Bennett",
+          "Distance": "Short Course",
+          "Category": "OC-1",
+          "Gender": "Male",
+          "Time": "2:08:22",
+          "Difference": "+42:12",
+          "PercentBack": "+48.97%",
+          "PercentWinning": "67.13%",
+          "PercentAverage": "7.61%",
+          "PercentMedian": "9.59%"
+        },
+        {
+          "Place": "3",
+          "Name": "Amelia Bethke",
+          "Distance": "Short Course",
+          "Category": "HPK",
+          "Gender": "Female",
+          "Time": "2:11:57",
+          "Difference": "+45:47",
+          "PercentBack": "+53.13%",
+          "PercentWinning": "65.30%",
+          "PercentAverage": "5.03%",
+          "PercentMedian": "7.07%"
+        },
+        {
+          "Place": "4",
+          "Name": "Tom Kreyche-Chris Jones",
+          "Distance": "Short Course",
+          "Category": "2x OW",
+          "Gender": "Male",
+          "Time": "2:21:59",
+          "Difference": "+55:49",
+          "PercentBack": "+64.78%",
+          "PercentWinning": "60.69%",
+          "PercentAverage": "-2.20%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "5",
+          "Name": "Dean & Zachary Williams",
+          "Distance": "Short Course",
+          "Category": "OC-2",
+          "Gender": "Male",
+          "Time": "2:22:12",
+          "Difference": "+56:02",
+          "PercentBack": "+65.03%",
+          "PercentWinning": "60.60%",
+          "PercentAverage": "-2.35%",
+          "PercentMedian": "-0.15%"
+        },
+        {
+          "Place": "6",
+          "Name": "Amber Zipperer",
+          "Distance": "Short Course",
+          "Category": "FSK",
+          "Gender": "Female",
+          "Time": "2:25:02",
+          "Difference": "+58:52",
+          "PercentBack": "+68.32%",
+          "PercentWinning": "59.41%",
+          "PercentAverage": "-4.39%",
+          "PercentMedian": "-2.15%"
+        },
+        {
+          "Place": "7",
+          "Name": "Stanley Larson",
+          "Distance": "Short Course",
+          "Category": "Sliding seat wherry",
+          "Gender": "Male",
+          "Time": "3:16:50",
+          "Difference": "+1:50:40",
+          "PercentBack": "+128.43%",
+          "PercentWinning": "43.78%",
+          "PercentAverage": "-41.67%",
+          "PercentMedian": "-38.63%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "1x OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Rod Sternagel",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Gender": "Male",
+          "Time": "4:06:28",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "2.48%",
+          "PercentMedian": "2.48%"
+        },
+        {
+          "Place": "2",
+          "Name": "Mark Miller",
+          "Distance": "Long Course",
+          "Category": "1x OW-III",
+          "Gender": "Male",
+          "Time": "4:19:01",
+          "Difference": "+12:33",
+          "PercentBack": "+5.09%",
+          "PercentWinning": "95.15%",
+          "PercentAverage": "-2.48%",
+          "PercentMedian": "-2.48%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "2x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Theresa Batty/Jeff Bernard",
+          "Distance": "Long Course",
+          "Category": "2x OW",
+          "Gender": "Female/Male",
+          "Time": "3:50:50",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "4x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "P Hirtle,C Groom,R Storb,A Storb",
+          "Distance": "Long Course",
+          "Category": "4x OW",
+          "Gender": "Male",
+          "Time": "3:21:08",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "FSK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Kristian Tollefson",
+          "Distance": "Long Course",
+          "Category": "FSK",
+          "Gender": "Male",
+          "Time": "4:31:20",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Tracy Landboe",
+          "Distance": "Long Course",
+          "Category": "HPK",
+          "Gender": "Female",
+          "Time": "4:02:58",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "HPK-2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Kevin Olney/Rod Clement",
+          "Distance": "Long Course",
+          "Category": "HPK-2",
+          "Gender": "Male",
+          "Time": "3:23:59",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "Sliding seat wherry"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Sara Poor",
+          "Distance": "Long Course",
+          "Category": "Sliding seat wherry",
+          "Gender": "Female",
+          "Time": "6:15:20",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "2x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jordan Tigani & Matthias Broecheler",
+          "Distance": "Short Course",
+          "Category": "2x OW",
+          "Gender": "Male",
+          "Time": "1:26:10",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "24.46%",
+          "PercentMedian": "24.46%"
+        },
+        {
+          "Place": "2",
+          "Name": "Tom Kreyche-Chris Jones",
+          "Distance": "Short Course",
+          "Category": "2x OW",
+          "Gender": "Male",
+          "Time": "2:21:59",
+          "Difference": "+55:49",
+          "PercentBack": "+64.78%",
+          "PercentWinning": "60.69%",
+          "PercentAverage": "-24.46%",
+          "PercentMedian": "-24.46%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "FSK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Amber Zipperer",
+          "Distance": "Short Course",
+          "Category": "FSK",
+          "Gender": "Female",
+          "Time": "2:25:02",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Amelia Bethke",
+          "Distance": "Short Course",
+          "Category": "HPK",
+          "Gender": "Female",
+          "Time": "2:11:57",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "OC-1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Steve Bennett",
+          "Distance": "Short Course",
+          "Category": "OC-1",
+          "Gender": "Male",
+          "Time": "2:08:22",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "OC-2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Dean & Zachary Williams",
+          "Distance": "Short Course",
+          "Category": "OC-2",
+          "Gender": "Male",
+          "Time": "2:22:12",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "Sliding seat wherry"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Stanley Larson",
+          "Distance": "Short Course",
+          "Category": "Sliding seat wherry",
+          "Gender": "Male",
+          "Time": "3:16:50",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

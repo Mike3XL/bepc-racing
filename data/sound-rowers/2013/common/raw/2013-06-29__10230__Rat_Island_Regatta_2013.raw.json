@@ -1,0 +1,2124 @@
+{
+  "RaceInfo": {
+    "RaceId": 10230,
+    "Name": "Rat Island Regatta 2013",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=10230",
+    "Date": "Jun 29, 2013",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, June 29, 2013 10:04 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers",
+    "OrganizerUrl": "http:/soundrowers.org",
+    "Country": "United States",
+    "City": "Port Townsend",
+    "StateOrProvince": "WA",
+    "Latitude": 48.13623046875,
+    "Longitude": -122.760841369629,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 1.5",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Thursday, July 11, 2013 3:16 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/10230.jpg?635091526080000000"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "2.5 miles",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "18",
+          "Name": "Pertold, Jiri",
+          "TeamName": "Second Wave",
+          "Distance": "2.5 miles",
+          "Category": "M SK",
+          "Time": "28:52.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.30%",
+          "PercentMedian": "31.10%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "37",
+          "Name": "Lampi, Kate",
+          "TeamName": "First Wave",
+          "Distance": "2.5 miles",
+          "Category": "W Pedal",
+          "Time": "41:54.4",
+          "Difference": "+13:02.0",
+          "PercentBack": "+45.14%",
+          "PercentWinning": "68.90%",
+          "PercentAverage": "-11.32%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "3",
+          "Bib": "43",
+          "Name": "Maupin, Jim",
+          "TeamName": "First Wave",
+          "Distance": "2.5 miles",
+          "Category": "M SUP-14'",
+          "Time": "42:09.2",
+          "Difference": "+13:16.8",
+          "PercentBack": "+45.99%",
+          "PercentWinning": "68.50%",
+          "PercentAverage": "-11.98%",
+          "PercentMedian": "-0.59%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Kiesling & Turcan",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK-2",
+          "Time": "57:09.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "31.95%",
+          "PercentMedian": "22.74%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "44",
+          "Name": "Hirtle, Peter and Lindsay Meyer",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 2X-OW",
+          "Time": "57:12.2",
+          "Difference": "+0:02.3",
+          "PercentBack": "+0.07%",
+          "PercentWinning": "99.93%",
+          "PercentAverage": "31.91%",
+          "PercentMedian": "22.69%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "3",
+          "Bib": "46",
+          "Name": "Peterson, Tyler",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M 1x",
+          "Time": "59:03.0",
+          "Difference": "+1:53.1",
+          "PercentBack": "+3.30%",
+          "PercentWinning": "96.81%",
+          "PercentAverage": "29.71%",
+          "PercentMedian": "20.20%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "4",
+          "Bib": "59",
+          "Name": "Hildebrando, Joao",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M 1x",
+          "Time": "59:15.2",
+          "Difference": "+2:05.3",
+          "PercentBack": "+3.65%",
+          "PercentWinning": "96.48%",
+          "PercentAverage": "29.47%",
+          "PercentMedian": "19.92%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "5",
+          "Bib": "33",
+          "Name": "Tobin, Karen/ORU",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX-8x+",
+          "Time": "59:57.4",
+          "Difference": "+2:47.5",
+          "PercentBack": "+4.88%",
+          "PercentWinning": "95.34%",
+          "PercentAverage": "28.63%",
+          "PercentMedian": "18.97%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "6",
+          "Bib": "4",
+          "Name": "Knakal, Jeff & Theresa",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 2X-OW",
+          "Time": "1:02:08.2",
+          "Difference": "+4:58.3",
+          "PercentBack": "+8.70%",
+          "PercentWinning": "92.00%",
+          "PercentAverage": "26.04%",
+          "PercentMedian": "16.02%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "7",
+          "Bib": "5",
+          "Name": "Riverside/RIRSC",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M 4X",
+          "Time": "1:02:10.1",
+          "Difference": "+5:00.2",
+          "PercentBack": "+8.75%",
+          "PercentWinning": "91.95%",
+          "PercentAverage": "26.00%",
+          "PercentMedian": "15.98%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "8",
+          "Bib": "56",
+          "Name": "Batty, Theresa and Susan Kinne",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "W OW-2x",
+          "Time": "1:03:02.5",
+          "Difference": "+5:52.6",
+          "PercentBack": "+10.28%",
+          "PercentWinning": "90.68%",
+          "PercentAverage": "24.96%",
+          "PercentMedian": "14.80%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "9",
+          "Bib": "1",
+          "Name": "Storb, Rainer & Adrian",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M 2X-OW",
+          "Time": "1:05:28.7",
+          "Difference": "+8:18.8",
+          "PercentBack": "+14.54%",
+          "PercentWinning": "87.30%",
+          "PercentAverage": "22.06%",
+          "PercentMedian": "11.51%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "10",
+          "Bib": "50",
+          "Name": "Medler, Michael",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK",
+          "Time": "1:05:35.2",
+          "Difference": "+8:25.3",
+          "PercentBack": "+14.73%",
+          "PercentWinning": "87.16%",
+          "PercentAverage": "21.93%",
+          "PercentMedian": "11.36%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "11",
+          "Bib": "20",
+          "Name": "Olney, Kevin",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK",
+          "Time": "1:05:48.9",
+          "Difference": "+8:39.0",
+          "PercentBack": "+15.13%",
+          "PercentWinning": "86.86%",
+          "PercentAverage": "21.66%",
+          "PercentMedian": "11.05%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "12",
+          "Bib": "7",
+          "Name": "Lorna Smith/RIRSC",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 4x",
+          "Time": "1:05:55.8",
+          "Difference": "+8:45.9",
+          "PercentBack": "+15.33%",
+          "PercentWinning": "86.71%",
+          "PercentAverage": "21.52%",
+          "PercentMedian": "10.90%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "13",
+          "Bib": "17",
+          "Name": "Lee, Amanda & Howard",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 2X-OW",
+          "Time": "1:06:47.3",
+          "Difference": "+9:37.4",
+          "PercentBack": "+16.83%",
+          "PercentWinning": "85.59%",
+          "PercentAverage": "20.50%",
+          "PercentMedian": "9.74%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "14",
+          "Bib": "64",
+          "Name": "Yount, Megan and Bruce Rolfe",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 2X-OW",
+          "Time": "1:07:23.1",
+          "Difference": "+10:13.2",
+          "PercentBack": "+17.88%",
+          "PercentWinning": "84.83%",
+          "PercentAverage": "19.79%",
+          "PercentMedian": "8.93%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "15",
+          "Bib": "49",
+          "Name": "Sack, Ivan/Meyer, Erin",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 2x",
+          "Time": "1:07:32.0",
+          "Difference": "+10:22.1",
+          "PercentBack": "+18.14%",
+          "PercentWinning": "84.65%",
+          "PercentAverage": "19.61%",
+          "PercentMedian": "8.73%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "16",
+          "Bib": "75",
+          "Name": "Stevens, Holly/Officer, Aubree",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "Jr. W 2x",
+          "Time": "1:07:34.2",
+          "Difference": "+10:24.3",
+          "PercentBack": "+18.20%",
+          "PercentWinning": "84.60%",
+          "PercentAverage": "19.57%",
+          "PercentMedian": "8.68%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "17",
+          "Bib": "24",
+          "Name": "Erica Lynn/Tuf As Nails",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "W 8+",
+          "Time": "1:08:08.1",
+          "Difference": "+10:58.2",
+          "PercentBack": "+19.19%",
+          "PercentWinning": "83.90%",
+          "PercentAverage": "18.90%",
+          "PercentMedian": "7.92%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "18",
+          "Bib": "51",
+          "Name": "Ens, Dawn and Leigh Holyoak",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "W 2x",
+          "Time": "1:08:40.2",
+          "Difference": "+11:30.3",
+          "PercentBack": "+20.13%",
+          "PercentWinning": "83.25%",
+          "PercentAverage": "18.26%",
+          "PercentMedian": "7.20%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "19",
+          "Bib": "57",
+          "Name": "McIsaac, Ben",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-II",
+          "Time": "1:09:15.2",
+          "Difference": "+12:05.3",
+          "PercentBack": "+21.15%",
+          "PercentWinning": "82.54%",
+          "PercentAverage": "17.57%",
+          "PercentMedian": "6.41%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "20",
+          "Bib": "42",
+          "Name": "Kreyche, Tom",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:09:25.3",
+          "Difference": "+12:15.4",
+          "PercentBack": "+21.44%",
+          "PercentWinning": "82.34%",
+          "PercentAverage": "17.36%",
+          "PercentMedian": "6.18%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "21",
+          "Bib": "14",
+          "Name": "Walsh, Mike",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:09:30.7",
+          "Difference": "+12:20.8",
+          "PercentBack": "+21.60%",
+          "PercentWinning": "82.24%",
+          "PercentAverage": "17.26%",
+          "PercentMedian": "6.06%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "22",
+          "Bib": "19",
+          "Name": "Team Grays Harbor",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX OC6",
+          "Time": "1:10:09.4",
+          "Difference": "+12:59.5",
+          "PercentBack": "+22.73%",
+          "PercentWinning": "81.48%",
+          "PercentAverage": "16.49%",
+          "PercentMedian": "5.19%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "23",
+          "Bib": "62",
+          "Name": "Brown,  Russell",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK",
+          "Time": "1:10:28.5",
+          "Difference": "+13:18.6",
+          "PercentBack": "+23.28%",
+          "PercentWinning": "81.11%",
+          "PercentAverage": "16.11%",
+          "PercentMedian": "4.76%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "24",
+          "Bib": "8",
+          "Name": "Spirit Of 36/RIRSC",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX-8+",
+          "Time": "1:11:19.0",
+          "Difference": "+14:09.1",
+          "PercentBack": "+24.76%",
+          "PercentWinning": "80.16%",
+          "PercentAverage": "15.11%",
+          "PercentMedian": "3.62%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "25",
+          "Bib": "28",
+          "Name": "OPRA",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "Jr. Mx 4x",
+          "Time": "1:12:37.2",
+          "Difference": "+15:27.3",
+          "PercentBack": "+27.04%",
+          "PercentWinning": "78.72%",
+          "PercentAverage": "13.56%",
+          "PercentMedian": "1.86%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "26",
+          "Bib": "22",
+          "Name": "Lamb, Roger",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK",
+          "Time": "1:12:44.4",
+          "Difference": "+15:34.5",
+          "PercentBack": "+27.25%",
+          "PercentWinning": "78.59%",
+          "PercentAverage": "13.41%",
+          "PercentMedian": "1.69%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "27",
+          "Bib": "35",
+          "Name": "Noyes, Paul",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:13:58.9",
+          "Difference": "+16:49.0",
+          "PercentBack": "+29.42%",
+          "PercentWinning": "77.27%",
+          "PercentAverage": "11.94%",
+          "PercentMedian": "0.02%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "28",
+          "Bib": "3",
+          "Name": "Dosewallips/RIRSC",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 4x",
+          "Time": "1:14:00.4",
+          "Difference": "+16:50.5",
+          "PercentBack": "+29.46%",
+          "PercentWinning": "77.24%",
+          "PercentAverage": "11.91%",
+          "PercentMedian": "-0.02%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "29",
+          "Bib": "26",
+          "Name": "Miller, Mark",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:14:22.7",
+          "Difference": "+17:12.8",
+          "PercentBack": "+30.11%",
+          "PercentWinning": "76.86%",
+          "PercentAverage": "11.46%",
+          "PercentMedian": "-0.52%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "30",
+          "Bib": "63",
+          "Name": "Johnston, Chris and Callie",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 2X-OW",
+          "Time": "1:15:32.5",
+          "Difference": "+18:22.6",
+          "PercentBack": "+32.15%",
+          "PercentWinning": "75.67%",
+          "PercentAverage": "10.08%",
+          "PercentMedian": "-2.09%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "31",
+          "Bib": "15",
+          "Name": "Wells, Steve",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:21:16.0",
+          "Difference": "+24:06.1",
+          "PercentBack": "+42.16%",
+          "PercentWinning": "70.34%",
+          "PercentAverage": "3.27%",
+          "PercentMedian": "-9.83%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "32",
+          "Bib": "34",
+          "Name": "Serpiello, Nina",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "W OW-III",
+          "Time": "1:21:37.7",
+          "Difference": "+24:27.8",
+          "PercentBack": "+42.79%",
+          "PercentWinning": "70.03%",
+          "PercentAverage": "2.83%",
+          "PercentMedian": "-10.32%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "33",
+          "Bib": "55",
+          "Name": "Smith, Norton",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-I",
+          "Time": "1:21:40.0",
+          "Difference": "+24:30.1",
+          "PercentBack": "+42.86%",
+          "PercentWinning": "70.00%",
+          "PercentAverage": "2.79%",
+          "PercentMedian": "-10.37%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "34",
+          "Bib": "21",
+          "Name": "Wood, Michael",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK",
+          "Time": "1:21:43.6",
+          "Difference": "+24:33.7",
+          "PercentBack": "+42.97%",
+          "PercentWinning": "69.95%",
+          "PercentAverage": "2.72%",
+          "PercentMedian": "-10.45%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "35",
+          "Bib": "36",
+          "Name": "Lampi, Michael",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M Pedal",
+          "Time": "1:22:56.4",
+          "Difference": "+25:46.5",
+          "PercentBack": "+45.09%",
+          "PercentWinning": "68.92%",
+          "PercentAverage": "1.27%",
+          "PercentMedian": "-12.09%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "36",
+          "Bib": "23",
+          "Name": "Scoggins, Steve",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK",
+          "Time": "1:24:22.5",
+          "Difference": "+27:12.6",
+          "PercentBack": "+47.60%",
+          "PercentWinning": "67.75%",
+          "PercentAverage": "-0.43%",
+          "PercentMedian": "-14.03%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "37",
+          "Bib": "12",
+          "Name": "Kanieski, Charley",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:25:57.0",
+          "Difference": "+28:47.1",
+          "PercentBack": "+50.35%",
+          "PercentWinning": "66.51%",
+          "PercentAverage": "-2.31%",
+          "PercentMedian": "-16.16%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "38",
+          "Bib": "54",
+          "Name": "Cahill, Steve",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-II",
+          "Time": "1:26:16.3",
+          "Difference": "+29:06.4",
+          "PercentBack": "+50.92%",
+          "PercentWinning": "66.26%",
+          "PercentAverage": "-2.69%",
+          "PercentMedian": "-16.59%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "39",
+          "Bib": "52",
+          "Name": "Lawson, Tim",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M Wherry '17",
+          "Time": "1:33:35.6",
+          "Difference": "+36:25.7",
+          "PercentBack": "+63.72%",
+          "PercentWinning": "61.08%",
+          "PercentAverage": "-11.41%",
+          "PercentMedian": "-26.49%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "40",
+          "Bib": "61",
+          "Name": "Hixson, Lisa/OPRA",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX-4x+",
+          "Time": "1:34:16.7",
+          "Difference": "+37:06.8",
+          "PercentBack": "+64.92%",
+          "PercentWinning": "60.63%",
+          "PercentAverage": "-12.22%",
+          "PercentMedian": "-27.41%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "41",
+          "Bib": "58",
+          "Name": "Hirsh, Paul",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M FSK",
+          "Time": "1:38:00.8",
+          "Difference": "+40:50.9",
+          "PercentBack": "+71.46%",
+          "PercentWinning": "58.32%",
+          "PercentAverage": "-16.67%",
+          "PercentMedian": "-32.46%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "42",
+          "Bib": "53",
+          "Name": "Nordstrom, Eric",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M SUP-14'",
+          "Time": "1:38:05.0",
+          "Difference": "+40:55.1",
+          "PercentBack": "+71.58%",
+          "PercentWinning": "58.28%",
+          "PercentAverage": "-16.75%",
+          "PercentMedian": "-32.56%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "43",
+          "Bib": "45",
+          "Name": "Brown, Steve",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:40:27.2",
+          "Difference": "+43:17.3",
+          "PercentBack": "+75.73%",
+          "PercentWinning": "56.91%",
+          "PercentAverage": "-19.57%",
+          "PercentMedian": "-35.76%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "44",
+          "Bib": "39",
+          "Name": "Cunard, Geoff",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M SK",
+          "Time": "1:44:54.7",
+          "Difference": "+47:44.8",
+          "PercentBack": "+83.52%",
+          "PercentWinning": "54.49%",
+          "PercentAverage": "-24.88%",
+          "PercentMedian": "-41.78%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "45",
+          "Bib": "47",
+          "Name": "Leach, Peter",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M FS-1x",
+          "Time": "1:49:50.4",
+          "Difference": "+52:40.5",
+          "PercentBack": "+92.15%",
+          "PercentWinning": "52.04%",
+          "PercentAverage": "-30.75%",
+          "PercentMedian": "-48.44%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "46",
+          "Bib": "25",
+          "Name": "Johnson, Pat",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "W OW-III",
+          "Time": "1:51:08.4",
+          "Difference": "+53:58.5",
+          "PercentBack": "+94.42%",
+          "PercentWinning": "51.44%",
+          "PercentAverage": "-32.29%",
+          "PercentMedian": "-50.20%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "47",
+          "Bib": "11",
+          "Name": "Moses, Dale",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M SK",
+          "Time": "1:52:10.8",
+          "Difference": "+55:00.9",
+          "PercentBack": "+96.24%",
+          "PercentWinning": "50.96%",
+          "PercentAverage": "-33.53%",
+          "PercentMedian": "-51.61%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "48",
+          "Bib": "60",
+          "Name": "Jamestown S'Klallam Tribe",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "Jr. Native American Canoe",
+          "Time": "1:53:55.8",
+          "Difference": "+56:45.9",
+          "PercentBack": "+99.30%",
+          "PercentWinning": "50.18%",
+          "PercentAverage": "-35.62%",
+          "PercentMedian": "-53.97%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "49",
+          "Bib": "143",
+          "Name": "Mebus, Tyler",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M SUP-12'6\"",
+          "Time": "1:59:15.7",
+          "Difference": "+1:02:05.8",
+          "PercentBack": "+108.63%",
+          "PercentWinning": "47.93%",
+          "PercentAverage": "-41.96%",
+          "PercentMedian": "-61.18%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "50",
+          "Bib": "9",
+          "Name": "Tulin, Kip",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M FS-1x",
+          "Time": "2:07:05.4",
+          "Difference": "+1:09:55.5",
+          "PercentBack": "+122.32%",
+          "PercentWinning": "44.98%",
+          "PercentAverage": "-51.28%",
+          "PercentMedian": "-71.76%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "51",
+          "Bib": "16",
+          "Name": "Cunard, Bruce",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M SUP",
+          "Time": "2:13:20.7",
+          "Difference": "+1:16:10.8",
+          "PercentBack": "+133.26%",
+          "PercentWinning": "42.87%",
+          "PercentAverage": "-58.73%",
+          "PercentMedian": "-80.21%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "52",
+          "Bib": "48",
+          "Name": "Mebus, Leanne",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "W SUP",
+          "Time": "2:26:30.4",
+          "Difference": "+1:29:20.5",
+          "PercentBack": "+156.29%",
+          "PercentWinning": "39.02%",
+          "PercentAverage": "-74.39%",
+          "PercentMedian": "-98.00%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "53",
+          "Bib": "41",
+          "Name": "Cunard, Alison",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "W SUP",
+          "Time": "2:26:42.9",
+          "Difference": "+1:29:33.0",
+          "PercentBack": "+156.65%",
+          "PercentWinning": "38.96%",
+          "PercentAverage": "-74.64%",
+          "PercentMedian": "-98.28%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "54",
+          "Bib": "40",
+          "Name": "Cunard, Kari",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "W SK",
+          "Time": "2:29:05.8",
+          "Difference": "+1:31:55.9",
+          "PercentBack": "+160.82%",
+          "PercentWinning": "38.34%",
+          "PercentAverage": "-77.48%",
+          "PercentMedian": "-101.50%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "-",
+          "Bib": "6",
+          "Name": "Bogachiel/RIRSC",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 4x",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "-",
+          "Bib": "13",
+          "Name": "Weisse, Herbie",
+          "TeamName": null,
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        },
+        {
+          "Place": "-",
+          "Bib": "32",
+          "Name": "Chapin, Steve",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2.5 miles",
+        "Category": "M SK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "18",
+          "Name": "Pertold, Jiri",
+          "TeamName": "Second Wave",
+          "Distance": "2.5 miles",
+          "Category": "M SK",
+          "Time": "28:52.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2.5 miles",
+        "Category": "M SUP-14'"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "43",
+          "Name": "Maupin, Jim",
+          "TeamName": "First Wave",
+          "Distance": "2.5 miles",
+          "Category": "M SUP-14'",
+          "Time": "42:09.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "2.5 miles",
+        "Category": "W Pedal"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "37",
+          "Name": "Lampi, Kate",
+          "TeamName": "First Wave",
+          "Distance": "2.5 miles",
+          "Category": "W Pedal",
+          "Time": "41:54.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "Jr. Mx 4x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "28",
+          "Name": "OPRA",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "Jr. Mx 4x",
+          "Time": "1:12:37.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "Jr. Native American Canoe"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "60",
+          "Name": "Jamestown S'Klallam Tribe",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "Jr. Native American Canoe",
+          "Time": "1:53:55.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "Jr. W 2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "75",
+          "Name": "Stevens, Holly/Officer, Aubree",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "Jr. W 2x",
+          "Time": "1:07:34.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M 1x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "46",
+          "Name": "Peterson, Tyler",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M 1x",
+          "Time": "59:03.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.17%",
+          "PercentMedian": "0.17%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "59",
+          "Name": "Hildebrando, Joao",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M 1x",
+          "Time": "59:15.2",
+          "Difference": "+0:12.2",
+          "PercentBack": "+0.34%",
+          "PercentWinning": "99.66%",
+          "PercentAverage": "-0.17%",
+          "PercentMedian": "-0.17%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M 2X-OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "Storb, Rainer & Adrian",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M 2X-OW",
+          "Time": "1:05:28.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M 4X"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Riverside/RIRSC",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M 4X",
+          "Time": "1:02:10.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M FS-1x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "47",
+          "Name": "Leach, Peter",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M FS-1x",
+          "Time": "1:49:50.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.28%",
+          "PercentMedian": "7.28%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "9",
+          "Name": "Tulin, Kip",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M FS-1x",
+          "Time": "2:07:05.4",
+          "Difference": "+17:15.0",
+          "PercentBack": "+15.70%",
+          "PercentWinning": "86.43%",
+          "PercentAverage": "-7.28%",
+          "PercentMedian": "-7.28%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M FSK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "58",
+          "Name": "Hirsh, Paul",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M FSK",
+          "Time": "1:38:00.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "50",
+          "Name": "Medler, Michael",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK",
+          "Time": "1:05:35.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.71%",
+          "PercentMedian": "8.41%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "20",
+          "Name": "Olney, Kevin",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK",
+          "Time": "1:05:48.9",
+          "Difference": "+0:13.7",
+          "PercentBack": "+0.35%",
+          "PercentWinning": "99.65%",
+          "PercentAverage": "10.40%",
+          "PercentMedian": "8.09%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "3",
+          "Bib": "62",
+          "Name": "Brown,  Russell",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK",
+          "Time": "1:10:28.5",
+          "Difference": "+4:53.3",
+          "PercentBack": "+7.45%",
+          "PercentWinning": "93.06%",
+          "PercentAverage": "4.05%",
+          "PercentMedian": "1.58%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "4",
+          "Bib": "22",
+          "Name": "Lamb, Roger",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK",
+          "Time": "1:12:44.4",
+          "Difference": "+7:09.2",
+          "PercentBack": "+10.91%",
+          "PercentWinning": "90.17%",
+          "PercentAverage": "0.97%",
+          "PercentMedian": "-1.58%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "5",
+          "Bib": "21",
+          "Name": "Wood, Michael",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK",
+          "Time": "1:21:43.6",
+          "Difference": "+16:08.4",
+          "PercentBack": "+24.61%",
+          "PercentWinning": "80.25%",
+          "PercentAverage": "-11.26%",
+          "PercentMedian": "-14.13%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "6",
+          "Bib": "23",
+          "Name": "Scoggins, Steve",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK",
+          "Time": "1:24:22.5",
+          "Difference": "+18:47.3",
+          "PercentBack": "+28.65%",
+          "PercentWinning": "77.73%",
+          "PercentAverage": "-14.87%",
+          "PercentMedian": "-17.83%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M HPK-2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Kiesling & Turcan",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M HPK-2",
+          "Time": "57:09.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M OW-I"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "55",
+          "Name": "Smith, Norton",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-I",
+          "Time": "1:21:40.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "57",
+          "Name": "McIsaac, Ben",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-II",
+          "Time": "1:09:15.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.94%",
+          "PercentMedian": "10.94%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "54",
+          "Name": "Cahill, Steve",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-II",
+          "Time": "1:26:16.3",
+          "Difference": "+17:01.1",
+          "PercentBack": "+24.57%",
+          "PercentWinning": "80.27%",
+          "PercentAverage": "-10.94%",
+          "PercentMedian": "-10.94%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "42",
+          "Name": "Kreyche, Tom",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:09:25.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.44%",
+          "PercentMedian": "6.66%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "14",
+          "Name": "Walsh, Mike",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:09:30.7",
+          "Difference": "+0:05.4",
+          "PercentBack": "+0.13%",
+          "PercentWinning": "99.87%",
+          "PercentAverage": "12.32%",
+          "PercentMedian": "6.54%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "3",
+          "Bib": "35",
+          "Name": "Noyes, Paul",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:13:58.9",
+          "Difference": "+4:33.6",
+          "PercentBack": "+6.57%",
+          "PercentWinning": "93.84%",
+          "PercentAverage": "6.68%",
+          "PercentMedian": "0.53%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "4",
+          "Bib": "26",
+          "Name": "Miller, Mark",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:14:22.7",
+          "Difference": "+4:57.4",
+          "PercentBack": "+7.14%",
+          "PercentWinning": "93.34%",
+          "PercentAverage": "6.18%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "5",
+          "Bib": "15",
+          "Name": "Wells, Steve",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:21:16.0",
+          "Difference": "+11:50.7",
+          "PercentBack": "+17.06%",
+          "PercentWinning": "85.42%",
+          "PercentAverage": "-2.51%",
+          "PercentMedian": "-9.26%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "6",
+          "Bib": "12",
+          "Name": "Kanieski, Charley",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:25:57.0",
+          "Difference": "+16:31.7",
+          "PercentBack": "+23.81%",
+          "PercentWinning": "80.77%",
+          "PercentAverage": "-8.41%",
+          "PercentMedian": "-15.56%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "7",
+          "Bib": "45",
+          "Name": "Brown, Steve",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "1:40:27.2",
+          "Difference": "+31:01.9",
+          "PercentBack": "+44.70%",
+          "PercentWinning": "69.11%",
+          "PercentAverage": "-26.71%",
+          "PercentMedian": "-35.06%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "-",
+          "Bib": "13",
+          "Name": "Weisse, Herbie",
+          "TeamName": null,
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        },
+        {
+          "Place": "-",
+          "Bib": "32",
+          "Name": "Chapin, Steve",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M OW-III",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M Pedal"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "36",
+          "Name": "Lampi, Michael",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M Pedal",
+          "Time": "1:22:56.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M SK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "39",
+          "Name": "Cunard, Geoff",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M SK",
+          "Time": "1:44:54.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.35%",
+          "PercentMedian": "3.35%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "11",
+          "Name": "Moses, Dale",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "M SK",
+          "Time": "1:52:10.8",
+          "Difference": "+7:16.1",
+          "PercentBack": "+6.93%",
+          "PercentWinning": "93.52%",
+          "PercentAverage": "-3.35%",
+          "PercentMedian": "-3.35%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M SUP"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "16",
+          "Name": "Cunard, Bruce",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M SUP",
+          "Time": "2:13:20.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M SUP-12'6\""
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "143",
+          "Name": "Mebus, Tyler",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M SUP-12'6\"",
+          "Time": "1:59:15.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M SUP-14'"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "53",
+          "Name": "Nordstrom, Eric",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M SUP-14'",
+          "Time": "1:38:05.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "M Wherry '17"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "52",
+          "Name": "Lawson, Tim",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "M Wherry '17",
+          "Time": "1:33:35.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "MX 2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "49",
+          "Name": "Sack, Ivan/Meyer, Erin",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 2x",
+          "Time": "1:07:32.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "MX 2X-OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "44",
+          "Name": "Hirtle, Peter and Lindsay Meyer",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 2X-OW",
+          "Time": "57:12.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.08%",
+          "PercentMedian": "14.35%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "4",
+          "Name": "Knakal, Jeff & Theresa",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 2X-OW",
+          "Time": "1:02:08.2",
+          "Difference": "+4:56.0",
+          "PercentBack": "+8.62%",
+          "PercentWinning": "92.06%",
+          "PercentAverage": "5.58%",
+          "PercentMedian": "6.96%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "3",
+          "Bib": "17",
+          "Name": "Lee, Amanda & Howard",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 2X-OW",
+          "Time": "1:06:47.3",
+          "Difference": "+9:35.1",
+          "PercentBack": "+16.76%",
+          "PercentWinning": "85.65%",
+          "PercentAverage": "-1.49%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "4",
+          "Bib": "64",
+          "Name": "Yount, Megan and Bruce Rolfe",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 2X-OW",
+          "Time": "1:07:23.1",
+          "Difference": "+10:10.9",
+          "PercentBack": "+17.80%",
+          "PercentWinning": "84.89%",
+          "PercentAverage": "-2.39%",
+          "PercentMedian": "-0.89%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "5",
+          "Bib": "63",
+          "Name": "Johnston, Chris and Callie",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 2X-OW",
+          "Time": "1:15:32.5",
+          "Difference": "+18:20.3",
+          "PercentBack": "+32.06%",
+          "PercentWinning": "75.72%",
+          "PercentAverage": "-14.79%",
+          "PercentMedian": "-13.11%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "MX 4x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "7",
+          "Name": "Lorna Smith/RIRSC",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 4x",
+          "Time": "1:05:55.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.77%",
+          "PercentMedian": "5.77%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "3",
+          "Name": "Dosewallips/RIRSC",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 4x",
+          "Time": "1:14:00.4",
+          "Difference": "+8:04.6",
+          "PercentBack": "+12.25%",
+          "PercentWinning": "89.09%",
+          "PercentAverage": "-5.77%",
+          "PercentMedian": "-5.77%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "-",
+          "Bib": "6",
+          "Name": "Bogachiel/RIRSC",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX 4x",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "MX OC6"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "19",
+          "Name": "Team Grays Harbor",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX OC6",
+          "Time": "1:10:09.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "MX-4x+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "61",
+          "Name": "Hixson, Lisa/OPRA",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX-4x+",
+          "Time": "1:34:16.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "MX-8+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "8",
+          "Name": "Spirit Of 36/RIRSC",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX-8+",
+          "Time": "1:11:19.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "MX-8x+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "33",
+          "Name": "Tobin, Karen/ORU",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "MX-8x+",
+          "Time": "59:57.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "W 2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "51",
+          "Name": "Ens, Dawn and Leigh Holyoak",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "W 2x",
+          "Time": "1:08:40.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "W 8+"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "24",
+          "Name": "Erica Lynn/Tuf As Nails",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "W 8+",
+          "Time": "1:08:08.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "W OW-2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "56",
+          "Name": "Batty, Theresa and Susan Kinne",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "W OW-2x",
+          "Time": "1:03:02.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "W OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "34",
+          "Name": "Serpiello, Nina",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "W OW-III",
+          "Time": "1:21:37.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "15.31%",
+          "PercentMedian": "15.31%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "25",
+          "Name": "Johnson, Pat",
+          "TeamName": "Second Wave",
+          "Distance": "7.8 miles",
+          "Category": "W OW-III",
+          "Time": "1:51:08.4",
+          "Difference": "+29:30.7",
+          "PercentBack": "+36.15%",
+          "PercentWinning": "73.45%",
+          "PercentAverage": "-15.31%",
+          "PercentMedian": "-15.31%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "W SK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "40",
+          "Name": "Cunard, Kari",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "W SK",
+          "Time": "2:29:05.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "7.8 miles",
+        "Category": "W SUP"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "48",
+          "Name": "Mebus, Leanne",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "W SUP",
+          "Time": "2:26:30.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.07%",
+          "PercentMedian": "0.07%",
+          "StartTime": "10:04:50.3"
+        },
+        {
+          "Place": "2",
+          "Bib": "41",
+          "Name": "Cunard, Alison",
+          "TeamName": "First Wave",
+          "Distance": "7.8 miles",
+          "Category": "W SUP",
+          "Time": "2:26:42.9",
+          "Difference": "+0:12.5",
+          "PercentBack": "+0.14%",
+          "PercentWinning": "99.86%",
+          "PercentAverage": "-0.07%",
+          "PercentMedian": "-0.07%",
+          "StartTime": "10:04:50.3"
+        }
+      ]
+    }
+  ]
+}

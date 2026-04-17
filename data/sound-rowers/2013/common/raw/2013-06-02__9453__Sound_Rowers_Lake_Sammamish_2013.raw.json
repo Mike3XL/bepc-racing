@@ -1,0 +1,1343 @@
+{
+  "RaceInfo": {
+    "RaceId": 9453,
+    "Name": "Sound Rowers: Lake Sammamish 2013",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=9453",
+    "Date": "Jun 2, 2013",
+    "Sport": "Paddling",
+    "StartTime": "Sunday, June 2, 2013 10:00 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "Issaquah",
+    "StateOrProvince": "WA",
+    "Latitude": 47.558225547689226,
+    "Longitude": -122.0650577545166,
+    "StartType": "Wave",
+    "WaveGrouping": "By distance",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 1.5",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Thursday, August 21, 2014 11:36 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/9453.jpg?635442178090000000"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Long Course (13mi)",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Greg Barton",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK",
+          "Gender": "Male",
+          "Time": "1:24:40.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.87%",
+          "PercentMedian": "16.32%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "42",
+          "Name": "Gabe Newton",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK",
+          "Gender": "Male",
+          "Time": "1:24:42.4",
+          "Difference": "+0:01.8",
+          "PercentBack": "+0.04%",
+          "PercentWinning": "99.96%",
+          "PercentAverage": "14.84%",
+          "PercentMedian": "16.29%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "8",
+          "Name": "Egor Clevac & Peter Turcan",
+          "TeamName": "Seattle",
+          "TeamName2": "Fenn Elite Double",
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK-2",
+          "Gender": "",
+          "Time": "1:28:55.6",
+          "Difference": "+4:15.0",
+          "PercentBack": "+5.02%",
+          "PercentWinning": "95.22%",
+          "PercentAverage": "10.60%",
+          "PercentMedian": "12.12%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "4",
+          "Bib": "19",
+          "Name": "Don Kiesling",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Allwave CX",
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK",
+          "Gender": "Male",
+          "Time": "1:29:08.5",
+          "Difference": "+4:27.9",
+          "PercentBack": "+5.27%",
+          "PercentWinning": "94.99%",
+          "PercentAverage": "10.38%",
+          "PercentMedian": "11.91%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "5",
+          "Bib": "4",
+          "Name": "Peter Hirtle",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M 1x",
+          "Gender": "Male",
+          "Time": "1:33:59.6",
+          "Difference": "+9:19.0",
+          "PercentBack": "+11.00%",
+          "PercentWinning": "90.09%",
+          "PercentAverage": "5.51%",
+          "PercentMedian": "7.11%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "6",
+          "Bib": "62",
+          "Name": "Brad and Jim Bauer",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M OC-2",
+          "Gender": "Male",
+          "Time": "1:36:24.0",
+          "Difference": "+11:43.4",
+          "PercentBack": "+13.84%",
+          "PercentWinning": "87.84%",
+          "PercentAverage": "3.09%",
+          "PercentMedian": "4.73%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "7",
+          "Bib": "3",
+          "Name": "Mike Walsh",
+          "TeamName": "Renton, WA",
+          "TeamName2": "Maas 24",
+          "Distance": "Long Course (13mi)",
+          "Category": "M OW-III",
+          "Gender": "",
+          "Time": "1:40:40.1",
+          "Difference": "+15:59.5",
+          "PercentBack": "+18.89%",
+          "PercentWinning": "84.11%",
+          "PercentAverage": "-1.20%",
+          "PercentMedian": "0.52%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "8",
+          "Bib": "38",
+          "Name": "Nick Cooksey",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK",
+          "Gender": "Male",
+          "Time": "1:41:42.7",
+          "Difference": "+17:02.1",
+          "PercentBack": "+20.12%",
+          "PercentWinning": "83.25%",
+          "PercentAverage": "-2.25%",
+          "PercentMedian": "-0.52%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "9",
+          "Bib": "29",
+          "Name": "Tom Kreyche",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Maas 24",
+          "Distance": "Long Course (13mi)",
+          "Category": "M OW-III",
+          "Gender": "",
+          "Time": "1:41:52.0",
+          "Difference": "+17:11.4",
+          "PercentBack": "+20.30%",
+          "PercentWinning": "83.13%",
+          "PercentAverage": "-2.41%",
+          "PercentMedian": "-0.67%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "10",
+          "Bib": "1",
+          "Name": "Johnson-George",
+          "TeamName": "Wenatchee, WA",
+          "TeamName2": "Huki OC-2",
+          "Distance": "Long Course (13mi)",
+          "Category": "MX OC-2",
+          "Gender": "",
+          "Time": "1:41:56.6",
+          "Difference": "+17:16.0",
+          "PercentBack": "+20.39%",
+          "PercentWinning": "83.06%",
+          "PercentAverage": "-2.48%",
+          "PercentMedian": "-0.74%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "11",
+          "Bib": "5",
+          "Name": "Roger Lamb",
+          "TeamName": "Bellingham, WA",
+          "TeamName2": "Epic V12",
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK",
+          "Gender": "Male",
+          "Time": "1:42:00.7",
+          "Difference": "+17:20.1",
+          "PercentBack": "+20.47%",
+          "PercentWinning": "83.01%",
+          "PercentAverage": "-2.55%",
+          "PercentMedian": "-0.81%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "12",
+          "Bib": "17",
+          "Name": "James Schulz",
+          "TeamName": "Redmond, WA",
+          "TeamName2": "Epic V10",
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "1:42:46.3",
+          "Difference": "+18:05.7",
+          "PercentBack": "+21.37%",
+          "PercentWinning": "82.39%",
+          "PercentAverage": "-3.32%",
+          "PercentMedian": "-1.56%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "13",
+          "Bib": "58",
+          "Name": "Bill Jaquette",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M OW-III",
+          "Gender": "Male",
+          "Time": "1:45:18.0",
+          "Difference": "+20:37.4",
+          "PercentBack": "+24.36%",
+          "PercentWinning": "80.41%",
+          "PercentAverage": "-5.86%",
+          "PercentMedian": "-4.06%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "14",
+          "Bib": "13",
+          "Name": "Jiri Pertold",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M SK",
+          "Gender": "",
+          "Time": "2:18:29.0",
+          "Difference": "+53:48.4",
+          "PercentBack": "+63.54%",
+          "PercentWinning": "61.15%",
+          "PercentAverage": "-39.22%",
+          "PercentMedian": "-36.85%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Dan Davis",
+          "TeamName": "Renton, WA",
+          "TeamName2": "Lahui Kai SUP 14'",
+          "Distance": "Long Course (13mi)",
+          "Category": "M 1x",
+          "Gender": "",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Scott Whitney",
+          "TeamName": "Providence, RI",
+          "TeamName2": "Maas 24",
+          "Distance": "Long Course (13mi)",
+          "Category": "M OW-II",
+          "Gender": "",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "22",
+          "Name": "Sammamish Rowing Assoc.",
+          "TeamName": "Carnation, WA",
+          "TeamName2": "Pocock/2-",
+          "Distance": "Short Course (6mi)",
+          "Category": "M 2x",
+          "Gender": "",
+          "Time": "42:18.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "26.33%",
+          "PercentMedian": "20.06%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "2",
+          "Bib": "23",
+          "Name": "David Herness",
+          "TeamName": "Bellevue, WA",
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "M 1x",
+          "Gender": "",
+          "Time": "47:53.4",
+          "Difference": "+5:34.9",
+          "PercentBack": "+13.19%",
+          "PercentWinning": "88.34%",
+          "PercentAverage": "16.61%",
+          "PercentMedian": "9.52%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "3",
+          "Bib": "14",
+          "Name": "Steve Oien and Hanne Thiede",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "MX 2x",
+          "Gender": "",
+          "Time": "50:12.8",
+          "Difference": "+7:54.3",
+          "PercentBack": "+18.68%",
+          "PercentWinning": "84.26%",
+          "PercentAverage": "12.56%",
+          "PercentMedian": "5.13%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "4",
+          "Bib": "20",
+          "Name": "Steve Thompson",
+          "TeamName": "Redmond, WA",
+          "TeamName2": "Maas 24",
+          "Distance": "Short Course (6mi)",
+          "Category": "M OW-III",
+          "Gender": "",
+          "Time": "50:40.2",
+          "Difference": "+8:21.7",
+          "PercentBack": "+19.76%",
+          "PercentWinning": "83.50%",
+          "PercentAverage": "11.77%",
+          "PercentMedian": "4.27%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "5",
+          "Bib": "12",
+          "Name": "Tyler Peterson",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "M OW-2x",
+          "Gender": "",
+          "Time": "51:08.7",
+          "Difference": "+8:50.2",
+          "PercentBack": "+20.89%",
+          "PercentWinning": "82.72%",
+          "PercentAverage": "10.94%",
+          "PercentMedian": "3.37%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "6",
+          "Bib": "15",
+          "Name": "M. Lipe, T Roller, J Gifford, A Wangeman",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "MX-4X",
+          "Gender": "",
+          "Time": "51:31.0",
+          "Difference": "+9:12.5",
+          "PercentBack": "+21.76%",
+          "PercentWinning": "82.13%",
+          "PercentAverage": "10.29%",
+          "PercentMedian": "2.67%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "7",
+          "Bib": "25",
+          "Name": "Paul Crivell",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "51:38.1",
+          "Difference": "+9:19.6",
+          "PercentBack": "+22.04%",
+          "PercentWinning": "81.94%",
+          "PercentAverage": "10.09%",
+          "PercentMedian": "2.44%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "8",
+          "Bib": "9",
+          "Name": "Megan Yount",
+          "TeamName": "Issaquah, WA",
+          "TeamName2": "Maas 24",
+          "Distance": "Short Course (6mi)",
+          "Category": "W OW-III",
+          "Gender": "",
+          "Time": "52:34.2",
+          "Difference": "+10:15.7",
+          "PercentBack": "+24.25%",
+          "PercentWinning": "80.48%",
+          "PercentAverage": "8.46%",
+          "PercentMedian": "0.68%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "9",
+          "Bib": "16",
+          "Name": "Brent Couvrette",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "53:17.1",
+          "Difference": "+10:58.6",
+          "PercentBack": "+25.94%",
+          "PercentWinning": "79.40%",
+          "PercentAverage": "7.22%",
+          "PercentMedian": "-0.68%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "10",
+          "Bib": "21",
+          "Name": "Old Skool-J Wong V Heikkila",
+          "TeamName": "ABERDEEN, WA",
+          "TeamName2": "Huki OC 2",
+          "Distance": "Short Course (6mi)",
+          "Category": "M OC-2",
+          "Gender": "Male",
+          "Time": "53:28.7",
+          "Difference": "+11:10.2",
+          "PercentBack": "+26.40%",
+          "PercentWinning": "79.11%",
+          "PercentAverage": "6.88%",
+          "PercentMedian": "-1.04%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "11",
+          "Bib": "6",
+          "Name": "Connor Lowrey",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Epic V14",
+          "Distance": "Short Course (6mi)",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "56:02.6",
+          "Difference": "+13:44.1",
+          "PercentBack": "+32.46%",
+          "PercentWinning": "75.49%",
+          "PercentAverage": "2.41%",
+          "PercentMedian": "-5.89%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "12",
+          "Bib": "2",
+          "Name": "Shane Baker",
+          "TeamName": "Port Orchard, WA",
+          "TeamName2": "Kamanu Pueo",
+          "Distance": "Short Course (6mi)",
+          "Category": "M OC-1",
+          "Gender": "Male",
+          "Time": "1:01:39.1",
+          "Difference": "+19:20.6",
+          "PercentBack": "+45.72%",
+          "PercentWinning": "68.62%",
+          "PercentAverage": "-7.35%",
+          "PercentMedian": "-16.48%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "13",
+          "Bib": "18",
+          "Name": "Jack Fleming",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "M SK",
+          "Gender": "",
+          "Time": "1:05:38.7",
+          "Difference": "+23:20.2",
+          "PercentBack": "+55.16%",
+          "PercentWinning": "64.45%",
+          "PercentAverage": "-14.31%",
+          "PercentMedian": "-24.03%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "14",
+          "Bib": "11",
+          "Name": "Richard Farr",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Maelstrom Vaag",
+          "Distance": "Short Course (6mi)",
+          "Category": "M SK",
+          "Gender": "",
+          "Time": "1:11:08.3",
+          "Difference": "+28:49.8",
+          "PercentBack": "+68.14%",
+          "PercentWinning": "59.47%",
+          "PercentAverage": "-23.87%",
+          "PercentMedian": "-34.41%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "15",
+          "Bib": "24",
+          "Name": "Fig Fiegener",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "M 1X-FS",
+          "Gender": "",
+          "Time": "1:16:25.9",
+          "Difference": "+34:07.4",
+          "PercentBack": "+80.65%",
+          "PercentWinning": "55.35%",
+          "PercentAverage": "-33.09%",
+          "PercentMedian": "-44.41%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "16",
+          "Bib": "7",
+          "Name": "Steve Bennett",
+          "TeamName": "Tulalip",
+          "TeamName2": "Wenonah Advantage",
+          "Distance": "Short Course (6mi)",
+          "Category": "M C1",
+          "Gender": "Male",
+          "Time": "1:23:14.2",
+          "Difference": "+40:55.7",
+          "PercentBack": "+96.74%",
+          "PercentWinning": "50.83%",
+          "PercentAverage": "-44.94%",
+          "PercentMedian": "-57.27%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Ryan Kuja",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "14' Bark Dominator",
+          "Distance": "Short Course (6mi)",
+          "Category": "M SUP",
+          "Gender": "",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (13mi)",
+        "Category": "M 1x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "4",
+          "Name": "Peter Hirtle",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M 1x",
+          "Gender": "Male",
+          "Time": "1:33:59.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Dan Davis",
+          "TeamName": "Renton, WA",
+          "TeamName2": "Lahui Kai SUP 14'",
+          "Distance": "Long Course (13mi)",
+          "Category": "M 1x",
+          "Gender": "",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (13mi)",
+        "Category": "M HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Greg Barton",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK",
+          "Gender": "Male",
+          "Time": "1:24:40.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.08%",
+          "PercentMedian": "11.27%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "42",
+          "Name": "Gabe Newton",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK",
+          "Gender": "Male",
+          "Time": "1:24:42.4",
+          "Difference": "+0:01.8",
+          "PercentBack": "+0.04%",
+          "PercentWinning": "99.96%",
+          "PercentAverage": "10.05%",
+          "PercentMedian": "11.23%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "19",
+          "Name": "Don Kiesling",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Allwave CX",
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK",
+          "Gender": "Male",
+          "Time": "1:29:08.5",
+          "Difference": "+4:27.9",
+          "PercentBack": "+5.27%",
+          "PercentWinning": "94.99%",
+          "PercentAverage": "5.34%",
+          "PercentMedian": "6.59%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "4",
+          "Bib": "38",
+          "Name": "Nick Cooksey",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK",
+          "Gender": "Male",
+          "Time": "1:41:42.7",
+          "Difference": "+17:02.1",
+          "PercentBack": "+20.12%",
+          "PercentWinning": "83.25%",
+          "PercentAverage": "-8.01%",
+          "PercentMedian": "-6.59%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "5",
+          "Bib": "5",
+          "Name": "Roger Lamb",
+          "TeamName": "Bellingham, WA",
+          "TeamName2": "Epic V12",
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK",
+          "Gender": "Male",
+          "Time": "1:42:00.7",
+          "Difference": "+17:20.1",
+          "PercentBack": "+20.47%",
+          "PercentWinning": "83.01%",
+          "PercentAverage": "-8.33%",
+          "PercentMedian": "-6.90%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "6",
+          "Bib": "17",
+          "Name": "James Schulz",
+          "TeamName": "Redmond, WA",
+          "TeamName2": "Epic V10",
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "1:42:46.3",
+          "Difference": "+18:05.7",
+          "PercentBack": "+21.37%",
+          "PercentWinning": "82.39%",
+          "PercentAverage": "-9.13%",
+          "PercentMedian": "-7.70%",
+          "StartTime": "10:01:44.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (13mi)",
+        "Category": "M HPK-2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "8",
+          "Name": "Egor Clevac & Peter Turcan",
+          "TeamName": "Seattle",
+          "TeamName2": "Fenn Elite Double",
+          "Distance": "Long Course (13mi)",
+          "Category": "M HPK-2",
+          "Gender": "",
+          "Time": "1:28:55.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:01:44.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (13mi)",
+        "Category": "M OC-2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "62",
+          "Name": "Brad and Jim Bauer",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M OC-2",
+          "Gender": "Male",
+          "Time": "1:36:24.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:01:44.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (13mi)",
+        "Category": "M OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Scott Whitney",
+          "TeamName": "Providence, RI",
+          "TeamName2": "Maas 24",
+          "Distance": "Long Course (13mi)",
+          "Category": "M OW-II",
+          "Gender": "",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (13mi)",
+        "Category": "M OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "3",
+          "Name": "Mike Walsh",
+          "TeamName": "Renton, WA",
+          "TeamName2": "Maas 24",
+          "Distance": "Long Course (13mi)",
+          "Category": "M OW-III",
+          "Gender": "",
+          "Time": "1:40:40.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "1.89%",
+          "PercentMedian": "1.18%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "2",
+          "Bib": "29",
+          "Name": "Tom Kreyche",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Maas 24",
+          "Distance": "Long Course (13mi)",
+          "Category": "M OW-III",
+          "Gender": "",
+          "Time": "1:41:52.0",
+          "Difference": "+1:11.9",
+          "PercentBack": "+1.19%",
+          "PercentWinning": "98.82%",
+          "PercentAverage": "0.73%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:01:44.7"
+        },
+        {
+          "Place": "3",
+          "Bib": "58",
+          "Name": "Bill Jaquette",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M OW-III",
+          "Gender": "Male",
+          "Time": "1:45:18.0",
+          "Difference": "+4:37.9",
+          "PercentBack": "+4.60%",
+          "PercentWinning": "95.60%",
+          "PercentAverage": "-2.62%",
+          "PercentMedian": "-3.37%",
+          "StartTime": "10:01:44.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (13mi)",
+        "Category": "M SK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "13",
+          "Name": "Jiri Pertold",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Long Course (13mi)",
+          "Category": "M SK",
+          "Gender": "",
+          "Time": "2:18:29.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:01:44.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course (13mi)",
+        "Category": "MX OC-2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "Johnson-George",
+          "TeamName": "Wenatchee, WA",
+          "TeamName2": "Huki OC-2",
+          "Distance": "Long Course (13mi)",
+          "Category": "MX OC-2",
+          "Gender": "",
+          "Time": "1:41:56.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:01:44.7"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "M 1x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "23",
+          "Name": "David Herness",
+          "TeamName": "Bellevue, WA",
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "M 1x",
+          "Gender": "",
+          "Time": "47:53.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "M 1X-FS"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "24",
+          "Name": "Fig Fiegener",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "M 1X-FS",
+          "Gender": "",
+          "Time": "1:16:25.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "M 2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "22",
+          "Name": "Sammamish Rowing Assoc.",
+          "TeamName": "Carnation, WA",
+          "TeamName2": "Pocock/2-",
+          "Distance": "Short Course (6mi)",
+          "Category": "M 2x",
+          "Gender": "",
+          "Time": "42:18.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "M C1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "7",
+          "Name": "Steve Bennett",
+          "TeamName": "Tulalip",
+          "TeamName2": "Wenonah Advantage",
+          "Distance": "Short Course (6mi)",
+          "Category": "M C1",
+          "Gender": "Male",
+          "Time": "1:23:14.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "M HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "25",
+          "Name": "Paul Crivell",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "51:38.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.76%",
+          "PercentMedian": "3.10%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "2",
+          "Bib": "16",
+          "Name": "Brent Couvrette",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "53:17.1",
+          "Difference": "+1:39.0",
+          "PercentBack": "+3.20%",
+          "PercentWinning": "96.90%",
+          "PercentAverage": "0.69%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "3",
+          "Bib": "6",
+          "Name": "Connor Lowrey",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Epic V14",
+          "Distance": "Short Course (6mi)",
+          "Category": "M HPK",
+          "Gender": "",
+          "Time": "56:02.6",
+          "Difference": "+4:24.5",
+          "PercentBack": "+8.54%",
+          "PercentWinning": "92.13%",
+          "PercentAverage": "-4.45%",
+          "PercentMedian": "-5.18%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "M OC-1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "2",
+          "Name": "Shane Baker",
+          "TeamName": "Port Orchard, WA",
+          "TeamName2": "Kamanu Pueo",
+          "Distance": "Short Course (6mi)",
+          "Category": "M OC-1",
+          "Gender": "Male",
+          "Time": "1:01:39.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "M OC-2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "21",
+          "Name": "Old Skool-J Wong V Heikkila",
+          "TeamName": "ABERDEEN, WA",
+          "TeamName2": "Huki OC 2",
+          "Distance": "Short Course (6mi)",
+          "Category": "M OC-2",
+          "Gender": "Male",
+          "Time": "53:28.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "M OW-2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "12",
+          "Name": "Tyler Peterson",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "M OW-2x",
+          "Gender": "",
+          "Time": "51:08.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "M OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "20",
+          "Name": "Steve Thompson",
+          "TeamName": "Redmond, WA",
+          "TeamName2": "Maas 24",
+          "Distance": "Short Course (6mi)",
+          "Category": "M OW-III",
+          "Gender": "",
+          "Time": "50:40.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "M SK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "18",
+          "Name": "Jack Fleming",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "M SK",
+          "Gender": "",
+          "Time": "1:05:38.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "4.02%",
+          "PercentMedian": "4.02%",
+          "StartTime": "11:00:24.0"
+        },
+        {
+          "Place": "2",
+          "Bib": "11",
+          "Name": "Richard Farr",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "Maelstrom Vaag",
+          "Distance": "Short Course (6mi)",
+          "Category": "M SK",
+          "Gender": "",
+          "Time": "1:11:08.3",
+          "Difference": "+5:29.6",
+          "PercentBack": "+8.37%",
+          "PercentWinning": "92.28%",
+          "PercentAverage": "-4.02%",
+          "PercentMedian": "-4.02%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "M SUP"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Ryan Kuja",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "14' Bark Dominator",
+          "Distance": "Short Course (6mi)",
+          "Category": "M SUP",
+          "Gender": "",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "MX 2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "14",
+          "Name": "Steve Oien and Hanne Thiede",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "MX 2x",
+          "Gender": "",
+          "Time": "50:12.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "MX-4X"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "15",
+          "Name": "M. Lipe, T Roller, J Gifford, A Wangeman",
+          "TeamName": null,
+          "TeamName2": null,
+          "Distance": "Short Course (6mi)",
+          "Category": "MX-4X",
+          "Gender": "",
+          "Time": "51:31.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course (6mi)",
+        "Category": "W OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "9",
+          "Name": "Megan Yount",
+          "TeamName": "Issaquah, WA",
+          "TeamName2": "Maas 24",
+          "Distance": "Short Course (6mi)",
+          "Category": "W OW-III",
+          "Gender": "",
+          "Time": "52:34.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:24.0"
+        }
+      ]
+    }
+  ]
+}

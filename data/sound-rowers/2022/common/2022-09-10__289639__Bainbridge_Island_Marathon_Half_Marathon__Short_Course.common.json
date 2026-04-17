@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 289639,
+    "distance": "Short Course",
+    "name": "Bainbridge Island Marathon / Half Marathon \u2014 Short Course",
+    "displayURL": "https://www.webscorer.com/race?raceid=289639",
+    "date": "Sep 10, 2022",
+    "sport": "Rowing",
+    "startTime": "Saturday, September 10, 2022 9:05 AM (GMT-7)",
+    "country": "United States",
+    "city": "Bainbridge Island",
+    "pointsWeight": 0.2
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Kevin Olney",
+      "craftCategory": "HPK (Surfski/High Performance Kayak)",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 146.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 146.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

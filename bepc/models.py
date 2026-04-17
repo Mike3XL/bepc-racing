@@ -23,6 +23,7 @@ class RacerResult:
     handicap: float = 1.0
     adjusted_time_seconds: float = 0.0
     adjusted_place: int = 0
+    eligible_adjusted_place: int = 0
     time_versus_par: float = 0.0
     adjusted_time_versus_par: float = 0.0
     handicap_post: float = 1.0

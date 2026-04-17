@@ -1,0 +1,1560 @@
+{
+  "RaceInfo": {
+    "RaceId": 365118,
+    "Name": "Bainbridge Island Marathon and Half Marathon",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=365118",
+    "Date": "Sep 7, 2024",
+    "Sport": "Rowing",
+    "StartTime": "Saturday, September 7, 2024 9:00 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers and Paddlers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "Bainbridge Island",
+    "StateOrProvince": "WA",
+    "Latitude": 47.70323489692,
+    "Longitude": -122.508716583252,
+    "StartType": "Wave",
+    "WaveGrouping": "Custom",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 7.0",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Monday, September 9, 2024 4:40 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/365118.jpg?638614968360000000"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "16",
+          "Name": "Adrian / Rainer/Cody/Kelton",
+          "Distance": "Long Course",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "3:32:51.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "29.36%",
+          "PercentMedian": "22.94%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "22",
+          "Name": "Joshua Proctor / Rob Foreman",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "3:36:22.4",
+          "Difference": "+3:31.4",
+          "PercentBack": "+1.66%",
+          "PercentWinning": "98.37%",
+          "PercentAverage": "28.19%",
+          "PercentMedian": "21.66%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "17",
+          "Name": "Egor Klevak",
+          "Distance": "Long Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "3:40:41.7",
+          "Difference": "+7:50.7",
+          "PercentBack": "+3.69%",
+          "PercentWinning": "96.45%",
+          "PercentAverage": "26.76%",
+          "PercentMedian": "20.10%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "18",
+          "Name": "Ivan Medvedev",
+          "Distance": "Long Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "3:49:29.0",
+          "Difference": "+16:38.0",
+          "PercentBack": "+7.81%",
+          "PercentWinning": "92.75%",
+          "PercentAverage": "23.84%",
+          "PercentMedian": "16.92%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "5",
+          "Name": "Rod Sternagel / Hayleigh Werner",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female/Male",
+          "Time": "3:59:13.4",
+          "Difference": "+26:22.4",
+          "PercentBack": "+12.39%",
+          "PercentWinning": "88.98%",
+          "PercentAverage": "20.61%",
+          "PercentMedian": "13.39%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "6",
+          "Bib": "13",
+          "Name": "Owen Sykes / Hugo Pizario",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "4:05:06.1",
+          "Difference": "+32:15.1",
+          "PercentBack": "+15.15%",
+          "PercentWinning": "86.84%",
+          "PercentAverage": "18.66%",
+          "PercentMedian": "11.26%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "7",
+          "Bib": "28",
+          "Name": "Matthew Sun",
+          "Distance": "Long Course",
+          "Category": "OC-1",
+          "Gender": "Male",
+          "Time": "4:28:20.3",
+          "Difference": "+55:29.3",
+          "PercentBack": "+26.07%",
+          "PercentWinning": "79.32%",
+          "PercentAverage": "10.95%",
+          "PercentMedian": "2.85%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "8",
+          "Bib": "9",
+          "Name": "Kathleen Faust",
+          "Distance": "Long Course",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Female",
+          "Time": "4:44:05.0",
+          "Difference": "+1:11:14.0",
+          "PercentBack": "+33.47%",
+          "PercentWinning": "74.93%",
+          "PercentAverage": "5.72%",
+          "PercentMedian": "-2.85%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "9",
+          "Bib": "3",
+          "Name": "John Heater",
+          "Distance": "Long Course",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Male",
+          "Time": "5:13:18.2",
+          "Difference": "+1:40:27.2",
+          "PercentBack": "+47.19%",
+          "PercentWinning": "67.94%",
+          "PercentAverage": "-3.97%",
+          "PercentMedian": "-13.43%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "10",
+          "Bib": "14",
+          "Name": "Travis Boothe",
+          "Distance": "Long Course",
+          "Category": "SUP-14\u2019 (board >12\u20196\"\" and <= 14\u2019)",
+          "Gender": "Male",
+          "Time": "5:27:58.3",
+          "Difference": "+1:55:07.3",
+          "PercentBack": "+54.09%",
+          "PercentWinning": "64.90%",
+          "PercentAverage": "-8.84%",
+          "PercentMedian": "-18.74%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "11",
+          "Bib": "1",
+          "Name": "Jim Sheldrup",
+          "Distance": "Long Course",
+          "Category": "SK (Sea Kayak)",
+          "Gender": "Male",
+          "Time": "6:06:36.3",
+          "Difference": "+2:33:45.3",
+          "PercentBack": "+72.24%",
+          "PercentWinning": "58.06%",
+          "PercentAverage": "-21.66%",
+          "PercentMedian": "-32.73%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "12",
+          "Bib": "6",
+          "Name": "Janna Gross",
+          "Distance": "Long Course",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "6:18:07.4",
+          "Difference": "+2:45:16.4",
+          "PercentBack": "+77.65%",
+          "PercentWinning": "56.29%",
+          "PercentAverage": "-25.48%",
+          "PercentMedian": "-36.90%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "13",
+          "Bib": "11",
+          "Name": "Conor Musgrave",
+          "Distance": "Long Course",
+          "Category": "SK (Sea Kayak)",
+          "Gender": "Male",
+          "Time": "7:38:12.4",
+          "Difference": "+4:05:21.4",
+          "PercentBack": "+115.27%",
+          "PercentWinning": "46.45%",
+          "PercentAverage": "-52.06%",
+          "PercentMedian": "-65.89%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "14",
+          "Bib": "12",
+          "Name": "Tom Applewhite",
+          "Distance": "Long Course",
+          "Category": "SK (Sea Kayak)",
+          "Gender": "Male",
+          "Time": "7:38:18.0",
+          "Difference": "+4:05:27.0",
+          "PercentBack": "+115.32%",
+          "PercentWinning": "46.44%",
+          "PercentAverage": "-52.09%",
+          "PercentMedian": "-65.92%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "-",
+          "Bib": "500",
+          "Name": "N/A",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "-",
+          "Bib": "1300",
+          "Name": "H",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "1600",
+          "Name": "NA",
+          "Distance": "Long Course",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "2200",
+          "Name": "F",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "16000",
+          "Name": "K",
+          "Distance": "Long Course",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "16001",
+          "Name": "R",
+          "Distance": "Long Course",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "9",
+          "Name": "Kathleen Faust",
+          "Distance": "Long Course",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Female",
+          "Time": "4:44:05.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.20%",
+          "PercentMedian": "14.20%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "2",
+          "Bib": "6",
+          "Name": "Janna Gross",
+          "Distance": "Long Course",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "6:18:07.4",
+          "Difference": "+1:34:02.4",
+          "PercentBack": "+33.10%",
+          "PercentWinning": "75.13%",
+          "PercentAverage": "-14.20%",
+          "PercentMedian": "-14.20%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "-",
+          "Bib": "500",
+          "Name": "N/A",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "09:00:04.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "16",
+          "Name": "Adrian / Rainer/Cody/Kelton",
+          "Distance": "Long Course",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "3:32:51.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "29.42%",
+          "PercentMedian": "20.68%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "22",
+          "Name": "Joshua Proctor / Rob Foreman",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "3:36:22.4",
+          "Difference": "+3:31.4",
+          "PercentBack": "+1.66%",
+          "PercentWinning": "98.37%",
+          "PercentAverage": "28.25%",
+          "PercentMedian": "19.37%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "17",
+          "Name": "Egor Klevak",
+          "Distance": "Long Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "3:40:41.7",
+          "Difference": "+7:50.7",
+          "PercentBack": "+3.69%",
+          "PercentWinning": "96.45%",
+          "PercentAverage": "26.82%",
+          "PercentMedian": "17.75%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "18",
+          "Name": "Ivan Medvedev",
+          "Distance": "Long Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "3:49:29.0",
+          "Difference": "+16:38.0",
+          "PercentBack": "+7.81%",
+          "PercentWinning": "92.75%",
+          "PercentAverage": "23.90%",
+          "PercentMedian": "14.48%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "13",
+          "Name": "Owen Sykes / Hugo Pizario",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "4:05:06.1",
+          "Difference": "+32:15.1",
+          "PercentBack": "+15.15%",
+          "PercentWinning": "86.84%",
+          "PercentAverage": "18.72%",
+          "PercentMedian": "8.66%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "6",
+          "Bib": "28",
+          "Name": "Matthew Sun",
+          "Distance": "Long Course",
+          "Category": "OC-1",
+          "Gender": "Male",
+          "Time": "4:28:20.3",
+          "Difference": "+55:29.3",
+          "PercentBack": "+26.07%",
+          "PercentWinning": "79.32%",
+          "PercentAverage": "11.02%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "7",
+          "Bib": "3",
+          "Name": "John Heater",
+          "Distance": "Long Course",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Male",
+          "Time": "5:13:18.2",
+          "Difference": "+1:40:27.2",
+          "PercentBack": "+47.19%",
+          "PercentWinning": "67.94%",
+          "PercentAverage": "-3.89%",
+          "PercentMedian": "-16.76%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "8",
+          "Bib": "14",
+          "Name": "Travis Boothe",
+          "Distance": "Long Course",
+          "Category": "SUP-14\u2019 (board >12\u20196\"\" and <= 14\u2019)",
+          "Gender": "Male",
+          "Time": "5:27:58.3",
+          "Difference": "+1:55:07.3",
+          "PercentBack": "+54.09%",
+          "PercentWinning": "64.90%",
+          "PercentAverage": "-8.76%",
+          "PercentMedian": "-22.22%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "9",
+          "Bib": "1",
+          "Name": "Jim Sheldrup",
+          "Distance": "Long Course",
+          "Category": "SK (Sea Kayak)",
+          "Gender": "Male",
+          "Time": "6:06:36.3",
+          "Difference": "+2:33:45.3",
+          "PercentBack": "+72.24%",
+          "PercentWinning": "58.06%",
+          "PercentAverage": "-21.57%",
+          "PercentMedian": "-36.62%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "10",
+          "Bib": "11",
+          "Name": "Conor Musgrave",
+          "Distance": "Long Course",
+          "Category": "SK (Sea Kayak)",
+          "Gender": "Male",
+          "Time": "7:38:12.4",
+          "Difference": "+4:05:21.4",
+          "PercentBack": "+115.27%",
+          "PercentWinning": "46.45%",
+          "PercentAverage": "-51.94%",
+          "PercentMedian": "-70.76%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "11",
+          "Bib": "12",
+          "Name": "Tom Applewhite",
+          "Distance": "Long Course",
+          "Category": "SK (Sea Kayak)",
+          "Gender": "Male",
+          "Time": "7:38:18.0",
+          "Difference": "+4:05:27.0",
+          "PercentBack": "+115.32%",
+          "PercentWinning": "46.44%",
+          "PercentAverage": "-51.97%",
+          "PercentMedian": "-70.79%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "-",
+          "Bib": "1300",
+          "Name": "H",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "1600",
+          "Name": "NA",
+          "Distance": "Long Course",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "2200",
+          "Name": "F",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "16000",
+          "Name": "K",
+          "Distance": "Long Course",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "16001",
+          "Name": "R",
+          "Distance": "Long Course",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Rod Sternagel / Hayleigh Werner",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female/Male",
+          "Time": "3:59:13.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:00:04.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "25",
+          "Name": "Jennifer Hwang / Peter Hirtle",
+          "Distance": "Short Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female/Male",
+          "Time": "2:15:08.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "19.48%",
+          "PercentMedian": "14.80%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "2",
+          "Bib": "19",
+          "Name": "Denise Weeks",
+          "Distance": "Short Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Female",
+          "Time": "2:32:28.7",
+          "Difference": "+17:20.6",
+          "PercentBack": "+12.83%",
+          "PercentWinning": "88.63%",
+          "PercentAverage": "9.15%",
+          "PercentMedian": "3.87%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "3",
+          "Bib": "20",
+          "Name": "Elyse  Rowe",
+          "Distance": "Short Course",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "2:34:08.5",
+          "Difference": "+19:00.4",
+          "PercentBack": "+14.06%",
+          "PercentWinning": "87.67%",
+          "PercentAverage": "8.16%",
+          "PercentMedian": "2.82%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "4",
+          "Bib": "15",
+          "Name": "Kelly Johnson / Andrea Fortney",
+          "Distance": "Short Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female",
+          "Time": "2:43:05.6",
+          "Difference": "+27:57.5",
+          "PercentBack": "+20.69%",
+          "PercentWinning": "82.86%",
+          "PercentAverage": "2.82%",
+          "PercentMedian": "-2.82%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "5",
+          "Bib": "21",
+          "Name": "Coreen Schmidt / Shanan Carlson",
+          "Distance": "Short Course",
+          "Category": "OC-2 (Outrigger Canoe Double)",
+          "Gender": "Female",
+          "Time": "3:07:21.9",
+          "Difference": "+52:13.8",
+          "PercentBack": "+38.65%",
+          "PercentWinning": "72.12%",
+          "PercentAverage": "-11.64%",
+          "PercentMedian": "-18.12%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "6",
+          "Bib": "10",
+          "Name": "a denny",
+          "Distance": "Short Course",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Male",
+          "Time": "3:34:47.4",
+          "Difference": "+1:19:39.3",
+          "PercentBack": "+58.94%",
+          "PercentWinning": "62.91%",
+          "PercentAverage": "-27.98%",
+          "PercentMedian": "-35.41%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "-",
+          "Bib": "1500",
+          "Name": "A",
+          "Distance": "Short Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "-",
+          "Bib": "2100",
+          "Name": "S",
+          "Distance": "Short Course",
+          "Category": "OC-2 (Outrigger Canoe Double)",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "-",
+          "Bib": "2500",
+          "Name": "P",
+          "Distance": "Short Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "11:00:00.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "19",
+          "Name": "Denise Weeks",
+          "Distance": "Short Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Female",
+          "Time": "2:32:28.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.18%",
+          "PercentMedian": "3.87%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "2",
+          "Bib": "20",
+          "Name": "Elyse  Rowe",
+          "Distance": "Short Course",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "2:34:08.5",
+          "Difference": "+1:39.8",
+          "PercentBack": "+1.09%",
+          "PercentWinning": "98.92%",
+          "PercentAverage": "6.17%",
+          "PercentMedian": "2.82%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "3",
+          "Bib": "15",
+          "Name": "Kelly Johnson / Andrea Fortney",
+          "Distance": "Short Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female",
+          "Time": "2:43:05.6",
+          "Difference": "+10:36.9",
+          "PercentBack": "+6.96%",
+          "PercentWinning": "93.49%",
+          "PercentAverage": "0.72%",
+          "PercentMedian": "-2.82%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "4",
+          "Bib": "21",
+          "Name": "Coreen Schmidt / Shanan Carlson",
+          "Distance": "Short Course",
+          "Category": "OC-2 (Outrigger Canoe Double)",
+          "Gender": "Female",
+          "Time": "3:07:21.9",
+          "Difference": "+34:53.2",
+          "PercentBack": "+22.88%",
+          "PercentWinning": "81.38%",
+          "PercentAverage": "-14.06%",
+          "PercentMedian": "-18.12%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "-",
+          "Bib": "1500",
+          "Name": "A",
+          "Distance": "Short Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "-",
+          "Bib": "2100",
+          "Name": "S",
+          "Distance": "Short Course",
+          "Category": "OC-2 (Outrigger Canoe Double)",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "11:00:00.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "a denny",
+          "Distance": "Short Course",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Male",
+          "Time": "3:34:47.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "-",
+          "Bib": "2500",
+          "Name": "P",
+          "Distance": "Short Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "11:00:00.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "25",
+          "Name": "Jennifer Hwang / Peter Hirtle",
+          "Distance": "Short Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female/Male",
+          "Time": "2:15:08.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:00.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "6",
+          "Name": "Janna Gross",
+          "Distance": "Long Course",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "6:18:07.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:00:04.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "3",
+          "Name": "John Heater",
+          "Distance": "Long Course",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Male",
+          "Time": "5:13:18.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:00:04.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "9",
+          "Name": "Kathleen Faust",
+          "Distance": "Long Course",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Female",
+          "Time": "4:44:05.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:00:04.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "2x-OW (Open Water double)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "500",
+          "Name": "N/A",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "09:00:04.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "2x-OW (Open Water double)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "22",
+          "Name": "Joshua Proctor / Rob Foreman",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "3:36:22.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "6.23%",
+          "PercentMedian": "6.23%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "13",
+          "Name": "Owen Sykes / Hugo Pizario",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "4:05:06.1",
+          "Difference": "+28:43.7",
+          "PercentBack": "+13.28%",
+          "PercentWinning": "88.28%",
+          "PercentAverage": "-6.23%",
+          "PercentMedian": "-6.23%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "1300",
+          "Name": "H",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "2200",
+          "Name": "F",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "2x-OW (Open Water double)",
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Rod Sternagel / Hayleigh Werner",
+          "Distance": "Long Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female/Male",
+          "Time": "3:59:13.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:00:04.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "4x-OW (Open Water quad)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "16",
+          "Name": "Adrian / Rainer/Cody/Kelton",
+          "Distance": "Long Course",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "3:32:51.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "1600",
+          "Name": "NA",
+          "Distance": "Long Course",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "16000",
+          "Name": "K",
+          "Distance": "Long Course",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "16001",
+          "Name": "R",
+          "Distance": "Long Course",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "10:00:04.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "HPK (High Performance Kayak)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "17",
+          "Name": "Egor Klevak",
+          "Distance": "Long Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "3:40:41.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "1.95%",
+          "PercentMedian": "1.95%",
+          "StartTime": "10:00:04.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "18",
+          "Name": "Ivan Medvedev",
+          "Distance": "Long Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "3:49:29.0",
+          "Difference": "+8:47.3",
+          "PercentBack": "+3.98%",
+          "PercentWinning": "96.17%",
+          "PercentAverage": "-1.95%",
+          "PercentMedian": "-1.95%",
+          "StartTime": "10:00:04.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC-1",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "28",
+          "Name": "Matthew Sun",
+          "Distance": "Long Course",
+          "Category": "OC-1",
+          "Gender": "Male",
+          "Time": "4:28:20.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:04.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "SK (Sea Kayak)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "Jim Sheldrup",
+          "Distance": "Long Course",
+          "Category": "SK (Sea Kayak)",
+          "Gender": "Male",
+          "Time": "6:06:36.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "14.29%",
+          "PercentMedian": "19.99%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "2",
+          "Bib": "11",
+          "Name": "Conor Musgrave",
+          "Distance": "Long Course",
+          "Category": "SK (Sea Kayak)",
+          "Gender": "Male",
+          "Time": "7:38:12.4",
+          "Difference": "+1:31:36.1",
+          "PercentBack": "+24.99%",
+          "PercentWinning": "80.01%",
+          "PercentAverage": "-7.13%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:00:04.1"
+        },
+        {
+          "Place": "3",
+          "Bib": "12",
+          "Name": "Tom Applewhite",
+          "Distance": "Long Course",
+          "Category": "SK (Sea Kayak)",
+          "Gender": "Male",
+          "Time": "7:38:18.0",
+          "Difference": "+1:31:41.7",
+          "PercentBack": "+25.01%",
+          "PercentWinning": "79.99%",
+          "PercentAverage": "-7.15%",
+          "PercentMedian": "-0.02%",
+          "StartTime": "09:00:04.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "SUP-14\u2019 (board >12\u20196\"\" and <= 14\u2019)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "14",
+          "Name": "Travis Boothe",
+          "Distance": "Long Course",
+          "Category": "SUP-14\u2019 (board >12\u20196\"\" and <= 14\u2019)",
+          "Gender": "Male",
+          "Time": "5:27:58.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:00:04.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "20",
+          "Name": "Elyse  Rowe",
+          "Distance": "Short Course",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "2:34:08.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:00.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "a denny",
+          "Distance": "Short Course",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Male",
+          "Time": "3:34:47.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:00.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "2x-OW (Open Water double)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "15",
+          "Name": "Kelly Johnson / Andrea Fortney",
+          "Distance": "Short Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female",
+          "Time": "2:43:05.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "-",
+          "Bib": "1500",
+          "Name": "A",
+          "Distance": "Short Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "11:00:00.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "2x-OW (Open Water double)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "-",
+          "Bib": "2500",
+          "Name": "P",
+          "Distance": "Short Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "11:00:00.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "2x-OW (Open Water double)",
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "25",
+          "Name": "Jennifer Hwang / Peter Hirtle",
+          "Distance": "Short Course",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female/Male",
+          "Time": "2:15:08.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:00.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "HPK (High Performance Kayak)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "19",
+          "Name": "Denise Weeks",
+          "Distance": "Short Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Female",
+          "Time": "2:32:28.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:00.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "OC-2 (Outrigger Canoe Double)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "21",
+          "Name": "Coreen Schmidt / Shanan Carlson",
+          "Distance": "Short Course",
+          "Category": "OC-2 (Outrigger Canoe Double)",
+          "Gender": "Female",
+          "Time": "3:07:21.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:00.5"
+        },
+        {
+          "Place": "-",
+          "Bib": "2100",
+          "Name": "S",
+          "Distance": "Short Course",
+          "Category": "OC-2 (Outrigger Canoe Double)",
+          "Gender": "Female",
+          "Time": "DNF",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "11:00:00.5"
+        }
+      ]
+    }
+  ]
+}

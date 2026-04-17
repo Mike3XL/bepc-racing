@@ -14,6 +14,7 @@ import re
 # specific_override: if set, use this as the specific instead of the first token.
 _PATTERNS = [
     # Kayak doubles — must come before singles; use $ or \b to avoid partial match
+    ('hpk-3\\b|hpk3\\b',        'Kayak-3',       'HPK-3'),
     ('hpk-2\\b|hpk2\\b|hpk.*double|hpk.*2x', 'Kayak-2', 'HPK-2'),
     ('fsk-2\\b|fsk2\\b',        'Kayak-2',       'FSK-2'),
     ('sk-2\\b|sk2\\b',          'Kayak-2',       'SK-2'),
@@ -23,7 +24,7 @@ _PATTERNS = [
     ('k-4\\b|k4\\b',            'Sprint-K4',     'K4'),
     # Kayak singles — use \b or $ to avoid matching doubles
     ('surfski',                 'Kayak-1',       'Surfski'),
-    ('hpk(?!-?2)\\b|hpk1\\b|hpdk\\b', 'Kayak-1', 'HPK'),
+    ('hpk(?!-?[23])\\b|hpk1\\b|hpdk\\b', 'Kayak-1', 'HPK'),
     ('fsk(?!-?2)\\b',           'Kayak-1',       'FSK'),
     ('sk(?!-?2)\\b',            'Kayak-1',       'SK'),
     ('k-1\\b|k1\\b',            'Sprint-K1',     'K1'),
@@ -59,6 +60,8 @@ _PATTERNS = [
     ('c-?1\\b|^canoe$',         'Canoe-1',       None),
     # Other
     ('pedal|dragon|rowing',     'Other',         None),
+    (r'other.*\b2\b|other.*double|other.*2.person', 'Other-2', None),
+    (r'^other',                 'Other',         None),
 ]
 _COMPILED = [(re.compile(p, re.I), cat, spec) for p, cat, spec in _PATTERNS]
 
@@ -76,7 +79,7 @@ _STRIP = [re.compile(p, re.I) for p in [
 # Pure division labels — not craft
 _NON_CRAFT = re.compile(
     r'^(men|women|mixed|male|female|master|masters|open|junior|senior|novice|elite|'
-    r'recreational|rec|competitive|double|other.*)$', re.I
+    r'recreational|rec|competitive|double)$', re.I
 )
 
 

@@ -1,0 +1,1408 @@
+{
+  "RaceInfo": {
+    "RaceId": 327955,
+    "Name": "Bainbridge Island Marathon Registration List_Frida",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=327955",
+    "Date": "Sep 9, 2023",
+    "Sport": "Rowing",
+    "StartTime": "Saturday, September 9, 2023 9:07 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers and Paddlers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "Bainbridge Island",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6948404526106,
+    "Longitude": -122.5048447666,
+    "StartType": "Wave",
+    "WaveGrouping": "Custom",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 6.4",
+    "Visibility": "Public",
+    "UpdatedFrom": "Website",
+    "UpdatedTime": "Sunday, September 10, 2023 10:33 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/327955.jpg?638299387980000000"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "3",
+          "Name": "Charles Delaporte",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "3:24:37.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "16.77%",
+          "PercentMedian": "13.63%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "3a",
+          "Name": "Alex Weatbrook",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "3:24:38.9",
+          "Difference": "+0:01.5",
+          "PercentBack": "+0.01%",
+          "PercentWinning": "99.99%",
+          "PercentAverage": "16.76%",
+          "PercentMedian": "13.62%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "7",
+          "Name": "Evan Jacobs",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "3:29:35.3",
+          "Difference": "+4:57.9",
+          "PercentBack": "+2.43%",
+          "PercentWinning": "97.63%",
+          "PercentAverage": "14.75%",
+          "PercentMedian": "11.54%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "4",
+          "Bib(Alphanumeric)": "20",
+          "Name": "Rod Sternagel",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female/Male",
+          "Time": "3:36:32.8",
+          "Difference": "+11:55.4",
+          "PercentBack": "+5.83%",
+          "PercentWinning": "94.49%",
+          "PercentAverage": "11.92%",
+          "PercentMedian": "8.60%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "5",
+          "Bib(Alphanumeric)": "8",
+          "Name": "Cody Jenkins",
+          "Distance": "Long Course - 26 miles",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "3:42:02.1",
+          "Difference": "+17:24.7",
+          "PercentBack": "+8.51%",
+          "PercentWinning": "92.16%",
+          "PercentAverage": "9.69%",
+          "PercentMedian": "6.29%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "6",
+          "Bib(Alphanumeric)": "9",
+          "Name": "Ivan Medvedev",
+          "Distance": "Long Course - 26 miles",
+          "Category": "Hpk-1",
+          "Gender": "Male",
+          "Time": "3:43:35.6",
+          "Difference": "+18:58.2",
+          "PercentBack": "+9.27%",
+          "PercentWinning": "91.52%",
+          "PercentAverage": "9.05%",
+          "PercentMedian": "5.63%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "7",
+          "Bib(Alphanumeric)": "12",
+          "Name": "Kelly Johnson",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female",
+          "Time": "3:56:20.3",
+          "Difference": "+31:42.9",
+          "PercentBack": "+15.50%",
+          "PercentWinning": "86.58%",
+          "PercentAverage": "3.87%",
+          "PercentMedian": "0.25%",
+          "StartTime": "09:07:33.0"
+        },
+        {
+          "Place": "8",
+          "Bib(Alphanumeric)": "16",
+          "Name": "Constance Ciarleglio",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female/Male",
+          "Time": "3:57:31.0",
+          "Difference": "+32:53.6",
+          "PercentBack": "+16.08%",
+          "PercentWinning": "86.15%",
+          "PercentAverage": "3.39%",
+          "PercentMedian": "-0.25%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "9",
+          "Bib(Alphanumeric)": "1",
+          "Name": "Matthew Sun",
+          "Distance": "Long Course - 26 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "4:05:42.3",
+          "Difference": "+41:04.9",
+          "PercentBack": "+20.08%",
+          "PercentWinning": "83.28%",
+          "PercentAverage": "0.06%",
+          "PercentMedian": "-3.70%",
+          "StartTime": "09:07:33.0"
+        },
+        {
+          "Place": "10",
+          "Bib(Alphanumeric)": "14",
+          "Name": "Oliver Laurence",
+          "Distance": "Long Course - 26 miles",
+          "Category": "4x+-OW (Open Water coxed quad)",
+          "Gender": "Male",
+          "Time": "4:11:14.9",
+          "Difference": "+46:37.5",
+          "PercentBack": "+22.79%",
+          "PercentWinning": "81.44%",
+          "PercentAverage": "-2.20%",
+          "PercentMedian": "-6.04%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "11",
+          "Bib(Alphanumeric)": "17",
+          "Name": "Enzo Dougherty",
+          "Distance": "Long Course - 26 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Male",
+          "Time": "4:37:39.9",
+          "Difference": "+1:13:02.5",
+          "PercentBack": "+35.70%",
+          "PercentWinning": "73.69%",
+          "PercentAverage": "-12.94%",
+          "PercentMedian": "-17.19%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "12",
+          "Bib(Alphanumeric)": "23",
+          "Name": "Dean Williams",
+          "Distance": "Long Course - 26 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "4:44:58.8",
+          "Difference": "+1:20:21.4",
+          "PercentBack": "+39.27%",
+          "PercentWinning": "71.80%",
+          "PercentAverage": "-15.92%",
+          "PercentMedian": "-20.28%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "13",
+          "Bib(Alphanumeric)": "4",
+          "Name": "John Heater",
+          "Distance": "Long Course - 26 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Male",
+          "Time": "4:55:27.1",
+          "Difference": "+1:30:49.7",
+          "PercentBack": "+44.39%",
+          "PercentWinning": "69.26%",
+          "PercentAverage": "-20.18%",
+          "PercentMedian": "-24.70%",
+          "StartTime": "09:07:33.0"
+        },
+        {
+          "Place": "14",
+          "Bib(Alphanumeric)": "21",
+          "Name": "Tyrell Williams",
+          "Distance": "Long Course - 26 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Female",
+          "Time": "5:31:55.5",
+          "Difference": "+2:07:18.1",
+          "PercentBack": "+62.21%",
+          "PercentWinning": "61.65%",
+          "PercentAverage": "-35.01%",
+          "PercentMedian": "-40.10%",
+          "StartTime": "10:00:03.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "12",
+          "Name": "Kelly Johnson",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female",
+          "Time": "3:56:20.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "16.82%",
+          "PercentMedian": "16.82%",
+          "StartTime": "09:07:33.0"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "21",
+          "Name": "Tyrell Williams",
+          "Distance": "Long Course - 26 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Female",
+          "Time": "5:31:55.5",
+          "Difference": "+1:35:35.2",
+          "PercentBack": "+40.44%",
+          "PercentWinning": "71.20%",
+          "PercentAverage": "-16.82%",
+          "PercentMedian": "-16.82%",
+          "StartTime": "10:00:03.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "3",
+          "Name": "Charles Delaporte",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "3:24:37.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "15.43%",
+          "PercentMedian": "12.80%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "3a",
+          "Name": "Alex Weatbrook",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "3:24:38.9",
+          "Difference": "+0:01.5",
+          "PercentBack": "+0.01%",
+          "PercentWinning": "99.99%",
+          "PercentAverage": "15.42%",
+          "PercentMedian": "12.79%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "7",
+          "Name": "Evan Jacobs",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "3:29:35.3",
+          "Difference": "+4:57.9",
+          "PercentBack": "+2.43%",
+          "PercentWinning": "97.63%",
+          "PercentAverage": "13.38%",
+          "PercentMedian": "10.68%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "4",
+          "Bib(Alphanumeric)": "8",
+          "Name": "Cody Jenkins",
+          "Distance": "Long Course - 26 miles",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "3:42:02.1",
+          "Difference": "+17:24.7",
+          "PercentBack": "+8.51%",
+          "PercentWinning": "92.16%",
+          "PercentAverage": "8.23%",
+          "PercentMedian": "5.38%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "5",
+          "Bib(Alphanumeric)": "9",
+          "Name": "Ivan Medvedev",
+          "Distance": "Long Course - 26 miles",
+          "Category": "Hpk-1",
+          "Gender": "Male",
+          "Time": "3:43:35.6",
+          "Difference": "+18:58.2",
+          "PercentBack": "+9.27%",
+          "PercentWinning": "91.52%",
+          "PercentAverage": "7.59%",
+          "PercentMedian": "4.71%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "6",
+          "Bib(Alphanumeric)": "1",
+          "Name": "Matthew Sun",
+          "Distance": "Long Course - 26 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "4:05:42.3",
+          "Difference": "+41:04.9",
+          "PercentBack": "+20.08%",
+          "PercentWinning": "83.28%",
+          "PercentAverage": "-1.55%",
+          "PercentMedian": "-4.71%",
+          "StartTime": "09:07:33.0"
+        },
+        {
+          "Place": "7",
+          "Bib(Alphanumeric)": "14",
+          "Name": "Oliver Laurence",
+          "Distance": "Long Course - 26 miles",
+          "Category": "4x+-OW (Open Water coxed quad)",
+          "Gender": "Male",
+          "Time": "4:11:14.9",
+          "Difference": "+46:37.5",
+          "PercentBack": "+22.79%",
+          "PercentWinning": "81.44%",
+          "PercentAverage": "-3.84%",
+          "PercentMedian": "-7.07%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "8",
+          "Bib(Alphanumeric)": "17",
+          "Name": "Enzo Dougherty",
+          "Distance": "Long Course - 26 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Male",
+          "Time": "4:37:39.9",
+          "Difference": "+1:13:02.5",
+          "PercentBack": "+35.70%",
+          "PercentWinning": "73.69%",
+          "PercentAverage": "-14.76%",
+          "PercentMedian": "-18.33%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "9",
+          "Bib(Alphanumeric)": "23",
+          "Name": "Dean Williams",
+          "Distance": "Long Course - 26 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "4:44:58.8",
+          "Difference": "+1:20:21.4",
+          "PercentBack": "+39.27%",
+          "PercentWinning": "71.80%",
+          "PercentAverage": "-17.78%",
+          "PercentMedian": "-21.45%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "10",
+          "Bib(Alphanumeric)": "4",
+          "Name": "John Heater",
+          "Distance": "Long Course - 26 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Male",
+          "Time": "4:55:27.1",
+          "Difference": "+1:30:49.7",
+          "PercentBack": "+44.39%",
+          "PercentWinning": "69.26%",
+          "PercentAverage": "-22.11%",
+          "PercentMedian": "-25.91%",
+          "StartTime": "09:07:33.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "20",
+          "Name": "Rod Sternagel",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female/Male",
+          "Time": "3:36:32.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "4.62%",
+          "PercentMedian": "4.62%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "16",
+          "Name": "Constance Ciarleglio",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female/Male",
+          "Time": "3:57:31.0",
+          "Difference": "+20:58.2",
+          "PercentBack": "+9.68%",
+          "PercentWinning": "91.17%",
+          "PercentAverage": "-4.62%",
+          "PercentMedian": "-4.62%",
+          "StartTime": "10:00:03.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course - 12 miles",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "26",
+          "Name": "Peter Turcan",
+          "Distance": "Short Course - 12 miles",
+          "Category": "HPK-2 (Double HPK)",
+          "Gender": "Male",
+          "Time": "1:56:54.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "35.79%",
+          "PercentMedian": "39.17%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "25",
+          "Name": "Peter Hirtle",
+          "Distance": "Short Course - 12 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "2:05:44.7",
+          "Difference": "+8:50.3",
+          "PercentBack": "+7.56%",
+          "PercentWinning": "92.97%",
+          "PercentAverage": "30.93%",
+          "PercentMedian": "34.58%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "18",
+          "Name": "Kathleen Faust",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Female",
+          "Time": "2:41:32.7",
+          "Difference": "+44:38.3",
+          "PercentBack": "+38.18%",
+          "PercentWinning": "72.37%",
+          "PercentAverage": "11.27%",
+          "PercentMedian": "15.95%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "4",
+          "Bib(Alphanumeric)": "15",
+          "Name": "Michael Lampi",
+          "Distance": "Short Course - 12 miles",
+          "Category": "Pedal-boat",
+          "Gender": "Male",
+          "Time": "2:54:11.0",
+          "Difference": "+57:16.6",
+          "PercentBack": "+48.99%",
+          "PercentWinning": "67.12%",
+          "PercentAverage": "4.33%",
+          "PercentMedian": "9.37%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "5",
+          "Bib(Alphanumeric)": "28",
+          "Name": "Lorraine K Palmer",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "3:12:06.4",
+          "Difference": "+1:15:12.0",
+          "PercentBack": "+64.32%",
+          "PercentWinning": "60.86%",
+          "PercentAverage": "-5.52%",
+          "PercentMedian": "0.05%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "6",
+          "Bib(Alphanumeric)": "24",
+          "Name": "Elizabeth Ellsberry",
+          "Distance": "Short Course - 12 miles",
+          "Category": "FSK (Fast Sea Kayak)",
+          "Gender": "Female",
+          "Time": "3:12:12.0",
+          "Difference": "+1:15:17.6",
+          "PercentBack": "+64.40%",
+          "PercentWinning": "60.83%",
+          "PercentAverage": "-5.57%",
+          "PercentMedian": "0.00%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "7",
+          "Bib(Alphanumeric)": "19",
+          "Name": "Charlie Charlie",
+          "Distance": "Short Course - 12 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "3:12:54.3",
+          "Difference": "+1:15:59.9",
+          "PercentBack": "+65.01%",
+          "PercentWinning": "60.60%",
+          "PercentAverage": "-5.95%",
+          "PercentMedian": "-0.37%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "8",
+          "Bib(Alphanumeric)": "13",
+          "Name": "Karol Danielsson",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "3:17:32.4",
+          "Difference": "+1:20:38.0",
+          "PercentBack": "+68.97%",
+          "PercentWinning": "59.18%",
+          "PercentAverage": "-8.50%",
+          "PercentMedian": "-2.78%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "9",
+          "Bib(Alphanumeric)": "27",
+          "Name": "Carol Sweeney",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Female",
+          "Time": "3:24:36.1",
+          "Difference": "+1:27:41.7",
+          "PercentBack": "+75.01%",
+          "PercentWinning": "57.14%",
+          "PercentAverage": "-12.38%",
+          "PercentMedian": "-6.45%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "10",
+          "Bib(Alphanumeric)": "22",
+          "Name": "Lauren Anderson-Smith",
+          "Distance": "Short Course - 12 miles",
+          "Category": "C2 (Double Canoe)",
+          "Gender": "Female",
+          "Time": "3:34:24.5",
+          "Difference": "+1:37:30.1",
+          "PercentBack": "+83.40%",
+          "PercentWinning": "54.53%",
+          "PercentAverage": "-17.76%",
+          "PercentMedian": "-11.55%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "11",
+          "Bib(Alphanumeric)": "6",
+          "Name": "Celia Clark",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "3:50:34.3",
+          "Difference": "+1:53:39.9",
+          "PercentBack": "+97.23%",
+          "PercentWinning": "50.70%",
+          "PercentAverage": "-26.64%",
+          "PercentMedian": "-19.96%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "-",
+          "Bib(Alphanumeric)": "2",
+          "Name": "Shane Baker",
+          "Distance": "Short Course - 12 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course - 12 miles",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "18",
+          "Name": "Kathleen Faust",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Female",
+          "Time": "2:41:32.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "18.82%",
+          "PercentMedian": "18.22%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "28",
+          "Name": "Lorraine K Palmer",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "3:12:06.4",
+          "Difference": "+30:33.7",
+          "PercentBack": "+18.92%",
+          "PercentWinning": "84.09%",
+          "PercentAverage": "3.46%",
+          "PercentMedian": "2.75%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "24",
+          "Name": "Elizabeth Ellsberry",
+          "Distance": "Short Course - 12 miles",
+          "Category": "FSK (Fast Sea Kayak)",
+          "Gender": "Female",
+          "Time": "3:12:12.0",
+          "Difference": "+30:39.3",
+          "PercentBack": "+18.98%",
+          "PercentWinning": "84.05%",
+          "PercentAverage": "3.42%",
+          "PercentMedian": "2.70%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "4",
+          "Bib(Alphanumeric)": "13",
+          "Name": "Karol Danielsson",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "3:17:32.4",
+          "Difference": "+35:59.7",
+          "PercentBack": "+22.28%",
+          "PercentWinning": "81.78%",
+          "PercentAverage": "0.73%",
+          "PercentMedian": "0.00%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "5",
+          "Bib(Alphanumeric)": "27",
+          "Name": "Carol Sweeney",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Female",
+          "Time": "3:24:36.1",
+          "Difference": "+43:03.4",
+          "PercentBack": "+26.65%",
+          "PercentWinning": "78.96%",
+          "PercentAverage": "-2.82%",
+          "PercentMedian": "-3.57%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "6",
+          "Bib(Alphanumeric)": "22",
+          "Name": "Lauren Anderson-Smith",
+          "Distance": "Short Course - 12 miles",
+          "Category": "C2 (Double Canoe)",
+          "Gender": "Female",
+          "Time": "3:34:24.5",
+          "Difference": "+52:51.8",
+          "PercentBack": "+32.72%",
+          "PercentWinning": "75.34%",
+          "PercentAverage": "-7.74%",
+          "PercentMedian": "-8.54%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "7",
+          "Bib(Alphanumeric)": "6",
+          "Name": "Celia Clark",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "3:50:34.3",
+          "Difference": "+1:09:01.6",
+          "PercentBack": "+42.73%",
+          "PercentWinning": "70.06%",
+          "PercentAverage": "-15.87%",
+          "PercentMedian": "-16.72%",
+          "StartTime": "12:00:02.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course - 12 miles",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "26",
+          "Name": "Peter Turcan",
+          "Distance": "Short Course - 12 miles",
+          "Category": "HPK-2 (Double HPK)",
+          "Gender": "Male",
+          "Time": "1:56:54.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.31%",
+          "PercentMedian": "22.04%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "25",
+          "Name": "Peter Hirtle",
+          "Distance": "Short Course - 12 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "2:05:44.7",
+          "Difference": "+8:50.3",
+          "PercentBack": "+7.56%",
+          "PercentWinning": "92.97%",
+          "PercentAverage": "17.51%",
+          "PercentMedian": "16.15%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "15",
+          "Name": "Michael Lampi",
+          "Distance": "Short Course - 12 miles",
+          "Category": "Pedal-boat",
+          "Gender": "Male",
+          "Time": "2:54:11.0",
+          "Difference": "+57:16.6",
+          "PercentBack": "+48.99%",
+          "PercentWinning": "67.12%",
+          "PercentAverage": "-14.27%",
+          "PercentMedian": "-16.15%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "4",
+          "Bib(Alphanumeric)": "19",
+          "Name": "Charlie Charlie",
+          "Distance": "Short Course - 12 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "3:12:54.3",
+          "Difference": "+1:15:59.9",
+          "PercentBack": "+65.01%",
+          "PercentWinning": "60.60%",
+          "PercentAverage": "-26.55%",
+          "PercentMedian": "-28.63%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "-",
+          "Bib(Alphanumeric)": "2",
+          "Name": "Shane Baker",
+          "Distance": "Short Course - 12 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "17",
+          "Name": "Enzo Dougherty",
+          "Distance": "Long Course - 26 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Male",
+          "Time": "4:37:39.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.10%",
+          "PercentMedian": "3.10%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "4",
+          "Name": "John Heater",
+          "Distance": "Long Course - 26 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Male",
+          "Time": "4:55:27.1",
+          "Difference": "+17:47.2",
+          "PercentBack": "+6.41%",
+          "PercentWinning": "93.98%",
+          "PercentAverage": "-3.10%",
+          "PercentMedian": "-3.10%",
+          "StartTime": "09:07:33.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Category": "2x-OW (Open Water double)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "12",
+          "Name": "Kelly Johnson",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female",
+          "Time": "3:56:20.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "09:07:33.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Category": "2x-OW (Open Water double)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "3",
+          "Name": "Charles Delaporte",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "3:24:37.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.81%",
+          "PercentMedian": "0.01%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "3a",
+          "Name": "Alex Weatbrook",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "3:24:38.9",
+          "Difference": "+0:01.5",
+          "PercentBack": "+0.01%",
+          "PercentWinning": "99.99%",
+          "PercentAverage": "0.79%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "7",
+          "Name": "Evan Jacobs",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "3:29:35.3",
+          "Difference": "+4:57.9",
+          "PercentBack": "+2.43%",
+          "PercentWinning": "97.63%",
+          "PercentAverage": "-1.60%",
+          "PercentMedian": "-2.41%",
+          "StartTime": "10:00:03.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Category": "2x-OW (Open Water double)",
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "20",
+          "Name": "Rod Sternagel",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female/Male",
+          "Time": "3:36:32.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "4.62%",
+          "PercentMedian": "4.62%",
+          "StartTime": "10:00:03.9"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "16",
+          "Name": "Constance Ciarleglio",
+          "Distance": "Long Course - 26 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Female/Male",
+          "Time": "3:57:31.0",
+          "Difference": "+20:58.2",
+          "PercentBack": "+9.68%",
+          "PercentWinning": "91.17%",
+          "PercentAverage": "-4.62%",
+          "PercentMedian": "-4.62%",
+          "StartTime": "10:00:03.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Category": "4x+-OW (Open Water coxed quad)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "14",
+          "Name": "Oliver Laurence",
+          "Distance": "Long Course - 26 miles",
+          "Category": "4x+-OW (Open Water coxed quad)",
+          "Gender": "Male",
+          "Time": "4:11:14.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:03.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Category": "4x-OW (Open Water quad)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "8",
+          "Name": "Cody Jenkins",
+          "Distance": "Long Course - 26 miles",
+          "Category": "4x-OW (Open Water quad)",
+          "Gender": "Male",
+          "Time": "3:42:02.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:03.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Category": "Hpk-1",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "9",
+          "Name": "Ivan Medvedev",
+          "Distance": "Long Course - 26 miles",
+          "Category": "Hpk-1",
+          "Gender": "Male",
+          "Time": "3:43:35.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:03.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Category": "OC-1 (Outrigger Canoe Single)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "21",
+          "Name": "Tyrell Williams",
+          "Distance": "Long Course - 26 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Female",
+          "Time": "5:31:55.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:03.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - 26 miles",
+        "Category": "OC-1 (Outrigger Canoe Single)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "1",
+          "Name": "Matthew Sun",
+          "Distance": "Long Course - 26 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "4:05:42.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.40%",
+          "PercentMedian": "7.40%",
+          "StartTime": "09:07:33.0"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "23",
+          "Name": "Dean Williams",
+          "Distance": "Long Course - 26 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "4:44:58.8",
+          "Difference": "+39:16.5",
+          "PercentBack": "+15.98%",
+          "PercentWinning": "86.22%",
+          "PercentAverage": "-7.40%",
+          "PercentMedian": "-7.40%",
+          "StartTime": "10:00:03.9"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course - 12 miles",
+        "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "28",
+          "Name": "Lorraine K Palmer",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "3:12:06.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "7.08%",
+          "PercentMedian": "2.75%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "13",
+          "Name": "Karol Danielsson",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "3:17:32.4",
+          "Difference": "+5:26.0",
+          "PercentBack": "+2.83%",
+          "PercentWinning": "97.25%",
+          "PercentAverage": "4.45%",
+          "PercentMedian": "0.00%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "3",
+          "Bib(Alphanumeric)": "6",
+          "Name": "Celia Clark",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWII (Open Water shell, 19-21\u2019)",
+          "Gender": "Female",
+          "Time": "3:50:34.3",
+          "Difference": "+38:27.9",
+          "PercentBack": "+20.02%",
+          "PercentWinning": "83.32%",
+          "PercentAverage": "-11.53%",
+          "PercentMedian": "-16.72%",
+          "StartTime": "12:00:02.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course - 12 miles",
+        "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "18",
+          "Name": "Kathleen Faust",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Female",
+          "Time": "2:41:32.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.76%",
+          "PercentMedian": "11.76%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "2",
+          "Bib(Alphanumeric)": "27",
+          "Name": "Carol Sweeney",
+          "Distance": "Short Course - 12 miles",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Female",
+          "Time": "3:24:36.1",
+          "Difference": "+43:03.4",
+          "PercentBack": "+26.65%",
+          "PercentWinning": "78.96%",
+          "PercentAverage": "-11.76%",
+          "PercentMedian": "-11.76%",
+          "StartTime": "12:00:02.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course - 12 miles",
+        "Category": "2x-OW (Open Water double)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "25",
+          "Name": "Peter Hirtle",
+          "Distance": "Short Course - 12 miles",
+          "Category": "2x-OW (Open Water double)",
+          "Gender": "Male",
+          "Time": "2:05:44.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "12:00:02.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course - 12 miles",
+        "Category": "C2 (Double Canoe)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "22",
+          "Name": "Lauren Anderson-Smith",
+          "Distance": "Short Course - 12 miles",
+          "Category": "C2 (Double Canoe)",
+          "Gender": "Female",
+          "Time": "3:34:24.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "12:00:02.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course - 12 miles",
+        "Category": "FSK (Fast Sea Kayak)",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "24",
+          "Name": "Elizabeth Ellsberry",
+          "Distance": "Short Course - 12 miles",
+          "Category": "FSK (Fast Sea Kayak)",
+          "Gender": "Female",
+          "Time": "3:12:12.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "12:00:02.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course - 12 miles",
+        "Category": "HPK-2 (Double HPK)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "26",
+          "Name": "Peter Turcan",
+          "Distance": "Short Course - 12 miles",
+          "Category": "HPK-2 (Double HPK)",
+          "Gender": "Male",
+          "Time": "1:56:54.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "12:00:02.1"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course - 12 miles",
+        "Category": "OC-1 (Outrigger Canoe Single)",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "19",
+          "Name": "Charlie Charlie",
+          "Distance": "Short Course - 12 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "3:12:54.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "12:00:02.1"
+        },
+        {
+          "Place": "-",
+          "Bib(Alphanumeric)": "2",
+          "Name": "Shane Baker",
+          "Distance": "Short Course - 12 miles",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course - 12 miles",
+        "Category": "Pedal-boat",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib(Alphanumeric)": "15",
+          "Name": "Michael Lampi",
+          "Distance": "Short Course - 12 miles",
+          "Category": "Pedal-boat",
+          "Gender": "Male",
+          "Time": "2:54:11.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "12:00:02.1"
+        }
+      ]
+    }
+  ]
+}

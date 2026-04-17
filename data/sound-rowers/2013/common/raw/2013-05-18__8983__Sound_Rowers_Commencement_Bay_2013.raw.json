@@ -1,0 +1,936 @@
+{
+  "RaceInfo": {
+    "RaceId": 8983,
+    "Name": "Sound Rowers: Commencement Bay 2013",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=8983",
+    "Date": "May 18, 2013",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, May 18, 2013 10:00 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "Tacoma",
+    "StateOrProvince": "WA",
+    "Latitude": 47.290873675843926,
+    "Longitude": -122.49309539794922,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 1.5",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, May 18, 2013 9:08 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/8983.jpg?635045081380000000"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "9",
+          "Name": "Tyler Peterson",
+          "TeamName": "Burien",
+          "TeamName2": "Hudson 1X",
+          "Category": "M 1x",
+          "Time": "44:15.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "26.77%",
+          "PercentMedian": "21.95%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "26",
+          "Name": "Evan Jacobs",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "MAAS 24",
+          "Category": "M OW-III",
+          "Time": "44:42.8",
+          "Difference": "+0:27.8",
+          "PercentBack": "+1.05%",
+          "PercentWinning": "98.96%",
+          "PercentAverage": "26.00%",
+          "PercentMedian": "21.14%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "7",
+          "Name": "Ludo Tatos & Peter Turcan",
+          "TeamName": "Seattle",
+          "TeamName2": "Fenn Elite Double",
+          "Category": "M HPK2",
+          "Time": "45:29.9",
+          "Difference": "+1:14.9",
+          "PercentBack": "+2.82%",
+          "PercentWinning": "97.26%",
+          "PercentAverage": "24.70%",
+          "PercentMedian": "19.75%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "4",
+          "Name": "Peter Hirtle",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M 1x",
+          "Time": "47:05.0",
+          "Difference": "+2:50.0",
+          "PercentBack": "+6.40%",
+          "PercentWinning": "93.98%",
+          "PercentAverage": "22.08%",
+          "PercentMedian": "16.96%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "3",
+          "Name": "Todd Silver",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OW-III",
+          "Time": "47:13.6",
+          "Difference": "+2:58.6",
+          "PercentBack": "+6.73%",
+          "PercentWinning": "93.70%",
+          "PercentAverage": "21.84%",
+          "PercentMedian": "16.70%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "6",
+          "Bib": "24",
+          "Name": "Susan Kinne & KC Dietz",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "W OW-II",
+          "Time": "47:51.4",
+          "Difference": "+3:36.4",
+          "PercentBack": "+8.15%",
+          "PercentWinning": "92.46%",
+          "PercentAverage": "20.80%",
+          "PercentMedian": "15.59%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "7",
+          "Bib": "5",
+          "Name": "Eric Moll",
+          "TeamName": "Olympia, WA",
+          "TeamName2": "Think Uno Max",
+          "Category": "M HPK",
+          "Time": "48:47.3",
+          "Difference": "+4:32.3",
+          "PercentBack": "+10.26%",
+          "PercentWinning": "90.70%",
+          "PercentAverage": "19.26%",
+          "PercentMedian": "13.95%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "8",
+          "Bib": "15",
+          "Name": "BRUCE ROLFE & Megan Yount",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "Mx OW-2x",
+          "Time": "50:19.6",
+          "Difference": "+6:04.6",
+          "PercentBack": "+13.73%",
+          "PercentWinning": "87.93%",
+          "PercentAverage": "16.71%",
+          "PercentMedian": "11.24%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "9",
+          "Bib": "12",
+          "Name": "Mike Walsh",
+          "TeamName": "Renton",
+          "TeamName2": "MAAS 24",
+          "Category": "M OW-III",
+          "Time": "51:01.1",
+          "Difference": "+6:46.1",
+          "PercentBack": "+15.30%",
+          "PercentWinning": "86.73%",
+          "PercentAverage": "15.56%",
+          "PercentMedian": "10.02%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "10",
+          "Bib": "20",
+          "Name": "Brad  Bauer",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OC1",
+          "Time": "54:24.6",
+          "Difference": "+10:09.6",
+          "PercentBack": "+22.96%",
+          "PercentWinning": "81.33%",
+          "PercentAverage": "9.95%",
+          "PercentMedian": "4.03%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "11",
+          "Bib": "10",
+          "Name": "Greg Bawden",
+          "TeamName": "Duvall",
+          "TeamName2": "Huki S1-R",
+          "Category": "M HPK",
+          "Time": "55:05.4",
+          "Difference": "+10:50.4",
+          "PercentBack": "+24.50%",
+          "PercentWinning": "80.32%",
+          "PercentAverage": "8.83%",
+          "PercentMedian": "2.84%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "12",
+          "Bib": "1",
+          "Name": "Johnson-George",
+          "TeamName": "Wenatchee",
+          "TeamName2": "Huki",
+          "Category": "Mx OC2",
+          "Time": "55:59.5",
+          "Difference": "+11:44.5",
+          "PercentBack": "+26.53%",
+          "PercentWinning": "79.03%",
+          "PercentAverage": "7.33%",
+          "PercentMedian": "1.24%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "13",
+          "Bib": "17",
+          "Name": "Michael Lampi",
+          "TeamName": "Bellevue",
+          "TeamName2": "V15-6M",
+          "Category": "M Pedal",
+          "Time": "56:10.9",
+          "Difference": "+11:55.9",
+          "PercentBack": "+26.96%",
+          "PercentWinning": "78.76%",
+          "PercentAverage": "7.02%",
+          "PercentMedian": "0.91%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "14",
+          "Bib": "13",
+          "Name": "Kristien Tollefson",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M FSK",
+          "Time": "57:12.8",
+          "Difference": "+12:57.8",
+          "PercentBack": "+29.30%",
+          "PercentWinning": "77.34%",
+          "PercentAverage": "5.31%",
+          "PercentMedian": "-0.91%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "15",
+          "Bib": "23",
+          "Name": "Doug Peele",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M FSK",
+          "Time": "58:19.4",
+          "Difference": "+14:04.4",
+          "PercentBack": "+31.80%",
+          "PercentWinning": "75.87%",
+          "PercentAverage": "3.48%",
+          "PercentMedian": "-2.87%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "16",
+          "Bib": "11",
+          "Name": "Vern & Janet Heikkila",
+          "TeamName": "Westport, WA",
+          "TeamName2": "Huki OC-2",
+          "Category": "Mx OC2",
+          "Time": "1:03:00.7",
+          "Difference": "+18:45.7",
+          "PercentBack": "+42.40%",
+          "PercentWinning": "70.23%",
+          "PercentAverage": "-4.28%",
+          "PercentMedian": "-11.14%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "17",
+          "Bib": "21",
+          "Name": "Shane Baker",
+          "TeamName": "Port Orchard",
+          "TeamName2": "Kamanu Pueo",
+          "Category": "M OC1",
+          "Time": "1:03:47.7",
+          "Difference": "+19:32.7",
+          "PercentBack": "+44.17%",
+          "PercentWinning": "69.36%",
+          "PercentAverage": "-5.58%",
+          "PercentMedian": "-12.52%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "18",
+          "Bib": "16",
+          "Name": "Jeff WONG",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OC1",
+          "Time": "1:04:44.2",
+          "Difference": "+20:29.2",
+          "PercentBack": "+46.30%",
+          "PercentWinning": "68.35%",
+          "PercentAverage": "-7.14%",
+          "PercentMedian": "-14.18%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "19",
+          "Bib": "14",
+          "Name": "John Miller",
+          "TeamName": "Olympia",
+          "TeamName2": "18 Feet Kayak",
+          "Category": "M FSK",
+          "Time": "1:11:26.9",
+          "Difference": "+27:11.9",
+          "PercentBack": "+61.47%",
+          "PercentWinning": "61.93%",
+          "PercentAverage": "-18.25%",
+          "PercentMedian": "-26.02%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "20",
+          "Bib": "6",
+          "Name": "Richard Cossen",
+          "TeamName": "Eugene, OR",
+          "TeamName2": "MAAS 24",
+          "Category": "M OW-III",
+          "Time": "1:12:14.4",
+          "Difference": "+27:59.4",
+          "PercentBack": "+63.25%",
+          "PercentWinning": "61.25%",
+          "PercentAverage": "-19.56%",
+          "PercentMedian": "-27.41%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "21",
+          "Bib": "8",
+          "Name": "Fig Fiegener",
+          "TeamName": "Kent",
+          "TeamName2": "Aero",
+          "Category": "M OW-II",
+          "Time": "1:14:27.0",
+          "Difference": "+30:12.0",
+          "PercentBack": "+68.25%",
+          "PercentWinning": "59.44%",
+          "PercentAverage": "-23.21%",
+          "PercentMedian": "-31.31%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "22",
+          "Bib": "2",
+          "Name": "Steve Brown",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OW-III",
+          "Time": "1:16:35.0",
+          "Difference": "+32:20.0",
+          "PercentBack": "+73.07%",
+          "PercentWinning": "57.78%",
+          "PercentAverage": "-26.75%",
+          "PercentMedian": "-35.07%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "23",
+          "Bib": "18",
+          "Name": "Paul Hirsh",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M FSK",
+          "Time": "1:17:09.4",
+          "Difference": "+32:54.4",
+          "PercentBack": "+74.37%",
+          "PercentWinning": "57.35%",
+          "PercentAverage": "-27.69%",
+          "PercentMedian": "-36.08%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "24",
+          "Bib": "25",
+          "Name": "Dean Burke",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M SUP",
+          "Time": "1:17:51.7",
+          "Difference": "+33:36.7",
+          "PercentBack": "+75.96%",
+          "PercentWinning": "56.83%",
+          "PercentAverage": "-28.86%",
+          "PercentMedian": "-37.33%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "25",
+          "Bib": "19",
+          "Name": "Doug Lane",
+          "TeamName": "Tacoma",
+          "TeamName2": "Aero Racing Shell",
+          "Category": "M OW-II",
+          "Time": "1:19:11.7",
+          "Difference": "+34:56.7",
+          "PercentBack": "+78.97%",
+          "PercentWinning": "55.87%",
+          "PercentAverage": "-31.07%",
+          "PercentMedian": "-39.68%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "26",
+          "Bib": "22",
+          "Name": "Nathan / Jon White",
+          "TeamName": "Puyallup",
+          "TeamName2": "Canoe,  2 Person,  Homebuilt",
+          "Category": "M C2",
+          "Time": "1:26:33.1",
+          "Difference": "+42:18.1",
+          "PercentBack": "+95.60%",
+          "PercentWinning": "51.13%",
+          "PercentAverage": "-43.24%",
+          "PercentMedian": "-52.66%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Eastside Rowers",
+          "TeamName": "Bellevue",
+          "TeamName2": "MAAS Double",
+          "Category": "Mx OW-2x",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M 1x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "9",
+          "Name": "Tyler Peterson",
+          "TeamName": "Burien",
+          "TeamName2": "Hudson 1X",
+          "Category": "M 1x",
+          "Time": "44:15.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.10%",
+          "PercentMedian": "3.10%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "4",
+          "Name": "Peter Hirtle",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M 1x",
+          "Time": "47:05.0",
+          "Difference": "+2:50.0",
+          "PercentBack": "+6.40%",
+          "PercentWinning": "93.98%",
+          "PercentAverage": "-3.10%",
+          "PercentMedian": "-3.10%",
+          "StartTime": "10:00:58.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M C2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "22",
+          "Name": "Nathan / Jon White",
+          "TeamName": "Puyallup",
+          "TeamName2": "Canoe,  2 Person,  Homebuilt",
+          "Category": "M C2",
+          "Time": "1:26:33.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:58.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M FSK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "13",
+          "Name": "Kristien Tollefson",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M FSK",
+          "Time": "57:12.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.36%",
+          "PercentMedian": "11.82%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "23",
+          "Name": "Doug Peele",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M FSK",
+          "Time": "58:19.4",
+          "Difference": "+1:06.6",
+          "PercentBack": "+1.94%",
+          "PercentWinning": "98.10%",
+          "PercentAverage": "11.68%",
+          "PercentMedian": "10.11%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "14",
+          "Name": "John Miller",
+          "TeamName": "Olympia",
+          "TeamName2": "18 Feet Kayak",
+          "Category": "M FSK",
+          "Time": "1:11:26.9",
+          "Difference": "+14:14.1",
+          "PercentBack": "+24.88%",
+          "PercentWinning": "80.08%",
+          "PercentAverage": "-8.20%",
+          "PercentMedian": "-10.11%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "18",
+          "Name": "Paul Hirsh",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M FSK",
+          "Time": "1:17:09.4",
+          "Difference": "+19:56.6",
+          "PercentBack": "+34.86%",
+          "PercentWinning": "74.15%",
+          "PercentAverage": "-16.84%",
+          "PercentMedian": "-18.91%",
+          "StartTime": "10:00:58.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M HPK"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "5",
+          "Name": "Eric Moll",
+          "TeamName": "Olympia, WA",
+          "TeamName2": "Think Uno Max",
+          "Category": "M HPK",
+          "Time": "48:47.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "6.07%",
+          "PercentMedian": "6.07%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "10",
+          "Name": "Greg Bawden",
+          "TeamName": "Duvall",
+          "TeamName2": "Huki S1-R",
+          "Category": "M HPK",
+          "Time": "55:05.4",
+          "Difference": "+6:18.1",
+          "PercentBack": "+12.92%",
+          "PercentWinning": "88.56%",
+          "PercentAverage": "-6.07%",
+          "PercentMedian": "-6.07%",
+          "StartTime": "10:00:58.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M HPK2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "7",
+          "Name": "Ludo Tatos & Peter Turcan",
+          "TeamName": "Seattle",
+          "TeamName2": "Fenn Elite Double",
+          "Category": "M HPK2",
+          "Time": "45:29.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:58.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M OC1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "20",
+          "Name": "Brad  Bauer",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OC1",
+          "Time": "54:24.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.77%",
+          "PercentMedian": "14.71%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "21",
+          "Name": "Shane Baker",
+          "TeamName": "Port Orchard",
+          "TeamName2": "Kamanu Pueo",
+          "Category": "M OC1",
+          "Time": "1:03:47.7",
+          "Difference": "+9:23.1",
+          "PercentBack": "+17.25%",
+          "PercentWinning": "85.29%",
+          "PercentAverage": "-4.62%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "16",
+          "Name": "Jeff WONG",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OC1",
+          "Time": "1:04:44.2",
+          "Difference": "+10:19.6",
+          "PercentBack": "+18.98%",
+          "PercentWinning": "84.05%",
+          "PercentAverage": "-6.16%",
+          "PercentMedian": "-1.48%",
+          "StartTime": "10:00:58.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "8",
+          "Name": "Fig Fiegener",
+          "TeamName": "Kent",
+          "TeamName2": "Aero",
+          "Category": "M OW-II",
+          "Time": "1:14:27.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "3.09%",
+          "PercentMedian": "3.09%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "19",
+          "Name": "Doug Lane",
+          "TeamName": "Tacoma",
+          "TeamName2": "Aero Racing Shell",
+          "Category": "M OW-II",
+          "Time": "1:19:11.7",
+          "Difference": "+4:44.7",
+          "PercentBack": "+6.37%",
+          "PercentWinning": "94.01%",
+          "PercentAverage": "-3.09%",
+          "PercentMedian": "-3.09%",
+          "StartTime": "10:00:58.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M OW-III"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "26",
+          "Name": "Evan Jacobs",
+          "TeamName": "Seattle, WA",
+          "TeamName2": "MAAS 24",
+          "Category": "M OW-III",
+          "Time": "44:42.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "23.38%",
+          "PercentMedian": "12.36%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "3",
+          "Name": "Todd Silver",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OW-III",
+          "Time": "47:13.6",
+          "Difference": "+2:30.8",
+          "PercentBack": "+5.62%",
+          "PercentWinning": "94.68%",
+          "PercentAverage": "19.07%",
+          "PercentMedian": "7.43%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "3",
+          "Bib": "12",
+          "Name": "Mike Walsh",
+          "TeamName": "Renton",
+          "TeamName2": "MAAS 24",
+          "Category": "M OW-III",
+          "Time": "51:01.1",
+          "Difference": "+6:18.3",
+          "PercentBack": "+14.10%",
+          "PercentWinning": "87.64%",
+          "PercentAverage": "12.57%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "4",
+          "Bib": "6",
+          "Name": "Richard Cossen",
+          "TeamName": "Eugene, OR",
+          "TeamName2": "MAAS 24",
+          "Category": "M OW-III",
+          "Time": "1:12:14.4",
+          "Difference": "+27:31.6",
+          "PercentBack": "+61.56%",
+          "PercentWinning": "61.90%",
+          "PercentAverage": "-23.79%",
+          "PercentMedian": "-41.60%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "5",
+          "Bib": "2",
+          "Name": "Steve Brown",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M OW-III",
+          "Time": "1:16:35.0",
+          "Difference": "+31:52.2",
+          "PercentBack": "+71.28%",
+          "PercentWinning": "58.39%",
+          "PercentAverage": "-31.23%",
+          "PercentMedian": "-50.11%",
+          "StartTime": "10:00:58.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M Pedal"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "17",
+          "Name": "Michael Lampi",
+          "TeamName": "Bellevue",
+          "TeamName2": "V15-6M",
+          "Category": "M Pedal",
+          "Time": "56:10.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:58.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "M SUP"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "25",
+          "Name": "Dean Burke",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "M SUP",
+          "Time": "1:17:51.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:58.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Mx OC2"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "1",
+          "Name": "Johnson-George",
+          "TeamName": "Wenatchee",
+          "TeamName2": "Huki",
+          "Category": "Mx OC2",
+          "Time": "55:59.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.90%",
+          "PercentMedian": "5.90%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "2",
+          "Bib": "11",
+          "Name": "Vern & Janet Heikkila",
+          "TeamName": "Westport, WA",
+          "TeamName2": "Huki OC-2",
+          "Category": "Mx OC2",
+          "Time": "1:03:00.7",
+          "Difference": "+7:01.2",
+          "PercentBack": "+12.54%",
+          "PercentWinning": "88.86%",
+          "PercentAverage": "-5.90%",
+          "PercentMedian": "-5.90%",
+          "StartTime": "10:00:58.6"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Mx OW-2x"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "15",
+          "Name": "BRUCE ROLFE & Megan Yount",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "Mx OW-2x",
+          "Time": "50:19.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:58.6"
+        },
+        {
+          "Place": "-",
+          "Bib": "-",
+          "Name": "Eastside Rowers",
+          "TeamName": "Bellevue",
+          "TeamName2": "MAAS Double",
+          "Category": "Mx OW-2x",
+          "Time": "DNS",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": ""
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "W OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "24",
+          "Name": "Susan Kinne & KC Dietz",
+          "TeamName": null,
+          "TeamName2": null,
+          "Category": "W OW-II",
+          "Time": "47:51.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:58.6"
+        }
+      ]
+    }
+  ]
+}
