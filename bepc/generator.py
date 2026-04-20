@@ -2434,7 +2434,7 @@ function renderRacesList(d, year) {{
       + '<td><div class="d-flex flex-wrap">' + podiums + '</div></td></tr>';
   }}).join('');
   document.getElementById('races-content').innerHTML = rows
-    ? '<div class="table-responsive"><table class="table table-sm table-striped">'
+    ? '<h2 class="h5 mb-2">Results</h2><div class="table-responsive"><table class="table table-sm table-striped">'
       + '<thead><tr><th>Date</th><th>Race Results</th><th class="text-center">Starters</th><th>Podium (Corrected time)</th></tr></thead>'
       + '<tbody>' + rows + '</tbody></table></div>'
     : '<p class="text-muted">No results yet for this season.</p>';
