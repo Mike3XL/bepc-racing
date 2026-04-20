@@ -2,36 +2,6 @@
 # Manual entries OK; past entries are pruned automatically
 
 upcoming:
-  - name: "Lake Washington Long Distance Race"
-    date: "2026-04-18"
-    clubs: []
-    distance: "6 mi"
-    url: https://facebook.com/events/s/april-18th-long-distance-race-/1573919430510155/
-    links:
-      - label: "Info"
-        url: https://facebook.com/events/s/april-18th-long-distance-race-/1573919430510155/
-    notes: "Meeting: 8:45 AM, Start: 9 AM · South Day Street Park, Leschi, Seattle. Leashes & PFDs required. Unofficial race."
-  - name: "Jericho Wavechaser 2026 #1"
-    date: "2026-04-30"
-    clubs: [pnw-regional]
-    source_id: 424127
-    url: https://www.webscorer.com/register?raceid=424127
-    links:
-      - label: "Register"
-        url: https://www.webscorer.com/register?raceid=424127
-    notes: "Jericho Sailing Centre, BC, Canada"
-  - name: "Board the Fjord + 2026"
-    date: "2026-05-09"
-    clubs: [pnw-regional]
-    distance: "14km/7km/4km"
-    source_id: 419780
-    url: https://www.webscorer.com/register?raceid=419780
-    links:
-      - label: "Register"
-        url: https://www.webscorer.com/register?raceid=419780
-      - label: "Info"
-        url: http://www.deepcovekayak.com/
-    notes: "North Vancouver, BC, Canada"
   - name: "Paddlers Cup"
     date: "2026-04-25"
     clubs: [pnw-regional]
@@ -43,6 +13,15 @@ upcoming:
       - label: "Info"
         url: https://gigharborpaddlerscup.com
     notes: "Meeting: TBD, Start: TBD · Skansie Park, Gig Harbor, WA"
+  - name: "Jericho Wavechaser 2026 #1"
+    date: "2026-04-30"
+    clubs: [pnw-regional]
+    source_id: 424127
+    url: https://www.webscorer.com/register?raceid=424127
+    links:
+      - label: "Register"
+        url: https://www.webscorer.com/register?raceid=424127
+    notes: "Jericho Sailing Centre, BC, Canada"
   - name: "Lake Whatcom Classic"
     date: "2026-05-02"
     clubs: [sound-rowers, pnw-regional]
@@ -66,6 +45,18 @@ upcoming:
       - label: "Info"
         url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
     notes: "Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA"
+  - name: "Board the Fjord + 2026"
+    date: "2026-05-09"
+    clubs: [pnw-regional]
+    source_id: 419780
+    distance: "14km/7km/4km"
+    url: https://www.webscorer.com/register?raceid=419780
+    links:
+      - label: "Register"
+        url: https://www.webscorer.com/register?raceid=419780
+      - label: "Info"
+        url: http://www.deepcovekayak.com/
+    notes: "North Vancouver, BC, Canada"
   - name: "Commencement Bay"
     date: "2026-05-09"
     clubs: [sound-rowers, pnw-regional]

@@ -420,7 +420,7 @@ def cmd_update_site(args):
     # Sync upcoming
     upcoming_path = DATA_DIR.parent / "data" / "upcoming.yaml"
     print("=== Syncing upcoming races ===")
-    sync_upcoming(upcoming_path)
+    sync_upcoming(upcoming_path, dry_run=getattr(args, 'dry_run', False))
 
     # Sync each club
     fetched_any = False

@@ -2,6 +2,13 @@
 
 ## High Priority
 
+## Past Races — Meaningful "Completed" Entries
+Currently past races are silently pruned from `upcoming.yaml`. Some events without WebScorer results still have web pages/results worth linking to (e.g. Seventy48, Ski to Sea, unofficial Facebook-organised races). Consider a "Recently Completed" section on the home page that:
+- Keeps pruned entries with a `completed: true` flag (or separate `completed.yaml`)
+- Shows them on the home page under recent races with a link to results/recap
+- Expires after N weeks
+- Allows manual entry of result links for non-WebScorer events
+
 ## Performance
 - **Generation/publish is slow — possible 4x redundant work.** When running `cli.py generate --club X` for each of 4 clubs, the output log shows all 4 clubs being regenerated each time (not just the specified club). Investigate whether `generate` ignores the `--club` flag and always regenerates everything, and whether `publish` also re-runs generation. Fix so each `generate --club X` only generates that club, and `publish` only generates once.
 

@@ -362,7 +362,7 @@ def _race_key(r: dict) -> tuple:
     return (r.get('name', '').lower().strip(), r.get('date', ''))
 
 
-def sync_upcoming(upcoming_path: Path) -> None:
+def sync_upcoming(upcoming_path: Path, dry_run: bool = False) -> None:
     today = date.today()
 
     # Load existing
@@ -373,7 +373,9 @@ def sync_upcoming(upcoming_path: Path) -> None:
         existing = data.get('upcoming', [])
 
     # Remove past entries
-    existing = [r for r in existing if r.get('date', '9999') > today.strftime('%Y-%m-%d')]
+    today_str = today.strftime('%Y-%m-%d')
+    pruned = [r for r in existing if r.get('date', '9999') <= today_str]
+    existing = [r for r in existing if r.get('date', '9999') > today_str]
 
     existing_keys = {_race_key(r) for r in existing}
 
@@ -422,35 +424,39 @@ def sync_upcoming(upcoming_path: Path) -> None:
     # Sort by date
     existing.sort(key=lambda r: r.get('date', ''))
 
-    # Write back
-    with open(upcoming_path, 'w') as f:
-        f.write("# Upcoming races — auto-synced via cli.py sync-upcoming\n")
-        f.write("# Manual entries OK; past entries are pruned automatically\n\n")
-        f.write("upcoming:\n")
-        for r in existing:
-            f.write(f"  - name: \"{r['name']}\"\n")
-            f.write(f"    date: \"{r['date']}\"\n")
-            clubs_str = '[' + ', '.join(r.get('clubs', [])) + ']'
-            f.write(f"    clubs: {clubs_str}\n")
-            if r.get('source_id'):
-                f.write(f"    source_id: {r['source_id']}\n")
-            if r.get('distance'):
-                f.write(f"    distance: \"{r['distance']}\"\n")
-            if r.get('url'):
-                f.write(f"    url: {r['url']}\n")
-            if r.get('series_url'):
-                f.write(f"    series_url: {r['series_url']}\n")
-            if r.get('links'):
-                f.write(f"    links:\n")
-                for lnk in r['links']:
-                    f.write(f"      - label: \"{lnk['label']}\"\n")
-                    f.write(f"        url: {lnk['url']}\n")
-            if r.get('notes'):
-                f.write(f"    notes: \"{r['notes']}\"\n")
+    # Write back (skip if dry run)
+    if not dry_run:
+        with open(upcoming_path, 'w') as f:
+            f.write("# Upcoming races — auto-synced via cli.py sync-upcoming\n")
+            f.write("# Manual entries OK; past entries are pruned automatically\n\n")
+            f.write("upcoming:\n")
+            for r in existing:
+                f.write(f"  - name: \"{r['name']}\"\n")
+                f.write(f"    date: \"{r['date']}\"\n")
+                clubs_str = '[' + ', '.join(r.get('clubs', [])) + ']'
+                f.write(f"    clubs: {clubs_str}\n")
+                if r.get('source_id'):
+                    f.write(f"    source_id: {r['source_id']}\n")
+                if r.get('distance'):
+                    f.write(f"    distance: \"{r['distance']}\"\n")
+                if r.get('url'):
+                    f.write(f"    url: {r['url']}\n")
+                if r.get('series_url'):
+                    f.write(f"    series_url: {r['series_url']}\n")
+                if r.get('links'):
+                    f.write(f"    links:\n")
+                    for lnk in r['links']:
+                        f.write(f"      - label: \"{lnk['label']}\"\n")
+                        f.write(f"        url: {lnk['url']}\n")
+                if r.get('notes'):
+                    f.write(f"    notes: \"{r['notes']}\"\n")
 
+    prefix = "[DRY RUN] Would " if dry_run else ""
+    if pruned:
+        print(f"  {prefix}prune {len(pruned)} past race(s): {', '.join(r['name'] for r in pruned)}")
     if added:
-        print(f"Added {len(added)} new races: {', '.join(added[:5])}{'...' if len(added) > 5 else ''}")
+        print(f"  {prefix}add {len(added)} new race(s): {', '.join(added[:5])}{'...' if len(added) > 5 else ''}")
     if updated:
-        print(f"Updated notes on {len(updated)} races.")
-    if not added and not updated:
-        print("No changes.")
+        print(f"  {prefix}update notes on {len(updated)} race(s).")
+    if not added and not updated and not pruned:
+        print("  No changes.")
