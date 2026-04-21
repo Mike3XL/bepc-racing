@@ -5,6 +5,7 @@ from pathlib import Path
 from bepc.craft import display_craft_ui
 
 SITE_DIR = Path(__file__).parent.parent / "site"
+_LINK_ORDER = ['Info', 'Schedule', 'Register', 'Start List', 'Series']
 
 # CDN links
 _BOOTSTRAP_CSS = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">'
@@ -178,7 +179,7 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
         pages = [
             (f"{root}index.html", "Home"),
             (f"{root}clubs.html", "Clubs"),
-            (f"{club}/races.html", "Races", True),
+            (f"{club}/results.html", "Results", True),
             (f"{club}/standings.html", "Standings", True),
             (f"{club}/trajectories.html", "Trajectories", True),
             (f"{club}/racer/index.html", "Racers", True),
@@ -188,7 +189,7 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
         pages = [
             (f"{root}index.html", "Home"),
             (f"{root}clubs.html", "Clubs"),
-            (f"{club_prefix}races.html", "Races"),
+            (f"{club_prefix}results.html", "Results"),
             (f"{club_prefix}standings.html", "Standings"),
             (f"{club_prefix}trajectories.html", "Trajectories"),
             (f"{club_prefix}racer/index.html", "Racers"),
@@ -288,15 +289,17 @@ def _selector_bar(data: dict, show_season: bool = True, page: str = None, season
 
     current_club = data["current_club"]
     import json as _json
+    _clubs_for_js = data.get("all_clubs", data["clubs"])
     all_seasons_js = "{" + ",".join(
         f'"{cid}":{{"years":{_json.dumps(sorted(club["seasons"].keys(), reverse=True))},"current":"{club["current_season"]}"}}'
-        for cid, club in data["clubs"].items()
+        for cid, club in _clubs_for_js.items()
     ) + "}"
 
     # Club buttons — <a> links to sibling club dirs
     club_btns = ""
     if page:
-        for club_id, club in data["clubs"].items():
+        _all_clubs = data.get("all_clubs", data["clubs"])
+        for club_id, club in _all_clubs.items():
             short = clubs_cfg.get(club_id, {}).get("short_name", club.get("name", club_id))
             active_cls = " active" if club_id == current_club else ""
             if club_id == current_club:
@@ -886,7 +889,7 @@ function rows(results, placeField) {
 </div>"""
             source_link = f'<a href="{display_url}" target="_blank" class="btn btn-outline-secondary btn-sm">Source ↗</a>' if display_url else ''
 
-            html = _head(base_name) + _nav("Races", data=data, depth=2) + _selector_bar(data, show_season=True, page="races", season_navigate_url="../races.html", race_nav_html=race_nav_html, depth=2) + f"""
+            html = _head(base_name) + _nav("Results", data=data, depth=2) + _selector_bar(data, show_season=True, page="results", season_navigate_url="../results.html", race_nav_html=race_nav_html, depth=2) + f"""
 <div class="container-fluid px-2 px-sm-3">
   <h1 class="mb-1">{base_name}</h1>
   <p class="text-muted">{date} · {total_starters} starters{(' · <a href="' + display_url + '" target="_blank">Source ↗</a>') if display_url else ''}</p>
@@ -1760,7 +1763,7 @@ def generate_clubs_page(data: dict) -> None:
   </div>
   {top_html}
   <div class="d-flex flex-wrap gap-2">
-    <a href="{club_id}/races.html" class="btn btn-outline-primary btn-sm">Races</a>
+    <a href="{club_id}/results.html" class="btn btn-outline-primary btn-sm">Results</a>
     <a href="{club_id}/standings.html" class="btn btn-outline-secondary btn-sm">Standings</a>
     <a href="{club_id}/trajectories.html" class="btn btn-outline-secondary btn-sm">Trajectories</a>
     <a href="{club_id}/racer/index.html" class="btn btn-outline-secondary btn-sm">Racers</a>
@@ -2004,11 +2007,34 @@ def generate_platform_home(data: dict) -> None:
                     }
                 else:
                     race_map[key]["starters"] = max(race_map[key]["starters"], len(race["results"]))
-                # Find podium (top 3) for this club/course
+                # Find top-10 corrected and finish for this club/course
                 course_label = race["name"].split(" — ")[1] if " — " in race["name"] else None
-                podium = [(r["canonical_name"], next((t for t in r.get("trophies",[]) if t in ("hcap_1","hcap_2","hcap_3")), None))
-                          for r in race["results"] if any(t in r.get("trophies",[]) for t in ("hcap_1","hcap_2","hcap_3"))]
-                podium.sort(key=lambda x: x[1] or "z")
+                def _fmt_time(s):
+                    if s is None: return ""
+                    s = float(s)
+                    m, sec = divmod(int(s), 60)
+                    h, m = divmod(m, 60)
+                    if h: return f"{h}:{m:02d}:{sec:02d}"
+                    return f"{m}:{sec:02d}"
+                # corrected top-10 by adjusted_place
+                corr_sorted = sorted(
+                    [r for r in race["results"] if r.get("eligible_adjusted_place",0) > 0],
+                    key=lambda x: x.get("eligible_adjusted_place", 999)
+                )[:10]
+                corr_top10 = [{"name": r["canonical_name"],
+                                "ct": _fmt_time(r.get("adjusted_time_seconds")),
+                                "ft": _fmt_time(r.get("time_seconds")),
+                                "idx": f"{r.get('handicap',1.0):.3f}",
+                                "place": r.get("eligible_adjusted_place",0),
+                                "trophy": next((t for t in r.get("trophies",[]) if t in ("hcap_1","hcap_2","hcap_3")), None)}
+                               for r in corr_sorted]
+                # finish top-10 by original_place
+                fin_sorted = sorted(race["results"], key=lambda x: x.get("original_place", 999))[:10]
+                fin_top10 = [{"name": r["canonical_name"],
+                               "ft": _fmt_time(r.get("time_seconds")),
+                               "place": r.get("original_place",0),
+                               "trophy": next((t for t in r.get("trophies",[]) if t in ("finish_1","finish_2","finish_3")), None)}
+                              for r in fin_sorted]
                 entry = race_map[key]
                 existing = next((c for c in entry["clubs"] if c["id"] == club_id), None)
                 if existing is None:
@@ -2020,7 +2046,7 @@ def generate_platform_home(data: dict) -> None:
                         "race_id": race["race_id"],
                     }
                     entry["clubs"].append(existing)
-                existing["courses"].append({"label": course_label, "podium": podium})
+                existing["courses"].append({"label": course_label, "corr_top10": corr_top10, "fin_top10": fin_top10, "starters": len(race["results"])})
 
     from datetime import datetime
     def _parse_date(d):
@@ -2029,7 +2055,21 @@ def generate_platform_home(data: dict) -> None:
             except: pass
         return datetime.min
 
-    recent_races = sorted(race_map.values(), key=lambda x: _parse_date(x["date"]), reverse=True)[:15]
+    # Collect last 10 races per club, union+dedup
+    _per_club = {}
+    for key, entry in race_map.items():
+        for c in entry["clubs"]:
+            cid = c["id"]
+            _per_club.setdefault(cid, []).append(entry)
+    _seen = set()
+    _union = []
+    for cid, races in _per_club.items():
+        for r in sorted(races, key=lambda x: _parse_date(x["date"]), reverse=True)[:10]:
+            k = id(r)
+            if k not in _seen:
+                _seen.add(k)
+                _union.append(r)
+    recent_races = sorted(_union, key=lambda x: _parse_date(x["date"]), reverse=True)
 
     # Load upcoming races
     upcoming_path = Path(__file__).parent.parent / "data" / "upcoming.yaml"
@@ -2066,16 +2106,18 @@ def generate_platform_home(data: dict) -> None:
                 "url": race.get("url", ""),
                 "links": race.get("links", []),
                 "notes": race.get("notes", ""),
+                "location": race.get("location", ""),
             })
 
     upcoming_rows = ""
     upcoming_club_names = []
     for r in upcoming_races:
         link = f'<a href="{r["url"]}" target="_blank">{r["name"]}</a>' if r["url"] else r["name"]
-        notes_td = f'<td class="text-muted small">{r["notes"]}</td>' if r["notes"] else '<td></td>'
+        notes_td = f'<td class="text-muted small">{r.get("notes","")}</td>' if r.get("notes") else '<td></td>'
+        _location_html = f'<div class="text-muted" style="font-size:.8em">{r["location"]}</div>' if r.get("location") else ''
         links_html = ' '.join(
             f'<a href="{lnk["url"]}" target="_blank" class="badge bg-light text-dark border me-1 text-decoration-none">{lnk["label"]} ↗</a>'
-            for lnk in r["links"]
+            for lnk in sorted(r["links"], key=lambda l: _LINK_ORDER.index(l["label"]) if l["label"] in _LINK_ORDER else len(_LINK_ORDER))
         )
         links_td = f'<td class="text-nowrap">{links_html}</td>' if links_html else '<td></td>'
         club_keys = r.get("club_keys", [])
@@ -2084,7 +2126,14 @@ def generate_platform_home(data: dict) -> None:
             sn = clubs_cfg.get(k, {}).get("short_name", k)
             if sn not in upcoming_club_names:
                 upcoming_club_names.append(sn)
-        upcoming_rows += f'<tr data-clubs="{data_clubs}"><td class="text-muted small text-nowrap">{r["date"]}</td><td>{link}</td><td>{r["clubs_html"]}</td><td class="text-muted small">{r["distance"]}</td>{notes_td}{links_td}</tr>'
+        # Two-line date: weekday + date
+        from datetime import datetime as _datetime_cls
+        try:
+            _dt = _datetime_cls.strptime(r["date"], "%b %d, %Y")
+            _date_html = f'<span style="font-weight:600">{_dt.strftime("%A")}</span><br><span class="text-muted">{r["date"]}</span>'
+        except Exception:
+            _date_html = r["date"]
+        upcoming_rows += f'<tr data-clubs="{data_clubs}" style="vertical-align:middle"><td class="small text-nowrap">{_date_html}</td><td><strong class="small">{r["name"]}</strong>{_location_html}</td><td>{r["clubs_html"]}</td><td class="text-muted small">{r["distance"]}</td>{notes_td}{links_td}</tr>'
 
     # Split into visible (first 5) and hidden (rest) — single table for column consistency
     row_list = upcoming_rows.split('</tr>')[:-1]
@@ -2112,13 +2161,16 @@ def generate_platform_home(data: dict) -> None:
             if upcoming_rows_hidden else ''
         )
         upcoming_section_html = (
-            f"<h2 class='h5 mb-2 d-inline-block me-2'>Upcoming Races</h2>"
-            f"<select id='upcoming-club-filter' class='form-select form-select-sm d-inline-block mb-2' style='width:auto'>"
+            f"<div class='d-flex align-items-center gap-2 mb-2 flex-wrap'>"
+            f"<h2 class='h5 mb-0'>Upcoming Races</h2>"
+            f"<select id='upcoming-club-filter' class='form-select form-select-sm' style='width:auto'>"
             f"<option value=''>All clubs</option>{_options}</select>"
+            + (_show_more.replace('mb-3', 'mb-0') if _show_more else '')
+            + f"</div>"
             f"<div class='table-responsive mb-1'><table id='upcoming-table' class='table table-sm table-hover'>"
-            f"<thead><tr><th>Date</th><th>Race</th><th>Club</th><th>Distance</th>"
+            f"<thead><tr><th style='width:100px'>Date</th><th style='min-width:220px'>Race</th><th>Club</th><th>Distance</th>"
             f"<th style='min-width:180px'>Notes</th><th>Links</th></tr></thead>"
-            f"<tbody>{upcoming_rows_visible}{upcoming_rows_hidden}</tbody></table></div>{_show_more}"
+            f"<tbody>{upcoming_rows_visible}{upcoming_rows_hidden}</tbody></table></div>"
         )
     else:
         upcoming_section_html = ""
@@ -2132,87 +2184,187 @@ def generate_platform_home(data: dict) -> None:
         latest_year = max(club["seasons"].keys())
         year_range = f"{earliest_year}–{latest_year}"
         total_races = sum(len(s["races"]) for s in club["seasons"].values())
-        club_strip += f'<a href="{club_id}/races.html" onclick="localStorage.setItem(\'pc_club\',\'{club_id}\')" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-2"><span class="fw-semibold">{short}</span><span class="text-muted small">{total_races} races · {year_range}</span></a>'
+        club_strip += f'<a href="{club_id}/results.html" onclick="localStorage.setItem(\'pc_club\',\'{club_id}\')" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-2"><span class="fw-semibold">{short}</span><span class="text-muted small">{total_races} races · {year_range}</span></a>'
 
     # Club short name map for JS filter
     import json as _json2
     club_short_json = _json2.dumps({cid: clubs_cfg.get(cid, {}).get("short_name", cid) for cid in data["clubs"]})
 
-    # Recent races feed
+    # Recent races feed — new interactive podium design
     feed_rows = ""
     _re = __import__('re')
-    _place_labels = {"hcap_1": "🥇", "hcap_2": "🥈", "hcap_3": "🥉"}
-    for r in recent_races:
-        club_links_html = ""
-        for c in r["clubs"]:
-            slug = data.get("race_slugs", {}).get(c["id"], {}).get(c["race_id"], str(c["race_id"]))
-            race_link = f'{c["id"]}/results/{slug}.html'
-            cls = "text-secondary" if c["type"] == "league" else ""
-            club_links_html += f'<a href="{race_link}" onclick="localStorage.setItem(\'pc_club\',\'{c["id"]}\')" class="badge bg-light text-dark border me-1 small fw-normal {cls}">{c["name"]} ↗</a>'
+    _race_counter = [0]  # unique ID per race row
 
-        # Reorganize: course_label -> [(club, podium)]
-        course_map = {}  # label -> list of (club_name, podium)
-        for c in r["clubs"]:
-            for course in c.get("courses", []):
-                if not course["podium"]:
-                    continue
-                lbl = course["label"] or ""
-                course_map.setdefault(lbl, []).append((c["name"], course["podium"]))
+    # SVG icons
+    _CUP = {
+        2: '<svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text></svg>',
+        1: '<svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>',
+        3: '<svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>',
+    }
+    _FLAG = {
+        2: '<svg width="20" height="20" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#333">2</text></svg>',
+        1: '<svg width="20" height="20" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>',
+        3: '<svg width="20" height="20" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>',
+    }
+    _PODIUM_COLORS = {
+        1: ("#7A5C00", "#FFF8DC", "#FFD700", "600"),
+        2: ("#555",    "#EBEBEB", "#A0A0A0", "400"),
+        3: ("#5C2E00", "#FDF0E0", "#DDA84A", "400"),
+    }
+    _PODIUM_H = {1: 60, 2: 48, 3: 32}
 
-        # Build club badge map for podium prefixes
-        race_slugs_map = data.get("race_slugs", {})
-        club_badge = {}
-        for c in r["clubs"]:
-            slug = race_slugs_map.get(c["id"], {}).get(c["race_id"], str(c["race_id"]))
-            club_badge[c["id"]] = f'<a href="{c["id"]}/results/{slug}.html" onclick="localStorage.setItem(\'pc_club\',\'{c["id"]}\')" class="badge bg-light text-dark border me-1 small fw-normal">{c["name"]} ↗</a>'
+    def _dist_key(lbl):
+        m2 = _re.search(r'(\d+(?:\.\d+)?)\s*(mi|mile|km)', lbl or '', _re.I)
+        if not m2: return 0.0
+        val = float(m2.group(1))
+        return -(val * 1.609 if 'mi' in m2.group(2).lower() else val)
 
-        multi_club = len(r["clubs"]) > 1
-        multi_course = len(course_map) > 1
+    def _short_dist(lbl):
+        if not lbl: return ""
+        m = _re.search(r'(\d+(?:\.\d+)?)\s*(mi|mile|km|m)', lbl, _re.I)
+        if not m: return lbl.split()[0]
+        unit = 'km' if 'km' in m.group(2).lower() else ('m' if m.group(2).lower() == 'm' else 'mi.')
+        return f"{m.group(1)} {unit}"
 
-        def _dist_key(lbl):
-            """Sort key: extract numeric distance, convert miles to km, descending (negate)."""
-            m2 = _re.search(r'(\d+(?:\.\d+)?)\s*(mi|mile|km)', lbl or '', _re.I)
-            if not m2:
-                return 0.0
-            val = float(m2.group(1))
-            return -(val * 1.609 if 'mi' in m2.group(2).lower() else val)
+    def _podium_col_c(place, entry, cid):
+        tc, bg, bdr, fw = _PODIUM_COLORS.get(place, ("#555","#f8f9fa","#ccc","400"))
+        h = _PODIUM_H.get(place, 32)
+        icon = _CUP.get(place, "")
+        name = _racer_link(entry["name"], club_id=cid)
+        calc = f'{entry["ft"]} ⊘{entry["idx"]}' if entry.get("ft") else ""
+        return (f'<div class="podium-col">{icon}<span class="podium-name" style="font-weight:700">{name}</span>'
+                f'<div class="podium-bar" style="height:{h}px;background:{bg};border:1px solid {bdr}">'
+                f'<span class="podium-time" style="color:{tc}">{entry["ct"]}</span>'
+                f'<span class="podium-calc" style="color:{tc}">{calc}</span></div></div>')
 
-        podium_html = ""
-        for lbl, club_podiums in sorted(course_map.items(), key=lambda x: _dist_key(x[0])):
-            if lbl:
-                m = _re.search(r'(\d+(?:\.\d+)?)\s*(?:mi|mile|km)', lbl, _re.I)
-                unit = 'km' if m and 'km' in m.group(0).lower() else 'mi'
-                short_label = f"{m.group(1)}{unit}" if m else lbl.split()[0]
-            else:
-                short_label = ""
-            if multi_course and short_label:
-                if len(club_podiums) == 1:
-                    club_name, podium = club_podiums[0]
-                    cid = next((c["id"] for c in r["clubs"] if c["name"] == club_name), "")
-                    prefix = club_badge.get(cid, f'<span class="text-muted small me-1">{club_name}:</span> ')
-                    names = " · ".join(f'<span style="white-space:nowrap">{_place_labels.get(trophy,"")}{_racer_link(name, club_id=cid)}</span>' for name, trophy in podium)
-                    podium_html += f'<div class="small"><span class="text-muted small fw-semibold me-1">{short_label}:</span>{prefix}{names}</div>'
-                    continue
+    def _podium_col_f(place, entry, cid):
+        tc, bg, bdr, fw = _PODIUM_COLORS.get(place, ("#555","#f8f9fa","#ccc","400"))
+        h = _PODIUM_H.get(place, 32)
+        icon = _FLAG.get(place, "")
+        name = _racer_link(entry["name"], club_id=cid)
+        return (f'<div class="podium-col">{icon}<span class="podium-name" style="font-weight:700">{name}</span>'
+                f'<div class="podium-bar" style="height:{h}px;background:{bg};border:1px solid {bdr}">'
+                f'<span class="podium-time" style="color:{tc}">{entry["ft"]}</span></div></div>')
+
+    def _also_ran(entries, start=4, end=10):
+        parts = [f'{e["place"]}th: {e["name"]}' for e in entries[3:end] if e.get("name")]
+        return ' &nbsp;·&nbsp; '.join(parts) if parts else ""
+
+    def _build_course_panels(rid, courses_data, club_id, club_short, view_cls):
+        """Build course blocks for one club view."""
+        html = ""
+        for ci, cd in enumerate(sorted(courses_data, key=lambda x: _dist_key(x["label"] or ""))):
+            lbl = cd.get("label") or ""
+            dist = _short_dist(lbl) if lbl else ""
+            top10 = cd.get("corr_top10", [])
+            fin10 = cd.get("fin_top10", [])
+            mt = " mt-2" if ci > 0 else ""
+            # corrected podium
+            c_cols = ""
+            for place in [2, 1, 3]:
+                entry = next((e for e in top10 if e["place"] == place), None)
+                if entry:
+                    c_cols += _podium_col_c(place, entry, club_id)
                 else:
-                    podium_html += f'<div class="text-muted small fw-semibold mt-1">{short_label}</div>'
-            for club_name, podium in club_podiums:
-                cid = next((c["id"] for c in r["clubs"] if c["name"] == club_name), "")
-                prefix = club_badge.get(cid, f'<span class="text-muted small me-1">{club_name}:</span> ')
-                names = " · ".join(
-                    f'<span style="white-space:nowrap">{_place_labels.get(trophy,"")}{_racer_link(name, club_id=cid)}</span>'
-                    for name, trophy in podium
-                )
-                podium_html += f'<div class="small">{prefix}{names}</div>'
+                    _tc,_bg,_bdr,_fw = _PODIUM_COLORS.get(place,("#aaa","#f8f9fa","#ddd","400"))
+                    _h = _PODIUM_H.get(place,32)
+                    c_cols += f'<div class="podium-col">{_CUP.get(place,"")}<span class="podium-name" style="color:#bbb">—</span><div class="podium-bar" style="height:{_h}px;background:{_bg};border:1px solid {_bdr}"></div></div>'
+            c_ar = _also_ran(top10)
+            # finish podium
+            f_cols = ""
+            for place in [2, 1, 3]:
+                entry = next((e for e in fin10 if e["place"] == place), None)
+                if entry:
+                    f_cols += _podium_col_f(place, entry, club_id)
+                else:
+                    _tc2,_bg2,_bdr2,_fw2 = _PODIUM_COLORS.get(place,("#aaa","#f8f9fa","#ddd","400"))
+                    _h2 = _PODIUM_H.get(place,32)
+                    f_cols += f'<div class="podium-col">{_FLAG.get(place,"")}<span class="podium-name" style="color:#bbb">—</span><div class="podium-bar" style="height:{_h2}px;background:{_bg2};border:1px solid {_bdr2}"></div></div>'
+            f_ar = _also_ran(fin10)
+            _cname = f'<div class="course-name-side"><strong>{dist}</strong><div class="text-muted" style="font-size:.72em;font-weight:400">{cd.get("starters",0)} starters</div></div>'
+            html += (
+                f'<div class="course-block{mt}">'
+                f'<div class="course-flex">'
+                + _cname +
+                f'<div class="course-panels">'
+                f'<div class="view-panel {view_cls} active" id="{rid}-{view_cls}-{ci}">'
+                f'<div class="podium-bars">{c_cols}</div>'
+                f'<div class="podium-base"></div>'
+                f'<div class="also-ran-single">{c_ar}</div></div>'
+                f'<div class="view-panel view-finish" id="{rid}-finish-{ci}">'
+                f'<div class="podium-bars">{f_cols}</div>'
+                f'<div class="podium-base"></div>'
+                f'<div class="also-ran-single">{f_ar}</div></div>'
+                f'</div></div></div>'
+            )
+        return html
 
-        if not podium_html:
-            podium_html = '<span class="text-muted small">—</span>'
+    _CLUB_PREF = ["pnw-regional"]
+
+    for r in recent_races:
+        _race_counter[0] += 1
+        rid = f"r{_race_counter[0]}"
+
+        # Sort clubs: preferred first
+        clubs_sorted = sorted(r["clubs"], key=lambda c: (0 if c["id"] in _CLUB_PREF else 1, c["name"]))
+        primary = clubs_sorted[0] if clubs_sorted else None
+
+        # Build pill selectors
+        pill_html = '<div class="pill-group">'
+        for ci, c in enumerate(clubs_sorted):
+            slug = data.get("race_slugs", {}).get(c["id"], {}).get(c["race_id"], str(c["race_id"]))
+            view_cls = f"view-c{ci}"
+            active = " active" if ci == 0 else ""
+            label = clubs_cfg.get(c["id"], {}).get("short_name", c["name"])
+            _cslug = data.get("race_slugs", {}).get(c["id"], {}).get(c.get("race_id",""), "")
+            _cresults = f'{c["id"]}/results/{_cslug}.html' if _cslug else ""
+            pill_html += (f'<a class="sel-pill corr-pill{active}" '
+                          f'data-results="{_cresults}" '
+                          f'onclick="pdmView(this,\'{rid}\',\'{view_cls}\',false)" href="#">{label}</a>')
+        pill_html += '<span class="pill-sep">|</span>'
+        pill_html += (f'<a class="sel-pill finish-pill" '
+                      f'onclick="pdmView(this,\'{rid}\',\'view-finish\',true)" href="#">Finish Order</a>')
+        pill_html += '</div>'
+
+        # Build podium panels for each club
+        # Build results link (primary club)
+        _primary_slug = data.get("race_slugs", {}).get(clubs_sorted[0]["id"] if clubs_sorted else "", {}).get((clubs_sorted[0].get("race_id","") if clubs_sorted else ""), "") if clubs_sorted else ""
+        _primary_label = clubs_cfg.get(clubs_sorted[0]["id"], {}).get("short_name", clubs_sorted[0]["name"]) if clubs_sorted else ""
+        _primary_results = f'{clubs_sorted[0]["id"]}/results/{_primary_slug}.html' if clubs_sorted and _primary_slug else ""
+        _results_link_html = (f'<div id="{rid}-rl" class="results-link"><a href="{_primary_results}">Full Results: {_primary_label} →</a></div>' if _primary_results else '')
+        pill_html += _results_link_html
+        panels_html = ""
+
+        for ci, c in enumerate(clubs_sorted):
+            view_cls = f"view-c{ci}"
+            course_panels = _build_course_panels(rid, c.get("courses", []), c["id"],
+                                                  clubs_cfg.get(c["id"], {}).get("short_name", c["name"]),
+                                                  view_cls)
+            display = "" if ci == 0 else ' style="display:none"'
+            panels_html += f'<div class="club-panel" id="{rid}-club-{ci}"{display}>{course_panels}</div>'
+
         feed_rows += f"""
         <tr>
-          <td class="text-muted small text-nowrap">{r["date"]}</td>
-          <td><span class="small">{r["name"]}</span></td>
-          <td class="text-muted small text-center">{r["starters"]}</td>
-          <td>{podium_html}</td>
+          <td class="small text-nowrap" style="vertical-align:middle"><span style="font-weight:600">{_parse_date(r["date"]).strftime("%A") if _parse_date(r["date"]).year > 1 else ""}</span><br><span class="text-muted">{r["date"]}</span></td>
+          <td style="vertical-align:middle"><strong class="small">{r["name"]}</strong>{pill_html}</td>
+          <td>{panels_html}</td>
         </tr>"""
+
+    # Split feed rows and collect club keys
+    import re as _re2
+    _feed_row_list = [r.strip() + '</tr>' for r in feed_rows.split('</tr>') if r.strip()]
+    feed_rows_visible = ''.join(
+        r.replace('<tr>', '<tr class="feed-row">', 1) for r in _feed_row_list)
+    feed_rows_hidden = ''
+    # Collect unique club short names from recent races
+    _feed_clubs = []
+    for _r in recent_races:
+        for _c in _r.get("clubs", []):
+            _sn = clubs_cfg.get(_c["id"], {}).get("short_name", _c["name"])
+            if _sn not in _feed_clubs:
+                _feed_clubs.append(_sn)
+    feed_club_options = ''.join(f'<option value="{sn}">{sn}</option>' for sn in sorted(_feed_clubs))
+    _has_hidden = len(_feed_row_list) > 5
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -2265,15 +2417,101 @@ def generate_platform_home(data: dict) -> None:
 }})();
 </script>
 <div class="container-fluid px-2 px-sm-3">
-  <h2 class="h5 mb-2">Recent Races</h2>
+  <style>
+.podium-bars{{display:flex;align-items:flex-end;gap:3px}}
+.podium-col{{display:flex;flex-direction:column;align-items:center;gap:1px;flex:1;min-width:0}}
+.podium-name{{font-size:.75em;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%;color:#555}}
+.podium-bar{{width:100%;border-bottom:none;border-radius:4px 4px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:3px 2px}}
+.podium-time{{font-size:.82em;font-weight:700;text-align:center}}
+.podium-calc{{font-size:.6em;font-weight:700;text-align:center;line-height:1.3;white-space:nowrap}}
+.podium-base{{height:2px;background:#CCC;border-radius:2px}}
+.also-ran-single{{margin-top:4px;font-size:.72em;color:#666}}
+.view-panel{{display:none}}.view-panel.active{{display:block}}
+.course-flex{{display:flex;gap:8px;align-items:flex-end}}.course-name-side{{font-size:.82em;font-weight:700;color:#333;min-width:40px;white-space:nowrap;padding-bottom:26px}}.course-panels{{flex:1;min-width:0}}
+.course-block.mt-2{{margin-top:.75rem}}
+.pill-group{{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;align-items:center}}
+.pill-sep{{font-size:.72em;color:#ccc}}
+.sel-pill{{font-size:.75em;padding:2px 8px;border-radius:12px;border:1px solid #ccc;background:#f8f9fa;color:#555;cursor:pointer;text-decoration:none;white-space:nowrap}}
+.sel-pill.active.corr-pill{{background:#198754;border-color:#198754;color:#fff}}
+.sel-pill.active.finish-pill{{background:#0d6efd;border-color:#0d6efd;color:#fff}}
+.mode-badge{{display:inline-block;font-size:.72em;padding:2px 9px;border-radius:12px;color:#fff;margin-bottom:6px;font-weight:500;background:#198754}}
+.mode-badge.finish{{background:#0d6efd}}
+.results-link{{margin-top:3px;font-size:.8em}}
+.feed-row td{{padding-top:44px!important;padding-bottom:44px!important;border-bottom:none!important}}
+
+</style>
+<script>
+function pdmView(el,rid,viewCls,isFinish){{
+  event.preventDefault();
+  var row=el.closest('tr');
+  row.querySelectorAll('.sel-pill').forEach(function(p){{p.classList.remove('active');}});
+  el.classList.add('active');
+  var td=row.querySelector('td:last-child');
+  td.querySelectorAll('.club-panel').forEach(function(p){{p.style.display='none';}});
+  if(isFinish){{
+    var firstPanel=td.querySelector('.club-panel');
+    if(firstPanel){{firstPanel.style.display='';}}
+    td.querySelectorAll('.view-panel').forEach(function(p){{p.classList.remove('active');}});
+    td.querySelectorAll('.view-finish').forEach(function(p){{p.classList.add('active');}});
+  }} else {{
+    var pills=Array.from(row.querySelectorAll('.corr-pill'));
+    var idx=pills.indexOf(el);
+    var panel=td.querySelector('#'+rid+'-club-'+idx);
+    if(panel){{panel.style.display='';}}
+    td.querySelectorAll('.view-panel').forEach(function(p){{p.classList.remove('active');}});
+    if(panel){{panel.querySelectorAll('.'+viewCls).forEach(function(p){{p.classList.add('active');}});}}
+  }}
+  var rl=row.querySelector('#'+rid+'-rl');
+  if(rl){{
+    var href=isFinish?(row.querySelector('.corr-pill[data-results]')||{{dataset:{{}}}}).dataset.results||'':el.dataset.results||'';
+    var lbl=isFinish?((row.querySelector('.corr-pill.active')||el).textContent.trim()):el.textContent.trim();
+    rl.innerHTML=href?'<a href="'+href+'">Full Results: '+lbl+' →</a>':'';
+  }}
+}}
+</script>
+  <div class="d-flex align-items-center gap-2 mb-2 mt-4 flex-wrap">
+    <h2 class="h5 mb-0">Recent Results</h2>
+    <select id="feed-club-filter" class="form-select form-select-sm" style="width:auto" onchange="filterFeed(this.value)">
+      <option value="">All clubs</option>
+      {feed_club_options}
+    </select>
+    {'<button id="feed-show-more" class="btn btn-sm btn-outline-secondary mb-0" onclick="toggleFeedMore(this)">Show more ▼</button>' if _has_hidden else ""}
+  </div>
   <div class="table-responsive">
-    <table class="table table-sm table-striped">
-      <thead><tr><th style="width:90px">Date</th><th style="width:30%">Race</th><th class="text-center" style="width:60px">Starters</th><th>Results (Corrected time)</th></tr></thead>
-      <tbody>{feed_rows}</tbody>
+    <table class="table table-sm" id="feed-table">
+      <thead><tr><th style="width:90px">Date</th><th style="width:32%">Race</th><th>Podium</th></tr></thead>
+      <tbody>{feed_rows_visible}{feed_rows_hidden}</tbody>
     </table>
   </div>
 </div>
 <script>
+var _feedFilter='';
+function filterFeed(club){{
+  _feedFilter=club;
+  _applyFeedFilter(false);
+}}
+function toggleFeedMore(btn){{
+  var expand=btn.textContent==='Show more ▼';
+  _applyFeedFilter(expand);
+  btn.textContent=expand?'Show less ▲':'Show more ▼';
+}}
+function _applyFeedFilter(showAll){{
+  var rows=Array.from(document.querySelectorAll('#feed-table .feed-row'));
+  var matching=rows.filter(function(r){{
+    if(!_feedFilter)return true;
+    var pills=r.querySelectorAll('.sel-pill.corr-pill');
+    return Array.from(pills).some(function(p){{return p.textContent.trim()===_feedFilter;}});
+  }});
+  rows.forEach(function(r){{r.style.display='none';}});
+  var limit=showAll?matching.length:5;
+  matching.slice(0,limit).forEach(function(r){{r.style.display='';}});
+  var btn=document.getElementById('feed-show-more');
+  if(btn){{
+    btn.style.display=matching.length>5?'':'none';
+    btn.textContent=showAll?'Show less ▲':'Show more ▼';
+  }}
+}}
+document.addEventListener('DOMContentLoaded',function(){{_applyFeedFilter(false);}});
 </script>
 </body>
 </html>"""
@@ -2284,8 +2522,10 @@ def generate_platform_home(data: dict) -> None:
 
 def generate_races_list(data: dict) -> None:
     """Generate per-club races-{club}.html + races-list-{club}.json data files."""
-    import json as _json
+    import json as _json, yaml as _yaml2
     from collections import defaultdict
+    _clubs_cfg_path = Path(__file__).parent.parent / "data" / "clubs.yaml"
+    clubs_cfg = _yaml2.safe_load(_clubs_cfg_path.read_text()).get("clubs", {}) if _clubs_cfg_path.exists() else {}
 
     # Write per-club JSON data files
     for club_id, club in data["clubs"].items():
@@ -2309,11 +2549,23 @@ def generate_races_list(data: dict) -> None:
                 for c in courses:
                     label = c["name"].split(" — ")[-1] if " — " in c["name"] else ""
                     winners = {}
+                    finish_winners = {}
                     for r in c["results"]:
                         for place, trophy in [(1,"hcap_1"),(2,"hcap_2"),(3,"hcap_3")]:
                             if trophy in r.get("trophies", []):
                                 winners[place] = {"name": r["canonical_name"], "slug": _slug(r["canonical_name"])}
-                    courses_data.append({"label": label if multi else "", "starters": len(c["results"]), "winners": winners})
+                        for place, trophy in [(1,"finish_1"),(2,"finish_2"),(3,"finish_3")]:
+                            if trophy in r.get("trophies", []):
+                                finish_winners[place] = {"name": r["canonical_name"], "slug": _slug(r["canonical_name"])}
+                    def _fmt_t(s):
+                        if s is None: return ""
+                        s=float(s); m,sec=divmod(int(s),60); h,m=divmod(m,60)
+                        return f"{h}:{m:02d}:{sec:02d}" if h else f"{m}:{sec:02d}"
+                    corr_sorted = sorted([r for r in c["results"] if r.get("eligible_adjusted_place",0)>0], key=lambda x: x.get("eligible_adjusted_place",999))[:10]
+                    corr_top10 = [{"name":r["canonical_name"],"slug":_slug(r["canonical_name"]),"ct":_fmt_t(r.get("adjusted_time_seconds")),"ft":_fmt_t(r.get("time_seconds")),"idx":f"{r.get('handicap',1.0):.3f}","place":r.get("eligible_adjusted_place",0)} for r in corr_sorted]
+                    fin_sorted = sorted(c["results"], key=lambda x: x.get("original_place",999))[:10]
+                    fin_top10 = [{"name":r["canonical_name"],"slug":_slug(r["canonical_name"]),"ft":_fmt_t(r.get("time_seconds")),"place":r.get("original_place",0)} for r in fin_sorted]
+                    courses_data.append({"label": label if multi else "", "starters": len(c["results"]), "winners": winners, "finish_winners": finish_winners, "corr_top10": corr_top10, "fin_top10": fin_top10})
                 race_list.append({
                     "race_id": race_id,
                     "name": base_name,
@@ -2322,7 +2574,8 @@ def generate_races_list(data: dict) -> None:
                     "courses": courses_data,
                 })
             seasons_data[year] = race_list
-        (SITE_DIR / club_id / "races-list.json").write_text(_json.dumps({"seasons": seasons_data, "current": club["current_season"]}))
+        _club_short = clubs_cfg.get(club_id, {}).get("short_name", club_id)
+        (SITE_DIR / club_id / "races-list.json").write_text(_json.dumps({"seasons": seasons_data, "current": club["current_season"], "club_short": _club_short}))
 
     # Generate per-club HTML pages
     global _current_racer_club
@@ -2338,6 +2591,11 @@ const CUP = {
   1: '<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.5"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.3"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.3"/><rect x="11" y="15" width="2" height="3" fill="#B8860B"/><rect x="7" y="18" width="10" height="1.5" rx="0.75" fill="#B8860B"/></svg>',
   2: '<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.5"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.3"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.3"/><rect x="11" y="15" width="2" height="3" fill="#707070"/><rect x="7" y="18" width="10" height="1.5" rx="0.75" fill="#707070"/></svg>',
   3: '<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.5"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.3"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.3"/><rect x="11" y="15" width="2" height="3" fill="#B07020"/><rect x="7" y="18" width="10" height="1.5" rx="0.75" fill="#B07020"/></svg>',
+};
+const MEDAL = {
+  1: '<svg width="20" height="20" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>',
+  2: '<svg width="20" height="20" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#333">2</text></svg>',
+  3: '<svg width="20" height="20" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>',
 };
         """
 
@@ -2368,7 +2626,7 @@ const CUP = {
                 notes = race.get("notes", "")
                 links_html = " ".join(
                     f'<a href="{lnk["url"]}" target="_blank" class="badge bg-light text-dark border me-1 text-decoration-none">{lnk["label"]} ↗</a>'
-                    for lnk in race.get("links", [])
+                    for lnk in sorted(race.get('links',[]), key=lambda l: _LINK_ORDER.index(l['label']) if l['label'] in _LINK_ORDER else len(_LINK_ORDER))
                 )
                 rows += (f'<tr><td class="text-muted small text-nowrap">{date_str}</td>'
                          f'<td>{link}</td>'
@@ -2396,7 +2654,28 @@ const CUP = {
                     f'</div>'
                 )
 
-        html = _head("Races") + _nav("Races", data=data, depth=1) + _selector_bar(data, page="races") + f"""
+        html = _head("Results") + _nav("Results", data=data, depth=1) + _selector_bar(data, page="results") + f"""
+<style>
+.podium-bars{{display:flex;align-items:flex-end;gap:3px}}
+.podium-col{{display:flex;flex-direction:column;align-items:center;gap:1px;flex:1;min-width:0}}
+.podium-name{{font-size:.75em;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%;color:#555}}
+.podium-bar{{width:100%;border-bottom:none;border-radius:4px 4px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:3px 2px}}
+.podium-time{{font-size:.82em;font-weight:700;text-align:center}}
+.podium-calc{{font-size:.6em;font-weight:700;text-align:center;line-height:1.3;white-space:nowrap}}
+.podium-base{{height:2px;background:#CCC;border-radius:2px}}
+.also-ran-single{{margin-top:4px;font-size:.72em;color:#666}}
+.rl-panel{{display:none}}.rl-panel.active{{display:block}}
+.course-name-side{{font-size:.82em;font-weight:700;color:#333;min-width:40px;white-space:nowrap;padding-bottom:26px}}
+.course-flex{{display:flex;gap:8px;align-items:flex-end}}
+.course-panels{{flex:1;min-width:0}}
+.course-block.mt-2{{margin-top:.75rem}}
+.pill-group{{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;align-items:center}}
+.pill-sep{{font-size:.72em;color:#ccc}}
+.sel-pill{{font-size:.75em;padding:2px 8px;border-radius:12px;border:1px solid #ccc;background:#f8f9fa;color:#555;cursor:pointer;text-decoration:none;white-space:nowrap}}
+.sel-pill.active.corr-pill{{background:#198754;border-color:#198754;color:#fff}}
+.sel-pill.active.finish-pill{{background:#0d6efd;border-color:#0d6efd;color:#fff}}
+.feed-row td{{padding-top:44px!important;padding-bottom:44px!important;border-bottom:none!important}}
+</style>
 <div class="container">
   <h1 class="mb-3">Races</h1>
   {upcoming_html}
@@ -2422,22 +2701,94 @@ function podiumHtml(course) {{
   return '<div class="me-3">' + lbl + rows + '</div>';
 }}
 
+function finishPodiumHtml(course) {{
+  var w = course.finish_winners;
+  if (!w || Object.keys(w).length === 0) return '';
+  var rows = '';
+  [1,2,3].forEach(function(p) {{
+    if (w[p]) {{
+      var nameHtml = RACER_SLUGS.has(w[p].slug)
+        ? '<a href="racer/' + w[p].slug + '.html" class="small text-truncate" style="max-width:130px">' + w[p].name + '</a>'
+        : '<span class="small text-truncate" style="max-width:130px">' + w[p].name + '</span>';
+      rows += '<div class="d-flex align-items-center gap-1 text-nowrap">' + MEDAL[p] + nameHtml + '</div>';
+    }}
+  }});
+  var lbl = course.label ? '<div class="text-muted small fw-semibold mb-1">' + course.label + '</div>' : '';
+  return '<div class="me-3">' + lbl + rows + '</div>';
+}}
+
+var _rlView = 'corr';
+function rlSetView(el, view) {{
+  event.preventDefault();
+  // Update all rows to match the new view
+  _rlView = view;
+  document.querySelectorAll('#rl-table .feed-row').forEach(function(row) {{
+    row.querySelectorAll('.sel-pill').forEach(function(p) {{
+      p.classList.remove('active');
+      if((view==='corr'&&p.classList.contains('corr-pill'))||(view==='finish'&&p.classList.contains('finish-pill'))) p.classList.add('active');
+    }});
+    row.querySelectorAll('.rl-panel').forEach(function(p){{p.classList.remove('active');}});
+    row.querySelectorAll('.rl-'+view).forEach(function(p){{p.classList.add('active');}});
+  }});
+}}
+function _rlPodiumCol(icon, name, slug, h, bg, bdr, tc, time, calc) {{
+  var nameHtml = RACER_SLUGS.has(slug) ? '<a href="racer/'+slug+'.html" class="podium-name" style="font-weight:700">'+name+'</a>' : '<span class="podium-name" style="font-weight:700">'+name+'</span>';
+  var calcHtml = calc ? '<span class="podium-calc" style="color:'+tc+'">'+calc+'</span>' : '';
+  return '<div class="podium-col">'+icon+nameHtml+'<div class="podium-bar" style="height:'+h+'px;background:'+bg+';border:1px solid '+bdr+'"><span class="podium-time" style="color:'+tc+'">'+time+'</span>'+calcHtml+'</div></div>';
+}}
+var _rlColors = {{1:['#7A5C00','#FFF8DC','#FFD700'],2:['#555','#EBEBEB','#A0A0A0'],3:['#5C2E00','#FDF0E0','#DDA84A']}};
+var _rlH = {{1:60,2:48,3:32}};
+function _rlCourseBlock(course, ci, isFirst) {{
+  var dist = course.label || '';
+  var starters = course.starters || 0;
+  var nameDiv = '<div class="course-name-side"><strong>'+dist+'</strong><div class="text-muted" style="font-size:.72em;font-weight:400">'+starters+' starters</div></div>';
+  // corrected cols
+  var cCols=''; [2,1,3].forEach(function(p){{
+    var e=(course.corr_top10||[]).find(function(x){{return x.place===p;}});
+    var col=_rlColors[p]; var h=_rlH[p];
+    if(e) cCols+=_rlPodiumCol(CUP[p],e.name,e.slug,h,col[1],col[2],col[0],e.ct,e.ft+' ⊘'+e.idx);
+    else cCols+='<div class="podium-col">'+CUP[p]+'<span class="podium-name" style="color:#bbb">—</span><div class="podium-bar" style="height:'+h+'px;background:'+col[1]+';border:1px solid '+col[2]+'"></div></div>';
+  }});
+  var cAr=(course.corr_top10||[]).slice(3,10).map(function(e,i){{return (i+4)+'th: '+e.name;}}).join('  ');
+  // finish cols
+  var fCols=''; [2,1,3].forEach(function(p){{
+    var e=(course.fin_top10||[]).find(function(x){{return x.place===p;}});
+    var col=_rlColors[p]; var h=_rlH[p];
+    if(e) fCols+=_rlPodiumCol(MEDAL[p],e.name,e.slug,h,col[1],col[2],col[0],e.ft,'');
+    else fCols+='<div class="podium-col">'+MEDAL[p]+'<span class="podium-name" style="color:#bbb">—</span><div class="podium-bar" style="height:'+h+'px;background:'+col[1]+';border:1px solid '+col[2]+'"></div></div>';
+  }});
+  var fAr=(course.fin_top10||[]).slice(3,10).map(function(e,i){{return (i+4)+'th: '+e.name;}}).join('  ');
+  var mt=ci>0?' mt-2':'';
+  return '<div class="course-block'+mt+'"><div class="course-flex">'+nameDiv+'<div class="course-panels">'
+    +'<div class="rl-panel rl-corr'+(isFirst&&_rlView==='corr'?' active':'')+'"><div class="podium-bars">'+cCols+'</div><div class="podium-base"></div><div class="also-ran-single">'+cAr+'</div></div>'
+    +'<div class="rl-panel rl-finish'+(isFirst&&_rlView==='finish'?' active':'')+'"><div class="podium-bars">'+fCols+'</div><div class="podium-base"></div><div class="also-ran-single">'+fAr+'</div></div>'
+    +'</div></div></div>';
+}}
 function renderRacesList(d, year) {{
   var sec = document.getElementById('upcoming-section');
   if (sec) sec.style.display = (year === d.current) ? '' : 'none';
-  var races = (d.seasons[year] || []).slice().reverse();  // newest first
+  var races = (d.seasons[year] || []).slice().reverse();
+  var clubLabel = document.querySelector('.navbar-brand') ? '' : '';
   var rows = races.map(function(r) {{
-    var podiums = r.courses.map(podiumHtml).join('');
-    return '<tr><td class="text-muted small text-nowrap">' + r.date + '</td>'
-      + '<td><a href="results/' + (raceSlugMap[r.race_id] || r.race_id) + '.html">' + r.name + '</a></td>'
-      + '<td class="text-muted small text-center">' + r.starters + '</td>'
-      + '<td><div class="d-flex flex-wrap">' + podiums + '</div></td></tr>';
+    var slug = raceSlugMap[r.race_id] || r.race_id;
+    var pills = '<div class="pill-group">'
+      +'<a class="sel-pill corr-pill'+(_rlView==='corr'?' active':'')+'" onclick="rlSetView(this,&quot;corr&quot;)" href="#">Corrected Times</a>'
+      +'<span class="pill-sep">|</span>'
+      +'<a class="sel-pill finish-pill'+(_rlView==='finish'?' active':'')+'" onclick="rlSetView(this,&quot;finish&quot;)" href="#">Finish Times</a>'
+      +'</div>';
+    var courses = r.courses.map(function(c,i){{return _rlCourseBlock(c,i,true);}}).join('');
+    return '<tr class="feed-row" style="vertical-align:middle">'
+      +'<td class="small text-nowrap" style="vertical-align:middle"><span style="font-weight:600">'+_dayName(r.date)+'</span><br><span class="text-muted">'+r.date+'</span></td>'
+      +'<td style="vertical-align:middle"><strong class="small"><a href="results/'+slug+'.html">'+r.name+'</a></strong>'+pills+'</td>'
+      +'<td>'+courses+'</td>'
+      +'</tr>';
   }}).join('');
   document.getElementById('races-content').innerHTML = rows
-    ? '<h2 class="h5 mb-2">Results</h2><div class="table-responsive"><table class="table table-sm table-striped">'
-      + '<thead><tr><th>Date</th><th>Race Results</th><th class="text-center">Starters</th><th>Podium (Corrected time)</th></tr></thead>'
-      + '<tbody>' + rows + '</tbody></table></div>'
+    ? '<h2 class="h5 mb-2">Results</h2><div class="table-responsive"><table class="table table-sm" id="rl-table"><thead><tr><th style="width:90px">Date</th><th style="width:28%">Race</th><th>Podium</th></tr></thead><tbody>'+rows+'</tbody></table></div>'
     : '<p class="text-muted">No results yet for this season.</p>';
+}}
+function _dayName(dateStr) {{
+  try {{ return new Date(dateStr).toLocaleDateString('en-US',{{weekday:'long'}}); }} catch(e) {{ return ''; }}
 }}
 
 var _racesData = null;
@@ -2456,8 +2807,8 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }});
 </script>""" + _foot()
-        (SITE_DIR / club_id / "races.html").write_text(html)
-        print(f"Generated: site/{club_id}/races.html")
+        (SITE_DIR / club_id / "results.html").write_text(html)
+        print(f"Generated: site/{club_id}/results.html")
 
 
 def generate_cross_club_links() -> None:
@@ -2474,6 +2825,7 @@ def generate_club(data: dict) -> None:
     # Build a single-club data view so generators don't loop over all clubs
     single = dict(data)
     single["clubs"] = {club_id: data["clubs"][club_id]}
+    single["all_clubs"] = data["clubs"]  # all clubs for selector bar
     single["race_slugs"] = _build_race_slugs(single)
     (SITE_DIR / club_id / "racer").mkdir(parents=True, exist_ok=True)
     (SITE_DIR / club_id / "results").mkdir(parents=True, exist_ok=True)

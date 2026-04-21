@@ -71,3 +71,17 @@ When doing a general cleanup or review pass, cover all of:
 - Verify race counts per season look reasonable
 - Check pointsWeight sums to ~1.0 per race day
 - Spot-check top 3 standings against known results
+
+## Design Decisions
+
+### Selector bar always shows all clubs (2026-04-20)
+Every page (results, standings, trajectories, racer) shows all clubs in the selector bar, not just the current club. Implemented via `all_clubs` key in `data` dict passed to `_selector_bar()`. `generate_club()` sets `single["all_clubs"] = data["clubs"]` while `single["clubs"]` remains single-club for generation loops.
+
+### Link ordering in upcoming races (2026-04-20)
+`_LINK_ORDER = ['Info', 'Schedule', 'Register', 'Start List', 'Series']` in generator.py controls badge order. Anything not in the list appears last.
+
+### Upcoming races: location vs notes split (2026-04-20)
+`upcoming.yaml` has separate `location` and `notes` fields. `location` shows under race name (grey, small). `notes` shows in the Notes column (timing info only). Extracted from old combined notes field.
+
+### Results page naming (2026-04-20)
+Nav item and file renamed from "Races"/"races.html" to "Results"/"results.html". Old races.html files deleted.
