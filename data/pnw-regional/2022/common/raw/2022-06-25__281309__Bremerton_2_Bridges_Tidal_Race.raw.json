@@ -1,0 +1,1055 @@
+{
+  "RaceInfo": {
+    "RaceId": 281309,
+    "Name": "Bremerton 2 Bridges Tidal Race",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=281309",
+    "Date": "Jun 25, 2022",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, June 25, 2022 11:00 AM (GMT-7)",
+    "OrganizerName": "Salmon Bay Paddle",
+    "OrganizerUrl": "https://www.salmonbaypaddle.com/races/",
+    "Country": "United States",
+    "City": "Bremerton",
+    "StateOrProvince": "WA",
+    "Latitude": 47.5834734688874,
+    "Longitude": -122.640466690063,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "samsung SM-X200",
+    "TimedWith": "Webscorer PRO 5.3",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, June 25, 2022 5:11 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/281309_8d8bc3cb61a9bcd.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Hhw Kahikina",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC6",
+          "Gender": "Female/Male",
+          "Time": "44:01.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "34.12%",
+          "PercentMedian": "29.46%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "2",
+          "Name": "Hhw Ke Kai Koa",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC6",
+          "Gender": "Female/Male",
+          "Time": "44:57.7",
+          "Difference": "+0:56.2",
+          "PercentBack": "+2.13%",
+          "PercentWinning": "97.92%",
+          "PercentAverage": "32.72%",
+          "PercentMedian": "27.96%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "3",
+          "Name": "Jacob Selander",
+          "FirstName": "Jacob",
+          "LastName": "Selander",
+          "Category": "HPK 1",
+          "Gender": "Male",
+          "Time": "46:17.5",
+          "Difference": "+2:16.0",
+          "PercentBack": "+5.15%",
+          "PercentWinning": "95.10%",
+          "PercentAverage": "30.73%",
+          "PercentMedian": "25.83%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "4",
+          "Name": "David Kostelac",
+          "FirstName": "David",
+          "LastName": "Kostelac",
+          "Category": "Kayak 1 p",
+          "Gender": "Male",
+          "Time": "55:10.6",
+          "Difference": "+11:09.1",
+          "PercentBack": "+25.33%",
+          "PercentWinning": "79.79%",
+          "PercentAverage": "17.43%",
+          "PercentMedian": "11.59%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "5",
+          "Name": "Derek Amstuz",
+          "FirstName": "Derek",
+          "LastName": "Amstuz",
+          "Category": "Kayak 1 p",
+          "Gender": "Male",
+          "Time": "56:06.0",
+          "Difference": "+12:04.5",
+          "PercentBack": "+27.43%",
+          "PercentWinning": "78.48%",
+          "PercentAverage": "16.05%",
+          "PercentMedian": "10.12%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "6",
+          "Name": "Gino ALBERTO",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "Kayak 2p",
+          "Gender": "Male",
+          "Time": "56:20.6",
+          "Difference": "+12:19.1",
+          "PercentBack": "+27.98%",
+          "PercentWinning": "78.14%",
+          "PercentAverage": "15.69%",
+          "PercentMedian": "9.73%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "7",
+          "Name": "Jay Ruffo",
+          "FirstName": "Jay",
+          "LastName": "Ruffo",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "56:24.9",
+          "Difference": "+12:23.4",
+          "PercentBack": "+28.14%",
+          "PercentWinning": "78.04%",
+          "PercentAverage": "15.58%",
+          "PercentMedian": "9.61%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "8",
+          "Name": "Swift Peddlers",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "Kayak 2p",
+          "Gender": "Female/Male",
+          "Time": "1:00:32.9",
+          "Difference": "+16:31.4",
+          "PercentBack": "+37.53%",
+          "PercentWinning": "72.71%",
+          "PercentAverage": "9.40%",
+          "PercentMedian": "2.99%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "9",
+          "Name": "Tim Carmody",
+          "FirstName": "Tim",
+          "LastName": "Carmody",
+          "Category": "HPK 1",
+          "Gender": "Male",
+          "Time": "1:01:20.9",
+          "Difference": "+17:19.4",
+          "PercentBack": "+39.35%",
+          "PercentWinning": "71.76%",
+          "PercentAverage": "8.20%",
+          "PercentMedian": "1.71%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "10",
+          "Name": "Peter Kahn",
+          "FirstName": "Peter",
+          "LastName": "Kahn",
+          "Category": "C2",
+          "Gender": "Male",
+          "Time": "1:02:21.6",
+          "Difference": "+18:20.1",
+          "PercentBack": "+41.65%",
+          "PercentWinning": "70.60%",
+          "PercentAverage": "6.68%",
+          "PercentMedian": "0.09%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "11",
+          "Name": "Carl Delica",
+          "FirstName": "Carl",
+          "LastName": "Delica",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:02:28.0",
+          "Difference": "+18:26.5",
+          "PercentBack": "+41.89%",
+          "PercentWinning": "70.48%",
+          "PercentAverage": "6.53%",
+          "PercentMedian": "-0.09%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "12",
+          "Name": "Brett Amstuz",
+          "FirstName": "Brett",
+          "LastName": "Amstuz",
+          "Category": "Kayak 1 p",
+          "Gender": "Male",
+          "Time": "1:03:08.6",
+          "Difference": "+19:07.1",
+          "PercentBack": "+43.43%",
+          "PercentWinning": "69.72%",
+          "PercentAverage": "5.51%",
+          "PercentMedian": "-1.17%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "13",
+          "Name": "Ben Koltz",
+          "FirstName": "Ben",
+          "LastName": "Koltz",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:04:57.4",
+          "Difference": "+20:55.9",
+          "PercentBack": "+47.54%",
+          "PercentWinning": "67.78%",
+          "PercentAverage": "2.80%",
+          "PercentMedian": "-4.07%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "14",
+          "Name": "Herbert Gundran",
+          "FirstName": "Herbert",
+          "LastName": "Gundran",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:07:06.6",
+          "Difference": "+23:05.1",
+          "PercentBack": "+52.44%",
+          "PercentWinning": "65.60%",
+          "PercentAverage": "-0.42%",
+          "PercentMedian": "-7.53%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "15",
+          "Name": "Vadim Kin",
+          "FirstName": "Vadim",
+          "LastName": "Kin",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "1:14:47.0",
+          "Difference": "+30:45.5",
+          "PercentBack": "+69.87%",
+          "PercentWinning": "58.87%",
+          "PercentAverage": "-11.91%",
+          "PercentMedian": "-19.82%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "16",
+          "Name": "Tim Quayle",
+          "FirstName": "Tim",
+          "LastName": "Quayle",
+          "Category": "Kayak 1 p",
+          "Gender": "Male",
+          "Time": "1:17:17.9",
+          "Difference": "+33:16.4",
+          "PercentBack": "+75.58%",
+          "PercentWinning": "56.95%",
+          "PercentAverage": "-15.67%",
+          "PercentMedian": "-23.85%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "17",
+          "Name": "Ross Gilbert",
+          "FirstName": "Ross",
+          "LastName": "Gilbert",
+          "Category": "Prone 14'",
+          "Gender": "Male",
+          "Time": "1:19:44.4",
+          "Difference": "+35:42.9",
+          "PercentBack": "+81.12%",
+          "PercentWinning": "55.21%",
+          "PercentAverage": "-19.32%",
+          "PercentMedian": "-27.76%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "18",
+          "Name": "Autumn Peele",
+          "FirstName": "Autumn",
+          "LastName": "Peele",
+          "Category": "SUP 14'",
+          "Gender": "Female",
+          "Time": "1:29:18.0",
+          "Difference": "+45:16.5",
+          "PercentBack": "+102.84%",
+          "PercentWinning": "49.30%",
+          "PercentAverage": "-33.63%",
+          "PercentMedian": "-43.08%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "19",
+          "Name": "Greg Moynihan",
+          "FirstName": "Greg",
+          "LastName": "Moynihan",
+          "Category": "SUP 12'-6",
+          "Gender": "Male",
+          "Time": "1:36:37.6",
+          "Difference": "+52:36.1",
+          "PercentBack": "+119.48%",
+          "PercentWinning": "45.56%",
+          "PercentAverage": "-44.59%",
+          "PercentMedian": "-54.82%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "20",
+          "Name": "Colleen Scott",
+          "FirstName": "Colleen",
+          "LastName": "Scott",
+          "Category": "SUP 12'-6",
+          "Gender": "Female",
+          "Time": "1:57:33.1",
+          "Difference": "+1:13:31.6",
+          "PercentBack": "+167.01%",
+          "PercentWinning": "37.45%",
+          "PercentAverage": "-75.90%",
+          "PercentMedian": "-88.34%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Autumn Peele",
+          "FirstName": "Autumn",
+          "LastName": "Peele",
+          "Category": "SUP 14'",
+          "Gender": "Female",
+          "Time": "1:29:18.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.66%",
+          "PercentMedian": "13.66%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "2",
+          "Name": "Colleen Scott",
+          "FirstName": "Colleen",
+          "LastName": "Scott",
+          "Category": "SUP 12'-6",
+          "Gender": "Female",
+          "Time": "1:57:33.1",
+          "Difference": "+28:15.1",
+          "PercentBack": "+31.64%",
+          "PercentWinning": "75.97%",
+          "PercentAverage": "-13.66%",
+          "PercentMedian": "-13.66%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jacob Selander",
+          "FirstName": "Jacob",
+          "LastName": "Selander",
+          "Category": "HPK 1",
+          "Gender": "Male",
+          "Time": "46:17.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "29.16%",
+          "PercentMedian": "25.89%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "2",
+          "Name": "David Kostelac",
+          "FirstName": "David",
+          "LastName": "Kostelac",
+          "Category": "Kayak 1 p",
+          "Gender": "Male",
+          "Time": "55:10.6",
+          "Difference": "+8:53.1",
+          "PercentBack": "+19.19%",
+          "PercentWinning": "83.90%",
+          "PercentAverage": "15.56%",
+          "PercentMedian": "11.67%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "3",
+          "Name": "Derek Amstuz",
+          "FirstName": "Derek",
+          "LastName": "Amstuz",
+          "Category": "Kayak 1 p",
+          "Gender": "Male",
+          "Time": "56:06.0",
+          "Difference": "+9:48.5",
+          "PercentBack": "+21.19%",
+          "PercentWinning": "82.52%",
+          "PercentAverage": "14.15%",
+          "PercentMedian": "10.19%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "4",
+          "Name": "Gino ALBERTO",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "Kayak 2p",
+          "Gender": "Male",
+          "Time": "56:20.6",
+          "Difference": "+10:03.1",
+          "PercentBack": "+21.71%",
+          "PercentWinning": "82.16%",
+          "PercentAverage": "13.77%",
+          "PercentMedian": "9.80%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "5",
+          "Name": "Jay Ruffo",
+          "FirstName": "Jay",
+          "LastName": "Ruffo",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "56:24.9",
+          "Difference": "+10:07.4",
+          "PercentBack": "+21.87%",
+          "PercentWinning": "82.06%",
+          "PercentAverage": "13.66%",
+          "PercentMedian": "9.69%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "6",
+          "Name": "Tim Carmody",
+          "FirstName": "Tim",
+          "LastName": "Carmody",
+          "Category": "HPK 1",
+          "Gender": "Male",
+          "Time": "1:01:20.9",
+          "Difference": "+15:03.4",
+          "PercentBack": "+32.53%",
+          "PercentWinning": "75.46%",
+          "PercentAverage": "6.11%",
+          "PercentMedian": "1.79%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "7",
+          "Name": "Peter Kahn",
+          "FirstName": "Peter",
+          "LastName": "Kahn",
+          "Category": "C2",
+          "Gender": "Male",
+          "Time": "1:02:21.6",
+          "Difference": "+16:04.1",
+          "PercentBack": "+34.71%",
+          "PercentWinning": "74.23%",
+          "PercentAverage": "4.57%",
+          "PercentMedian": "0.17%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "8",
+          "Name": "Carl Delica",
+          "FirstName": "Carl",
+          "LastName": "Delica",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:02:28.0",
+          "Difference": "+16:10.5",
+          "PercentBack": "+34.94%",
+          "PercentWinning": "74.11%",
+          "PercentAverage": "4.40%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "9",
+          "Name": "Brett Amstuz",
+          "FirstName": "Brett",
+          "LastName": "Amstuz",
+          "Category": "Kayak 1 p",
+          "Gender": "Male",
+          "Time": "1:03:08.6",
+          "Difference": "+16:51.1",
+          "PercentBack": "+36.40%",
+          "PercentWinning": "73.31%",
+          "PercentAverage": "3.37%",
+          "PercentMedian": "-1.08%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "10",
+          "Name": "Ben Koltz",
+          "FirstName": "Ben",
+          "LastName": "Koltz",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:04:57.4",
+          "Difference": "+18:39.9",
+          "PercentBack": "+40.32%",
+          "PercentWinning": "71.27%",
+          "PercentAverage": "0.59%",
+          "PercentMedian": "-3.99%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "11",
+          "Name": "Herbert Gundran",
+          "FirstName": "Herbert",
+          "LastName": "Gundran",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:07:06.6",
+          "Difference": "+20:49.1",
+          "PercentBack": "+44.97%",
+          "PercentWinning": "68.98%",
+          "PercentAverage": "-2.70%",
+          "PercentMedian": "-7.43%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "12",
+          "Name": "Vadim Kin",
+          "FirstName": "Vadim",
+          "LastName": "Kin",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "1:14:47.0",
+          "Difference": "+28:29.5",
+          "PercentBack": "+61.55%",
+          "PercentWinning": "61.90%",
+          "PercentAverage": "-14.45%",
+          "PercentMedian": "-19.72%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "13",
+          "Name": "Tim Quayle",
+          "FirstName": "Tim",
+          "LastName": "Quayle",
+          "Category": "Kayak 1 p",
+          "Gender": "Male",
+          "Time": "1:17:17.9",
+          "Difference": "+31:00.4",
+          "PercentBack": "+66.98%",
+          "PercentWinning": "59.89%",
+          "PercentAverage": "-18.29%",
+          "PercentMedian": "-23.74%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "14",
+          "Name": "Ross Gilbert",
+          "FirstName": "Ross",
+          "LastName": "Gilbert",
+          "Category": "Prone 14'",
+          "Gender": "Male",
+          "Time": "1:19:44.4",
+          "Difference": "+33:26.9",
+          "PercentBack": "+72.26%",
+          "PercentWinning": "58.05%",
+          "PercentAverage": "-22.03%",
+          "PercentMedian": "-27.65%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "15",
+          "Name": "Greg Moynihan",
+          "FirstName": "Greg",
+          "LastName": "Moynihan",
+          "Category": "SUP 12'-6",
+          "Gender": "Male",
+          "Time": "1:36:37.6",
+          "Difference": "+50:20.1",
+          "PercentBack": "+108.73%",
+          "PercentWinning": "47.91%",
+          "PercentAverage": "-47.87%",
+          "PercentMedian": "-54.69%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Hhw Kahikina",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC6",
+          "Gender": "Female/Male",
+          "Time": "44:01.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.68%",
+          "PercentMedian": "2.08%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "2",
+          "Name": "Hhw Ke Kai Koa",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC6",
+          "Gender": "Female/Male",
+          "Time": "44:57.7",
+          "Difference": "+0:56.2",
+          "PercentBack": "+2.13%",
+          "PercentWinning": "97.92%",
+          "PercentAverage": "9.80%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "3",
+          "Name": "Swift Peddlers",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "Kayak 2p",
+          "Gender": "Female/Male",
+          "Time": "1:00:32.9",
+          "Difference": "+16:31.4",
+          "PercentBack": "+37.53%",
+          "PercentWinning": "72.71%",
+          "PercentAverage": "-21.47%",
+          "PercentMedian": "-34.67%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "C2",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Peter Kahn",
+          "FirstName": "Peter",
+          "LastName": "Kahn",
+          "Category": "C2",
+          "Gender": "Male",
+          "Time": "1:02:21.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "HPK 1",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jacob Selander",
+          "FirstName": "Jacob",
+          "LastName": "Selander",
+          "Category": "HPK 1",
+          "Gender": "Male",
+          "Time": "46:17.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "13.99%",
+          "PercentMedian": "13.99%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "2",
+          "Name": "Tim Carmody",
+          "FirstName": "Tim",
+          "LastName": "Carmody",
+          "Category": "HPK 1",
+          "Gender": "Male",
+          "Time": "1:01:20.9",
+          "Difference": "+15:03.4",
+          "PercentBack": "+32.53%",
+          "PercentWinning": "75.46%",
+          "PercentAverage": "-13.99%",
+          "PercentMedian": "-13.99%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Kayak 1 p",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "David Kostelac",
+          "FirstName": "David",
+          "LastName": "Kostelac",
+          "Category": "Kayak 1 p",
+          "Gender": "Male",
+          "Time": "55:10.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "12.32%",
+          "PercentMedian": "7.46%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "2",
+          "Name": "Derek Amstuz",
+          "FirstName": "Derek",
+          "LastName": "Amstuz",
+          "Category": "Kayak 1 p",
+          "Gender": "Male",
+          "Time": "56:06.0",
+          "Difference": "+0:55.4",
+          "PercentBack": "+1.67%",
+          "PercentWinning": "98.35%",
+          "PercentAverage": "10.85%",
+          "PercentMedian": "5.91%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "3",
+          "Name": "Brett Amstuz",
+          "FirstName": "Brett",
+          "LastName": "Amstuz",
+          "Category": "Kayak 1 p",
+          "Gender": "Male",
+          "Time": "1:03:08.6",
+          "Difference": "+7:58.0",
+          "PercentBack": "+14.44%",
+          "PercentWinning": "87.38%",
+          "PercentAverage": "-0.34%",
+          "PercentMedian": "-5.91%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "4",
+          "Name": "Tim Quayle",
+          "FirstName": "Tim",
+          "LastName": "Quayle",
+          "Category": "Kayak 1 p",
+          "Gender": "Male",
+          "Time": "1:17:17.9",
+          "Difference": "+22:07.3",
+          "PercentBack": "+40.09%",
+          "PercentWinning": "71.38%",
+          "PercentAverage": "-22.83%",
+          "PercentMedian": "-29.65%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Kayak 2p",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Gino ALBERTO",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "Kayak 2p",
+          "Gender": "Male",
+          "Time": "56:20.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Kayak 2p",
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Swift Peddlers",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "Kayak 2p",
+          "Gender": "Female/Male",
+          "Time": "1:00:32.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC1",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Vadim Kin",
+          "FirstName": "Vadim",
+          "LastName": "Kin",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "1:14:47.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC6",
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Hhw Kahikina",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC6",
+          "Gender": "Female/Male",
+          "Time": "44:01.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "1.05%",
+          "PercentMedian": "1.05%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "2",
+          "Name": "Hhw Ke Kai Koa",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC6",
+          "Gender": "Female/Male",
+          "Time": "44:57.7",
+          "Difference": "+0:56.2",
+          "PercentBack": "+2.13%",
+          "PercentWinning": "97.92%",
+          "PercentAverage": "-1.05%",
+          "PercentMedian": "-1.05%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Prone 14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Ross Gilbert",
+          "FirstName": "Ross",
+          "LastName": "Gilbert",
+          "Category": "Prone 14'",
+          "Gender": "Male",
+          "Time": "1:19:44.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 12'-6",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Colleen Scott",
+          "FirstName": "Colleen",
+          "LastName": "Scott",
+          "Category": "SUP 12'-6",
+          "Gender": "Female",
+          "Time": "1:57:33.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 12'-6",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Greg Moynihan",
+          "FirstName": "Greg",
+          "LastName": "Moynihan",
+          "Category": "SUP 12'-6",
+          "Gender": "Male",
+          "Time": "1:36:37.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 14'",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Autumn Peele",
+          "FirstName": "Autumn",
+          "LastName": "Peele",
+          "Category": "SUP 14'",
+          "Gender": "Female",
+          "Time": "1:29:18.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jay Ruffo",
+          "FirstName": "Jay",
+          "LastName": "Ruffo",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "56:24.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.08%",
+          "PercentMedian": "11.45%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "2",
+          "Name": "Carl Delica",
+          "FirstName": "Carl",
+          "LastName": "Delica",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:02:28.0",
+          "Difference": "+6:03.1",
+          "PercentBack": "+10.73%",
+          "PercentWinning": "90.31%",
+          "PercentAverage": "0.43%",
+          "PercentMedian": "1.95%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "3",
+          "Name": "Ben Koltz",
+          "FirstName": "Ben",
+          "LastName": "Koltz",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:04:57.4",
+          "Difference": "+8:32.5",
+          "PercentBack": "+15.14%",
+          "PercentWinning": "86.85%",
+          "PercentAverage": "-3.54%",
+          "PercentMedian": "-1.95%",
+          "StartTime": "11:00:14.3"
+        },
+        {
+          "Place": "4",
+          "Name": "Herbert Gundran",
+          "FirstName": "Herbert",
+          "LastName": "Gundran",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:07:06.6",
+          "Difference": "+10:41.7",
+          "PercentBack": "+18.96%",
+          "PercentWinning": "84.06%",
+          "PercentAverage": "-6.97%",
+          "PercentMedian": "-5.33%",
+          "StartTime": "11:00:14.3"
+        }
+      ]
+    }
+  ]
+}

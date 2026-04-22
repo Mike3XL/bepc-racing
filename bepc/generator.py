@@ -2030,6 +2030,11 @@ def generate_platform_home(data: dict) -> None:
                     h, m = divmod(m, 60)
                     if h: return f"{h}:{m:02d}:{sec:02d}"
                     return f"{m}:{sec:02d}"
+                def _fmt_delta(seconds):
+                    if seconds is None: return ""
+                    sign = "−" if seconds < 0 else "+"
+                    s = abs(int(seconds)); m,sec = divmod(s,60); h,m2 = divmod(m,60)
+                    return f"{sign}{h}:{m2:02d}:{sec:02d}" if h else f"{sign}{m:02d}:{sec:02d}"
                 # corrected top-10 by adjusted_place
                 corr_sorted = sorted(
                     [r for r in race["results"] if r.get("eligible_adjusted_place",0) > 0],
@@ -2042,7 +2047,7 @@ def generate_platform_home(data: dict) -> None:
                 def _pct(r):
                     ft=r.get("time_seconds"); tvp=r.get("time_versus_par"); idx=r.get("handicap",1.0)
                     if ft and tvp and tvp>0:
-                        pred=ft/tvp*idx; return round((1-ft/pred)*100,1) if pred>0 else 0.0
+                        pred=ft/tvp*idx; return round((ft/pred-1)*100,1) if pred>0 else 0.0
                     return 0.0
                 corr_top10 = [{"name": r["canonical_name"],
                                 "ct": _fmt_time(r.get("adjusted_time_seconds")),
@@ -2050,6 +2055,7 @@ def generate_platform_home(data: dict) -> None:
                                 "idx": f"{r.get('handicap',1.0):.2f}",
                                 "pct": _pct(r),
                                 "predicted": _predicted(r),
+                                "delta": _fmt_delta((r.get("time_seconds") - float(r.get("time_seconds"))/float(r.get("time_versus_par"))*float(r.get("handicap",1.0))) if r.get("time_versus_par") and r.get("time_versus_par")>0 and r.get("time_seconds") else None),
                                 "place": r.get("eligible_adjusted_place",0),
                                 "trophy": next((t for t in r.get("trophies",[]) if t in ("hcap_1","hcap_2","hcap_3")), None)}
                                for r in corr_sorted]
@@ -2260,19 +2266,16 @@ def generate_platform_home(data: dict) -> None:
         name = _racer_link(entry["name"], club_id=cid)
         idx = entry.get("idx","")
         pct = entry.get("pct", 0.0)
-        tri = "▲" if pct >= 0 else "▼"
-        pct_str = f"{abs(pct):.1f}% {tri}"
         ft = entry.get("ft","")
         predicted = entry.get("predicted","")
+        delta = entry.get("delta","")
+        tooltip = f'Racer Index: {idx}&#10;% versus Par: {pct:+.1f}%'
         return (f'<div class="podium-col">'
                 f'<div class="p-icon">{icon}</div>'
                 f'<div class="p-namerow"><span class="p-name" style="color:{tc}">{name}</span></div>'
-                f'<div class="p-bar" style="height:{h}px;background:{bg};border:1px solid {bdr}">'
-                f'<div class="p-diffrow">'
-                f'<span class="p-tri" style="color:{tc}">{tri}</span>'
-                f'<span class="p-pct" style="color:{tc}">{abs(pct):.1f}%</span>'
-                f'<span class="p-ridx" style="color:{tc}">⊘{idx}</span>'
-                f'</div>'
+                f'<div class="p-bar" style="height:{h}px;background:{bg};border:1px solid {bdr}"'
+                f' data-bs-toggle="tooltip" data-bs-html="true" title="Racer Index: {idx}<br>% versus Par: {pct:+.1f}%">'
+                f'<span class="p-diff" style="color:{tc}">{delta or ""}</span>'
                 f'<div class="p-spacer"></div>'
                 f'<div class="p-timerow" style="color:{tc}"><span class="p-tlabel">Actual:</span><span class="p-tval">{ft}</span></div>'
                 f'<div class="p-timerow" style="color:{tc}"><span class="p-tlabel">Predicted:</span><span class="p-tval">{predicted or "—"}</span></div>'
@@ -2363,19 +2366,14 @@ def generate_platform_home(data: dict) -> None:
         _p0_slug = data.get("race_slugs", {}).get(_p0["id"], {}).get(_p0.get("race_id",""), "") if _p0 else ""
         _primary_results = f'{_p0["id"]}/results/{_p0_slug}.html' if _p0 and _p0_slug else ""
 
-        # Build pill row: Finish Times first, then | then club pills
-        _pill_clubs = ''
-        for ci, c in enumerate(clubs_sorted):
-            view_cls = f"view-c{ci}"
-            active = " active" if ci == 0 else ""
-            label = clubs_cfg.get(c["id"], {}).get("short_name", c["name"])
-            _pill_clubs += (f'<a class="sel-pill corr-pill{active}" '
-                            f'onclick="pdmView(this,\'{rid}\',\'{view_cls}\',false)" href="#">{label}</a>')
+        # Build pill row: [Finish Time] | [Indexed: Primary club]
+        _primary_label = clubs_cfg.get(clubs_sorted[0]["id"], {}).get("short_name", clubs_sorted[0]["name"]) if clubs_sorted else ""
+        _primary_view = "view-c0"
         pill_html = ('<div class="rc-pill-row">'
-                     '<span class="rc-ranking-label">Ranking:</span>'
-                     f'<a class="sel-pill finish-pill" onclick="pdmView(this,\'{rid}\',\'view-finish\',true)" href="#">Finish Times</a>'
+                     f'<a class="sel-pill finish-pill" onclick="pdmView(this,\'{rid}\',\'view-finish\',true)" href="#">Finish Time</a>'
                      '<span class="pill-sep">|</span>'
-                     + _pill_clubs + '</div>')
+                     f'<a class="sel-pill corr-pill active" onclick="pdmView(this,\'{rid}\',\'{_primary_view}\',false)" href="#">Indexed: {_primary_label}</a>'
+                     '</div>')
 
         # Build podium panels for each club
         panels_html = ""
@@ -2484,10 +2482,8 @@ def generate_platform_home(data: dict) -> None:
 .p-name{{position:absolute;left:0;right:0;text-align:center;font-size:.72em;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;top:0}}
 .p-idx{{position:absolute;right:0;bottom:4px;font-size:.58em;font-weight:700;opacity:.75;white-space:nowrap}}
 .p-bar{{width:100%;border-bottom:none;border-radius:4px 4px 0 0;display:flex;flex-direction:column;align-items:stretch;padding:4px 5px}}
-.p-diffrow{{position:relative;display:flex;align-items:center;justify-content:center;padding-top:4px}}
-.p-tri{{position:absolute;left:0;font-size:.88em;font-weight:700}}
-.p-pct{{font-size:.88em;font-weight:700;text-align:center}}
-.p-ridx{{position:absolute;right:0;font-size:.58em;font-weight:700;opacity:.75;white-space:nowrap}}
+.p-diff{{font-size:.88em;font-weight:700;text-align:center;padding-top:4px}}
+.p-bar{{cursor:help}}
 .p-spacer{{flex:1}}
 .p-timerow{{display:flex;justify-content:space-between;align-items:baseline;font-size:.56em;line-height:1.35;opacity:.9;font-weight:700}}
 .p-tlabel{{white-space:nowrap;margin-right:3px}}
@@ -2587,7 +2583,10 @@ function _applyFeedFilter(showAll){{
     btn.textContent=showAll?'Show less ▲':'Show more ▼';
   }}
 }}
-document.addEventListener('DOMContentLoaded',function(){{_applyFeedFilter(false);}});
+document.addEventListener('DOMContentLoaded',function(){{
+  _applyFeedFilter(false);
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function(el){{new bootstrap.Tooltip(el);}});
+}});
 </script>
 </body>
 </html>"""

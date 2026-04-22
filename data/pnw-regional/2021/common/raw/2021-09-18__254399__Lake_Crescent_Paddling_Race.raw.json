@@ -1,0 +1,762 @@
+{
+  "RaceInfo": {
+    "RaceId": 254399,
+    "Name": "Lake Crescent Paddling Race",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=254399",
+    "Date": "Sep 18, 2021",
+    "Sport": "Paddling",
+    "StartTime": "Saturday, September 18, 2021 10:00 AM (GMT-7)",
+    "OrganizerName": "Salmon Bay Paddle",
+    "OrganizerUrl": "https://www.salmonbaypaddle.com/races/",
+    "Country": "United States",
+    "City": "Port Angeles",
+    "StateOrProvince": "WA",
+    "Latitude": 48.0963415420131,
+    "Longitude": -123.542570024844,
+    "StartType": "Wave",
+    "WaveGrouping": "Custom",
+    "CompletionState": "Preliminary results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 4.3",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Saturday, September 18, 2021 8:12 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/254399_8d97b1b5d56c4c4.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Bob's Our Uncle",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC2",
+          "Gender": "Male",
+          "Time": "1:14:02.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "33.89%",
+          "PercentMedian": "33.11%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Hui Heihei 2",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC6",
+          "Gender": "Female/Male",
+          "Time": "1:24:06.8",
+          "Difference": "+10:04.7",
+          "PercentBack": "+13.61%",
+          "PercentWinning": "88.02%",
+          "PercentAverage": "24.89%",
+          "PercentMedian": "24.01%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "3",
+          "Name": "Hui Heihei",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC6",
+          "Gender": "Female/Male",
+          "Time": "1:24:19.4",
+          "Difference": "+10:17.3",
+          "PercentBack": "+13.90%",
+          "PercentWinning": "87.80%",
+          "PercentAverage": "24.71%",
+          "PercentMedian": "23.82%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "4",
+          "Name": "Jacob Selander",
+          "FirstName": "Jacob",
+          "LastName": "Selander",
+          "Category": "Surf Ski 1",
+          "Gender": "Male",
+          "Time": "1:31:44.9",
+          "Difference": "+17:42.8",
+          "PercentBack": "+23.93%",
+          "PercentWinning": "80.69%",
+          "PercentAverage": "18.08%",
+          "PercentMedian": "17.11%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "5",
+          "Name": "Christopher McCalla",
+          "FirstName": "Christopher",
+          "LastName": "McCalla",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "1:39:53.4",
+          "Difference": "+25:51.3",
+          "PercentBack": "+34.92%",
+          "PercentWinning": "74.12%",
+          "PercentAverage": "10.81%",
+          "PercentMedian": "9.75%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "6",
+          "Name": "Elizabeth Arnold",
+          "FirstName": "Elizabeth",
+          "LastName": "Arnold",
+          "Category": "OC1",
+          "Gender": "Female",
+          "Time": "1:44:07.5",
+          "Difference": "+30:05.4",
+          "PercentBack": "+40.64%",
+          "PercentWinning": "71.10%",
+          "PercentAverage": "7.02%",
+          "PercentMedian": "5.93%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "7",
+          "Name": "Dustin Schmitt",
+          "FirstName": "Dustin",
+          "LastName": "Schmitt",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:49:22.2",
+          "Difference": "+35:20.1",
+          "PercentBack": "+47.73%",
+          "PercentWinning": "67.69%",
+          "PercentAverage": "2.34%",
+          "PercentMedian": "1.19%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "8",
+          "Name": "John Palmer",
+          "FirstName": "John",
+          "LastName": "Palmer",
+          "Category": "Surf Ski 1",
+          "Gender": "Male",
+          "Time": "1:51:59.8",
+          "Difference": "+37:57.7",
+          "PercentBack": "+51.28%",
+          "PercentWinning": "66.10%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "-1.19%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "9",
+          "Name": "Ian Mackie",
+          "FirstName": "Ian",
+          "LastName": "Mackie",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:53:18.5",
+          "Difference": "+39:16.4",
+          "PercentBack": "+53.05%",
+          "PercentWinning": "65.34%",
+          "PercentAverage": "-1.18%",
+          "PercentMedian": "-2.37%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "10",
+          "Name": "Erica Whisenant",
+          "FirstName": "Erica",
+          "LastName": "Whisenant",
+          "Category": "SUP 14'",
+          "Gender": "Female",
+          "Time": "1:55:05.3",
+          "Difference": "+41:03.2",
+          "PercentBack": "+55.45%",
+          "PercentWinning": "64.33%",
+          "PercentAverage": "-2.76%",
+          "PercentMedian": "-3.98%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "11",
+          "Name": "Jay Junio",
+          "FirstName": "Jay",
+          "LastName": "Junio",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "2:03:50.9",
+          "Difference": "+49:48.8",
+          "PercentBack": "+67.28%",
+          "PercentWinning": "59.78%",
+          "PercentAverage": "-10.59%",
+          "PercentMedian": "-11.89%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "12",
+          "Name": "Caleb Carlson",
+          "FirstName": "Caleb",
+          "LastName": "Carlson",
+          "Category": "SUP 12'-6",
+          "Gender": "Male",
+          "Time": "2:04:41.4",
+          "Difference": "+50:39.3",
+          "PercentBack": "+68.42%",
+          "PercentWinning": "59.38%",
+          "PercentAverage": "-11.34%",
+          "PercentMedian": "-12.65%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "13",
+          "Name": "Rommel De Leon",
+          "FirstName": "Rommel",
+          "LastName": "De Leon",
+          "Category": "SUP 12'-6",
+          "Gender": "Male",
+          "Time": "2:33:53.9",
+          "Difference": "+1:19:51.8",
+          "PercentBack": "+107.87%",
+          "PercentWinning": "48.11%",
+          "PercentAverage": "-37.42%",
+          "PercentMedian": "-39.04%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "14",
+          "Name": "Ralph Allen",
+          "FirstName": "Ralph",
+          "LastName": "Allen",
+          "Category": "FS 1x",
+          "Gender": "Male",
+          "Time": "2:57:27.3",
+          "Difference": "+1:43:25.2",
+          "PercentBack": "+139.69%",
+          "PercentWinning": "41.72%",
+          "PercentAverage": "-58.45%",
+          "PercentMedian": "-60.33%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Arnold",
+          "FirstName": "Elizabeth",
+          "LastName": "Arnold",
+          "Category": "OC1",
+          "Gender": "Female",
+          "Time": "1:44:07.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.00%",
+          "PercentMedian": "5.00%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Erica Whisenant",
+          "FirstName": "Erica",
+          "LastName": "Whisenant",
+          "Category": "SUP 14'",
+          "Gender": "Female",
+          "Time": "1:55:05.3",
+          "Difference": "+10:57.8",
+          "PercentBack": "+10.53%",
+          "PercentWinning": "90.47%",
+          "PercentAverage": "-5.00%",
+          "PercentMedian": "-5.00%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Bob's Our Uncle",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC2",
+          "Gender": "Male",
+          "Time": "1:14:02.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "37.27%",
+          "PercentMedian": "34.28%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Jacob Selander",
+          "FirstName": "Jacob",
+          "LastName": "Selander",
+          "Category": "Surf Ski 1",
+          "Gender": "Male",
+          "Time": "1:31:44.9",
+          "Difference": "+17:42.8",
+          "PercentBack": "+23.93%",
+          "PercentWinning": "80.69%",
+          "PercentAverage": "22.26%",
+          "PercentMedian": "18.56%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "3",
+          "Name": "Christopher McCalla",
+          "FirstName": "Christopher",
+          "LastName": "McCalla",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "1:39:53.4",
+          "Difference": "+25:51.3",
+          "PercentBack": "+34.92%",
+          "PercentWinning": "74.12%",
+          "PercentAverage": "15.36%",
+          "PercentMedian": "11.33%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "4",
+          "Name": "Dustin Schmitt",
+          "FirstName": "Dustin",
+          "LastName": "Schmitt",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:49:22.2",
+          "Difference": "+35:20.1",
+          "PercentBack": "+47.73%",
+          "PercentWinning": "67.69%",
+          "PercentAverage": "7.33%",
+          "PercentMedian": "2.91%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "5",
+          "Name": "John Palmer",
+          "FirstName": "John",
+          "LastName": "Palmer",
+          "Category": "Surf Ski 1",
+          "Gender": "Male",
+          "Time": "1:51:59.8",
+          "Difference": "+37:57.7",
+          "PercentBack": "+51.28%",
+          "PercentWinning": "66.10%",
+          "PercentAverage": "5.11%",
+          "PercentMedian": "0.58%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "6",
+          "Name": "Ian Mackie",
+          "FirstName": "Ian",
+          "LastName": "Mackie",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:53:18.5",
+          "Difference": "+39:16.4",
+          "PercentBack": "+53.05%",
+          "PercentWinning": "65.34%",
+          "PercentAverage": "4.00%",
+          "PercentMedian": "-0.58%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "7",
+          "Name": "Jay Junio",
+          "FirstName": "Jay",
+          "LastName": "Junio",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "2:03:50.9",
+          "Difference": "+49:48.8",
+          "PercentBack": "+67.28%",
+          "PercentWinning": "59.78%",
+          "PercentAverage": "-4.93%",
+          "PercentMedian": "-9.94%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "8",
+          "Name": "Caleb Carlson",
+          "FirstName": "Caleb",
+          "LastName": "Carlson",
+          "Category": "SUP 12'-6",
+          "Gender": "Male",
+          "Time": "2:04:41.4",
+          "Difference": "+50:39.3",
+          "PercentBack": "+68.42%",
+          "PercentWinning": "59.38%",
+          "PercentAverage": "-5.65%",
+          "PercentMedian": "-10.69%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "9",
+          "Name": "Rommel De Leon",
+          "FirstName": "Rommel",
+          "LastName": "De Leon",
+          "Category": "SUP 12'-6",
+          "Gender": "Male",
+          "Time": "2:33:53.9",
+          "Difference": "+1:19:51.8",
+          "PercentBack": "+107.87%",
+          "PercentWinning": "48.11%",
+          "PercentAverage": "-30.40%",
+          "PercentMedian": "-36.61%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "10",
+          "Name": "Ralph Allen",
+          "FirstName": "Ralph",
+          "LastName": "Allen",
+          "Category": "FS 1x",
+          "Gender": "Male",
+          "Time": "2:57:27.3",
+          "Difference": "+1:43:25.2",
+          "PercentBack": "+139.69%",
+          "PercentWinning": "41.72%",
+          "PercentAverage": "-50.36%",
+          "PercentMedian": "-57.52%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Hui Heihei 2",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC6",
+          "Gender": "Female/Male",
+          "Time": "1:24:06.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.12%",
+          "PercentMedian": "0.12%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Hui Heihei",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC6",
+          "Gender": "Female/Male",
+          "Time": "1:24:19.4",
+          "Difference": "+0:12.6",
+          "PercentBack": "+0.25%",
+          "PercentWinning": "99.75%",
+          "PercentAverage": "-0.12%",
+          "PercentMedian": "-0.12%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "FS 1x",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Ralph Allen",
+          "FirstName": "Ralph",
+          "LastName": "Allen",
+          "Category": "FS 1x",
+          "Gender": "Male",
+          "Time": "2:57:27.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC1",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Elizabeth Arnold",
+          "FirstName": "Elizabeth",
+          "LastName": "Arnold",
+          "Category": "OC1",
+          "Gender": "Female",
+          "Time": "1:44:07.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC1",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Christopher McCalla",
+          "FirstName": "Christopher",
+          "LastName": "McCalla",
+          "Category": "OC1",
+          "Gender": "Male",
+          "Time": "1:39:53.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC2",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Bob's Our Uncle",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC2",
+          "Gender": "Male",
+          "Time": "1:14:02.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "OC6",
+        "Gender": "Female/Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Hui Heihei 2",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC6",
+          "Gender": "Female/Male",
+          "Time": "1:24:06.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.12%",
+          "PercentMedian": "0.12%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Hui Heihei",
+          "FirstName": null,
+          "LastName": null,
+          "Category": "OC6",
+          "Gender": "Female/Male",
+          "Time": "1:24:19.4",
+          "Difference": "+0:12.6",
+          "PercentBack": "+0.25%",
+          "PercentWinning": "99.75%",
+          "PercentAverage": "-0.12%",
+          "PercentMedian": "-0.12%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 12'-6",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Caleb Carlson",
+          "FirstName": "Caleb",
+          "LastName": "Carlson",
+          "Category": "SUP 12'-6",
+          "Gender": "Male",
+          "Time": "2:04:41.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.48%",
+          "PercentMedian": "10.48%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Rommel De Leon",
+          "FirstName": "Rommel",
+          "LastName": "De Leon",
+          "Category": "SUP 12'-6",
+          "Gender": "Male",
+          "Time": "2:33:53.9",
+          "Difference": "+29:12.5",
+          "PercentBack": "+23.42%",
+          "PercentWinning": "81.02%",
+          "PercentAverage": "-10.48%",
+          "PercentMedian": "-10.48%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 14'",
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Erica Whisenant",
+          "FirstName": "Erica",
+          "LastName": "Whisenant",
+          "Category": "SUP 14'",
+          "Gender": "Female",
+          "Time": "1:55:05.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "SUP 14'",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Dustin Schmitt",
+          "FirstName": "Dustin",
+          "LastName": "Schmitt",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:49:22.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "5.31%",
+          "PercentMedian": "3.48%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "2",
+          "Name": "Ian Mackie",
+          "FirstName": "Ian",
+          "LastName": "Mackie",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "1:53:18.5",
+          "Difference": "+3:56.3",
+          "PercentBack": "+3.60%",
+          "PercentWinning": "96.52%",
+          "PercentAverage": "1.91%",
+          "PercentMedian": "0.00%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "3",
+          "Name": "Jay Junio",
+          "FirstName": "Jay",
+          "LastName": "Junio",
+          "Category": "SUP 14'",
+          "Gender": "Male",
+          "Time": "2:03:50.9",
+          "Difference": "+14:28.7",
+          "PercentBack": "+13.24%",
+          "PercentWinning": "88.31%",
+          "PercentAverage": "-7.22%",
+          "PercentMedian": "-9.30%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Category": "Surf Ski 1",
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Jacob Selander",
+          "FirstName": "Jacob",
+          "LastName": "Selander",
+          "Category": "Surf Ski 1",
+          "Gender": "Male",
+          "Time": "1:31:44.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "9.94%",
+          "PercentMedian": "9.94%",
+          "StartTime": "10:00:37.5"
+        },
+        {
+          "Place": "2",
+          "Name": "John Palmer",
+          "FirstName": "John",
+          "LastName": "Palmer",
+          "Category": "Surf Ski 1",
+          "Gender": "Male",
+          "Time": "1:51:59.8",
+          "Difference": "+20:14.9",
+          "PercentBack": "+22.07%",
+          "PercentWinning": "81.92%",
+          "PercentAverage": "-9.94%",
+          "PercentMedian": "-9.94%",
+          "StartTime": "10:00:37.5"
+        }
+      ]
+    }
+  ]
+}
