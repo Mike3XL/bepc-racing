@@ -2127,7 +2127,7 @@ def generate_platform_home(data: dict) -> None:
             # no per-club cap
             club_counts[primary] += 1
             club_badges = " ".join(
-                f'<span class="badge bg-light text-dark border" style="font-size:0.75em">{clubs_cfg.get(c, {}).get("short_name", c)}</span>'
+                f'<a href="{c}/results.html" class="badge bg-light text-dark border text-decoration-none" style="font-size:0.75em">{clubs_cfg.get(c, {}).get("short_name", c)}</a>'
                 for c in race_clubs
             ) if race_clubs else '<span class="badge bg-secondary text-white border" style="font-size:0.75em">Unaffiliated</span>'
             upcoming_races.append({
@@ -2201,8 +2201,8 @@ def generate_platform_home(data: dict) -> None:
             + (_show_more.replace('mb-3', 'mb-0') if _show_more else '')
             + f"</div>"
             f"<div class='table-responsive mb-1'><table id='upcoming-table' class='table table-sm table-hover'>"
-            f"<thead><tr><th style='width:100px'>Date</th><th style='min-width:220px'>Race</th><th>Club</th><th>Distance</th>"
-            f"<th style='min-width:180px'>Notes</th><th>Links</th></tr></thead>"
+            f"<thead><tr><th style='width:100px'>Date</th><th style='min-width:220px'>Race</th><th style='width:90px'>Club</th><th style='width:80px'>Distance</th>"
+            f"<th style='min-width:200px;width:25%'>Notes</th><th style='min-width:160px'>Links</th></tr></thead>"
             f"<tbody>{upcoming_rows_visible}{upcoming_rows_hidden}</tbody></table></div>"
         )
     else:
@@ -2636,10 +2636,26 @@ def generate_races_list(data: dict) -> None:
                         if s is None: return ""
                         s=float(s); m,sec=divmod(int(s),60); h,m=divmod(m,60)
                         return f"{h}:{m:02d}:{sec:02d}" if h else f"{m}:{sec:02d}"
+                    def _pred_rl(r):
+                        ft=r.get("time_seconds"); tvp=r.get("time_versus_par"); idx=r.get("handicap",1.0)
+                        if ft and tvp and tvp>0: return _fmt_t(ft/tvp*idx)
+                        return ""
+                    def _pct_rl(r):
+                        ft=r.get("time_seconds"); tvp=r.get("time_versus_par"); idx=r.get("handicap",1.0)
+                        if ft and tvp and tvp>0:
+                            pred=ft/tvp*idx; return round((ft/pred-1)*100,1) if pred>0 else 0.0
+                        return 0.0
+                    def _delta_rl(r):
+                        ft=r.get("time_seconds"); tvp=r.get("time_versus_par"); idx=r.get("handicap",1.0)
+                        if ft and tvp and tvp>0:
+                            pred=ft/tvp*idx; d=ft-pred
+                            sign="−" if d<0 else "+"; s=abs(int(d)); m,sec=divmod(s,60); h,m2=divmod(m,60)
+                            return f"{sign}{h}:{m2:02d}:{sec:02d}" if h else f"{sign}{m:02d}:{sec:02d}"
+                        return ""
                     corr_sorted = sorted([r for r in c["results"] if r.get("eligible_adjusted_place",0)>0], key=lambda x: x.get("eligible_adjusted_place",999))[:10]
-                    corr_top10 = [{"name":r["canonical_name"],"slug":_slug(r["canonical_name"]),"ct":_fmt_t(r.get("adjusted_time_seconds")),"ft":_fmt_t(r.get("time_seconds")),"idx":f"{r.get('handicap',1.0):.3f}","place":r.get("eligible_adjusted_place",0)} for r in corr_sorted]
+                    corr_top10 = [{"name":r["canonical_name"],"slug":_slug(r["canonical_name"]),"ct":_fmt_t(r.get("adjusted_time_seconds")),"ft":_fmt_t(r.get("time_seconds")),"idx":f"{r.get('handicap',1.0):.2f}","pct":_pct_rl(r),"predicted":_pred_rl(r),"delta":_delta_rl(r),"place":r.get("eligible_adjusted_place",0)} for r in corr_sorted]
                     fin_sorted = sorted(c["results"], key=lambda x: x.get("original_place",999))[:10]
-                    fin_top10 = [{"name":r["canonical_name"],"slug":_slug(r["canonical_name"]),"ft":_fmt_t(r.get("time_seconds")),"place":r.get("original_place",0)} for r in fin_sorted]
+                    fin_top10 = [{"name":r["canonical_name"],"slug":_slug(r["canonical_name"]),"ft":_fmt_t(r.get("time_seconds")),"idx":f"{r.get('handicap',1.0):.2f}","predicted":_pred_rl(r),"place":r.get("original_place",0)} for r in fin_sorted]
                     courses_data.append({"label": label if multi else "", "starters": len(c["results"]), "winners": winners, "finish_winners": finish_winners, "corr_top10": corr_top10, "fin_top10": fin_top10})
                 race_list.append({
                     "race_id": race_id,
@@ -2723,7 +2739,7 @@ const MEDAL = {
                     f'<div id="upcoming-section">'
                     '<h2 class="h5 mb-2">Upcoming Races</h2>'
                     '<div class="table-responsive mb-1"><table class="table table-sm table-hover">'
-                    '<thead><tr><th>Date</th><th>Race</th><th>Distance</th><th>Notes</th><th>Links</th></tr></thead>'
+                    '<thead><tr><th style="width:100px">Date</th><th style="min-width:180px">Race</th><th style="width:80px">Distance</th><th style="min-width:200px;width:25%">Notes</th><th style="min-width:160px">Links</th></tr></thead>'
                     f'<tbody>{visible}{hidden}</tbody></table></div>'
                     f'{show_more_btn}'
                     f'</div>'
@@ -2731,28 +2747,42 @@ const MEDAL = {
 
         html = _head("Results") + _nav("Results", data=data, depth=1) + _selector_bar(data, page="results") + f"""
 <style>
-.podium-bars{{display:flex;align-items:flex-end;gap:3px}}
-.podium-col{{display:flex;flex-direction:column;align-items:center;gap:1px;flex:1;min-width:0}}
-.podium-name{{font-size:.75em;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%;color:#555}}
-.podium-bar{{width:100%;border-bottom:none;border-radius:4px 4px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:3px 2px}}
-.podium-time{{font-size:.82em;font-weight:700;text-align:center}}
-.podium-calc{{font-size:.6em;font-weight:700;text-align:center;line-height:1.3;white-space:nowrap}}
+.rc-card{{padding:32px 0;border-bottom:1px solid #e0e0e0}}
+.rc-name{{font-weight:700;font-size:.95em;margin-bottom:2px}}
+.rc-name a{{color:inherit;text-decoration:none}}
+.rc-meta-row{{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}}
+.rc-date{{font-size:.78em;color:#888;white-space:nowrap}}
+.podium-bars{{display:flex;align-items:flex-end;gap:3px;max-width:546px}}
+.podium-col{{display:flex;flex-direction:column;align-items:stretch;gap:1px;flex:1;min-width:0;max-width:180px}}
+.podium-wrap{{max-width:546px;margin:0 auto}}
+.p-icon{{display:flex;justify-content:center}}
+.p-namerow{{position:relative;height:1.2em}}
+.p-name{{position:absolute;left:0;right:0;text-align:center;font-size:.72em;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;top:0}}
+.p-bar{{width:100%;border-bottom:none;border-radius:4px 4px 0 0;display:flex;flex-direction:column;align-items:stretch;padding:4px 5px;cursor:help}}
+.p-diff{{font-size:.88em;font-weight:700;text-align:center;padding-top:4px}}
+.p-bar{{cursor:help}}
+.p-spacer{{flex:1}}
+.p-timerow{{display:flex;justify-content:space-between;align-items:baseline;font-size:.56em;line-height:1.35;opacity:.9;font-weight:700}}
+.p-tlabel{{white-space:nowrap;margin-right:3px}}
+.p-tval{{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}}
 .podium-base{{height:2px;background:#CCC;border-radius:2px}}
 .also-ran-single{{margin-top:4px;font-size:.72em;color:#666}}
 .rl-panel{{display:none}}.rl-panel.active{{display:block}}
-.course-name-side{{font-size:.82em;font-weight:700;color:#333;min-width:40px;white-space:nowrap;padding-bottom:26px}}
-.course-flex{{display:flex;gap:8px;align-items:flex-end}}
-.course-panels{{flex:1;min-width:0}}
 .course-block.mt-2{{margin-top:.75rem}}
-.pill-group{{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;align-items:center}}
+.rc-course-hdr{{display:flex;align-items:baseline;margin-bottom:3px}}
+.rc-course-name{{flex:1;font-size:.78em;font-weight:700;color:#333}}
+.rc-podium-type{{flex:1;text-align:center;font-size:.65em;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em}}
+.rc-course-hdr-spacer{{flex:1}}
+.rc-pill-row{{display:flex;gap:4px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:14px}}
 .pill-sep{{font-size:.72em;color:#ccc}}
 .sel-pill{{font-size:.75em;padding:2px 8px;border-radius:12px;border:1px solid #ccc;background:#f8f9fa;color:#555;cursor:pointer;text-decoration:none;white-space:nowrap}}
 .sel-pill.active.corr-pill{{background:#198754;border-color:#198754;color:#fff}}
 .sel-pill.active.finish-pill{{background:#0d6efd;border-color:#0d6efd;color:#fff}}
-.feed-row td{{padding-top:44px!important;padding-bottom:44px!important;border-bottom:none!important}}
+.tooltip-inner{{text-align:left}}
+</style>
 </style>
 <div class="container">
-  <h1 class="mb-3">Races</h1>
+  <h1 class="mb-3">Results</h1>
   {upcoming_html}
   <div id="races-content"></div>
 </div>
@@ -2812,32 +2842,50 @@ function _rlPodiumCol(icon, name, slug, h, bg, bdr, tc, time, calc) {{
   return '<div class="podium-col">'+icon+nameHtml+'<div class="podium-bar" style="height:'+h+'px;background:'+bg+';border:1px solid '+bdr+'"><span class="podium-time" style="color:'+tc+'">'+time+'</span>'+calcHtml+'</div></div>';
 }}
 var _rlColors = {{1:['#7A5C00','#FFF8DC','#FFD700'],2:['#555','#EBEBEB','#A0A0A0'],3:['#5C2E00','#FDF0E0','#DDA84A']}};
-var _rlH = {{1:60,2:48,3:32}};
+var _rlH = {{1:66,2:58,3:58}};
 function _rlCourseBlock(course, ci, isFirst) {{
   var dist = course.label || '';
-  var starters = course.starters || 0;
-  var nameDiv = '<div class="course-name-side"><strong>'+dist+'</strong><div class="text-muted" style="font-size:.72em;font-weight:400">'+starters+' starters</div></div>';
+  var parValid = (course.corr_top10||[]).some(function(e){{return e.predicted;}});
   // corrected cols
   var cCols=''; [2,1,3].forEach(function(p){{
     var e=(course.corr_top10||[]).find(function(x){{return x.place===p;}});
-    var col=_rlColors[p]; var h=_rlH[p];
-    if(e) cCols+=_rlPodiumCol(CUP[p],e.name,e.slug,h,col[1],col[2],col[0],e.ct,e.ft+' ⊘'+e.idx);
-    else cCols+='<div class="podium-col">'+CUP[p]+'<span class="podium-name" style="color:#bbb">—</span><div class="podium-bar" style="height:'+h+'px;background:'+col[1]+';border:1px solid '+col[2]+'"></div></div>';
+    var col=_rlColors[p]; var h=_rlH[p]; var tc=col[0]; var bg=col[1]; var bdr=col[2];
+    if(e && parValid) {{
+      var name=RACER_SLUGS.has(e.slug)?'<a href="racer/'+e.slug+'.html" class="p-name" style="color:'+tc+'">'+e.name+'</a>':'<span class="p-name" style="color:'+tc+'">'+e.name+'</span>';
+      var pctSign=(e.pct||0)<0?'':'+';
+      var tip='Racer Index: '+(e.idx||'')+'<br>% versus Par: '+pctSign+(e.pct||0).toFixed(1)+'%';
+      cCols+='<div class="podium-col"><div class="p-icon">'+CUP[p]+'</div><div class="p-namerow">'+name+'</div>'
+        +'<div class="p-bar" style="height:'+h+'px;background:'+bg+';border:1px solid '+bdr+'" data-bs-toggle="tooltip" data-bs-html="true" title="'+tip+'">'
+        +'<span class="p-diff" style="color:'+tc+'">'+(e.delta||'')+'</span><div class="p-spacer"></div>'
+        +'<div class="p-timerow" style="color:'+tc+'"><span class="p-tlabel">Actual:</span><span class="p-tval">'+e.ft+'</span></div>'
+        +'<div class="p-timerow" style="color:'+tc+'"><span class="p-tlabel">Predicted:</span><span class="p-tval">'+(e.predicted||'\u2014')+'</span></div>'
+        +'</div></div>';
+    }} else {{
+      cCols+='<div class="podium-col"><div class="p-icon">'+CUP[p]+'</div><div class="p-namerow"><span class="p-name" style="color:#bbb">\u2014</span></div><div class="p-bar" style="height:'+h+'px;background:#f8f9fa;border:1px solid #eee"></div></div>';
+    }}
   }});
   var cAr=(course.corr_top10||[]).slice(3,10).map(function(e,i){{return (i+4)+'th: '+e.name;}}).join('  ');
   // finish cols
   var fCols=''; [2,1,3].forEach(function(p){{
     var e=(course.fin_top10||[]).find(function(x){{return x.place===p;}});
-    var col=_rlColors[p]; var h=_rlH[p];
-    if(e) fCols+=_rlPodiumCol(MEDAL[p],e.name,e.slug,h,col[1],col[2],col[0],e.ft,'');
-    else fCols+='<div class="podium-col">'+MEDAL[p]+'<span class="podium-name" style="color:#bbb">—</span><div class="podium-bar" style="height:'+h+'px;background:'+col[1]+';border:1px solid '+col[2]+'"></div></div>';
+    var col=_rlColors[p]; var h=_rlH[p]; var tc=col[0]; var bg=col[1]; var bdr=col[2];
+    if(e) {{
+      var name=RACER_SLUGS.has(e.slug)?'<a href="racer/'+e.slug+'.html" class="p-name" style="color:'+tc+'">'+e.name+'</a>':'<span class="p-name" style="color:'+tc+'">'+e.name+'</span>';
+      fCols+='<div class="podium-col"><div class="p-icon">'+MEDAL[p]+'</div><div class="p-namerow">'+name+'</div>'
+        +'<div class="p-bar" style="height:'+h+'px;background:'+bg+';border:1px solid '+bdr+';display:flex;align-items:center;justify-content:center;">'
+        +'<span style="font-size:.88em;font-weight:700;color:'+tc+';text-align:center">'+e.ft+'</span></div></div>';
+    }} else {{
+      fCols+='<div class="podium-col"><div class="p-icon">'+MEDAL[p]+'</div><div class="p-namerow"><span class="p-name" style="color:#bbb">\u2014</span></div><div class="p-bar" style="height:'+h+'px;background:#f8f9fa;border:1px solid #eee"></div></div>';
+    }}
   }});
   var fAr=(course.fin_top10||[]).slice(3,10).map(function(e,i){{return (i+4)+'th: '+e.name;}}).join('  ');
   var mt=ci>0?' mt-2':'';
-  return '<div class="course-block'+mt+'"><div class="course-flex">'+nameDiv+'<div class="course-panels">'
-    +'<div class="rl-panel rl-corr'+(isFirst&&_rlView==='corr'?' active':'')+'"><div class="podium-bars">'+cCols+'</div><div class="podium-base"></div><div class="also-ran-single">'+cAr+'</div></div>'
-    +'<div class="rl-panel rl-finish'+(isFirst&&_rlView==='finish'?' active':'')+'"><div class="podium-bars">'+fCols+'</div><div class="podium-base"></div><div class="also-ran-single">'+fAr+'</div></div>'
-    +'</div></div></div>';
+  var cHdr='<div class="rc-course-hdr"><span class="rc-course-name">'+dist+'</span><span class="rc-podium-type">% vs Predicted</span><span class="rc-course-hdr-spacer"></span></div>';
+  var fHdr='<div class="rc-course-hdr"><span class="rc-course-name">'+dist+'</span><span class="rc-podium-type">Finish Time</span><span class="rc-course-hdr-spacer"></span></div>';
+  return '<div class="course-block'+mt+'"><div class="podium-wrap">'
+    +'<div class="rl-panel rl-corr'+(isFirst&&_rlView==='corr'?' active':'')+'">'+cHdr+'<div class="podium-bars">'+cCols+'</div><div class="podium-base"></div><div class="also-ran-single">'+cAr+'</div></div>'
+    +'<div class="rl-panel rl-finish'+(isFirst&&_rlView==='finish'?' active':'')+'">'+fHdr+'<div class="podium-bars">'+fCols+'</div><div class="podium-base"></div><div class="also-ran-single">'+fAr+'</div></div>'
+    +'</div></div>';
 }}
 function renderRacesList(d, year) {{
   var sec = document.getElementById('upcoming-section');
@@ -2852,14 +2900,23 @@ function renderRacesList(d, year) {{
       +'<a class="sel-pill finish-pill'+(_rlView==='finish'?' active':'')+'" onclick="rlSetView(this,&quot;finish&quot;)" href="#">Finish Times</a>'
       +'</div>';
     var courses = r.courses.map(function(c,i){{return _rlCourseBlock(c,i,true);}}).join('');
-    return '<tr class="feed-row" style="vertical-align:middle">'
-      +'<td class="small text-nowrap" style="vertical-align:middle"><span style="font-weight:600">'+_dayName(r.date)+'</span><br><span class="text-muted">'+r.date+'</span></td>'
-      +'<td style="vertical-align:middle"><strong class="small"><a href="results/'+slug+'.html">'+r.name+'</a></strong>'+pills+'</td>'
-      +'<td>'+courses+'</td>'
-      +'</tr>';
+    var clubLabel = d.club_short || 'Indexed';
+    var pills = '<div class="rc-pill-row">'
+      +'<a class="sel-pill finish-pill'+(_rlView==='finish'?' active':'')+' " onclick="rlSetView(this,&quot;finish&quot;)" href="#">Finish Time</a>'
+      +'<span class="pill-sep">|</span>'
+      +'<a class="sel-pill corr-pill'+(_rlView==='corr'?' active':'')+' " onclick="rlSetView(this,&quot;corr&quot;)" href="#">Indexed: '+clubLabel+'</a>'
+      +'</div>';
+    return '<div class="rc-card">'
+      +'<div class="rc-name">'+r.name+'</div>'
+      +'<div class="rc-meta-row"><span class="rc-date">'+_dayName(r.date)+', '+r.date+'</span><a href="results/'+slug+'.html" class="rc-results-link">Full Results →</a></div>'
+      +courses
+      +pills
+      +'</div>';
   }}).join('');
+  var tooltipEls = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  tooltipEls.forEach(function(el){{new bootstrap.Tooltip(el);}});
   document.getElementById('races-content').innerHTML = rows
-    ? '<h2 class="h5 mb-2">Results</h2><div class="table-responsive"><table class="table table-sm" id="rl-table"><thead><tr><th style="width:90px">Date</th><th style="width:28%">Race</th><th>Podium</th></tr></thead><tbody>'+rows+'</tbody></table></div>'
+    ? '<h2 class="h5 mb-2">Results</h2>'+rows
     : '<p class="text-muted">No results yet for this season.</p>';
 }}
 function _dayName(dateStr) {{
