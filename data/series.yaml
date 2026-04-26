@@ -1,0 +1,78 @@
+# Series Configuration
+# ---------------------
+# Fixed enum of series — analytical groupings at consistent competitive levels.
+# Each race belongs to exactly one series. See docs/SERIES_SYSTEM.md.
+
+series:
+
+  bepc-summer:
+    name: BEPC Summer
+    description: >
+      Ballard Elks Paddle Club weekly Monday race series (May–Oct).
+      Includes predecessor Salmon Bay Paddle / Rob Casey series (2015–2018).
+    sort_order: 10
+
+  sckc-duck-island:
+    name: SCKC Duck Island
+    description: >
+      Seattle Canoe and Kayak Club Duck Island race series.
+    sort_order: 20
+
+  pnw:
+    name: PNW
+    description: >
+      Regional races at PNW-level seriousness — PNWORCA, Sound Rowers,
+      La Conner, Rat Island, Paddlers Cup, etc.
+    sort_order: 30
+
+  none:
+    name: None
+    description: >
+      Unaffiliated / casual races (St Paddle's, one-off events).
+      No index is computed or updated from these races.
+    sort_order: 99
+
+
+# Organizers — real-world race organizers (filter-only, not analytical)
+organizers:
+  bepc:
+    name: Ballard Elks Paddle Club
+  salmon-bay-paddle:
+    name: Salmon Bay Paddle (Rob Casey)
+  sckc:
+    name: Seattle Canoe and Kayak Club
+  sound-rowers:
+    name: Sound Rowers & Paddlers Oar Club
+  pnworca:
+    name: PNWORCA
+  ghckrt:
+    name: Gig Harbor Canoe and Kayak Racing Team
+
+
+# Results platforms — where race results are published (informational + filtering)
+results_platforms:
+  webscorer:
+    name: WebScorer
+    url: https://www.webscorer.com/
+  paddleguru:
+    name: PaddleGuru
+    url: https://paddleguru.com/
+  pacificmultisports:
+    name: Pacific Multisports
+    url: https://register.pacificmultisports.com/
+  jericho:
+    name: Jericho Outrigger
+    url: https://www.jerichooutrigger.com/
+  raceresult:
+    name: race|result
+    url: https://www.raceresult.com/
+
+
+# Known tags — free-form, new tags allowed; this list is for reference
+tags:
+  - usa-sup
+  - sup-only
+  - downwind
+  - winter
+  - championship
+  - fun
