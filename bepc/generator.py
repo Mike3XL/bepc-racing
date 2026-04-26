@@ -2040,6 +2040,12 @@ def generate_platform_home(data: dict) -> None:
                     [r for r in race["results"] if r.get("eligible_adjusted_place",0) > 0],
                     key=lambda x: x.get("eligible_adjusted_place", 999)
                 )[:10]
+                # Eligibility: suppress corrected results if <=5 established racers
+                _n_established = sum(
+                    1 for r in race["results"]
+                    if r.get("handicap", 1.0) != 1.0 and r.get("time_versus_par", 0) > 0
+                )
+                _course_eligible = _n_established > 5
                 def _predicted(r):
                     ft=r.get("time_seconds"); tvp=r.get("time_versus_par"); idx=r.get("handicap",1.0)
                     if ft and tvp and tvp>0: return _fmt_time(ft/tvp*idx)
@@ -2059,6 +2065,8 @@ def generate_platform_home(data: dict) -> None:
                                 "place": r.get("eligible_adjusted_place",0),
                                 "trophy": next((t for t in r.get("trophies",[]) if t in ("hcap_1","hcap_2","hcap_3")), None)}
                                for r in corr_sorted]
+                if not _course_eligible:
+                    corr_top10 = []
                 # finish top-10 by original_place
                 fin_sorted = sorted(race["results"], key=lambda x: x.get("original_place", 999))[:10]
                 fin_top10 = [{"name": r["canonical_name"],
@@ -2652,8 +2660,10 @@ def generate_races_list(data: dict) -> None:
                             sign="−" if d<0 else "+"; s=abs(int(d)); m,sec=divmod(s,60); h,m2=divmod(m,60)
                             return f"{sign}{h}:{m2:02d}:{sec:02d}" if h else f"{sign}{m:02d}:{sec:02d}"
                         return ""
+                    _n_est = sum(1 for r in c["results"] if r.get("handicap",1.0) != 1.0 and r.get("time_versus_par",0) > 0)
+                    _eligible = _n_est > 5
                     corr_sorted = sorted([r for r in c["results"] if r.get("eligible_adjusted_place",0)>0], key=lambda x: x.get("eligible_adjusted_place",999))[:10]
-                    corr_top10 = [{"name":r["canonical_name"],"slug":_slug(r["canonical_name"]),"ct":_fmt_t(r.get("adjusted_time_seconds")),"ft":_fmt_t(r.get("time_seconds")),"idx":f"{r.get('handicap',1.0):.2f}","pct":_pct_rl(r),"predicted":_pred_rl(r),"delta":_delta_rl(r),"place":r.get("eligible_adjusted_place",0)} for r in corr_sorted]
+                    corr_top10 = [] if not _eligible else [{"name":r["canonical_name"],"slug":_slug(r["canonical_name"]),"ct":_fmt_t(r.get("adjusted_time_seconds")),"ft":_fmt_t(r.get("time_seconds")),"idx":f"{r.get('handicap',1.0):.2f}","pct":_pct_rl(r),"predicted":_pred_rl(r),"delta":_delta_rl(r),"place":r.get("eligible_adjusted_place",0)} for r in corr_sorted]
                     fin_sorted = sorted(c["results"], key=lambda x: x.get("original_place",999))[:10]
                     fin_top10 = [{"name":r["canonical_name"],"slug":_slug(r["canonical_name"]),"ft":_fmt_t(r.get("time_seconds")),"idx":f"{r.get('handicap',1.0):.2f}","predicted":_pred_rl(r),"place":r.get("original_place",0)} for r in fin_sorted]
                     courses_data.append({"label": label if multi else "", "starters": len(c["results"]), "winners": winners, "finish_winners": finish_winners, "corr_top10": corr_top10, "fin_top10": fin_top10})
