@@ -1,0 +1,17 @@
+race_id: 2025-08-24__20257421
+name: Supchallenge
+date: '2025-08-24'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  2 KM:
+    distance_mi: 1.24
+    starters: 29
+    is_primary: false
+  5 KM:
+    distance_mi: 3.11
+    starters: 35
+    is_primary: true
+corrections: []
+notes: ''

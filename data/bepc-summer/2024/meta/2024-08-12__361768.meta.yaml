@@ -1,0 +1,13 @@
+race_id: 2024-08-12__361768
+name: 'BEPC 2024 Race Series #15'
+date: '2024-08-12'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 25
+    is_primary: true
+corrections: []
+notes: ''

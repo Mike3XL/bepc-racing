@@ -1,0 +1,17 @@
+race_id: 2013-06-29__10230
+name: Rat Island Regatta 2013
+date: '2013-06-29'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  2 5 miles:
+    distance_mi: 2.5
+    starters: 3
+    is_primary: false
+  7 8 miles:
+    distance_mi: 7.8
+    starters: 54
+    is_primary: true
+corrections: []
+notes: ''

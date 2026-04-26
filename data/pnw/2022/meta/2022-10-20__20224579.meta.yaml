@@ -1,0 +1,17 @@
+race_id: 2022-10-20__20224579
+name: Chicken
+date: '2022-10-20'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 30
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 4
+    is_primary: false
+corrections: []
+notes: ''

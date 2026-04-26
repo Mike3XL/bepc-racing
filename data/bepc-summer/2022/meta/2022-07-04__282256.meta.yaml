@@ -1,0 +1,13 @@
+race_id: 2022-07-04__282256
+name: 'BEPC 2022 Race Series #10'
+date: '2022-07-04'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 16
+    is_primary: true
+corrections: []
+notes: ''

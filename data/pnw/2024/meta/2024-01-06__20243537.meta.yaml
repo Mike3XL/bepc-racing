@@ -1,0 +1,17 @@
+race_id: 2024-01-06__20243537
+name: Pnworca1
+date: '2024-01-06'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 34
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 10
+    is_primary: false
+corrections: []
+notes: ''

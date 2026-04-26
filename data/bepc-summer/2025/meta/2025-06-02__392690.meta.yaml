@@ -1,0 +1,13 @@
+race_id: 2025-06-02__392690
+name: 'BEPC 2025 Race Series #5'
+date: '2025-06-02'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 26
+    is_primary: true
+corrections: []
+notes: ''

@@ -1,0 +1,17 @@
+race_id: 2012-09-29__4321
+name: 'Sound Rowers: Sausage Pull 2012'
+date: '2012-09-29'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course 14 3mi:
+    distance_mi: 14.3
+    starters: 29
+    is_primary: true
+  Short Course 6 5mi:
+    distance_mi: 6.5
+    starters: 27
+    is_primary: false
+corrections: []
+notes: ''

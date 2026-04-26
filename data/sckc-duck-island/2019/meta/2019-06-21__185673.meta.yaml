@@ -1,0 +1,14 @@
+race_id: 2019-06-21__185673
+name: '2019 Duck Island Race #1'
+date: '2019-06-21'
+organizer: sckc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 12
+    is_primary: true
+    _note: classes collapsed (SCKC pattern)
+corrections: []
+notes: ''

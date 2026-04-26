@@ -1,0 +1,21 @@
+race_id: 2025-10-11__366857
+name: 2025 Narrows Challenge
+date: '2025-10-11'
+organizer: pnworca
+results_platform: pacificmultisports
+tags: []
+courses:
+  10 km Intermediate:
+    distance_mi: 6.21
+    starters: 30
+    is_primary: false
+  20km Expert:
+    distance_mi: 12.43
+    starters: 26
+    is_primary: true
+  5 km Short:
+    distance_mi: 3.11
+    starters: 15
+    is_primary: false
+corrections: []
+notes: ''

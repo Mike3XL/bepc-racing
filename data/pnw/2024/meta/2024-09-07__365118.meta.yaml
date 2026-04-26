@@ -1,0 +1,17 @@
+race_id: 2024-09-07__365118
+name: Bainbridge Island Marathon and Half Marathon
+date: '2024-09-07'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 14
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 6
+    is_primary: false
+corrections: []
+notes: ''

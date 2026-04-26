@@ -1,0 +1,13 @@
+race_id: 2016-05-09__69097
+name: Monday Night Race 20160509
+date: '2016-05-09'
+organizer: salmon-bay-paddle
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 17
+    is_primary: true
+corrections: []
+notes: ''

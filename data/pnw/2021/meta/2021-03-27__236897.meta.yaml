@@ -1,0 +1,17 @@
+race_id: 2021-03-27__236897
+name: '2021 PNWORCA Winter Series Race #7: Sand Point'
+date: '2021-03-27'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  Long:
+    distance_mi: 0.0
+    starters: 31
+    is_primary: true
+  Short:
+    distance_mi: 0.0
+    starters: 10
+    is_primary: false
+corrections: []
+notes: ''

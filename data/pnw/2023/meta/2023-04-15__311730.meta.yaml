@@ -1,0 +1,17 @@
+race_id: 2023-04-15__311730
+name: 'Sound Rowers: Squaxin Island 2023'
+date: '2023-04-15'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  13 miles main course:
+    distance_mi: 13.0
+    starters: 34
+    is_primary: true
+  8 miles short course:
+    distance_mi: 8.0
+    starters: 8
+    is_primary: false
+corrections: []
+notes: ''

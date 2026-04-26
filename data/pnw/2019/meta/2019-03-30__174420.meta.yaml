@@ -1,0 +1,17 @@
+race_id: 2019-03-30__174420
+name: '2019 PNWORCA Championships: Sand Point'
+date: '2019-03-30'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 46
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 9
+    is_primary: false
+corrections: []
+notes: ''

@@ -1,0 +1,13 @@
+race_id: 2022-10-30__296346
+name: BEPC Halloween 2022 Race
+date: '2022-10-30'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 17
+    is_primary: true
+corrections: []
+notes: ''

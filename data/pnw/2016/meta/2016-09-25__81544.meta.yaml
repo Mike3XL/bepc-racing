@@ -1,0 +1,17 @@
+race_id: 2016-09-25__81544
+name: 'Sound Rowers: Lake Samish Kids 2016'
+date: '2016-09-25'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  1 5K:
+    distance_mi: 0.93
+    starters: 4
+    is_primary: false
+  3K:
+    distance_mi: 1.86
+    starters: 7
+    is_primary: true
+corrections: []
+notes: ''

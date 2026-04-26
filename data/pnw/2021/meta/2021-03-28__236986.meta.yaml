@@ -1,0 +1,13 @@
+race_id: 2021-03-28__236986
+name: 'Seattle Race Series #3 - Link the Lakes Race'
+date: '2021-03-28'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 21
+    is_primary: true
+corrections: []
+notes: ''

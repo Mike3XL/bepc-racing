@@ -1,0 +1,17 @@
+race_id: 2014-05-31__23287
+name: 'Sound Rowers: Lake Sammamish 2014'
+date: '2014-05-31'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course 13mi:
+    distance_mi: 13.0
+    starters: 22
+    is_primary: true
+  Short Course 6mi:
+    distance_mi: 6.0
+    starters: 16
+    is_primary: false
+corrections: []
+notes: ''

@@ -1,0 +1,25 @@
+race_id: 2016-09-24__81447
+name: 'Sound Rowers: Lake Samish 2016'
+date: '2016-09-24'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Wave 1 8s OC 6 6 wc:
+    distance_mi: 0.0
+    starters: 9
+    is_primary: false
+  Wave 2 Rowers:
+    distance_mi: 0.0
+    starters: 31
+    is_primary: false
+  Wave 3 Double HPK K2 Oc2:
+    distance_mi: 0.0
+    starters: 23
+    is_primary: false
+  Wave 4 Single Paddlers:
+    distance_mi: 0.0
+    starters: 78
+    is_primary: true
+corrections: []
+notes: ''

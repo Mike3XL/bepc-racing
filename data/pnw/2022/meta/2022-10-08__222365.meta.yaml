@@ -1,0 +1,21 @@
+race_id: 2022-10-08__222365
+name: 2022 Narrows Challenge
+date: '2022-10-08'
+organizer: pnworca
+results_platform: pacificmultisports
+tags: []
+courses:
+  10 km Intermediate:
+    distance_mi: 6.21
+    starters: 27
+    is_primary: false
+  20km Expert:
+    distance_mi: 12.43
+    starters: 24
+    is_primary: true
+  5 km Short:
+    distance_mi: 3.11
+    starters: 16
+    is_primary: false
+corrections: []
+notes: ''

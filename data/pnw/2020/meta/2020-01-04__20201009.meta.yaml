@@ -1,0 +1,17 @@
+race_id: 2020-01-04__20201009
+name: Pnworca1
+date: '2020-01-04'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 27
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 9
+    is_primary: false
+corrections: []
+notes: ''

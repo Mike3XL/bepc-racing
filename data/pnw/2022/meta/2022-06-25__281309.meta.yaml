@@ -1,0 +1,13 @@
+race_id: 2022-06-25__281309
+name: Bremerton 2 Bridges Tidal Race
+date: '2022-06-25'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 20
+    is_primary: true
+corrections: []
+notes: ''

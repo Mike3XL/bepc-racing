@@ -1,0 +1,14 @@
+race_id: 2016-08-26__357165
+name: '2016 Duck Island Race #7'
+date: '2016-08-26'
+organizer: sckc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 18
+    is_primary: true
+    _note: classes collapsed (SCKC pattern)
+corrections: []
+notes: ''

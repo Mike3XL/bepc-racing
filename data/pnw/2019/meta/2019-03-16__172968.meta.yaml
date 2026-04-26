@@ -1,0 +1,17 @@
+race_id: 2019-03-16__172968
+name: "Alderbrook St. Paddle\u2019s Day 2019"
+date: '2019-03-16'
+organizer: salmon-bay-paddle
+results_platform: webscorer
+tags: []
+courses:
+  3 miles:
+    distance_mi: 3.0
+    starters: 18
+    is_primary: false
+  6 miles:
+    distance_mi: 6.0
+    starters: 26
+    is_primary: true
+corrections: []
+notes: ''

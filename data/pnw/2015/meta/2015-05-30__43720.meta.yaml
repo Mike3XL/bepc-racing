@@ -1,0 +1,17 @@
+race_id: 2015-05-30__43720
+name: 'Sound Rowers: Lake Sammamish 2015'
+date: '2015-05-30'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course 13mi:
+    distance_mi: 13.0
+    starters: 11
+    is_primary: true
+  Short Course 6mi:
+    distance_mi: 6.0
+    starters: 22
+    is_primary: false
+corrections: []
+notes: ''

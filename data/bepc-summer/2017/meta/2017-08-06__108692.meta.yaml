@@ -1,0 +1,13 @@
+race_id: 2017-08-06__108692
+name: LCPF 2017 6 Mile Coastal Race
+date: '2017-08-06'
+organizer: salmon-bay-paddle
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 9
+    is_primary: true
+corrections: []
+notes: ''

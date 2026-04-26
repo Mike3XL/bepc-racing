@@ -1,0 +1,13 @@
+race_id: 2019-07-01__186836
+name: BEPC Summer Race Series IX
+date: '2019-07-01'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 24
+    is_primary: true
+corrections: []
+notes: ''

@@ -1,0 +1,17 @@
+race_id: 2025-10-21__20250919
+name: Chicken
+date: '2025-10-21'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 43
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 4
+    is_primary: false
+corrections: []
+notes: ''

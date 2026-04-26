@@ -1,0 +1,17 @@
+race_id: 2017-05-06__99772
+name: 'Sound Rowers: Lake Whatcom 2017'
+date: '2017-05-06'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course 12 Miles:
+    distance_mi: 12.0
+    starters: 31
+    is_primary: true
+  Short Course 5 5 Miles:
+    distance_mi: 5.5
+    starters: 46
+    is_primary: false
+corrections: []
+notes: ''

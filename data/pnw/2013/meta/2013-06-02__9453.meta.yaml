@@ -1,0 +1,17 @@
+race_id: 2013-06-02__9453
+name: 'Sound Rowers: Lake Sammamish 2013'
+date: '2013-06-02'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course 13mi:
+    distance_mi: 13.0
+    starters: 14
+    is_primary: true
+  Short Course 6mi:
+    distance_mi: 6.0
+    starters: 16
+    is_primary: false
+corrections: []
+notes: ''

@@ -1,0 +1,17 @@
+race_id: 2016-10-14__83996
+name: 'Sound Rowers: Mercer Island 2016'
+date: '2016-10-14'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  14 3 miles:
+    distance_mi: 14.3
+    starters: 24
+    is_primary: true
+  6 5 miles:
+    distance_mi: 6.5
+    starters: 25
+    is_primary: false
+corrections: []
+notes: ''

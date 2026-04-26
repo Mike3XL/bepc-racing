@@ -1,0 +1,17 @@
+race_id: 2024-03-30__347166
+name: '2024 PNWORCA Winter Series #7 : SPOCC'
+date: '2024-03-30'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  5 Mile Short Course:
+    distance_mi: 5.0
+    starters: 18
+    is_primary: false
+  9 Mile Long Course:
+    distance_mi: 9.0
+    starters: 57
+    is_primary: true
+corrections: []
+notes: ''

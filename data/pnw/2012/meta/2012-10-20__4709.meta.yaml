@@ -1,0 +1,17 @@
+race_id: 2012-10-20__4709
+name: 'Sound Rowers: Lake Sammamish 2012'
+date: '2012-10-20'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course 13mi:
+    distance_mi: 13.0
+    starters: 11
+    is_primary: true
+  Short Course 6mi:
+    distance_mi: 6.0
+    starters: 14
+    is_primary: false
+corrections: []
+notes: ''

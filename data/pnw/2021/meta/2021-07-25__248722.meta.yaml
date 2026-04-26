@@ -1,0 +1,17 @@
+race_id: 2021-07-25__248722
+name: 'Sound Rowers: Elk River Challenge 2021'
+date: '2021-07-25'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  3 miles:
+    distance_mi: 3.0
+    starters: 15
+    is_primary: false
+  7 miles:
+    distance_mi: 7.0
+    starters: 23
+    is_primary: true
+corrections: []
+notes: ''

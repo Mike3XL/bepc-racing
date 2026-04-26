@@ -1,0 +1,17 @@
+race_id: 2018-03-24__131035
+name: Alderbrook St. Paddle's Day Race 2018
+date: '2018-03-24'
+organizer: salmon-bay-paddle
+results_platform: webscorer
+tags: []
+courses:
+  3 miles:
+    distance_mi: 3.0
+    starters: 14
+    is_primary: false
+  6 miles:
+    distance_mi: 6.0
+    starters: 21
+    is_primary: true
+corrections: []
+notes: ''

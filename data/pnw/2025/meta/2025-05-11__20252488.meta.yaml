@@ -1,0 +1,17 @@
+race_id: 2025-05-11__20252488
+name: Weapon
+date: '2025-05-11'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 70
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 19
+    is_primary: false
+corrections: []
+notes: ''

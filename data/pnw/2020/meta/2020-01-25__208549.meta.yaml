@@ -1,0 +1,13 @@
+race_id: 2020-01-25__208549
+name: 'Seattle Race Series #1 - Saturday Jan 25'
+date: '2020-01-25'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 48
+    is_primary: true
+corrections: []
+notes: ''

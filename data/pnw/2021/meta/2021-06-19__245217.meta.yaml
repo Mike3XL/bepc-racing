@@ -1,0 +1,17 @@
+race_id: 2021-06-19__245217
+name: 'Sound Rowers: Rat Island Regatta 2021'
+date: '2021-06-19'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 46
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 14
+    is_primary: false
+corrections: []
+notes: ''

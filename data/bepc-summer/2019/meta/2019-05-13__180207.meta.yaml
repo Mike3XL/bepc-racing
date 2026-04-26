@@ -1,0 +1,13 @@
+race_id: 2019-05-13__180207
+name: BEPC Summer Race Series II
+date: '2019-05-13'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 22
+    is_primary: true
+corrections: []
+notes: ''

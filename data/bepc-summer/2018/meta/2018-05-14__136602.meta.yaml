@@ -1,0 +1,17 @@
+race_id: 2018-05-14__136602
+name: Ballard Elks Monday Paddle 20180514
+date: '2018-05-14'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Cat 1:
+    distance_mi: 0.0
+    starters: 21
+    is_primary: true
+  Social:
+    distance_mi: 0.0
+    starters: 5
+    is_primary: false
+corrections: []
+notes: ''

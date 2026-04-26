@@ -1,0 +1,17 @@
+race_id: 2018-08-27__148636
+name: BEPC Monday race 08/27/2018
+date: '2018-08-27'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Cat 1:
+    distance_mi: 0.0
+    starters: 22
+    is_primary: true
+  Social:
+    distance_mi: 0.0
+    starters: 1
+    is_primary: false
+corrections: []
+notes: ''

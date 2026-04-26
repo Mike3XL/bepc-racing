@@ -1,0 +1,17 @@
+race_id: 2018-07-16__144231
+name: BEPC Monday Paddle Series 20180716
+date: '2018-07-16'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Cat 1:
+    distance_mi: 0.0
+    starters: 25
+    is_primary: true
+  Social:
+    distance_mi: 0.0
+    starters: 4
+    is_primary: false
+corrections: []
+notes: ''

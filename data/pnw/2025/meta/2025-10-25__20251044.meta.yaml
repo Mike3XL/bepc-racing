@@ -1,0 +1,17 @@
+race_id: 2025-10-25__20251044
+name: Flcc
+date: '2025-10-25'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 29
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 12
+    is_primary: false
+corrections: []
+notes: ''

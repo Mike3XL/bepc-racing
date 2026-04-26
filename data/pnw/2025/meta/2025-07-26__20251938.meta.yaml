@@ -1,0 +1,21 @@
+race_id: 2025-07-26__20251938
+name: Dagrind
+date: '2025-07-26'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  Men Long Course:
+    distance_mi: 0.0
+    starters: 13
+    is_primary: false
+  Short Course:
+    distance_mi: 0.0
+    starters: 26
+    is_primary: true
+  Women Mixed Long Course:
+    distance_mi: 0.0
+    starters: 20
+    is_primary: false
+corrections: []
+notes: ''

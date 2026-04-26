@@ -1,0 +1,17 @@
+race_id: 2017-06-19__104531
+name: Salmon Bay Paddle Monday Race 20170619
+date: '2017-06-19'
+organizer: salmon-bay-paddle
+results_platform: webscorer
+tags: []
+courses:
+  Fun:
+    distance_mi: 0.0
+    starters: 4
+    is_primary: false
+  Main:
+    distance_mi: 0.0
+    starters: 19
+    is_primary: true
+corrections: []
+notes: ''

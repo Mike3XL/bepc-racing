@@ -1,0 +1,13 @@
+race_id: 2016-09-12__79678
+name: Monday Night Paddle Race 20160912
+date: '2016-09-12'
+organizer: salmon-bay-paddle
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 13
+    is_primary: true
+corrections: []
+notes: ''

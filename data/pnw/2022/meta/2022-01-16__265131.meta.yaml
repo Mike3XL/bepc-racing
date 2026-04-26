@@ -1,0 +1,17 @@
+race_id: 2022-01-16__265131
+name: Elk Crossing Benevolent Benefit Race
+date: '2022-01-16'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  Long:
+    distance_mi: 0.0
+    starters: 18
+    is_primary: true
+  Short:
+    distance_mi: 0.0
+    starters: 8
+    is_primary: false
+corrections: []
+notes: ''

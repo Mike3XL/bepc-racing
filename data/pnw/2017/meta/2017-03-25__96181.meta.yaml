@@ -1,0 +1,17 @@
+race_id: 2017-03-25__96181
+name: 'Sound Rowers: Bellingham Bay 2017'
+date: '2017-03-25'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  10mi two laps:
+    distance_mi: 10.0
+    starters: 36
+    is_primary: true
+  5mi one lap:
+    distance_mi: 5.0
+    starters: 26
+    is_primary: false
+corrections: []
+notes: ''

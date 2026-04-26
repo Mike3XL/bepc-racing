@@ -1,0 +1,17 @@
+race_id: 2025-02-01__325386
+name: 2025 La Conner - Sound Rowers and Paddlers
+date: '2025-02-01'
+organizer: sound-rowers
+results_platform: pacificmultisports
+tags: []
+courses:
+  2 7 Mile:
+    distance_mi: 2.7
+    starters: 11
+    is_primary: false
+  7 Mile:
+    distance_mi: 7.0
+    starters: 53
+    is_primary: true
+corrections: []
+notes: ''

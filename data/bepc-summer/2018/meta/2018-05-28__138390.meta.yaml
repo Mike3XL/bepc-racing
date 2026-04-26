@@ -1,0 +1,17 @@
+race_id: 2018-05-28__138390
+name: Bepc Monday 05/28/2018
+date: '2018-05-28'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Cat 1:
+    distance_mi: 0.0
+    starters: 13
+    is_primary: true
+  Social:
+    distance_mi: 0.0
+    starters: 4
+    is_primary: false
+corrections: []
+notes: ''

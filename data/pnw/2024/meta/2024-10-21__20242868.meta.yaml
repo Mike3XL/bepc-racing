@@ -1,0 +1,17 @@
+race_id: 2024-10-21__20242868
+name: Chicken
+date: '2024-10-21'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 39
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 5
+    is_primary: false
+corrections: []
+notes: ''

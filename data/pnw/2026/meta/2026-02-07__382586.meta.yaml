@@ -1,0 +1,17 @@
+race_id: 2026-02-07__382586
+name: 2026 La Conner - Sound Rowers and Paddlers
+date: '2026-02-07'
+organizer: sound-rowers
+results_platform: pacificmultisports
+tags: []
+courses:
+  2 7 Mile:
+    distance_mi: 2.7
+    starters: 6
+    is_primary: false
+  7 Mile:
+    distance_mi: 7.0
+    starters: 48
+    is_primary: true
+corrections: []
+notes: ''

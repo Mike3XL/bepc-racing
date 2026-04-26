@@ -1,0 +1,21 @@
+race_id: 2025-09-06__404893
+name: Bainbridge Island Marathon / Half
+date: '2025-09-06'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course 26 miles:
+    distance_mi: 26.0
+    starters: 7
+    is_primary: true
+  Long Course Early Start:
+    distance_mi: 0.0
+    starters: 1
+    is_primary: false
+  Short Course 12 miles:
+    distance_mi: 12.0
+    starters: 11
+    is_primary: false
+corrections: []
+notes: ''

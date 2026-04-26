@@ -1,0 +1,25 @@
+race_id: 2018-12-01__163142
+name: Post Poultry Paddle
+date: '2018-12-01'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Long 8 mile:
+    distance_mi: 8.0
+    starters: 19
+    is_primary: true
+  Medium 5 mile:
+    distance_mi: 5.0
+    starters: 10
+    is_primary: false
+  Short 3 mile:
+    distance_mi: 3.0
+    starters: 3
+    is_primary: false
+  Social Educational:
+    distance_mi: 0.0
+    starters: 1
+    is_primary: false
+corrections: []
+notes: ''

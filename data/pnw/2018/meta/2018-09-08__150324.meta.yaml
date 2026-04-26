@@ -1,0 +1,17 @@
+race_id: 2018-09-08__150324
+name: 'Sound Rowers: Bainbridge Island 2018'
+date: '2018-09-08'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 17
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 8
+    is_primary: false
+corrections: []
+notes: ''

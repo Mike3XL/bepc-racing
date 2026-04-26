@@ -1,0 +1,13 @@
+race_id: 2022-05-16__276674
+name: 'BEPC 2022 Race Series #3'
+date: '2022-05-16'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 26
+    is_primary: true
+corrections: []
+notes: ''

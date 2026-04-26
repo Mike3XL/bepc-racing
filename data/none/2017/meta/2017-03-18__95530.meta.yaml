@@ -1,0 +1,17 @@
+race_id: 2017-03-18__95530
+name: Alderbrook St. Paddle's Day Race 2017
+date: '2017-03-18'
+organizer: salmon-bay-paddle
+results_platform: webscorer
+tags: []
+courses:
+  6 miles:
+    distance_mi: 6.0
+    starters: 14
+    is_primary: true
+  Short:
+    distance_mi: 0.0
+    starters: 9
+    is_primary: false
+corrections: []
+notes: ''

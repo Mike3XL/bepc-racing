@@ -1,0 +1,17 @@
+race_id: 2019-11-11__202932
+name: 2019 Eric Hughes Memorial Regatta
+date: '2019-11-11'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  10k:
+    distance_mi: 6.21
+    starters: 51
+    is_primary: true
+  5k:
+    distance_mi: 3.11
+    starters: 61
+    is_primary: false
+corrections: []
+notes: ''

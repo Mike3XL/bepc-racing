@@ -1,0 +1,25 @@
+race_id: 2023-08-25__357355
+name: '2023 Duck Island Race #7'
+date: '2023-08-25'
+organizer: sckc
+results_platform: webscorer
+tags: []
+courses:
+  C1:
+    distance_mi: 0.0
+    starters: 1
+    is_primary: false
+  K1:
+    distance_mi: 0.0
+    starters: 4
+    is_primary: true
+  K2:
+    distance_mi: 0.0
+    starters: 2
+    is_primary: false
+  Other:
+    distance_mi: 0.0
+    starters: 1
+    is_primary: false
+corrections: []
+notes: ''

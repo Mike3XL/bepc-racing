@@ -1,0 +1,17 @@
+race_id: 2018-07-09__143579
+name: BEPC Monday Night Paddle Series 20180709
+date: '2018-07-09'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Cat 1:
+    distance_mi: 0.0
+    starters: 26
+    is_primary: true
+  Social:
+    distance_mi: 0.0
+    starters: 3
+    is_primary: false
+corrections: []
+notes: ''

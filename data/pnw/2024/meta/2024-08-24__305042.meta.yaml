@@ -1,0 +1,29 @@
+race_id: 2024-08-24__305042
+name: 2024 BBOP Challenge
+date: '2024-08-24'
+organizer: pnworca
+results_platform: pacificmultisports
+tags: []
+courses:
+  Men Iron 12 mile:
+    distance_mi: 12.0
+    starters: 2
+    is_primary: false
+  OC6 Changeout 18 mile:
+    distance_mi: 18.0
+    starters: 4
+    is_primary: true
+  Small Boat 12 mile:
+    distance_mi: 12.0
+    starters: 3
+    is_primary: false
+  Women Mixed Iron 12 mile:
+    distance_mi: 12.0
+    starters: 8
+    is_primary: false
+  Youth Novice 5 mile:
+    distance_mi: 5.0
+    starters: 5
+    is_primary: false
+corrections: []
+notes: ''

@@ -1,0 +1,13 @@
+race_id: 2022-08-15__286480
+name: 'BEPC 2022 Race Series #16'
+date: '2022-08-15'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 35
+    is_primary: true
+corrections: []
+notes: ''

@@ -1,0 +1,14 @@
+race_id: 2018-06-29__143456
+name: '2018 Duck Island Race #2'
+date: '2018-06-29'
+organizer: sckc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 9
+    is_primary: true
+    _note: classes collapsed (SCKC pattern)
+corrections: []
+notes: ''

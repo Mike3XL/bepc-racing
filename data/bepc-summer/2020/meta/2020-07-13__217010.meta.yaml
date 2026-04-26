@@ -1,0 +1,13 @@
+race_id: 2020-07-13__217010
+name: BEPC 2020 Race Series 3
+date: '2020-07-13'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 19
+    is_primary: true
+corrections: []
+notes: ''

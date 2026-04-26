@@ -1,0 +1,13 @@
+race_id: 2020-07-20__217493
+name: BEPC 2020 Race Series 4
+date: '2020-07-20'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 23
+    is_primary: true
+corrections: []
+notes: ''

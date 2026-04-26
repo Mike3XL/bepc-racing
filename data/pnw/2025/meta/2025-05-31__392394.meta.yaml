@@ -1,0 +1,17 @@
+race_id: 2025-05-31__392394
+name: 'Sound Rowers: Wenatchee Guano Rocks 2025'
+date: '2025-05-31'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Guano Rocks 5 5 miles:
+    distance_mi: 5.5
+    starters: 18
+    is_primary: true
+  Little Turtle 3 2 miles:
+    distance_mi: 3.2
+    starters: 9
+    is_primary: false
+corrections: []
+notes: ''

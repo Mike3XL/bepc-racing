@@ -1,0 +1,29 @@
+race_id: 2018-08-10__146978
+name: '2018 Duck Island Race #8'
+date: '2018-08-10'
+organizer: sckc
+results_platform: webscorer
+tags: []
+courses:
+  C1:
+    distance_mi: 0.0
+    starters: 1
+    is_primary: false
+  K1:
+    distance_mi: 0.0
+    starters: 9
+    is_primary: true
+  K2:
+    distance_mi: 0.0
+    starters: 4
+    is_primary: false
+  K4:
+    distance_mi: 0.0
+    starters: 1
+    is_primary: false
+  Other:
+    distance_mi: 0.0
+    starters: 1
+    is_primary: false
+corrections: []
+notes: ''

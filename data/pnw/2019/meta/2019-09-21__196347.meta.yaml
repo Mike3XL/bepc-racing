@@ -1,0 +1,17 @@
+race_id: 2019-09-21__196347
+name: 'Sound Rowers: Lake Samish 2019'
+date: '2019-09-21'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Kids Race 13 and under:
+    distance_mi: 0.0
+    starters: 13
+    is_primary: false
+  Regular Course:
+    distance_mi: 0.0
+    starters: 117
+    is_primary: true
+corrections: []
+notes: ''

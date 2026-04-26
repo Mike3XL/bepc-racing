@@ -1,0 +1,13 @@
+race_id: 2024-07-01__358176
+name: 'BEPC 2024 Race Series #9'
+date: '2024-07-01'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 30
+    is_primary: true
+corrections: []
+notes: ''

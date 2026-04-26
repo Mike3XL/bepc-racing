@@ -1,0 +1,13 @@
+race_id: 2017-04-01__96661
+name: 2017 PNWORCA Winter Championships
+date: '2017-04-01'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 41
+    is_primary: true
+corrections: []
+notes: ''

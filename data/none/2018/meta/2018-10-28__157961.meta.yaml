@@ -1,0 +1,17 @@
+race_id: 2018-10-28__157961
+name: Spooky halloween race
+date: '2018-10-28'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Cat 1:
+    distance_mi: 0.0
+    starters: 13
+    is_primary: true
+  Social:
+    distance_mi: 0.0
+    starters: 9
+    is_primary: false
+corrections: []
+notes: ''

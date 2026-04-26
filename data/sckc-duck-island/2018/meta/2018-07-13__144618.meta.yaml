@@ -1,0 +1,14 @@
+race_id: 2018-07-13__144618
+name: '2018 Duck Island Race #4'
+date: '2018-07-13'
+organizer: sckc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 5
+    is_primary: true
+    _note: classes collapsed (SCKC pattern)
+corrections: []
+notes: ''

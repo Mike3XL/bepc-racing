@@ -1,0 +1,17 @@
+race_id: 2023-08-07__323710
+name: 'BEPC 2023 Race Series #15'
+date: '2023-08-07'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Fun Wave:
+    distance_mi: 0.0
+    starters: 9
+    is_primary: false
+  Race:
+    distance_mi: 0.0
+    starters: 30
+    is_primary: true
+corrections: []
+notes: ''

@@ -1,0 +1,17 @@
+race_id: 2016-06-26__73167
+name: Crescent Bar Riverfest SUP Race 2016
+date: '2016-06-26'
+organizer: salmon-bay-paddle
+results_platform: webscorer
+tags: []
+courses:
+  2 33 miles:
+    distance_mi: 2.33
+    starters: 9
+    is_primary: false
+  6 miles:
+    distance_mi: 6.0
+    starters: 5
+    is_primary: true
+corrections: []
+notes: ''

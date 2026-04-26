@@ -1,0 +1,17 @@
+race_id: 2022-02-13__268020
+name: Round the Light Race
+date: '2022-02-13'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  Long:
+    distance_mi: 0.0
+    starters: 32
+    is_primary: true
+  Short:
+    distance_mi: 0.0
+    starters: 12
+    is_primary: false
+corrections: []
+notes: ''

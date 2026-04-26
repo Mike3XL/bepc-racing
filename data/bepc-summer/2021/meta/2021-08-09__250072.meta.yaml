@@ -1,0 +1,13 @@
+race_id: 2021-08-09__250072
+name: 'BEPC 2021 Race Series #15'
+date: '2021-08-09'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 37
+    is_primary: true
+corrections: []
+notes: ''

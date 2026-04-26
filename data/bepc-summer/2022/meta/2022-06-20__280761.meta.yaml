@@ -1,0 +1,13 @@
+race_id: 2022-06-20__280761
+name: 'BEPC 2022 Race Series #8'
+date: '2022-06-20'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 32
+    is_primary: true
+corrections: []
+notes: ''

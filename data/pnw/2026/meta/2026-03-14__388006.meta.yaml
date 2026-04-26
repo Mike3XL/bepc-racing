@@ -1,0 +1,17 @@
+race_id: 2026-03-14__388006
+name: 2026 Peter Marcus Rough Water Race
+date: '2026-03-14'
+organizer: sound-rowers
+results_platform: pacificmultisports
+tags: []
+courses:
+  Downwind Course:
+    distance_mi: 0.0
+    starters: 34
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 16
+    is_primary: false
+corrections: []
+notes: ''

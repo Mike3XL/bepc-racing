@@ -1,0 +1,17 @@
+race_id: 2016-07-04__73752
+name: Monday Night Paddle Race 20160704
+date: '2016-07-04'
+organizer: salmon-bay-paddle
+results_platform: webscorer
+tags: []
+courses:
+  1 Lap downwinder:
+    distance_mi: 1.0
+    starters: 3
+    is_primary: false
+  2 Lap downwinder:
+    distance_mi: 2.0
+    starters: 4
+    is_primary: true
+corrections: []
+notes: ''

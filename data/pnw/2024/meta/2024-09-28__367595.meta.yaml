@@ -1,0 +1,17 @@
+race_id: 2024-09-28__367595
+name: 'Sound Rowers: Mercer Island 2024'
+date: '2024-09-28'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  14 3 miles:
+    distance_mi: 14.3
+    starters: 28
+    is_primary: true
+  6 5 miles:
+    distance_mi: 6.5
+    starters: 13
+    is_primary: false
+corrections: []
+notes: ''

@@ -1,0 +1,17 @@
+race_id: 2026-03-28__426134
+name: '2026 PNWORCA Winter Series #7 : SPOCC'
+date: '2026-03-28'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  5 Mile Short Course:
+    distance_mi: 5.0
+    starters: 25
+    is_primary: false
+  9 Mile Long Course:
+    distance_mi: 9.0
+    starters: 58
+    is_primary: true
+corrections: []
+notes: ''

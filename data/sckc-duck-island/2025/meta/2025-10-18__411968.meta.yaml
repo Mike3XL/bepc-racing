@@ -1,0 +1,14 @@
+race_id: 2025-10-18__411968
+name: '2025 Duck Island Race #8'
+date: '2025-10-18'
+organizer: sckc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 17
+    is_primary: true
+    _note: classes collapsed (SCKC pattern)
+corrections: []
+notes: ''

@@ -1,0 +1,14 @@
+race_id: 2024-06-28__357001
+name: '2024 Duck Island Race #1'
+date: '2024-06-28'
+organizer: sckc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 14
+    is_primary: true
+    _note: classes collapsed (SCKC pattern)
+corrections: []
+notes: ''

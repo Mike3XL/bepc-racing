@@ -1,0 +1,14 @@
+race_id: 2015-07-17__357039
+name: '2015 Duck Island Race #3'
+date: '2015-07-17'
+organizer: sckc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 5
+    is_primary: true
+    _note: classes collapsed (SCKC pattern)
+corrections: []
+notes: ''

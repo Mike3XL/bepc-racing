@@ -1,0 +1,17 @@
+race_id: 2025-06-21__395203
+name: Rat Island Regatta 2025
+date: '2025-06-21'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course 7 8 miles:
+    distance_mi: 7.8
+    starters: 29
+    is_primary: true
+  Short Course 2 9 miles:
+    distance_mi: 2.9
+    starters: 13
+    is_primary: false
+corrections: []
+notes: ''

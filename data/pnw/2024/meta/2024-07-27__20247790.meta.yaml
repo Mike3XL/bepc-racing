@@ -1,0 +1,21 @@
+race_id: 2024-07-27__20247790
+name: Dagrind
+date: '2024-07-27'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  Men s Long Course:
+    distance_mi: 0.0
+    starters: 12
+    is_primary: false
+  Short Course:
+    distance_mi: 0.0
+    starters: 35
+    is_primary: true
+  Women s Mixed Long Course:
+    distance_mi: 0.0
+    starters: 26
+    is_primary: false
+corrections: []
+notes: ''

@@ -1,0 +1,13 @@
+race_id: 2019-08-12__190875
+name: BEPC Summer Race Series XV
+date: '2019-08-12'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 21
+    is_primary: true
+corrections: []
+notes: ''

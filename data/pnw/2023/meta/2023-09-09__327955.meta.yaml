@@ -1,0 +1,17 @@
+race_id: 2023-09-09__327955
+name: Bainbridge Island Marathon Registration List_Frida
+date: '2023-09-09'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course 26 miles:
+    distance_mi: 26.0
+    starters: 14
+    is_primary: true
+  Short Course 12 miles:
+    distance_mi: 12.0
+    starters: 11
+    is_primary: false
+corrections: []
+notes: ''

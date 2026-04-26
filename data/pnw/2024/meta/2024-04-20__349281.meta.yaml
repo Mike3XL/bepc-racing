@@ -1,0 +1,17 @@
+race_id: 2024-04-20__349281
+name: 'Sound Rowers: Squaxin Island 2024'
+date: '2024-04-20'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  13 miles main course:
+    distance_mi: 13.0
+    starters: 14
+    is_primary: true
+  8 miles short course:
+    distance_mi: 8.0
+    starters: 6
+    is_primary: false
+corrections: []
+notes: ''

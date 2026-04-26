@@ -1,0 +1,13 @@
+race_id: 2016-06-01__73978
+name: 'Urban Surf Wednesday Night Race #1 2016'
+date: '2016-06-01'
+organizer: salmon-bay-paddle
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 36
+    is_primary: true
+corrections: []
+notes: ''

@@ -284,6 +284,7 @@ def plan_migration():
             "dest_common": dest_year,
             "dest_meta": dest_meta,
             "chosen_files": chosen_files,
+            "all_files": info["files"],
             "duplicate_count": duplicate_count,
             "meta": meta,
         })
@@ -330,17 +331,23 @@ def apply(plan):
     for p in plan:
         p["dest_common"].mkdir(parents=True, exist_ok=True)
         p["dest_meta"].parent.mkdir(parents=True, exist_ok=True)
+        # Collect ALL source paths (chosen + duplicates to drop)
+        all_sources = [fpath for club, fname, fpath, course in p.get("all_files", [])]
+        chosen_paths = {src.resolve() for src, origin in p["chosen_files"].values()}
         # Move chosen files
         for fname, (src_path, origin) in p["chosen_files"].items():
             dest = p["dest_common"] / fname
             if src_path.resolve() == dest.resolve():
                 continue
             if dest.exists():
-                # Same destination reached by different source paths (cross-club duplicate).
-                # Delete the source — destination already populated.
+                # Destination already populated by another source → drop this source
                 src_path.unlink()
             else:
                 shutil.move(str(src_path), str(dest))
+        # Delete unchosen duplicate sources (they exist in a different club dir)
+        for src in all_sources:
+            if src.exists() and src.resolve() not in chosen_paths:
+                src.unlink()
         # Write meta
         with p["dest_meta"].open("w") as f:
             yaml.safe_dump(p["meta"], f, sort_keys=False, default_flow_style=False)
@@ -349,7 +356,6 @@ def apply(plan):
         club_dir = DATA / club
         if not club_dir.exists():
             continue
-        # Only remove if no more .common.json files
         remaining = list(club_dir.rglob("*.common.json"))
         if not remaining:
             shutil.rmtree(club_dir)

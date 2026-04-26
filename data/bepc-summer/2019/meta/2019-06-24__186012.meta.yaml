@@ -1,0 +1,13 @@
+race_id: 2019-06-24__186012
+name: BEPC Summer Race Series VIII
+date: '2019-06-24'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 22
+    is_primary: true
+corrections: []
+notes: ''

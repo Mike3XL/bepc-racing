@@ -1,0 +1,21 @@
+race_id: 2024-10-12__313433
+name: 2024 Narrows Challenge
+date: '2024-10-12'
+organizer: pnworca
+results_platform: pacificmultisports
+tags: []
+courses:
+  10 km Intermediate:
+    distance_mi: 6.21
+    starters: 27
+    is_primary: false
+  20km Expert:
+    distance_mi: 12.43
+    starters: 36
+    is_primary: true
+  5 km Short:
+    distance_mi: 3.11
+    starters: 11
+    is_primary: false
+corrections: []
+notes: ''

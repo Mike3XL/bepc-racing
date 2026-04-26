@@ -1,0 +1,13 @@
+race_id: 2020-08-24__220230
+name: BEPC 2020 Race Series 9
+date: '2020-08-24'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 30
+    is_primary: true
+corrections: []
+notes: ''

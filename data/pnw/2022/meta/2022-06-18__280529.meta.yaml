@@ -1,0 +1,21 @@
+race_id: 2022-06-18__280529
+name: 'Sound Rowers: Rat Island Regatta 2022'
+date: '2022-06-18'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 30
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 8
+    is_primary: false
+  Tower Course:
+    distance_mi: 0.0
+    starters: 4
+    is_primary: false
+corrections: []
+notes: ''

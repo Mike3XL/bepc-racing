@@ -1,0 +1,17 @@
+race_id: 2022-07-09__282742
+name: 'Sound Rowers: Budd Inlet 2022'
+date: '2022-07-09'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  3 NM 3 5mi:
+    distance_mi: 3.5
+    starters: 16
+    is_primary: false
+  7 NM 8mi:
+    distance_mi: 8.0
+    starters: 14
+    is_primary: true
+corrections: []
+notes: ''

@@ -1,0 +1,17 @@
+race_id: 2023-10-29__333908
+name: 2023 BEPC Halloween Race
+date: '2023-10-29'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Long course:
+    distance_mi: 0.0
+    starters: 20
+    is_primary: true
+  Short course:
+    distance_mi: 0.0
+    starters: 6
+    is_primary: false
+corrections: []
+notes: ''

@@ -1,0 +1,13 @@
+race_id: 2023-06-19__318863
+name: 'BEPC 2023 Race Series #8'
+date: '2023-06-19'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 25
+    is_primary: true
+corrections: []
+notes: ''

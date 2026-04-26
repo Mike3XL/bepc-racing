@@ -1,0 +1,13 @@
+race_id: 2017-05-22__101407
+name: Salmon Bay Paddle Monday Race 20170522
+date: '2017-05-22'
+organizer: salmon-bay-paddle
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 21
+    is_primary: true
+corrections: []
+notes: ''

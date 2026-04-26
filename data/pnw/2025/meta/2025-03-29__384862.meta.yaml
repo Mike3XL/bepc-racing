@@ -1,0 +1,17 @@
+race_id: 2025-03-29__384862
+name: '2025 PNWORCA Winter Series #7 : SPOCC'
+date: '2025-03-29'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  5 Mile Short Course:
+    distance_mi: 5.0
+    starters: 23
+    is_primary: false
+  9 Mile Long Course:
+    distance_mi: 9.0
+    starters: 61
+    is_primary: true
+corrections: []
+notes: ''

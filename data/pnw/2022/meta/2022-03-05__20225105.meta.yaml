@@ -1,0 +1,17 @@
+race_id: 2022-03-05__20225105
+name: Pnworca5
+date: '2022-03-05'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 27
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 6
+    is_primary: false
+corrections: []
+notes: ''

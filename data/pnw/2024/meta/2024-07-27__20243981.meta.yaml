@@ -1,0 +1,21 @@
+race_id: 2024-07-27__20243981
+name: Supchallenge
+date: '2024-07-27'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  2 KM Prone:
+    distance_mi: 1.24
+    starters: 14
+    is_primary: false
+  2 KM SUP:
+    distance_mi: 1.24
+    starters: 32
+    is_primary: false
+  5 KM Sup Prone:
+    distance_mi: 3.11
+    starters: 39
+    is_primary: true
+corrections: []
+notes: ''

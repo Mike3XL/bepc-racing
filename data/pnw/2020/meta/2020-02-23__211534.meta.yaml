@@ -1,0 +1,13 @@
+race_id: 2020-02-23__211534
+name: 'Seattle Race Series #2 - Sunday Feb 23'
+date: '2020-02-23'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 24
+    is_primary: true
+corrections: []
+notes: ''

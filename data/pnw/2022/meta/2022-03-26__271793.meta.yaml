@@ -1,0 +1,17 @@
+race_id: 2022-03-26__271793
+name: '2022 PNWORCA Winter Series #7 SPOCC'
+date: '2022-03-26'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  Long Course 9 miles:
+    distance_mi: 9.0
+    starters: 48
+    is_primary: true
+  Short Course 5 miles:
+    distance_mi: 5.0
+    starters: 4
+    is_primary: false
+corrections: []
+notes: ''

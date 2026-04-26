@@ -1,0 +1,17 @@
+race_id: 2022-03-19__195487
+name: 2022 Bellingham Bay Rough Water Race
+date: '2022-03-19'
+organizer: sound-rowers
+results_platform: pacificmultisports
+tags: []
+courses:
+  Long Course 10 miles:
+    distance_mi: 10.0
+    starters: 52
+    is_primary: true
+  Short Course 5 miles:
+    distance_mi: 5.0
+    starters: 16
+    is_primary: false
+corrections: []
+notes: ''

@@ -1,0 +1,17 @@
+race_id: 2018-08-06__146126
+name: BEPC08062018
+date: '2018-08-06'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Cat 1:
+    distance_mi: 0.0
+    starters: 31
+    is_primary: true
+  Social:
+    distance_mi: 0.0
+    starters: 7
+    is_primary: false
+corrections: []
+notes: ''

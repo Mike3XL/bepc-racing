@@ -1,0 +1,13 @@
+race_id: 2019-06-10__184322
+name: BEPC Summer Race Series VI
+date: '2019-06-10'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 21
+    is_primary: true
+corrections: []
+notes: ''

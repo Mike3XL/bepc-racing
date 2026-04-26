@@ -1,0 +1,21 @@
+race_id: 2018-05-07__135678
+name: Ballrd Elks Monday Night Paddle 20180507
+date: '2018-05-07'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Cat 1:
+    distance_mi: 0.0
+    starters: 19
+    is_primary: true
+  Cat 2:
+    distance_mi: 0.0
+    starters: 2
+    is_primary: false
+  Social:
+    distance_mi: 0.0
+    starters: 7
+    is_primary: false
+corrections: []
+notes: ''

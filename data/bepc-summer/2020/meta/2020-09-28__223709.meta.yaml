@@ -1,0 +1,13 @@
+race_id: 2020-09-28__223709
+name: BEPC 2020 Race Series 14
+date: '2020-09-28'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 15
+    is_primary: true
+corrections: []
+notes: ''

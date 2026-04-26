@@ -1,0 +1,17 @@
+race_id: 2024-07-06__298474
+name: 2024 Gorge Outrigger Canoe Race
+date: '2024-07-06'
+organizer: pnworca
+results_platform: pacificmultisports
+tags: []
+courses:
+  Men:
+    distance_mi: 0.0
+    starters: 36
+    is_primary: false
+  Women Mixed:
+    distance_mi: 0.0
+    starters: 53
+    is_primary: true
+corrections: []
+notes: ''

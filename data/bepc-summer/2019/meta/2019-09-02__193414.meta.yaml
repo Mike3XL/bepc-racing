@@ -1,0 +1,13 @@
+race_id: 2019-09-02__193414
+name: BEPC Summer Race Series XVIII
+date: '2019-09-02'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 11
+    is_primary: true
+corrections: []
+notes: ''

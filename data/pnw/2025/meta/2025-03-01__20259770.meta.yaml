@@ -1,0 +1,17 @@
+race_id: 2025-03-01__20259770
+name: Pnworca5
+date: '2025-03-01'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  Long Course:
+    distance_mi: 0.0
+    starters: 32
+    is_primary: true
+  Short Course:
+    distance_mi: 0.0
+    starters: 2
+    is_primary: false
+corrections: []
+notes: ''

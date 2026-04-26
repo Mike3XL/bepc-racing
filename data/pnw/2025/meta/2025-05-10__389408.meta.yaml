@@ -1,0 +1,21 @@
+race_id: 2025-05-10__389408
+name: Board the Fjord 2025
+date: '2025-05-10'
+organizer: pnworca
+results_platform: webscorer
+tags: []
+courses:
+  14km:
+    distance_mi: 8.7
+    starters: 70
+    is_primary: true
+  4km:
+    distance_mi: 2.49
+    starters: 7
+    is_primary: false
+  7km:
+    distance_mi: 4.35
+    starters: 27
+    is_primary: false
+corrections: []
+notes: ''

@@ -1,0 +1,13 @@
+race_id: 2024-10-27__371159
+name: BEPC 2024 Halloween Race
+date: '2024-10-27'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 11
+    is_primary: true
+corrections: []
+notes: ''

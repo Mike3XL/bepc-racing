@@ -1,0 +1,17 @@
+race_id: 2018-09-29__153928
+name: 'Sound Rowers: Wenatchee Guano Rocks 2018'
+date: '2018-09-29'
+organizer: sound-rowers
+results_platform: webscorer
+tags: []
+courses:
+  Guano Rocks 5 5 miles:
+    distance_mi: 5.5
+    starters: 29
+    is_primary: true
+  Little Turtle 2 5 miles:
+    distance_mi: 2.5
+    starters: 2
+    is_primary: false
+corrections: []
+notes: ''

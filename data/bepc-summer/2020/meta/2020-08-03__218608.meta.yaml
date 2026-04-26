@@ -1,0 +1,13 @@
+race_id: 2020-08-03__218608
+name: BEPC 2020 Race Series 6
+date: '2020-08-03'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 22
+    is_primary: true
+corrections: []
+notes: ''

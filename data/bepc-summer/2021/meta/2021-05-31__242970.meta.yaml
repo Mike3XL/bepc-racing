@@ -1,0 +1,13 @@
+race_id: 2021-05-31__242970
+name: 'BEPC 2021 Race Series #5'
+date: '2021-05-31'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 21
+    is_primary: true
+corrections: []
+notes: ''

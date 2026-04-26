@@ -1,0 +1,17 @@
+race_id: 2019-02-16__169816
+name: Paddle Your Heart Out - Race
+date: '2019-02-16'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Medium 5 mile:
+    distance_mi: 5.0
+    starters: 6
+    is_primary: true
+  Short 3 mile:
+    distance_mi: 3.0
+    starters: 3
+    is_primary: false
+corrections: []
+notes: ''

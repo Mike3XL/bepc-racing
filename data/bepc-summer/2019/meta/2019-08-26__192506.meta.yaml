@@ -1,0 +1,13 @@
+race_id: 2019-08-26__192506
+name: BEPC Summer Race Series XVII
+date: '2019-08-26'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  ? ''
+  : distance_mi: 0.0
+    starters: 27
+    is_primary: true
+corrections: []
+notes: ''

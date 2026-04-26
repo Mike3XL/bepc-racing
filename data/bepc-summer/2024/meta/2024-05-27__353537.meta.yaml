@@ -1,0 +1,17 @@
+race_id: 2024-05-27__353537
+name: 'BEPC 2024 Race Series #4'
+date: '2024-05-27'
+organizer: bepc
+results_platform: webscorer
+tags: []
+courses:
+  Fun Wave:
+    distance_mi: 0.0
+    starters: 3
+    is_primary: false
+  Race Course:
+    distance_mi: 0.0
+    starters: 21
+    is_primary: true
+corrections: []
+notes: ''

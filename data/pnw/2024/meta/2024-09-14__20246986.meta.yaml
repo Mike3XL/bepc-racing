@@ -1,0 +1,21 @@
+race_id: 2024-09-14__20246986
+name: Whipper
+date: '2024-09-14'
+organizer: pnworca
+results_platform: jericho
+tags: []
+courses:
+  12 KM:
+    distance_mi: 7.46
+    starters: 42
+    is_primary: false
+  18 KM:
+    distance_mi: 11.18
+    starters: 106
+    is_primary: true
+  7 KM:
+    distance_mi: 4.35
+    starters: 23
+    is_primary: false
+corrections: []
+notes: ''
