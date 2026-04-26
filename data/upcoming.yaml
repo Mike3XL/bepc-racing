@@ -3,7 +3,7 @@
 
 upcoming:
   - clubs:
-    - pnw-regional
+    - pnw
     date: '2026-04-25'
     distance: 2.5K/5K/10K
     links:
@@ -21,7 +21,7 @@ upcoming:
       Mtg 12:15 PM, Start 12:30 PM'
     url: https://gigharborpaddlerscup.com
   - clubs:
-    - pnw-regional
+    - pnw
     date: '2026-04-26'
     distance: SUP Technical
     links:
@@ -36,7 +36,7 @@ upcoming:
     notes: Reg 9-9:30 AM, Heats 10-11 AM, Finals 11 AM, Awards 11:45 AM
     url: https://gigharborpaddlerscup.com
   - clubs:
-    - pnw-regional
+    - pnw
     date: '2026-04-30'
     links:
     - label: Register
@@ -49,8 +49,8 @@ upcoming:
     source_id: 424127
     url: https://www.webscorer.com/register?raceid=424127
   - clubs:
-    - sound-rowers
-    - pnw-regional
+    - pnw
+    - pnw
     date: '2026-05-02'
     distance: 5.5/12 mi
     links:
@@ -67,7 +67,7 @@ upcoming:
     notes: 'Meeting: 8:45 AM, Start: 10 AM'
     url: https://soundrowers.org/?page_id=195
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-05-04'
     distance: ~3 mi
     links:
@@ -83,7 +83,7 @@ upcoming:
     source_id: 427417
     url: https://www.webscorer.com/register?raceid=427417
   - clubs:
-    - pnw-regional
+    - pnw
     date: '2026-05-09'
     distance: 14km/7km/4km
     links:
@@ -99,8 +99,8 @@ upcoming:
     source_id: 419780
     url: https://www.webscorer.com/register?raceid=419780
   - clubs:
-    - sound-rowers
-    - pnw-regional
+    - pnw
+    - pnw
     date: '2026-05-09'
     distance: 6 mi
     links:
@@ -111,7 +111,7 @@ upcoming:
     notes: 'Meeting: 9:15 AM, Start: 10 AM'
     url: https://soundrowers.org/?page_id=206
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-05-11'
     distance: ~3 mi
     links:
@@ -127,7 +127,7 @@ upcoming:
     source_id: 427425
     url: https://www.webscorer.com/register?raceid=427425
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-05-18'
     distance: ~3 mi
     links:
@@ -156,7 +156,7 @@ upcoming:
     notes: ''
     url: https://skitosea.com
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-05-25'
     distance: ~3 mi
     links:
@@ -182,8 +182,8 @@ upcoming:
     notes: 'Start: 7 PM'
     url: https://seventy48.com
   - clubs:
-    - sound-rowers
-    - pnw-regional
+    - pnw
+    - pnw
     date: '2026-05-30'
     distance: 3.2/5.5 mi
     links:
@@ -194,7 +194,7 @@ upcoming:
     notes: 'Meeting: 9:15 AM, Start: 10 AM'
     url: https://soundrowers.org/?page_id=283
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-06-01'
     distance: ~3 mi
     links:
@@ -210,7 +210,7 @@ upcoming:
     source_id: 427430
     url: https://www.webscorer.com/register?raceid=427430
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-06-08'
     distance: ~3 mi
     links:
@@ -226,7 +226,7 @@ upcoming:
     source_id: 427431
     url: https://www.webscorer.com/register?raceid=427431
   - clubs:
-    - pnw-regional
+    - pnw
     date: '2026-06-13'
     distance: TBD
     links:
@@ -237,7 +237,7 @@ upcoming:
     notes: 'Meeting: TBD, Start: TBD'
     url: https://paddleguru.com/races/NCHIWANAChallenge
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-06-15'
     distance: ~3 mi
     links:
@@ -253,8 +253,8 @@ upcoming:
     source_id: 427432
     url: https://www.webscorer.com/register?raceid=427432
   - clubs:
-    - sound-rowers
-    - pnw-regional
+    - pnw
+    - pnw
     date: '2026-06-20'
     distance: 2.5/6.8 NM (2.9/7.8 mi)
     links:
@@ -265,7 +265,7 @@ upcoming:
     notes: 'Meeting: :9:15am, Start: 10 AM'
     url: https://soundrowers.org/?page_id=215
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-06-22'
     distance: ~3 mi
     links:
@@ -281,7 +281,7 @@ upcoming:
     source_id: 427433
     url: https://www.webscorer.com/register?raceid=427433
   - clubs:
-    - pnw-regional
+    - pnw
     date: '2026-06-27'
     distance: 5.5/11 mi
     links: []
@@ -290,7 +290,7 @@ upcoming:
     notes: 'Meeting: TBD, Start: TBD'
     url: https://www.pnworca.org
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-06-29'
     distance: ~3 mi
     links:
@@ -306,7 +306,7 @@ upcoming:
     source_id: 427434
     url: https://www.webscorer.com/register?raceid=427434
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-07-06'
     distance: ~3 mi
     links:
@@ -322,7 +322,7 @@ upcoming:
     source_id: 427435
     url: https://www.webscorer.com/register?raceid=427435
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-07-13'
     distance: ~3 mi
     links:
@@ -338,8 +338,8 @@ upcoming:
     source_id: 427436
     url: https://www.webscorer.com/register?raceid=427436
   - clubs:
-    - sound-rowers
-    - pnw-regional
+    - pnw
+    - pnw
     date: '2026-07-18'
     distance: 3.5/8 mi
     links:
@@ -350,7 +350,7 @@ upcoming:
     notes: 'Meeting: 9:15 AM, Start: 10 AM'
     url: https://soundrowers.org/?page_id=274
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-07-20'
     distance: ~3 mi
     links:
@@ -366,8 +366,8 @@ upcoming:
     source_id: 427437
     url: https://www.webscorer.com/register?raceid=427437
   - clubs:
-    - sound-rowers
-    - pnw-regional
+    - pnw
+    - pnw
     date: '2026-07-25'
     distance: 3/7 mi
     links:
@@ -378,7 +378,7 @@ upcoming:
     notes: 'Meeting: TBD, Start: 11:30 AM'
     url: https://soundrowers.org/?page_id=253
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-07-27'
     distance: ~3 mi
     links:
@@ -394,7 +394,7 @@ upcoming:
     source_id: 427438
     url: https://www.webscorer.com/register?raceid=427438
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-08-03'
     distance: ~3 mi
     links:
@@ -410,7 +410,7 @@ upcoming:
     source_id: 427439
     url: https://www.webscorer.com/register?raceid=427439
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-08-10'
     distance: ~3 mi
     links:
@@ -426,7 +426,7 @@ upcoming:
     source_id: 427440
     url: https://www.webscorer.com/register?raceid=427440
   - clubs:
-    - pnw-regional
+    - pnw
     date: '2026-08-16'
     distance: 8.5 mi
     links: []
@@ -435,7 +435,7 @@ upcoming:
     notes: 'Meeting: TBD, Start: TBD'
     url: https://gorgechallenge.com
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-08-17'
     distance: ~3 mi
     links:
@@ -451,8 +451,8 @@ upcoming:
     source_id: 427442
     url: https://www.webscorer.com/register?raceid=427442
   - clubs:
-    - sound-rowers
-    - pnw-regional
+    - pnw
+    - pnw
     date: '2026-08-22'
     distance: 14 mi
     links:
@@ -465,7 +465,7 @@ upcoming:
     notes: 'Meeting: TBD, Start: 10:00 AM'
     url: https://soundrowers.org/?page_id=261
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-08-24'
     distance: ~3 mi
     links:
@@ -481,7 +481,7 @@ upcoming:
     source_id: 427443
     url: https://www.webscorer.com/register?raceid=427443
   - clubs:
-    - pnw-regional
+    - pnw
     date: '2026-08-29'
     distance: 4/12 mi
     links: []
@@ -490,7 +490,7 @@ upcoming:
     notes: 'Meeting: TBD, Start: TBD'
     url: https://www.pnworca.org
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-08-31'
     distance: ~3 mi
     links:
@@ -506,8 +506,8 @@ upcoming:
     source_id: 427444
     url: https://www.webscorer.com/register?raceid=427444
   - clubs:
-    - sound-rowers
-    - pnw-regional
+    - pnw
+    - pnw
     date: '2026-09-05'
     distance: 12/26.2 mi
     links:
@@ -518,7 +518,7 @@ upcoming:
     notes: 'Meeting: TBD, Start: Full 10 AM, Half 11 AM'
     url: https://soundrowers.org/?page_id=270
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-09-07'
     distance: ~3 mi
     links:
@@ -534,7 +534,7 @@ upcoming:
     source_id: 427446
     url: https://www.webscorer.com/register?raceid=427446
   - clubs:
-    - bepc
+    - bepc-summer
     date: '2026-09-14'
     distance: ~3 mi
     links:
@@ -550,7 +550,7 @@ upcoming:
     source_id: 427448
     url: https://www.webscorer.com/register?raceid=427448
   - clubs:
-    - pnw-regional
+    - pnw
     date: '2026-09-19'
     distance: 20K/10K/5K
     links:
@@ -567,8 +567,8 @@ upcoming:
     notes: 'Meeting: TBD, Start: TBD'
     url: http://www.narrowschallenge.com/
   - clubs:
-    - sound-rowers
-    - pnw-regional
+    - pnw
+    - pnw
     date: '2026-09-26'
     distance: 6 mi
     links:
@@ -583,8 +583,8 @@ upcoming:
     notes: 'Meeting: 9:15 AM, Start: 10:00 AM'
     url: https://soundrowers.org/?page_id=278
   - clubs:
-    - sound-rowers
-    - pnw-regional
+    - pnw
+    - pnw
     date: '2026-10-10'
     distance: 14.3 mi/6.5m
     links:
@@ -595,8 +595,8 @@ upcoming:
     notes: 'Meeting: 8:30AM, Start: Long 9AM early start/9:30 AM; Short 10:30 AM'
     url: https://soundrowers.org/?page_id=286
   - clubs:
-    - sound-rowers
-    - pnw-regional
+    - pnw
+    - pnw
     date: '2026-10-25'
     distance: 12k/5k
     links:

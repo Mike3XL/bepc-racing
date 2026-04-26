@@ -379,7 +379,7 @@ def _selector_bar(data: dict, show_season: bool = True, page: str = None, season
         club_js = ""
 
     club_row = f"""<div class="d-flex align-items-center gap-2">
-        <span class="text-muted small fw-semibold">Club</span>
+        <span class="text-muted small fw-semibold">Series</span>
         <div class="btn-group flex-wrap" id="club-btn-group" role="group">{club_btns}</div>
       </div>""" if club_btns else ""
 
@@ -1681,7 +1681,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
   <div class="container py-2">
     <div class="d-flex flex-wrap align-items-center gap-3">
       <div class="d-flex align-items-center gap-2">
-        <span class="text-muted small fw-semibold">Club</span>
+        <span class="text-muted small fw-semibold">Series</span>
         <div class="btn-group flex-wrap" id="club-nav">{_cross_club_nav(slug, club_id, clubs_cfg)}</div>
       </div>
       <div class="d-flex align-items-center gap-2">
@@ -2214,11 +2214,11 @@ def generate_platform_home(data: dict) -> None:
             f"<div class='d-flex align-items-center gap-2 mb-2 flex-wrap'>"
             f"<h2 class='h5 mb-0'>Upcoming</h2>"
             f"<select id='upcoming-club-filter' class='form-select form-select-sm' style='width:auto'>"
-            f"<option value=''>All clubs</option>{_options}</select>"
+            f"<option value=''>All series</option>{_options}</select>"
             + (_show_more.replace('mb-3', 'mb-0') if _show_more else '')
             + f"</div>"
             f"<div class='table-responsive mb-1'><table id='upcoming-table' class='table table-sm table-hover'>"
-            f"<thead><tr><th style='width:100px'>Date</th><th style='min-width:220px'>Race</th><th style='width:90px'>Club</th><th style='width:80px'>Distance</th>"
+            f"<thead><tr><th style='width:100px'>Date</th><th style='min-width:220px'>Race</th><th style='width:90px'>Series</th><th style='width:80px'>Distance</th>"
             f"<th style='min-width:200px;width:25%'>Notes</th><th style='min-width:160px'>Links</th></tr></thead>"
             f"<tbody>{upcoming_rows_visible}{upcoming_rows_hidden}</tbody></table></div>"
         )
@@ -2569,7 +2569,7 @@ function pdmView(el,rid,viewCls,isFinish){{
   <div class="d-flex align-items-center gap-2 mb-2 mt-4 flex-wrap">
     <h2 class="h5 mb-0">Results</h2>
     <select id="feed-club-filter" class="form-select form-select-sm" style="width:auto" onchange="filterFeed(this.value)">
-      <option value="">All clubs</option>
+      <option value="">All series</option>
       {feed_club_options}
     </select>
     {'<button id="feed-show-more" class="btn btn-sm btn-outline-secondary mb-0" onclick="toggleFeedMore(this)">Show more ▼</button>' if _has_hidden else ""}

@@ -11,6 +11,32 @@ sites:
 
 clubs:
 
+  # New series IDs (see data/series.yaml for full series definitions)
+  bepc-summer:
+    name: BEPC Summer
+    short_name: BEPC
+    type: org
+    description: >
+      Ballard Elks weekly Monday race series (May–Oct).
+  pnw:
+    name: PNW
+    short_name: PNW
+    type: league
+    description: >
+      Regional races at PNW-level seriousness — PNWORCA, Sound Rowers, La Conner, Rat Island, etc.
+  sckc-duck-island:
+    name: SCKC Duck Island
+    short_name: SCKC
+    type: org
+    description: >
+      Seattle Canoe and Kayak Club Duck Island race series.
+  none:
+    name: None
+    short_name: Other
+    type: org
+    description: >
+      Unaffiliated / casual races.
+
   bepc:
     name: Ballard Elks Paddle Club
     short_name: BEPC
