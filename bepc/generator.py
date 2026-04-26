@@ -3027,5 +3027,8 @@ def generate_all(data: dict) -> None:
     _build_search_map(data, verify_files=True)
     _t("platform home", generate_platform_home, data)
     _t("cross-club links", generate_cross_club_links)
+    # Top-level /racer/<slug>.html pages aggregating each human across all series
+    from bepc.racer_top import generate_top_level_racer_pages
+    _t("top-level racer pages", generate_top_level_racer_pages, data)
     # Always write CNAME so GitHub Pages custom domain survives every push
     (SITE_DIR / "CNAME").write_text("pnw.paddlerace.org\n")
