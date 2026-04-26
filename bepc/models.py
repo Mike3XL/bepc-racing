@@ -9,6 +9,11 @@ class RaceInfo:
     display_url: str
     points_weight: float = 1.0
     distance: str = ""
+    series: str = ""
+    organizer: str = ""
+    results_platform: str = ""
+    tags: list = field(default_factory=list)
+    is_primary: bool = True
 
 
 @dataclass

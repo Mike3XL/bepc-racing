@@ -6,7 +6,7 @@ import sys
 from dataclasses import asdict
 from pathlib import Path
 
-from bepc.loader import load_all_common
+from bepc.loader import load_all_common, load_series_season
 from bepc.processor import process_season
 from bepc.generator import generate_all, generate_club
 from bepc.fetcher import fetch_season
@@ -14,29 +14,25 @@ from bepc.fetcher import fetch_season
 DATA_DIR = Path(__file__).parent / "data"
 SITE_DIR = Path(__file__).parent / "site"
 
-CLUB_META = {
-    "bepc": {
-        "name": "Ballard Elks Paddle Club",
-        "gh_branch": "gh-pages",
-        "gh_url": "https://mike3xl.github.io/bepc-racing/",
-    },
-    "sound-rowers": {
-        "name": "Sound Rowers",
-        "gh_branch": "gh-pages-sound-rowers",
-        "gh_url": "https://mike3xl.github.io/bepc-racing/ (sound-rowers)",
-    },
-    "pnw-regional": {
-        "name": "PNW Regional",
-        "gh_branch": "gh-pages-pnw-regional",
-        "gh_url": "https://mike3xl.github.io/bepc-racing/ (pnw-regional)",
-        "min_races_for_page": 3,
-    },
-}
-CURRENT_CLUB = "bepc"
+# Series metadata (replaces per-club config)
+SERIES_ORDER = ["bepc-summer", "pnw", "sckc-duck-island", "none"]
+
+
+def _load_series_config() -> dict:
+    """Load data/series.yaml → {series_id: config}."""
+    cfg_path = DATA_DIR / "series.yaml"
+    if not cfg_path.exists():
+        return {}
+    try:
+        import yaml
+        with open(cfg_path) as f:
+            return yaml.safe_load(f).get("series", {})
+    except Exception:
+        return {}
 
 
 def _load_sites_config() -> dict:
-    """Load sites: section from data/clubs.yaml, return {site_id: config_dict}."""
+    """Load sites: section from data/clubs.yaml (still used for publish targets)."""
     cfg_path = DATA_DIR / "clubs.yaml"
     if not cfg_path.exists():
         return {}
@@ -49,7 +45,7 @@ def _load_sites_config() -> dict:
 
 
 def _load_clubs_config() -> dict:
-    """Load data/clubs.yaml, return {club_id: config_dict}."""
+    """Legacy — kept for commands that haven't been migrated yet."""
     cfg_path = DATA_DIR / "clubs.yaml"
     if not cfg_path.exists():
         return {}
@@ -61,42 +57,39 @@ def _load_clubs_config() -> dict:
         return {}
 
 
+CURRENT_CLUB = "bepc-summer"  # legacy — points at the default series
+
+
 def build_data_json() -> dict:
-    """Scan data/<club>/<year>/common/ and build full multi-club/season structure."""
-    clubs_cfg = _load_clubs_config()
+    """Scan data/<series>/<year>/common/ and build multi-series/season structure.
+
+    The output key is still 'clubs' (for generator backward-compat) but entries
+    are keyed by series ID. Each entry carries name, seasons, and a handicap
+    computed per-series via process_season."""
+    from datetime import datetime, date as _date
+    series_cfg = _load_series_config()
+    clubs_cfg = _load_clubs_config()  # for per-series handicap settings (keyed by series)
     clubs = {}
-    for club_dir in sorted(DATA_DIR.iterdir()):
-        if not club_dir.is_dir() or club_dir.name == "sources":
+    for series_id in SERIES_ORDER:
+        series_dir = DATA_DIR / series_id
+        if not series_dir.is_dir():
             continue
-        club_id = club_dir.name
-        cfg = clubs_cfg.get(club_id, {})
-        hcap_cfg = cfg.get("handicap", {})
+        # Per-series handicap config (falls back to defaults)
+        hcap_cfg = (clubs_cfg.get(series_id, {}) or {}).get("handicap", {})
         num_races_to_establish = hcap_cfg.get("num_races_to_establish", 1)
         do_carry_over = hcap_cfg.get("carry_over", False)
 
         seasons = {}
-        carry_over: dict = {}  # {(name, craft): (handicap, carried_over_flag)}
+        carry_over: dict = {}
 
-        for season_dir in sorted(club_dir.iterdir()):
-            if not season_dir.is_dir():
+        for season_dir in sorted(series_dir.iterdir()):
+            if not season_dir.is_dir() or not season_dir.name.isdigit():
                 continue
             year = season_dir.name
-            common_dir = season_dir / "common"
-            if not common_dir.exists():
+            races = load_series_season(DATA_DIR, series_id, year)
+            if not races:
                 continue
-            races = load_all_common(common_dir)
 
-            # Merge races from included clubs for the same year
-            own_ids = {r.race_info.race_id for r in races}
-            for inc_club in cfg.get("include_clubs", []):
-                inc_common = DATA_DIR / inc_club / year / "common"
-                if inc_common.exists():
-                    for r in load_all_common(inc_common):
-                        if r.race_info.race_id not in own_ids:
-                            races.append(r)
-
-            # Sort merged races by date before handicap processing
-            from datetime import datetime
             def _parse_date(r):
                 for fmt in ("%b %d, %Y", "%B %d, %Y"):
                     try: return datetime.strptime(r.race_info.date, fmt)
@@ -115,22 +108,24 @@ def build_data_json() -> dict:
                         "display_url": race.race_info.display_url,
                         "distance": race.race_info.distance,
                         "points_weight": race.race_info.points_weight,
+                        "series": race.race_info.series,
+                        "organizer": race.race_info.organizer,
+                        "results_platform": race.race_info.results_platform,
+                        "tags": race.race_info.tags,
+                        "is_primary": race.race_info.is_primary,
                         "results": [asdict(r) for r in race.racer_results],
                     }
                     for race in races
                 ]
             }
-            print(f"  {club_id}/{year}: {len(races)} races")
+            print(f"  {series_id}/{year}: {len(races)} races")
 
-            # Build carry_over for next season from final handicap of each racer
             if do_carry_over:
                 carry_over = {}
                 for race in races:
                     for r in race.racer_results:
                         key = (r.canonical_name, r.craft_category)
                         carry_over[key] = (r.handicap_post, True)
-
-                # Rescale carry_over so P33 racer = 1.0
                 if carry_over:
                     hcap_values = sorted(v[0] for v in carry_over.values())
                     p33_idx = len(hcap_values) // 3
@@ -139,19 +134,16 @@ def build_data_json() -> dict:
                         carry_over = {k: (v[0] / p33_val, v[1]) for k, v in carry_over.items()}
 
         if seasons:
-            from datetime import date as _date
             current_year = str(_date.today().year)
             current_season = max(seasons.keys())
-            # If current calendar year is ahead of latest data, add empty season and use it
             if current_year > current_season:
                 seasons[current_year] = {"races": []}
                 current_season = current_year
-            meta = CLUB_META.get(club_id, {})
-            clubs[club_id] = {
-                "name": cfg.get("name", meta.get("name", club_id)),
+            scfg = series_cfg.get(series_id, {}) or {}
+            clubs[series_id] = {
+                "name": scfg.get("name", series_id),
                 "current_season": current_season,
-                "min_races_for_page": cfg.get("display", {}).get("min_races_for_page",
-                                      meta.get("min_races_for_page", 1)),
+                "min_races_for_page": 1,
                 "seasons": seasons,
             }
     return {"clubs": clubs, "current_club": CURRENT_CLUB}

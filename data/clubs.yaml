@@ -5,7 +5,7 @@
 sites:
   pnw:
     domain: pnw.paddlerace.org
-    clubs: [bepc, sound-rowers, pnw-regional, sckc]
+    clubs: [bepc-summer, pnw, sckc-duck-island, none]
     gh_branch: gh-pages
     gh_url: https://pnw.paddlerace.org/
 
