@@ -295,11 +295,14 @@ def _selector_bar(data: dict, show_season: bool = True, page: str = None, season
         for cid, club in _clubs_for_js.items()
     ) + "}"
 
-    # Club buttons — <a> links to sibling club dirs
+    # Club buttons — <a> links to sibling club dirs.
+    # Hide `none` from the selector — it's a valid series for data but not a UI destination.
     club_btns = ""
     if page:
         _all_clubs = data.get("all_clubs", data["clubs"])
         for club_id, club in _all_clubs.items():
+            if club_id == "none":
+                continue
             short = clubs_cfg.get(club_id, {}).get("short_name", club.get("name", club_id))
             active_cls = " active" if club_id == current_club else ""
             if club_id == current_club:
@@ -1719,6 +1722,8 @@ def generate_clubs_page(data: dict) -> None:
 
     sections = ""
     for club_id, club in data["clubs"].items():
+        if club_id == "none":
+            continue  # don't list `none` as a series destination
         cfg = clubs_cfg.get(club_id, {})
         name = cfg.get("name", club.get("name", club_id))
         short = cfg.get("short_name", name)
@@ -1958,10 +1963,14 @@ def generate_racer_index(data: dict) -> None:
 
 
 def _cross_club_nav(slug: str, current_club: str, clubs_cfg: dict) -> str:
-    """Build club nav buttons for a racer page using the pre-built _SLUG_CLUBS map."""
+    """Build club nav buttons for a racer page using the pre-built _SLUG_CLUBS map.
+    Excludes `none` from the selector — per-series racer pages exist there but we
+    don't show it as a clickable filter (too few races to be meaningful)."""
     clubs = _SLUG_CLUBS.get(slug, [current_club])
     btns = ""
     for cid in sorted(clubs):
+        if cid == "none" and current_club != "none":
+            continue
         short = clubs_cfg.get(cid, {}).get("short_name", cid)
         active = " active" if cid == current_club else ""
         href = f"{slug}.html" if cid == current_club else f"../../{cid}/racer/{slug}.html"
@@ -2188,7 +2197,7 @@ def generate_platform_home(data: dict) -> None:
 
     # Build upcoming section HTML
     if upcoming_rows:
-        _club_keys_seen = sorted(set(k for r in upcoming_races for k in r.get('club_keys', [])))
+        _club_keys_seen = sorted(set(k for r in upcoming_races for k in r.get('club_keys', []) if k != "none"))
         _options = ''.join(
             f'<option value="{clubs_cfg.get(c,{}).get("short_name",c)}">{clubs_cfg.get(c,{}).get("short_name",c)}</option>'
             for c in _club_keys_seen
@@ -2420,10 +2429,13 @@ def generate_platform_home(data: dict) -> None:
     _feed_row_list = ['<div class="rc-card' + s.rstrip() for s in _feed_row_list]
     feed_rows_visible = ''.join(_feed_row_list)
     feed_rows_hidden = ''
-    # Collect unique club short names from recent races
+    # Collect unique club short names from recent races.
+    # Exclude `none` — we show the races themselves but don't expose `none` as a filter value.
     _feed_clubs = []
     for _r in recent_races:
         for _c in _r.get("clubs", []):
+            if _c["id"] == "none":
+                continue
             _sn = clubs_cfg.get(_c["id"], {}).get("short_name", _c["name"])
             if _sn not in _feed_clubs:
                 _feed_clubs.append(_sn)
