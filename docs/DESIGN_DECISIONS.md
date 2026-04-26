@@ -270,3 +270,41 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 **Handicap:** PNW uses its own independent handicap system — separate from Sound Rowers. PNW is treated as an independent club of racers who happen to attend Sound Rowers and other events. Handicap state is not shared between clubs.
 
 **Ordering:** Races are merged by date across all included clubs before handicap processing, so the handicap progression reflects the actual chronological order racers competed.
+
+
+---
+
+## Series + Organizer + Tags (replacing Clubs)
+**Date:** 2026-04-26
+**Context:** `docs/SERIES_SYSTEM.md`, full data model rework
+
+**Problem:** The club-based model conflated "who organized the race" with "what competitive field does this race belong to". This caused:
+- Races shared across clubs (Sound Rowers' La Conner also in PNW Regional) were duplicated, with independent index computations and inconsistent eligibility verdicts for the same race.
+- Fragmented indexes — a racer had a separate "Sound Rowers index" and "PNW index" from overlapping data.
+- Casual races and serious races mixed in the same standings.
+
+**Decision:** Replace the `club` concept with three separate dimensions:
+
+1. **Series** — analytical grouping at a consistent competitive level. Fixed enum: `bepc-summer`, `sckc-duck-island`, `pnw`, `none`. Each race has exactly one series. Indexes are per-(racer, series).
+2. **Organizer** — single ID identifying who ran the event. Filter-only.
+3. **Tags** — free-form multi-valued labels. Filter-only.
+
+**Eligibility rule** (replaces the earlier ">5 established" rule from 2026-04-26 afternoon):
+- **Primary course:** eligible if `>5 established` racers OR `>10 total` starters.
+- **Secondary course:** eligible if `>5 established` racers.
+- "Established" means the racer has an index in *this series*.
+- Only eligible races contribute to index updates.
+- The total-starters rule for primary courses exists to seed a series when no racers are established yet.
+
+**Rationale:**
+- Separating organizer from series matches reality — a race has one organizer but its *competitive level* is an analytical choice.
+- Per-series indexes prevent cross-field pollution (BEPC Monday casual field is different from PNW regional field).
+- Primary-course seeding rule ensures new series can bootstrap indexes.
+- Fixed series enum (not free-form) prevents proliferation and maintains meaningful bragging rights.
+
+**Rejected alternatives:**
+- Keep clubs but dedupe races across clubs — still conflates the two concerns.
+- Free-form series tags — fragments the index and dilutes bragging rights.
+- One global index per racer — ignores that different fields have different competitive density.
+
+**Migration:** Complete rebuild. Old club URLs break. See `SERIES_SYSTEM.md` for plan.

@@ -1,7 +1,9 @@
 # BEPC Racing — Club System Design
 
-**Status:** Draft  
+**Status:** DEPRECATED — superseded by `SERIES_SYSTEM.md` (2026-04-26)
 **Date:** 2026-04-04
+
+> This document describes the club-based model that tangled "organizer" with "analytical grouping". See `SERIES_SYSTEM.md` for the replacement design (series + organizer + tags, with per-series indexes).
 
 ---
 
