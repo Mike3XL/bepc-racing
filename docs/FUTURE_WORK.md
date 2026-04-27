@@ -278,3 +278,29 @@ Show each racer's time delta vs their time at the same race the prior year (raw 
 - Independent organizers run their own repos/sites per subdomain — no coordination needed
 - `paddlerace.org` becomes a real landing/directory page when 2+ regions exist
 - Owning the apex domain gives free control over all subdomains — no extra cost per region
+
+
+---
+
+## Save raw source data for every race
+
+**Status:** Open (2026-04-27)
+
+**Problem:** 93 of 850 common.json files have no matching raw source file. Breakdown:
+- Jericho: 71 (HTML-scraped; no JSON raw is saved)
+- Pacific Multisports: 13
+- WebScorer: 6
+- PaddleGuru: 3
+
+**Goal:** Every common.json must have a corresponding raw artifact preserved. This lets us:
+- Re-derive common.json if our parser changes
+- Audit discrepancies between raw and derived data
+- Recover after accidental data loss
+
+**Required changes:**
+1. **Jericho fetcher** — save the fetched HTML page alongside the common.json (e.g. `*.raw.html`) instead of (or in addition to) scraping in-memory. Extract tables from the saved HTML on re-process.
+2. **Other fetchers (WebScorer, PaddleGuru, PacificMultisports)** — audit the 22 missing cases; they should have saved raw but didn't. Likely manually-imported races or pre-refactor data.
+3. **Backfill** — re-fetch raw for the 71 Jericho races and 22 others where still possible. Accept that some very old races may be unrecoverable.
+4. **Audit command** — add `cli.py audit-raw` that reports any common.json without a matching raw file.
+
+**Audit script reference:** one-off python used on 2026-04-27 to count missing files — see transcript.
