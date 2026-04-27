@@ -597,7 +597,9 @@ def generate_data_files(data: dict) -> None:
               "#bfef45","#c8a000","#469990","#dcbeff","#9A6324","#800000","#aaffc3",
               "#808000","#ffd8b1","#000075","#a9a9a9"]
     traj_data = {"current_year": current_year, "seasons": {}}
-    min_races = data["clubs"].get(data["current_club"], {}).get("min_races_for_page", 3)
+    # Trajectory charts: require ≥4 races for a racer to appear (avoids noisy short lines).
+    # Independent of min_races_for_page which gates per-racer page generation.
+    min_races = 4
     for year, season in _all_seasons(data).items():
         pts, hpts, hnum = _build_traj_series(season["races"], colors, min_races=min_races)
         traj_data["seasons"][year] = {"pts": pts, "hpts": hpts, "hnum": hnum}
