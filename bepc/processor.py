@@ -82,7 +82,7 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
                 r.time_versus_par = 0.0
                 r.adjusted_time_versus_par = 0.0
                 r.handicap_post = r.handicap
-                if r.num_races <= num_races_to_establish:
+                if r.num_races <= num_races_to_establish and not r.carried_over:
                     r.is_fresh_racer = True
                 r.handicap_note = f"{reason} — no handicap update"
 
@@ -159,7 +159,7 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
             running[key] = RunningRecord(
                 num_races=r.num_races,
                 handicap=r.handicap_post,
-                carried_over=False,  # once raced this season, no longer "just carried over"
+                carried_over=r.carried_over,  # preserve established status across all races of the season
                 season_points=r.season_points,
                 season_handicap_points=r.season_handicap_points,
                 handicap_sequence=r.handicap_sequence,
