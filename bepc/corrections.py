@@ -9,17 +9,13 @@ Supported operations:
 
   - edit: {course: LABEL, racer: "Name"}
     set: {field: value, ...}
-    reason: "..."
 
   - remove: {course: LABEL, racer: "Name"}
-    reason: "..."
 
   - move: {racer: "Name", from: LABEL, to: LABEL}
     set: {field: value, ...}   # optional
-    reason: "..."
 
   - add: {course: LABEL, racer: "Name", timeSeconds: N, craftCategory: "...", ...}
-    reason: "..."
 
 Field names in `set` and `add` match the common.json keys (camelCase:
 timeSeconds, canonicalName, craftCategory, gender, ...).
@@ -84,10 +80,7 @@ def apply_corrections(courses: dict[str, list[dict]],
         return courses
 
     for i, corr in enumerate(corrections):
-        reason = corr.get("reason", "")
         tag = f"correction #{i+1}"
-        if reason:
-            tag += f" ({reason[:60]}...)" if len(reason) > 60 else f" ({reason})"
 
         if "edit" in corr:
             target = corr["edit"]
