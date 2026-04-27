@@ -649,9 +649,10 @@ function render(year) {{
   document.getElementById('standings-title').textContent = `Standings: ${{SERIES_NAME}}, ${{year}}`;
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => bootstrap.Tooltip.getOrCreateInstance(el));
   const colDefs = [{{targets:0, orderable:false}}];
-  dtStandings = $('#tbl-standings').DataTable({{order:[[5,'desc']],pageLength:100,responsive:true,autoWidth:false,columnDefs:colDefs}});
-  dtStandings.on('draw', () => {{
-    dtStandings.column(0, {{search:'applied', order:'applied'}}).nodes().each((cell, i) => {{
+  const dt = $('#tbl-standings').DataTable({{order:[[5,'desc']],pageLength:100,responsive:true,autoWidth:false,columnDefs:colDefs}});
+  dtStandings = dt;
+  dt.on('draw', () => {{
+    dt.column(0, {{search:'applied', order:'applied'}}).nodes().each((cell, i) => {{
       cell.innerHTML = i + 1;
     }});
   }}).draw(false);
