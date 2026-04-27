@@ -781,15 +781,15 @@ function tableHtml(id_suffix) {
   <div class="tab-content border border-top-0 p-3 mb-3">
     <div class="tab-pane active" id="tab-handicap-${id_suffix}">
       <table class="table table-sm table-striped" style="table-layout:fixed">
-        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:70px"><col style="width:75px"><col style="width:75px"><col style="width:65px"><col style="width:55px"><col style="width:55px"><col style="width:65px"></colgroup>
-        <thead class="text-nowrap"><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Predicted</th><th>Index</th><th>Corr</th><th style="white-space:nowrap">vs Par</th><th>New</th><th>Points</th><th>Corr Points</th></tr></thead>
+        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:70px"><col style="width:75px"><col style="width:85px"><col style="width:55px"><col style="width:75px"><col style="width:55px"><col style="width:65px"></colgroup>
+        <thead class="text-nowrap"><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Predicted</th><th>Index</th><th>vs Predicted %</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Corr Points</th></tr></thead>
         <tbody id="body-handicap-${id_suffix}"></tbody>
       </table>
     </div>
     <div class="tab-pane" id="tab-finish-${id_suffix}">
       <table class="table table-sm table-striped" style="table-layout:fixed">
-        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:70px"><col style="width:75px"><col style="width:75px"><col style="width:65px"><col style="width:90px"><col style="width:55px"><col style="width:55px"></colgroup>
-        <thead class="text-nowrap"><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Predicted</th><th>Index</th><th>Corr</th><th style="white-space:nowrap">vs Par</th><th>New</th><th>Points</th><th>Corr Points</th></tr></thead>
+        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:70px"><col style="width:75px"><col style="width:85px"><col style="width:90px"><col style="width:75px"><col style="width:55px"><col style="width:55px"></colgroup>
+        <thead class="text-nowrap"><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Predicted</th><th>Index</th><th>vs Predicted %</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Corr Points</th></tr></thead>
         <tbody id="body-finish-${id_suffix}"></tbody>
       </table>
     </div>
@@ -816,8 +816,8 @@ function rows(results, placeField) {
     <td>${isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}</td>
     <td>${(!r.is_fresh_racer && r.time_versus_par > 0) ? fmtTime(r.time_seconds / r.time_versus_par * r.handicap) : '<span style="color:#999">—</span>'}</td>
     <td>${r.handicap.toFixed(3)}</td>
-    ${r.trophies && r.trophies.includes('par') ? '<td><span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:2px 4px;font-weight:bold;color:#1565C0">' + fmtTime(r.adjusted_time_seconds) + '</span></td>' : '<td>' + (isHcap ? '<strong>' + fmtTime(r.adjusted_time_seconds) + '</strong>' : fmtTime(r.adjusted_time_seconds)) + '</td>'}
     ${pctHtml}${hcapPostHtml}
+    <td>${r.included_in_par && r.adjusted_time_seconds ? (r.trophies && r.trophies.includes('par') ? '<span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:2px 4px;font-weight:bold;color:#1565C0">' + fmtTime(r.adjusted_time_seconds) + '</span>' : fmtTime(r.adjusted_time_seconds)) : '<span style="color:#999">—</span>'}</td>
     <td>${r.race_points || 0}</td><td>${r.handicap_points || 0}</td></tr>`;
   }).join('');
 }
@@ -1832,11 +1832,13 @@ dl dt:first-child { margin-top: 0; }
 
   <p>Each racer has a performance index for each club and craft category they race with — a number that reflects their typical pace. An index below 1.0 means you're faster; above 1.0 means slower. Each performance index starts at 1.0 and adjusts gradually after each race.</p>
 
-  <p>After a race, each racer's finish time is divided by their index to produce a <em>corrected time</em>. The racer with the best corrected time wins on corrected time, regardless of who crossed the line first. This lets a slower craft or a newer racer compete meaningfully against the fastest paddlers.</p>
+  <p>After a race, each racer's finish time is divided by their index to produce a <em>par estimate</em> — the racer's personal answer to the question "what time would a par-level racer have taken on this course, based on my finish time and my index?" Every racer contributes an estimate; we take the 30th-percentile value across the field as the consensus <em>par time</em> for the race. The racer whose estimate lands closest to that consensus gets the par-racer trophy.</p>
 
-  <p>The <em>par racer</em> is the finisher about one-third of the way down the corrected time list — someone who performed close to their predicted performance. Everyone else's result is expressed as a percentage above or below par.</p>
+  <p>We prefer to compute par from <em>established</em> racers only — those with enough prior races in this series that their index is trustworthy. When at least 6 established racers are present, only their estimates are used. When fewer than 6 are established (new series or small fields), we fall back to using the whole field so the system can still produce a par.</p>
 
-  <p>Your index updates after each race based on how you performed vs par. It responds faster to good days than bad ones, so an occasional off day has limited impact.</p>
+  <p>The racer with the best par-estimate (relative to the consensus par) wins on the par-estimate podium, regardless of who crossed the line first. This lets a slower craft or a newer racer compete meaningfully against the fastest paddlers.</p>
+
+  <p>Your performance for a race is reported as <em>vs Predicted %</em> — how much faster (negative) or slower (positive) you were than the time we would have predicted for you on that course. Your index updates based on this percentage. It responds faster to good days than bad ones, so an occasional off day has limited impact.</p>
 
   <h2>Clubs &amp; Leagues</h2>
 

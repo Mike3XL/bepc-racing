@@ -44,6 +44,7 @@ class RacerResult:
     is_par_racer: bool = False
     is_fresh_racer: bool = False
     is_outlier: bool = False
+    included_in_par: bool = False  # True if this racer's adjusted_time contributed to par calc
     carried_over: bool = False  # True if handicap was carried from previous season
     craft_specific: str = ""  # original craft string from source data
     trophies: list = field(default_factory=list)  # e.g. ["finish_1", "hcap_2", "par"]

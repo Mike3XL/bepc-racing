@@ -38,6 +38,13 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
             r.carried_over = rec.carried_over
             r.season_points = rec.season_points
             r.season_handicap_points = rec.season_handicap_points
+            # Pre-race established flag: used by par-selection below and by
+            # is_fresh_racer downstream. A racer is established if carried over
+            # from a prior season OR has done enough races in this season.
+            # Uses num_races - 1 because num_races was already bumped above to
+            # reflect THIS race.
+            is_incoming_established = r.carried_over or (r.num_races - 1) >= num_races_to_establish
+            r.is_fresh_racer = not is_incoming_established
 
         # Compute adjusted times
         for r in racers:
@@ -47,9 +54,12 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
         for i, r in enumerate(sorted(racers, key=lambda x: x.adjusted_time_seconds), 1):
             r.adjusted_place = i
 
-        # Par racer — None if too few racers
-        par = calculate_par_racer(racers)
+        # Par racer — prefers established-only when ≥6 established, else falls back to all.
+        # Returns (par, included_keys) — racers whose estimates contributed.
+        par, par_included = calculate_par_racer(racers)
         small_group = par is None
+        for r in racers:
+            r.included_in_par = (r.canonical_name, r.craft_category) in par_included
 
         # Eligibility (series-aware): primary course → >5 established OR >10 total;
         # secondary → >5 established. Non-eligible courses skip handicap updates and
@@ -82,8 +92,7 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
                 r.time_versus_par = 0.0
                 r.adjusted_time_versus_par = 0.0
                 r.handicap_post = r.handicap
-                if r.num_races <= num_races_to_establish and not r.carried_over:
-                    r.is_fresh_racer = True
+                # is_fresh_racer already set before par calc based on incoming state.
                 r.handicap_note = f"{reason} — no handicap update"
 
         # Eligible adjusted place (among non-fresh, non-outlier racers only, for points)

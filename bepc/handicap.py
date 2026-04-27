@@ -2,12 +2,26 @@ import math
 from .models import RacerResult
 
 
-def calculate_par_racer(racers: list[RacerResult]) -> RacerResult | None:
-    """Par racer at ~33rd percentile by adjusted time. Returns None if insufficient racers (<10)."""
+def calculate_par_racer(racers: list[RacerResult]) -> tuple[RacerResult | None, set[tuple]]:
+    """Par racer at ~33rd percentile by adjusted time.
+
+    Prefers established-only racers when there are enough (≥6). Otherwise falls
+    back to the full field — this lets young series and small events still
+    produce a par estimate.
+
+    Returns (par_racer, included_keys) where included_keys is the set of
+    (canonical_name, craft_category) tuples for racers whose adjusted_time
+    estimates contributed to par selection. Returns (None, set()) if fewer
+    than 10 racers total (field too small for par at all).
+    """
     if len(racers) < 10:
-        return None
-    sorted_by_adj = sorted(racers, key=lambda r: r.adjusted_time_seconds)
-    return sorted_by_adj[len(sorted_by_adj) // 3]
+        return None, set()
+    established = [r for r in racers if not r.is_fresh_racer]
+    pool = established if len(established) >= 6 else racers
+    sorted_by_adj = sorted(pool, key=lambda r: r.adjusted_time_seconds)
+    par = sorted_by_adj[len(sorted_by_adj) // 3]
+    included = {(r.canonical_name, r.craft_category) for r in pool}
+    return par, included
 
 
 def compute_new_handicap(racer: RacerResult, par_time: float,
@@ -21,10 +35,11 @@ def compute_new_handicap(racer: RacerResult, par_time: float,
     tvp = racer.time_versus_par
     atvp = racer.adjusted_time_versus_par
 
-    established = racer.num_races > num_races_to_establish
-    eligible = racer.carried_over or racer.num_races > num_races_to_establish
-
-    # EST badge = not eligible
+    # Incoming established flag: carried over from prior season OR enough races this season.
+    # Use num_races - 1 because num_races was bumped to include THIS race.
+    eligible = racer.carried_over or (racer.num_races - 1) >= num_races_to_establish
+    established = eligible
+    # Keep is_fresh_racer consistent with processor's pre-race determination
     racer.is_fresh_racer = not eligible
 
     if not established:

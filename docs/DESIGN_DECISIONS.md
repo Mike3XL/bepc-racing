@@ -308,3 +308,31 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 - One global index per racer — ignores that different fields have different competitive density.
 
 **Migration:** Complete rebuild. Old club URLs break. See `SERIES_SYSTEM.md` for plan.
+
+
+---
+
+## Par Selection: Prefer Established Racers
+**Date:** 2026-04-27
+**Context:** `bepc/handicap.py::calculate_par_racer`, `bepc/processor.py`
+
+**Problem:** Par time for a race was computed as the P33 adjusted time across **all** racers in the field. This included non-established racers (handicap still near 1.0), whose adjusted_time is close to their raw finish time and therefore a noisy estimate of what par "really is" for the course. On well-attended races with many established racers, the par drifts by a fraction because of the unreliable contributions.
+
+**Decision:** Compute par from **established racers only** when the field contains **≥6 established racers**. Otherwise, fall back to using all racers (bootstrap mode — ensures small/new fields still get a par).
+
+- Threshold ≥6: 6 racers at P33 = a bottom-third consensus of 6, a meaningful signal.
+- Fallback to all below 6: lets young series and small events contribute estimates rather than producing no par.
+- Every par calculation still requires ≥10 racers total (unchanged — smaller fields produce no par at all).
+
+**Per-racer "Par Estimate" column:** each racer's adjusted time is their personal estimate of par ("what time would a par-level racer have taken on this course, given my index and my finish time?"). The race's par is the P33 of included estimates. Racers NOT included in the pool (non-established in a ≥6-established field) show `—` in the Par Estimate column — their estimate wasn't used.
+
+**Empirical impact (simulated over PNW 2024-2025, 121 races):**
+- 39% of races (39/99 eligible) see par shift — mean shift −1.6% (par appears slightly faster when non-established racers are excluded).
+- **0% of races see top-3 podium changes** — established racers already dominate the podium ranks, and uniform par shift doesn't reshuffle relative ordering.
+- Decision made for correctness/explainability (par estimate column becomes meaningful and self-documenting), not for ranking impact.
+
+**Rejected alternatives:**
+- Threshold = 10 (too strict — half of PNW primary courses would fall back).
+- Threshold = 3 (too loose — some races would rely on very few established estimates).
+- Top-up from non-established middle until 10 (mixes noisy estimates back in, partially defeating the purpose).
+- Weighted combination (established full weight, non-established fractional) — added complexity without clear benefit.
