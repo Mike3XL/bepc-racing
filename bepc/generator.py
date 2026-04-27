@@ -612,57 +612,51 @@ def generate_standings(data: dict) -> None:
     for club_id in data["clubs"]:
         data["current_club"] = club_id
         _current_racer_club = club_id
+        series_name = data["clubs"][club_id].get("name", club_id)
         html = _head("Standings") + _nav("Standings", data=data, depth=1) + _selector_bar(data, page="standings") + f"""
 <div class="container-fluid px-2 px-sm-3">
-  <h1 class="mb-3">Standings</h1>
-  <ul class="nav nav-tabs mb-3">
-    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-hpts">Corrected Points</button></li>
-    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-pts">Finish Points</button></li>
-  </ul>
-  <div class="tab-content" id="standings-content">
-    <div class="tab-pane active" id="tab-hpts">
-      <p class="text-muted small">Sorted by corrected points. Shift+click column headers to sort by multiple columns.</p>
-      <table id="tbl-hpts" class="table table-striped table-hover">
-        <thead><tr><th>#</th><th>Racer</th><th>Craft</th><th>Trophies</th><th>Races</th><th>Corr Points</th><th>Index</th><th>Finish Pts</th></tr></thead>
-        <tbody id="body-hpts"></tbody>
-      </table>
+  <h1 class="mb-3" id="standings-title">Standings</h1>
+  <div class="d-flex align-items-center gap-3 mb-2 flex-wrap">
+    <div class="btn-group btn-group-sm" role="group" aria-label="Filter">
+      <input type="radio" class="btn-check" name="filter" id="f-est" value="established" checked>
+      <label class="btn btn-outline-secondary" for="f-est">Established (>2 races)</label>
+      <input type="radio" class="btn-check" name="filter" id="f-all" value="all">
+      <label class="btn btn-outline-secondary" for="f-all">All</label>
     </div>
-    <div class="tab-pane" id="tab-pts">
-      <p class="text-muted small">Sorted by overall points. Shift+click column headers to sort by multiple columns.</p>
-      <table id="tbl-pts" class="table table-striped table-hover">
-        <thead><tr><th>#</th><th>Racer</th><th>Craft</th><th>Trophies</th><th>Races</th><th>Corr Points</th><th>Index</th><th>Finish Pts</th></tr></thead>
-        <tbody id="body-pts"></tbody>
-      </table>
-    </div>
+    <span class="text-muted small">Click column headers to sort. Shift+click for multi-column.</span>
   </div>
+  <table id="tbl-standings" class="table table-striped table-hover">
+    <thead><tr><th>#</th><th>Racer</th><th>Craft</th><th>Trophies</th><th>Races</th><th>Index Pts.</th><th>Index</th><th>Finish Pts.</th></tr></thead>
+    <tbody id="body-standings"></tbody>
+  </table>
 </div>
 <script>
 {_racer_slugs_js()}
+const SERIES_NAME = {json.dumps(series_name)};
 let SEASONS = null;
-let dtPts = null, dtHpts = null;
+let dtStandings = null;
+let _currentYear = null;
+
 function render(year) {{
+  _currentYear = year;
   const s = SEASONS[year];
-  if (dtPts) {{ dtPts.destroy(); dtPts = null; }}
-  if (dtHpts) {{ dtHpts.destroy(); dtHpts = null; }}
-  const fmtGender = g => g === 'Female/Male' ? 'Mixed' : g;
+  if (dtStandings) {{ dtStandings.destroy(); dtStandings = null; }}
+  const filter = document.querySelector('input[name="filter"]:checked').value;
   const racerLink = (name, slug) => RACER_SLUGS.has(slug) ? `<a href="racer/${{slug}}.html">${{name}}</a>` : name;
   const row = r => `<tr><td></td><td>${{racerLink(r.name, r.name.toLowerCase().replace(/ /g,'-'))}}</td><td>${{r.craft}}</td><td style="white-space:nowrap">${{r.trophies||''}}</td><td>${{r.races}}</td><td>${{r.hpts}}</td><td>${{r.hcap}}</td><td>${{r.points}}</td></tr>`;
-  document.getElementById('body-hpts').innerHTML = s.hpts.map(row).join('');
-  document.getElementById('body-pts').innerHTML = s.hpts.map(row).join('');
+  const rows = (s.hpts || []).filter(r => filter === 'all' || r.races > 2);
+  document.getElementById('body-standings').innerHTML = rows.map(row).join('');
+  document.getElementById('standings-title').textContent = `Standings: ${{SERIES_NAME}}, ${{year}}`;
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => bootstrap.Tooltip.getOrCreateInstance(el));
-  function addRowNumbers(dt) {{
-    dt.on('draw', () => {{
-      dt.column(0, {{search:'applied', order:'applied'}}).nodes().each((cell, i) => {{
-        cell.innerHTML = i + 1;
-      }});
-    }}).draw(false);
-  }}
-  const colDefs = [{{targets:0, orderable:false}},{{targets:4, orderable:false}}];
-  dtHpts = $('#tbl-hpts').DataTable({{order:[[5,'desc']],pageLength:100,responsive:true,autoWidth:false,columnDefs:colDefs}});
-  addRowNumbers(dtHpts);
-  dtPts = $('#tbl-pts').DataTable({{order:[[7,'desc']],pageLength:100,responsive:true,autoWidth:false,columnDefs:colDefs}});
-  addRowNumbers(dtPts);
+  const colDefs = [{{targets:0, orderable:false}}];
+  dtStandings = $('#tbl-standings').DataTable({{order:[[5,'desc']],pageLength:100,responsive:true,autoWidth:false,columnDefs:colDefs}});
+  dtStandings.on('draw', () => {{
+    dtStandings.column(0, {{search:'applied', order:'applied'}}).nodes().each((cell, i) => {{
+      cell.innerHTML = i + 1;
+    }});
+  }}).draw(false);
 }}
+
 window.addEventListener('DOMContentLoaded', () => {{
   fetchData('standings-data.json', d => {{
     SEASONS = d.seasons;
@@ -675,6 +669,9 @@ window.addEventListener('DOMContentLoaded', () => {{
       if (SEASONS[y]) {{ if (sel) sel.value = y; render(y); }}
     }});
     if (sel) sel.addEventListener('change', e => render(e.target.value));
+    document.querySelectorAll('input[name="filter"]').forEach(el => {{
+      el.addEventListener('change', () => render(_currentYear));
+    }});
   }});
 }});
 </script>""" + _foot()
