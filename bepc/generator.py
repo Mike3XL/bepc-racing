@@ -2832,7 +2832,6 @@ const MEDAL = {
 </style>
 <div class="container">
   <h1 class="mb-3">Results</h1>
-  {upcoming_html}
   <div id="races-content"></div>
 </div>
 <script>
