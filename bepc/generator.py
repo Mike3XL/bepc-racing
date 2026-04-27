@@ -940,10 +940,10 @@ document.addEventListener('DOMContentLoaded', () => {{
   document.getElementById('course-content').innerHTML = tabNav + tabContent;
   const _dts = {{}};
   COURSES.forEach((course, i) => {{
-    document.getElementById(`body-results-${{i}}`).innerHTML = rows(course.handicap, 'adjusted_place');
+    document.getElementById(`body-results-${{i}}`).innerHTML = rows(course.handicap, 'original_place');
     // Disable sorting on Trophies (0), Racer (2), Craft (3)
     _dts[i] = $(`#tbl-results-${{i}}`).DataTable({{
-      order: [[6, 'asc']],
+      order: [[4, 'asc']],
       paging: false,
       searching: false,
       info: false,
