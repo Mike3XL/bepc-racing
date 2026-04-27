@@ -21,5 +21,7 @@ courses:
     distance_mi: 0.0
     starters: 30
     is_primary: false
-corrections: []
+corrections:
+  - move: {racer: "Lisi Cole", from: "10K", to: "5K"}
+    reason: "PaddleGuru placed her in 10K; 61:15 fits a recreational 5K SUP not a 10K."
 notes: ''

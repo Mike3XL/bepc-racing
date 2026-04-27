@@ -247,15 +247,13 @@ def fetch_paddleguru_race(
         short = _normalize_course_name(r["event"])
         by_event.setdefault(short, []).append(r)
 
-    # For each course, write a common.json
-    written = []
+    # Build racer-result dicts per course (pre-correction)
     display_date = display_date or date_iso
+    courses: dict[str, list[dict]] = {}
     for course, entries in by_event.items():
-        # Sort by overall rank
         entries.sort(key=lambda e: e["overall"])
         racer_results = []
         for e in entries:
-            # athletes is a list of full-name strings
             names = [n.strip() for n in e["athletes"] if n.strip()]
             canonical = " & ".join(names)
             canonical = re.sub(r"\s+", " ", canonical).strip()
@@ -265,7 +263,7 @@ def fetch_paddleguru_race(
             racer_results.append({
                 "originalPlace": e["overall"],
                 "canonicalName": canonical,
-                "craftCategory": e["category"],  # raw string — craft.py normalizes
+                "craftCategory": e["category"],
                 "gender": gender,
                 "handicap": 1.0,
                 "timeSeconds": _ms_to_seconds(e["time_ms"]),
@@ -281,11 +279,23 @@ def fetch_paddleguru_race(
                 "absoluteImprovement": 0.0,
                 "parRacer": False,
             })
-        # Re-number originalPlace within the course
+        # Number within the course
         for i, r in enumerate(sorted(racer_results, key=lambda x: x["timeSeconds"]), 1):
             r["originalPlace"] = i
         racer_results.sort(key=lambda x: x["originalPlace"])
+        courses[course] = racer_results
 
+    # Apply corrections from meta.yaml (if present)
+    from bepc.corrections import apply_corrections, load_meta_corrections
+    meta_path = out_dir.parent / "meta" / f"{date_iso}__{race_id}.meta.yaml"
+    corrections = load_meta_corrections(meta_path)
+    if corrections:
+        print(f"Applying {len(corrections)} correction(s) from {meta_path.name}")
+        apply_corrections(courses, corrections)
+
+    # Write one common.json per course (corrected)
+    written = []
+    for course, racer_results in courses.items():
         common = {
             "raceInfo": {
                 "raceId": race_id,
