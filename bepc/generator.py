@@ -786,24 +786,38 @@ function rows(results, placeField) {
       ? ((r.adjusted_time_versus_par - 1) * 100) : null;
     const noOutlierDetect = !r.is_fresh_racer && pct != null && pct > 10 && !r.is_outlier;
     const pctNote = noOutlierDetect ? ' data-bs-toggle="tooltip" data-bs-title="First race back this season"' : '';
+    // pctHtml — use pct (or 999 for "—") as sort key so empties sort to the end
+    const pctSort = pct != null ? pct : 999;
     const pctHtml = pct != null
-      ? `<td style="text-align:center;white-space:nowrap;font-size:0.85em;color:${pct <= 0 ? '#2E7D32' : '#666'};font-weight:${pct <= 0 ? 'bold' : 'normal'}">${pct > 0 ? '+' : ''}${pct.toFixed(1)}%${noOutlierDetect ? `<sup${pctNote}>^</sup>` : ''}</td>`
-      : '<td></td>';
+      ? `<td data-order="${pctSort}" style="text-align:center;white-space:nowrap;font-size:0.85em;color:${pct <= 0 ? '#2E7D32' : '#666'};font-weight:${pct <= 0 ? 'bold' : 'normal'}">${pct > 0 ? '+' : ''}${pct.toFixed(1)}%${noOutlierDetect ? `<sup${pctNote}>^</sup>` : ''}</td>`
+      : `<td data-order="${pctSort}"></td>`;
     const hcapPostNote = r.is_outlier ? ' data-bs-toggle="tooltip" data-bs-title="Outlier — result suppressed"' : '';
-    const hcapPostHtml = `<td style="padding-left:8px">${r.handicap_post.toFixed(3)}${r.is_outlier ? `<sup${hcapPostNote}>^</sup>` : ''}</td>`;
+    const hcapPostHtml = `<td data-order="${r.handicap_post}" style="padding-left:8px">${r.handicap_post.toFixed(3)}${r.is_outlier ? `<sup${hcapPostNote}>^</sup>` : ''}</td>`;
     const s = slug(r.canonical_name);
     const isFresh = r.is_fresh_racer ? 'true' : 'false';
     const isRegular = RACER_SLUGS.has(s) ? 'true' : 'false';
+    // Predicted time (in seconds) for sorting; 999999 sorts empty to the end
+    const predSec = (!r.is_fresh_racer && r.time_versus_par > 0)
+      ? (r.time_seconds / r.time_versus_par * r.handicap) : null;
+    const predSort = predSec != null ? predSec : 999999;
+    const predCell = predSec != null ? fmtTime(predSec) : '<span style="color:#999">—</span>';
+    // Par estimate
+    const parSec = (r.included_in_par && r.adjusted_time_seconds) ? r.adjusted_time_seconds : null;
+    const parSort = parSec != null ? parSec : 999999;
+    const parDisplay = parSec != null ? fmtTime(parSec) : '<span style="color:#999">—</span>';
+    const parCell = parSec != null && r.trophies && r.trophies.includes('par')
+      ? '<span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:2px 4px;font-weight:bold;color:#1565C0">' + fmtTime(parSec) + '</span>'
+      : parDisplay;
     return `<tr data-fresh="${isFresh}" data-regular="${isRegular}"><td>${badges(r.trophies)}</td>
-    <td>${r[placeField]}</td><td>${racerLink(r.canonical_name)}</td>
+    <td data-order="${r[placeField]}">${r[placeField]}</td><td>${racerLink(r.canonical_name)}</td>
     ${craft_cell(r.craft_category, r.craft_specific)}
-    <td>${isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}</td>
-    <td>${(!r.is_fresh_racer && r.time_versus_par > 0) ? fmtTime(r.time_seconds / r.time_versus_par * r.handicap) : '<span style="color:#999">—</span>'}</td>
+    <td data-order="${r.time_seconds}">${isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}</td>
+    <td data-order="${predSort}">${predCell}</td>
     ${pctHtml}
-    <td>${r.handicap.toFixed(3)}</td>
+    <td data-order="${r.handicap}">${r.handicap.toFixed(3)}</td>
     ${hcapPostHtml}
-    <td>${r.included_in_par && r.adjusted_time_seconds ? (r.trophies && r.trophies.includes('par') ? '<span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:2px 4px;font-weight:bold;color:#1565C0">' + fmtTime(r.adjusted_time_seconds) + '</span>' : fmtTime(r.adjusted_time_seconds)) : '<span style="color:#999">—</span>'}</td>
-    <td>${r.race_points || 0}</td><td>${r.handicap_points || 0}</td></tr>`;
+    <td data-order="${parSort}">${parCell}</td>
+    <td data-order="${r.race_points || 0}">${r.race_points || 0}</td><td data-order="${r.handicap_points || 0}">${r.handicap_points || 0}</td></tr>`;
   }).join('');
 }
 """
