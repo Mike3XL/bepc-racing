@@ -781,15 +781,15 @@ function tableHtml(id_suffix) {
   <div class="tab-content border border-top-0 p-3 mb-3">
     <div class="tab-pane active" id="tab-handicap-${id_suffix}">
       <table class="table table-sm table-striped" style="table-layout:fixed">
-        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:75px"><col style="width:75px"><col style="width:65px"><col style="width:55px"><col style="width:55px"><col style="width:65px"></colgroup>
-        <thead class="text-nowrap"><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Index</th><th>Corr</th><th style="white-space:nowrap">vs Par</th><th>New</th><th>Points</th><th>Corr Points</th></tr></thead>
+        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:70px"><col style="width:75px"><col style="width:75px"><col style="width:65px"><col style="width:55px"><col style="width:55px"><col style="width:65px"></colgroup>
+        <thead class="text-nowrap"><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Predicted</th><th>Index</th><th>Corr</th><th style="white-space:nowrap">vs Par</th><th>New</th><th>Points</th><th>Corr Points</th></tr></thead>
         <tbody id="body-handicap-${id_suffix}"></tbody>
       </table>
     </div>
     <div class="tab-pane" id="tab-finish-${id_suffix}">
       <table class="table table-sm table-striped" style="table-layout:fixed">
-        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:75px"><col style="width:75px"><col style="width:65px"><col style="width:90px"><col style="width:55px"><col style="width:55px"></colgroup>
-        <thead class="text-nowrap"><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Index</th><th>Corr</th><th style="white-space:nowrap">vs Par</th><th>New</th><th>Points</th><th>Corr Points</th></tr></thead>
+        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:70px"><col style="width:75px"><col style="width:75px"><col style="width:65px"><col style="width:90px"><col style="width:55px"><col style="width:55px"></colgroup>
+        <thead class="text-nowrap"><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Predicted</th><th>Index</th><th>Corr</th><th style="white-space:nowrap">vs Par</th><th>New</th><th>Points</th><th>Corr Points</th></tr></thead>
         <tbody id="body-finish-${id_suffix}"></tbody>
       </table>
     </div>
@@ -814,6 +814,7 @@ function rows(results, placeField) {
     <td>${r[placeField]}</td><td>${racerLink(r.canonical_name)}</td>
     ${craft_cell(r.craft_category, r.craft_specific)}
     <td>${isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}</td>
+    <td>${(!r.is_fresh_racer && r.time_versus_par > 0) ? fmtTime(r.time_seconds / r.time_versus_par * r.handicap) : '<span style="color:#999">—</span>'}</td>
     <td>${r.handicap.toFixed(3)}</td>
     ${r.trophies && r.trophies.includes('par') ? '<td><span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:2px 4px;font-weight:bold;color:#1565C0">' + fmtTime(r.adjusted_time_seconds) + '</span></td>' : '<td>' + (isHcap ? '<strong>' + fmtTime(r.adjusted_time_seconds) + '</strong>' : fmtTime(r.adjusted_time_seconds)) + '</td>'}
     ${pctHtml}${hcapPostHtml}
