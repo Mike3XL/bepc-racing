@@ -767,33 +767,17 @@ function podiumForCourse(course) {
 
 function tableHtml(id_suffix) {
   return `
-  <div class="d-flex align-items-end gap-2 mb-0">
-    <ul class="nav nav-tabs border-bottom-0 mb-0" id="result-tabs-${id_suffix}">
-      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-handicap-${id_suffix}">Corrected time</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-finish-${id_suffix}">Finish time</button></li>
-    </ul>
-    <select id="racer-filter" class="form-select form-select-sm ms-auto" style="width:auto;margin-bottom:1px">
+  <div class="d-flex align-items-center gap-2 mb-2">
+    <select id="racer-filter-${id_suffix}" class="form-select form-select-sm ms-auto" style="width:auto">
       <option value="all">All racers</option>
       <option value="eligible">Eligible only</option>
       <option value="regular">Regulars only</option>
     </select>
   </div>
-  <div class="tab-content border border-top-0 p-3 mb-3">
-    <div class="tab-pane active" id="tab-handicap-${id_suffix}">
-      <table class="table table-sm table-striped" style="table-layout:fixed">
-        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:70px"><col style="width:100px"><col style="width:65px"><col style="width:55px"><col style="width:95px"><col style="width:55px"><col style="width:65px"></colgroup>
-        <thead class="text-nowrap"><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Predicted</th><th>Delta</th><th>Index</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Index Pts</th></tr></thead>
-        <tbody id="body-handicap-${id_suffix}"></tbody>
-      </table>
-    </div>
-    <div class="tab-pane" id="tab-finish-${id_suffix}">
-      <table class="table table-sm table-striped" style="table-layout:fixed">
-        <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:70px"><col style="width:100px"><col style="width:65px"><col style="width:55px"><col style="width:95px"><col style="width:55px"><col style="width:65px"></colgroup>
-        <thead class="text-nowrap"><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Predicted</th><th>vs Predicted %</th><th>Index</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Corr Points</th></tr></thead>
-        <tbody id="body-finish-${id_suffix}"></tbody>
-      </table>
-    </div>
-  </div>`;
+  <table id="tbl-results-${id_suffix}" class="table table-sm table-striped">
+    <thead class="text-nowrap"><tr><th>Trophies</th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Predicted</th><th>Delta</th><th>Index</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Index Pts</th></tr></thead>
+    <tbody id="body-results-${id_suffix}"></tbody>
+  </table>`;
 }
 function rows(results, placeField) {
   const isHcap = placeField === 'adjusted_place';
@@ -940,27 +924,35 @@ document.addEventListener('DOMContentLoaded', () => {{
   tabNav += '</ul>';
   tabContent += '</div>';
   document.getElementById('course-content').innerHTML = tabNav + tabContent;
+  const _dts = {{}};
   COURSES.forEach((course, i) => {{
-    document.getElementById(`body-finish-${{i}}`).innerHTML = rows(course.finish, 'original_place');
-    document.getElementById(`body-handicap-${{i}}`).innerHTML = rows(course.handicap, 'adjusted_place');
+    document.getElementById(`body-results-${{i}}`).innerHTML = rows(course.handicap, 'adjusted_place');
+    // Disable sorting on Trophies (0), Racer (2), Craft (3)
+    _dts[i] = $(`#tbl-results-${{i}}`).DataTable({{
+      order: [[6, 'asc']],
+      paging: false,
+      searching: false,
+      info: false,
+      autoWidth: false,
+      columnDefs: [{{ orderable: false, targets: [0, 2, 3] }}],
+    }});
   }});
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => bootstrap.Tooltip.getOrCreateInstance(el));
   const savedDist = getDistance();
-  const savedTab = getResultTab();
   COURSES.forEach((course, i) => {{
     const btn = document.querySelector(`[data-bs-target="#course-${{i}}"]`);
     if (btn) {{
       if (savedDist && course.label === savedDist) bootstrap.Tab.getOrCreateInstance(btn).show();
       btn.addEventListener('shown.bs.tab', () => setDistance(course.label));
     }}
-    document.querySelectorAll(`#result-tabs-${{i}} button`).forEach(tb => {{
-      if (savedTab && tb.textContent === savedTab) bootstrap.Tab.getOrCreateInstance(tb).show();
-      tb.addEventListener('shown.bs.tab', () => setResultTab(tb.textContent));
-    }});
   }});
   // Racer filter
   function applyFilter() {{
-    var f = document.getElementById('racer-filter').value;
+    // Collect filter value from each per-course selector (they're synced)
+    const filters = document.querySelectorAll('[id^="racer-filter-"]');
+    if (!filters.length) return;
+    const f = filters[0].value;
+    filters.forEach(sel => {{ sel.value = f; }});
     document.querySelectorAll('#course-content tr[data-fresh]').forEach(function(tr) {{
       var show = f === 'all'
         || (f === 'eligible' && tr.dataset.fresh === 'false')
@@ -968,7 +960,7 @@ document.addEventListener('DOMContentLoaded', () => {{
       tr.style.display = show ? '' : 'none';
     }});
   }}
-  document.getElementById('racer-filter').addEventListener('change', applyFilter);
+  document.querySelectorAll('[id^="racer-filter-"]').forEach(sel => sel.addEventListener('change', applyFilter));
 }});
 </script>""" + _foot()
             (results_dir / f"{slug_name}.html").write_text(html)
