@@ -18,24 +18,44 @@ clubs:
     type: org
     description: >
       Ballard Elks weekly Monday race series (May–Oct).
+    handicap:
+      num_races_to_establish: 2
+      update_faster: 0.30
+      update_slower: 0.15
+      carry_over: true
   pnw:
     name: PNW
     short_name: PNW
     type: league
     description: >
       Regional races at PNW-level seriousness — PNWORCA, Sound Rowers, La Conner, Rat Island, etc.
+    handicap:
+      num_races_to_establish: 2
+      update_faster: 0.30
+      update_slower: 0.15
+      carry_over: true
   sckc-duck-island:
     name: SCKC Duck Island
     short_name: SCKC
     type: org
     description: >
       Seattle Canoe and Kayak Club Duck Island race series.
+    handicap:
+      num_races_to_establish: 2
+      update_faster: 0.30
+      update_slower: 0.15
+      carry_over: true
   none:
     name: None
     short_name: Other
     type: org
     description: >
       Unaffiliated / casual races.
+    handicap:
+      num_races_to_establish: 2
+      update_faster: 0.30
+      update_slower: 0.15
+      carry_over: true
 
   bepc:
     name: Ballard Elks Paddle Club

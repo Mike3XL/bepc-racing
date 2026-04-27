@@ -539,6 +539,9 @@ def generate_data_files(data: dict) -> None:
         pts = sorted(_final_states_for_season(season["races"]).values(), key=lambda r: -r["season_points"])
         hpts = sorted(_final_states_for_season(season["races"]).values(), key=lambda r: -r["season_handicap_points"])
         distances = set(r.get("distance", "") for r in season["races"])
+        # "Established" = processor's per-series handicap-established signal (inverse of is_fresh_racer).
+        # num_races_to_establish is series-configured in data/clubs.yaml and carry_over:true
+        # preserves established status across seasons within the series.
         standings_data["seasons"][year] = {
             "multi_dist": len([d for d in distances if d]) > 1,
             "pts": [{"name": r["canonical_name"], "craft": display_craft_ui(r["craft_category"]), "gender": r["gender"],
@@ -548,6 +551,7 @@ def generate_data_files(data: dict) -> None:
                       "gender": r["gender"],
                       "trophies": trophy_summary(r["canonical_name"], r["craft_category"]),
                       "course": r.get("_distance", ""), "races": r["num_races"],
+                      "established": not r.get("is_fresh_racer", False),
                       "hpts": r["season_handicap_points"],
                       "hcap": round(r["handicap_post"], 3),
                       "points": r["season_points"]} for r in hpts],
@@ -619,7 +623,7 @@ def generate_standings(data: dict) -> None:
   <div class="d-flex align-items-center gap-3 mb-2 flex-wrap">
     <div class="btn-group btn-group-sm" role="group" aria-label="Filter">
       <input type="radio" class="btn-check" name="filter" id="f-est" value="established" checked>
-      <label class="btn btn-outline-secondary" for="f-est">Established (>2 races)</label>
+      <label class="btn btn-outline-secondary" for="f-est">Established</label>
       <input type="radio" class="btn-check" name="filter" id="f-all" value="all">
       <label class="btn btn-outline-secondary" for="f-all">All</label>
     </div>
@@ -656,7 +660,7 @@ function render(year) {{
   if (dtStandings) {{ dtStandings.destroy(); dtStandings = null; }}
   const filter = document.querySelector('input[name="filter"]:checked').value;
   const racerLink = (name, slug) => RACER_SLUGS.has(slug) ? `<a href="racer/${{slug}}.html">${{name}}</a>` : name;
-  const rows = (s.hpts || []).filter(r => filter === 'all' || r.races > 2);
+  const rows = (s.hpts || []).filter(r => filter === 'all' || r.established);
   const row = r => `<tr><td></td><td>${{racerLink(r.name, r.name.toLowerCase().replace(/ /g,'-'))}}</td><td>${{r.craft}}</td><td>${{r.trophies||''}}</td><td>${{r.races}}</td><td>${{r.hcap}}</td><td>${{r.hpts}}</td><td>${{r.points}}</td></tr>`;
   document.getElementById('body-standings').innerHTML = rows.map(row).join('');
   document.getElementById('standings-title').textContent = `Standings: ${{SERIES_NAME}}, ${{year}}`;
