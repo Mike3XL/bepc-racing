@@ -782,7 +782,7 @@ function tableHtml(id_suffix) {
     <div class="tab-pane active" id="tab-handicap-${id_suffix}">
       <table class="table table-sm table-striped" style="table-layout:fixed">
         <colgroup><col style="width:80px"><col style="width:55px"><col style="width:160px"><col style="width:75px"><col style="width:65px"><col style="width:70px"><col style="width:100px"><col style="width:65px"><col style="width:55px"><col style="width:95px"><col style="width:55px"><col style="width:65px"></colgroup>
-        <thead class="text-nowrap"><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Predicted</th><th>vs Predicted %</th><th>Index</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Corr Points</th></tr></thead>
+        <thead class="text-nowrap"><tr><th></th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Predicted</th><th>Delta</th><th>Index</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Index Pts</th></tr></thead>
         <tbody id="body-handicap-${id_suffix}"></tbody>
       </table>
     </div>

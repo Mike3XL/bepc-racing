@@ -112,9 +112,28 @@ def load_common_json(path: Path, aliases: dict | None = None,
         tags=list((meta or {}).get("tags", []) or []),
         is_primary=is_primary,
     )
+    # SCKC (and similar) put boat class in the filename suffix rather than
+    # craftCategory (which holds age class like 'Masters 40+'). If the
+    # filename ends with a known class code, use it as the craft category.
+    filename_class_override = None
+    SCKC_CLASS_MAP = {
+        "K1": "Kayak-1", "K2": "Kayak-2",
+        "C1": "Canoe-1", "C2": "Canoe-2",
+        "SUP": "SUP-1",
+        "OC": "OC-1", "OC1": "OC-1", "OC2": "OC-2", "OC6": "OC-6",
+        "SS": "SS-1", "SSU": "SS-1",
+    }
+    if path:
+        m = re.search(r"__([A-Z0-9]+)\.common\.json$", path.name)
+        if m and m.group(1) in SCKC_CLASS_MAP:
+            filename_class_override = SCKC_CLASS_MAP[m.group(1)]
+
     racers = []
     for r in data["racerResults"]:
-        cat, specific = _normalize_craft(r["craftCategory"])
+        if filename_class_override:
+            cat, specific = filename_class_override, filename_class_override
+        else:
+            cat, specific = _normalize_craft(r["craftCategory"])
         racers.append(RacerResult(
             original_place=r["originalPlace"],
             canonical_name=(aliases or {}).get(r["canonicalName"], r["canonicalName"]),
