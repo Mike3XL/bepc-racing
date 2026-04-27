@@ -625,24 +625,23 @@ def generate_standings(data: dict) -> None:
     </div>
     <span class="text-muted small">Click column headers to sort. Shift+click for multi-column.</span>
   </div>
-  <table id="tbl-standings" class="table table-striped table-hover" style="table-layout:fixed">
-    <colgroup>
-      <col style="width:55px">
-      <col style="width:160px">
-      <col style="width:75px">
-      <col style="width:320px">
-      <col style="width:65px">
-      <col style="width:75px">
-      <col style="width:80px">
-      <col style="width:80px">
-    </colgroup>
-    <thead><tr><th>#</th><th>Racer</th><th>Craft</th><th>Trophies</th><th>Races</th><th>Index</th><th>Index Pts.</th><th>Finish Pts.</th></tr></thead>
+  <table id="tbl-standings" class="table table-striped table-hover">
+    <thead><tr>
+      <th style="width:55px">#</th>
+      <th style="min-width:180px">Racer</th>
+      <th style="width:75px">Craft</th>
+      <th style="min-width:160px;white-space:nowrap">Trophies</th>
+      <th style="width:70px">Races</th>
+      <th style="width:75px">Index</th>
+      <th style="width:90px">Index Pts.</th>
+      <th style="width:90px">Finish Pts.</th>
+    </tr></thead>
     <tbody id="body-standings"></tbody>
   </table>
 </div>
 <style>
-#tbl-standings td {{ white-space: normal; word-wrap: break-word; vertical-align: middle; }}
-#tbl-standings td:nth-child(4) {{ line-height: 1; }}
+#tbl-standings td:nth-child(2) {{ white-space: normal; }}
+#tbl-standings td:nth-child(4) {{ white-space: nowrap; line-height: 1; }}
 </style>
 <script>
 {_racer_slugs_js()}
@@ -657,15 +656,9 @@ function render(year) {{
   if (dtStandings) {{ dtStandings.destroy(); dtStandings = null; }}
   const filter = document.querySelector('input[name="filter"]:checked').value;
   const racerLink = (name, slug) => RACER_SLUGS.has(slug) ? `<a href="racer/${{slug}}.html">${{name}}</a>` : name;
-
-  // Pre-compute absolute rank after filter, then render # baked-in so search/sort preserves it
-  const filtered = (s.hpts || []).filter(r => filter === 'all' || r.races > 2);
-  // Sort by Index Pts. descending (matches default DataTable sort)
-  const sorted = [...filtered].sort((a, b) => (b.hpts || 0) - (a.hpts || 0));
-  sorted.forEach((r, i) => {{ r._rank = i + 1; }});
-
-  const row = r => `<tr><td>${{r._rank}}</td><td>${{racerLink(r.name, r.name.toLowerCase().replace(/ /g,'-'))}}</td><td>${{r.craft}}</td><td>${{r.trophies||''}}</td><td>${{r.races}}</td><td>${{r.hcap}}</td><td>${{r.hpts}}</td><td>${{r.points}}</td></tr>`;
-  document.getElementById('body-standings').innerHTML = sorted.map(row).join('');
+  const rows = (s.hpts || []).filter(r => filter === 'all' || r.races > 2);
+  const row = r => `<tr><td></td><td>${{racerLink(r.name, r.name.toLowerCase().replace(/ /g,'-'))}}</td><td>${{r.craft}}</td><td>${{r.trophies||''}}</td><td>${{r.races}}</td><td>${{r.hcap}}</td><td>${{r.hpts}}</td><td>${{r.points}}</td></tr>`;
+  document.getElementById('body-standings').innerHTML = rows.map(row).join('');
   document.getElementById('standings-title').textContent = `Standings: ${{SERIES_NAME}}, ${{year}}`;
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => bootstrap.Tooltip.getOrCreateInstance(el));
 
@@ -674,8 +667,14 @@ function render(year) {{
     pageLength: 100,
     responsive: true,
     autoWidth: false,
+    columnDefs: [{{targets: 0, orderable: false}}],
   }});
   dtStandings = dt;
+  dt.on('draw', () => {{
+    dt.column(0, {{search:'applied', order:'applied'}}).nodes().each((cell, i) => {{
+      cell.innerHTML = i + 1;
+    }});
+  }}).draw(false);
 }}
 
 window.addEventListener('DOMContentLoaded', () => {{
