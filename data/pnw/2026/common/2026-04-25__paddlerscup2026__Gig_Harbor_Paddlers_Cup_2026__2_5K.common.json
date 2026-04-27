@@ -5,14 +5,17 @@
     "date": "Apr 25, 2026",
     "displayURL": "https://paddleguru.com/races/GigHarborPaddlersCup2026/results",
     "distance": "2.5K",
-    "pointsWeight": 0.68,
-    "sport": "Paddling"
+    "sport": "Paddling",
+    "pointsWeight": 1.0,
+    "startTime": "",
+    "country": "",
+    "city": ""
   },
   "racerResults": [
     {
       "originalPlace": 1,
       "canonicalName": "Baylee Sovitsky & Maya Wilson",
-      "craftCategory": "K2",
+      "craftCategory": "K2 Sprint Hull",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 917.73,
@@ -50,7 +53,7 @@
     {
       "originalPlace": 3,
       "canonicalName": "Isabella Caine",
-      "craftCategory": "C1",
+      "craftCategory": "C1 Sprint Hull",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 1032.72,
@@ -69,7 +72,7 @@
     {
       "originalPlace": 4,
       "canonicalName": "Steve Lindblom",
-      "craftCategory": "Kayak",
+      "craftCategory": "Kayak (non-sprint)",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 1043.32,
@@ -88,7 +91,7 @@
     {
       "originalPlace": 5,
       "canonicalName": "Bee - Florence Dietz & Heidi Rowntree",
-      "craftCategory": "K2",
+      "craftCategory": "K2 Sprint Hull",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 1053.99,
@@ -107,7 +110,7 @@
     {
       "originalPlace": 6,
       "canonicalName": "Jack Marquardt",
-      "craftCategory": "HPK",
+      "craftCategory": "K1 Sprint Hull",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 1111.83,
@@ -126,7 +129,7 @@
     {
       "originalPlace": 7,
       "canonicalName": "Theo Trinh",
-      "craftCategory": "C1",
+      "craftCategory": "C1 Sprint Hull",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 1123.27,
@@ -145,7 +148,7 @@
     {
       "originalPlace": 8,
       "canonicalName": "Juniper Blackburn",
-      "craftCategory": "HPK",
+      "craftCategory": "K1 Sprint Hull",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 1129.36,
@@ -164,7 +167,7 @@
     {
       "originalPlace": 9,
       "canonicalName": "Rafe Parker",
-      "craftCategory": "HPK",
+      "craftCategory": "K1 Sprint Hull",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 1306.59,
@@ -183,7 +186,7 @@
     {
       "originalPlace": 10,
       "canonicalName": "Declyn McCollum",
-      "craftCategory": "C1",
+      "craftCategory": "C1 Sprint Hull",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 1340.61,
@@ -200,9 +203,28 @@
       "parRacer": false
     },
     {
+      "originalPlace": 11,
+      "canonicalName": "Nicole Platt",
+      "craftCategory": "C1 Sprint Hull",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 1423.29,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1423.29,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
       "originalPlace": 12,
       "canonicalName": "Nate Kerr",
-      "craftCategory": "SUP",
+      "craftCategory": "Paddleboard (all)",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 1496.12,
@@ -221,7 +243,7 @@
     {
       "originalPlace": 13,
       "canonicalName": "Danika Conolly",
-      "craftCategory": "SUP",
+      "craftCategory": "Paddleboard (all)",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 2065.97,
@@ -240,7 +262,7 @@
     {
       "originalPlace": 14,
       "canonicalName": "Shelley Northrop",
-      "craftCategory": "SUP",
+      "craftCategory": "Paddleboard (all)",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 2084.3,
@@ -259,7 +281,7 @@
     {
       "originalPlace": 15,
       "canonicalName": "Anna Northrop",
-      "craftCategory": "SUP",
+      "craftCategory": "Paddleboard (all)",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 2084.53,
@@ -278,7 +300,7 @@
     {
       "originalPlace": 16,
       "canonicalName": "ROBERT ROWNTREE",
-      "craftCategory": "SUP",
+      "craftCategory": "Paddleboard (all)",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 2096.51,
@@ -297,7 +319,7 @@
     {
       "originalPlace": 17,
       "canonicalName": "Lisa Ramos",
-      "craftCategory": "SUP",
+      "craftCategory": "Paddleboard (all)",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 2158.42,
@@ -316,7 +338,7 @@
     {
       "originalPlace": 18,
       "canonicalName": "Carrie Conway",
-      "craftCategory": "SUP",
+      "craftCategory": "Paddleboard (all)",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 2158.7,

@@ -18,8 +18,9 @@ _PATTERNS = [
     ('hpk-2\\b|hpk2\\b|hpk.*double|hpk.*2x', 'Kayak-2', 'HPK-2'),
     ('fsk-2\\b|fsk2\\b',        'Kayak-2',       'FSK-2'),
     ('sk-2\\b|sk2\\b',          'Kayak-2',       'SK-2'),
+    # Surfski doubles — before generic K2 so "K2 Surfski" maps correctly
+    ('k2.*surfski|surfski.*double|surfski.*2x|double.*kayak|\\bdk\\b', 'Kayak-2', 'Surfski-2'),
     ('k-2\\b|k2\\b',            'Sprint-K2',     'K2'),
-    ('surfski.*double|surfski.*2x|double.*kayak|\\bdk\\b', 'Kayak-2', 'Surfski-2'),
     # Kayak quads — sprint K4 before generic
     ('k-4\\b|k4\\b',            'Sprint-K4',     'K4'),
     # Kayak singles — use \b or $ to avoid matching doubles
@@ -30,6 +31,8 @@ _PATTERNS = [
     ('k-1\\b|k1\\b',            'Sprint-K1',     'K1'),
     ('pk\\b',                   'Kayak-1',       'PK'),
     ('spec\\b',                 'Kayak-1',       'Spec'),
+    # Non-sprint (fitness/plastic) kayak — PaddleGuru uses this term
+    ('kayak.*non.?sprint|non.?sprint.*kayak|fitness.*kayak', 'Kayak-1', 'HPK'),
     ('kayak',                   'Kayak-1',       'Kayak'),
     ('ss\\b',                   'Kayak-1',       'Surfski'),  # bare SS = surfski
     # Open water rowing — larger before smaller
@@ -42,8 +45,9 @@ _PATTERNS = [
     ('oc-?3',                   'OC-3',          'OC-3'),
     ('oc-?2',                   'OC-2',          'OC-2'),
     ('oc-?1\\b|^oc$',           'OC-1',          'OC-1'),
-    # Canoe - Outrigger (verbose form)
+    # Outrigger verbose forms (e.g. "Outrigger Canoe") — default to OC-1 unless a count is specified
     ("canoe.*outrigger.*single|canoe.*oc-?1", 'OC-1', 'OC-1'),
+    ("outrigger\\s+canoe",      'OC-1',          'OC-1'),
     # Va'a (rudderless outrigger) — larger before smaller
     ("v-?12\\b",                "Va'a-6",        'V-12'),
     ("v-?6\\b",                 "Va'a-6",        'V-6'),
@@ -52,9 +56,11 @@ _PATTERNS = [
     # SUP — unlimited before standard
     ('unlimited|sup.*ul\\b|sup.*unlim', 'SUP-Unlimited', None),
     ('sup\\b|standup|stand.?up', 'SUP-1',        'SUP'),
-    # Prone
+    # Prone — also "paddleboard" (PaddleGuru term)
     ('prone',                   'Prone-1',       'Prone'),
+    ('paddleboard|paddle\\s*board', 'Prone-1',   'Prone'),
     # Canoe (non-outrigger) — anchored to start, after outrigger patterns
+    ('c-?4\\b',                 'Canoe-4',       None),
     ('c-?3\\b',                 'Canoe-3',       None),
     ('c-?2\\b',                 'Canoe-2',       None),
     ('c-?1\\b|^canoe$',         'Canoe-1',       None),
