@@ -60,6 +60,10 @@ _PATTERNS = [
     ('prone',                   'Prone-1',       'Prone'),
     ('paddleboard|paddle\\s*board', 'Prone-1',   'Prone'),
     # Canoe (non-outrigger) — anchored to start, after outrigger patterns
+    # Sprint canoes (C1/C2/C4 sprint hull) — before generic canoe patterns
+    ('c-?4.*sprint|sprint.*c-?4', 'Sprint-C4',  'C4'),
+    ('c-?2.*sprint|sprint.*c-?2', 'Sprint-C2',  'C2'),
+    ('c-?1.*sprint|sprint.*c-?1', 'Sprint-C1',  'C1'),
     ('c-?4\\b',                 'Canoe-4',       None),
     ('c-?3\\b',                 'Canoe-3',       None),
     ('c-?2\\b',                 'Canoe-2',       None),
@@ -167,6 +171,10 @@ def display_craft_ui(category: str) -> str:
     m = re.match(r'^Sprint-K(\d+)$', category)
     if m:
         return f'K-{m.group(1)} (sprint)'
+    # Sprint canoe family → C-N (sprint)
+    m = re.match(r'^Sprint-C(\d+)$', category)
+    if m:
+        return f'C-{m.group(1)} (sprint)'
     # Va'a family → V-N
     m = re.match(r"^Va'a-(\d+)$", category)
     if m:
