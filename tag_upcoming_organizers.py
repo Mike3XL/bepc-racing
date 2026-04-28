@@ -16,7 +16,7 @@ RULES = [
     (re.compile(r"paddlers cup|gig harbor|narrows challenge", re.I), "ghckrt"),
     (re.compile(r"lake whatcom classic|commencement bay|squaxin|bainbridge.*marathon|rat island|budd inlet|round shaw|elk river|lake samish|mercer island|sausage pull|port angeles.*coastal|la conner|guano rocks", re.I), "sound-rowers"),
     (re.compile(r"pnworca|chicken of the sea|whipper snapper|da grind|wake up the gorge|weapon of choice|keats", re.I), "pnworca"),
-    (re.compile(r"peter marcus|bellingham bay rough|alderbrook.*st\.? paddle|deception pass", re.I), "salmon-bay-paddle"),
+    (re.compile(r"peter marcus|bellingham bay rough|alderbrook.*st\.? paddle|deception pass|bremerton bridges", re.I), "salmon-bay-paddle"),
     (re.compile(r"bepc", re.I), "bepc"),
     (re.compile(r"duck island", re.I), "sckc"),
     (re.compile(r"jericho|wavechaser", re.I), "jericho"),
