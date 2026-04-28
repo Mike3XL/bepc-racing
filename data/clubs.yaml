@@ -5,13 +5,36 @@
 sites:
   pnw:
     domain: pnw.paddlerace.org
-    clubs: [bepc-summer, pnw, sckc-duck-island, none]
+    clubs: [pnw, bepc-summer, sckc-duck-island, none]
     gh_branch: gh-pages
     gh_url: https://pnw.paddlerace.org/
 
 clubs:
 
   # New series IDs (see data/series.yaml for full series definitions)
+  pnw:
+    name: PNW
+    short_name: PNW
+    type: league
+    description: >
+      Pacific Northwest regional races featuring long-distance open-water events
+      with competitive fields. Draws racers from across Washington, British Columbia,
+      and Oregon, with occasional national and international athletes. Includes
+      races from several organizers including Sound Rowers and PNWORCA. Boat
+      classes include surfski, HPK, OC-1/2/6, canoe, SUP, and rowing.
+    organizers:
+      - sound-rowers
+      - pnworca
+      - salmon-bay-paddle
+      - ghckrt
+      - coast-outdoors
+      - ocean-flight
+      - jericho
+    handicap:
+      num_races_to_establish: 2
+      update_faster: 0.30
+      update_slower: 0.15
+      carry_over: true
   bepc-summer:
     name: BEPC Summer
     short_name: BEPC
@@ -20,33 +43,12 @@ clubs:
       Weekly Monday-night race series at Shilshole Bay, Seattle, hosted by the
       Ballard Elks Paddle Club (BEPC) from May through September. Open to all
       craft — kayak, surfski, SUP, outrigger, rowing. Typically a ~3-mile
-      protected-water course with an optional longer loop. A social field with a
-      competitive front. Previously known as the Salmon Bay Paddle Monday Night
-      series (organized by Rob Casey, 2015–2018).
+      open-water course with some exposure to waves and current. The field is a
+      mix of social paddlers and competitive racers. This series originated as
+      the Salmon Bay Paddle Monday Night series organized by Rob Casey, 2015–2018.
     organizers:
       - bepc
       - salmon-bay-paddle
-    handicap:
-      num_races_to_establish: 2
-      update_faster: 0.30
-      update_slower: 0.15
-      carry_over: true
-  pnw:
-    name: PNW
-    short_name: PNW
-    type: league
-    description: >
-      Pacific Northwest regional race series — longer, open-water events with
-      competitive fields. Draws racers from across Washington, British Columbia,
-      and Oregon. Includes Sound Rowers monthly races, PNWORCA winter series,
-      and independent events like La Conner, Peter Marcus, Squaxin, Rat Island,
-      and the Paddlers Cup. Boat classes include surfski, HPK, OC-1/2/6, canoe,
-      SUP, and rowing.
-    organizers:
-      - sound-rowers
-      - pnworca
-      - salmon-bay-paddle
-      - ghckrt
     handicap:
       num_races_to_establish: 2
       update_faster: 0.30
@@ -58,9 +60,9 @@ clubs:
     type: org
     description: >
       Short-course race series at Duck Island on Green Lake, hosted by the
-      Seattle Canoe and Kayak Club. Sprint and flatwater kayak/canoe focus
-      (K1/K2/C1/C2 divisions), with SUP heats as well. Friday evening races in
-      summer. Small but competitive field of dedicated sprint racers.
+      Seattle Canoe and Kayak Club. Open to all craft with a focus on sprint
+      kayak and canoe. Held on Friday evenings in summer. Typically a small but
+      competitive field of sprint racers.
     organizers:
       - sckc
     handicap:
@@ -73,15 +75,15 @@ clubs:
     short_name: Independent
     type: org
     description: >
-      Standalone events that don't belong to a named series — one-off races,
-      casual paddles, novelty events. Includes fun/themed races (St. Paddle's
-      Day, Halloween), seasonal short series (Urban Surf Wednesday Nights),
-      and large multi-sport events where paddling is one leg (Seventy48,
-      Ski to Sea). Indexes are not computed or updated from these races.
+      Standalone events that don't belong to a named series. Indexes are not
+      computed or updated from these races because the fields and formats are
+      too varied.
     organizers:
-      - salmon-bay-paddle
       - bepc
+      - salmon-bay-paddle
       - urban-surf
+      - nwmc
+      - whatcom-events
     handicap:
       num_races_to_establish: 2
       update_faster: 0.30
@@ -498,7 +500,7 @@ clubs:
 
     race_inclusion:
       include_organizers:
-        - "135348"                     # Urban Surf / 2100 Project
+        - "135348"                     # Urban Surf
       include_urls: []
       exclude_urls: []
       include_patterns: []

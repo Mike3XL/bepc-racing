@@ -48,7 +48,19 @@ organizers:
   ghckrt:
     name: Gig Harbor Canoe and Kayak Racing Team
   urban-surf:
-    name: Urban Surf (2100 Project)
+    name: Urban Surf
+  nwmc:
+    name: Northwest Maritime Center
+  whatcom-events:
+    name: Whatcom Events
+  coast-outdoors:
+    name: Coast Outdoors
+  ocean-flight:
+    name: Ocean Flight
+  jericho:
+    name: Jericho Outrigger Canoe Club
+  pacific-paddle-events:
+    name: Pacific Paddle Events
 
 
 # Results platforms — where race results are published (informational + filtering)

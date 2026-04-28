@@ -2069,10 +2069,15 @@ def generate_platform_home(data: dict) -> None:
     """Generate the PaddleRace platform home page with club list and recent race feed."""
     import yaml, json as _json
     clubs_config_path = Path(__file__).parent.parent / "data" / "clubs.yaml"
+    series_config_path = Path(__file__).parent.parent / "data" / "series.yaml"
     clubs_cfg = {}
+    organizers_cfg = {}
     if clubs_config_path.exists():
         with open(clubs_config_path) as f:
             clubs_cfg = yaml.safe_load(f).get("clubs", {})
+    if series_config_path.exists():
+        with open(series_config_path) as f:
+            organizers_cfg = yaml.safe_load(f).get("organizers", {})
 
     race_map = {}  # (base_name, date) -> entry
     for club_id, club in data["clubs"].items():
@@ -2214,6 +2219,7 @@ def generate_platform_home(data: dict) -> None:
                 "date": race_date.strftime("%b %d, %Y"),
                 "clubs_html": club_badges,
                 "club_keys": race_clubs,
+                "organizer": race.get("organizer", ""),
                 "distance": race.get("distance", ""),
                 "url": race.get("url", ""),
                 "links": race.get("links", []),
@@ -2245,7 +2251,7 @@ def generate_platform_home(data: dict) -> None:
             _date_html = f'<span style="font-weight:600">{_dt.strftime("%A")}</span><br><span class="text-muted">{r["date"]}</span>'
         except Exception:
             _date_html = r["date"]
-        upcoming_rows += f'<tr data-clubs="{data_clubs}" style="vertical-align:middle"><td class="small text-nowrap">{_date_html}</td><td><strong class="small">{r["name"]}</strong>{_location_html}</td><td>{r["clubs_html"]}</td><td class="text-muted small">{r["distance"]}</td>{notes_td}{links_td}</tr>'
+        upcoming_rows += f'<tr data-clubs="{data_clubs}" data-organizer="{r.get("organizer","")}" style="vertical-align:middle"><td class="small text-nowrap">{_date_html}</td><td><strong class="small">{r["name"]}</strong>{_location_html}</td><td>{r["clubs_html"]}</td><td class="small">{organizers_cfg.get(r.get("organizer",""),{}).get("name", r.get("organizer",""))}</td><td class="text-muted small">{r["distance"]}</td>{notes_td}{links_td}</tr>'
 
     # Split into visible (first 5) and hidden (rest) — single table for column consistency
     row_list = upcoming_rows.split('</tr>')[:-1]
@@ -2264,6 +2270,11 @@ def generate_platform_home(data: dict) -> None:
             f'<option value="{clubs_cfg.get(c,{}).get("short_name",c)}">{clubs_cfg.get(c,{}).get("short_name",c)}</option>'
             for c in _club_keys_seen
         )
+        _org_keys_seen = sorted(set(r.get('organizer','') for r in upcoming_races if r.get('organizer')))
+        _org_options = ''.join(
+            f'<option value="{oid}">{organizers_cfg.get(oid,{}).get("name", oid)}</option>'
+            for oid in _org_keys_seen
+        )
         _show_more = (
             '<button id="upcoming-show-more" class="btn btn-sm btn-outline-secondary mb-3"'
             ' onclick="var rows=document.querySelectorAll(\'#upcoming-table .upcoming-extra\');'
@@ -2277,11 +2288,13 @@ def generate_platform_home(data: dict) -> None:
             f"<h2 class='h5 mb-0'>Upcoming</h2>"
             f"<select id='upcoming-club-filter' class='form-select form-select-sm' style='width:auto'>"
             f"<option value=''>All series</option>{_options}</select>"
+            f"<select id='upcoming-org-filter' class='form-select form-select-sm' style='width:auto'>"
+            f"<option value=''>All organizers</option>{_org_options}</select>"
             + (_show_more.replace('mb-3', 'mb-0') if _show_more else '')
             + f"</div>"
             f"<div class='table-responsive mb-1'><table id='upcoming-table' class='table table-sm table-hover'>"
-            f"<thead><tr><th style='width:100px'>Date</th><th style='min-width:220px'>Race</th><th style='width:90px'>Series</th><th style='width:80px'>Distance</th>"
-            f"<th style='min-width:200px;width:25%'>Notes</th><th style='min-width:160px'>Links</th></tr></thead>"
+            f"<thead><tr><th style='width:100px'>Date</th><th style='min-width:220px'>Race</th><th style='width:80px'>Series</th><th style='min-width:120px'>Organizer</th><th style='width:80px'>Distance</th>"
+            f"<th style='min-width:180px;width:22%'>Notes</th><th style='min-width:160px'>Links</th></tr></thead>"
             f"<tbody>{upcoming_rows_visible}{upcoming_rows_hidden}</tbody></table></div>"
         )
     else:
@@ -2535,22 +2548,29 @@ def generate_platform_home(data: dict) -> None:
 </div>
 <script>
 (function(){{
-  var sel = document.getElementById('upcoming-club-filter');
-  if (!sel) return;
-  sel.addEventListener('change', function() {{
-    var val = this.value;
+  var clubSel = document.getElementById('upcoming-club-filter');
+  var orgSel = document.getElementById('upcoming-org-filter');
+  if (!clubSel && !orgSel) return;
+  function applyFilter() {{
+    var clubVal = clubSel ? clubSel.value : '';
+    var orgVal = orgSel ? orgSel.value : '';
     var btn = document.getElementById('upcoming-show-more');
     document.querySelectorAll('#upcoming-table tbody tr').forEach(function(r) {{
       var clubs = r.getAttribute('data-clubs') || '';
       var shortNames = clubs.split(' ').map(function(c) {{ return {club_short_json}[c] || c; }});
-      var match = !val || shortNames.indexOf(val) >= 0;
+      var orgId = r.getAttribute('data-organizer') || '';
+      var clubMatch = !clubVal || shortNames.indexOf(clubVal) >= 0;
+      var orgMatch = !orgVal || orgId === orgVal;
+      var match = clubMatch && orgMatch;
       r.dataset.filtered = match ? '' : '1';
       if (!match) {{ r.style.display = 'none'; }}
       else if (!r.classList.contains('upcoming-extra') || (btn && btn.textContent === 'Show less ▲')) {{
         r.style.display = '';
       }}
     }});
-  }});
+  }}
+  if (clubSel) clubSel.addEventListener('change', applyFilter);
+  if (orgSel) orgSel.addEventListener('change', applyFilter);
 }})();
 </script>
 <div class="container-fluid px-2 px-sm-3">

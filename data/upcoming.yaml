@@ -17,6 +17,7 @@ upcoming:
   notes: '2.5K: Mtg 8:15 AM, Start 9 AM<br>5K/10K: Mtg 9:30 AM, Start 10 AM<br>Sprints:
     Mtg 12:15 PM, Start 12:30 PM'
   url: https://gigharborpaddlerscup.com
+  organizer: ghckrt
 - clubs:
   - pnw
   date: '2026-04-26'
@@ -32,6 +33,7 @@ upcoming:
   name: Paddlers Cup - SUP Technical
   notes: Reg 9-9:30 AM, Heats 10-11 AM, Finals 11 AM, Awards 11:45 AM
   url: https://gigharborpaddlerscup.com
+  organizer: ghckrt
 - clubs:
   - pnw
   date: '2026-04-30'
@@ -45,6 +47,7 @@ upcoming:
   notes: ''
   source_id: 424127
   url: https://www.webscorer.com/register?raceid=424127
+  organizer: jericho
 - clubs:
   - pnw
   date: '2026-05-02'
@@ -62,6 +65,7 @@ upcoming:
   name: Lake Whatcom Classic
   notes: 'Meeting: 8:45 AM, Start: 10 AM'
   url: https://soundrowers.org/?page_id=195
+  organizer: sound-rowers
 - clubs:
   - bepc-summer
   date: '2026-05-04'
@@ -78,6 +82,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427417
   url: https://www.webscorer.com/register?raceid=427417
+  organizer: bepc
 - clubs:
   - pnw
   date: '2026-05-09'
@@ -94,6 +99,7 @@ upcoming:
   notes: ''
   source_id: 419780
   url: https://www.webscorer.com/register?raceid=419780
+  organizer: coast-outdoors
 - clubs:
   - pnw
   date: '2026-05-09'
@@ -105,6 +111,7 @@ upcoming:
   name: Commencement Bay
   notes: 'Meeting: 9:15 AM, Start: 10 AM'
   url: https://soundrowers.org/?page_id=206
+  organizer: sound-rowers
 - clubs:
   - bepc-summer
   date: '2026-05-11'
@@ -121,6 +128,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427425
   url: https://www.webscorer.com/register?raceid=427425
+  organizer: bepc
 - clubs:
   - bepc-summer
   date: '2026-05-18'
@@ -137,6 +145,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427427
   url: https://www.webscorer.com/register?raceid=427427
+  organizer: bepc
 - clubs: []
   date: '2026-05-24'
   distance: 93 mi relay (canoe & kayak legs)
@@ -145,11 +154,12 @@ upcoming:
     url: https://skitosea.com
   - label: Results
     url: https://skitosea.com/results/
-  location: "Multi-sport relay, Mt Baker \u2192 Bellingham Bay. Includes canoe and\
-    \ kayak legs."
+  location: Multi-sport relay, Mt Baker → Bellingham Bay. Includes canoe and kayak
+    legs.
   name: Ski to Sea
   notes: ''
   url: https://skitosea.com
+  organizer: whatcom-events
 - clubs:
   - bepc-summer
   date: '2026-05-25'
@@ -166,16 +176,18 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427429
   url: https://www.webscorer.com/register?raceid=427429
+  organizer: bepc
 - clubs: []
   date: '2026-05-29'
   distance: 70 mi
   links:
   - label: Info
     url: https://seventy48.com
-  location: "Tacoma \u2192 Port Townsend, 48 hrs, human-powered only"
+  location: Tacoma → Port Townsend, 48 hrs, human-powered only
   name: Seventy48
   notes: 'Start: 7 PM'
   url: https://seventy48.com
+  organizer: nwmc
 - clubs:
   - pnw
   date: '2026-05-30'
@@ -187,6 +199,7 @@ upcoming:
   name: Guano Rocks
   notes: 'Meeting: 9:15 AM, Start: 10 AM'
   url: https://soundrowers.org/?page_id=283
+  organizer: sound-rowers
 - clubs:
   - bepc-summer
   date: '2026-06-01'
@@ -203,6 +216,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427430
   url: https://www.webscorer.com/register?raceid=427430
+  organizer: bepc
 - clubs:
   - bepc-summer
   date: '2026-06-08'
@@ -219,6 +233,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427431
   url: https://www.webscorer.com/register?raceid=427431
+  organizer: bepc
 - clubs:
   - pnw
   date: '2026-06-13'
@@ -230,6 +245,7 @@ upcoming:
   name: Nch'I-Wanna Columbia River Race
   notes: 'Meeting: TBD, Start: TBD'
   url: https://paddleguru.com/races/NCHIWANAChallenge
+  organizer: ocean-flight
 - clubs:
   - bepc-summer
   date: '2026-06-15'
@@ -246,6 +262,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427432
   url: https://www.webscorer.com/register?raceid=427432
+  organizer: bepc
 - clubs:
   - pnw
   date: '2026-06-20'
@@ -257,6 +274,7 @@ upcoming:
   name: Rat Island Regatta
   notes: 'Meeting: :9:15am, Start: 10 AM'
   url: https://soundrowers.org/?page_id=215
+  organizer: sound-rowers
 - clubs:
   - bepc-summer
   date: '2026-06-22'
@@ -273,6 +291,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427433
   url: https://www.webscorer.com/register?raceid=427433
+  organizer: bepc
 - clubs:
   - pnw
   date: '2026-06-27'
@@ -282,6 +301,7 @@ upcoming:
   name: Bremerton Bridges Tidal Race
   notes: 'Meeting: TBD, Start: TBD'
   url: https://www.pnworca.org
+  organizer: pnworca
 - clubs:
   - bepc-summer
   date: '2026-06-29'
@@ -298,6 +318,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427434
   url: https://www.webscorer.com/register?raceid=427434
+  organizer: bepc
 - clubs:
   - bepc-summer
   date: '2026-07-06'
@@ -314,6 +335,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427435
   url: https://www.webscorer.com/register?raceid=427435
+  organizer: bepc
 - clubs:
   - bepc-summer
   date: '2026-07-13'
@@ -330,6 +352,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427436
   url: https://www.webscorer.com/register?raceid=427436
+  organizer: bepc
 - clubs:
   - pnw
   date: '2026-07-18'
@@ -341,6 +364,7 @@ upcoming:
   name: Budd Inlet
   notes: 'Meeting: 9:15 AM, Start: 10 AM'
   url: https://soundrowers.org/?page_id=274
+  organizer: sound-rowers
 - clubs:
   - bepc-summer
   date: '2026-07-20'
@@ -357,6 +381,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427437
   url: https://www.webscorer.com/register?raceid=427437
+  organizer: bepc
 - clubs:
   - pnw
   date: '2026-07-25'
@@ -368,6 +393,7 @@ upcoming:
   name: Elk River Challenge
   notes: 'Meeting: TBD, Start: 11:30 AM'
   url: https://soundrowers.org/?page_id=253
+  organizer: sound-rowers
 - clubs:
   - bepc-summer
   date: '2026-07-27'
@@ -384,6 +410,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427438
   url: https://www.webscorer.com/register?raceid=427438
+  organizer: bepc
 - clubs:
   - bepc-summer
   date: '2026-08-03'
@@ -400,6 +427,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427439
   url: https://www.webscorer.com/register?raceid=427439
+  organizer: bepc
 - clubs:
   - bepc-summer
   date: '2026-08-10'
@@ -416,6 +444,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427440
   url: https://www.webscorer.com/register?raceid=427440
+  organizer: bepc
 - clubs:
   - pnw
   date: '2026-08-16'
@@ -425,6 +454,7 @@ upcoming:
   name: Gorge Challenge
   notes: 'Meeting: TBD, Start: TBD'
   url: https://gorgechallenge.com
+  organizer: ocean-flight
 - clubs:
   - bepc-summer
   date: '2026-08-17'
@@ -441,6 +471,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427442
   url: https://www.webscorer.com/register?raceid=427442
+  organizer: bepc
 - clubs:
   - pnw
   date: '2026-08-22'
@@ -454,6 +485,7 @@ upcoming:
   name: Round Shaw Row
   notes: 'Meeting: TBD, Start: 10:00 AM'
   url: https://soundrowers.org/?page_id=261
+  organizer: sound-rowers
 - clubs:
   - bepc-summer
   date: '2026-08-24'
@@ -470,6 +502,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427443
   url: https://www.webscorer.com/register?raceid=427443
+  organizer: bepc
 - clubs:
   - pnw
   date: '2026-08-29'
@@ -479,6 +512,7 @@ upcoming:
   name: Da Grind
   notes: 'Meeting: TBD, Start: TBD'
   url: https://www.pnworca.org
+  organizer: pnworca
 - clubs:
   - bepc-summer
   date: '2026-08-31'
@@ -495,6 +529,7 @@ upcoming:
   notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM'
   source_id: 427444
   url: https://www.webscorer.com/register?raceid=427444
+  organizer: bepc
 - clubs:
   - pnw
   date: '2026-09-05'
@@ -506,6 +541,7 @@ upcoming:
   name: Bainbridge Island Marathon
   notes: 'Meeting: TBD, Start: Full 10 AM, Half 11 AM'
   url: https://soundrowers.org/?page_id=270
+  organizer: sound-rowers
 - clubs:
   - bepc-summer
   date: '2026-09-07'
@@ -522,6 +558,7 @@ upcoming:
   notes: 'Reg: 5:30 PM, Meeting: 6 PM, Start: 6:30 PM'
   source_id: 427446
   url: https://www.webscorer.com/register?raceid=427446
+  organizer: bepc
 - clubs:
   - bepc-summer
   date: '2026-09-14'
@@ -538,6 +575,7 @@ upcoming:
   notes: 'Reg: 5:30 PM, Meeting: 6 PM, Start: 6:30 PM'
   source_id: 427448
   url: https://www.webscorer.com/register?raceid=427448
+  organizer: bepc
 - clubs:
   - pnw
   date: '2026-09-19'
@@ -555,6 +593,7 @@ upcoming:
   name: Narrows Challenge (incl. USA SUP Nationals 10K)
   notes: 'Meeting: TBD, Start: TBD'
   url: http://www.narrowschallenge.com/
+  organizer: pacific-paddle-events
 - clubs:
   - pnw
   date: '2026-09-26'
@@ -567,9 +606,10 @@ upcoming:
   - label: Start List
     url: https://register.pacificmultisports.com/Events/1303/Participants
   location: Bellingham, WA
-  name: "Lake Samish\_Salmon Row"
+  name: Lake Samish Salmon Row
   notes: 'Meeting: 9:15 AM, Start: 10:00 AM'
   url: https://soundrowers.org/?page_id=278
+  organizer: sound-rowers
 - clubs:
   - pnw
   date: '2026-10-10'
@@ -581,6 +621,7 @@ upcoming:
   name: Mercer Island Sausage Pull
   notes: 'Meeting: 8:30AM, Start: Long 9AM early start/9:30 AM; Short 10:30 AM'
   url: https://soundrowers.org/?page_id=286
+  organizer: sound-rowers
 - clubs:
   - pnw
   date: '2026-10-25'
@@ -592,3 +633,4 @@ upcoming:
   name: Port Angeles Coastal Endurance Regatta
   notes: 'Meeting: 9:15 AM, Start: 10 AM'
   url: https://www.soundrowers.org/port-angeles-coastal-endurance-regatta/
+  organizer: sound-rowers
