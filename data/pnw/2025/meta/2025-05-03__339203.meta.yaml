@@ -1,0 +1,17 @@
+race_id: 2025-05-03__339203
+name: 2025 Lake Whatcom Classic
+date: '2025-05-03'
+organizer: pnworca
+results_platform: pacificmultisports
+tags: []
+courses:
+  Long Course 12 miles:
+    distance_mi: 12.0
+    starters: 27
+    is_primary: true
+  Short Course 5 5 miles:
+    distance_mi: 5.5
+    starters: 41
+    is_primary: false
+corrections: []
+notes: ''
