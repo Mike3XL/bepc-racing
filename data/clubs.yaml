@@ -17,7 +17,15 @@ clubs:
     short_name: BEPC
     type: org
     description: >
-      Ballard Elks weekly Monday race series (May–Oct).
+      Weekly Monday-night race series at Shilshole Bay, Seattle, hosted by the
+      Ballard Elks Paddle Club (BEPC) from May through September. Open to all
+      craft — kayak, surfski, SUP, outrigger, rowing. Typically a ~3-mile
+      protected-water course with an optional longer loop. A social, mixed-ability
+      field with a competitive front. Previously known as the Salmon Bay Paddle
+      Monday Night series (organized by Rob Casey, 2015–2018).
+    organizers:
+      - bepc
+      - salmon-bay-paddle
     handicap:
       num_races_to_establish: 2
       update_faster: 0.30
@@ -28,7 +36,17 @@ clubs:
     short_name: PNW
     type: league
     description: >
-      Regional races at PNW-level seriousness — PNWORCA, Sound Rowers, La Conner, Rat Island, etc.
+      Pacific Northwest regional race series — longer, open-water events with
+      competitive fields. Draws racers from across Washington, British Columbia,
+      and Oregon. Includes Sound Rowers monthly races, PNWORCA winter series,
+      and independent events like La Conner, Peter Marcus, Squaxin, Rat Island,
+      and the Paddlers Cup. Boat classes include surfski, HPK, OC-1/2/6, canoe,
+      SUP, and rowing.
+    organizers:
+      - sound-rowers
+      - pnworca
+      - salmon-bay-paddle
+      - ghckrt
     handicap:
       num_races_to_establish: 2
       update_faster: 0.30
@@ -39,7 +57,12 @@ clubs:
     short_name: SCKC
     type: org
     description: >
-      Seattle Canoe and Kayak Club Duck Island race series.
+      Short-course race series at Duck Island on the Montlake Cut, hosted by the
+      Seattle Canoe and Kayak Club. Sprint and flatwater kayak/canoe focus
+      (K1/K2/C1/C2 divisions), with SUP heats as well. Friday evening races in
+      summer. Small but competitive field of dedicated sprint racers.
+    organizers:
+      - sckc
     handicap:
       num_races_to_establish: 2
       update_faster: 0.30
