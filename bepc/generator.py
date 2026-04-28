@@ -40,7 +40,7 @@ function badges(trophies) {
     hcap_1:()=>b('hcap_1','hcap-gold','1st Place (Corrected time)'), hcap_2:()=>b('hcap_2','hcap-silver','2nd Place (Corrected time)'), hcap_3:()=>b('hcap_3','hcap-bronze','3rd Place (Corrected time)'),
     consistent_1:()=>b('consistent','hcap-consist','Consistent performer'), consistent_2:()=>b('consistent','hcap-consist','Consistent performer'), consistent_3:()=>b('consistent','hcap-consist','Consistent performer'),
     par:()=>b('par','hcap-par','Par racer'),
-    fresh:()=>b('est','hcap-est','Establishing index — not yet eligible for corrected time awards'),
+    fresh:()=>b('est','hcap-est','Establishing index — not yet eligible for indexed time awards'),
     outlier:()=>b('outlier','hcap-outlier','Outlier result — >10% off prediction, index unchanged'),
   };
   if (!trophies || !trophies.length) return '';
@@ -178,7 +178,7 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
         # Global page — club links resolved via JS
         pages = [
             (f"{root}index.html", "Home"),
-            (f"{root}clubs.html", "Series"),
+            (f"{root}series.html", "Series"),
             (f"{club}/results.html", "Results", True),
             (f"{club}/standings.html", "Standings", True),
             (f"{club}/trajectories.html", "Trajectories", True),
@@ -188,7 +188,7 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
     else:
         pages = [
             (f"{root}index.html", "Home"),
-            (f"{root}clubs.html", "Series"),
+            (f"{root}series.html", "Series"),
             (f"{club_prefix}results.html", "Results"),
             (f"{club_prefix}standings.html", "Standings"),
             (f"{club_prefix}trajectories.html", "Trajectories"),
@@ -446,6 +446,27 @@ def _racer_slugs_js() -> str:
 def _slug(name: str) -> str:
     import re
     return re.sub(r'-+', '-', re.sub(r'[^a-z0-9-]', '-', name.lower())).strip('-')
+
+def _source_name(url: str) -> str:
+    """Return a short human-readable source name from a URL."""
+    if not url:
+        return "Source"
+    from urllib.parse import urlparse
+    host = urlparse(url).netloc.lower().removeprefix("www.")
+    names = {
+        "webscorer.com": "WebScorer",
+        "pacificmultisports.com": "Pacific Multisports",
+        "pnworca.org": "PNWORCA",
+        "soundrowers.org": "Sound Rowers",
+        "jerichopaddle.com": "Jericho",
+        "ballardelks.org": "BEPC",
+        "salmonbaypaddle.com": "Salmon Bay Paddle",
+    }
+    for domain, name in names.items():
+        if domain in host:
+            return name
+    # Fallback: capitalize first segment of domain
+    return host.split(".")[0].capitalize()
 
 
 # ── Final racer state ────────────────────────────────────────────────────────
@@ -775,7 +796,7 @@ function tableHtml(id_suffix) {
     </select>
   </div>
   <table id="tbl-results-${id_suffix}" class="table table-sm table-striped">
-    <thead class="text-nowrap"><tr><th>Trophies</th><th>Place</th><th>Racer</th><th>Craft</th><th style="white-space:normal;text-align:center;min-width:95px"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> Overall<br>Time</th><th>Predicted</th><th style="white-space:normal;text-align:center;min-width:120px"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> Result vs<br>Predicted</th><th>Index</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Index Pts</th></tr></thead>
+    <thead class="text-nowrap"><tr><th>Trophies</th><th>Place</th><th>Racer</th><th>Craft</th><th style="white-space:normal;text-align:center;min-width:95px"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> Overall<br>Time</th><th>Projected</th><th style="white-space:normal;text-align:center;min-width:120px"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> Result vs<br>Projected</th><th>Index</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Index Pts</th></tr></thead>
     <tbody id="body-results-${id_suffix}"></tbody>
   </table>`;
 }
@@ -913,12 +934,12 @@ function rows(results, placeField) {
   <select class="form-select form-select-sm" style="min-width:140px" onchange="window.location.href=this.value">{race_options}</select>
   {next_link}
 </div>"""
-            source_link = f'<a href="{display_url}" target="_blank" class="btn btn-outline-secondary btn-sm">Source ↗</a>' if display_url else ''
+            source_link = f'<a href="{display_url}" target="_blank" class="btn btn-outline-secondary btn-sm">Source ({_source_name(display_url)}) ↗</a>' if display_url else ''
 
             html = _head(base_name) + _nav("Results", data=data, depth=2) + _selector_bar(data, show_season=True, page="results", season_navigate_url="../results.html", race_nav_html=race_nav_html, depth=2) + f"""
 <div class="container-fluid px-2 px-sm-3">
   <h1 class="mb-1">{base_name}</h1>
-  <p class="text-muted">{date} · {total_starters} starters{(' · <a href="' + display_url + '" target="_blank">Source ↗</a>') if display_url else ''}</p>
+  <p class="text-muted">{date} · {total_starters} starters{(' · <a href="' + display_url + '" target="_blank">Source (' + _source_name(display_url) + ') ↗</a>') if display_url else ''}</p>
   <div id="course-content"></div>
 </div>
 <script>
@@ -1400,7 +1421,7 @@ def _racer_trophy_badges(trophies: list) -> str:
         "consistent_2":("hcap-consist", "Consistent performer (±1% of expectation)","consistent"),
         "consistent_3":("hcap-consist", "Consistent performer (±1% of expectation)","consistent"),
         "par":         ("hcap-par",     "Par racer",          "par"),
-        "fresh":       ("hcap-est",     "Establishing index — not yet eligible for corrected time awards", "est"),
+        "fresh":       ("hcap-est",     "Establishing index — not yet eligible for indexed time awards", "est"),
         "outlier":     ("hcap-outlier", "Outlier result — >10% off prediction, index unchanged", "outlier"),
     }
     parts = []
@@ -1599,7 +1620,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
   <div class="col-md-6"><canvas id="chart-hcap-{cid}" style="max-height:220px"></canvas></div>
 </div>
 <table class="table table-sm table-striped table-hover">
-  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Place (Corr)</th><th>Time</th><th>Time (Corr)</th><th style="white-space:nowrap">vs Par</th><th>Index</th><th>New</th><th>Points</th><th>Corr Points</th></tr></thead>
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Place (Indexed)</th><th>Time</th><th>Time (Indexed)</th><th style="white-space:nowrap">vs Projected</th><th>Index</th><th>New</th><th>Points</th><th>Indexed Points</th></tr></thead>
   <tbody>{"".join(
       f'<tr><td style="white-space:nowrap">{_racer_trophy_badges(r.get("trophies",[]))}</td>'
       f'<td><a href="../results/{data["race_slugs"].get(data["current_club"], {}).get(r["race_id"], str(r["race_id"]))}.html">{r["name"].split(" — ")[0] + (" — " + r["name"].split(" — ")[1] if " — " in r["name"] else "")}</a></td>'
@@ -1757,7 +1778,10 @@ def generate_clubs_page(data: dict) -> None:
             organizers_cfg = yaml.safe_load(f).get("organizers", {})
 
     sections = ""
-    for club_id, club in data["clubs"].items():
+    _site_order = ["pnw", "bepc-summer", "sckc-duck-island", "none"]
+    _ordered_clubs = [(c, data["clubs"][c]) for c in _site_order if c in data["clubs"]]
+    _ordered_clubs += [(c, data["clubs"][c]) for c in data["clubs"] if c not in _site_order]
+    for club_id, club in _ordered_clubs:
         cfg = clubs_cfg.get(club_id, {})
         name = cfg.get("name", club.get("name", club_id))
         short = cfg.get("short_name", name)
@@ -1839,11 +1863,11 @@ def generate_clubs_page(data: dict) -> None:
     html = _head("Series — PaddleRace") + _nav("Series", data=data, depth=0) + f"""
 <div class="container" style="max-width:800px">
   <h1 class="mb-4">Series</h1>
-  <p class="text-muted mb-4">A <em>series</em> is a set of races that share a competitive field and track their own indexes. Each race belongs to exactly one series. Separately, every race is also tagged with an <em>organizer</em> (the club/organization that ran it) — useful when filtering race lists.</p>
+  <p class="text-muted mb-4">Each series is a collection of races with a consistent and competitive field of paddlers. Within a series, each paddler builds an Index that reflects their relative performance. From that index we calculate a projected finish time for each race, and how each paddler performs against their projection determines the podium.</p>
   {sections}
 </div>""" + _foot()
-    (SITE_DIR / "clubs.html").write_text(html)
-    print("Generated: site/clubs.html")
+    (SITE_DIR / "series.html").write_text(html)
+    print("Generated: site/series.html")
 
 
 def generate_about(data: dict = None) -> None:
@@ -1856,134 +1880,105 @@ dl dt:first-child { margin-top: 0; }
 <div class="container" style="max-width:720px">
   <h1>About PaddleRace</h1>
 
-  <p>PaddleRace tracks open water paddle racing results, standings, and performance trends for clubs and leagues in the Pacific Northwest. We're community-driven and not affiliated with any club or timing platform. Our goal is to make race performance data accessible and meaningful for every paddler in the region.</p>
-
-  <p>We have data from 2015, tracking over 960 races and 6,000 athletes across four clubs and leagues.</p>
+  <p>PaddleRace tracks open water paddle races and results in the Pacific Northwest. Instead of splitting the field into craft and age-group categories we measure each paddler against their own history. We then award virtual trophies to competitors who performed best relative to their standard.</p>
 
   <p>Contact: <a href="mailto:mike.liddell@gmail.com">mike.liddell@gmail.com</a> &middot; <a href="https://github.com/Mike3XL/bepc-racing/issues" target="_blank">GitHub issues</a>.</p>
 
-  <h2>How the corrected results work</h2>
+  <h2>How indexed results work</h2>
 
-  <p>All results are calculated automatically from official race timing data. There is no manual adjustment or subjective scoring — the same algorithm applies to every racer, every race.</p>
+  <p>Each racer has a performance <strong>index</strong> per series and craft category — a multiplier reflecting their typical pace.</p>
 
-  <p>Each racer has a performance index for each club and craft category they race with — a number that reflects their typical pace. An index below 1.0 means you're faster; above 1.0 means slower. Each performance index starts at 1.0 and adjusts gradually after each race.</p>
+  <p>After each race, every racer's finish time divided by their index gives an estimate of the <strong>par time</strong> for the course. We sort the estimates and take the 30th-percentile value to be the <em>official par time</em>. Once we have the par time we calculate the projected time for each racer as <em>par x index</em> and compare their actual result with their projected time.</p>
 
-  <p>After a race, each racer's finish time is divided by their index to produce a <em>par estimate</em> — the racer's personal answer to the question "what time would a par-level racer have taken on this course, based on my finish time and my index?" Every racer contributes an estimate; we take the 30th-percentile value across the field as the consensus <em>par time</em> for the race. The racer whose estimate lands closest to that consensus gets the par-racer trophy.</p>
-
-  <p>We prefer to compute par from <em>established</em> racers only — those with enough prior races in this series that their index is trustworthy. When at least 6 established racers are present, only their estimates are used. When fewer than 6 are established (new series or small fields), we fall back to using the whole field so the system can still produce a par.</p>
-
-  <p>The racer with the best par-estimate (relative to the consensus par) wins on the par-estimate podium, regardless of who crossed the line first. This lets a slower craft or a newer racer compete meaningfully against the fastest paddlers.</p>
-
-  <p>Your performance for a race is reported as <em>Result vs Predicted</em> — how much faster (negative) or slower (positive) you were than the time we would have predicted for you on that course. Your index updates based on this percentage. It responds faster to good days than bad ones, so an occasional off day has limited impact.</p>
-
-  <h2>Clubs &amp; Leagues</h2>
-
-  <p>We track clubs that run their own race series (BEPC, Sound Rowers, SCKC). We also maintain a PNW Regional league that draws from events across multiple organizers. Racers who attend Sound Rowers events appear in both Sound Rowers and PNW Regional standings, with separate indexes for each.</p>
+  <p>The <strong>par racer trophy</strong> is just a fun recognition for the racer who happened to define par that day.</p>
 
   <h2>FAQ</h2>
 
   <dl>
     <dt>How do I get my results added?</dt>
-    <dd>For clubs we already track, results are added automatically after each race — provided we can locate the upcoming race information and the results are hosted on a supported platform (WebScorer, Race Result, or Jericho). If your results aren't appearing, or you'd like to add a new club, series, or region, please let us know.</dd>
+    <dd>Results for tracked series are added automatically after each race if they're on a supported platform (WebScorer, Race Result, or Jericho). For missing results or new series, contact us.</dd>
 
-    <dt>Why aren't Sprint Kayak, SK, FSK, and HPK separate categories?</dt>
-    <dd>Two reasons. First, most PNW fields are too small — splitting K-1 into sub-categories would leave each with too few racers for a reliable index. Second, many racers choose whichever boat suits the conditions on the day. We're tracking K-1 performance more than performance in a specific flavor of K-1. See <a href="http://www.soundrowers.org/boat-classes/determining-kayak-classifications/" target="_blank">Sound Rowers kayak classifications</a> for definitions of SK, FSK, and HPK.</dd>
+    <dt>Why no age groups, gender categories, or open-water kayak sub-types (SK, FSK, HPK)?</dt>
+    <dd>The indexed system makes them unnecessary — each racer competes against their own projected times, not directly against others. Splitting further would also leave too few racers per group for a reliable index. Many racers also choose their boat based on conditions, so we track K-1 performance broadly. See <a href="http://www.soundrowers.org/boat-classes/determining-kayak-classifications/" target="_blank">Sound Rowers kayak classifications</a> for SK/FSK/HPK definitions.</dd>
+
+    <dt>Why are there craft categories at all?</dt>
+    <dd>A racer's SUP and K-1 performances are genuinely different things. Grouping them would mean the index tracks two different profiles at once. Within a category, specific boat models are treated as equivalent.</dd>
 
     <dt>What do the craft abbreviations mean?</dt>
-    <dd>K-1 and K-2 are single and double kayaks. OC-1, OC-2, OC-6 are outrigger canoes. Va'a is a style of rudderless outrigger canoe used in Polynesian paddling traditions. SUP is stand-up paddleboard. Prone is prone paddleboard. Where a specific boat model is known (e.g. "Surfski"), it's shown in parentheses alongside the category.</dd>
+    <dd>K-1/K-2: single/double kayak. OC-1/OC-2/OC-6: outrigger canoe. Va'a: rudderless Polynesian outrigger. SUP: stand-up paddleboard. Prone: prone paddleboard. Specific models (e.g. "Surfski") appear in parentheses where known.</dd>
 
-    <dt>What does the ^ symbol mean on a result?</dt>
-    <dd>A ^ next to a corrected time or index value indicates an outlier result — the performance was more than 10% outside prediction and the index was not updated. It may also indicate a racer returning after a long absence, where the first result back is treated conservatively.</dd>
-
-    <dt>What is the par racer trophy?</dt>
-    <dd>The par racer is the finisher whose corrected time is closest to the par time — the benchmark for the day. It's awarded to the racer who most closely matched their predicted performance, which is a meaningful achievement in its own right.</dd>
+    <dt>What does ^ mean on a result?</dt>
+    <dd>Outlier — the result was more than 10% outside projection and the index was not updated. Also used for a racer's first result back after a long absence.</dd>
 
     <dt>What is the streak trophy?</dt>
-    <dd>A streak is three or more consecutive races where a racer beat par — finishing with a negative vs par result. The streak trophy shows the current streak length. It resets when a racer fails to beat par or misses a race.</dd>
+    <dd>Awared to racers who have three or more consecutive races beating their projected time. Rewards steady improvement.</dd>
 
-    <dt>Why track corrected time?</dt>
-    <dd>Finish time tells you who was fastest on the day. Corrected time tells you who performed best relative to their own history. A racer who beats their predicted performance by 3% may have had a better race than someone who finished ahead of them outright. Corrected time rewards consistency and improvement, not just raw speed — which means every racer has a shot at the top of the corrected time list, regardless of craft or experience level.</dd>
-
-    <dt>Why are there different craft categories?</dt>
-    <dd>An athlete who competes in both SUP and K-1 races will have meaningfully different performance profiles in each. Grouping them together would mean the index is trying to track two different things at once. Craft are grouped into categories (K-1, K-2, OC-1, OC-2, OC-6, Va'a, SUP, Prone, and others). Within a category, different specific boats are treated as equivalent for corrected time purposes.</dd>
-
-    <dt>Why are there no gender or age groups?</dt>
-    <dd>Personal performance indexes generally remove the rationale for age and gender categories. A racer with a well-established index is competing against their own predicted performance, not against others directly. When all athletes have a well-calibrated index, each race is a level playing field.</dd>
+    <dt>Why track indexed time at all?</dt>
+    <dd>Finish time shows who was fastest. Indexed time shows who performed best relative to their own history — rewarding improvement rather than raw speed.</dd>
 
     <dt>What does "establishing index" mean?</dt>
-    <dd>Your first two races in a club are used to set your initial index. You're eligible for finish trophies but not corrected time awards during this period.</dd>
+    <dd>Your first two races in a series set your initial index. Only established racers are considered for the podium. </dd>
 
     <dt>What is an outlier?</dt>
-    <dd>If your corrected time is more than 10% outside what your index predicted, the result is flagged as an outlier and your index doesn't change. This protects against equipment failures, wrong turns, or other anomalies.</dd>
+    <dd>A result more than 10% outside projection. The index doesn't change — protecting against wrong turns, equipment failures, or other anomalies.</dd>
 
     <dt>Can people game the system?</dt>
-    <dd>Yes, intentionally or accidentally. If a racer regularly underperforms — sandbagging, testing new gear, or racing casually — their index drifts high and they receive more correction in future races. If something looks off, review the result history on their racer page. Results more than 10% outside prediction are automatically ignored and don't affect the index.</dd>
+    <dd>Yes. Variable effort in different races will cause a fluctuating index and potentially a high number of podiums. We protect against 
+    inadvertant issues by ignoring results that are more than 10% higher than projection.</dd>
 
-    <dt>Why do I appear in both Sound Rowers and PNW Regional?</dt>
-    <dd>Sound Rowers races are included in the PNW Regional league. Your index and points are tracked separately for each — your Sound Rowers index reflects your performance in that club's field, while your PNW Regional index reflects the broader league field.</dd>
-
-    <dt>How is the index updated after each race?</dt>
+    <dt>How is the index updated?</dt>
     <dd>
       <table class="table table-bordered table-sm mt-2">
         <thead><tr><th>Situation</th><th>Update</th></tr></thead>
         <tbody>
-          <tr><td>First race</td><td>Index set from your corrected time vs par</td></tr>
-          <tr><td>Second race</td><td>50% blend of old index and new result</td></tr>
-          <tr><td>Faster than predicted</td><td>30% shift toward new result</td></tr>
-          <tr><td>Slower than predicted</td><td>15% shift toward new result</td></tr>
+          <tr><td>Race 1</td><td>Index set from indexed time vs par</td></tr>
+          <tr><td>Race 2</td><td>50% blend of old index and new result</td></tr>
+          <tr><td>Faster than projected</td><td>30% shift toward new result</td></tr>
+          <tr><td>Slower than projected</td><td>15% shift toward new result</td></tr>
           <tr><td>Outlier (&gt;10% off)</td><td>No change</td></tr>
         </tbody>
       </table>
     </dd>
 
-    <dt>How is the Predicted time calculated?</dt>
-    <dd>The Predicted time is what we expect you to finish in, based on your current index and the course par time.
-      <br><br>
-      <strong>Par time</strong> is the benchmark finish time for the course — derived from the field of racers in each event.
-      <br>
-      <strong>Predicted time = Par time × Your index</strong>
-      <br><br>
-      For example, if par is 52:00 and your index is 0.847, your predicted time is 52:00 × 0.847 = 44:02.
-      If you finish in 43:01 — 61 seconds faster than predicted — that's a strong performance and your index will improve.
-      <br><br>
-      The <strong>% shown on the podium</strong> is how much faster (▲) or slower (▼) you were compared to your predicted time.
-      A racer with a lower index is a faster paddler; the handicap system levels the field so that consistent performance relative to your own prediction is rewarded.
+    <dt>How is the projected time calculated?</dt>
+    <dd>
+      <strong>Projected time = Par time × Your index</strong><br>
+      And par time is a consensus estimate from observing the result of all the established racers.<br>
+      Example: par 52:00, index 0.847 → projected 44:02. Finish 43:01 → 61 seconds faster than projected → index improves.
     </dd>
 
-    <dt>What are corrected points and finish points?</dt>
-    <dd>Finish points are awarded for crossing the line: 10 pts for 1st, 9 for 2nd, down to 1 pt for 10th. Corrected points use the same scale but based on corrected time order. Points aren't awarded during your first two races while your index is being established. When a race has multiple distance groups, points are weighted by group size so the total available per race day stays roughly constant.</dd>
+    <dt>What are indexed points vs finish points?</dt>
+    <dd>Finish points: 10 for 1st down to 1 for 10th, by crossing order. Indexed points: same scale, by indexed time order. Not awarded during the first two races. In multi-distance races, points are weighted by group size.</dd>
   </dl>
-
-  <h2>Updates &amp; Roadmap</h2>
-  <p>PaddleRace is an ongoing project. See the <a href="https://github.com/Mike3XL/bepc-racing" target="_blank">GitHub repository</a> for source code, open issues, and planned improvements. Feedback and contributions welcome.</p>
 
   <h2>References</h2>
 
   <h5>Race organizers</h5>
   <ul>
-    <li><a href="https://www.pnworca.org" target="_blank">PNWORCA</a> — Pacific Northwest Outrigger Racing Canoe Association. Runs the annual Winter Series and other regional events.</li>
-    <li><a href="https://www.soundrowers.org" target="_blank">Sound Rowers</a> — open-water paddling club running a full season of distance races across Puget Sound and beyond.</li>
-    <li><a href="https://www.soundrowers.org/race-schedule/bellingham-bay-rough-water-race/" target="_blank">Bellingham Bay Outrigger Paddlers (BBOP)</a> — organizes the Peter Marcus Rough Water Race on Bellingham Bay.</li>
-    <li><a href="https://www.gorgedownwindchamps.com" target="_blank">Gorge Downwind Champs</a> — annual downwind race on the Columbia River Gorge, Stevenson, WA.</li>
-    <li><a href="https://www.ghckrt.com" target="_blank">Gig Harbor Canoe &amp; Kayak Racing Team</a> — organizes the Paddlers Cup and Eric Hughes Memorial Regatta.</li>
-    <li><a href="https://www.jerichooutrigger.com" target="_blank">Jericho Beach Outrigger Canoe Club</a> — hosts BC-based events including Da Grind, Keats Chop, Whipper Snapper, and Wake Up the Gorge.</li>
-    <li><a href="https://www.ballardelks.org/paddle-club" target="_blank">Ballard Elks Paddle Club (BEPC)</a> — weekly race series at Shilshole Bay, Seattle.</li>
-    <li><a href="https://www.sckc.ws" target="_blank">Seattle Canoe and Kayak Club (SCKC)</a> — Duck Island Race series on Green Lake, Seattle.</li>
+    <li><a href="https://www.pnworca.org" target="_blank">PNWORCA</a> — Pacific Northwest Outrigger Racing Canoe Association. Annual Winter Series and regional events.</li>
+    <li><a href="https://www.soundrowers.org" target="_blank">Sound Rowers</a> — full season of distance races across Puget Sound and beyond.</li>
+    <li><a href="https://www.soundrowers.org/race-schedule/bellingham-bay-rough-water-race/" target="_blank">Bellingham Bay Outrigger Paddlers (BBOP)</a> — Peter Marcus Rough Water Race.</li>
+    <li><a href="https://www.gorgedownwindchamps.com" target="_blank">Gorge Downwind Champs</a> — annual downwind race, Columbia River Gorge.</li>
+    <li><a href="https://www.ghckrt.com" target="_blank">Gig Harbor Canoe &amp; Kayak Racing Team</a> — Paddlers Cup and Eric Hughes Memorial Regatta.</li>
+    <li><a href="https://www.jerichooutrigger.com" target="_blank">Jericho Beach Outrigger Canoe Club</a> — Da Grind, Keats Chop, Whipper Snapper, Wake Up the Gorge.</li>
+    <li><a href="https://www.ballardelks.org/paddle-club" target="_blank">Ballard Elks Paddle Club (BEPC)</a> — weekly Monday night series, Shilshole Bay.</li>
+    <li><a href="https://www.sckc.ws" target="_blank">Seattle Canoe and Kayak Club (SCKC)</a> — Duck Island Race series, Green Lake.</li>
   </ul>
 
   <h5>Data sources</h5>
   <ul>
-    <li><a href="https://www.webscorer.com" target="_blank">WebScorer</a> — used by BEPC, Sound Rowers, SCKC, and many PNW Regional events.</li>
-    <li><a href="https://www.raceresult.com" target="_blank">Race Result</a> — used by Gorge Downwind Champs and other Pacific Multisports events.</li>
-    <li><a href="https://register.pacificmultisports.com" target="_blank">Pacific Multisports</a> — registration platform for Peter Marcus, Narrows Challenge, Gorge Downwind, and others.</li>
-    <li><a href="https://www.jerichooutrigger.com" target="_blank">Jericho Beach Outrigger Canoe Club</a> — hosts results for PNWORCA and BC races.</li>
+    <li><a href="https://www.webscorer.com" target="_blank">WebScorer</a> — BEPC, Sound Rowers, SCKC, and many PNW Regional events.</li>
+    <li><a href="https://www.raceresult.com" target="_blank">Race Result</a> — Gorge Downwind Champs and Pacific Multisports events.</li>
+    <li><a href="https://register.pacificmultisports.com" target="_blank">Pacific Multisports</a> — Peter Marcus, Narrows Challenge, Gorge Downwind, and others.</li>
+    <li><a href="https://www.jerichooutrigger.com" target="_blank">Jericho Beach Outrigger Canoe Club</a> — PNWORCA and BC race results.</li>
   </ul>
 
   <h5>Methodology</h5>
-  <p>The index system uses the same multiplicative time-correction approach as established sailing clubs.</p>
+  <p>The index system uses the same multiplicative time-correction approach as used by the TopYacht sailing system. 
+  We have adjusted some of the terminology to (hopefully) make it more accessible but the core concept and math is unchanged.</p>
   <ul>
-    <li><a href="https://topyacht.com.au/web/" target="_blank">TopYacht</a> — sailing results and handicapping software whose Back Calculated Handicap (BCH) methodology inspired this approach.</li>
-    <li><a href="https://rycv.com.au/sailing/rules-handicaps/" target="_blank">Royal Yacht Club of Victoria</a> — a well-documented example of the AHC/BCH/CHC system in practice.</li>
+    <li><a href="https://topyacht.com.au/web/" target="_blank">TopYacht</a> — Back Calculated Handicap (BCH) methodology that inspired this approach.</li>
+    <li><a href="https://rycv.com.au/sailing/rules-handicaps/" target="_blank">Royal Yacht Club of Victoria</a> — AHC/BCH/CHC system in practice.</li>
   </ul>
 </div>""" + _foot()
     (SITE_DIR / "about.html").write_text(html)
@@ -2186,7 +2181,7 @@ def generate_platform_home(data: dict) -> None:
             if k not in _seen:
                 _seen.add(k)
                 _union.append(r)
-    recent_races = sorted(_union, key=lambda x: _parse_date(x["date"]), reverse=True)
+    recent_races = sorted(_union, key=lambda x: _parse_date(x["date"]), reverse=True)[:10]
 
     # Load upcoming races
     upcoming_path = Path(__file__).parent.parent / "data" / "upcoming.yaml"
@@ -2361,16 +2356,16 @@ def generate_platform_home(data: dict) -> None:
         ft = entry.get("ft","")
         predicted = entry.get("predicted","")
         delta = entry.get("delta","")
-        tooltip = f'Racer Index: {idx}&#10;% versus Par: {pct:+.1f}%'
+        tooltip = f'Racer Index: {idx}&#10;vs Projected: {pct:+.1f}%'
         return (f'<div class="podium-col">'
                 f'<div class="p-icon">{icon}</div>'
                 f'<div class="p-namerow"><span class="p-name" style="color:{tc}">{name}</span></div>'
                 f'<div class="p-bar" style="height:{h}px;background:{bg};border:1px solid {bdr}"'
-                f' data-bs-toggle="tooltip" data-bs-html="true" title="Racer Index: {idx}<br>% versus Par: {pct:+.1f}%">'
-                f'<span class="p-diff" style="color:{tc}">{delta or ""}</span>'
+                f' data-bs-toggle="tooltip" title="Racer Index: {idx}&#10;vs Projected: {pct:+.1f}%">'
+                f'<span class="p-diff" style="color:{tc}">{f"{pct:+.1f}%" if pct is not None else ""}</span>'
                 f'<div class="p-spacer"></div>'
                 f'<div class="p-timerow" style="color:{tc}"><span class="p-tlabel">Actual:</span><span class="p-tval">{ft}</span></div>'
-                f'<div class="p-timerow" style="color:{tc}"><span class="p-tlabel">Predicted:</span><span class="p-tval">{predicted or "—"}</span></div>'
+                f'<div class="p-timerow" style="color:{tc}"><span class="p-tlabel">Projected:</span><span class="p-tval">{predicted or "—"}</span></div>'
                 f'</div></div>')
 
     def _podium_col_f(place, entry, cid):
@@ -2392,7 +2387,7 @@ def generate_platform_home(data: dict) -> None:
         parts = [f'{e["place"]}th: {e["name"]}' for e in entries[3:end] if e.get("name")]
         return ' &nbsp;&nbsp; '.join(parts) if parts else ""
 
-    def _build_course_panels(rid, courses_data, club_id, club_short, view_cls, podium_type="Result vs Predicted"):
+    def _build_course_panels(rid, courses_data, club_id, club_short, view_cls, podium_type="Result vs Projected"):
         """Build course blocks for one club view."""
         html = ""
         for ci, cd in enumerate(sorted(courses_data, key=lambda x: _dist_key(x["label"] or ""))):
@@ -2458,12 +2453,12 @@ def generate_platform_home(data: dict) -> None:
         _p0_slug = data.get("race_slugs", {}).get(_p0["id"], {}).get(_p0.get("race_id",""), "") if _p0 else ""
         _primary_results = f'{_p0["id"]}/results/{_p0_slug}.html' if _p0 and _p0_slug else ""
 
-        # Build pill row: [Finish Time] | [vs Prediction]
+        # Build pill row: [vs Projected] | [Finish Time]
         _primary_view = "view-c0"
         pill_html = ('<div class="rc-pill-row">'
-                     f'<a class="sel-pill finish-pill" onclick="pdmView(this,\'{rid}\',\'view-finish\',true)" href="#">Finish Time</a>'
+                     f'<a class="sel-pill corr-pill active" onclick="pdmView(this,\'{rid}\',\'{_primary_view}\',false)" href="#">vs Projected</a>'
                      '<span class="pill-sep">|</span>'
-                     f'<a class="sel-pill corr-pill active" onclick="pdmView(this,\'{rid}\',\'{_primary_view}\',false)" href="#">vs Prediction</a>'
+                     f'<a class="sel-pill finish-pill" onclick="pdmView(this,\'{rid}\',\'view-finish\',true)" href="#">Finish Time</a>'
                      '</div>')
 
         # Build podium panels for each club
@@ -2472,7 +2467,7 @@ def generate_platform_home(data: dict) -> None:
             view_cls = f"view-c{ci}"
             _cslug = data.get("race_slugs", {}).get(c["id"], {}).get(c.get("race_id",""), "")
             _cresults = f'{c["id"]}/results/{_cslug}.html' if _cslug else ""
-            _ptype = f'Result vs Predicted'
+            _ptype = f'Result vs Projected'
             course_panels = _build_course_panels(rid, c.get("courses", []), c["id"],
                                                   clubs_cfg.get(c["id"], {}).get("short_name", c["name"]),
                                                   view_cls, podium_type=_ptype)
@@ -2493,16 +2488,19 @@ def generate_platform_home(data: dict) -> None:
             f'<span class="rc-date">{_date_fmt}</span>'
             + (f'<a href="{_primary_results}" class="rc-results-link">Full Results →</a>' if _primary_results else '')
             + f'</div>'
-            f'{panels_html}'
             f'{pill_html}'
+            f'{panels_html}'
             f'</div>'
         )
 
     # Split feed rows and collect club keys
     _feed_row_list = [s for s in feed_rows.split('<div class="rc-card') if s.strip()]
     _feed_row_list = ['<div class="rc-card' + s.rstrip() for s in _feed_row_list]
-    feed_rows_visible = ''.join(_feed_row_list)
-    feed_rows_hidden = ''
+    feed_rows_visible = ''.join(_feed_row_list[:5])
+    feed_rows_hidden = ''.join(
+        r.replace('<div class="rc-card', '<div class="rc-card feed-hidden" style="display:none"', 1)
+        for r in _feed_row_list[5:]
+    )
     # Collect unique club short names from recent races.
     # Exclude `none` — we show the races themselves but don't expose `none` as a filter value.
     _feed_clubs = []
@@ -2613,11 +2611,11 @@ def generate_platform_home(data: dict) -> None:
 .rc-course-name{{flex:1;font-size:.78em;font-weight:700;color:#333}}
 .rc-podium-type{{flex:1;text-align:center;font-size:.65em;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em}}
 .rc-course-name{{font-size:.78em;font-weight:700;color:#333}}
-.rc-course-row{{display:flex;align-items:flex-start;gap:8px}}
-.rc-course-name-side{{font-size:.85em;font-weight:700;color:#333;min-width:60px;padding-top:28px;text-align:right;flex-shrink:0}}
-.rc-course-row .podium-wrap{{flex:1;min-width:0}}
+.rc-course-row{{display:flex;align-items:center;gap:0}}
+.rc-course-name-side{{font-size:.85em;font-weight:700;color:#333;min-width:60px;text-align:right;flex-shrink:0;padding-right:12px}}
+.rc-course-row .podium-wrap{{flex:1;min-width:0;margin:0}}
 .rc-results-link{{font-size:.75em;color:#0d6efd;text-decoration:none;white-space:nowrap}}
-.rc-pill-row{{display:flex;gap:4px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:14px}}
+.rc-pill-row{{display:flex;gap:4px;flex-wrap:wrap;align-items:center;justify-content:flex-start;margin-top:6px;margin-bottom:6px}}
 .rc-ranking-label{{font-size:.72em;color:#888;font-weight:600;white-space:nowrap}}
 
 </style>
@@ -2879,15 +2877,15 @@ const MEDAL = {
 .rc-course-name{{flex:1;font-size:.78em;font-weight:700;color:#333}}
 .rc-podium-type{{flex:1;text-align:center;font-size:.65em;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em}}
 .rc-course-hdr-spacer{{flex:1}}
-.rc-course-row{{display:flex;align-items:flex-start;gap:8px}}
-.rc-course-name-side{{font-size:.85em;font-weight:700;color:#333;min-width:60px;padding-top:28px;text-align:right;flex-shrink:0}}
-.rc-course-row .podium-wrap{{flex:1;min-width:0}}
-.rc-pill-row{{display:flex;gap:4px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:14px}}
+.rc-course-row{{display:flex;align-items:center;gap:0}}
+.rc-course-name-side{{font-size:.85em;font-weight:700;color:#333;min-width:60px;text-align:right;flex-shrink:0;padding-right:12px}}
+.rc-course-row .podium-wrap{{flex:1;min-width:0;margin:0}}
+.rc-pill-row{{display:flex;gap:4px;flex-wrap:wrap;align-items:center;justify-content:flex-start;margin-top:6px;margin-bottom:6px}}
 .pill-sep{{font-size:.72em;color:#ccc}}
 .sel-pill{{font-size:.75em;padding:2px 8px;border-radius:12px;border:1px solid #ccc;background:#f8f9fa;color:#555;cursor:pointer;text-decoration:none;white-space:nowrap}}
 .sel-pill.active.corr-pill{{background:#198754;border-color:#198754;color:#fff}}
 .sel-pill.active.finish-pill{{background:#0d6efd;border-color:#0d6efd;color:#fff}}
-.tooltip-inner{{text-align:left}}
+.tooltip-inner{{text-align:left;white-space:pre-line}}
 </style>
 </style>
 <div class="container">
@@ -2935,7 +2933,7 @@ function rlSetView(el, view) {{
   event.preventDefault();
   // Update all rows to match the new view
   _rlView = view;
-  document.querySelectorAll('#rl-table .feed-row').forEach(function(row) {{
+  document.querySelectorAll('#races-content .feed-row').forEach(function(row) {{
     row.querySelectorAll('.sel-pill').forEach(function(p) {{
       p.classList.remove('active');
       if((view==='corr'&&p.classList.contains('corr-pill'))||(view==='finish'&&p.classList.contains('finish-pill'))) p.classList.add('active');
@@ -2961,12 +2959,12 @@ function _rlCourseBlock(course, ci, isFirst) {{
     if(e && parValid) {{
       var name=RACER_SLUGS.has(e.slug)?'<a href="racer/'+e.slug+'.html" class="p-name" style="color:'+tc+'">'+e.name+'</a>':'<span class="p-name" style="color:'+tc+'">'+e.name+'</span>';
       var pctSign=(e.pct||0)<0?'':'+';
-      var tip='Racer Index: '+(e.idx||'')+'<br>% versus Par: '+pctSign+(e.pct||0).toFixed(1)+'%';
+      var tip='Racer Index: '+(e.idx||'')+'\\nvs Projected: '+pctSign+(e.pct||0).toFixed(1)+'%';
       cCols+='<div class="podium-col"><div class="p-icon">'+CUP[p]+'</div><div class="p-namerow">'+name+'</div>'
         +'<div class="p-bar" style="height:'+h+'px;background:'+bg+';border:1px solid '+bdr+'" data-bs-toggle="tooltip" data-bs-html="true" title="'+tip+'">'
-        +'<span class="p-diff" style="color:'+tc+'">'+(e.delta||'')+'</span><div class="p-spacer"></div>'
+        +'<span class="p-diff" style="color:'+tc+'">'+pctSign+(e.pct||0).toFixed(1)+'%</span><div class="p-spacer"></div>'
         +'<div class="p-timerow" style="color:'+tc+'"><span class="p-tlabel">Actual:</span><span class="p-tval">'+e.ft+'</span></div>'
-        +'<div class="p-timerow" style="color:'+tc+'"><span class="p-tlabel">Predicted:</span><span class="p-tval">'+(e.predicted||'\u2014')+'</span></div>'
+        +'<div class="p-timerow" style="color:'+tc+'"><span class="p-tlabel">Projected:</span><span class="p-tval">'+(e.predicted||'\u2014')+'</span></div>'
         +'</div></div>';
     }} else {{
       cCols+='<div class="podium-col"><div class="p-icon">'+CUP[p]+'</div><div class="p-namerow"><span class="p-name" style="color:#bbb">\u2014</span></div><div class="p-bar" style="height:'+h+'px;background:#f8f9fa;border:1px solid #eee"></div></div>';
@@ -3003,16 +3001,16 @@ function renderRacesList(d, year) {{
   var rows = races.map(function(r) {{
     var slug = raceSlugMap[r.race_id] || r.race_id;
     var courses = r.courses.map(function(c,i){{return _rlCourseBlock(c,i,true);}}).join('');
-    var pills = '<div class="rc-pill-row">'
-      +'<a class="sel-pill finish-pill'+(_rlView==='finish'?' active':'')+' " onclick="rlSetView(this,&quot;finish&quot;)" href="#">Finish Time</a>'
+    var pills = '<div class="rc-pill-row" style="margin-bottom:6px">'
+      +'<a class="sel-pill corr-pill'+(_rlView==='corr'?' active':'')+' " onclick="rlSetView(this,&quot;corr&quot;)" href="#">vs Projected</a>'
       +'<span class="pill-sep">|</span>'
-      +'<a class="sel-pill corr-pill'+(_rlView==='corr'?' active':'')+' " onclick="rlSetView(this,&quot;corr&quot;)" href="#">vs Prediction</a>'
+      +'<a class="sel-pill finish-pill'+(_rlView==='finish'?' active':'')+' " onclick="rlSetView(this,&quot;finish&quot;)" href="#">Finish Time</a>'
       +'</div>';
     return '<div class="rc-card">'
       +'<div class="rc-name">'+r.name+'</div>'
       +'<div class="rc-meta-row"><span class="rc-date">'+_dayName(r.date)+', '+r.date+'</span><a href="results/'+slug+'.html" class="rc-results-link">Full Results →</a></div>'
-      +courses
       +pills
+      +courses
       +'</div>';
   }}).join('');
   var tooltipEls = document.querySelectorAll('[data-bs-toggle="tooltip"]');

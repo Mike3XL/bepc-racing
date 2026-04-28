@@ -184,7 +184,7 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 
 **Problem:** Outlier suppression was firing for both fast and slow results (>10% from prediction in either direction), blocking genuine improvement jumps from updating the handicap.
 
-**Decision:** Outlier detection only fires for results >10% **slower** than predicted. Faster results — including large improvement jumps — always get the normal 30% update. Rationale: a racer genuinely improving should have their handicap reflect that immediately; the risk of false positives (e.g. wind-assisted) is acceptable.
+**Decision:** Outlier detection only fires for results >10% **slower** than projected. Faster results — including large improvement jumps — always get the normal 30% update. Rationale: a racer genuinely improving should have their handicap reflect that immediately; the risk of false positives (e.g. wind-assisted) is acceptable.
 
 **Status:** Implemented 2026-04-06.
 
@@ -192,7 +192,7 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 
 ## Slow outlier / sandbagging (2026-04-06) — TABLED
 
-**Problem:** When a racer is >10% slower than predicted, the handicap is frozen. This prevents sandbagging but also means a racer who has genuinely declined (injury, age, equipment change) can be stuck with an unachievable handicap indefinitely.
+**Problem:** When a racer is >10% slower than projected, the handicap is frozen. This prevents sandbagging but also means a racer who has genuinely declined (injury, age, equipment change) can be stuck with an unachievable handicap indefinitely.
 
 **Options considered:**
 - Partial update on slow outlier (e.g. 5% toward result) — allows slow drift but opens sandbagging

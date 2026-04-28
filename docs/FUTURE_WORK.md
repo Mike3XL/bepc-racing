@@ -23,8 +23,8 @@ Requires storing original name through the loader → processor → generator pi
 ## Streak Trophy Definition (decided 2026-04-17)
 **Definition:** N consecutive races beating par (adjusted_time_versus_par < 1.0). Trophy awarded at N≥3.
 - Analysed B (decreasing atvp) vs C (beating par): C gives 425 instances max streak 9; B-fixed gives 51 instances max streak 4.
-- C chosen: more achievable, longer streaks, clearly meaningful ("beat my predicted performance N races in a row").
-- Note: beating par means beating *your own* predicted performance, not being the fastest racer.
+- C chosen: more achievable, longer streaks, clearly meaningful ("beat my projected performance N races in a row").
+- Note: beating par means beating *your own* projected performance, not being the fastest racer.
 
 ## Small Field Race Presentation
 Small group races (< threshold racers) have no par time, so "% from par" shows -100% which is misleading. Tidy up the result page display for small field races:

@@ -296,7 +296,9 @@ upcoming:
   - pnw
   date: '2026-06-27'
   distance: 5.5/11 mi
-  links: []
+  links:
+  - label: Info
+    url: https://www.salmonbaypaddle.com/bremerton-bridges-tidal-race/
   location: Bremerton, WA
   name: Bremerton Bridges Tidal Race
   notes: 'Meeting: TBD, Start: TBD'

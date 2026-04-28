@@ -87,9 +87,9 @@ Every page (results, standings, trajectories, racer) shows all clubs in the sele
 Nav item and file renamed from "Races"/"races.html" to "Results"/"results.html". Old races.html files deleted.
 
 ### Podium display: % vs par as headline (2026-04-21)
-Recent Results on index.html uses `% ▲/▼` as the primary podium headline (how much faster/slower than predicted). Supporting data: Actual time + Predicted time. Index shown next to racer name. Steps: gold=66px, silver=58px, bronze=58px, bottom-aligned content.
+Recent Results on index.html uses `% ▲/▼` as the primary podium headline (how much faster/slower than projected). Supporting data: Actual time + Projected time. Index shown next to racer name. Steps: gold=66px, silver=58px, bronze=58px, bottom-aligned content.
 
-Formula: `predicted = par_time × index`, `pct = (1 - actual/predicted) × 100`. Positive = beat prediction (▲), negative = missed (▼).
+Formula: `predicted = par_time × index`, `pct = (1 - actual/predicted) × 100`. Positive = beat projection (▲), negative = missed (▼).
 
 When `tvp=0` (no par established for a course), corrected podium shows "—" names with empty colored steps.
 
