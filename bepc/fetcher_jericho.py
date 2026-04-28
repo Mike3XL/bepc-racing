@@ -231,6 +231,28 @@ def import_jericho_url(url: str, out_dir: Path, race_id: int, race_name: str,
     date_slug = _date_slug(race_date)
     name_slug = re.sub(r'[^a-zA-Z0-9]+', '_', race_name).strip('_')
 
+    # Apply corrections from meta.yaml (if present).
+    # Meta uses course labels matching the multi-course scheme: the exact
+    # course key when multi, or "" when single. Pass through unchanged.
+    from bepc.corrections import apply_corrections, load_meta_corrections
+    meta_path = out_dir.parent / "meta" / f"{date_slug}__{race_id}.meta.yaml"
+    corrections = load_meta_corrections(meta_path)
+    if corrections:
+        single_course = len(courses) == 1
+        # Map: if single-course, expose under "" key so corrections can use
+        # course: "" or the original label.
+        if single_course:
+            only_key = next(iter(courses))
+            bridged = {only_key: courses[only_key], "": courses[only_key]}
+            print(f"Applying {len(corrections)} correction(s) from {meta_path.name}")
+            apply_corrections(bridged, corrections)
+            courses[only_key] = bridged[only_key]
+        else:
+            print(f"Applying {len(corrections)} correction(s) from {meta_path.name}")
+            apply_corrections(courses, corrections)
+        # Re-total after corrections changed counts
+        total = sum(len(r) for r in courses.values())
+
     for course_name, racers in courses.items():
         if not racers:
             continue

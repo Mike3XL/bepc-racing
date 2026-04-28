@@ -1,29 +1,9 @@
 """Parse Pacific Multisports PDF results into common.json format."""
 import json
 import re
+import shutil
 import subprocess
 from pathlib import Path
-
-
-# Map verbose boat class to short category code
-CRAFT_MAP = {
-    "HPK (High Performance Kayak)": "HPK",
-    "HPK-2 (Double HPK)": "HPK-2",
-    "OC-1 (Outrigger Canoe Single)": "OC-1",
-    "OC-2 (Outrigger Canoe Double)": "OC-2",
-    "OC-6 (Outrigger Canoe 6-person)": "OC-6",
-    "FSK (Fast Sea Kayak)": "FSK",
-    "FSK-2 (Double FSK)": "FSK-2",
-    "SK (Sea Kayak)": "SK",
-    "V1 (Rudderless Outrigger Canoe)": "V1",
-    "1x-OWII (Open Water shell, 19-21')": "1x-OWII",
-    "2x-OW (Open Water double)": "2x-OW",
-    "Pedal-boat": "Pedal",
-}
-
-
-def _normalize_craft(raw: str) -> str:
-    return CRAFT_MAP.get(raw.strip(), raw.split("(")[0].strip())
 
 
 def _parse_name(raw: str) -> str:
@@ -73,7 +53,7 @@ def parse_pdf(pdf_path: Path, race_id: int, race_name: str, race_date: str,
         if m and current_course is not None:
             place = int(m.group(1))
             name = _parse_name(m.group(2))
-            craft = _normalize_craft(m.group(3))
+            craft = m.group(3).strip()  # raw — craft.py will normalize on load
             gender = m.group(4)
             time_sec = _parse_time(m.group(5))
             if time_sec is None:
@@ -137,9 +117,36 @@ def _date_slug(date_str: str) -> str:
 def import_pdf(pdf_path: Path, out_dir: Path, race_id: int, race_name: str,
                race_date: str, display_url: str) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
-    commons = parse_pdf(pdf_path, race_id, race_name, race_date, display_url)
+    raw_dir = out_dir / "raw"
+    raw_dir.mkdir(parents=True, exist_ok=True)
     date_slug = _date_slug(race_date)
     name_slug = re.sub(r'[^a-zA-Z0-9]+', '_', race_name).strip('_')
+
+    # Save raw PDF alongside common.json
+    raw_pdf = raw_dir / f"{date_slug}__{race_id}__{name_slug}.raw.pdf"
+    shutil.copy2(pdf_path, raw_pdf)
+
+    commons = parse_pdf(pdf_path, race_id, race_name, race_date, display_url)
+
+    # Build courses dict for correction application
+    courses: dict[str, list[dict]] = {}
+    for common in commons:
+        label = common["raceInfo"].get("distance", "") or ""
+        courses[label] = common["racerResults"]
+
+    # Apply corrections from meta.yaml (if present)
+    from bepc.corrections import apply_corrections, load_meta_corrections
+    iso_date = date_slug  # already ISO
+    meta_path = out_dir.parent / "meta" / f"{iso_date}__{race_id}.meta.yaml"
+    corrections = load_meta_corrections(meta_path)
+    if corrections:
+        print(f"Applying {len(corrections)} correction(s) from {meta_path.name}")
+        apply_corrections(courses, corrections)
+        # Push corrected results back into the common records
+        for common in commons:
+            label = common["raceInfo"].get("distance", "") or ""
+            common["racerResults"] = courses.get(label, common["racerResults"])
+
     for common in commons:
         dist = common["raceInfo"].get("distance", "")
         dist_slug = f"__{re.sub(r'[^a-zA-Z0-9]+', '_', dist).strip('_')}" if dist else ""

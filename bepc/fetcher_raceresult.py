@@ -135,7 +135,24 @@ def fetch_event(rr_id: int, name: str, date: str, out_dir: Path,
     raw_results_fname = f"{date_slug}__{rr_id}__{name_slug}.results.json"
     save_raw(out_dir, raw_results_fname, json.dumps(all_data, indent=2))
 
-    # 4. Write common JSON per course
+    # 4. Apply corrections from meta.yaml (if present)
+    from bepc.corrections import apply_corrections, load_meta_corrections
+    courses_for_correction: dict[str, list[dict]] = {
+        (label if len(all_data) > 1 else ""): racers
+        for label, racers in all_data.items()
+    }
+    meta_path = out_dir.parent / "meta" / f"{date_slug}__{rr_id}.meta.yaml"
+    corrections = load_meta_corrections(meta_path)
+    if corrections:
+        print(f"    Applying {len(corrections)} correction(s) from {meta_path.name}")
+        apply_corrections(courses_for_correction, corrections)
+        # Map back
+        single = len(all_data) == 1
+        for label in list(all_data):
+            key = "" if single else label
+            all_data[label] = courses_for_correction.get(key, all_data[label])
+
+    # 5. Write common JSON per course
     written = []
     total = sum(len(v) for v in all_data.values())
     multi = len(all_data) > 1

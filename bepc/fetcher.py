@@ -156,11 +156,29 @@ def fetch_season(race_ids: list[int], out_dir: Path) -> None:
                 total = len(group_racers[0][1])
 
             common_files = []
+            # Build courses dict for correction application
+            courses_for_correction: dict[str, list[dict]] = {}
+            commons_by_course: dict[str, dict] = {}
             for group, racers in group_racers:
                 distance = group.get("Grouping", {}).get("Distance", "")
                 weight = len(racers) / total
                 common = _make_common(info, racers, weight, distance if multi else "")
-                dist_slug = re.sub(r'[^a-zA-Z0-9]+', '_', distance).strip('_') if multi else ""
+                label = distance if multi else ""
+                courses_for_correction[label] = common["racerResults"]
+                commons_by_course[label] = common
+
+            # Apply corrections from meta.yaml (if present)
+            from bepc.corrections import apply_corrections, load_meta_corrections
+            meta_path = out_dir.parent / "meta" / f"{date_slug}__{race_id}.meta.yaml"
+            corrections = load_meta_corrections(meta_path)
+            if corrections:
+                print(f"Applying {len(corrections)} correction(s) from {meta_path.name}")
+                apply_corrections(courses_for_correction, corrections)
+                for label, common in commons_by_course.items():
+                    common["racerResults"] = courses_for_correction[label]
+
+            for label, common in commons_by_course.items():
+                dist_slug = re.sub(r'[^a-zA-Z0-9]+', '_', label).strip('_') if (multi and label) else ""
                 suffix = f"__{dist_slug}" if dist_slug else ""
                 fname = f"{date_slug}__{race_id}__{name_slug}{suffix}.common.json"
                 (out_dir / fname).write_text(json.dumps(common, indent=2))
