@@ -284,7 +284,7 @@ Show each racer's time delta vs their time at the same race the prior year (raw 
 
 ## Save raw source data for every race
 
-**Status:** Open (2026-04-27)
+**Status:** Resolved (2026-04-27) — all fetchers save raw + apply meta-yaml corrections
 
 **Problem:** 93 of 850 common.json files have no matching raw source file. Breakdown:
 - Jericho: 71 (HTML-scraped; no JSON raw is saved)
