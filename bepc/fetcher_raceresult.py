@@ -58,7 +58,7 @@ def _parse_time(t: str) -> float | None:
 
 
 def fetch_event(rr_id: int, name: str, date: str, out_dir: Path,
-                page: str = "results") -> list[str]:
+                page: str = "results", pms_id: int | None = None) -> list[str]:
     """
     Fetch results for a raceresult.com event and write common JSON files.
 
@@ -68,11 +68,29 @@ def fetch_event(rr_id: int, name: str, date: str, out_dir: Path,
         date:    date string (e.g. "Mar 16, 2024")
         out_dir: directory to write .common.json files
         page:    raceresult page name (default: "results")
+        pms_id:  Pacific Multisports event ID for building a working displayURL.
+                 If omitted, falls back to data/sources/pms_rr_mapping.json or
+                 a direct raceresult URL.
 
     Returns:
         List of written filenames.
     """
     from bepc.provenance import log_provenance, save_raw
+
+    # Resolve pms_id from mapping if not given
+    if pms_id is None:
+        mapping_path = Path(__file__).parent.parent / "data" / "sources" / "pms_rr_mapping.json"
+        if mapping_path.exists():
+            try:
+                mapping = json.loads(mapping_path.read_text())
+                pms_id = mapping.get(str(rr_id))
+            except Exception:
+                pass
+    # Build the displayURL: prefer the PMS redirect, else the raceresult page
+    if pms_id:
+        display_url = f"https://register.pacificmultisports.com/Events/Results/{pms_id}"
+    else:
+        display_url = f"https://my.raceresult.com/{rr_id}/results"
 
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -169,7 +187,7 @@ def fetch_event(rr_id: int, name: str, date: str, out_dir: Path,
                 "raceId": rr_id,
                 "name": f"{event_name}{suffix}",
                 "date": date,
-                "displayURL": f"https://register.pacificmultisports.com/Events/Results/{rr_id}",
+                "displayURL": display_url,
                 "distance": course_label if multi else "",
                 "pointsWeight": weight,
                 "sport": "Paddling",
@@ -186,7 +204,7 @@ def fetch_event(rr_id: int, name: str, date: str, out_dir: Path,
         "date": date,
         "source": "raceresult",
         "method": "api",
-        "url": f"https://register.pacificmultisports.com/Events/Results/{rr_id}",
+        "url": display_url,
         "raw_files": [raw_config_fname, raw_results_fname],
         "common_files": written,
     })
