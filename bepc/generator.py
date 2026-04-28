@@ -775,7 +775,7 @@ function tableHtml(id_suffix) {
     </select>
   </div>
   <table id="tbl-results-${id_suffix}" class="table table-sm table-striped">
-    <thead class="text-nowrap"><tr><th>Trophies</th><th>Place</th><th>Racer</th><th>Craft</th><th style="white-space:normal">Overall<br>Time</th><th>Predicted</th><th style="white-space:normal">Result vs<br>Predicted</th><th>Index</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Index Pts</th></tr></thead>
+    <thead class="text-nowrap"><tr><th>Trophies</th><th>Place</th><th>Racer</th><th>Craft</th><th style="white-space:normal;text-align:center">Overall<br>Time</th><th>Predicted</th><th style="white-space:normal;text-align:center">Result vs<br>Predicted</th><th>Index</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Index Pts</th></tr></thead>
     <tbody id="body-results-${id_suffix}"></tbody>
   </table>`;
 }
