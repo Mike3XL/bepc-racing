@@ -8,10 +8,13 @@ from pathlib import Path
 
 UPCOMING = Path("data/upcoming.yaml")
 
-# Name-pattern → organizer-id (first match wins)
+# Name-pattern → organizer-id (first match wins).
+# Only include rules for organizers you've verified. Unmatched races are
+# left without an organizer tag and listed at the end of output — fill in
+# manually by editing data/upcoming.yaml.
 RULES = [
-    (re.compile(r"paddlers cup|gig harbor", re.I), "ghckrt"),
-    (re.compile(r"lake whatcom classic|commencement bay|squaxin|bainbridge.*marathon|rat island|budd inlet|round shaw|elk river|lake samish|mercer island|sausage pull|port angeles.*coastal|la conner", re.I), "sound-rowers"),
+    (re.compile(r"paddlers cup|gig harbor|narrows challenge", re.I), "ghckrt"),
+    (re.compile(r"lake whatcom classic|commencement bay|squaxin|bainbridge.*marathon|rat island|budd inlet|round shaw|elk river|lake samish|mercer island|sausage pull|port angeles.*coastal|la conner|guano rocks", re.I), "sound-rowers"),
     (re.compile(r"pnworca|chicken of the sea|whipper snapper|da grind|wake up the gorge|weapon of choice|keats", re.I), "pnworca"),
     (re.compile(r"peter marcus|bellingham bay rough|alderbrook.*st\.? paddle|deception pass", re.I), "salmon-bay-paddle"),
     (re.compile(r"bepc", re.I), "bepc"),
@@ -21,9 +24,6 @@ RULES = [
     (re.compile(r"gorge challenge|nch'i.*wanna|columbia river race", re.I), "ocean-flight"),
     (re.compile(r"ski to sea", re.I), "whatcom-events"),
     (re.compile(r"seventy48|r2ak|race to alaska|wa360", re.I), "nwmc"),
-    (re.compile(r"narrows challenge", re.I), "pacific-paddle-events"),  # Narrows is via Pacific Paddle Events
-    (re.compile(r"bremerton bridges", re.I), "pnworca"),  # best guess
-    (re.compile(r"guano rocks", re.I), "sound-rowers"),
 ]
 
 data = yaml.safe_load(UPCOMING.read_text()) or {}

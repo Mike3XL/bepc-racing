@@ -301,7 +301,6 @@ upcoming:
   name: Bremerton Bridges Tidal Race
   notes: 'Meeting: TBD, Start: TBD'
   url: https://www.pnworca.org
-  organizer: pnworca
 - clubs:
   - bepc-summer
   date: '2026-06-29'
@@ -593,7 +592,7 @@ upcoming:
   name: Narrows Challenge (incl. USA SUP Nationals 10K)
   notes: 'Meeting: TBD, Start: TBD'
   url: http://www.narrowschallenge.com/
-  organizer: pacific-paddle-events
+  organizer: ghckrt
 - clubs:
   - pnw
   date: '2026-09-26'
