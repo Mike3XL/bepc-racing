@@ -2415,18 +2415,18 @@ def generate_platform_home(data: dict) -> None:
             f_ar = _also_ran(fin10)
             html += (
                 f'<div class="rc-course{mt}">'
+                f'<div class="rc-course-row">'
+                f'<div class="rc-course-name-side">{dist}</div>'
                 f'<div class="podium-wrap">'
                 f'<div class="view-panel {view_cls} active" id="{rid}-{view_cls}-{ci}">'
-                f'<div class="rc-course-hdr"><span class="rc-course-name">{dist}</span><span class="rc-podium-type">{podium_type}</span></div>'
                 f'<div class="podium-bars">{c_cols}</div>'
                 f'<div class="podium-base"></div>'
                 f'<div class="also-ran-single">{c_ar}</div></div>'
                 f'<div class="view-panel view-finish" id="{rid}-finish-{ci}">'
-                f'<div class="rc-course-hdr"><span class="rc-course-name">{dist}</span><span class="rc-podium-type">Finish Time</span></div>'
                 f'<div class="podium-bars">{f_cols}</div>'
                 f'<div class="podium-base"></div>'
                 f'<div class="also-ran-single">{f_ar}</div></div>'
-                f'</div></div>'
+                f'</div></div></div>'
             )
         return html
 
@@ -2445,13 +2445,12 @@ def generate_platform_home(data: dict) -> None:
         _p0_slug = data.get("race_slugs", {}).get(_p0["id"], {}).get(_p0.get("race_id",""), "") if _p0 else ""
         _primary_results = f'{_p0["id"]}/results/{_p0_slug}.html' if _p0 and _p0_slug else ""
 
-        # Build pill row: [Finish Time] | [Indexed: Primary club]
-        _primary_label = clubs_cfg.get(clubs_sorted[0]["id"], {}).get("short_name", clubs_sorted[0]["name"]) if clubs_sorted else ""
+        # Build pill row: [Finish Time] | [vs Prediction]
         _primary_view = "view-c0"
         pill_html = ('<div class="rc-pill-row">'
                      f'<a class="sel-pill finish-pill" onclick="pdmView(this,\'{rid}\',\'view-finish\',true)" href="#">Finish Time</a>'
                      '<span class="pill-sep">|</span>'
-                     f'<a class="sel-pill corr-pill active" onclick="pdmView(this,\'{rid}\',\'{_primary_view}\',false)" href="#">Indexed: {_primary_label}</a>'
+                     f'<a class="sel-pill corr-pill active" onclick="pdmView(this,\'{rid}\',\'{_primary_view}\',false)" href="#">vs Prediction</a>'
                      '</div>')
 
         # Build podium panels for each club
@@ -2594,6 +2593,9 @@ def generate_platform_home(data: dict) -> None:
 .rc-course-name{{flex:1;font-size:.78em;font-weight:700;color:#333}}
 .rc-podium-type{{flex:1;text-align:center;font-size:.65em;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em}}
 .rc-course-name{{font-size:.78em;font-weight:700;color:#333}}
+.rc-course-row{{display:flex;align-items:flex-start;gap:8px}}
+.rc-course-name-side{{font-size:.85em;font-weight:700;color:#333;min-width:60px;padding-top:28px;text-align:right;flex-shrink:0}}
+.rc-course-row .podium-wrap{{flex:1;min-width:0}}
 .rc-results-link{{font-size:.75em;color:#0d6efd;text-decoration:none;white-space:nowrap}}
 .rc-pill-row{{display:flex;gap:4px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:14px}}
 .rc-ranking-label{{font-size:.72em;color:#888;font-weight:600;white-space:nowrap}}
@@ -2857,6 +2859,9 @@ const MEDAL = {
 .rc-course-name{{flex:1;font-size:.78em;font-weight:700;color:#333}}
 .rc-podium-type{{flex:1;text-align:center;font-size:.65em;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em}}
 .rc-course-hdr-spacer{{flex:1}}
+.rc-course-row{{display:flex;align-items:flex-start;gap:8px}}
+.rc-course-name-side{{font-size:.85em;font-weight:700;color:#333;min-width:60px;padding-top:28px;text-align:right;flex-shrink:0}}
+.rc-course-row .podium-wrap{{flex:1;min-width:0}}
 .rc-pill-row{{display:flex;gap:4px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:14px}}
 .pill-sep{{font-size:.72em;color:#ccc}}
 .sel-pill{{font-size:.75em;padding:2px 8px;border-radius:12px;border:1px solid #ccc;background:#f8f9fa;color:#555;cursor:pointer;text-decoration:none;white-space:nowrap}}
@@ -2963,12 +2968,12 @@ function _rlCourseBlock(course, ci, isFirst) {{
   }});
   var fAr=(course.fin_top10||[]).slice(3,10).map(function(e,i){{return (i+4)+'th: '+e.name;}}).join('  ');
   var mt=ci>0?' mt-2':'';
-  var cHdr='<div class="rc-course-hdr"><span class="rc-course-name">'+dist+'</span><span class="rc-podium-type">Result vs Predicted</span><span class="rc-course-hdr-spacer"></span></div>';
-  var fHdr='<div class="rc-course-hdr"><span class="rc-course-name">'+dist+'</span><span class="rc-podium-type">Finish Time</span><span class="rc-course-hdr-spacer"></span></div>';
-  return '<div class="course-block'+mt+'"><div class="podium-wrap">'
-    +'<div class="rl-panel rl-corr'+(isFirst&&_rlView==='corr'?' active':'')+'">'+cHdr+'<div class="podium-bars">'+cCols+'</div><div class="podium-base"></div><div class="also-ran-single">'+cAr+'</div></div>'
-    +'<div class="rl-panel rl-finish'+(isFirst&&_rlView==='finish'?' active':'')+'">'+fHdr+'<div class="podium-bars">'+fCols+'</div><div class="podium-base"></div><div class="also-ran-single">'+fAr+'</div></div>'
-    +'</div></div>';
+  return '<div class="course-block'+mt+'"><div class="rc-course-row">'
+    +'<div class="rc-course-name-side">'+dist+'</div>'
+    +'<div class="podium-wrap">'
+    +'<div class="rl-panel rl-corr'+(isFirst&&_rlView==='corr'?' active':'')+'"><div class="podium-bars">'+cCols+'</div><div class="podium-base"></div><div class="also-ran-single">'+cAr+'</div></div>'
+    +'<div class="rl-panel rl-finish'+(isFirst&&_rlView==='finish'?' active':'')+'"><div class="podium-bars">'+fCols+'</div><div class="podium-base"></div><div class="also-ran-single">'+fAr+'</div></div>'
+    +'</div></div></div>';
 }}
 function renderRacesList(d, year) {{
   var sec = document.getElementById('upcoming-section');
@@ -2977,17 +2982,11 @@ function renderRacesList(d, year) {{
   var clubLabel = document.querySelector('.navbar-brand') ? '' : '';
   var rows = races.map(function(r) {{
     var slug = raceSlugMap[r.race_id] || r.race_id;
-    var pills = '<div class="pill-group">'
-      +'<a class="sel-pill corr-pill'+(_rlView==='corr'?' active':'')+'" onclick="rlSetView(this,&quot;corr&quot;)" href="#">Corrected Times</a>'
-      +'<span class="pill-sep">|</span>'
-      +'<a class="sel-pill finish-pill'+(_rlView==='finish'?' active':'')+'" onclick="rlSetView(this,&quot;finish&quot;)" href="#">Finish Times</a>'
-      +'</div>';
     var courses = r.courses.map(function(c,i){{return _rlCourseBlock(c,i,true);}}).join('');
-    var clubLabel = d.club_short || 'Indexed';
     var pills = '<div class="rc-pill-row">'
       +'<a class="sel-pill finish-pill'+(_rlView==='finish'?' active':'')+' " onclick="rlSetView(this,&quot;finish&quot;)" href="#">Finish Time</a>'
       +'<span class="pill-sep">|</span>'
-      +'<a class="sel-pill corr-pill'+(_rlView==='corr'?' active':'')+' " onclick="rlSetView(this,&quot;corr&quot;)" href="#">Indexed: '+clubLabel+'</a>'
+      +'<a class="sel-pill corr-pill'+(_rlView==='corr'?' active':'')+' " onclick="rlSetView(this,&quot;corr&quot;)" href="#">vs Prediction</a>'
       +'</div>';
     return '<div class="rc-card">'
       +'<div class="rc-name">'+r.name+'</div>'
