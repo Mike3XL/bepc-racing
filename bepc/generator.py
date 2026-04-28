@@ -775,7 +775,7 @@ function tableHtml(id_suffix) {
     </select>
   </div>
   <table id="tbl-results-${id_suffix}" class="table table-sm table-striped">
-    <thead class="text-nowrap"><tr><th>Trophies</th><th>Place</th><th>Racer</th><th>Craft</th><th>Time</th><th>Predicted</th><th>Delta</th><th>Index</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Index Pts</th></tr></thead>
+    <thead class="text-nowrap"><tr><th>Trophies</th><th>Place</th><th>Racer</th><th>Craft</th><th style="white-space:normal">Overall<br>Time</th><th>Predicted</th><th style="white-space:normal">Result vs<br>Predicted</th><th>Index</th><th>New</th><th>Par Estimate</th><th>Points</th><th>Index Pts</th></tr></thead>
     <tbody id="body-results-${id_suffix}"></tbody>
   </table>`;
 }
@@ -1845,7 +1845,7 @@ dl dt:first-child { margin-top: 0; }
 
   <p>The racer with the best par-estimate (relative to the consensus par) wins on the par-estimate podium, regardless of who crossed the line first. This lets a slower craft or a newer racer compete meaningfully against the fastest paddlers.</p>
 
-  <p>Your performance for a race is reported as <em>vs Predicted %</em> — how much faster (negative) or slower (positive) you were than the time we would have predicted for you on that course. Your index updates based on this percentage. It responds faster to good days than bad ones, so an occasional off day has limited impact.</p>
+  <p>Your performance for a race is reported as <em>Result vs Predicted</em> — how much faster (negative) or slower (positive) you were than the time we would have predicted for you on that course. Your index updates based on this percentage. It responds faster to good days than bad ones, so an occasional off day has limited impact.</p>
 
   <h2>Clubs &amp; Leagues</h2>
 
@@ -2350,7 +2350,7 @@ def generate_platform_home(data: dict) -> None:
         parts = [f'{e["place"]}th: {e["name"]}' for e in entries[3:end] if e.get("name")]
         return ' &nbsp;&nbsp; '.join(parts) if parts else ""
 
-    def _build_course_panels(rid, courses_data, club_id, club_short, view_cls, podium_type="% vs Predicted"):
+    def _build_course_panels(rid, courses_data, club_id, club_short, view_cls, podium_type="Result vs Predicted"):
         """Build course blocks for one club view."""
         html = ""
         for ci, cd in enumerate(sorted(courses_data, key=lambda x: _dist_key(x["label"] or ""))):
@@ -2431,7 +2431,7 @@ def generate_platform_home(data: dict) -> None:
             view_cls = f"view-c{ci}"
             _cslug = data.get("race_slugs", {}).get(c["id"], {}).get(c.get("race_id",""), "")
             _cresults = f'{c["id"]}/results/{_cslug}.html' if _cslug else ""
-            _ptype = f'% vs Predicted'
+            _ptype = f'Result vs Predicted'
             course_panels = _build_course_panels(rid, c.get("courses", []), c["id"],
                                                   clubs_cfg.get(c["id"], {}).get("short_name", c["name"]),
                                                   view_cls, podium_type=_ptype)
@@ -2934,7 +2934,7 @@ function _rlCourseBlock(course, ci, isFirst) {{
   }});
   var fAr=(course.fin_top10||[]).slice(3,10).map(function(e,i){{return (i+4)+'th: '+e.name;}}).join('  ');
   var mt=ci>0?' mt-2':'';
-  var cHdr='<div class="rc-course-hdr"><span class="rc-course-name">'+dist+'</span><span class="rc-podium-type">% vs Predicted</span><span class="rc-course-hdr-spacer"></span></div>';
+  var cHdr='<div class="rc-course-hdr"><span class="rc-course-name">'+dist+'</span><span class="rc-podium-type">Result vs Predicted</span><span class="rc-course-hdr-spacer"></span></div>';
   var fHdr='<div class="rc-course-hdr"><span class="rc-course-name">'+dist+'</span><span class="rc-podium-type">Finish Time</span><span class="rc-course-hdr-spacer"></span></div>';
   return '<div class="course-block'+mt+'"><div class="podium-wrap">'
     +'<div class="rl-panel rl-corr'+(isFirst&&_rlView==='corr'?' active':'')+'">'+cHdr+'<div class="podium-bars">'+cCols+'</div><div class="podium-base"></div><div class="also-ran-single">'+cAr+'</div></div>'
