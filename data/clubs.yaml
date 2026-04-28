@@ -20,9 +20,9 @@ clubs:
       Weekly Monday-night race series at Shilshole Bay, Seattle, hosted by the
       Ballard Elks Paddle Club (BEPC) from May through September. Open to all
       craft — kayak, surfski, SUP, outrigger, rowing. Typically a ~3-mile
-      protected-water course with an optional longer loop. A social, mixed-ability
-      field with a competitive front. Previously known as the Salmon Bay Paddle
-      Monday Night series (organized by Rob Casey, 2015–2018).
+      protected-water course with an optional longer loop. A social field with a
+      competitive front. Previously known as the Salmon Bay Paddle Monday Night
+      series (organized by Rob Casey, 2015–2018).
     organizers:
       - bepc
       - salmon-bay-paddle
@@ -57,7 +57,7 @@ clubs:
     short_name: SCKC
     type: org
     description: >
-      Short-course race series at Duck Island on the Montlake Cut, hosted by the
+      Short-course race series at Duck Island on Green Lake, hosted by the
       Seattle Canoe and Kayak Club. Sprint and flatwater kayak/canoe focus
       (K1/K2/C1/C2 divisions), with SUP heats as well. Friday evening races in
       summer. Small but competitive field of dedicated sprint racers.
@@ -69,11 +69,19 @@ clubs:
       update_slower: 0.15
       carry_over: true
   none:
-    name: None
-    short_name: Other
+    name: Independent
+    short_name: Independent
     type: org
     description: >
-      Unaffiliated / casual races.
+      Standalone events that don't belong to a named series — one-off races,
+      casual paddles, novelty events. Includes fun/themed races (St. Paddle's
+      Day, Halloween), seasonal short series (Urban Surf Wednesday Nights),
+      and large multi-sport events where paddling is one leg (Seventy48,
+      Ski to Sea). Indexes are not computed or updated from these races.
+    organizers:
+      - salmon-bay-paddle
+      - bepc
+      - urban-surf
     handicap:
       num_races_to_establish: 2
       update_faster: 0.30

@@ -42,11 +42,13 @@ organizers:
   sckc:
     name: Seattle Canoe and Kayak Club
   sound-rowers:
-    name: Sound Rowers & Paddlers Oar Club
+    name: Sound Rowers
   pnworca:
     name: PNWORCA
   ghckrt:
     name: Gig Harbor Canoe and Kayak Racing Team
+  urban-surf:
+    name: Urban Surf (2100 Project)
 
 
 # Results platforms — where race results are published (informational + filtering)

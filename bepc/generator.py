@@ -1758,8 +1758,6 @@ def generate_clubs_page(data: dict) -> None:
 
     sections = ""
     for club_id, club in data["clubs"].items():
-        if club_id == "none":
-            continue  # don't list `none` as a series destination
         cfg = clubs_cfg.get(club_id, {})
         name = cfg.get("name", club.get("name", club_id))
         short = cfg.get("short_name", name)
@@ -1774,14 +1772,17 @@ def generate_clubs_page(data: dict) -> None:
                             for race in s["races"] for r in race["results"]})
 
         # Top 5 racers by handicap points in current season
-        current_year = club["current_season"]
-        season_racers = {}
-        for race in club["seasons"].get(current_year, {}).get("races", []):
-            for r in race["results"]:
-                n = r["canonical_name"]
-                if n not in season_racers or r["season_handicap_points"] > season_racers[n]:
-                    season_racers[n] = r["season_handicap_points"]
-        top_racers = sorted(season_racers.items(), key=lambda x: -x[1])[:5]
+        # Skip for Independent — no indexed competition
+        top_racers = []
+        if club_id != "none":
+            current_year = club["current_season"]
+            season_racers = {}
+            for race in club["seasons"].get(current_year, {}).get("races", []):
+                for r in race["results"]:
+                    n = r["canonical_name"]
+                    if n not in season_racers or r["season_handicap_points"] > season_racers[n]:
+                        season_racers[n] = r["season_handicap_points"]
+            top_racers = sorted(season_racers.items(), key=lambda x: -x[1])[:5]
         top_html = ""
         if top_racers:
             top_html = f'<p class="text-muted small mb-1 fw-semibold">{current_year} top racers (indexed pts):</p><div class="d-flex flex-wrap gap-2 mb-3">'
@@ -1802,11 +1803,26 @@ def generate_clubs_page(data: dict) -> None:
                 + ", ".join(items) + '</p>'
             )
 
+        # For Independent: note that indexes aren't tracked
+        index_note_html = ""
+        if club_id == "none":
+            index_note_html = '<p class="text-muted small mb-2"><em>Indexes are not tracked for this series — finish times only.</em></p>'
+
+        if club_id == "none":
+            action_buttons = f'<a href="{club_id}/results.html" class="btn btn-outline-primary btn-sm">Results</a>'
+        else:
+            action_buttons = (
+                f'<a href="{club_id}/results.html" class="btn btn-outline-primary btn-sm">Results</a>'
+                f'<a href="{club_id}/standings.html" class="btn btn-outline-secondary btn-sm">Standings</a>'
+                f'<a href="{club_id}/trajectories.html" class="btn btn-outline-secondary btn-sm">Trajectories</a>'
+                f'<a href="{club_id}/racer/index.html" class="btn btn-outline-secondary btn-sm">Racers</a>'
+            )
         sections += f"""
 <div class="mb-5">
   <h2>{name}</h2>
   <p class="text-muted">{desc}</p>
   {organizers_html}
+  {index_note_html}
   <div class="d-flex flex-wrap gap-3 mb-3">
     <span><strong>{total_races}</strong> races</span>
     <span><strong>{total_racers}</strong> racers</span>
@@ -1814,10 +1830,7 @@ def generate_clubs_page(data: dict) -> None:
   </div>
   {top_html}
   <div class="d-flex flex-wrap gap-2">
-    <a href="{club_id}/results.html" class="btn btn-outline-primary btn-sm">Results</a>
-    <a href="{club_id}/standings.html" class="btn btn-outline-secondary btn-sm">Standings</a>
-    <a href="{club_id}/trajectories.html" class="btn btn-outline-secondary btn-sm">Trajectories</a>
-    <a href="{club_id}/racer/index.html" class="btn btn-outline-secondary btn-sm">Racers</a>
+    {action_buttons}
     {f'<a href="{homepage}" target="_blank" class="btn btn-outline-secondary btn-sm">Website ↗</a>' if homepage else ''}
   </div>
   <hr class="mt-4">
