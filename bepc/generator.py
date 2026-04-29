@@ -1620,13 +1620,14 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
   <div class="col-md-6"><canvas id="chart-hcap-{cid}" style="max-height:220px"></canvas></div>
 </div>
 <table class="table table-sm table-striped table-hover">
-  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Place (Indexed)</th><th>Time</th><th>Time (Indexed)</th><th style="white-space:nowrap">vs Projected</th><th>Index</th><th>New</th><th>Points</th><th>Indexed Points</th></tr></thead>
+  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Place (Indexed)</th><th>Time</th><th>Projected</th><th style="white-space:nowrap">vs Projected</th><th>Index</th><th>New</th><th>Points</th><th>Indexed Points</th></tr></thead>
   <tbody>{"".join(
       f'<tr><td style="white-space:nowrap">{_racer_trophy_badges(r.get("trophies",[]))}</td>'
       f'<td><a href="../results/{data["race_slugs"].get(data["current_club"], {}).get(r["race_id"], str(r["race_id"]))}.html">{r["name"].split(" — ")[0] + (" — " + r["name"].split(" — ")[1] if " — " in r["name"] else "")}</a></td>'
       f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
       f'<td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td>'
-      f'<td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td>'
+      f'<td>{_fmt_time(r["time_seconds"])}</td>'
+      + (f'<td>{_fmt_time(r["time_seconds"] / r["adjusted_time_versus_par"])}</td>' if r.get("adjusted_time_versus_par") else '<td></td>')
       + (f'<td style="text-align:right;font-size:0.85em;color:{"#2E7D32" if (r["adjusted_time_versus_par"]-1)*100<=0 else "#666"};font-weight:{"bold" if (r["adjusted_time_versus_par"]-1)*100<=0 else "normal"}">{(r["adjusted_time_versus_par"]-1)*100:+.1f}%</td>' if r.get("adjusted_time_versus_par") else '<td></td>') +
       f'<td>{r["handicap"]:.3f}</td><td>{r["handicap_post"]:.3f}</td>'
       f'<td>{r["race_points"]}</td><td>{r["handicap_points"]}</td></tr>'
@@ -3006,7 +3007,7 @@ function renderRacesList(d, year) {{
       +'<span class="pill-sep">|</span>'
       +'<a class="sel-pill finish-pill'+(_rlView==='finish'?' active':'')+' " onclick="rlSetView(this,&quot;finish&quot;)" href="#">Finish Time</a>'
       +'</div>';
-    return '<div class="rc-card">'
+    return '<div class="rc-card feed-row">'
       +'<div class="rc-name">'+r.name+'</div>'
       +'<div class="rc-meta-row"><span class="rc-date">'+_dayName(r.date)+', '+r.date+'</span><a href="results/'+slug+'.html" class="rc-results-link">Full Results →</a></div>'
       +pills
