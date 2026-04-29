@@ -1122,6 +1122,7 @@ def main():
 
     # --- Diagnostics ---
     sub.add_parser("audit-crafts", help="List unrecognized craft values")
+    sub.add_parser("audit-names", help="Find and resolve racer name alias candidates")
     audit_src_p = sub.add_parser("audit-sources", help="Detect duplicate race sources")
     audit_src_p.add_argument("--club", default=CURRENT_CLUB)
 
@@ -1171,6 +1172,9 @@ def main():
             fetch_p.print_help()
     elif args.command == "audit-crafts":
         cmd_audit_crafts(args)
+    elif args.command == "audit-names":
+        from bepc.audit_names import cmd_audit_names
+        cmd_audit_names(args)
     elif args.command == "audit-sources":
         cmd_audit_sources(args)
     elif args.command == "serve":

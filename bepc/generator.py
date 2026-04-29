@@ -215,11 +215,12 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
     </button>
     <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav me-auto">{items}</ul>
-      <div class="position-relative ms-2" style="min-width:180px;max-width:260px">
-        <input id="nav-racer-search" type="text" class="form-control form-control-sm"
-               placeholder="Find racer..." autocomplete="off">
-        <div id="nav-racer-results" class="list-group position-absolute shadow"
-             style="z-index:1050;display:none;min-width:260px;right:0"></div>
+      <div class="position-relative ms-2" style="min-width:180px;max-width:280px">
+        <input id="nav-search" type="text" class="form-control form-control-sm"
+               placeholder="Search…" autocomplete="off">
+        <style>.ns-item{{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;font-size:.82rem;color:#333;text-decoration:none;border-bottom:1px solid #f5f5f5}}.ns-item:hover{{background:#f0f4ff}}</style>
+<div id="nav-search-results" class="position-absolute shadow"
+             style="z-index:1050;display:none;min-width:320px;right:0;background:#fff;border:1px solid #dee2e6;border-radius:8px;overflow:hidden;max-height:420px;overflow-y:auto"></div>
       </div>
     </div>
   </div>
@@ -228,40 +229,91 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
 (function(){{
   var RACERS={_RACER_SEARCH_MAP};
   var depth={depth};
-  document.addEventListener('DOMContentLoaded',function(){{
-  var inp=document.getElementById('nav-racer-search');
-  var res=document.getElementById('nav-racer-results');
-  if(!inp)return;
-  inp.addEventListener('input',function(){{
-    var q=this.value.trim().toLowerCase();
+  var _races=null,_racesLoading=false;
+
+  function fuzzy(str,q){{
+    str=str.toLowerCase();q=q.toLowerCase();
+    if(str===q)return 2;
+    if(str.includes(q))return 1+(str.startsWith(q)?0.3:0);
+    var bg=function(s){{var b={{}};for(var i=0;i<s.length-1;i++)b[s.slice(i,i+2)]=1;return b;}};
+    var sb=bg(str),qb=bg(q),hits=0,tot=0;
+    for(var k in qb){{tot++;if(sb[k])hits++;}}
+    return tot>0?hits/tot:0;
+  }}
+
+  function pfx(){{return depth===0?'':depth===1?'../':'../../';}}
+
+  function sectionHdr(label){{
+    return '<div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;padding:8px 12px 3px;background:#fafafa;border-bottom:1px solid #f0f0f0">'+label+'</div>';
+  }}
+  function resultLink(href,primary,secondary){{
+    return '<a href="'+href+'" class="ns-item">'
+      +'<span style="font-weight:500">'+primary+'</span>'
+      +(secondary?'<span style="font-size:.7rem;color:#aaa;margin-left:8px;white-space:nowrap">'+secondary+'</span>':'')
+      +'</a>';
+  }}
+
+  function render(q){{
+    var res=document.getElementById('nav-search-results');
     res.innerHTML='';
     if(q.length<2){{res.style.display='none';return;}}
-    var matches=RACERS.filter(function(r){{return r.name.toLowerCase().includes(q);}}).slice(0,8);
-    if(!matches.length){{res.style.display='none';return;}}
-    var prefix=depth===0?'':depth===1?'../':'../../';
-    matches.forEach(function(r){{
-      if(!r.clubs||!r.clubs.length)return;
-      var club=r.clubs[0];
-      var link=prefix+club+'/racer/'+r.slug+'.html';
-      var item=document.createElement('a');
-      item.className='list-group-item list-group-item-action py-1 small';
-      item.href=link;
-      item.textContent=r.name;
-      res.appendChild(item);
+    var p=pfx(),html='';
+
+    var rs=RACERS.map(function(r){{return {{r:r,s:fuzzy(r.name,q)}};}})
+      .filter(function(x){{return x.s>0.15;}})
+      .sort(function(a,b){{return b.s-a.s;}}).slice(0,5);
+    if(rs.length){{
+      html+=sectionHdr('Racers');
+      rs.forEach(function(x){{
+        var r=x.r;if(!r.clubs||!r.clubs.length)return;
+        html+=resultLink(p+r.clubs[0]+'/racer/'+r.slug+'.html',r.name,'');
+      }});
+    }}
+
+    if(_races){{
+      var all=[];
+      Object.entries(_races.seasons||{{}}).forEach(function([yr,s]){{
+        (Array.isArray(s)?s:(s.races||[])).forEach(function(race){{all.push(race);}});
+      }});
+      var rr=all.map(function(r){{return {{r:r,s:fuzzy(r.name,q)}};}})
+        .filter(function(x){{return x.s>0.15;}})
+        .sort(function(a,b){{return b.s-a.s;}}).slice(0,5);
+      if(rr.length){{
+        html+=sectionHdr('Results');
+        rr.forEach(function(x){{
+          var r=x.r;
+          html+=resultLink(p+(_races.club_id||'pnw')+'/results/'+r.slug+'.html',r.name,r.date);
+        }});
+      }}
+    }} else if(!_racesLoading){{
+      _racesLoading=true;
+      var url=p+(depth===0?'pnw/':'')+'races-list.json';
+      fetch(url).then(function(r){{return r.json();}}).then(function(d){{
+        _races=d;_racesLoading=false;
+        render(document.getElementById('nav-search').value.trim());
+      }}).catch(function(){{_racesLoading=false;}});
+    }}
+
+    if(!html){{res.style.display='none';return;}}
+    res.innerHTML=html;res.style.display='';
+  }}
+
+  document.addEventListener('DOMContentLoaded',function(){{
+    var inp=document.getElementById('nav-search');
+    var res=document.getElementById('nav-search-results');
+    if(!inp)return;
+    inp.addEventListener('input',function(){{render(this.value.trim());}});
+    inp.addEventListener('focus',function(){{if(this.value.trim().length>=2)render(this.value.trim());}});
+    document.addEventListener('click',function(e){{if(!inp.contains(e.target)&&!res.contains(e.target))res.style.display='none';}});
+    inp.addEventListener('keydown',function(e){{
+      var items=res.querySelectorAll('a');if(!items.length)return;
+      var active=res.querySelector('a[data-sel]');
+      var idx=active?Array.from(items).indexOf(active):-1;
+      if(e.key==='ArrowDown'){{e.preventDefault();if(active){{delete active.dataset.sel;active.style.background='';}}var n=items[(idx+1)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}}
+      else if(e.key==='ArrowUp'){{e.preventDefault();if(active){{delete active.dataset.sel;active.style.background='';}}var n=items[(idx-1+items.length)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}}
+      else if(e.key==='Enter'&&active){{window.location.href=active.href;}}
+      else if(e.key==='Escape'){{res.style.display='none';}}
     }});
-    res.style.display='';
-  }});
-  inp.addEventListener('keydown',function(e){{
-    var items=res.querySelectorAll('a');
-    if(!items.length)return;
-    var active=res.querySelector('a.active');
-    var idx=Array.from(items).indexOf(active);
-    if(e.key==='ArrowDown'){{e.preventDefault();var next=items[idx+1]||items[0];if(active)active.classList.remove('active');next.classList.add('active');next.focus();inp.focus();}}
-    else if(e.key==='ArrowUp'){{e.preventDefault();var prev=items[idx-1]||items[items.length-1];if(active)active.classList.remove('active');prev.classList.add('active');prev.focus();inp.focus();}}
-    else if(e.key==='Enter'&&active){{window.location.href=active.href;}}
-    else if(e.key==='Escape'){{res.style.display='none';}}
-  }});
-  document.addEventListener('click',function(e){{if(!inp.contains(e.target)&&!res.contains(e.target))res.style.display='none';}});
   }});
 }})();
 </script>"""
@@ -1501,7 +1553,7 @@ def generate_racer_pages(data: dict) -> None:
     alpha_names = sorted(racer_data.keys())
 
     nav_js = """<script>
-document.getElementById('racer-select').addEventListener('change', function() {
+var _rs=document.getElementById('racer-select');if(_rs)_rs.addEventListener('change', function() {
   window.location.href = this.value + '.html';
 });
 </script>"""
@@ -2764,6 +2816,7 @@ def generate_races_list(data: dict) -> None:
                     courses_data.append({"label": label if multi else "", "starters": len(c["results"]), "winners": winners, "finish_winners": finish_winners, "corr_top10": corr_top10, "fin_top10": fin_top10})
                 race_list.append({
                     "race_id": race_id,
+                    "slug": data.get("race_slugs", {}).get(club_id, {}).get(race_id, str(race_id)),
                     "name": base_name,
                     "date": courses[0]["date"],
                     "starters": sum(len(c["results"]) for c in courses),
@@ -2771,7 +2824,7 @@ def generate_races_list(data: dict) -> None:
                 })
             seasons_data[year] = race_list
         _club_short = clubs_cfg.get(club_id, {}).get("short_name", club_id)
-        (SITE_DIR / club_id / "races-list.json").write_text(_json.dumps({"seasons": seasons_data, "current": club["current_season"], "club_short": _club_short}))
+        (SITE_DIR / club_id / "races-list.json").write_text(_json.dumps({"seasons": seasons_data, "current": club["current_season"], "club_short": _club_short, "club_id": club_id}))
 
     # Generate per-club HTML pages
     global _current_racer_club

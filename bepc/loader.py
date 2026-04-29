@@ -30,11 +30,16 @@ def _namespaced_id(raw_id: int, display_url: str) -> str:
 
 
 def _load_global_aliases(data_root: Path) -> dict:
-    """Load global data/aliases.json (merged across all series)."""
+    """Load global data/aliases.json merged with aliases from data/name-decisions.json."""
+    from bepc import name_decisions as nd
+    aliases: dict = {}
     aliases_path = data_root / "aliases.json"
     if aliases_path.exists():
-        return json.loads(aliases_path.read_text())
-    return {}
+        aliases.update(json.loads(aliases_path.read_text()))
+    # name-decisions.json aliases take precedence
+    decisions = nd.load(data_root)
+    aliases.update(decisions["aliases"])
+    return aliases
 
 
 def _load_race_names(data_root: Path, series: str) -> dict:

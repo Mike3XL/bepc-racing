@@ -225,6 +225,8 @@ Two types of organizations to track separately:
 
 **TODO - Gorge Challenge:** Separate organizer from Jericho/PNWORCA. Need to find their results source and add to fetch-jericho or a new fetcher. Search for "Gorge Challenge paddle race Hood River" to find their site.
 
+**TODO - Gorge Vortex:** Annual Hood River race with several years of results. Find results source (likely WebScorer or their own site). Search "Gorge Vortex paddle race Hood River" to locate. Add to PNW Regional series.
+
 **TODO - Gig Harbor (GHCKC) Paddlers Cup:** Organized by Gig Harbor Canoe & Kayak Club. Same team also runs the Narrows Challenge. Need to find their results source (WebScorer, PaddleGuru, or own site). Search "GHCKC Paddlers Cup" and "Gig Harbor Canoe Kayak Club" to find results.
 
 ## Done (removed from backlog)
