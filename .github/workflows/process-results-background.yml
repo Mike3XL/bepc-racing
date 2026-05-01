@@ -1,0 +1,39 @@
+name: Process Results (Background)
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'        # every 2 hours, all days
+  workflow_dispatch:
+
+jobs:
+  process-results:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Process results
+        env:
+          WEBSCORER_API_ID: ${{ secrets.WEBSCORER_API_ID }}
+          GITHUB_ACTIONS: 'true'
+        run: python cli.py process-results pnw
+
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          commit_message: 'chore: auto-publish results'

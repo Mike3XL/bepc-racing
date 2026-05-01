@@ -376,6 +376,13 @@ def cmd_publish_site(args):
     root = Path(__file__).parent
     site = root / "site"
     msg = f"chore: publish {site_id} site"
+
+    # In GitHub Actions the workflow handles the push via peaceiris/actions-gh-pages
+    if os.environ.get("GITHUB_ACTIONS"):
+        print(f"GitHub Actions: skipping git push (workflow will deploy site/ to {branch})")
+        print(f"Published → {url}")
+        return
+
     script = f"""set -e
 cd {root}
 git read-tree --empty
@@ -561,6 +568,179 @@ def _are_duplicates(a: dict, b: dict) -> tuple[bool, list[str]]:
             diffs.append(f"  craft: '{ra['craftCategory']}' vs '{rb['craftCategory']}'")
 
     return True, diffs
+
+
+def _notify_error(msg: str) -> None:
+    """Send a Mac notification on failure (cron-friendly)."""
+    import subprocess
+    try:
+        subprocess.run(["terminal-notifier", "-title", "BEPC process-results",
+                        "-message", msg, "-sound", "Basso"], check=False)
+    except FileNotFoundError:
+        pass
+
+
+def _infer_source_type(race: dict) -> str | None:
+    if st := race.get("source_type"):
+        return st
+    url = race.get("url", "")
+    if "webscorer.com" in url:
+        return "webscorer"
+    if "raceresult.com" in url or "pacificmultisports.com" in url:
+        return "raceresult"
+    if "paddleguru.com" in url:
+        return "paddleguru"
+    return None
+
+
+def _has_results_webscorer(source_id: int) -> bool:
+    from bepc.fetcher import fetch_raw, _get_overall_groups, _valid_racers
+    try:
+        raw = fetch_raw(source_id)
+        groups = _get_overall_groups(raw)
+        return any(_valid_racers(g) for g in groups)
+    except Exception:
+        return False
+
+
+def _has_results_raceresult(source_id: int) -> bool:
+    """Check gbrc PMS results page for an embedded raceresult ID (means results are published)."""
+    return _resolve_rr_id_from_pms(source_id) is not None
+
+
+def _resolve_rr_id_from_pms(pms_id: int) -> int | None:
+    """Extract raceresult.com event ID from gbrc PMS results page."""
+    import urllib.request, re
+    url = f"https://gbrc.pacificmultisports.com/Events/Results/{pms_id}"
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            html = r.read().decode("utf-8", errors="replace")
+        m = re.search(r'new RRPublish\([^,]+,\s*(\d+)', html)
+        return int(m.group(1)) if m else None
+    except Exception:
+        return None
+
+
+def _has_results_paddleguru(source_id: str) -> bool:
+    import urllib.request
+    url = f"https://paddleguru.com/races/{source_id}/results"
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            html = r.read().decode("utf-8", errors="replace")
+        return ":startlist" in html and ":full-name" in html
+    except Exception:
+        return False
+
+
+def cmd_process_results(args):
+    """Check past upcoming races for posted results; fetch, build, publish if found."""
+    import yaml as _yaml
+    from datetime import date
+
+    dry_run = args.dry_run
+    site_id = args.site
+    year = str(date.today().year)
+    today = date.today()
+
+    upcoming_path = DATA_DIR.parent / "data" / "upcoming.yaml"
+    data = _yaml.safe_load(upcoming_path.read_text())
+    upcoming = data.get("upcoming", [])
+
+    candidates = []
+    for r in upcoming:
+        d = r.get("date")
+        if isinstance(d, str):
+            d = date.fromisoformat(d)
+        if d and d <= today and r.get("source_id"):
+            src_type = _infer_source_type(r)
+            if src_type:
+                candidates.append((r, d, src_type))
+
+    if not candidates:
+        print("No past races with source_id found in upcoming.yaml.")
+        return
+
+    fetched = []
+    for race, race_date, src_type in candidates:
+        name = race["name"]
+        source_id = race["source_id"]
+        clubs = race.get("clubs", [])
+        club = clubs[0] if clubs else "pnw"
+        print(f"Checking {name} ({race_date}) [{src_type}:{source_id}]...", end=" ", flush=True)
+
+        has_results = False
+        if src_type == "webscorer":
+            has_results = _has_results_webscorer(int(source_id))
+        elif src_type == "raceresult":
+            has_results = _has_results_raceresult(int(source_id))
+        elif src_type == "paddleguru":
+            has_results = _has_results_paddleguru(str(source_id))
+
+        if not has_results:
+            print("no results yet")
+            continue
+
+        print("results available!")
+        if dry_run:
+            print(f"  [dry-run] would fetch {src_type}:{source_id} for {club}/{year}")
+            fetched.append(race)
+            continue
+
+        try:
+            out_dir = DATA_DIR / club / year / "common"
+            if src_type == "webscorer":
+                from bepc.fetcher import fetch_season
+                fetch_season([int(source_id)], out_dir)
+            elif src_type == "raceresult":
+                from bepc.fetcher_raceresult import fetch_event
+                rr_id = _resolve_rr_id_from_pms(int(source_id))
+                if not rr_id:
+                    raise ValueError(f"Could not resolve raceresult ID from PMS event {source_id}")
+                fetch_event(rr_id=rr_id, name=name,
+                            date=race_date.strftime("%b %d, %Y"), out_dir=out_dir,
+                            pms_id=int(source_id))
+            elif src_type == "paddleguru":
+                from bepc.fetcher_paddleguru import fetch_paddleguru_race
+                fetch_paddleguru_race(
+                    race_url=f"https://paddleguru.com/races/{source_id}/results",
+                    race_id=str(source_id), date_iso=str(race_date),
+                    base_name=name, out_dir=out_dir)
+            fetched.append(race)
+            print(f"  Fetched {name}")
+        except Exception as e:
+            _notify_error(f"process-results: fetch failed for {name}: {e}")
+            print(f"  ERROR: {e}")
+            continue
+
+    if not fetched:
+        print("Nothing new to process.")
+        return
+
+    if dry_run:
+        print(f"\n[dry-run] Would remove {len(fetched)} race(s) from upcoming and rebuild.")
+        return
+
+    # Remove processed races from upcoming.yaml
+    fetched_names = {r["name"] for r in fetched}
+    data["upcoming"] = [r for r in upcoming if r["name"] not in fetched_names]
+    upcoming_path.write_text(_yaml.dump(data, allow_unicode=True, sort_keys=False,
+                                        default_flow_style=False))
+    print(f"\nRemoved {len(fetched)} race(s) from upcoming.yaml")
+
+    # Build + publish
+    try:
+        import types
+        site_args = types.SimpleNamespace(site=site_id)
+        print(f"\nBuilding {site_id}...")
+        cmd_build_site(site_args)
+        print(f"Publishing {site_id}...")
+        cmd_publish_site(site_args)
+        print("Done.")
+    except Exception as e:
+        _notify_error(f"process-results: build/publish failed: {e}")
+        raise
 
 
 def cmd_audit_sources(args):
@@ -1126,6 +1306,10 @@ def main():
     audit_src_p = sub.add_parser("audit-sources", help="Detect duplicate race sources")
     audit_src_p.add_argument("--club", default=CURRENT_CLUB)
 
+    pr_p = sub.add_parser("process-results", help="Check past upcoming races for results, fetch+build+publish")
+    pr_p.add_argument("site", help="Site ID e.g. pnw")
+    pr_p.add_argument("--dry-run", action="store_true", help="Check only, don't fetch or modify")
+
     # --- Dev ---
     serve_p = sub.add_parser("serve", help="Serve site/ locally for testing")
     serve_p.add_argument("--port", type=int, default=8080)
@@ -1175,6 +1359,8 @@ def main():
     elif args.command == "audit-names":
         from bepc.audit_names import cmd_audit_names
         cmd_audit_names(args)
+    elif args.command == "process-results":
+        cmd_process_results(args)
     elif args.command == "audit-sources":
         cmd_audit_sources(args)
     elif args.command == "serve":

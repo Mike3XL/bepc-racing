@@ -1,0 +1,43 @@
+name: Process Results (Race Day)
+
+on:
+  schedule:
+    # Saturday 11AM-5PM PDT (18:00-00:00 UTC) — every 10 min
+    - cron: '*/10 18-23 * * 6'
+    - cron: '0 0 * * 0'          # Sat 5PM PDT = Sun 00:00 UTC
+    # Monday BEPC 7PM-9PM PDT = Tue 02:00-04:00 UTC — every 5 min
+    - cron: '*/5 2,3 * * 2'
+  workflow_dispatch:              # allow manual trigger
+
+jobs:
+  process-results:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Process results
+        env:
+          WEBSCORER_API_ID: ${{ secrets.WEBSCORER_API_ID }}
+          GITHUB_ACTIONS: 'true'
+        run: python cli.py process-results pnw
+
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          commit_message: 'chore: auto-publish results'
