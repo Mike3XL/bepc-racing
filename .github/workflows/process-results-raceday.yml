@@ -2,8 +2,8 @@ name: Process Results (Race Day)
 
 on:
   schedule:
-    # Saturday 11AM-5PM PDT (18:00-00:00 UTC) — every 10 min
-    - cron: '*/10 18-23 * * 6'
+    # Saturday 11AM-5PM PDT (18:00-00:00 UTC) — every 15 min
+    - cron: '*/15 18-23 * * 6'
     - cron: '0 0 * * 0'          # Sat 5PM PDT = Sun 00:00 UTC
     # Monday BEPC 7PM-9PM PDT = Tue 02:00-04:00 UTC — every 5 min
     - cron: '*/5 2,3 * * 2'
