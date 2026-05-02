@@ -24,16 +24,58 @@ jobs:
         run: pip install pyyaml
 
       - name: Process results
+        id: process
         env:
           WEBSCORER_API_ID: ${{ secrets.WEBSCORER_API_ID }}
           GITHUB_ACTIONS: 'true'
-        run: python cli.py process-results pnw
+        run: |
+          output=$(python cli.py process-results pnw 2>&1)
+          echo "$output"
+          if echo "$output" | grep -q "Fetched "; then
+            echo "fetched=true" >> $GITHUB_OUTPUT
+            echo "summary<<EOF" >> $GITHUB_OUTPUT
+            echo "$output" | grep -E "Fetched |Removed |results available" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "fetched=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Deploy to GitHub Pages
-        if: success()
+        if: steps.process.outputs.fetched == 'true'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
           publish_branch: gh-pages
           commit_message: 'chore: auto-publish results'
+
+      - name: Email on success
+        if: steps.process.outputs.fetched == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: mike.liddell@gmail.com
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          to: mike.liddell@gmail.com
+          from: BEPC Racing <mike.liddell@gmail.com>
+          subject: 'BEPC: New race results published'
+          body: |
+            New results were fetched and published to https://pnw.paddlerace.org/
+
+            ${{ steps.process.outputs.summary }}
+
+      - name: Email on failure
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: mike.liddell@gmail.com
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          to: mike.liddell@gmail.com
+          from: BEPC Racing <mike.liddell@gmail.com>
+          subject: 'BEPC: process-results failed'
+          body: |
+            The process-results workflow failed.
+            Check: https://github.com/Mike3XL/bepc-racing/actions
