@@ -999,7 +999,14 @@ function rows(results, placeField) {
 const COURSES = {courses_json};
 {_RACE_JS}
 document.addEventListener('DOMContentLoaded', () => {{
-  const sortedCourses = [...COURSES].sort((a,b) => b.finish.length - a.finish.length);
+  const sortedCourses = [...COURSES].sort((a,b) => {{
+    // Sort by distance descending (longest course first); fall back to finisher count
+    const distRe = /(\d+(?:\.\d+)?)\s*(mi|mile|km)/i;
+    const da = a.label.match(distRe), db = b.label.match(distRe);
+    const toKm = (m) => m ? parseFloat(m[1]) * (/mi/i.test(m[2]) ? 1.609 : 1) : 0;
+    const diff = toKm(db) - toKm(da);
+    return diff !== 0 ? diff : b.finish.length - a.finish.length;
+  }});
   let tabNav = '<ul class="nav nav-tabs mb-0">';
   let tabContent = '<div class="tab-content">';
   sortedCourses.forEach((course, i) => {{
