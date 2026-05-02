@@ -2,7 +2,7 @@ name: Process Results (Background)
 
 on:
   schedule:
-    - cron: '0 */2 * * *'        # every 2 hours, all days
+    - cron: '0 2 * * *'          # daily at 7PM PDT (02:00 UTC)
   workflow_dispatch:
 
 jobs:
