@@ -48,19 +48,19 @@ RESULTS_COLUMNS = {
 # TROPHY_ORDER below for badge sort order.
 # ---------------------------------------------------------------------------
 TROPHIES = {
-    "hcap_1":       {"css": "hcap-gold",    "icon": "hcap_1",     "tooltip": "1st Place (Corrected time)"},
-    "hcap_2":       {"css": "hcap-silver",  "icon": "hcap_2",     "tooltip": "2nd Place (Corrected time)"},
-    "hcap_3":       {"css": "hcap-bronze",  "icon": "hcap_3",     "tooltip": "3rd Place (Corrected time)"},
+    "hcap_1":       {"css": "hcap-gold",    "icon": "hcap_1",     "tooltip": "1st Place (vs Projected)"},
+    "hcap_2":       {"css": "hcap-silver",  "icon": "hcap_2",     "tooltip": "2nd Place (vs Projected)"},
+    "hcap_3":       {"css": "hcap-bronze",  "icon": "hcap_3",     "tooltip": "3rd Place (vs Projected)"},
     "finish_1":     {"css": "plain-medal",  "icon": "finish_1",   "tooltip": "1st Place (Finish time)"},
     "finish_2":     {"css": "plain-medal",  "icon": "finish_2",   "tooltip": "2nd Place (Finish time)"},
     "finish_3":     {"css": "plain-medal",  "icon": "finish_3",   "tooltip": "3rd Place (Finish time)"},
-    "consistent_1": {"css": "hcap-consist", "icon": "consistent", "tooltip": "Consistent performer (±1% of expectation)"},
-    "consistent_2": {"css": "hcap-consist", "icon": "consistent", "tooltip": "Consistent performer (±1% of expectation)"},
-    "consistent_3": {"css": "hcap-consist", "icon": "consistent", "tooltip": "Consistent performer (±1% of expectation)"},
+    "consistent_1": {"css": "hcap-consist", "icon": "consistent", "tooltip": "Consistent racer"},
+    "consistent_2": {"css": "hcap-consist", "icon": "consistent", "tooltip": "Consistent racer"},
+    "consistent_3": {"css": "hcap-consist", "icon": "consistent", "tooltip": "Consistent racer"},
     "par":          {"css": "hcap-par",     "icon": "par",        "tooltip": "Par racer"},
-    "fresh":        {"css": "hcap-est",     "icon": "est",        "tooltip": "Establishing index — not yet eligible for indexed time awards"},
+    "fresh":        {"css": "hcap-est",     "icon": "est",        "tooltip": "Establishing index — not yet eligible for podium"},
     "outlier":      {"css": "hcap-outlier", "icon": "outlier",    "tooltip": "Outlier result — >10% off prediction, index unchanged"},
-    "auto_reset":   {"css": "hcap-reset",   "icon": "auto_reset", "tooltip": "Index auto-reset after 3 consecutive outliers — hard-reset to mean of those races"},
+    "auto_reset":   {"css": "hcap-reset",   "icon": "auto_reset", "tooltip": "Index auto-reset after 3 consecutive outliers"},
 }
 
 # Badge display sort order (streak_N always renders after these, sorted by N)
@@ -70,6 +70,15 @@ TROPHY_ORDER = [
     "consistent_1", "consistent_2", "consistent_3",
     "par", "auto_reset", "fresh", "outlier",
 ]
+
+
+# Streak trophy (streak_N) — N is variable (streak_3, streak_4, ...).
+# Not in TROPHIES because of the variable suffix. The Python and JS renderers
+# generate the SVG with the number substituted. Editable metadata:
+STREAK_TROPHY = {
+    "css": "hcap-streak",
+    "tooltip": "{n} consecutive races beating par",  # {n} is replaced at render time
+}
 
 
 # ---------------------------------------------------------------------------

@@ -3,7 +3,7 @@ import json
 import re as _re_module
 from pathlib import Path
 from bepc.craft import display_craft_ui
-from bepc.ui_text import RESULTS_COLUMNS, TROPHIES, TROPHY_ORDER, PLACE_MUTE_REASONS
+from bepc.ui_text import RESULTS_COLUMNS, TROPHIES, TROPHY_ORDER, PLACE_MUTE_REASONS, STREAK_TROPHY
 
 SITE_DIR = Path(__file__).parent.parent / "site"
 _LINK_ORDER = ['Info', 'Schedule', 'Register', 'Start List', 'Series']
@@ -32,12 +32,16 @@ def _BADGES_JS_LAZY() -> str:
     }
     render_js = json.dumps(render_map)
     order_js = json.dumps(TROPHY_ORDER)
+    streak_css = STREAK_TROPHY["css"]
+    streak_tooltip_template = STREAK_TROPHY["tooltip"]  # contains "{n}"
     return r"""
 function badges(trophies) {
   const I = """ + icons_js + r""";
   const M = """ + render_js + r""";  // trophy_key -> [icon_key, css, tooltip]
   const b = (key, cls, title) => `<span class="hcap-medal ${cls}" data-bs-toggle="tooltip" data-bs-title="${title}">${I[key]}</span>`;
-  const streak = (n) => `<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="${n} consecutive races beating par"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">${n}</text></svg></span>`;
+  const streakCss = """ + json.dumps(streak_css) + r""";
+  const streakTooltip = (n) => """ + json.dumps(streak_tooltip_template) + r""".replace('{n}', n);
+  const streak = (n) => `<span class="hcap-medal ${streakCss}" data-bs-toggle="tooltip" data-bs-title="${streakTooltip(n)}"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">${n}</text></svg></span>`;
   if (!trophies || !trophies.length) return '';
   const ORDER = """ + order_js + r""";
   const sorted = [...trophies].sort((a,b) => {
@@ -1530,7 +1534,9 @@ def _racer_trophy_badges(trophies: list) -> str:
     for t in trophies:
         if t.startswith('streak_'):
             n = t.split('_')[1]
-            parts.append(f'<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="{n} consecutive races beating par">{_streak_icon(n)}</span>')
+            tooltip = STREAK_TROPHY["tooltip"].replace("{n}", n)
+            css = STREAK_TROPHY["css"]
+            parts.append(f'<span class="hcap-medal {css}" data-bs-toggle="tooltip" data-bs-title="{tooltip}">{_streak_icon(n)}</span>')
         elif t in TROPHIES:
             meta = TROPHIES[t]
             parts.append(_icon_span(meta["icon"], meta["css"], meta["tooltip"]))
