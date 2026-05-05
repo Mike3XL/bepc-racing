@@ -1,0 +1,215 @@
+{
+  "key": "3244b43ddc72a59ee59caf6eede61901",
+  "contests": {
+    "1": "Long Course - 12 miles",
+    "2": "Short Course - 5.5 miles"
+  },
+  "splits": [
+    {
+      "ID": 1,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 12,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 11,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 1,
+      "TypeOfSport": 10
+    },
+    {
+      "ID": 13,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 2,
+      "TypeOfSport": 10
+    }
+  ],
+  "eventname": "2026 Lake Whatcom Classic",
+  "TimerLogo": "",
+  "TimerURL": "",
+  "EventOver": false,
+  "Time": 43885,
+  "server": "my-us-1.raceresult.com",
+  "BrandColorDark": "",
+  "ListCommentsEnabled": {},
+  "Tab": {
+    "Label": "",
+    "URLName": "results",
+    "Enabled": true,
+    "ShowInMenu": true,
+    "ShowInMenu2": "always",
+    "ActiveFrom": "2021-05-01T09:30:00-07:00",
+    "ActiveUntil": "2100-12-31T23:59:59-08:00",
+    "Type": "lists",
+    "Config": {
+      "Subtype": "boxes",
+      "StandardDetails": "",
+      "LeaderboardHideCount": false,
+      "ShowCommentIcon": true,
+      "InfoText": "",
+      "Lists": [
+        {
+          "Name": "Online|Participants - By Boat Class",
+          "Mode": "hidden",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "67B4E6"
+        },
+        {
+          "Name": "Online|Participants - By Name",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "F94620"
+        },
+        {
+          "Name": "Result Lists|Overall Results",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "3EF1B7"
+        },
+        {
+          "Name": "Result Lists|Boat Class Results",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "117197"
+        },
+        {
+          "Name": "Result Lists|Boat Class Results - Juniors",
+          "Mode": "hidden",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "F19518"
+        },
+        {
+          "Name": "Result Lists|Grand Barnacle Results",
+          "Mode": "",
+          "Contest": "0",
+          "ShowAs": "",
+          "Format": "VP",
+          "Live": 1,
+          "Sortable": 1,
+          "Leader": 0,
+          "Details": "",
+          "ID": "EFC2B3"
+        }
+      ]
+    }
+  },
+  "TabConfig": {
+    "InfoText": "",
+    "Subtype": "boxes",
+    "StandardDetails": "",
+    "Lists": [
+      {
+        "Name": "Online|Participants - By Boat Class",
+        "Mode": "hidden",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "67B4E6"
+      },
+      {
+        "Name": "Online|Participants - By Name",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "F94620"
+      },
+      {
+        "Name": "Result Lists|Overall Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "3EF1B7"
+      },
+      {
+        "Name": "Result Lists|Boat Class Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "117197"
+      },
+      {
+        "Name": "Result Lists|Boat Class Results - Juniors",
+        "Mode": "hidden",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "F19518"
+      },
+      {
+        "Name": "Result Lists|Grand Barnacle Results",
+        "Mode": "",
+        "Contest": "0",
+        "ShowAs": "",
+        "Format": "VP",
+        "Live": 1,
+        "Sortable": 1,
+        "Leader": 0,
+        "ID": "EFC2B3"
+      }
+    ],
+    "LeaderboardHideCount": false,
+    "ShowCommentIcon": true
+  }
+}
