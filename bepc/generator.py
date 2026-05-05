@@ -792,7 +792,9 @@ def generate_races(data: dict) -> None:
     race_slugs = data.get("race_slugs", {})
 
     # Shared JS for rendering race results (badges, tables, podium)
+    _MUTE_REASONS_JS = json.dumps(PLACE_MUTE_REASONS)
     _RACE_JS = """
+const MUTE_REASONS = """ + _MUTE_REASONS_JS + """;
 function slug(name) { return name.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, ''); }
 function racerLink(name) { const s = slug(name); return RACER_SLUGS.has(s) ? `<a href="../racer/${s}.html">${name}</a>` : name; }
 function display_craft_ui(cat) {
@@ -872,11 +874,11 @@ function rows(results, placeField) {
       } else {
         const ap = r.adjusted_place || 0;
         placeCellVal = 9999; // sort muted values to the bottom
-        let reason = 'Not ranked for handicap awards';
-        if (r.is_fresh_racer) reason = 'Fresh — still establishing index, not ranked for handicap awards';
-        else if (r.is_outlier) reason = 'Outlier — result suppressed, not ranked for handicap awards';
-        else if ((r.trophies||[]).includes('auto_reset')) reason = 'Auto-reset race — corrective, not ranked for handicap awards';
-        else if (ap === 0) reason = 'Race not ranked for handicap awards (small group / ineligible course)';
+        let reason;
+        if (r.is_fresh_racer) reason = MUTE_REASONS.fresh;
+        else if (r.is_outlier) reason = MUTE_REASONS.outlier;
+        else if ((r.trophies||[]).includes('auto_reset')) reason = MUTE_REASONS.auto_reset;
+        else reason = MUTE_REASONS.ineligible;
         placeCellHtml = ap > 0
           ? `<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="${reason}">(${ap})</span>`
           : `<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="${reason}">—</span>`;

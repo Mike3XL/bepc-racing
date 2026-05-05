@@ -58,7 +58,7 @@ TROPHIES = {
     "consistent_2": {"css": "hcap-consist", "icon": "consistent", "tooltip": "Consistent racer"},
     "consistent_3": {"css": "hcap-consist", "icon": "consistent", "tooltip": "Consistent racer"},
     "par":          {"css": "hcap-par",     "icon": "par",        "tooltip": "Par racer"},
-    "fresh":        {"css": "hcap-est",     "icon": "est",        "tooltip": "Establishing index — not yet eligible for podium"},
+    "fresh":        {"css": "hcap-est",     "icon": "est",        "tooltip": "Establishing index — not included in ranking"},
     "outlier":      {"css": "hcap-outlier", "icon": "outlier",    "tooltip": "Outlier result — >10% off prediction, index unchanged"},
     "auto_reset":   {"css": "hcap-reset",   "icon": "auto_reset", "tooltip": "Index auto-reset after 3 consecutive outliers"},
 }
@@ -86,9 +86,8 @@ STREAK_TROPHY = {
 # Keyed by the reason code (see _fmt_indexed_place).
 # ---------------------------------------------------------------------------
 PLACE_MUTE_REASONS = {
-    "fresh":      "Fresh — still establishing index, not ranked for handicap awards",
-    "outlier":    "Outlier — result suppressed, not ranked for handicap awards",
-    "auto_reset": "Auto-reset race — corrective, not ranked for handicap awards",
-    "ineligible": "Race not ranked for handicap awards (small group / ineligible course)",
-    "default":    "Not ranked for handicap awards",
+    "fresh":      "Establishing index - excluded from ranking",
+    "outlier":    "Outlier result - excluded from ranking",
+    "auto_reset": "Auto-reset applied - excluded from ranking",
+    "ineligible": "Race has insufficient number of racers - no ranking or index updates",
 }
