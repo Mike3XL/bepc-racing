@@ -3,6 +3,7 @@ import json
 import re as _re_module
 from pathlib import Path
 from bepc.craft import display_craft_ui
+from bepc.ui_text import RESULTS_COLUMNS, TROPHIES, TROPHY_ORDER, PLACE_MUTE_REASONS
 
 SITE_DIR = Path(__file__).parent.parent / "site"
 _LINK_ORDER = ['Info', 'Schedule', 'Register', 'Start List', 'Series']
@@ -18,35 +19,27 @@ _CHARTJS = '<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.
 _RACER_SEARCH_MAP = "[]"  # populated by _build_search_map
 _SLUG_CLUBS: dict[str, list] = {}  # slug -> [club_ids], populated by _build_search_map
 
-# Shared JS for badge rendering — used in both per-race pages and racer pages
-_BADGES_JS = r"""
+# Shared JS for badge rendering — used in both per-race pages and racer pages.
+# Built from TROPHIES + TROPHY_ORDER + _ICONS so Python and JS stay in sync.
+def _BADGES_JS_LAZY() -> str:
+    """Serialize _ICONS + TROPHIES + TROPHY_ORDER into the runtime JS badges() function."""
+    icons_js = json.dumps({k: v for k, v in _ICONS.items()})
+    # render map: {trophy_key: [icon_key, css, tooltip]}
+    # consistent_1/2/3 all use icon "consistent" and css "hcap-consist" — but their tooltip is shared.
+    render_map = {
+        key: [meta["icon"], meta["css"], meta["tooltip"]]
+        for key, meta in TROPHIES.items()
+    }
+    render_js = json.dumps(render_map)
+    order_js = json.dumps(TROPHY_ORDER)
+    return r"""
 function badges(trophies) {
-  const I = {
-    hcap_1:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>',
-    hcap_2:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text></svg>',
-    hcap_3:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>',
-    finish_1:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>',
-    finish_2:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#333">2</text></svg>',
-    finish_3:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>',
-    par:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text></svg>',
-    consistent:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    est:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg>',
-    outlier:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg>',
-    auto_reset:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><g transform="translate(0 0) scale(1.5)" fill="#F57C00"><path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"/></g></svg>',
-  };
+  const I = """ + icons_js + r""";
+  const M = """ + render_js + r""";  // trophy_key -> [icon_key, css, tooltip]
   const b = (key, cls, title) => `<span class="hcap-medal ${cls}" data-bs-toggle="tooltip" data-bs-title="${title}">${I[key]}</span>`;
   const streak = (n) => `<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="${n} consecutive races beating par"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">${n}</text></svg></span>`;
-  const render = {
-    finish_1:()=>b('finish_1','plain-medal','1st Place (Finish time)'), finish_2:()=>b('finish_2','plain-medal','2nd Place (Finish time)'), finish_3:()=>b('finish_3','plain-medal','3rd Place (Finish time)'),
-    hcap_1:()=>b('hcap_1','hcap-gold','1st Place (Corrected time)'), hcap_2:()=>b('hcap_2','hcap-silver','2nd Place (Corrected time)'), hcap_3:()=>b('hcap_3','hcap-bronze','3rd Place (Corrected time)'),
-    consistent_1:()=>b('consistent','hcap-consist','Consistent performer'), consistent_2:()=>b('consistent','hcap-consist','Consistent performer'), consistent_3:()=>b('consistent','hcap-consist','Consistent performer'),
-    par:()=>b('par','hcap-par','Par racer'),
-    fresh:()=>b('est','hcap-est','Establishing index — not yet eligible for indexed time awards'),
-    outlier:()=>b('outlier','hcap-outlier','Outlier result — >10% off prediction, index unchanged'),
-    auto_reset:()=>b('auto_reset','hcap-reset','Index auto-reset after 3 consecutive outliers — hard-reset to mean of those races'),
-  };
   if (!trophies || !trophies.length) return '';
-  const ORDER = ['hcap_1','hcap_2','hcap_3','finish_1','finish_2','finish_3','consistent_1','consistent_2','consistent_3','par','auto_reset','fresh','outlier'];
+  const ORDER = """ + order_js + r""";
   const sorted = [...trophies].sort((a,b) => {
     const ai = a.startsWith('streak_') ? ORDER.length + parseInt(a.split('_')[1]) : ORDER.indexOf(a);
     const bi = b.startsWith('streak_') ? ORDER.length + parseInt(b.split('_')[1]) : ORDER.indexOf(b);
@@ -54,7 +47,9 @@ function badges(trophies) {
   });
   return `<span style="display:flex;justify-content:center;gap:2px;flex-wrap:wrap">${sorted.map(t => {
     if (t.startsWith('streak_')) return streak(parseInt(t.split('_')[1]));
-    return render[t] ? render[t]() : '';
+    const spec = M[t];
+    if (!spec) return '';
+    return b(spec[0], spec[1], spec[2]);
   }).join('')}</span>`;
 }
 """
@@ -817,7 +812,7 @@ function fmtTime(s) {
   return h ? h+':'+String(m%60).padStart(2,'0')+':'+String(sec).padStart(2,'0')
            : m+':'+String(sec).padStart(2,'0');
 }
-""" + _BADGES_JS + """
+""" + _BADGES_JS_LAZY() + """
 function podiumForCourse(course) {
   const pr = [null, null, null];
   course.handicap.forEach(r => {
@@ -1504,6 +1499,7 @@ def _fmt_indexed_place(r: dict) -> str:
     (i.e. established, non-outlier, non-auto-reset). For fresh / outlier /
     auto-reset / skipped races the handicap comparison is not valid, so we show
     the raw adjusted_place in a muted style with a tooltip explaining why.
+    Reason text comes from bepc.ui_text.PLACE_MUTE_REASONS.
     """
     eap = r.get("eligible_adjusted_place", 0) or 0
     ap = r.get("adjusted_place", 0) or 0
@@ -1511,45 +1507,33 @@ def _fmt_indexed_place(r: dict) -> str:
         return str(eap)
     # Not eligible — show raw adjusted place muted with reason tooltip
     if r.get("is_fresh_racer"):
-        reason = "Fresh — still establishing index, not ranked for handicap awards"
+        reason = PLACE_MUTE_REASONS["fresh"]
     elif r.get("is_outlier"):
-        reason = "Outlier — result suppressed, not ranked for handicap awards"
+        reason = PLACE_MUTE_REASONS["outlier"]
     elif "auto_reset" in (r.get("trophies") or []):
-        reason = "Auto-reset race — corrective, not ranked for handicap awards"
+        reason = PLACE_MUTE_REASONS["auto_reset"]
     elif ap == 0:
         return ""
     else:
-        reason = "Race not ranked for handicap awards (small group / ineligible course)"
+        reason = PLACE_MUTE_REASONS["ineligible"]
     if ap == 0:
         return f'<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="{reason}">—</span>'
     return f'<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="{reason}">({ap})</span>'
 
 
 def _racer_trophy_badges(trophies: list) -> str:
-    """Render trophy badges for racer page race table (Python-side, not JS)."""
-    icon_map = {
-        "finish_1":    ("plain-medal",  "1st Place (Finish time)",        "finish_1"),
-        "finish_2":    ("plain-medal",  "2nd Place (Finish time)",        "finish_2"),
-        "finish_3":    ("plain-medal",  "3rd Place (Finish time)",        "finish_3"),
-        "hcap_1":      ("hcap-gold",    "1st Place (Corrected time)",    "hcap_1"),
-        "hcap_2":      ("hcap-silver",  "2nd Place (Corrected time)",       "hcap_2"),
-        "hcap_3":      ("hcap-bronze",  "3rd Place (Corrected time)",       "hcap_3"),
-        "consistent_1":("hcap-consist", "Consistent performer (±1% of expectation)","consistent"),
-        "consistent_2":("hcap-consist", "Consistent performer (±1% of expectation)","consistent"),
-        "consistent_3":("hcap-consist", "Consistent performer (±1% of expectation)","consistent"),
-        "par":         ("hcap-par",     "Par racer",          "par"),
-        "fresh":       ("hcap-est",     "Establishing index — not yet eligible for indexed time awards", "est"),
-        "outlier":     ("hcap-outlier", "Outlier result — >10% off prediction, index unchanged", "outlier"),
-        "auto_reset":  ("hcap-reset",   "Index auto-reset after 3 consecutive outliers — hard-reset to mean of those races", "auto_reset"),
-    }
+    """Render trophy badges for racer page race table (Python-side, not JS).
+
+    Reads trophy metadata from bepc.ui_text.TROPHIES.
+    """
     parts = []
     for t in trophies:
         if t.startswith('streak_'):
             n = t.split('_')[1]
             parts.append(f'<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="{n} consecutive races beating par">{_streak_icon(n)}</span>')
-        elif t in icon_map:
-            cls, title, key = icon_map[t]
-            parts.append(_icon_span(key, cls, title))
+        elif t in TROPHIES:
+            meta = TROPHIES[t]
+            parts.append(_icon_span(meta["icon"], meta["css"], meta["tooltip"]))
     return "".join(parts)
 
 
