@@ -5,6 +5,69 @@ Each entry records the problem, decision, rationale, and rejected alternatives.
 
 ---
 
+## Handicap Establishment and Outlier Auto-Reset
+**Date:** 2026-05-05
+**Context:** `bepc/handicap.py`, `bepc/processor.py`, `bepc/models.py`, `cli.py`, `data/clubs.yaml`
+
+**Problem:** Racers could become permanently locked out of handicap competition. Two failure modes:
+
+1. **Establishment too weak.** `num_races_to_establish=1` meant a single fresh-update (50% blend) had to converge on a racer's true pace. For racers whose true pace was more than ~10% off par, a single race was insufficient — the resulting handicap would be more than 10% off true pace, so every subsequent race triggered the outlier rule and the handicap never updated.
+2. **Outlier ratchet.** The outlier rule (atvp > 1.10 → suppress update) is asymmetric — faster races always update, slower races only update within 10%. Once a racer's stored handicap diverged upward from their true pace by more than 10%, every race was flagged outlier and suppressed forever. A racer whose pace genuinely changed (injury, age, long break) had no escape.
+
+Analysis of 425 racers with ≥5 ranked races found 10 racers with 100% outlier rate (fully locked, e.g. John Hansen 75/75, Shane Baker 37/37), 26 currently locked (3+ consecutive outliers at end of history), and 54 who would have triggered some form of reset during their history.
+
+**Decision:** Two coordinated changes:
+
+1. **Establishment via 3 ranked races** (was 1). Establishment now counts only races where a handicap decision was made (not small-group / ineligible-course / fresh races where `time_versus_par` wasn't computed). During the 3-race establishment window:
+   - Race 1: `handicap = tvp` (100% — only data we have; eliminates seed bias from the meaningless 1.0 default)
+   - Race 2: `handicap = 0.2 * prev + 0.8 * tvp` (80% — weight recent higher)
+   - Race 3: `handicap = 0.4 * prev + 0.6 * tvp` (60% — weight recent higher)
+   - Effective final weights on (tvp₁, tvp₂, tvp₃) = (0.08, 0.32, 0.60). Chosen to reduce transient bias when racers improve 5-10% per race during establishment (empirically ~30% of racers showed >5% high bias under equal weighting).
+   - No outlier check applies during establishment.
+   - No handicap points awarded during establishment.
+
+2. **Auto-reset after 3 consecutive outliers** (established racers). When an established racer is flagged outlier 3 races in a row, set `handicap_post = mean(tvp)` of those 3 races (hard reset to observed pace), clear the `is_outlier` flag, award an `auto_reset` trophy, reset the streak counter. No handicap points on the reset race (it's corrective, not a valid comparison).
+
+**State persistence:** `outlier_streak` and `outlier_tvp_window` are tracked in `RunningRecord` and carried across seasons via carryover (John Hansen's streak spans 7 seasons).
+
+**Config:** Per-series `num_races_to_establish` in `data/clubs.yaml`, default 3 for all series.
+
+**Impact:** Re-processing the full historical data produced:
+- Always-outlier racers: 10 → **0**
+- Currently-locked racers: 26 → **0**
+- Auto-resets fired across history: **94 resets across 76 racers**
+
+John Hansen went from 75/75 outlier (0 handicap points ever) to 8/79 outlier, handicap matching his true pace (~1.2), and winning handicap podium / consistent / streak trophies.
+
+**Key assumption:** The mean of 3 consecutive outlier `tvp` values is a good estimate of a racer's true pace. Valid when the pace change is persistent (injury, age, return after break, long-term slowdown). A racer having three one-off bad days would also trigger, but then drift back via normal updates within a few subsequent races — self-correcting.
+
+**Rejected alternatives:**
+- **Flat 50% update during all 3 fresh races.** Simpler but converges more slowly and less accurately than the 100/50/30 schedule. The 100% first-race lock is the strongest use of the data we have.
+- **Gradual drift when outlier (e.g. 5% update even when atvp > 1.10).** Avoids freeze but lets single bad days still affect the handicap. The hard-freeze-then-reset approach is more deterministic and easier to explain to racers.
+- **Escalating tolerance (1.10 → 1.15 → 1.20).** More parameters, harder to reason about.
+- **Manual reset flag per racer.** Requires ongoing ops; auto-reset handles the common case without intervention. (May add manual override later for edge cases.)
+- **Reset-as-fresh (re-enter 3-race fresh mode on reset).** More aggressive but the hard reset to mean tvp already gets the handicap very close to true pace in one step, so fresh mode isn't needed.
+
+---
+
+## UI: Indexed Place Column
+**Date:** 2026-05-05
+**Context:** `bepc/generator.py` (`_fmt_indexed_place`, race-results JS `rows`)
+
+**Problem:** The racer page and race results page showed `adjusted_place` (rank among all racers by corrected time) in the "Place (Indexed)" column while awarding handicap trophies based on `eligible_adjusted_place` (rank among ranked racers, excluding fresh/outlier/auto-reset). This caused visual contradictions — e.g. John Hansen showing "3" (3rd by corrected time) with a gold trophy (1st eligible), because Soren Ogle and Girts Beitlers were fresh racers and didn't compete for handicap awards.
+
+**Decision:** The column shows:
+- `eligible_adjusted_place` when > 0 (the racer was competing for handicap awards).
+- Raw `adjusted_place` muted and parenthesized when 0 (fresh / outlier / auto-reset / ineligible race). Tooltip explains why the racer isn't ranked.
+
+The handicap system's purpose is to rank eligible racers. Fresh and outlier racers are seeded/excluded from competition by design, so `eligible_adjusted_place` is the meaningful position for the handicap column.
+
+**Rejected alternatives:**
+- **Show both places ("3 (1 eligible)").** Cluttered.
+- **Change the trophy to use `adjusted_place`.** Would award handicap podiums to fresh racers whose handicap is still being established — defeats the purpose of the 3-race establishment rule.
+
+---
+
 ## Duplicate Race Source Detection
 **Date:** 2026-04-05  
 **Context:** `cli.py audit-sources`, `bepc/loader.py`

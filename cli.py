@@ -76,7 +76,7 @@ def build_data_json() -> dict:
             continue
         # Per-series handicap config (falls back to defaults)
         hcap_cfg = (clubs_cfg.get(series_id, {}) or {}).get("handicap", {})
-        num_races_to_establish = hcap_cfg.get("num_races_to_establish", 1)
+        num_races_to_establish = hcap_cfg.get("num_races_to_establish", 3)
         do_carry_over = hcap_cfg.get("carry_over", False)
 
         seasons = {}
@@ -125,13 +125,22 @@ def build_data_json() -> dict:
                 for race in races:
                     for r in race.racer_results:
                         key = (r.canonical_name, r.craft_category)
-                        carry_over[key] = (r.handicap_post, True)
+                        carry_over[key] = {
+                            "handicap": r.handicap_post,
+                            "carried_over": True,
+                            "outlier_streak": r.outlier_streak_post,
+                            "outlier_tvp_window": list(r.outlier_tvp_window_post),
+                            "num_ranked_races": (r.num_ranked_races_pre
+                                                 + (0 if r.handicap_note.startswith(("Small group","Course not eligible"))
+                                                    else 1)),
+                        }
                 if carry_over:
-                    hcap_values = sorted(v[0] for v in carry_over.values())
+                    hcap_values = sorted(v["handicap"] for v in carry_over.values())
                     p33_idx = len(hcap_values) // 3
                     p33_val = hcap_values[p33_idx]
                     if p33_val > 0 and p33_val != 1.0:
-                        carry_over = {k: (v[0] / p33_val, v[1]) for k, v in carry_over.items()}
+                        for k in carry_over:
+                            carry_over[k]["handicap"] = carry_over[k]["handicap"] / p33_val
 
         if seasons:
             current_year = str(_date.today().year)

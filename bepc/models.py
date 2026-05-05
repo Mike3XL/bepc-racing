@@ -49,6 +49,15 @@ class RacerResult:
     craft_specific: str = ""  # original craft string from source data
     trophies: list = field(default_factory=list)  # e.g. ["finish_1", "hcap_2", "par"]
 
+    # Ranked-race tracking for establishment and outlier-reset.
+    # "Ranked" = race where a handicap decision was made (not small-group / ineligible).
+    num_ranked_races_pre: int = 0  # count of prior ranked races before this race
+    outlier_streak_pre: int = 0  # consecutive outlier streak entering this race
+    outlier_tvp_window_pre: list = field(default_factory=list)  # tvps of those outliers
+    # Post-race state (set by compute_new_handicap) — used to seed running record
+    outlier_streak_post: int = 0
+    outlier_tvp_window_post: list = field(default_factory=list)
+
 
 @dataclass
 class RaceResult:
@@ -59,6 +68,7 @@ class RaceResult:
 @dataclass
 class RunningRecord:
     num_races: int = 0
+    num_ranked_races: int = 0  # ranked races only (handicap decision made)
     handicap: float = 1.0
     carried_over: bool = False  # True if seeded from previous season carry-over
     season_points: int = 0
@@ -67,4 +77,6 @@ class RunningRecord:
     handicap_points_sequence: list = field(default_factory=list)
     handicap_std_dev: float = 0.0
     last_atvp: float = 0.0
-    streak: int = 0
+    streak: int = 0  # good-performance streak (consecutive races beating par)
+    outlier_streak: int = 0  # consecutive outlier streak — persists across seasons
+    outlier_tvp_window: list = field(default_factory=list)  # tvp values of the outlier streak

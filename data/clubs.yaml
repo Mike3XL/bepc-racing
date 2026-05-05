@@ -31,7 +31,7 @@ clubs:
       - ocean-flight
       - jericho
     handicap:
-      num_races_to_establish: 2
+      num_races_to_establish: 3
       update_faster: 0.30
       update_slower: 0.15
       carry_over: true
@@ -50,7 +50,7 @@ clubs:
       - bepc
       - salmon-bay-paddle
     handicap:
-      num_races_to_establish: 2
+      num_races_to_establish: 3
       update_faster: 0.30
       update_slower: 0.15
       carry_over: true
@@ -66,7 +66,7 @@ clubs:
     organizers:
       - sckc
     handicap:
-      num_races_to_establish: 2
+      num_races_to_establish: 3
       update_faster: 0.30
       update_slower: 0.15
       carry_over: true
@@ -85,7 +85,7 @@ clubs:
       - nwmc
       - whatcom-events
     handicap:
-      num_races_to_establish: 2
+      num_races_to_establish: 3
       update_faster: 0.30
       update_slower: 0.15
       carry_over: true
@@ -139,7 +139,7 @@ clubs:
       race_url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
 
     handicap:
-      num_races_to_establish: 1          # ineligible for first race; eligible from race 2
+      num_races_to_establish: 3          # ineligible for first 3 races; eligible from race 4
       update_faster: 0.30             # weight toward new result when faster than par
       update_slower: 0.15             # weight toward new result when slower than par
       carry_over: true                # carry handicap across seasons
@@ -195,7 +195,7 @@ clubs:
       exclude_patterns: []
 
     handicap:
-      num_races_to_establish: 1
+      num_races_to_establish: 3
       update_faster: 0.30
       update_slower: 0.15
       carry_over: true
@@ -346,7 +346,7 @@ clubs:
         - 109926   # 2017 PNW Outrigger Challenge — relay format
 
     handicap:
-      num_races_to_establish: 1          # ineligible for first race; eligible from race 2
+      num_races_to_establish: 3          # ineligible for first 3 races; eligible from race 4
       update_faster: 0.30
       update_slower: 0.15
       carry_over: true
@@ -401,7 +401,7 @@ clubs:
       exclude_patterns: []
 
     handicap:
-      num_races_to_establish: 1
+      num_races_to_establish: 3
       update_faster: 0.30
       update_slower: 0.15
       carry_over: true
@@ -460,7 +460,7 @@ clubs:
       exclude_patterns: []
 
     handicap:
-      num_races_to_establish: 1
+      num_races_to_establish: 3
       update_faster: 0.30
       update_slower: 0.15
       carry_over: false
@@ -507,7 +507,7 @@ clubs:
       exclude_patterns: []
 
     handicap:
-      num_races_to_establish: 1
+      num_races_to_establish: 3
       update_faster: 0.30
       update_slower: 0.15
       carry_over: false

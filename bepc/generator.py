@@ -32,6 +32,7 @@ function badges(trophies) {
     consistent:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     est:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg>',
     outlier:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg>',
+    auto_reset:'<svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><g transform="translate(0 0) scale(1.5)" fill="#F57C00"><path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"/></g></svg>',
   };
   const b = (key, cls, title) => `<span class="hcap-medal ${cls}" data-bs-toggle="tooltip" data-bs-title="${title}">${I[key]}</span>`;
   const streak = (n) => `<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="${n} consecutive races beating par"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">${n}</text></svg></span>`;
@@ -42,9 +43,10 @@ function badges(trophies) {
     par:()=>b('par','hcap-par','Par racer'),
     fresh:()=>b('est','hcap-est','Establishing index — not yet eligible for indexed time awards'),
     outlier:()=>b('outlier','hcap-outlier','Outlier result — >10% off prediction, index unchanged'),
+    auto_reset:()=>b('auto_reset','hcap-reset','Index auto-reset after 3 consecutive outliers — hard-reset to mean of those races'),
   };
   if (!trophies || !trophies.length) return '';
-  const ORDER = ['hcap_1','hcap_2','hcap_3','finish_1','finish_2','finish_3','consistent_1','consistent_2','consistent_3','par','fresh','outlier'];
+  const ORDER = ['hcap_1','hcap_2','hcap_3','finish_1','finish_2','finish_3','consistent_1','consistent_2','consistent_3','par','auto_reset','fresh','outlier'];
   const sorted = [...trophies].sort((a,b) => {
     const ai = a.startsWith('streak_') ? ORDER.length + parseInt(a.split('_')[1]) : ORDER.indexOf(a);
     const bi = b.startsWith('streak_') ? ORDER.length + parseInt(b.split('_')[1]) : ORDER.indexOf(b);
@@ -71,6 +73,7 @@ _ICONS = {
     "consistent": _svg('<line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'),
     "est":      _svg('<rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text>'),
     "outlier":  _svg('<text x="12" y="18" text-anchor="middle" font-size="16">🤷</text>'),
+    "auto_reset": _svg('<g transform="translate(0 0) scale(1.5)" fill="#F57C00"><path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"/></g>'),
 }
 
 def _streak_icon(n):
@@ -160,6 +163,9 @@ def _head(title: str, extra_css: str = "") -> str:
   .hcap-streak {{ background:#FFF3E0; border:1px solid #FF9800; }}
   .hcap-est    {{ background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }}
   .hcap-outlier{{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }}
+  .hcap-reset  {{ background:#FFE0B2; border:1px solid #F57C00; }}
+  /* Muted place text for non-eligible (fresh/outlier/skipped) rows */
+  .place-muted {{ color:#999; font-style:italic; }}
 </style>
 </head>
 <body>
@@ -855,6 +861,30 @@ function tableHtml(id_suffix) {
 function rows(results, placeField) {
   const isHcap = placeField === 'adjusted_place';
   return results.map(r => {
+    // For handicap view: prefer eligible_adjusted_place (position among ranked racers).
+    // When it's 0 (fresh/outlier/auto-reset/ineligible), fall back to adjusted_place muted.
+    let placeCellVal = r[placeField];
+    let placeCellHtml;
+    if (isHcap) {
+      const eap = r.eligible_adjusted_place || 0;
+      if (eap > 0) {
+        placeCellVal = eap;
+        placeCellHtml = String(eap);
+      } else {
+        const ap = r.adjusted_place || 0;
+        placeCellVal = 9999; // sort muted values to the bottom
+        let reason = 'Not ranked for handicap awards';
+        if (r.is_fresh_racer) reason = 'Fresh — still establishing index, not ranked for handicap awards';
+        else if (r.is_outlier) reason = 'Outlier — result suppressed, not ranked for handicap awards';
+        else if ((r.trophies||[]).includes('auto_reset')) reason = 'Auto-reset race — corrective, not ranked for handicap awards';
+        else if (ap === 0) reason = 'Race not ranked for handicap awards (small group / ineligible course)';
+        placeCellHtml = ap > 0
+          ? `<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="${reason}">(${ap})</span>`
+          : `<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="${reason}">—</span>`;
+      }
+    } else {
+      placeCellHtml = String(r[placeField]);
+    }
     const pct = r.adjusted_time_versus_par != null && !r.is_fresh_racer
       ? ((r.adjusted_time_versus_par - 1) * 100) : null;
     const noOutlierDetect = !r.is_fresh_racer && pct != null && pct > 10 && !r.is_outlier;
@@ -882,7 +912,7 @@ function rows(results, placeField) {
       ? '<span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:2px 4px;font-weight:bold;color:#1565C0">' + fmtTime(parSec) + '</span>'
       : parDisplay;
     return `<tr data-fresh="${isFresh}" data-regular="${isRegular}"><td>${badges(r.trophies)}</td>
-    <td data-order="${r[placeField]}">${r[placeField]}</td><td>${racerLink(r.canonical_name)}</td>
+    <td data-order="${placeCellVal}">${placeCellHtml}</td><td>${racerLink(r.canonical_name)}</td>
     ${craft_cell(r.craft_category, r.craft_specific)}
     <td data-order="${r.time_seconds}">${isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}</td>
     <td data-order="${predSort}">${predCell}</td>
@@ -1467,6 +1497,34 @@ def _fmt_time(seconds: float) -> str:
     return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
 
 
+def _fmt_indexed_place(r: dict) -> str:
+    """Render the 'Place (Indexed)' cell for a racer-row.
+
+    Shows eligible_adjusted_place when the racer was competing for handicap awards
+    (i.e. established, non-outlier, non-auto-reset). For fresh / outlier /
+    auto-reset / skipped races the handicap comparison is not valid, so we show
+    the raw adjusted_place in a muted style with a tooltip explaining why.
+    """
+    eap = r.get("eligible_adjusted_place", 0) or 0
+    ap = r.get("adjusted_place", 0) or 0
+    if eap > 0:
+        return str(eap)
+    # Not eligible — show raw adjusted place muted with reason tooltip
+    if r.get("is_fresh_racer"):
+        reason = "Fresh — still establishing index, not ranked for handicap awards"
+    elif r.get("is_outlier"):
+        reason = "Outlier — result suppressed, not ranked for handicap awards"
+    elif "auto_reset" in (r.get("trophies") or []):
+        reason = "Auto-reset race — corrective, not ranked for handicap awards"
+    elif ap == 0:
+        return ""
+    else:
+        reason = "Race not ranked for handicap awards (small group / ineligible course)"
+    if ap == 0:
+        return f'<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="{reason}">—</span>'
+    return f'<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="{reason}">({ap})</span>'
+
+
 def _racer_trophy_badges(trophies: list) -> str:
     """Render trophy badges for racer page race table (Python-side, not JS)."""
     icon_map = {
@@ -1482,6 +1540,7 @@ def _racer_trophy_badges(trophies: list) -> str:
         "par":         ("hcap-par",     "Par racer",          "par"),
         "fresh":       ("hcap-est",     "Establishing index — not yet eligible for indexed time awards", "est"),
         "outlier":     ("hcap-outlier", "Outlier result — >10% off prediction, index unchanged", "outlier"),
+        "auto_reset":  ("hcap-reset",   "Index auto-reset after 3 consecutive outliers — hard-reset to mean of those races", "auto_reset"),
     }
     parts = []
     for t in trophies:
@@ -1660,7 +1719,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
                     rows = "".join(
                         f'<tr><td><a href="../results/{data["race_slugs"].get(data["current_club"], {}).get(r["race_id"], str(r["race_id"]))}.html">{r["name"].split(" — ")[0] + (" — " + r["name"].split(" — ")[1] if " — " in r["name"] else "")}</a></td>'
                         f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
-                        f'<td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td>'
+                        f'<td>{r["original_place"]}</td><td>{_fmt_indexed_place(r)}</td>'
                         f'<td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td>'
                         f'<td>{r["handicap"]:.3f}</td><td>{r["handicap_post"]:.3f}</td>'
                         f'<td>{r["race_points"]}</td><td>{r["handicap_points"]}</td></tr>'
@@ -1684,7 +1743,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
       f'<tr><td style="white-space:nowrap">{_racer_trophy_badges(r.get("trophies",[]))}</td>'
       f'<td><a href="../results/{data["race_slugs"].get(data["current_club"], {}).get(r["race_id"], str(r["race_id"]))}.html">{r["name"].split(" — ")[0] + (" — " + r["name"].split(" — ")[1] if " — " in r["name"] else "")}</a></td>'
       f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
-      f'<td>{r["original_place"]}</td><td>{r["adjusted_place"]}</td>'
+      f'<td>{r["original_place"]}</td><td>{_fmt_indexed_place(r)}</td>'
       f'<td>{_fmt_time(r["time_seconds"])}</td>'
       + (f'<td>{_fmt_time(r["time_seconds"] / r["adjusted_time_versus_par"])}</td>' if r.get("adjusted_time_versus_par") else '<td></td>')
       + (f'<td style="text-align:right;font-size:0.85em;color:{"#2E7D32" if (r["adjusted_time_versus_par"]-1)*100<=0 else "#666"};font-weight:{"bold" if (r["adjusted_time_versus_par"]-1)*100<=0 else "normal"}">{(r["adjusted_time_versus_par"]-1)*100:+.1f}%</td>' if r.get("adjusted_time_versus_par") else '<td></td>') +
@@ -1977,10 +2036,10 @@ dl dt:first-child { margin-top: 0; }
     <dd>Finish time shows who was fastest. Indexed time shows who performed best relative to their own history — rewarding improvement rather than raw speed.</dd>
 
     <dt>What does "establishing index" mean?</dt>
-    <dd>Your first two races in a series set your initial index. Only established racers are considered for the podium. </dd>
+    <dd>Your first three ranked races in a series set your initial index. Only established racers are considered for indexed-time awards. Races in small groups or on ineligible courses don't count toward establishment — only ranked races do.</dd>
 
     <dt>What is an outlier?</dt>
-    <dd>A result more than 10% outside projection. The index doesn't change — protecting against wrong turns, equipment failures, or other anomalies.</dd>
+    <dd>A result more than 10% outside projection. The index doesn't change — protecting against wrong turns, equipment failures, or other anomalies. If a racer is flagged outlier three races in a row, the system auto-resets their index to the mean of those three races and they resume normal racing.</dd>
 
     <dt>Can people game the system?</dt>
     <dd>Yes. Variable effort in different races will cause a fluctuating index and potentially a high number of podiums. We protect against 
@@ -1991,13 +2050,16 @@ dl dt:first-child { margin-top: 0; }
       <table class="table table-bordered table-sm mt-2">
         <thead><tr><th>Situation</th><th>Update</th></tr></thead>
         <tbody>
-          <tr><td>Race 1</td><td>Index set from indexed time vs par</td></tr>
-          <tr><td>Race 2</td><td>50% blend of old index and new result</td></tr>
+          <tr><td>Establishment race 1</td><td>Index = result vs par (100%)</td></tr>
+          <tr><td>Establishment race 2</td><td>80% shift toward new result</td></tr>
+          <tr><td>Establishment race 3</td><td>60% shift toward new result (racer is now established)</td></tr>
           <tr><td>Faster than projected</td><td>30% shift toward new result</td></tr>
           <tr><td>Slower than projected</td><td>15% shift toward new result</td></tr>
-          <tr><td>Outlier (&gt;10% off)</td><td>No change</td></tr>
+          <tr><td>Outlier (&gt;10% off)</td><td>No change (but see auto-reset below)</td></tr>
+          <tr><td>3 outliers in a row</td><td>Auto-reset to mean of those three races</td></tr>
         </tbody>
       </table>
+      During establishment the weighting is biased toward more recent races. Final weights on the three establishment-race results are 8% / 32% / 60%, reflecting the common pattern that racers improve through their first few races.
     </dd>
 
     <dt>How is the projected time calculated?</dt>
@@ -2008,7 +2070,7 @@ dl dt:first-child { margin-top: 0; }
     </dd>
 
     <dt>What are indexed points vs finish points?</dt>
-    <dd>Finish points: 10 for 1st down to 1 for 10th, by crossing order. Indexed points: same scale, by indexed time order. Not awarded during the first two races. In multi-distance races, points are weighted by group size.</dd>
+    <dd>Finish points: 10 for 1st down to 1 for 10th, by crossing order. Indexed points: same scale, by indexed time order. Not awarded during establishment (first three ranked races) or on the auto-reset race. In multi-distance races, points are weighted by group size.</dd>
   </dl>
 
   <h2>References</h2>
