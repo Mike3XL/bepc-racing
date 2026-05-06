@@ -9,9 +9,6 @@ Currently past races are silently pruned from `upcoming.yaml`. Some events witho
 - Expires after N weeks
 - Allows manual entry of result links for non-WebScorer events
 
-### Performance
-- **Generation/publish is slow — possible 4x redundant work.** When running `cli.py generate --club X` for each of 4 clubs, the output log shows all 4 clubs being regenerated each time (not just the specified club). Investigate whether `generate` ignores the `--club` flag and always regenerates everything, and whether `publish` also re-runs generation. Fix so each `generate --club X` only generates that club, and `publish` only generates once.
-
 ### Alias Transparency
 When a racer's name is corrected via aliases.json, the original source name is lost. Add transparency so viewers can see when a result was listed under a different name in the source data.
 - Store `original_name` in race result data when an alias is applied
@@ -26,9 +23,6 @@ Small group races (< threshold racers) have no par time, so "vs Projected" shows
 - Consider suppressing the par racer row
 - May also want a visual indicator that this was a small field race (no handicap update)
 
-### Coast Outdoors / Thursday Night Races
-Add a club page for Coast Outdoors (Deep Cove Kayak) tracking their Thursday Night Race (TNR) series. Organizer ID: `deepcovekayak` on WebScorer. 2026 TNR races already posted (IDs 417450–423965). Also tracks Board the Fjord, Jericho Wavechaser, and other BC paddling events.
-
 ### Cross-Club Racer Links on Result Pages
 Currently `racerLink()` on result pages only links to racers who have a page in the **current club**. Racers who meet the page threshold in another club (e.g. PNW but not the current club) show as plain text.
 
@@ -36,13 +30,6 @@ Since a racer page is a cross-club concept, result pages should link to the race
 - `RACER_SLUGS` to include slugs from all clubs (already explored)
 - `racerLink()` to know which club has the page for a given slug, and build the correct relative URL (e.g. `../../pnw/racer/david-halpern.html` from `bepc-summer/results/`)
 - Could use a `RACER_CLUB` map: `{slug: club_id}` embedded in each result page
-
-### Multi-Person Name Canonicalization
-Many team entries use inconsistent formats:
-- `Last, First` format mixed with `First Last` (e.g. `Brown, Steve` → `Steve Brown`, `Moses, Dale`, `Kanieski, Charley`)
-- Trailing spaces on solo names
-- Team entries with comma-separated names (e.g. `Silver, Bernard, A.Storb, Chapin`) — these are fine as-is, skip
-- Run `cli.py audit-names` to surface these systematically (command already exists)
 
 ### Short Label Configuration
 Short race labels (used in charts and race dropdowns) are currently hardcoded in `generator.py` (`_SHORT_MAP`, `_SHORT_LABELS`). This makes them hard to review and update without touching Python code.
@@ -55,22 +42,11 @@ Short race labels (used in charts and race dropdowns) are currently hardcoded in
 
 Recommendation: Option D short-term, Option A for per-club overrides later. Algorithmic patterns (`#N`, PNWORCA, BEPC series) stay in code.
 
-### Racer History: Multi-Course Race Entries
-When a racer enters multiple courses of the same race (e.g. SUP Challenge 2km + 5km on the same day), the racer history table shows two rows with the same race name. The course suffix (e.g. "— 2 KM SUP") is stripped. Fix: show the course suffix in the Race column when the racer has multiple entries for the same race_id. Low priority — rare edge case.
-
-### Trending Faster Award
-- Award for 3+ consecutive races of improving adjusted_time_vs_par (streak award already implemented — this is a variant)
-- Consider: award on the race where streak _starts_ rather than each continuation
-
-### Participation Awards
-- Full season: completed every race in a season
-- Debut: first ever race in the series
-
 ### Results Table — "vs. Last Year" Column
 Show each racer's time delta vs their time at the same race the prior year (raw time, e.g. `-1:23` faster or `+0:45` slower).
 
-**Coverage analysis (as of 2026-04-12):**
-- 18 race/distance combos currently have prior-year data — all in PNW
+**Coverage analysis (as of 2026-04-12 — re-check before implementing):**
+- 18 race/distance combos had prior-year data — all in PNW
 - BEPC Monday races have unique names per week (no cross-year match)
 - Sound Rowers races embed the year in the name (e.g. "Squaxin Island 2025" vs "Squaxin Island 2026") — won't match without year-stripping
 
@@ -82,16 +58,8 @@ Show each racer's time delta vs their time at the same race the prior year (raw 
 
 ## Medium Priority
 
-### Cross-Distance Handicap
-- Currently handicap keyed by `(name, craft)` — racer switching between Long/Short course shares one handicap
-- Low risk in practice; fix if drift observed: key by `(name, craft, distance)`
-
 ### Per-Race Handicap Notes on Racer Page
 - Show handicap note (e.g. "Outlier — no change", "First race") in race history table. Currently visible via trophy badges but not as an explicit note column.
-
-### Racer Page Improvements
-- Career stats across all seasons (total races, total trophies)
-- Best season summary
 
 ### Additional PNW events
 - **Gorge Challenge** (Hood River) — separate organizer from Jericho/PNWORCA. Find their results source and add to fetcher.
@@ -99,30 +67,22 @@ Show each racer's time delta vs their time at the same race the prior year (raw 
 - **Jericho 2023 / 2024 backfill** — `cli.py fetch-jericho 2023` and `2024` for historical PNW data.
 - **Pacific Multisports PDFs** — Peter Marcus 2022-2025, Narrows Challenge 2022-2025 (manual download + `cli.py import-pdf`).
 
-### % Performance Columns
-Ideas discussed 2026-04-05. Implement incrementally.
+### Multi-Person Name Canonicalization (ongoing)
+Many team entries use inconsistent formats:
+- `Last, First` format mixed with `First Last` (e.g. `Brown, Steve` → `Steve Brown`, `Moses, Dale`, `Kanieski, Charley`)
+- Trailing spaces on solo names
+- Team entries with comma-separated names (e.g. `Silver, Bernard, A.Storb, Chapin`) — these are fine as-is, skip
+- Run `cli.py audit-names` to surface these systematically (command already exists)
+- Ongoing: periodically run audit + add aliases
 
-**Candidate columns:**
-- **% vs handicap** — `(1 - adj_time_vs_par) × 100` — did you beat your expected time? Positive = good. ✅ Implement first.
+### % Performance Columns (additional ideas)
+The primary "% vs hcap" column is implemented as **vs Projected**. Remaining ideas, lower priority:
 - **% back from winner** — `(adj_time - winner_adj_time) / winner_adj_time × 100` — gap to handicap winner
 - **% back from raw winner** — gap to overall finish winner
-
-**Design notes:**
-- % vs hcap is currently shown as "vs Projected" column (implemented)
-- Show on Handicap Order tab primarily
-- Colour-code: green for positive (beat handicap), red for negative
-- Future: column selector (gear icon or "Columns" button) to show/hide optional columns
-- Future: use % vs hcap variance for "consistent" award (low variance = truly consistent)
+- Column selector (gear icon or "Columns" button) to show/hide optional columns
+- Use % vs hcap variance for "consistent" award (low variance = truly consistent)
 
 ## Lower Priority
-
-### Update Command
-- `cli.py update` chains: fetch → process → generate → publish
-- Convenience for race night workflow
-
-### Email/Notification
-- Notify members when new race results are posted
-- Simple GitHub Actions workflow triggered on publish
 
 ### Future clubs
 - **Wavechaser Paddle Series** — weekly Vancouver BC series, own club entry (Jericho Sailing Centre, 18 races/year May-Aug)
@@ -137,6 +97,9 @@ As more years are added, the trajectories page will have many racers. Consider a
 
 ## Done (removed from backlog)
 
+- ✅ Generate/publish performance — `--club` flag now respected, no 4x redundant work (2026-05-05)
+- ✅ `cli.py update` convenience command — chains fetch → process → generate → publish
+- ✅ Email notifications on new race results via GitHub Actions process-results workflow
 - ✅ Multiple seasons (2012-2026 live)
 - ✅ Fetch command (`cli.py fetch`)
 - ✅ Racer name normalization (aliases.json)

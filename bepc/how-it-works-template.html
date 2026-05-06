@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How your race becomes a podium</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --ink: #1a1a1a;
+    --muted: #6b7280;
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --accent: #1565C0;
+    --accent-light: #E3F2FD;
+    --fast: #059669;
+    --slow: #dc2626;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-lift: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .htw-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px 80px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  /* Paddler grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  }
+
+  .htw-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 8px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.4s ease;
+    position: relative;
+  }
+  .htw-card.podium-gold { border-color: #f59e0b; border-width: 2px; box-shadow: var(--shadow-lift); }
+  .htw-card.podium-silver { border-color: #9ca3af; border-width: 2px; box-shadow: var(--shadow-lift); }
+  .htw-card.podium-bronze { border-color: #d97706; border-width: 2px; box-shadow: var(--shadow-lift); }
+
+  .canoe {
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .name {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0 0 4px;
+  }
+  .pace-pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .pace-fast { background: #d1fae5; color: #065f46; }
+  .pace-above { background: #dbeafe; color: #1e40af; }
+  .pace-std { background: #f3f4f6; color: #374151; }
+  .pace-below { background: #fed7aa; color: #9a3412; }
+  .pace-slow { background: #fecaca; color: #991b1b; }
+
+  .time-slot {
+    margin: 6px 0;
+    font-size: 13px;
+    min-height: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .time-slot.visible { opacity: 1; }
+  .time-slot .label {
+    color: var(--muted);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+  }
+  .time-slot .value {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+  .time-slot.course .value {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  .time-slot.mypar .value {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: #7c2d12;
+    background: #fef3c7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .vs-par {
+    font-size: 12px;
+    font-weight: 600;
+    min-height: 18px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .vs-par.visible { opacity: 1; }
+  .vs-par.beat { color: var(--fast); }
+  .vs-par.slow { color: var(--slow); }
+
+  .podium-badge {
+    position: absolute;
+    bottom: -42px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.3);
+    font-size: 36px;
+    line-height: 1;
+    opacity: 0;
+    transition: all 0.4s ease;
+    pointer-events: none;
+  }
+  .podium-badge.visible { opacity: 1; transform: translateX(-50%) scale(1); }
+  .podium-badge.gold   { filter: drop-shadow(0 2px 4px rgba(245,158,11,0.6)); }
+  .podium-badge.silver { filter: grayscale(90%) brightness(1.15) drop-shadow(0 2px 4px rgba(156,163,175,0.6)); }
+  .podium-badge.bronze { filter: sepia(80%) saturate(1.2) hue-rotate(-15deg) brightness(0.85) drop-shadow(0 2px 4px rgba(217,119,6,0.6)); }
+
+  /* Par bar */
+  .par-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease, max-height 0.4s ease, padding 0.4s ease, margin-bottom 0.4s ease;
+  }
+  .par-panel.visible { opacity: 1; max-height: 180px; }
+  .par-panel h3 {
+    margin: 0 0 12px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+  }
+  .par-scale {
+    position: relative;
+    height: 80px;
+    margin: 0 20px;
+  }
+  .par-axis {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--border);
+  }
+  .par-tick {
+    position: absolute;
+    bottom: 20px;
+    width: 2px;
+    height: 10px;
+    background: var(--muted);
+  }
+  .par-tick-label {
+    position: absolute;
+    bottom: 0;
+    font-size: 11px;
+    color: var(--muted);
+    transform: translateX(-50%);
+    font-variant-numeric: tabular-nums;
+  }
+  .par-vote {
+    position: absolute;
+    bottom: 30px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.5s ease, bottom 0.5s ease;
+    border: 2px solid white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .par-vote.visible { opacity: 1; }
+  .par-vote-label {
+    position: absolute;
+    bottom: 48px;
+    font-size: 10px;
+    color: var(--muted);
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .par-vote-label.visible { opacity: 1; }
+  .par-marker {
+    position: absolute;
+    bottom: 20px;
+    width: 4px;
+    height: 40px;
+    background: var(--accent);
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .par-marker.visible { opacity: 1; }
+  .par-marker-label {
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  /* Narrative */
+  .narrative {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    min-height: 80px;
+    transition: all 0.3s ease;
+  }
+  .narrative h3 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+  }
+  .narrative p {
+    margin: 0 0 8px;
+    font-size: 15px;
+  }
+  .narrative p:last-child { margin-bottom: 0; }
+  .narrative strong { color: var(--accent); }
+
+  /* Controls */
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .htw-btn {
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .htw-btn:hover:not(:disabled) {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+  }
+  .htw-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .htw-btn.htw-primary {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  .htw-btn.htw-primary:hover:not(:disabled) {
+    background: #0d47a1;
+    border-color: #0d47a1;
+  }
+  .step-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background 0.2s;
+  }
+  .dot.active { background: var(--accent); }
+  .dot.past { background: #93c5fd; }
+
+  @media (max-width: 640px) {
+    .htw-container { padding: 16px 8px 60px; }
+    header h1 { font-size: 22px; }
+    .canoe { font-size: 24px; }
+    .name { font-size: 12px; }
+    .pace-pill { font-size: 9px; padding: 1px 6px; }
+    .time-slot { font-size: 11px; }
+    .time-slot .label { font-size: 9px; }
+    .narrative { padding: 16px; }
+    .narrative p { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="htw-container">
+
+<header>
+  <h1>How your race becomes a podium</h1>
+  <p>A paddle race with handicaps, in 60 seconds.</p>
+</header>
+
+<div class="grid" id="grid">
+  <!-- Cards generated by JS -->
+</div>
+
+<div class="par-panel" id="parPanel">
+  <h3>Everyone's estimate of course time</h3>
+  <div class="par-scale" id="parScale">
+    <div class="par-axis"></div>
+    <!-- ticks, votes, marker inserted by JS -->
+  </div>
+</div>
+
+<div class="narrative" id="narrative">
+  <h3 id="narrativeTitle">Meet the paddlers</h3>
+  <div id="narrativeBody">
+    <p>Five paddlers are about to race. Each has a different usual pace —
+    some are fast, some are slower, most are somewhere in between.</p>
+    <p>The coloured pill under each name shows their pace. Like a golf handicap:
+    a "fast" paddler usually finishes well ahead of a "slower" one.</p>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="htw-btn" id="btnPrev" disabled>← Back</button>
+  <div class="step-dots" id="dots"></div>
+  <button class="htw-btn htw-primary" id="btnNext">Next →</button>
+</div>
+
+</div>
+
+<script>
+/* ============================================================================
+   SCRIPT — all editable text and paddler data lives here.
+   Placeholders in step bodies: {anne.finish}, {debbie.myPar}, {racePar},
+   {winner.name}, {winner.pct}, {silver.name}, {bronze.name}, etc.
+   ============================================================================ */
+const SCRIPT = {
+
+  page: {
+    title: "How to level the playing field",
+    subtitle: "A paddle race explained in 60 seconds.",
+  },
+
+  // ---- Paddlers ---------------------------------------------------------
+  // pace: 1.0 = standard pace; lower = faster.
+  // finish: actual finish time, "MM:SS".
+  // The script computes course-time, race par, my-par, and % faster than par.
+  paddlers: [
+    { name: "Anne",   paceLabel: "fastest (0.8)",        paceClass: "pace-fast",  pace: 0.80, finish: "19:45" },
+    { name: "Bob",    paceLabel: "fast (0.95)",  paceClass: "pace-above", pace: 0.95, finish: "24:10" },
+    { name: "Chris",  paceLabel: "standard",    paceClass: "pace-std",   pace: 1.00, finish: "25:15" },
+    { name: "Debbie", paceLabel: "slower (1.1)",      paceClass: "pace-below", pace: 1.10, finish: "26:40" },
+    { name: "Ed",     paceLabel: "slowest (1.2)",     paceClass: "pace-slow",  pace: 1.20, finish: "29:30" },
+  ],
+
+  // ---- Card labels (small text above each time on a paddler card) -------
+  card: {
+    finish: "Finish",
+    courseTime: "Course time",
+    myPar: "My par",
+    // Shown under each paddler's card after race par is computed.
+    // Positive = raced faster than their own par. Negative = slower.
+    vsParFaster: "{pct} faster than par",
+    vsParSlower: "{pct} slower than par",
+  },
+
+  // ---- Par scale panel --------------------------------------------------
+  par: {
+    heading: "Everyone's estimate of course time",
+    markerLabel: "Race par · {racePar}",
+  },
+
+  // ---- Buttons ----------------------------------------------------------
+  buttons: {
+    back: "← Back",
+    next: "Next →",
+    restart: "Restart",
+  },
+
+  // ---- Narrative steps --------------------------------------------------
+  // title + HTML body. body supports placeholders like {anne.finish}.
+  steps: [
+    {
+      state: "start",
+      title: "Meet the paddlers",
+      body: `<p>Five paddlers are about to race. Each has a different usual pace —
+             some are fast, some are slower, most are somewhere in between.</p>
+             <p>The coloured pill under each name shows their relative pace.
+               Anne is a fast paddler who usually finishes first in this group.</p>`,
+    },
+    {
+      state: "finished",
+      title: "They race",
+      body: `<p>They all push off together. Everyone crosses the line and gets a finish time. They finish in their usual order.</p>
+             <p><strong>Anne</strong> in {anne.finish},
+             <strong>Bob</strong> in {bob.finish},
+             <strong>Chris</strong> in {chris.finish},
+             <strong>Debbie</strong> in {debbie.finish},
+             <strong>Ed</strong> in {ed.finish}.</p>`,
+    },
+    {
+      state: "translating",
+      title: "But wait — how hard was the course?",
+      body: `<p>Anne finished first, sure, but she's <strong>fast</strong>. Her
+             quick time doesn't tell us much about the course on its own.</p>
+             <p>Every paddler's finish time and pace index gives us a clue.
+             Divide each paddler's finish time by their pace index, and you get
+             an estimate of what a standard-pace paddler would have done.</p>
+             <p>Those estimates are everyone's best guess at <strong>race
+             par</strong>.</p>`,
+    },
+    {
+      state: "translated",
+      title: "Each paddler's estimate",
+      body: `<p><strong>Anne</strong> is fast. Her {anne.finish} works out to
+             <strong>{anne.courseTime}</strong> at standard pace.</p>
+             <p><strong>Bob</strong> is above standard. His {bob.finish} works out to
+             <strong>{bob.courseTime}</strong>.</p>
+             <p><strong>Chris</strong> is standard. His {chris.finish} is his
+             estimate: <strong>{chris.courseTime}</strong>.</p>
+             <p><strong>Debbie</strong> is slower. Her {debbie.finish} scales down to
+             <strong>{debbie.courseTime}</strong>.</p>
+             <p><strong>Ed</strong> is slowest. His {ed.finish} scales down to
+             <strong>{ed.courseTime}</strong>.</p>`,
+    },
+    {
+      state: "consensus",
+      title: "The estimates generally agree...",
+      body: `<p>Five different paddlers — each using their own time and pace
+             index — all estimate that today's course takes about
+             <strong>{racePar}</strong> at standard pace.</p>
+             <p>The consensus estimate for the course time is called
+             <strong>race par</strong>.</p>`,
+    },
+    {
+      state: "mypar",
+      title: "Your own par",
+      body: `<p>Now that we have race par, each paddler can tell whether they
+             had a good day. We use it to work out a personal par time for
+             each paddler.</p>
+             <p><strong>My par = race par × my pace index.</strong></p>
+             <p>So Anne's par is {anne.myPar}, Bob's is {bob.myPar},
+             Chris's is {chris.myPar}, Debbie's is {debbie.myPar},
+             Ed's is {ed.myPar}. That's each paddler's <em>projected</em>
+             time for the day.</p>`,
+    },
+    {
+      state: "vsPar",
+      title: "How did you do vs your par?",
+      body: `<p>Now compare your actual finish to your par. Expressed as a
+             percentage — a <strong>positive number means you raced faster
+             than your par</strong>; negative means you fell short.</p>
+             <p>This is the number that decides the podium. It puts everyone on
+             the same footing: fast paddlers, slow paddlers, and everyone in
+             between all compete on <em>how well they performed for their
+             pace</em>.</p>`,
+    },
+    {
+      state: "podium",
+      title: "Trophies",
+      body: `<p><strong>{winner.name}</strong> raced {winner.pct} faster than her
+             par — the biggest margin of the day. 🥇</p>
+             <p><strong>{silver.name}</strong> was second with {silver.pct}
+             faster than his par. 🥈 <strong>{bronze.name}</strong> took bronze
+             at {bronze.pct}. 🥉</p>
+             <p>Notice: the fastest finisher and the slowest finisher can both
+             end up on the podium — or both miss it. It's not about speed,
+             it's about how well you raced for your pace.</p>`,
+    },
+    {
+      state: "update",
+      title: "After the race",
+      body: `<p>Everyone's pace index gets a small update based on how they did
+             today. A good day nudges your index faster; a slow day nudges it
+             slower.</p>
+             <p>Adjustments are deliberately small — one bad day shouldn't wreck
+             your index. And if someone has a really off day (injury, wrong
+             turn, bad weather) the system holds their index steady instead of
+             dragging it down.</p>
+             <p>Over many races, your index settles into your true pace.</p>`,
+    },
+    {
+      state: "done",
+      title: "That's the whole idea",
+      body: `<p>Every race, your time and your index are used to gauge how hard
+             the course was at standard pace. Everyone's estimate goes into
+             the pot, and the consensus is <strong>race par</strong>.</p>
+             <p>From race par we calculate a <strong>personal par time</strong>
+             for each racer.</p>
+             <p>Your podium spot depends on how much you beat <em>your</em>
+             par — not your finish time. And over many races, your index
+             follows your improvement.</p>
+             <p><em>That's it. Let's paddle.</em></p>`,
+    },
+  ],
+};
+
+/* ============================================================================
+   Engine — below this line you shouldn't need to edit.
+   ============================================================================ */
+
+function parseTimeToSec(s) {
+  const [m, sec] = s.split(":").map(Number);
+  return m * 60 + (sec || 0);
+}
+function fmt(sec) {
+  const m = Math.floor(sec / 60);
+  const s = Math.round(sec - m * 60);
+  return `${m}:${s.toString().padStart(2, "0")}`;
+}
+function fmtPct(pct) {
+  const sign = pct < 0 ? "−" : "+";
+  return `${sign}${Math.abs(pct).toFixed(1)}%`;
+}
+function interp(tpl, subs) {
+  return tpl.replace(/\{([\w.]+)\}/g, (_, k) => (k in subs ? subs[k] : `{${k}}`));
+}
+
+// --- Compute derived fields on paddlers ---
+SCRIPT.paddlers.forEach(p => {
+  p.rawSec = parseTimeToSec(p.finish);
+  p.courseSec = p.rawSec / p.pace;
+});
+const parSec = SCRIPT.paddlers.reduce((s, p) => s + p.courseSec, 0) / SCRIPT.paddlers.length;
+SCRIPT.paddlers.forEach(p => {
+  p.myParSec = parSec * p.pace;
+  // Positive = faster than personal par. Negative = slower.
+  p.pctVsPar = (1 - p.rawSec / p.myParSec) * 100;
+});
+// Podium by biggest positive % (most faster than par)
+const podiumOrder = [...SCRIPT.paddlers].sort((a, b) => b.pctVsPar - a.pctVsPar);
+
+// --- Placeholder table for step-body interpolation ---
+const subs = { racePar: fmt(parSec) };
+SCRIPT.paddlers.forEach(p => {
+  const k = p.name.toLowerCase();
+  subs[`${k}.finish`]     = fmt(p.rawSec);
+  subs[`${k}.courseTime`] = fmt(p.courseSec);
+  subs[`${k}.myPar`]      = fmt(p.myParSec);
+  subs[`${k}.pct`]        = fmtPct(p.pctVsPar);
+});
+["winner", "silver", "bronze"].forEach((slot, i) => {
+  if (podiumOrder[i]) {
+    subs[`${slot}.name`] = podiumOrder[i].name;
+    subs[`${slot}.pct`]  = fmtPct(podiumOrder[i].pctVsPar);
+  }
+});
+
+// --- Populate static page text ---
+document.querySelector("header h1").textContent = SCRIPT.page.title;
+document.querySelector("header p").textContent = SCRIPT.page.subtitle;
+document.querySelector("#parPanel h3").textContent = SCRIPT.par.heading;
+document.getElementById("btnPrev").textContent = SCRIPT.buttons.back;
+
+// --- Build paddler cards ---
+const grid = document.getElementById("grid");
+SCRIPT.paddlers.forEach((p, i) => {
+  const card = document.createElement("div");
+  card.className = "htw-card";
+  card.dataset.idx = i;
+  card.innerHTML = `
+    <div class="podium-badge" data-badge></div>
+    <div class="canoe">🛶</div>
+    <div class="name">${p.name}</div>
+    <div class="pace-pill ${p.paceClass}">${p.paceLabel}</div>
+    <div class="time-slot finish" data-finish>
+      <span class="label">${SCRIPT.card.finish}</span>
+      <span class="value">${fmt(p.rawSec)}</span>
+    </div>
+    <div class="time-slot course" data-course>
+      <span class="label">${SCRIPT.card.courseTime}</span>
+      <span class="value">${fmt(p.courseSec)}</span>
+    </div>
+    <div class="time-slot mypar" data-mypar>
+      <span class="label">${SCRIPT.card.myPar}</span>
+      <span class="value">${fmt(p.myParSec)}</span>
+    </div>
+    <div class="vs-par" data-vs></div>
+  `;
+  grid.appendChild(card);
+});
+
+// --- Build par scale ---
+const parScale = document.getElementById("parScale");
+const allCourseSec = SCRIPT.paddlers.map(p => p.courseSec);
+const scaleMin = Math.floor(Math.min(...allCourseSec, parSec) / 60 - 0.5) * 60;
+const scaleMax = Math.ceil (Math.max(...allCourseSec, parSec) / 60 + 0.5) * 60;
+const pct = sec => ((sec - scaleMin) / (scaleMax - scaleMin)) * 100;
+
+for (let m = scaleMin / 60; m <= scaleMax / 60; m++) {
+  const tick = document.createElement("div");
+  tick.className = "par-tick";
+  tick.style.left = pct(m * 60) + "%";
+  parScale.appendChild(tick);
+  const label = document.createElement("div");
+  label.className = "par-tick-label";
+  label.style.left = pct(m * 60) + "%";
+  label.textContent = `${m}:00`;
+  parScale.appendChild(label);
+}
+SCRIPT.paddlers.forEach((p, i) => {
+  const vote = document.createElement("div");
+  vote.className = "par-vote";
+  vote.style.left = pct(p.courseSec) + "%";
+  vote.dataset.vote = i;
+  parScale.appendChild(vote);
+  const vlabel = document.createElement("div");
+  vlabel.className = "par-vote-label";
+  vlabel.style.left = pct(p.courseSec) + "%";
+  vlabel.textContent = p.name;
+  vlabel.dataset.voteLabel = i;
+  parScale.appendChild(vlabel);
+});
+const marker = document.createElement("div");
+marker.className = "par-marker";
+marker.style.left = pct(parSec) + "%";
+marker.innerHTML = `<div class="par-marker-label">${interp(SCRIPT.par.markerLabel, subs)}</div>`;
+parScale.appendChild(marker);
+
+// --- Step machine ---
+let step = 0;
+const STEPS = SCRIPT.steps;
+
+const dots = document.getElementById("dots");
+STEPS.forEach(() => {
+  const d = document.createElement("div");
+  d.className = "dot";
+  dots.appendChild(d);
+});
+
+function render() {
+  const s = STEPS[step];
+  document.getElementById("narrativeTitle").textContent = s.title;
+  document.getElementById("narrativeBody").innerHTML = interp(s.body, subs);
+
+  // Dots
+  dots.childNodes.forEach((dot, i) => {
+    dot.className = "dot" + (i < step ? " past" : i === step ? " active" : "");
+  });
+
+  // Buttons
+  document.getElementById("btnPrev").disabled = step === 0;
+  const next = document.getElementById("btnNext");
+  next.textContent = (step === STEPS.length - 1) ? SCRIPT.buttons.restart : SCRIPT.buttons.next;
+
+  // Reset dynamic state
+  const cards = document.querySelectorAll(".htw-card");
+  const parPanel = document.getElementById("parPanel");
+  cards.forEach(c => {
+    c.querySelector("[data-finish]").classList.remove("visible");
+    c.querySelector("[data-course]").classList.remove("visible");
+    c.querySelector("[data-mypar]").classList.remove("visible");
+    c.querySelector("[data-vs]").classList.remove("visible");
+    c.querySelector("[data-vs]").className = "vs-par";
+    c.querySelector("[data-badge]").classList.remove("visible");
+    c.className = "htw-card";
+  });
+  parPanel.classList.remove("visible");
+  document.querySelectorAll(".par-vote").forEach(v => v.classList.remove("visible"));
+  document.querySelectorAll(".par-vote-label").forEach(l => l.classList.remove("visible"));
+  document.querySelector(".par-marker").classList.remove("visible");
+
+  // Visibility table keyed off step.state
+  const vis = {
+    showFinish:   ["finished", "translating", "translated", "consensus", "mypar", "vsPar", "podium", "update", "done"],
+    showCourse:   ["translated", "consensus", "mypar", "vsPar", "podium", "update", "done"],
+    showMyPar:    ["mypar", "vsPar", "podium", "update", "done"],
+    showParPanel: ["consensus", "mypar", "vsPar", "podium", "update", "done"],
+    showVotes:    ["consensus", "mypar", "vsPar", "podium", "update", "done"],
+    showMarker:   ["consensus", "mypar", "vsPar", "podium", "update", "done"],
+    showVsPar:    ["vsPar", "podium", "update", "done"],
+    showPodium:   ["podium", "update", "done"],
+  };
+  const on = k => vis[k].includes(s.state);
+
+  if (on("showFinish")) cards.forEach(c => c.querySelector("[data-finish]").classList.add("visible"));
+  if (on("showCourse")) cards.forEach(c => c.querySelector("[data-course]").classList.add("visible"));
+  if (on("showMyPar"))  cards.forEach(c => c.querySelector("[data-mypar]").classList.add("visible"));
+  if (on("showParPanel")) parPanel.classList.add("visible");
+  if (on("showVotes")) {
+    document.querySelectorAll(".par-vote").forEach(v => v.classList.add("visible"));
+    document.querySelectorAll(".par-vote-label").forEach(l => l.classList.add("visible"));
+  }
+  if (on("showMarker")) document.querySelector(".par-marker").classList.add("visible");
+
+  if (on("showVsPar")) {
+    SCRIPT.paddlers.forEach((p, i) => {
+      const vs = cards[i].querySelector("[data-vs]");
+      vs.classList.add("visible");
+      const pctStr = fmtPct(p.pctVsPar);
+      if (p.pctVsPar > 0) {
+        vs.classList.add("beat");
+        vs.textContent = interp(SCRIPT.card.vsParFaster, { ...subs, pct: pctStr });
+      } else {
+        vs.classList.add("slow");
+        vs.textContent = interp(SCRIPT.card.vsParSlower, { ...subs, pct: pctStr });
+      }
+    });
+  }
+  if (on("showPodium")) {
+    const topThree = podiumOrder.slice(0, 3);
+    topThree.forEach((p, rank) => {
+      const idx = SCRIPT.paddlers.indexOf(p);
+      const card = cards[idx];
+      const classes = ["podium-gold", "podium-silver", "podium-bronze"];
+      const badgeClasses = ["gold", "silver", "bronze"];
+      card.classList.add(classes[rank]);
+      const badge = card.querySelector("[data-badge]");
+      badge.className = `podium-badge ${badgeClasses[rank]} visible`;
+      badge.textContent = "🏆";
+    });
+  }
+}
+
+document.getElementById("btnNext").addEventListener("click", () => {
+  step = (step < STEPS.length - 1) ? step + 1 : 0;
+  render();
+});
+document.getElementById("btnPrev").addEventListener("click", () => {
+  if (step > 0) { step--; render(); }
+});
+
+render();
+</script>
+</body>
+</html>

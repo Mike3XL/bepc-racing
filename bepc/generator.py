@@ -283,6 +283,7 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
             (f"{club}/standings.html", "Standings", True),
             (f"{club}/trajectories.html", "Trajectories", True),
             (f"{club}/racer/index.html", "Racers", True),
+            (f"{root}how-it-works.html", "How it works"),
             (f"{root}about.html", "About"),
         ]
     else:
@@ -293,6 +294,7 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
             (f"{club_prefix}standings.html", "Standings"),
             (f"{club_prefix}trajectories.html", "Trajectories"),
             (f"{club_prefix}racer/index.html", "Racers"),
+            (f"{root}how-it-works.html", "How it works"),
             (f"{root}about.html", "About"),
         ]
 
@@ -2274,6 +2276,35 @@ def _build_search_map(data: dict, verify_files: bool = False) -> None:
     ])
 
 
+def generate_how_it_works(data: dict = None) -> None:
+    """Render the handicap-racing explainer as a regular site page with nav.
+
+    Source: bepc/how-it-works-template.html (standalone, self-contained HTML).
+    The template uses `.htw-*` prefixed classes so it won't collide with Bootstrap.
+    We extract its <style>, <body> content, and <script> and wrap them with the
+    standard site head + nav. Output: site/how-it-works.html.
+    """
+    import re as _re
+    tpl_path = Path(__file__).parent / "how-it-works-template.html"
+    tpl = tpl_path.read_text()
+    m_style = _re.search(r"<style>([\s\S]*?)</style>", tpl)
+    m_body  = _re.search(r"<body>([\s\S]*?)</body>", tpl)
+    if not (m_style and m_body):
+        raise RuntimeError("how-it-works-template.html: missing <style> or <body>")
+    style_inner = m_style.group(1)
+    body_inner = m_body.group(1).strip()
+
+    # extra_css fed into _head goes inside <head>, so styles apply before body renders
+    extra_css = f"<style>{style_inner}</style>"
+    html = _head("How it works — PaddleRace", extra_css=extra_css) \
+         + _nav("How it works", data=data, depth=0) \
+         + f'<div class="htw-root">{body_inner}</div></body></html>'
+
+    out = SITE_DIR / "how-it-works.html"
+    out.write_text(html)
+    print(f"Generated: {out.relative_to(SITE_DIR.parent)}")
+
+
 def generate_platform_home(data: dict) -> None:
     """Generate the PaddleRace platform home page with club list and recent race feed."""
     import yaml, json as _json
@@ -2764,6 +2795,20 @@ def generate_platform_home(data: dict) -> None:
 
 <div class="container-fluid px-2 px-sm-3">
   {upcoming_section_html}
+
+  <div class="card my-4 border-primary" style="background:#F0F7FF">
+    <div class="card-body d-flex flex-column flex-sm-row align-items-sm-center gap-3">
+      <div style="font-size:2.2rem;line-height:1">🛶</div>
+      <div class="flex-grow-1">
+        <h2 class="h5 mb-1">New to PaddleRace.org?</h2>
+        <p class="mb-0 text-muted">See how our "Par and Index" scoring system works with a short walkthrough.</p>
+      </div>
+      <a href="how-it-works.html"
+         class="btn btn-primary align-self-start align-self-sm-center">
+        See how it works →
+      </a>
+    </div>
+  </div>
 </div>
 <script>
 (function(){{
@@ -3336,6 +3381,7 @@ def generate_all(data: dict) -> None:
     _t("trajectories", generate_trajectories, data)
     data["current_club"] = original_club
     _t("about", generate_about, data)
+    _t("how it works", generate_how_it_works, data)
     _t("clubs page", generate_clubs_page, data)
     # Rebuild search map now that racer pages exist — filters to only pages that exist
     _build_search_map(data, verify_files=True)
