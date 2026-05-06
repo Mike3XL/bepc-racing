@@ -23,21 +23,31 @@ Editing workflow:
 # short_text is the mobile / narrow-viewport label (< 992px).
 # tooltip shows on hover when set.
 #
+# Tokens (replaced at render time):
+#   {gold_cup}   — small gold cup SVG (indexed awards)
+#   {gold_flag}  — small gold flag SVG (finish awards)
+#
 # The order here is DISPLAY order on the race results page.
 # ---------------------------------------------------------------------------
 RESULTS_COLUMNS = {
     "trophies":       ("Trophies",        "Trophies", None),
-    "place":          ("Place",           "Place",    None),
-    "racer":          ("Racer",           "Racer",    None),
-    "craft":          ("Craft",           "Craft",    None),
-    "vs_projected":   ("vs<br>Projected", "vs Proj",  None),   # icon + 2-line long form injected separately
-    "finish_time":    ("Finish<br>Time",  "Finish",   None),   # icon + 2-line long form injected separately
-    "projected_time": ("Projected Time",  "Proj",     "Projected Time"),
-    "race_index":     ("Race Index",      "Index",    "Race Index (index entering this race)"),
-    "new_index":      ("New Index",       "New",      "New Index (index after this race)"),
-    "par_estimate":   ("Par Estimate",    "Par",      None),
-    "finish_points":  ("Finish Points",   "Pts",      "Finish Points (by crossing order)"),
-    "indexed_points": ("Indexed Points",  "Idx Pts",  "Indexed Points (by indexed time order)"),
+    "place":          ("Place",           "Place",    "Finish line order"),
+    "racer":          ("Racer",           "Racer",    "Athlete name"),
+    "craft":          ("Craft",           "Craft",    "Craft category\n(sub-category)"),
+    "vs_projected":   ("{gold_cup} vs Par", "vs Par",  "Speed vs personal par\n(+ve is best)"),
+    "finish_time":    ("{gold_flag} Time",  "Finish",   "Finish time"),
+    "projected_time": ("Par",  "Par",     "Individual par time\n(RacePar * Index)"),
+    "race_index":     ("Index",      "Index",    "Racer Speed Index"),
+    "new_index":      ("New Index",       "New",      "New Index (index for next race)"),
+    "par_estimate":   ("RacePar vote",    "ParVote",  "Vote for RacePar\n(Finish ÷ Index)"),
+    "finish_points":  ("Finish Points",   "Pts",      "Points, by time"),
+    "indexed_points": ("Par Points",  "Par Pts",  "Points, by par result)"),
+}
+
+# Column CSS style overrides keyed the same as RESULTS_COLUMNS
+RESULTS_COLUMN_STYLES = {
+    "vs_projected":   "text-align:center;min-width:95px",
+    "finish_time":    "text-align:center;min-width:75px",
 }
 
 
@@ -48,16 +58,16 @@ RESULTS_COLUMNS = {
 # TROPHY_ORDER below for badge sort order.
 # ---------------------------------------------------------------------------
 TROPHIES = {
-    "hcap_1":       {"css": "hcap-gold",    "icon": "hcap_1",     "tooltip": "1st Place (vs Projected)"},
-    "hcap_2":       {"css": "hcap-silver",  "icon": "hcap_2",     "tooltip": "2nd Place (vs Projected)"},
-    "hcap_3":       {"css": "hcap-bronze",  "icon": "hcap_3",     "tooltip": "3rd Place (vs Projected)"},
+    "hcap_1":       {"css": "hcap-gold",    "icon": "hcap_1",     "tooltip": "1st Place (vs Par)"},
+    "hcap_2":       {"css": "hcap-silver",  "icon": "hcap_2",     "tooltip": "2nd Place (vs Par)"},
+    "hcap_3":       {"css": "hcap-bronze",  "icon": "hcap_3",     "tooltip": "3rd Place (vs Par)"},
     "finish_1":     {"css": "plain-medal",  "icon": "finish_1",   "tooltip": "1st Place (Finish time)"},
     "finish_2":     {"css": "plain-medal",  "icon": "finish_2",   "tooltip": "2nd Place (Finish time)"},
     "finish_3":     {"css": "plain-medal",  "icon": "finish_3",   "tooltip": "3rd Place (Finish time)"},
     "consistent_1": {"css": "hcap-consist", "icon": "consistent", "tooltip": "Consistent racer"},
     "consistent_2": {"css": "hcap-consist", "icon": "consistent", "tooltip": "Consistent racer"},
     "consistent_3": {"css": "hcap-consist", "icon": "consistent", "tooltip": "Consistent racer"},
-    "par":          {"css": "hcap-par",     "icon": "par",        "tooltip": "Par racer"},
+    "par":          {"css": "hcap-par",     "icon": "par",        "tooltip": "Chosen to define RacePar"},
     "fresh":        {"css": "hcap-est",     "icon": "est",        "tooltip": "Establishing index — not included in ranking"},
     "outlier":      {"css": "hcap-outlier", "icon": "outlier",    "tooltip": "Outlier result — >10% off prediction, index unchanged"},
     "auto_reset":   {"css": "hcap-reset",   "icon": "auto_reset", "tooltip": "Index auto-reset after 3 consecutive outliers"},
@@ -99,6 +109,9 @@ PLACE_MUTE_REASONS = {
 RESULTS_TOOLTIPS = {
     # "New" index column "^" superscript when outlier freezes the index.
     "new_outlier_frozen": "Outlier result — >10% off prediction, index unchanged",
+    # Highlighted par time in the RacePar Estimate column — the time selected
+    # as the official par for the whole race.
+    "race_par":           "RacePar. Defines par for an Index=1.0 racer",
 }
 
 # Racer filter dropdown (shown above each per-course result table)

@@ -4,7 +4,8 @@ import re as _re_module
 from pathlib import Path
 from bepc.craft import display_craft_ui
 from bepc.ui_text import (
-    RESULTS_COLUMNS, TROPHIES, TROPHY_ORDER, PLACE_MUTE_REASONS, STREAK_TROPHY,
+    RESULTS_COLUMNS, RESULTS_COLUMN_STYLES,
+    TROPHIES, TROPHY_ORDER, PLACE_MUTE_REASONS, STREAK_TROPHY,
     RESULTS_TOOLTIPS, RESULTS_FILTER, RACER_STATS_LABELS,
     SELECTOR_PLACEHOLDERS, SEARCH,
 )
@@ -90,6 +91,57 @@ def _icon_span(key, cls, tooltip, count=1):
     return f'<span class="hcap-medal {cls}" data-bs-toggle="tooltip" data-bs-title="{tooltip}">{icon}</span>'
 
 
+# Small SVG icons used in column headers. Substituted into RESULTS_COLUMNS long
+# labels via {gold_cup} and {gold_flag} tokens. Size 18x18 to fit inline.
+_HEADER_SVG = {
+    "gold_cup":  '<span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span>',
+    "gold_flag": '<span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span>',
+}
+
+
+def _render_th(key: str) -> str:
+    """Render a <th> for a given RESULTS_COLUMNS key.
+
+    Substitutes {gold_cup} and {gold_flag} tokens in the long label.
+    Adds responsive show/hide classes for long vs short variants.
+    """
+    long_html, short_text, tooltip = RESULTS_COLUMNS[key]
+    long_html = long_html.format_map(_HEADER_SVG)
+    # Detect if long form has <br> — if so, wrap in inline-block nowrap to force 2 lines
+    if "<br>" in long_html:
+        # Separate SVG (if present) from text so the text stays on 2 lines while the
+        # SVG sits inline before it. Heuristic: pull leading span tag if there is one.
+        import re as _re
+        m = _re.match(r'^(\s*<span[^>]*>.*?</span>\s*)(.*)$', long_html, flags=_re.DOTALL)
+        if m:
+            leading_icon, text_part = m.group(1), m.group(2)
+        else:
+            leading_icon, text_part = "", long_html
+        long_span = (
+            f'{leading_icon}<span class="d-none d-lg-inline-block"'
+            f' style="vertical-align:middle;white-space:nowrap">{text_part}</span>'
+        )
+    else:
+        # Single-line label — SVG token (if any) expands in place. Use inline-block
+        # wrapper with vertical-align:middle so the SVG and text share a baseline.
+        long_span = f'<span class="d-none d-lg-inline" style="vertical-align:middle">{long_html}</span>'
+    short_span = f'<span class="d-lg-none">{short_text}</span>'
+    style_attr = ""
+    if key in RESULTS_COLUMN_STYLES:
+        style_attr = f' style="{RESULTS_COLUMN_STYLES[key]}"'
+    tooltip_attr = ""
+    if tooltip:
+        tooltip_attr = f' data-bs-toggle="tooltip" data-bs-title="{tooltip}"'
+    # For columns with a style but no tooltip, we still need the th attrs in order.
+    return f'<th{style_attr}{tooltip_attr}>{long_span}{short_span}</th>'
+
+
+def _render_thead() -> str:
+    """Build the full <thead> row for the race results table from RESULTS_COLUMNS."""
+    ths = "".join(_render_th(k) for k in RESULTS_COLUMNS)
+    return f'<thead class="text-nowrap"><tr>{ths}</tr></thead>'
+
+
 def _current_season(data: dict) -> dict:
     """Return the current season dict {races: [...]} for the current club."""
     club = data["clubs"][data["current_club"]]
@@ -169,6 +221,8 @@ def _head(title: str, extra_css: str = "") -> str:
   .hcap-reset  {{ background:#FFE0B2; border:1px solid #F57C00; }}
   /* Muted place text for non-eligible (fresh/outlier/skipped) rows */
   .place-muted {{ color:#999; font-style:italic; }}
+  /* Preserve explicit newlines (\n) in tooltip text */
+  .tooltip-inner {{ white-space: pre-line; text-align: left; }}
 </style>
 </head>
 <body>
@@ -856,7 +910,7 @@ function tableHtml(id_suffix) {
 """ + "".join(f'      <option value="{val}">{label}</option>\n' for val, label in RESULTS_FILTER["options"]) + """    </select>
   </div>
   <table id="tbl-results-${id_suffix}" class="table table-sm table-striped">
-    <thead class="text-nowrap"><tr><th>Trophies</th><th>Place</th><th>Racer</th><th>Craft</th><th style="text-align:center;min-width:95px"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> <span class="d-none d-lg-inline-block" style="vertical-align:middle;white-space:nowrap">vs<br>Projected</span><span class="d-lg-none">vs Proj</span></th><th style="text-align:center;min-width:75px"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> <span class="d-none d-lg-inline-block" style="vertical-align:middle;white-space:nowrap">Finish<br>Time</span><span class="d-lg-none">Finish</span></th><th data-bs-toggle="tooltip" data-bs-title="Projected Time"><span class="d-none d-lg-inline">Projected Time</span><span class="d-lg-none">Proj</span></th><th data-bs-toggle="tooltip" data-bs-title="Race Index (index entering this race)"><span class="d-none d-lg-inline">Race Index</span><span class="d-lg-none">Index</span></th><th data-bs-toggle="tooltip" data-bs-title="New Index (index after this race)"><span class="d-none d-lg-inline">New Index</span><span class="d-lg-none">New</span></th><th><span class="d-none d-lg-inline">Par Estimate</span><span class="d-lg-none">Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Finish Points (by crossing order)"><span class="d-none d-lg-inline">Finish Points</span><span class="d-lg-none">Pts</span></th><th data-bs-toggle="tooltip" data-bs-title="Indexed Points (by indexed time order)"><span class="d-none d-lg-inline">Indexed Points</span><span class="d-lg-none">Idx Pts</span></th></tr></thead>
+    """ + _render_thead() + """
     <tbody id="body-results-${id_suffix}"></tbody>
   </table>`;
 }
@@ -909,7 +963,7 @@ function rows(results, placeField) {
     const parSort = parSec != null ? parSec : 999999;
     const parDisplay = parSec != null ? fmtTime(parSec) : '<span style="color:#999">—</span>';
     const parCell = parSec != null && r.trophies && r.trophies.includes('par')
-      ? '<span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:2px 4px;font-weight:bold;color:#1565C0">' + fmtTime(parSec) + '</span>'
+      ? '<span data-bs-toggle="tooltip" data-bs-title=\"""" + RESULTS_TOOLTIPS["race_par"] + """\" style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:2px 4px;font-weight:bold;color:#1565C0">' + fmtTime(parSec) + '</span>'
       : parDisplay;
     return `<tr data-fresh="${isFresh}"><td>${badges(r.trophies)}</td>
     <td data-order="${placeCellVal}">${placeCellHtml}</td><td>${racerLink(r.canonical_name)}</td>
