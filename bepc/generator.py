@@ -9,6 +9,7 @@ from bepc.ui_text import (
     RESULTS_TOOLTIPS, RESULTS_FILTER, RACER_STATS_LABELS,
     SELECTOR_PLACEHOLDERS, SEARCH,
     HOME_PAGE, STANDINGS_PAGE,
+    RACER_PAGE_COLUMNS_EXTRA, RACER_PAGE_COLUMN_ORDER,
 )
 
 SITE_DIR = Path(__file__).parent.parent / "site"
@@ -141,6 +142,41 @@ def _render_thead() -> str:
     """Build the full <thead> row for the race results table from RESULTS_COLUMNS."""
     ths = "".join(_render_th(k) for k in RESULTS_COLUMNS)
     return f'<thead class="text-nowrap"><tr>{ths}</tr></thead>'
+
+
+def _racer_page_col(key: str) -> tuple:
+    """Return (long, short, tooltip) for a racer-page column key.
+
+    Falls back to RESULTS_COLUMNS for keys that aren't racer-page-specific,
+    ensuring label consistency between the race results page and the racer
+    page when the meaning is the same.
+    """
+    if key in RACER_PAGE_COLUMNS_EXTRA:
+        return RACER_PAGE_COLUMNS_EXTRA[key]
+    return RESULTS_COLUMNS[key]
+
+
+def _render_racer_page_thead() -> str:
+    """Build the racer-page race-history <thead> from RACER_PAGE_COLUMN_ORDER."""
+    parts = []
+    for key in RACER_PAGE_COLUMN_ORDER:
+        long_html, short_text, tooltip = _racer_page_col(key)
+        long_html = long_html.format_map(_HEADER_SVG)
+        if "<br>" in long_html:
+            import re as _re
+            m = _re.match(r'^(\s*<span[^>]*>.*?</span>\s*)(.*)$', long_html, flags=_re.DOTALL)
+            if m:
+                leading_icon, text_part = m.group(1), m.group(2)
+            else:
+                leading_icon, text_part = "", long_html
+            long_span = (f'{leading_icon}<span class="d-none d-lg-inline-block"'
+                         f' style="vertical-align:middle;white-space:nowrap">{text_part}</span>')
+        else:
+            long_span = f'<span class="d-none d-lg-inline" style="vertical-align:middle">{long_html}</span>'
+        short_span = f'<span class="d-lg-none">{short_text}</span>'
+        tooltip_attr = f' data-bs-toggle="tooltip" data-bs-title="{tooltip.replace(chr(10), "&#10;") if tooltip else ""}"' if tooltip else ""
+        parts.append(f'<th{tooltip_attr}>{long_span}{short_span}</th>')
+    return f'<thead><tr>{"".join(parts)}</tr></thead>'
 
 
 def _current_season(data: dict) -> dict:
@@ -1781,6 +1817,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
                         for r in results
                     )
 
+                    _racer_thead = _render_racer_page_thead()
                     craft_content += f"""{cw_open}
 <div class="row mb-3">
   <div class="col-6 col-sm-3"><strong>{RACER_STATS_LABELS['races']}:</strong> {len(results)}</div>
@@ -1793,15 +1830,15 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
   <div class="col-md-6"><canvas id="chart-hcap-{cid}" style="max-height:220px"></canvas></div>
 </div>
 <table class="table table-sm table-striped table-hover">
-  <thead><tr><th></th><th>Race</th><th>Date</th><th>Place</th><th>Place (Indexed)</th><th>Time</th><th>Projected</th><th style="white-space:nowrap">vs Projected</th><th>Index</th><th>New</th><th>Points</th><th>Indexed Points</th></tr></thead>
+  {_racer_thead}
   <tbody>{"".join(
       f'<tr><td style="white-space:nowrap">{_racer_trophy_badges(r.get("trophies",[]))}</td>'
       f'<td><a href="../results/{data["race_slugs"].get(data["current_club"], {}).get(r["race_id"], str(r["race_id"]))}.html">{r["name"].split(" — ")[0] + (" — " + r["name"].split(" — ")[1] if " — " in r["name"] else "")}</a></td>'
       f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
       f'<td>{r["original_place"]}</td><td>{_fmt_indexed_place(r)}</td>'
-      f'<td>{_fmt_time(r["time_seconds"])}</td>'
-      + (f'<td>{_fmt_time(r["time_seconds"] / r["adjusted_time_versus_par"])}</td>' if r.get("adjusted_time_versus_par") else '<td></td>')
       + (f'<td style="text-align:right;font-size:0.85em;color:{"#2E7D32" if (1-r["adjusted_time_versus_par"])*100>=0 else "#666"};font-weight:{"bold" if (1-r["adjusted_time_versus_par"])*100>=0 else "normal"}">{(1-r["adjusted_time_versus_par"])*100:+.1f}%</td>' if r.get("adjusted_time_versus_par") else '<td></td>') +
+      f'<td>{_fmt_time(r["time_seconds"])}</td>'
+      + (f'<td>{_fmt_time(r["time_seconds"] / r["adjusted_time_versus_par"])}</td>' if r.get("adjusted_time_versus_par") else '<td></td>') +
       f'<td>{r["handicap"]:.3f}</td><td>{r["handicap_post"]:.3f}</td>'
       f'<td>{r["race_points"]}</td><td>{r["handicap_points"]}</td></tr>'
       for r in results
@@ -2533,12 +2570,19 @@ def generate_platform_home(data: dict) -> None:
         ft = entry.get("ft","")
         predicted = entry.get("predicted","")
         delta = entry.get("delta","")
-        tooltip = f'Racer Index: {idx}&#10;vs Projected: {pct:+.1f}%'
+        _pct_val = pct if pct is not None else 0.0
+        _tip_dir = HOME_PAGE["podium_tip_faster"] if _pct_val >= 0 else HOME_PAGE["podium_tip_slower"]
+        tooltip = HOME_PAGE["podium_tip"].format(
+            finish=ft or "—",
+            pct=f"{abs(_pct_val):.1f}",
+            direction=_tip_dir,
+            projected=predicted or "—",
+        )
         return (f'<div class="podium-col">'
                 f'<div class="p-icon">{icon}</div>'
                 f'<div class="p-namerow"><span class="p-name" style="color:{tc}">{name}</span></div>'
                 f'<div class="p-bar" style="height:{h}px;background:{bg};border:1px solid {bdr}"'
-                f' data-bs-toggle="tooltip" title="Racer Index: {idx}&#10;vs Projected: {pct:+.1f}%">'
+                f' data-bs-toggle="tooltip" title="{tooltip}">'
                 f'<span class="p-diff" style="color:{tc}">{f"{pct:+.1f}%" if pct is not None else ""}</span>'
                 f'<div class="p-spacer"></div>'
                 f'<div class="p-timerow" style="color:{tc}"><span class="p-tlabel">{HOME_PAGE["podium_actual"]}</span><span class="p-tval">{ft}</span></div>'
@@ -3137,7 +3181,9 @@ function _rlCourseBlock(course, ci, isFirst) {{
     if(e && parValid) {{
       var name=RACER_SLUGS.has(e.slug)?'<a href="racer/'+e.slug+'.html" class="p-name" style="color:'+tc+'">'+e.name+'</a>':'<span class="p-name" style="color:'+tc+'">'+e.name+'</span>';
       var pctSign=(e.pct||0)>0?'+':'';
-      var tip='Racer Index: '+(e.idx||'')+'\\nvs Projected: '+pctSign+(e.pct||0).toFixed(1)+'%';
+      var _pctAbs=Math.abs(e.pct||0).toFixed(1);
+      var _dir=(e.pct||0)>=0?'{HOME_PAGE["podium_tip_faster"]}':'{HOME_PAGE["podium_tip_slower"]}';
+      var tip='{HOME_PAGE["podium_tip"]}'.replace('{{finish}}',e.ft||'—').replace('{{pct}}',_pctAbs).replace('{{direction}}',_dir).replace('{{projected}}',e.predicted||'—');
       cCols+='<div class="podium-col"><div class="p-icon">'+CUP[p]+'</div><div class="p-namerow">'+name+'</div>'
         +'<div class="p-bar" style="height:'+h+'px;background:'+bg+';border:1px solid '+bdr+'" data-bs-toggle="tooltip" data-bs-html="true" title="'+tip+'">'
         +'<span class="p-diff" style="color:'+tc+'">'+pctSign+(e.pct||0).toFixed(1)+'%</span><div class="p-spacer"></div>'

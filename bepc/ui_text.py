@@ -33,13 +33,13 @@ RESULTS_COLUMNS = {
     "trophies":       ("Trophies",        "Trophies", None),
     "place":          ("Place",           "Place",    "Finish line order"),
     "racer":          ("Racer",           "Racer",    "Athlete name"),
-    "craft":          ("Craft",           "Craft",    "Craft category\n(sub-category)"),
-    "vs_projected":   ("{gold_cup} vs Par", "vs Par",  "Improvement vs personal par\n(+ve is best)"),
+    "craft":          ("Craft",           "Craft",    "Craft category (sub-category)"),
+    "vs_projected":   ("{gold_cup} vs Par", "vs Par",  "Improvement vs personal par (+ve is best)"),
     "finish_time":    ("{gold_flag} Time",  "Finish",   "Finish time"),
-    "projected_time": ("Par",  "Par",     "Personal par time\n(RacePar * Index)"),
+    "projected_time": ("Par",  "Par",     "Personal par time (RacePar * Index)"),
     "race_index":     ("Index",      "Index",    "Racer Speed Index"),
     "new_index":      ("New Index",       "New",      "Index for next race"),
-    "par_estimate":   ("RacePar vote",    "ParVote",  "Vote for RacePar\n(Finish ÷ Index)"),
+    "par_estimate":   ("RacePar vote",    "ParVote",  "Vote for RacePar (Finish ÷ Index)"),
     "finish_points":  ("Finish Points",   "Pts",      "Points, by time"),
     "indexed_points": ("Par Points",  "Par Pts",  "Points, by par result)"),
 }
@@ -117,7 +117,7 @@ RESULTS_TOOLTIPS = {
     #   {pct}       — absolute percentage (e.g. "4.0")
     #   {direction} — "faster" or "slower" (from vs_par_faster/vs_par_slower)
     #   {projected} — racer's projected time (e.g. "31:47")
-    "vs_par_row":         "{time} is {pct}% {direction} than projected {projected}",
+    "vs_par_row":         "{time} was {pct}% {direction} than Personal Par {projected}",
     "vs_par_faster":      "faster",
     "vs_par_slower":      "slower",
 }
@@ -178,7 +178,50 @@ HOME_PAGE = {
     # Pill toggles between the two podium views
     "pill_vs_projected": "Improvement vs Par",
     "pill_finish_time":  "Finish Time",
+    # Podium step hover tooltip. Placeholders:
+    #   {finish}    — racer's finish time
+    #   {pct}       — absolute percent (no sign)
+    #   {direction} — "faster" or "slower"
+    #   {projected} — racer's personal par time
+    "podium_tip":        "{finish} was {pct}% {direction} than Personal Par {projected}",
+    "podium_tip_faster": "faster",
+    "podium_tip_slower": "slower",
 }
+
+
+# ---------------------------------------------------------------------------
+# Racer page — race history table columns
+#
+# Racer pages show each race the racer did in a given season/craft. Columns
+# reuse keys from RESULTS_COLUMNS where the meaning is the same, so edits to
+# labels there propagate here. Racer-page-specific keys defined below.
+# ---------------------------------------------------------------------------
+RACER_PAGE_COLUMNS_EXTRA = {
+    "trophies":    ("",       "",       None),          # no label — just badges
+    "race":        ("Race",   "Race",   None),
+    "date":        ("Date",   "Date",   None),
+    "place":       ("Place",  "Place",  "Place on Finish time"),
+    "place_indexed": ("Place vs Par", "Place vs Par",
+                     "Place by Time vs Par"),
+}
+
+# Ordered list of column keys for the racer page race table.
+# Keys with matching entries in RESULTS_COLUMNS are reused; others come from
+# RACER_PAGE_COLUMNS_EXTRA above.
+RACER_PAGE_COLUMN_ORDER = [
+    "trophies",
+    "race",
+    "date",
+    "place_indexed",
+    "place",    
+    "vs_projected",    # from RESULTS_COLUMNS
+    "finish_time",     # from RESULTS_COLUMNS
+    "projected_time",  # from RESULTS_COLUMNS
+    "race_index",      # from RESULTS_COLUMNS
+    "new_index",       # from RESULTS_COLUMNS
+    "finish_points",   # from RESULTS_COLUMNS
+    "indexed_points",  # from RESULTS_COLUMNS
+]
 
 
 # ---------------------------------------------------------------------------
