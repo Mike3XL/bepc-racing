@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PaddleRace — Visualization Concepts</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+body { background:#f8f9fa; padding-top:1.5rem; }
+h2 { font-size:1.2rem; font-weight:700; margin-bottom:.25rem; }
+.concept-label { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#888; margin-bottom:.5rem; }
+.card { border:none; border-radius:12px; box-shadow:0 1px 6px rgba(0,0,0,.08); margin-bottom:1.5rem; }
+.card-body { padding:1.25rem 1.5rem; }
+/* Heatmap */
+#heatmap-wrap { overflow-x:auto; }
+.hm-table { border-collapse:separate; border-spacing:2px; font-size:.65rem; }
+.hm-table th { font-weight:600; white-space:nowrap; padding:2px 4px; }
+.hm-table td { width:22px; height:22px; border-radius:3px; text-align:center; vertical-align:middle; font-size:.6rem; font-weight:600; cursor:default; }
+.hm-name { text-align:right !important; padding-right:8px !important; white-space:nowrap; font-weight:600; font-size:.7rem; }
+/* Calendar */
+.cal-wrap { display:flex; flex-wrap:wrap; gap:3px; }
+.cal-dot { width:14px; height:14px; border-radius:3px; cursor:default; }
+.cal-legend { display:flex; gap:8px; align-items:center; font-size:.7rem; color:#666; margin-top:8px; }
+.cal-legend-dot { width:12px; height:12px; border-radius:2px; }
+/* Rivalry */
+.rv-bar-wrap { display:flex; align-items:center; gap:6px; margin-bottom:4px; font-size:.75rem; }
+.rv-bar { height:18px; border-radius:3px; min-width:4px; transition:width .4s; }
+.rv-name { width:130px; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:.72rem; }
+.rv-name-r { width:130px; text-align:left; }
+</style>
+</head>
+<body>
+<div class="container" style="max-width:900px">
+  <div class="mb-4">
+    <h1 class="h4 mb-1">PaddleRace — Visualization Concepts</h1>
+    <p class="text-muted small">Real data from PNW Regional, Kayak-1 category, 2023–2026. These are concept demos — not yet in the live site.</p>
+  </div>
+
+  <!-- 1. HEATMAP -->
+  <div class="card">
+    <div class="card-body">
+      <div class="concept-label">Concept 1</div>
+      <h2>Performance Heatmap — Who's Hot?</h2>
+      <p class="text-muted small mb-3">Each cell = one racer × one race. Green = beat projection, red = missed. Blank = didn't race. Reveals streaks, slumps, and who shows up consistently.</p>
+      <div id="heatmap-wrap"><table class="hm-table" id="hm-table"></table></div>
+      <div class="mt-2" style="font-size:.65rem;color:#aaa">Hover a cell for details</div>
+    </div>
+  </div>
+
+  <!-- 2. INDEX TRAJECTORIES -->
+  <div class="card">
+    <div class="card-body">
+      <div class="concept-label">Concept 2</div>
+      <h2>Index Trajectories — The Journey</h2>
+      <p class="text-muted small mb-3">How each racer's performance index evolved over time. Lower = faster relative to field. Shows improvement arcs, plateaus, and comebacks.</p>
+      <canvas id="traj-chart" height="220"></canvas>
+    </div>
+  </div>
+
+  <!-- 3. CALENDAR -->
+  <div class="card">
+    <div class="card-body">
+      <div class="concept-label">Concept 3</div>
+      <h2>Personal Performance Calendar</h2>
+      <p class="text-muted small mb-3">Every race as a dot. Green = beat projection, red = missed, grey = didn't race that day. Shows seasonal patterns and consistency at a glance.</p>
+      <div id="cal-container"></div>
+    </div>
+  </div>
+
+  <!-- 4. RIVALRY -->
+  <div class="card">
+    <div class="card-body">
+      <div class="concept-label">Concept 4</div>
+      <h2>Head-to-Head Rivalry</h2>
+      <p class="text-muted small mb-3">In races where both paddlers competed, who had the better indexed result? Bar length = win count. Click a pair to see their history.</p>
+      <div id="rivalry-container"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const VD = {"top_names": ["Egor Klevak", "Ivan Medvedev", "Mike Liddell", "Brian Kummer", "Greg Barton", "Steve Juranovics", "Juraj Osusky & Peter Turcan", "Denise Weeks", "Steve Esselaar", "Van Douglas"], "races": [["ws-310250", "Apr 1, 2023", "2023 PNWORCA Winter Se"], ["ws-311730", "Apr 15, 2023", "Sound Rowers: Squaxin "], ["ws-385578", "Apr 5, 2025", "Sound Rowers: Squaxin "], ["ws-362038", "Aug 10, 2024", "Sound Rowers: Round Sh"], ["pm-325386", "Feb 01, 2025", "2025 La Conner - Sound"], ["pm-276147", "Feb 03, 2024", "2024 La Conner - Sound"], ["pm-382586", "Feb 07, 2026", "2026 La Conner - Sound"], ["pm-384532", "Feb 21, 2026", "2026  PNWORCA #4 - Hos"], ["pm-252639", "Jul 10, 2023", "2023 Gorge Downwind Ch"], ["pm-299092", "Jul 12, 2024", "2024 Gorge Downwind Ch"], ["pm-351602", "Jul 18, 2025", "2025 Gorge Downwind Ch"], ["ws-320770", "Jul 8, 2023", "Sound Rowers: Budd Inl"], ["pm-388006", "Mar 14, 2026", "2026 Peter Marcus Roug"], ["pm-329920", "Mar 15, 2025", "2025 Peter Marcus Roug"], ["pm-281775", "Mar 16, 2024", "2024 Peter Marcus Roug"], ["ws-384862", "Mar 29, 2025", "2025 PNWORCA Winter Se"], ["ws-347166", "Mar 30, 2024", "2024 PNWORCA Winter Se"], ["ws-389408", "May 10, 2025", "Board the Fjord 2025"], ["pm-288998", "May 4, 2024", "2024 Lake Whatcom Clas"], ["pm-313433", "Oct 12, 2024", "2024 Narrows Challenge"], ["pm-266106", "Oct 14, 2023", "2023 Narrows Challenge"], ["ws-331484", "Oct 7, 2023", "Sound Rowers: Mercer I"], ["jericho-20257122", "Sep 13, 2025", "Whipper Snapper"], ["jericho-20246986", "Sep 14, 2024", "Whipper Snapper"], ["pm-362841", "Sep 20, 2025", "2025 Salmon Row and Pa"], ["ws-367595", "Sep 28, 2024", "Sound Rowers: Mercer I"]], "heatmap": {"Egor Klevak": {"ws-310250": null, "ws-311730": -5.3, "ws-385578": 3.6, "ws-362038": -1.7, "pm-325386": -2.7, "pm-276147": null, "pm-382586": -3.6, "pm-384532": 4.3, "pm-252639": -1.7, "pm-299092": 8.9, "pm-351602": 2.5, "ws-320770": -2.8, "pm-388006": null, "pm-329920": -0.0, "pm-281775": null, "ws-384862": 1.1, "ws-347166": null, "ws-389408": -1.5, "pm-288998": null, "pm-313433": 2.5, "pm-266106": 1.0, "ws-331484": -3.4, "jericho-20257122": 1.5, "jericho-20246986": 4.1, "pm-362841": 0.2, "ws-367595": 2.4}, "Ivan Medvedev": {"ws-310250": null, "ws-311730": -2.5, "ws-385578": 0.8, "ws-362038": -1.9, "pm-325386": -2.2, "pm-276147": null, "pm-382586": -1.8, "pm-384532": null, "pm-252639": 2.8, "pm-299092": 5.6, "pm-351602": 10.4, "ws-320770": -3.0, "pm-388006": 2.5, "pm-329920": 0.6, "pm-281775": -0.5, "ws-384862": -2.9, "ws-347166": null, "ws-389408": null, "pm-288998": null, "pm-313433": null, "pm-266106": -0.0, "ws-331484": -5.5, "jericho-20257122": null, "jericho-20246986": null, "pm-362841": 3.7, "ws-367595": -0.5}, "Mike Liddell": {"ws-310250": null, "ws-311730": null, "ws-385578": 3.6, "ws-362038": null, "pm-325386": null, "pm-276147": -8.6, "pm-382586": -1.0, "pm-384532": null, "pm-252639": 4.9, "pm-299092": 3.3, "pm-351602": 15.2, "ws-320770": null, "pm-388006": 7.3, "pm-329920": 0.0, "pm-281775": null, "ws-384862": 5.8, "ws-347166": -3.8, "ws-389408": -0.9, "pm-288998": 0.9, "pm-313433": 4.4, "pm-266106": -1.9, "ws-331484": null, "jericho-20257122": null, "jericho-20246986": null, "pm-362841": -0.4, "ws-367595": -3.6}, "Brian Kummer": {"ws-310250": 2.8, "ws-311730": null, "ws-385578": null, "ws-362038": null, "pm-325386": null, "pm-276147": null, "pm-382586": null, "pm-384532": 4.6, "pm-252639": -3.2, "pm-299092": -3.7, "pm-351602": -5.7, "ws-320770": null, "pm-388006": null, "pm-329920": null, "pm-281775": null, "ws-384862": -1.0, "ws-347166": 7.9, "ws-389408": null, "pm-288998": -0.9, "pm-313433": null, "pm-266106": null, "ws-331484": null, "jericho-20257122": -0.7, "jericho-20246986": null, "pm-362841": null, "ws-367595": 1.7}, "Greg Barton": {"ws-310250": 1.3, "ws-311730": null, "ws-385578": null, "ws-362038": null, "pm-325386": null, "pm-276147": null, "pm-382586": null, "pm-384532": null, "pm-252639": 5.8, "pm-299092": 5.6, "pm-351602": 4.0, "ws-320770": null, "pm-388006": null, "pm-329920": -2.5, "pm-281775": 2.7, "ws-384862": null, "ws-347166": 3.8, "ws-389408": null, "pm-288998": 2.3, "pm-313433": 3.3, "pm-266106": 2.8, "ws-331484": -0.6, "jericho-20257122": 0.8, "jericho-20246986": null, "pm-362841": 0.0, "ws-367595": null}, "Steve Juranovics": {"ws-310250": null, "ws-311730": null, "ws-385578": null, "ws-362038": null, "pm-325386": null, "pm-276147": null, "pm-382586": 1.2, "pm-384532": null, "pm-252639": -9.9, "pm-299092": -1.5, "pm-351602": 2.5, "ws-320770": null, "pm-388006": 1.4, "pm-329920": 2.1, "pm-281775": null, "ws-384862": null, "ws-347166": null, "ws-389408": -3.4, "pm-288998": null, "pm-313433": null, "pm-266106": null, "ws-331484": -13.0, "jericho-20257122": -0.1, "jericho-20246986": -5.5, "pm-362841": -3.8, "ws-367595": null}, "Juraj Osusky & Peter Turcan": {"ws-310250": null, "ws-311730": 5.4, "ws-385578": null, "ws-362038": 13.0, "pm-325386": null, "pm-276147": null, "pm-382586": null, "pm-384532": null, "pm-252639": null, "pm-299092": null, "pm-351602": null, "ws-320770": 1.4, "pm-388006": null, "pm-329920": null, "pm-281775": null, "ws-384862": null, "ws-347166": null, "ws-389408": null, "pm-288998": null, "pm-313433": null, "pm-266106": null, "ws-331484": 5.3, "jericho-20257122": null, "jericho-20246986": null, "pm-362841": null, "ws-367595": 1.8}, "Denise Weeks": {"ws-310250": null, "ws-311730": null, "ws-385578": null, "ws-362038": null, "pm-325386": 0.5, "pm-276147": 0.0, "pm-382586": -2.8, "pm-384532": -1.4, "pm-252639": -5.0, "pm-299092": -1.5, "pm-351602": -1.0, "ws-320770": null, "pm-388006": 3.3, "pm-329920": null, "pm-281775": -1.1, "ws-384862": -1.6, "ws-347166": null, "ws-389408": -0.8, "pm-288998": null, "pm-313433": null, "pm-266106": null, "ws-331484": null, "jericho-20257122": 0.0, "jericho-20246986": null, "pm-362841": null, "ws-367595": null}, "Steve Esselaar": {"ws-310250": null, "ws-311730": null, "ws-385578": null, "ws-362038": null, "pm-325386": null, "pm-276147": null, "pm-382586": null, "pm-384532": null, "pm-252639": -6.0, "pm-299092": 2.2, "pm-351602": 1.3, "ws-320770": null, "pm-388006": null, "pm-329920": 4.7, "pm-281775": -0.5, "ws-384862": null, "ws-347166": null, "ws-389408": -2.4, "pm-288998": null, "pm-313433": null, "pm-266106": null, "ws-331484": -8.7, "jericho-20257122": 1.1, "jericho-20246986": -1.7, "pm-362841": null, "ws-367595": null}, "Van Douglas": {"ws-310250": 0.0, "ws-311730": null, "ws-385578": null, "ws-362038": null, "pm-325386": null, "pm-276147": 6.7, "pm-382586": null, "pm-384532": null, "pm-252639": -3.7, "pm-299092": -1.1, "pm-351602": -1.1, "ws-320770": null, "pm-388006": null, "pm-329920": null, "pm-281775": null, "ws-384862": 10.9, "ws-347166": null, "ws-389408": null, "pm-288998": null, "pm-313433": null, "pm-266106": null, "ws-331484": null, "jericho-20257122": null, "jericho-20246986": null, "pm-362841": null, "ws-367595": null}}, "trajectories": {"Egor Klevak": [["Apr 15, 2023", 0.868, "Sound Rowers: Squaxin "], ["Apr 5, 2025", 0.848, "Sound Rowers: Squaxin "], ["Aug 10, 2024", 0.844, "Sound Rowers: Round Sh"], ["Aug 27, 2022", 0.882, "Sound Rowers: Great Cr"], ["Feb 01, 2025", 0.842, "2025 La Conner - Sound"], ["Feb 07, 2026", 0.843, "2026 La Conner - Sound"], ["Feb 21, 2026", 0.849, "2026  PNWORCA #4 - Hos"], ["Jul 10, 2023", 0.854, "2023 Gorge Downwind Ch"], ["Jul 12, 2024", 0.848, "2024 Gorge Downwind Ch"], ["Jul 18, 2025", 0.849, "2025 Gorge Downwind Ch"], ["Jul 29, 2023", 0.856, "Round Bowen Island"], ["Jul 8, 2023", 0.859, "Sound Rowers: Budd Inl"], ["Jul 9, 2022", 0.905, "Sound Rowers: Budd Inl"], ["Jun 15, 2024", 0.837, "Rat Island Regatta 202"], ["Jun 18, 2022", 0.899, "Sound Rowers: Rat Isla"], ["Jun 21, 2025", 0.846, "Rat Island Regatta 202"], ["Jun 24, 2023", 0.866, "Sound Rowers: Rat Isla"], ["Mar 15, 2025", 0.842, "2025 Peter Marcus Roug"], ["Mar 29, 2025", 0.843, "2025 PNWORCA Winter Se"], ["May 10, 2025", 0.846, "Board the Fjord 2025"], ["May 18, 2024", 0.845, "Sound Rowers: Commence"], ["May 21, 2022", 0.929, "Sound Rowers: Commence"], ["May 3, 2025", 0.85, "2025 Lake Whatcom Clas"], ["Oct 11, 2025", 0.852, "Sound Rowers: Mercer I"], ["Oct 12, 2024", 0.849, "2024 Narrows Challenge"], ["Oct 14, 2023", 0.849, "2023 Narrows Challenge"], ["Oct 7, 2023", 0.847, "Sound Rowers: Mercer I"], ["Sep 13, 2025", 0.851, "Whipper Snapper"], ["Sep 14, 2024", 0.843, "Whipper Snapper"], ["Sep 20, 2025", 0.852, "2025 Salmon Row and Pa"], ["Sep 28, 2024", 0.846, "Sound Rowers: Mercer I"], ["Sep 6, 2025", 0.849, "Bainbridge Island Mara"], ["Sep 7, 2024", 0.837, "Bainbridge Island Mara"]], "Ivan Medvedev": [["Apr 15, 2023", 0.905, "Sound Rowers: Squaxin "], ["Apr 20, 2024", 0.889, "Sound Rowers: Squaxin "], ["Apr 5, 2025", 0.868, "Sound Rowers: Squaxin "], ["Aug 10, 2024", 0.892, "Sound Rowers: Round Sh"], ["Aug 2, 2025", 0.833, "Sound Rowers: Round Sh"], ["Aug 27, 2022", 0.912, "Sound Rowers: Great Cr"], ["Feb 01, 2025", 0.874, "2025 La Conner - Sound"], ["Feb 07, 2026", 0.833, "2026 La Conner - Sound"], ["Jul 10, 2023", 0.898, "2023 Gorge Downwind Ch"], ["Jul 12, 2024", 0.897, "2024 Gorge Downwind Ch"], ["Jul 18, 2025", 0.862, "2025 Gorge Downwind Ch"], ["Jul 8, 2023", 0.895, "Sound Rowers: Budd Inl"], ["Jun 18, 2022", 0.927, "Sound Rowers: Rat Isla"], ["Jun 21, 2025", 0.862, "Rat Island Regatta 202"], ["Jun 24, 2023", 0.903, "Sound Rowers: Rat Isla"], ["Mar 14, 2026", 0.836, "2026 Peter Marcus Roug"], ["Mar 15, 2025", 0.875, "2025 Peter Marcus Roug"], ["Mar 16, 2024", 0.889, "2024 Peter Marcus Roug"], ["Mar 29, 2025", 0.867, "2025 PNWORCA Winter Se"], ["Oct 14, 2023", 0.891, "2023 Narrows Challenge"], ["Oct 7, 2023", 0.891, "Sound Rowers: Mercer I"], ["Sep 11, 2021", 0.945, "Bainbridge Island Mara"], ["Sep 20, 2025", 0.838, "2025 Salmon Row and Pa"], ["Sep 28, 2024", 0.88, "Sound Rowers: Mercer I"], ["Sep 6, 2025", 0.833, "Bainbridge Island Mara"], ["Sep 7, 2024", 0.881, "Bainbridge Island Mara"], ["Sep 9, 2023", 0.906, "Bainbridge Island Mara"]], "Mike Liddell": [["Apr 1, 2023", 1.038, "2023 PNWORCA Winter Se"], ["Apr 11, 2026", 0.954, "Sound Rowers: Squaxin "], ["Apr 20, 2024", 0.985, "Sound Rowers: Squaxin "], ["Apr 25, 2026", 0.951, "Gig Harbor Paddlers Cu"], ["Apr 5, 2025", 0.971, "Sound Rowers: Squaxin "], ["Feb 03, 2024", 1.006, "2024 La Conner - Sound"], ["Feb 07, 2026", 0.944, "2026 La Conner - Sound"], ["Jul 10, 2023", 1.039, "2023 Gorge Downwind Ch"], ["Jul 12, 2024", 0.991, "2024 Gorge Downwind Ch"], ["Jul 18, 2025", 0.968, "2025 Gorge Downwind Ch"], ["Mar 14, 2026", 0.955, "2026 Peter Marcus Roug"], ["Mar 15, 2025", 0.987, "2025 Peter Marcus Roug"], ["Mar 15, 2025", 0.958, "Alderbrook St. Paddles"], ["Mar 16, 2024", 1.007, "Alderbrook St. Paddles"], ["Mar 28, 2026", 0.965, "2026 PNWORCA Winter Se"], ["Mar 29, 2025", 0.966, "2025 PNWORCA Winter Se"], ["Mar 30, 2024", 0.995, "2024 PNWORCA Winter Se"], ["May 10, 2025", 0.968, "Board the Fjord 2025"], ["May 4, 2024", 0.986, "2024 Lake Whatcom Clas"], ["May 6, 2023", 1.031, "2023 Lake Whatcom Clas"], ["Oct 11, 2025", 0.947, "2025 Narrows Challenge"], ["Oct 12, 2024", 0.987, "2024 Narrows Challenge"], ["Oct 14, 2023", 1.033, "2023 Narrows Challenge"], ["Sep 20, 2025", 0.967, "2025 Salmon Row and Pa"], ["Sep 28, 2024", 0.98, "Sound Rowers: Mercer I"], ["Sep 6, 2025", 0.968, "Bainbridge Island Mara"]], "Brian Kummer": [["Apr 1, 2023", 0.966, "2023 PNWORCA Winter Se"], ["Feb 21, 2026", 0.947, "2026  PNWORCA #4 - Hos"], ["Feb 8, 2025", 0.962, "PNWORCA Race #3"], ["Jan 11, 2025", 0.959, "PNWORCA Race #1"], ["Jul 10, 2023", 0.957, "2023 Gorge Downwind Ch"], ["Jul 12, 2024", 0.955, "2024 Gorge Downwind Ch"], ["Jul 18, 2025", 0.942, "2025 Gorge Downwind Ch"], ["Mar 11, 2023", 0.962, "PNWORCA Race #5"], ["Mar 15, 2025", 0.961, "PNWORCA Race #6"], ["Mar 19, 2022", 0.982, "2022 Bellingham Bay Ro"], ["Mar 2, 2024", 0.957, "PNWORCA Race #6"], ["Mar 27, 2021", 1.003, "2021 PNWORCA Winter Se"], ["Mar 28, 2026", 0.949, "2026 PNWORCA Winter Se"], ["Mar 29, 2025", 0.959, "2025 PNWORCA Winter Se"], ["Mar 30, 2024", 0.968, "2024 PNWORCA Winter Se"], ["May 4, 2024", 0.965, "2024 Lake Whatcom Clas"], ["Sep 13, 2025", 0.94, "Whipper Snapper"], ["Sep 28, 2024", 0.957, "Sound Rowers: Mercer I"]], "Greg Barton": [["Apr 1, 2023", 0.815, "2023 PNWORCA Winter Se"], ["Jul 10, 2023", 0.827, "2023 Gorge Downwind Ch"], ["Jul 12, 2024", 0.847, "2024 Gorge Downwind Ch"], ["Jul 18, 2025", 0.85, "2025 Gorge Downwind Ch"], ["Mar 15, 2025", 0.845, "2025 Peter Marcus Roug"], ["Mar 16, 2024", 0.833, "2024 Peter Marcus Roug"], ["Mar 19, 2022", 0.835, "2022 Bellingham Bay Ro"], ["Mar 27, 2021", 0.937, "2021 PNWORCA Winter Se"], ["Mar 30, 2024", 0.837, "2024 PNWORCA Winter Se"], ["May 3, 2025", 0.845, "2025 Lake Whatcom Clas"], ["May 4, 2024", 0.84, "2024 Lake Whatcom Clas"], ["May 6, 2023", 0.82, "2023 Lake Whatcom Clas"], ["Oct 1, 2022", 0.814, "Sound Rowers: Mercer I"], ["Oct 12, 2024", 0.851, "2024 Narrows Challenge"], ["Oct 14, 2023", 0.829, "2023 Narrows Challenge"], ["Oct 7, 2023", 0.826, "Sound Rowers: Mercer I"], ["Sep 11, 2021", 0.856, "Bainbridge Island Mara"], ["Sep 13, 2025", 0.851, "Whipper Snapper"], ["Sep 20, 2025", 0.851, "2025 Salmon Row and Pa"]], "Steve Juranovics": [["Aug 14, 2025", 0.898, "Keats Chop"], ["Feb 07, 2026", 0.889, "2026 La Conner - Sound"], ["Feb 24, 2024", 0.935, "PNWORCA Race #4"], ["Jan 20, 2024", 0.945, "PNWORCA Race #2"], ["Jul 10, 2023", 0.983, "2023 Gorge Downwind Ch"], ["Jul 12, 2024", 0.931, "2024 Gorge Downwind Ch"], ["Jul 18, 2025", 0.912, "2025 Gorge Downwind Ch"], ["Mar 14, 2026", 0.891, "2026 Peter Marcus Roug"], ["Mar 15, 2025", 0.918, "2025 Peter Marcus Roug"], ["Mar 5, 2022", 1.013, "PNWORCA Race #5"], ["May 10, 2025", 0.909, "Board the Fjord 2025"], ["Oct 7, 2023", 0.945, "Sound Rowers: Mercer I"], ["Sep 13, 2025", 0.898, "Whipper Snapper"], ["Sep 14, 2024", 0.915, "Whipper Snapper"], ["Sep 20, 2025", 0.887, "2025 Salmon Row and Pa"]]}, "calendar": {"Egor Klevak": [["May 18, 2024", -1.5], ["Jun 15, 2024", -3.2], ["Jul 12, 2024", 8.9], ["Aug 10, 2024", -1.7], ["Sep 7, 2024", -2.4], ["Sep 14, 2024", 4.1], ["Sep 28, 2024", 2.4], ["Oct 12, 2024", 2.5], ["Feb 01, 2025", -2.7], ["Mar 15, 2025", -0.0], ["Mar 29, 2025", 1.1], ["Apr 5, 2025", 3.6], ["May 3, 2025", 1.8], ["May 10, 2025", -1.5], ["Jun 21, 2025", 0.0], ["Jul 18, 2025", 2.5], ["Sep 13, 2025", 1.5], ["Sep 20, 2025", 0.2], ["Oct 11, 2025", 0.6], ["Feb 07, 2026", -3.6], ["Feb 21, 2026", 4.3]], "Ivan Medvedev": [["Mar 16, 2024", -0.5], ["Apr 20, 2024", 0.0], ["Jul 12, 2024", 5.6], ["Aug 10, 2024", -1.9], ["Sep 7, 2024", -4.0], ["Sep 28, 2024", -0.5], ["Feb 01, 2025", -2.2], ["Mar 15, 2025", 0.6], ["Mar 29, 2025", -2.9], ["Apr 5, 2025", 0.8], ["Jun 21, 2025", -2.4], ["Jul 18, 2025", 10.4], ["Aug 2, 2025", -11.1], ["Sep 20, 2025", 3.7], ["Feb 07, 2026", -1.8], ["Mar 14, 2026", 2.5]], "Mike Liddell": [["Feb 03, 2024", -8.6], ["Mar 16, 2024", 0.4], ["Mar 30, 2024", -3.8], ["Apr 20, 2024", -3.6], ["May 4, 2024", 0.9], ["Jul 12, 2024", 3.3], ["Sep 28, 2024", -3.6], ["Oct 12, 2024", 4.4], ["Mar 15, 2025", 0.0], ["Mar 15, 2025", -9.8], ["Mar 29, 2025", 5.8], ["Apr 5, 2025", 3.6], ["May 10, 2025", -0.9], ["Jul 18, 2025", 15.2], ["Sep 20, 2025", -0.4], ["Oct 11, 2025", -6.9], ["Feb 07, 2026", -1.0], ["Mar 14, 2026", 7.3], ["Mar 28, 2026", 6.7], ["Apr 11, 2026", -3.6], ["Apr 25, 2026", -1.1]]}};
+
+// ── 1. HEATMAP ──────────────────────────────────────────────────────────────
+(function() {
+  const names = VD.top_names.filter(n => !n.includes('&')).slice(0, 9);
+  const races = VD.races;
+  const hm = VD.heatmap;
+
+  function pctColor(v) {
+    if (v === null || v === undefined) return '#efefef';
+    const t = Math.max(-1, Math.min(1, v / 8));
+    if (t <= 0) {
+      const g = Math.round(180 - t * -75);
+      return `rgb(${Math.round(40 - t*-40)},${g},${Math.round(60 - t*-40)})`;
+    } else {
+      const r = Math.round(180 + t * 75);
+      return `rgb(${r},${Math.round(80 - t*40)},${Math.round(80 - t*40)})`;
+    }
+  }
+
+  const tbl = document.getElementById('hm-table');
+  // Header row
+  let hdr = '<tr><th class="hm-name"></th>';
+  races.forEach(([rid, date, name]) => {
+    const d = date.replace(/\w+ (\d+), (\d+)/, '$1/$2').replace(/[A-Za-z]+ /,'');
+    hdr += `<th style="writing-mode:vertical-rl;transform:rotate(180deg);height:70px;font-size:.6rem;font-weight:500;color:#666" title="${name}">${date.slice(-4)+' '+name.slice(0,10)}</th>`;
+  });
+  hdr += '</tr>';
+  tbl.innerHTML = hdr;
+
+  names.forEach(name => {
+    let row = `<tr><td class="hm-name">${name.split(' ').slice(-1)[0]}, ${name.split(' ')[0]}</td>`;
+    races.forEach(([rid, date, rname]) => {
+      const v = hm[name] ? hm[name][rid] : null;
+      const bg = pctColor(v);
+      const txt = v !== null && v !== undefined ? (v > 0 ? '+' : '') + v.toFixed(1) : '';
+      const color = v !== null && Math.abs(v) > 3 ? '#fff' : '#333';
+      row += `<td style="background:${bg};color:${color}" title="${name} · ${rname} · ${v !== null ? (v>0?'+':'')+v+'%' : 'DNS'}">${txt}</td>`;
+    });
+    row += '</tr>';
+    tbl.innerHTML += row;
+  });
+})();
+
+// ── 2. INDEX TRAJECTORIES ───────────────────────────────────────────────────
+(function() {
+  const colors = ['#1565C0','#2E7D32','#C62828','#6A1B9A','#E65100','#00695C'];
+  const datasets = [];
+  const names = Object.keys(VD.trajectories).slice(0, 6);
+
+  names.forEach((name, i) => {
+    const traj = VD.trajectories[name];
+    datasets.push({
+      label: name.split(' ').map((w,j) => j===0 ? w[0]+'.' : w).join(' '),
+      data: traj.map(([date, idx]) => ({ x: date, y: idx })),
+      borderColor: colors[i],
+      backgroundColor: colors[i] + '22',
+      borderWidth: 2,
+      pointRadius: 3,
+      pointHoverRadius: 5,
+      tension: 0.3,
+      fill: false,
+    });
+  });
+
+  new Chart(document.getElementById('traj-chart'), {
+    type: 'line',
+    data: { datasets },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(3)}`
+          }
+        }
+      },
+      scales: {
+        x: { type: 'category', ticks: { maxTicksLimit: 8, font: { size: 10 } } },
+        y: {
+          reverse: false,
+          title: { display: true, text: 'Index (lower = faster)', font: { size: 11 } },
+          ticks: { font: { size: 10 } }
+        }
+      }
+    }
+  });
+})();
+
+// ── 3. CALENDAR ─────────────────────────────────────────────────────────────
+(function() {
+  const container = document.getElementById('cal-container');
+  const names = Object.keys(VD.calendar).slice(0, 3);
+
+  names.forEach(name => {
+    const entries = VD.calendar[name];
+    const div = document.createElement('div');
+    div.className = 'mb-3';
+    div.innerHTML = `<div style="font-size:.78rem;font-weight:600;margin-bottom:4px">${name}</div>`;
+    const wrap = document.createElement('div');
+    wrap.className = 'cal-wrap';
+
+    entries.forEach(([date, pct]) => {
+      const dot = document.createElement('div');
+      dot.className = 'cal-dot';
+      const intensity = Math.min(1, Math.abs(pct) / 6);
+      if (pct <= 0) {
+        const g = Math.round(120 + intensity * 100);
+        dot.style.background = `rgb(${Math.round(40+intensity*20)},${g},${Math.round(60+intensity*20)})`;
+      } else {
+        const r = Math.round(160 + intensity * 80);
+        dot.style.background = `rgb(${r},${Math.round(60-intensity*20)},${Math.round(60-intensity*20)})`;
+      }
+      dot.title = `${date}: ${pct > 0 ? '+' : ''}${pct}% vs projected`;
+      wrap.appendChild(dot);
+    });
+
+    div.appendChild(wrap);
+    container.appendChild(div);
+  });
+
+  // Legend
+  const leg = document.createElement('div');
+  leg.className = 'cal-legend';
+  leg.innerHTML = `
+    <div class="cal-legend-dot" style="background:#2E7D32"></div><span>Beat projection</span>
+    <div class="cal-legend-dot" style="background:#C62828"></div><span>Missed projection</span>
+    <div class="cal-legend-dot" style="background:#ddd"></div><span>DNS</span>
+    <span style="margin-left:8px">Darker = larger margin</span>`;
+  container.appendChild(leg);
+})();
+
+// ── 4. RIVALRY ──────────────────────────────────────────────────────────────
+(function() {
+  const container = document.getElementById('rivalry-container');
+  const names = VD.top_names.filter(n => !n.includes('&')).slice(0, 6);
+  const hm = VD.heatmap;
+  const races = VD.races;
+
+  // For each pair, count head-to-head wins (better indexed result)
+  const pairs = [];
+  for (let i = 0; i < names.length; i++) {
+    for (let j = i+1; j < names.length; j++) {
+      const a = names[i], b = names[j];
+      let aWins = 0, bWins = 0;
+      races.forEach(([rid]) => {
+        const av = hm[a] && hm[a][rid] !== null && hm[a][rid] !== undefined ? hm[a][rid] : null;
+        const bv = hm[b] && hm[b][rid] !== null && hm[b][rid] !== undefined ? hm[b][rid] : null;
+        if (av !== null && bv !== null) {
+          if (av < bv) aWins++;
+          else if (bv < av) bWins++;
+        }
+      });
+      const total = aWins + bWins;
+      if (total >= 3) pairs.push({ a, b, aWins, bWins, total });
+    }
+  }
+  pairs.sort((x,y) => y.total - x.total);
+
+  const maxWins = Math.max(...pairs.map(p => Math.max(p.aWins, p.bWins)));
+
+  pairs.slice(0, 8).forEach(({ a, b, aWins, bWins, total }) => {
+    const row = document.createElement('div');
+    row.className = 'rv-bar-wrap';
+    const aShort = a.split(' ').slice(-1)[0];
+    const bShort = b.split(' ').slice(-1)[0];
+    const aW = Math.round((aWins / maxWins) * 120);
+    const bW = Math.round((bWins / maxWins) * 120);
+    const aColor = aWins >= bWins ? '#1565C0' : '#90CAF9';
+    const bColor = bWins > aWins ? '#C62828' : '#EF9A9A';
+    row.innerHTML = `
+      <div class="rv-name" title="${a}">${aShort}</div>
+      <div style="display:flex;align-items:center;gap:2px">
+        <div class="rv-bar" style="width:${aW}px;background:${aColor};text-align:right;padding-right:4px;color:#fff;font-size:.65rem;line-height:18px">${aWins}</div>
+        <div style="font-size:.65rem;color:#aaa;width:20px;text-align:center">${total}</div>
+        <div class="rv-bar" style="width:${bW}px;background:${bColor};padding-left:4px;color:#fff;font-size:.65rem;line-height:18px">${bWins}</div>
+      </div>
+      <div class="rv-name-r" title="${b}">${bShort}</div>`;
+    container.appendChild(row);
+  });
+
+  const note = document.createElement('div');
+  note.style.cssText = 'font-size:.65rem;color:#aaa;margin-top:8px';
+  note.textContent = 'Win = better indexed result in shared race. Min 3 shared races shown.';
+  container.appendChild(note);
+})();
+</script>
+</body>
+</html>
