@@ -889,9 +889,9 @@ function rows(results, placeField) {
     }
     const pct = r.adjusted_time_versus_par != null && !r.is_fresh_racer
       ? ((1 - r.adjusted_time_versus_par) * 100) : null;
-    // pctHtml — use pct (or 999 for "—") as sort key so empties sort to the end.
-    // Positive pct means racer beat projection; negative means slower than projection.
-    const pctSort = pct != null ? pct : 999;
+    // pctHtml — use pct (or -999 for "—") as sort key so empties sort to the bottom
+    // under desc (positive = beat projection sorts to top).
+    const pctSort = pct != null ? pct : -999;
     const pctHtml = pct != null
       ? `<td data-order="${pctSort}" style="text-align:center;white-space:nowrap;font-size:0.85em;color:${pct >= 0 ? '#2E7D32' : '#666'};font-weight:${pct >= 0 ? 'bold' : 'normal'}">${pct > 0 ? '+' : ''}${pct.toFixed(1)}%</td>`
       : `<td data-order="${pctSort}"></td>`;
@@ -1053,7 +1053,7 @@ document.addEventListener('DOMContentLoaded', () => {{
     document.getElementById(`body-results-${{i}}`).innerHTML = rows(course.handicap, 'original_place');
     // Disable sorting on Trophies (0), Racer (2), Craft (3)
     _dts[i] = $(`#tbl-results-${{i}}`).DataTable({{
-      order: [[4, 'asc']],
+      order: [[4, 'desc']],
       paging: false,
       searching: false,
       info: false,
