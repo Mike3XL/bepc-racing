@@ -8,6 +8,7 @@ from bepc.ui_text import (
     TROPHIES, TROPHY_ORDER, PLACE_MUTE_REASONS, STREAK_TROPHY,
     RESULTS_TOOLTIPS, RESULTS_FILTER, RACER_STATS_LABELS,
     SELECTOR_PLACEHOLDERS, SEARCH,
+    HOME_PAGE, STANDINGS_PAGE,
 )
 
 SITE_DIR = Path(__file__).parent.parent / "site"
@@ -757,15 +758,15 @@ def generate_standings(data: dict) -> None:
         series_name = data["clubs"][club_id].get("name", club_id)
         html = _head("Standings") + _nav("Standings", data=data, depth=1) + _selector_bar(data, page="standings") + f"""
 <div class="container-fluid px-2 px-sm-3">
-  <h1 class="mb-3" id="standings-title">Standings</h1>
+  <h1 class="mb-3" id="standings-title">{STANDINGS_PAGE["heading"]}</h1>
   <div class="d-flex align-items-center gap-3 mb-2 flex-wrap">
-    <div class="btn-group btn-group-sm" role="group" aria-label="Filter">
+    <div class="btn-group btn-group-sm" role="group" aria-label="{STANDINGS_PAGE["filter_aria_label"]}">
       <input type="radio" class="btn-check" name="filter" id="f-est" value="established" checked>
-      <label class="btn btn-outline-secondary" for="f-est">Established</label>
+      <label class="btn btn-outline-secondary" for="f-est">{STANDINGS_PAGE["filter_established"]}</label>
       <input type="radio" class="btn-check" name="filter" id="f-all" value="all">
-      <label class="btn btn-outline-secondary" for="f-all">All</label>
+      <label class="btn btn-outline-secondary" for="f-all">{STANDINGS_PAGE["filter_all"]}</label>
     </div>
-    <span class="text-muted small">Click column headers to sort. Shift+click for multi-column.</span>
+    <span class="text-muted small">{STANDINGS_PAGE["sort_hint"]}</span>
   </div>
   <table id="tbl-standings" class="table table-striped table-hover">
     <thead><tr>
@@ -941,23 +942,33 @@ function rows(results, placeField) {
     } else {
       placeCellHtml = String(r[placeField]);
     }
-    const pct = r.adjusted_time_versus_par != null && !r.is_fresh_racer
-      ? ((1 - r.adjusted_time_versus_par) * 100) : null;
-    // pctHtml — use pct (or -999 for "—") as sort key so empties sort to the bottom
-    // under desc (positive = beat projection sorts to top).
-    const pctSort = pct != null ? pct : -999;
-    const pctHtml = pct != null
-      ? `<td data-order="${pctSort}" style="text-align:center;white-space:nowrap;font-size:0.85em;color:${pct >= 0 ? '#2E7D32' : '#666'};font-weight:${pct >= 0 ? 'bold' : 'normal'}">${pct > 0 ? '+' : ''}${pct.toFixed(1)}%</td>`
-      : `<td data-order="${pctSort}"></td>`;
-    const hcapPostNote = r.is_outlier ? ' data-bs-toggle="tooltip" data-bs-title=\"""" + RESULTS_TOOLTIPS["new_outlier_frozen"] + """\"' : '';
-    const hcapPostHtml = `<td data-order="${r.handicap_post}" style="padding-left:8px">${r.handicap_post.toFixed(3)}${r.is_outlier ? `<sup${hcapPostNote}>^</sup>` : ''}</td>`;
-    const s = slug(r.canonical_name);
-    const isFresh = r.is_fresh_racer ? 'true' : 'false';
     // Predicted time (in seconds) for sorting; 999999 sorts empty to the end
     const predSec = (!r.is_fresh_racer && r.time_versus_par > 0)
       ? (r.time_seconds / r.time_versus_par * r.handicap) : null;
     const predSort = predSec != null ? predSec : 999999;
     const predCell = predSec != null ? fmtTime(predSec) : '<span style="color:#999">—</span>';
+    const pct = r.adjusted_time_versus_par != null && !r.is_fresh_racer
+      ? ((1 - r.adjusted_time_versus_par) * 100) : null;
+    // pctHtml — use pct (or -999 for "—") as sort key so empties sort to the bottom
+    // under desc (positive = beat projection sorts to top).
+    const pctSort = pct != null ? pct : -999;
+    // Per-row tooltip: "{time} is {pct}% {direction} than projected {projected}"
+    const pctTip = (pct != null && predSec != null)
+      ? `${'""" + RESULTS_TOOLTIPS["vs_par_row"] + """'
+          .replace('{time}', fmtTime(r.time_seconds))
+          .replace('{pct}', Math.abs(pct).toFixed(1))
+          .replace('{direction}', pct >= 0 ? '""" + RESULTS_TOOLTIPS["vs_par_faster"] + """' : '""" + RESULTS_TOOLTIPS["vs_par_slower"] + """')
+          .replace('{projected}', fmtTime(predSec))
+        }`
+      : '';
+    const pctTipAttr = pctTip ? ` data-bs-toggle="tooltip" data-bs-title="${pctTip}"` : '';
+    const pctHtml = pct != null
+      ? `<td data-order="${pctSort}"${pctTipAttr} style="text-align:center;white-space:nowrap;font-size:0.85em;color:${pct >= 0 ? '#2E7D32' : '#666'};font-weight:${pct >= 0 ? 'bold' : 'normal'}">${pct > 0 ? '+' : ''}${pct.toFixed(1)}%</td>`
+      : `<td data-order="${pctSort}"></td>`;
+    const hcapPostNote = r.is_outlier ? ' data-bs-toggle="tooltip" data-bs-title=\"""" + RESULTS_TOOLTIPS["new_outlier_frozen"] + """\"' : '';
+    const hcapPostHtml = `<td data-order="${r.handicap_post}" style="padding-left:8px">${r.handicap_post.toFixed(3)}${r.is_outlier ? `<sup${hcapPostNote}>^</sup>` : ''}</td>`;
+    const s = slug(r.canonical_name);
+    const isFresh = r.is_fresh_racer ? 'true' : 'false';
     // Par estimate
     const parSec = (r.included_in_par && r.adjusted_time_seconds) ? r.adjusted_time_seconds : null;
     const parSort = parSec != null ? parSec : 999999;
@@ -2439,14 +2450,14 @@ def generate_platform_home(data: dict) -> None:
         _show_more = (
             '<button id="upcoming-show-more" class="btn btn-sm btn-outline-secondary mb-3"'
             ' onclick="var rows=document.querySelectorAll(\'#upcoming-table .upcoming-extra\');'
-            'var expand=this.textContent===\'Show more ▼\';'
+            f'var expand=this.textContent===\'{HOME_PAGE["show_more_label"]}\';'
             'rows.forEach(function(r){if(!r.dataset.filtered)r.style.display=expand?\'\':\'none\';});'
-            'this.textContent=expand?\'Show less ▲\':\'Show more ▼\';">Show more ▼</button>'
+            f'this.textContent=expand?\'{HOME_PAGE["show_less_label"]}\':\'{HOME_PAGE["show_more_label"]}\';">{HOME_PAGE["show_more_label"]}</button>'
             if upcoming_rows_hidden else ''
         )
         upcoming_section_html = (
             f"<div class='d-flex align-items-center gap-2 mb-2 flex-wrap'>"
-            f"<h2 class='h5 mb-0'>Upcoming</h2>"
+            f"<h2 class='h5 mb-0'>{HOME_PAGE['upcoming_heading']}</h2>"
             f"<select id='upcoming-club-filter' class='form-select form-select-sm' style='width:auto'>"
             f"<option value=''>{SELECTOR_PLACEHOLDERS['all_series']}</option>{_options}</select>"
             f"<select id='upcoming-org-filter' class='form-select form-select-sm' style='width:auto'>"
@@ -2530,8 +2541,8 @@ def generate_platform_home(data: dict) -> None:
                 f' data-bs-toggle="tooltip" title="Racer Index: {idx}&#10;vs Projected: {pct:+.1f}%">'
                 f'<span class="p-diff" style="color:{tc}">{f"{pct:+.1f}%" if pct is not None else ""}</span>'
                 f'<div class="p-spacer"></div>'
-                f'<div class="p-timerow" style="color:{tc}"><span class="p-tlabel">Actual:</span><span class="p-tval">{ft}</span></div>'
-                f'<div class="p-timerow" style="color:{tc}"><span class="p-tlabel">Projected:</span><span class="p-tval">{predicted or "—"}</span></div>'
+                f'<div class="p-timerow" style="color:{tc}"><span class="p-tlabel">{HOME_PAGE["podium_actual"]}</span><span class="p-tval">{ft}</span></div>'
+                f'<div class="p-timerow" style="color:{tc}"><span class="p-tlabel">{HOME_PAGE["podium_projected"]}</span><span class="p-tval">{predicted or "—"}</span></div>'
                 f'</div></div>')
 
     def _podium_col_f(place, entry, cid):
@@ -2622,9 +2633,9 @@ def generate_platform_home(data: dict) -> None:
         # Build pill row: [vs Projected] | [Finish Time]
         _primary_view = "view-c0"
         pill_html = ('<div class="rc-pill-row">'
-                     f'<a class="sel-pill corr-pill active" onclick="pdmView(this,\'{rid}\',\'{_primary_view}\',false)" href="#">vs Projected</a>'
+                     f'<a class="sel-pill corr-pill active" onclick="pdmView(this,\'{rid}\',\'{_primary_view}\',false)" href="#">{HOME_PAGE["pill_vs_projected"]}</a>'
                      '<span class="pill-sep">|</span>'
-                     f'<a class="sel-pill finish-pill" onclick="pdmView(this,\'{rid}\',\'view-finish\',true)" href="#">Finish Time</a>'
+                     f'<a class="sel-pill finish-pill" onclick="pdmView(this,\'{rid}\',\'view-finish\',true)" href="#">{HOME_PAGE["pill_finish_time"]}</a>'
                      '</div>')
 
         # Build podium panels for each club
@@ -2728,7 +2739,7 @@ def generate_platform_home(data: dict) -> None:
       var match = clubMatch && orgMatch;
       r.dataset.filtered = match ? '' : '1';
       if (!match) {{ r.style.display = 'none'; }}
-      else if (!r.classList.contains('upcoming-extra') || (btn && btn.textContent === 'Show less ▲')) {{
+      else if (!r.classList.contains('upcoming-extra') || (btn && btn.textContent === '{HOME_PAGE["show_less_label"]}')) {{
         r.style.display = '';
       }}
     }});
@@ -2815,12 +2826,12 @@ function pdmView(el,rid,viewCls,isFinish){{
 }}
 </script>
   <div class="d-flex align-items-center gap-2 mb-2 mt-4 flex-wrap">
-    <h2 class="h5 mb-0">Results</h2>
+    <h2 class="h5 mb-0">{HOME_PAGE['results_heading']}</h2>
     <select id="feed-club-filter" class="form-select form-select-sm" style="width:auto" onchange="filterFeed(this.value)">
       <option value="">{SELECTOR_PLACEHOLDERS['all_series']}</option>
       {feed_club_options}
     </select>
-    {'<button id="feed-show-more" class="btn btn-sm btn-outline-secondary mb-0" onclick="toggleFeedMore(this)">Show more ▼</button>' if _has_hidden else ""}
+    {'<button id="feed-show-more" class="btn btn-sm btn-outline-secondary mb-0" onclick="toggleFeedMore(this)">' + HOME_PAGE["show_more_label"] + '</button>' if _has_hidden else ""}
   </div>
   <div id="feed-table">{feed_rows_visible}{feed_rows_hidden}</div>
 </div>
@@ -2831,9 +2842,9 @@ function filterFeed(club){{
   _applyFeedFilter(false);
 }}
 function toggleFeedMore(btn){{
-  var expand=btn.textContent==='Show more ▼';
+  var expand=btn.textContent==='{HOME_PAGE["show_more_label"]}';
   _applyFeedFilter(expand);
-  btn.textContent=expand?'Show less ▲':'Show more ▼';
+  btn.textContent=expand?'{HOME_PAGE["show_less_label"]}':'{HOME_PAGE["show_more_label"]}';
 }}
 function _applyFeedFilter(showAll){{
   var rows=Array.from(document.querySelectorAll('#feed-table .rc-card'));
@@ -2848,7 +2859,7 @@ function _applyFeedFilter(showAll){{
   var btn=document.getElementById('feed-show-more');
   if(btn){{
     btn.style.display=matching.length>5?'':'none';
-    btn.textContent=showAll?'Show less ▲':'Show more ▼';
+    btn.textContent=showAll?'{HOME_PAGE["show_less_label"]}':'{HOME_PAGE["show_more_label"]}';
   }}
 }}
 document.addEventListener('DOMContentLoaded',function(){{
@@ -3003,12 +3014,12 @@ const MEDAL = {
                 hidden = ''.join(f'<tr class="upcoming-extra" style="display:none">{r[4:]}' if r.startswith('<tr>') else r for r in row_list[5:])
                 show_more_btn = (
                     f'<button class="btn btn-sm btn-outline-secondary mb-3" '
-                    f'onclick="document.querySelectorAll(\'.upcoming-extra\').forEach(function(r){{var e=r.style.display===\'none\';r.style.display=e?\'\':\' none\';}});this.textContent=this.textContent===\'Show more ▼\'?\'Show less ▲\':\'Show more ▼\';">'
-                    f'Show more ▼</button>'
+                    f'onclick="document.querySelectorAll(\'.upcoming-extra\').forEach(function(r){{var e=r.style.display===\'none\';r.style.display=e?\'\':\' none\';}});this.textContent=this.textContent===\'{HOME_PAGE["show_more_label"]}\'?\'{HOME_PAGE["show_less_label"]}\':\'{HOME_PAGE["show_more_label"]}\';">'
+                    f'{HOME_PAGE["show_more_label"]}</button>'
                 ) if hidden else ''
                 upcoming_html = (
                     f'<div id="upcoming-section">'
-                    '<h2 class="h5 mb-2">Upcoming Races</h2>'
+                    f'<h2 class="h5 mb-2">{HOME_PAGE["upcoming_heading_races_list"]}</h2>'
                     '<div class="table-responsive mb-1"><table class="table table-sm table-hover">'
                     '<thead><tr><th style="width:100px">Date</th><th style="min-width:180px">Race</th><th style="width:80px">Distance</th><th style="min-width:200px;width:25%">Notes</th><th style="min-width:160px">Links</th></tr></thead>'
                     f'<tbody>{visible}{hidden}</tbody></table></div>'
@@ -3130,8 +3141,8 @@ function _rlCourseBlock(course, ci, isFirst) {{
       cCols+='<div class="podium-col"><div class="p-icon">'+CUP[p]+'</div><div class="p-namerow">'+name+'</div>'
         +'<div class="p-bar" style="height:'+h+'px;background:'+bg+';border:1px solid '+bdr+'" data-bs-toggle="tooltip" data-bs-html="true" title="'+tip+'">'
         +'<span class="p-diff" style="color:'+tc+'">'+pctSign+(e.pct||0).toFixed(1)+'%</span><div class="p-spacer"></div>'
-        +'<div class="p-timerow" style="color:'+tc+'"><span class="p-tlabel">Actual:</span><span class="p-tval">'+e.ft+'</span></div>'
-        +'<div class="p-timerow" style="color:'+tc+'"><span class="p-tlabel">Projected:</span><span class="p-tval">'+(e.predicted||'\u2014')+'</span></div>'
+        +'<div class="p-timerow" style="color:'+tc+'"><span class="p-tlabel">{HOME_PAGE["podium_actual"]}</span><span class="p-tval">'+e.ft+'</span></div>'
+        +'<div class="p-timerow" style="color:'+tc+'"><span class="p-tlabel">{HOME_PAGE["podium_projected"]}</span><span class="p-tval">'+(e.predicted||'\u2014')+'</span></div>'
         +'</div></div>';
     }} else {{
       cCols+='<div class="podium-col"><div class="p-icon">'+CUP[p]+'</div><div class="p-namerow"><span class="p-name" style="color:#bbb">\u2014</span></div><div class="p-bar" style="height:'+h+'px;background:#f8f9fa;border:1px solid #eee"></div></div>';
@@ -3169,9 +3180,9 @@ function renderRacesList(d, year) {{
     var slug = raceSlugMap[r.race_id] || r.race_id;
     var courses = r.courses.map(function(c,i){{return _rlCourseBlock(c,i,true);}}).join('');
     var pills = '<div class="rc-pill-row" style="margin-bottom:6px">'
-      +'<a class="sel-pill corr-pill'+(_rlView==='corr'?' active':'')+' " onclick="rlSetView(this,&quot;corr&quot;)" href="#">vs Projected</a>'
+      +'<a class="sel-pill corr-pill'+(_rlView==='corr'?' active':'')+' " onclick="rlSetView(this,&quot;corr&quot;)" href="#">{HOME_PAGE["pill_vs_projected"]}</a>'
       +'<span class="pill-sep">|</span>'
-      +'<a class="sel-pill finish-pill'+(_rlView==='finish'?' active':'')+' " onclick="rlSetView(this,&quot;finish&quot;)" href="#">Finish Time</a>'
+      +'<a class="sel-pill finish-pill'+(_rlView==='finish'?' active':'')+' " onclick="rlSetView(this,&quot;finish&quot;)" href="#">{HOME_PAGE["pill_finish_time"]}</a>'
       +'</div>';
     return '<div class="rc-card feed-row">'
       +'<div class="rc-name">'+r.name+'</div>'

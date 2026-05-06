@@ -34,11 +34,11 @@ RESULTS_COLUMNS = {
     "place":          ("Place",           "Place",    "Finish line order"),
     "racer":          ("Racer",           "Racer",    "Athlete name"),
     "craft":          ("Craft",           "Craft",    "Craft category\n(sub-category)"),
-    "vs_projected":   ("{gold_cup} vs Par", "vs Par",  "Speed vs personal par\n(+ve is best)"),
+    "vs_projected":   ("{gold_cup} vs Par", "vs Par",  "Improvement vs personal par\n(+ve is best)"),
     "finish_time":    ("{gold_flag} Time",  "Finish",   "Finish time"),
-    "projected_time": ("Par",  "Par",     "Individual par time\n(RacePar * Index)"),
+    "projected_time": ("Par",  "Par",     "Personal par time\n(RacePar * Index)"),
     "race_index":     ("Index",      "Index",    "Racer Speed Index"),
-    "new_index":      ("New Index",       "New",      "New Index (index for next race)"),
+    "new_index":      ("New Index",       "New",      "Index for next race"),
     "par_estimate":   ("RacePar vote",    "ParVote",  "Vote for RacePar\n(Finish ÷ Index)"),
     "finish_points":  ("Finish Points",   "Pts",      "Points, by time"),
     "indexed_points": ("Par Points",  "Par Pts",  "Points, by par result)"),
@@ -112,6 +112,14 @@ RESULTS_TOOLTIPS = {
     # Highlighted par time in the RacePar Estimate column — the time selected
     # as the official par for the whole race.
     "race_par":           "RacePar. Defines par for an Index=1.0 racer",
+    # vs Par column — template applied per row. Placeholders:
+    #   {time}      — racer's finish time (e.g. "33:06")
+    #   {pct}       — absolute percentage (e.g. "4.0")
+    #   {direction} — "faster" or "slower" (from vs_par_faster/vs_par_slower)
+    #   {projected} — racer's projected time (e.g. "31:47")
+    "vs_par_row":         "{time} is {pct}% {direction} than projected {projected}",
+    "vs_par_faster":      "faster",
+    "vs_par_slower":      "slower",
 }
 
 # Racer filter dropdown (shown above each per-course result table)
@@ -150,4 +158,36 @@ SELECTOR_PLACEHOLDERS = {
 # ---------------------------------------------------------------------------
 SEARCH = {
     "placeholder": "Search…",
+}
+
+
+# ---------------------------------------------------------------------------
+# Home page / index — section headings, buttons, podium labels
+# ---------------------------------------------------------------------------
+HOME_PAGE = {
+    # Section headings
+    "results_heading":   "Results",
+    "upcoming_heading":  "Upcoming",           # home page selector-bar heading
+    "upcoming_heading_races_list": "Upcoming Races",  # races-list page heading
+    # "Show more/less" toggle on long lists (upcoming, feed)
+    "show_more_label":   "Show more ▼",
+    "show_less_label":   "Show less ▲",
+    # Podium time-row labels (Recent Results card, Home podium)
+    "podium_actual":     "Finish Time:",
+    "podium_projected":  "Personal Par:",
+    # Pill toggles between the two podium views
+    "pill_vs_projected": "Improvement vs Par",
+    "pill_finish_time":  "Finish Time",
+}
+
+
+# ---------------------------------------------------------------------------
+# Standings page — filter buttons
+# ---------------------------------------------------------------------------
+STANDINGS_PAGE = {
+    "heading":             "Standings",
+    "filter_aria_label":   "Filter",
+    "filter_established":  "Established",
+    "filter_all":          "All",
+    "sort_hint":           "Click column headers to sort. Shift+click for multi-column.",
 }
