@@ -281,7 +281,7 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
       <ul class="navbar-nav me-auto">{items}</ul>
       <div class="position-relative ms-2" style="min-width:180px;max-width:280px">
         <input id="nav-search" type="text" class="form-control form-control-sm"
-               placeholder=\"""" + SEARCH["placeholder"] + """\" autocomplete="off">
+               placeholder="{SEARCH["placeholder"]}" autocomplete="off">
         <style>.ns-item{{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;font-size:.82rem;color:#333;text-decoration:none;border-bottom:1px solid #f5f5f5}}.ns-item:hover{{background:#f0f4ff}}</style>
 <div id="nav-search-results" class="position-absolute shadow"
              style="z-index:1050;display:none;min-width:320px;right:0;background:#fff;border:1px solid #dee2e6;border-radius:8px;overflow:hidden;max-height:420px;overflow-y:auto"></div>
