@@ -3,7 +3,11 @@ import json
 import re as _re_module
 from pathlib import Path
 from bepc.craft import display_craft_ui
-from bepc.ui_text import RESULTS_COLUMNS, TROPHIES, TROPHY_ORDER, PLACE_MUTE_REASONS, STREAK_TROPHY
+from bepc.ui_text import (
+    RESULTS_COLUMNS, TROPHIES, TROPHY_ORDER, PLACE_MUTE_REASONS, STREAK_TROPHY,
+    RESULTS_TOOLTIPS, RESULTS_FILTER, RACER_STATS_LABELS,
+    SELECTOR_PLACEHOLDERS, SEARCH,
+)
 
 SITE_DIR = Path(__file__).parent.parent / "site"
 _LINK_ORDER = ['Info', 'Schedule', 'Register', 'Start List', 'Series']
@@ -222,7 +226,7 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
       <ul class="navbar-nav me-auto">{items}</ul>
       <div class="position-relative ms-2" style="min-width:180px;max-width:280px">
         <input id="nav-search" type="text" class="form-control form-control-sm"
-               placeholder="Search…" autocomplete="off">
+               placeholder=\"""" + SEARCH["placeholder"] + """\" autocomplete="off">
         <style>.ns-item{{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;font-size:.82rem;color:#333;text-decoration:none;border-bottom:1px solid #f5f5f5}}.ns-item:hover{{background:#f0f4ff}}</style>
 <div id="nav-search-results" class="position-absolute shadow"
              style="z-index:1050;display:none;min-width:320px;right:0;background:#fff;border:1px solid #dee2e6;border-radius:8px;overflow:hidden;max-height:420px;overflow-y:auto"></div>
@@ -848,11 +852,8 @@ function podiumForCourse(course) {
 function tableHtml(id_suffix) {
   return `
   <div class="d-flex align-items-center gap-2 mb-2">
-    <select id="racer-filter-${id_suffix}" class="form-select form-select-sm ms-auto" style="width:auto">
-      <option value="all">All racers</option>
-      <option value="eligible">Eligible only</option>
-      <option value="regular">Regulars only</option>
-    </select>
+    <select id="racer-filter-${id_suffix}" class="form-select form-select-sm ms-auto" style="width:auto" aria-label=\"""" + RESULTS_FILTER["aria_label"] + """\">
+""" + "".join(f'      <option value="{val}">{label}</option>\n' for val, label in RESULTS_FILTER["options"]) + """    </select>
   </div>
   <table id="tbl-results-${id_suffix}" class="table table-sm table-striped">
     <thead class="text-nowrap"><tr><th>Trophies</th><th>Place</th><th>Racer</th><th>Craft</th><th style="text-align:center;min-width:95px"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> <span class="d-none d-lg-inline-block" style="vertical-align:middle;white-space:nowrap">vs<br>Projected</span><span class="d-lg-none">vs Proj</span></th><th style="text-align:center;min-width:75px"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> <span class="d-none d-lg-inline-block" style="vertical-align:middle;white-space:nowrap">Finish<br>Time</span><span class="d-lg-none">Finish</span></th><th data-bs-toggle="tooltip" data-bs-title="Projected Time"><span class="d-none d-lg-inline">Projected Time</span><span class="d-lg-none">Proj</span></th><th data-bs-toggle="tooltip" data-bs-title="Race Index (index entering this race)"><span class="d-none d-lg-inline">Race Index</span><span class="d-lg-none">Index</span></th><th data-bs-toggle="tooltip" data-bs-title="New Index (index after this race)"><span class="d-none d-lg-inline">New Index</span><span class="d-lg-none">New</span></th><th><span class="d-none d-lg-inline">Par Estimate</span><span class="d-lg-none">Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Finish Points (by crossing order)"><span class="d-none d-lg-inline">Finish Points</span><span class="d-lg-none">Pts</span></th><th data-bs-toggle="tooltip" data-bs-title="Indexed Points (by indexed time order)"><span class="d-none d-lg-inline">Indexed Points</span><span class="d-lg-none">Idx Pts</span></th></tr></thead>
@@ -888,18 +889,15 @@ function rows(results, placeField) {
     }
     const pct = r.adjusted_time_versus_par != null && !r.is_fresh_racer
       ? ((r.adjusted_time_versus_par - 1) * 100) : null;
-    const noOutlierDetect = !r.is_fresh_racer && pct != null && pct > 10 && !r.is_outlier;
-    const pctNote = noOutlierDetect ? ' data-bs-toggle="tooltip" data-bs-title="First race back this season"' : '';
     // pctHtml — use pct (or 999 for "—") as sort key so empties sort to the end
     const pctSort = pct != null ? pct : 999;
     const pctHtml = pct != null
-      ? `<td data-order="${pctSort}" style="text-align:center;white-space:nowrap;font-size:0.85em;color:${pct <= 0 ? '#2E7D32' : '#666'};font-weight:${pct <= 0 ? 'bold' : 'normal'}">${pct > 0 ? '+' : ''}${pct.toFixed(1)}%${noOutlierDetect ? `<sup${pctNote}>^</sup>` : ''}</td>`
+      ? `<td data-order="${pctSort}" style="text-align:center;white-space:nowrap;font-size:0.85em;color:${pct <= 0 ? '#2E7D32' : '#666'};font-weight:${pct <= 0 ? 'bold' : 'normal'}">${pct > 0 ? '+' : ''}${pct.toFixed(1)}%</td>`
       : `<td data-order="${pctSort}"></td>`;
-    const hcapPostNote = r.is_outlier ? ' data-bs-toggle="tooltip" data-bs-title="Outlier — result suppressed"' : '';
+    const hcapPostNote = r.is_outlier ? ' data-bs-toggle="tooltip" data-bs-title=\"""" + RESULTS_TOOLTIPS["new_outlier_frozen"] + """\"' : '';
     const hcapPostHtml = `<td data-order="${r.handicap_post}" style="padding-left:8px">${r.handicap_post.toFixed(3)}${r.is_outlier ? `<sup${hcapPostNote}>^</sup>` : ''}</td>`;
     const s = slug(r.canonical_name);
     const isFresh = r.is_fresh_racer ? 'true' : 'false';
-    const isRegular = RACER_SLUGS.has(s) ? 'true' : 'false';
     // Predicted time (in seconds) for sorting; 999999 sorts empty to the end
     const predSec = (!r.is_fresh_racer && r.time_versus_par > 0)
       ? (r.time_seconds / r.time_versus_par * r.handicap) : null;
@@ -912,7 +910,7 @@ function rows(results, placeField) {
     const parCell = parSec != null && r.trophies && r.trophies.includes('par')
       ? '<span style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:2px 4px;font-weight:bold;color:#1565C0">' + fmtTime(parSec) + '</span>'
       : parDisplay;
-    return `<tr data-fresh="${isFresh}" data-regular="${isRegular}"><td>${badges(r.trophies)}</td>
+    return `<tr data-fresh="${isFresh}"><td>${badges(r.trophies)}</td>
     <td data-order="${placeCellVal}">${placeCellHtml}</td><td>${racerLink(r.canonical_name)}</td>
     ${craft_cell(r.craft_category, r.craft_specific)}
     ${pctHtml}
@@ -1080,8 +1078,7 @@ document.addEventListener('DOMContentLoaded', () => {{
     filters.forEach(sel => {{ sel.value = f; }});
     document.querySelectorAll('#course-content tr[data-fresh]').forEach(function(tr) {{
       var show = f === 'all'
-        || (f === 'eligible' && tr.dataset.fresh === 'false')
-        || (f === 'regular' && tr.dataset.regular === 'true');
+        || (f === 'established' && tr.dataset.fresh === 'false');
       tr.style.display = show ? '' : 'none';
     }});
   }}
@@ -1720,10 +1717,10 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 
                     craft_content += f"""{cw_open}
 <div class="row mb-3">
-  <div class="col-6 col-sm-3"><strong>Races:</strong> {len(results)}</div>
-  <div class="col-6 col-sm-3"><strong>Finish Pts:</strong> {last["season_points"]}</div>
-  <div class="col-6 col-sm-3"><strong>Corr Pts:</strong> {last["season_handicap_points"]}</div>
-  <div class="col-6 col-sm-3"><strong>Hcap:</strong> {last["handicap_post"]:.3f}</div>
+  <div class="col-6 col-sm-3"><strong>{RACER_STATS_LABELS['races']}:</strong> {len(results)}</div>
+  <div class="col-6 col-sm-3"><strong>{RACER_STATS_LABELS['finish_pts']}:</strong> {last["season_points"]}</div>
+  <div class="col-6 col-sm-3"><strong>{RACER_STATS_LABELS['corr_pts']}:</strong> {last["season_handicap_points"]}</div>
+  <div class="col-6 col-sm-3"><strong>{RACER_STATS_LABELS['hcap']}:</strong> {last["handicap_post"]:.3f}</div>
 </div>
 <div class="row mb-3">
   <div class="col-md-6"><canvas id="chart-pts-{cid}" style="max-height:220px"></canvas></div>
@@ -2396,9 +2393,9 @@ def generate_platform_home(data: dict) -> None:
             f"<div class='d-flex align-items-center gap-2 mb-2 flex-wrap'>"
             f"<h2 class='h5 mb-0'>Upcoming</h2>"
             f"<select id='upcoming-club-filter' class='form-select form-select-sm' style='width:auto'>"
-            f"<option value=''>All series</option>{_options}</select>"
+            f"<option value=''>{SELECTOR_PLACEHOLDERS['all_series']}</option>{_options}</select>"
             f"<select id='upcoming-org-filter' class='form-select form-select-sm' style='width:auto'>"
-            f"<option value=''>All organizers</option>{_org_options}</select>"
+            f"<option value=''>{SELECTOR_PLACEHOLDERS['all_organizers']}</option>{_org_options}</select>"
             + (_show_more.replace('mb-3', 'mb-0') if _show_more else '')
             + f"</div>"
             f"<div class='table-responsive mb-1'><table id='upcoming-table' class='table table-sm table-hover'>"
@@ -2765,7 +2762,7 @@ function pdmView(el,rid,viewCls,isFinish){{
   <div class="d-flex align-items-center gap-2 mb-2 mt-4 flex-wrap">
     <h2 class="h5 mb-0">Results</h2>
     <select id="feed-club-filter" class="form-select form-select-sm" style="width:auto" onchange="filterFeed(this.value)">
-      <option value="">All series</option>
+      <option value="">{SELECTOR_PLACEHOLDERS['all_series']}</option>
       {feed_club_options}
     </select>
     {'<button id="feed-show-more" class="btn btn-sm btn-outline-secondary mb-0" onclick="toggleFeedMore(this)">Show more ▼</button>' if _has_hidden else ""}

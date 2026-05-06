@@ -77,7 +77,7 @@ TROPHY_ORDER = [
 # generate the SVG with the number substituted. Editable metadata:
 STREAK_TROPHY = {
     "css": "hcap-streak",
-    "tooltip": "{n} consecutive races beating par",  # {n} is replaced at render time
+    "tooltip": "{n} consecutive races faster than projected",  # {n} is replaced at render time
 }
 
 
@@ -90,4 +90,51 @@ PLACE_MUTE_REASONS = {
     "outlier":    "Outlier result - excluded from ranking",
     "auto_reset": "Auto-reset applied - excluded from ranking",
     "ineligible": "Race has insufficient number of racers - no ranking or index updates",
+}
+
+
+# ---------------------------------------------------------------------------
+# Race results table — miscellaneous tooltips and filter labels
+# ---------------------------------------------------------------------------
+RESULTS_TOOLTIPS = {
+    # "New" index column "^" superscript when outlier freezes the index.
+    "new_outlier_frozen": "Outlier result — >10% off prediction, index unchanged",
+}
+
+# Racer filter dropdown (shown above each per-course result table)
+RESULTS_FILTER = {
+    "aria_label":  "Filter racers",
+    "options": [
+        # (value, label)
+        ("all",         "All racers"),
+        ("established", "Established only"),
+    ],
+}
+
+
+# ---------------------------------------------------------------------------
+# Racer page — stat block labels (above the season/craft table)
+# ---------------------------------------------------------------------------
+RACER_STATS_LABELS = {
+    "races":      "Races",
+    "finish_pts": "Finish Pts",
+    "corr_pts":   "Corr Pts",
+    "hcap":       "Hcap",
+}
+
+
+# ---------------------------------------------------------------------------
+# Common dropdown placeholders (for series/organizer/club selectors)
+# ---------------------------------------------------------------------------
+SELECTOR_PLACEHOLDERS = {
+    "all_series":     "All series",
+    "all_organizers": "All organizers",
+}
+
+
+# ---------------------------------------------------------------------------
+# Global search box
+# ---------------------------------------------------------------------------
+SEARCH = {
+    "placeholder": "Search…",
 }
