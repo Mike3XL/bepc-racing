@@ -888,11 +888,12 @@ function rows(results, placeField) {
       placeCellHtml = String(r[placeField]);
     }
     const pct = r.adjusted_time_versus_par != null && !r.is_fresh_racer
-      ? ((r.adjusted_time_versus_par - 1) * 100) : null;
-    // pctHtml — use pct (or 999 for "—") as sort key so empties sort to the end
+      ? ((1 - r.adjusted_time_versus_par) * 100) : null;
+    // pctHtml — use pct (or 999 for "—") as sort key so empties sort to the end.
+    // Positive pct means racer beat projection; negative means slower than projection.
     const pctSort = pct != null ? pct : 999;
     const pctHtml = pct != null
-      ? `<td data-order="${pctSort}" style="text-align:center;white-space:nowrap;font-size:0.85em;color:${pct <= 0 ? '#2E7D32' : '#666'};font-weight:${pct <= 0 ? 'bold' : 'normal'}">${pct > 0 ? '+' : ''}${pct.toFixed(1)}%</td>`
+      ? `<td data-order="${pctSort}" style="text-align:center;white-space:nowrap;font-size:0.85em;color:${pct >= 0 ? '#2E7D32' : '#666'};font-weight:${pct >= 0 ? 'bold' : 'normal'}">${pct > 0 ? '+' : ''}${pct.toFixed(1)}%</td>`
       : `<td data-order="${pctSort}"></td>`;
     const hcapPostNote = r.is_outlier ? ' data-bs-toggle="tooltip" data-bs-title=\"""" + RESULTS_TOOLTIPS["new_outlier_frozen"] + """\"' : '';
     const hcapPostHtml = `<td data-order="${r.handicap_post}" style="padding-left:8px">${r.handicap_post.toFixed(3)}${r.is_outlier ? `<sup${hcapPostNote}>^</sup>` : ''}</td>`;
@@ -1735,7 +1736,7 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
       f'<td>{r["original_place"]}</td><td>{_fmt_indexed_place(r)}</td>'
       f'<td>{_fmt_time(r["time_seconds"])}</td>'
       + (f'<td>{_fmt_time(r["time_seconds"] / r["adjusted_time_versus_par"])}</td>' if r.get("adjusted_time_versus_par") else '<td></td>')
-      + (f'<td style="text-align:right;font-size:0.85em;color:{"#2E7D32" if (r["adjusted_time_versus_par"]-1)*100<=0 else "#666"};font-weight:{"bold" if (r["adjusted_time_versus_par"]-1)*100<=0 else "normal"}">{(r["adjusted_time_versus_par"]-1)*100:+.1f}%</td>' if r.get("adjusted_time_versus_par") else '<td></td>') +
+      + (f'<td style="text-align:right;font-size:0.85em;color:{"#2E7D32" if (1-r["adjusted_time_versus_par"])*100>=0 else "#666"};font-weight:{"bold" if (1-r["adjusted_time_versus_par"])*100>=0 else "normal"}">{(1-r["adjusted_time_versus_par"])*100:+.1f}%</td>' if r.get("adjusted_time_versus_par") else '<td></td>') +
       f'<td>{r["handicap"]:.3f}</td><td>{r["handicap_post"]:.3f}</td>'
       f'<td>{r["race_points"]}</td><td>{r["handicap_points"]}</td></tr>'
       for r in results
@@ -2235,7 +2236,7 @@ def generate_platform_home(data: dict) -> None:
                 def _pct(r):
                     ft=r.get("time_seconds"); tvp=r.get("time_versus_par"); idx=r.get("handicap",1.0)
                     if ft and tvp and tvp>0:
-                        pred=ft/tvp*idx; return round((ft/pred-1)*100,1) if pred>0 else 0.0
+                        pred=ft/tvp*idx; return round((1-ft/pred)*100,1) if pred>0 else 0.0
                     return 0.0
                 corr_top10 = [{"name": r["canonical_name"],
                                 "ct": _fmt_time(r.get("adjusted_time_seconds")),
@@ -2856,7 +2857,7 @@ def generate_races_list(data: dict) -> None:
                     def _pct_rl(r):
                         ft=r.get("time_seconds"); tvp=r.get("time_versus_par"); idx=r.get("handicap",1.0)
                         if ft and tvp and tvp>0:
-                            pred=ft/tvp*idx; return round((ft/pred-1)*100,1) if pred>0 else 0.0
+                            pred=ft/tvp*idx; return round((1-ft/pred)*100,1) if pred>0 else 0.0
                         return 0.0
                     def _delta_rl(r):
                         ft=r.get("time_seconds"); tvp=r.get("time_versus_par"); idx=r.get("handicap",1.0)
@@ -3070,7 +3071,7 @@ function _rlCourseBlock(course, ci, isFirst) {{
     var col=_rlColors[p]; var h=_rlH[p]; var tc=col[0]; var bg=col[1]; var bdr=col[2];
     if(e && parValid) {{
       var name=RACER_SLUGS.has(e.slug)?'<a href="racer/'+e.slug+'.html" class="p-name" style="color:'+tc+'">'+e.name+'</a>':'<span class="p-name" style="color:'+tc+'">'+e.name+'</span>';
-      var pctSign=(e.pct||0)<0?'':'+';
+      var pctSign=(e.pct||0)>0?'+':'';
       var tip='Racer Index: '+(e.idx||'')+'\\nvs Projected: '+pctSign+(e.pct||0).toFixed(1)+'%';
       cCols+='<div class="podium-col"><div class="p-icon">'+CUP[p]+'</div><div class="p-namerow">'+name+'</div>'
         +'<div class="p-bar" style="height:'+h+'px;background:'+bg+';border:1px solid '+bdr+'" data-bs-toggle="tooltip" data-bs-html="true" title="'+tip+'">'
