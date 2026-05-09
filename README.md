@@ -160,3 +160,49 @@ See [About page](https://mike3xl.github.io/bepc-racing/about.html) for full expl
 | Sound Rowers | 2022–2025 | ✅ Imported |
 | SCKC | 2024–2025 | ✅ Imported |
 | PNW Regional | 2019–2026 | ✅ Active |
+
+## Raw Data Files for Analysis and AI Agents
+
+The site generates structured JSON data files alongside the HTML, suitable for programmatic analysis and AI-assisted queries.
+
+### Per-year racer data
+
+```
+https://pnw.paddlerace.org/pnw/racer-data/2025.json
+https://pnw.paddlerace.org/bepc-summer/racer-data/2026.json
+```
+
+**Schema** (`{racer_name: {"{series}/{craft}": {meta, races}}}`):
+
+| Field | Meaning |
+|---|---|
+| `hcap_seq` | Full handicap index sequence for this racer-craft-year |
+| `hpre` / `hpost` | Handicap index before / after this race |
+| `atvp` | Adjusted time vs par (1.0 = par; <1.0 = faster) |
+| `t` | Finish time in seconds |
+| `p` / `ap` | Finish place / adjusted (handicap) place |
+| `fresh` | True if still in establishment phase |
+| `out` | True if result was an outlier (no handicap update) |
+| `tr` | Trophies: `finish_1/2/3`, `hcap_1/2/3`, `consistent_*`, `streak_*` |
+| `nr` | Number of ranked races in this series at time of race |
+
+**File sizes:** BEPC years ~25–200KB; PNW years ~100–750KB. Suitable for direct LLM context.
+
+### Age data
+
+```
+https://pnw.paddlerace.org/racers.yaml
+```
+
+Per-racer age observations (from race registrations), used for age-bracket analysis.
+
+### Using with AI agents
+
+These files are designed to be fetched and analysed by AI agents. Example questions:
+
+- *"What is my current handicap index and how has it changed?"*
+- *"Compare my performance to [racer name]"*
+- *"Who are the fastest racers in the 50–60 age bracket?"*
+- *"Am I improving? Show my index trend over the last 3 years."*
+
+To analyse a specific racer, fetch their series/year file and filter by name. For cross-racer queries, fetch the relevant year file(s).

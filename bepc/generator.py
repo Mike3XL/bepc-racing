@@ -234,6 +234,8 @@ def _head(title: str, extra_css: str = "") -> str:
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
 {_BOOTSTRAP_CSS}
 {_DATATABLES_CSS}
 {extra_css}
@@ -1973,7 +1975,60 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
         (racer_club_dir / f"{slug}.html").write_text(html)
         _valid_racer_slugs.add(slug)
 
+    # racer-data/{year}.json — slim structured data for AI analysis, split by year
+    # Per-race fields: date, race_id, race_name, handicap(pre), hcap(post), atvp,
+    #   time_s, place, adj_place, fresh, outlier, trophies, n_races
+    # Per-racer-craft metadata: final hcap sequence (for trajectory), gender
+    import json as _json2
+
+    # Build year → {name → {craft_key → {meta, races}}}
+    year_data: dict = {}
+    for name, craft_map in racer_data.items():
+        for (club_id, year, craft), results in craft_map.items():
+            if year not in year_data:
+                year_data[year] = {}
+            if name not in year_data[year]:
+                year_data[year][name] = {}
+            key = f"{club_id}/{craft}"
+            # Final handicap sequence for this racer-craft-year (trajectory)
+            hcap_seq = results[-1].get("handicap_sequence", []) if results else []
+            year_data[year][name][key] = {
+                "club": club_id,
+                "craft": craft,
+                "gender": results[0].get("gender", "") if results else "",
+                "hcap_seq": [round(h, 4) for h in hcap_seq],
+                "races": [
+                    {
+                        "d": r["date"],
+                        "id": r["race_id"],
+                        "n": r["name"],
+                        "hpre": round(r.get("handicap", 1.0), 4),
+                        "hpost": round(r.get("handicap_post", 1.0), 4),
+                        "atvp": round(r.get("adjusted_time_versus_par", 0.0), 4),
+                        "t": round(r.get("time_seconds", 0.0), 1),
+                        "p": r.get("original_place", 0),
+                        "ap": r.get("adjusted_place", 0),
+                        "fresh": r.get("is_fresh_racer", False),
+                        "out": r.get("is_outlier", False),
+                        "tr": r.get("trophies", []),
+                        "nr": r.get("num_races", 0),
+                    }
+                    for r in results
+                ],
+            }
+
+    racer_data_dir = SITE_DIR / current_club / "racer-data"
+    racer_data_dir.mkdir(exist_ok=True)
+    total_kb = 0
+    for year, data in sorted(year_data.items()):
+        out_path = racer_data_dir / f"{year}.json"
+        out_path.write_text(_json2.dumps(data, separators=(",", ":")))
+        kb = out_path.stat().st_size // 1024
+        total_kb += kb
+    print(f"Generated: site/{current_club}/racer-data/ ({len(year_data)} years, {total_kb} KB total)")
+
     print(f"Generated: site/{current_club}/racer/ ({len(racer_data)} pages)")
+
 
 
 def generate_clubs_page(data: dict) -> None:
@@ -2465,14 +2520,24 @@ def generate_platform_home(data: dict) -> None:
                 "links": race.get("links", []),
                 "notes": race.get("notes", ""),
                 "location": race.get("location", ""),
+                "timing": race.get("timing", []),
             })
 
     upcoming_rows = ""
     upcoming_club_names = []
     for r in upcoming_races:
         link = f'<a href="{r["url"]}" target="_blank">{r["name"]}</a>' if r["url"] else r["name"]
-        notes_td = f'<td class="text-muted small">{r.get("notes","")}</td>' if r.get("notes") else '<td></td>'
-        _location_html = f'<div class="text-muted" style="font-size:.8em">{r["location"]}</div>' if r.get("location") else ''
+        # Location shown under race name
+        location = r.get("location", "")
+        _location_html = f'<div class="text-muted" style="font-size:.8em">{location}</div>' if location else ''
+        # Timing items rendered one per line
+        timing = r.get("timing", [])
+        extra_notes = r.get("notes", "")
+        timing_lines = list(timing) + ([extra_notes] if extra_notes else [])
+        if timing_lines:
+            notes_td = f'<td class="text-muted small">{"<br>".join(timing_lines)}</td>'
+        else:
+            notes_td = '<td></td>'
         links_html = ' '.join(
             f'<a href="{lnk["url"]}" target="_blank" class="badge bg-light text-dark border me-1 text-decoration-none">{lnk["label"]} ↗</a>'
             for lnk in sorted(r["links"], key=lambda l: _LINK_ORDER.index(l["label"]) if l["label"] in _LINK_ORDER else len(_LINK_ORDER))

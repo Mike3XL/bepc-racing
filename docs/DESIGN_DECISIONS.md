@@ -399,3 +399,35 @@ The handicap system's purpose is to rank eligible racers. Fresh and outlier race
 - Threshold = 3 (too loose — some races would rely on very few established estimates).
 - Top-up from non-established middle until 10 (mixes noisy estimates back in, partially defeating the purpose).
 - Weighted combination (established full weight, non-established fractional) — added complexity without clear benefit.
+
+---
+
+## Racer Data Files for Analysis and AI Agents
+**Date:** 2026-05-08
+**Context:** `bepc/generator.py` (`generate_racer_pages`), `site/{series}/racer-data/{year}.json`
+
+**Problem:** All post-processing racer state (evolved handicap, atvp, establishment status, trophy history) was only written to HTML. Programmatic analysis required scraping HTML or relying on pre-processing `common.json` values (always `handicap_post=1.0`). Cross-racer queries (age brackets, comparisons, leaderboards) were not possible without re-running the full processor.
+
+**Decision:** Generate slim per-year, per-series JSON files at `site/{series}/racer-data/{year}.json` during `generate_racer_pages`. These are the authoritative post-processing data files for analysis.
+
+**Schema design choices:**
+- **Split by year** (not one big file) — largest year (PNW 2025) is ~750KB / ~190K tokens, fits in Gemini 1M context window. Full history would be 15MB.
+- **Slim fields only** — dropped `handicap_note` (redundant with `is_outlier`), `craft_specific` (redundant with key), per-race `handicap_sequence` (moved to per-racer-craft metadata as `hcap_seq`), `season_points` accumulator (computable from per-race values). Float precision reduced to 4dp.
+- **Short field names** (`d`, `n`, `hpre`, `hpost`, `atvp`, `t`, `p`, `ap`, `tr`, `nr`) — reduces token count ~40% vs verbose names.
+- **`hcap_seq` in metadata** — the full handicap trajectory for a racer-craft-year is stored once at the racer-craft level, not repeated per race.
+
+**Size outcome:** BEPC years 25–200KB; PNW years 100–750KB. Total: BEPC 1.5MB, PNW 4.6MB across all years.
+
+**Token budget (Gemini free tier: 1M tokens/day):**
+- Single racer query: ~2–5K tokens
+- Two-racer comparison: ~10K tokens
+- Full year (PNW 2025): ~190K tokens
+- Full BEPC history: ~380K tokens (fits in one call)
+
+**Age data:** `data/racers.yaml` contains per-racer age observations (age + date + race_id) sourced from WebScorer start lists. Used for age-bracket queries. Outlier detection (>15 from median) filters registration errors (e.g. Egor Klevak registered as age 75 at Bainbridge 2025; actual age ~42 from 10 prior observations).
+
+**Rejected alternatives:**
+- Single `racer-data.json` per series — PNW would be 15MB, too large for LLM context
+- Per-racer files — 5000+ files for PNW, impractical for cross-racer queries
+- Verbose field names — ~40% larger files for no analytical benefit
+- Full `handicap_sequence` per race — O(n²) storage; trajectory only needs the final sequence per racer-craft-year

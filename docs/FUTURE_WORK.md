@@ -58,6 +58,32 @@ Show each racer's time delta vs their time at the same race the prior year (raw 
 
 ## Medium Priority
 
+### AI Agent Support
+The site now generates `racer-data/{year}.json` files (slim, per-year, per-series) suitable for AI analysis. Next steps to enable agent-driven Q&A for users:
+
+**Data infrastructure (done):**
+- `racer-data/{year}.json` — slim per-year files (~50–750KB, ~12–190K tokens each)
+- `racers.yaml` — age observations per racer for age-bracket queries
+
+**Use cases to design for:**
+- "Analyse my season" → single racer + one year (~2-5K tokens)
+- "Compare me to [name]" → two racers, all years (~10K tokens)
+- "Who is fastest in my age bracket?" → pre-filter by age in code, send top N to LLM
+- "How have I improved over time?" → single racer, all years
+- "Who should I be racing against?" → similar index, same craft, same series
+
+**Architecture decision needed:**
+- Option A: Fixed UI buttons (3-4 specific prompts, known data slices) — simplest, no backend
+- Option B: Routing layer classifies question → fetches right data slice → calls LLM
+- Option C: Agentic (LLM calls tools: `get_racer`, `get_year`, `get_age_bracket`) — most flexible, requires MCP server or function-calling backend
+
+**Token budget (Gemini free tier: 1M tokens/day):**
+- With smart pre-filtering: hundreds of queries/day
+- Full-year files only needed for open-ended "tell me anything interesting" queries
+- Per-racer queries are tiny — viable at scale
+
+**Recommended first step:** Option A — add 2-3 specific "Analyse with AI" buttons to racer pages, each with a known data fetch and pre-built prompt. No backend needed, uses user's own Gemini/Claude account.
+
 ### Per-Race Handicap Notes on Racer Page
 - Show handicap note (e.g. "Outlier — no change", "First race") in race history table. Currently visible via trophy badges but not as an explicit note column.
 

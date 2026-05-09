@@ -13,7 +13,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427417&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: Board the Fjord + 2026
   date: '2026-05-09'
   clubs:
@@ -28,16 +32,24 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=419780&details=1
   - label: Info
     url: http://www.deepcovekayak.com/
+  location: Deep Cove, North Vancouver, BC
 - name: Commencement Bay
   date: '2026-05-09'
   clubs:
   - pnw
   distance: 6 mi
-  url: https://soundrowers.org/?page_id=206
+  url: https://www.webscorer.com/register?raceid=421692
   links:
-  - label: Series
-    url: https://www.soundrowers.org/race-schedule/
-  notes: 'Meeting: 9:15 AM, Start: 10 AM · Tacoma, WA'
+  - label: Register
+    url: https://www.webscorer.com/register?raceid=421692
+  - label: Start List
+    url: https://www.webscorer.com/registerlist?raceid=421692&details=1
+  - label: Info
+    url: https://www.soundrowers.org/race-schedule/commencement-bay/
+  location: Tacoma, WA
+  timing:
+  - 'Meeting: 9:15 AM'
+  - 'Start: 10 AM'
 - name: 'BEPC 2026 Race Series #2'
   date: '2026-05-11'
   clubs:
@@ -52,7 +64,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427425&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: 'BEPC 2026 Race Series #3'
   date: '2026-05-18'
   clubs:
@@ -67,7 +83,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427427&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: Ski to Sea
   date: '2026-05-24'
   clubs: []
@@ -78,6 +98,7 @@ upcoming:
     url: https://skitosea.com
   - label: Results
     url: https://skitosea.com/results/
+  location: Bellingham to Fairhaven, WA
 - name: 'BEPC 2026 Race Series #4'
   date: '2026-05-25'
   clubs:
@@ -92,7 +113,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427429&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: Seventy48
   date: '2026-05-29'
   clubs: []
@@ -101,7 +126,9 @@ upcoming:
   links:
   - label: Info
     url: https://seventy48.com
-  notes: 'Start: 7 PM'
+  location: Tacoma to Port Townsend, WA
+  timing:
+  - 'Start: 7 PM'
 - name: Guano Rocks
   date: '2026-05-30'
   clubs:
@@ -111,7 +138,10 @@ upcoming:
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/
-  notes: 'Meeting: 9:15 AM, Start: 10 AM · Lake Entiat, WA'
+  location: Lake Entiat, WA
+  timing:
+  - 'Meeting: 9:15 AM'
+  - 'Start: 10 AM'
 - name: 'BEPC 2026 Race Series #5'
   date: '2026-06-01'
   clubs:
@@ -126,7 +156,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427430&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: 'BEPC 2026 Race Series #6'
   date: '2026-06-08'
   clubs:
@@ -141,7 +175,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427431&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: Nch'I-Wanna Columbia River Race
   date: '2026-06-13'
   clubs:
@@ -151,7 +189,10 @@ upcoming:
   links:
   - label: Start List
     url: https://paddleguru.com/races/NCHIWANAChallenge/startlist
-  notes: 'Meeting: TBD, Start: TBD'
+  location: Kennewick, WA
+  timing:
+  - 'Meeting: TBD'
+  - 'Start: TBD'
 - name: 'BEPC 2026 Race Series #7'
   date: '2026-06-15'
   clubs:
@@ -166,17 +207,28 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427432&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: Rat Island Regatta
   date: '2026-06-20'
   clubs:
   - pnw
   distance: 2.5/6.8 NM (2.9/7.8 mi)
-  url: https://soundrowers.org/?page_id=215
+  url: https://www.webscorer.com/register?raceid=430244
   links:
-  - label: Series
-    url: https://www.soundrowers.org/race-schedule/
-  notes: 'Meeting: :9:15am, Start: 10 AM · Port Townsend, WA'
+  - label: Register
+    url: https://www.webscorer.com/register?raceid=430244
+  - label: Start List
+    url: https://www.webscorer.com/registerlist?raceid=430244&details=1
+  - label: Info
+    url: https://www.soundrowers.org/race-schedule/rat-island/
+  location: Port Townsend, WA
+  timing:
+  - 'Meeting: 9:15am'
+  - 'Start: 10 AM'
 - name: 'BEPC 2026 Race Series #8'
   date: '2026-06-22'
   clubs:
@@ -191,7 +243,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427433&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: Bremerton Bridges Tidal Race
   date: '2026-06-27'
   clubs:
@@ -201,7 +257,23 @@ upcoming:
   links:
   - label: Info
     url: https://www.salmonbaypaddle.com/bremerton-bridges-tidal-race/
-  notes: 'Meeting: TBD, Start: TBD'
+  location: Lions Park, Bremerton, WA
+  timing:
+  - 'Meeting: TBD'
+  - 'Start: TBD'
+- name: 'BEPC 2026 Race Series #9'
+- name: GCC Race
+  date: '2026-06-28'
+  clubs:
+  - pnw
+  distance: TBD
+  url: https://www.gorgecanoeclub.com/
+  links:
+  - label: Info
+    url: https://www.gorgecanoeclub.com/
+  location: Columbia River Gorge (Gorge Canoe Club)
+  timing:
+  - More info coming soon
 - name: 'BEPC 2026 Race Series #9'
   date: '2026-06-29'
   clubs:
@@ -216,7 +288,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427434&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: 'BEPC 2026 Race Series #10'
   date: '2026-07-06'
   clubs:
@@ -231,7 +307,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427435&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: 'BEPC 2026 Race Series #11'
   date: '2026-07-13'
   clubs:
@@ -246,7 +326,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427436&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: Budd Inlet
   date: '2026-07-18'
   clubs:
@@ -256,7 +340,10 @@ upcoming:
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/
-  notes: 'Meeting: 9:15 AM, Start: 10 AM · Olympia, WA'
+  location: Olympia, WA
+  timing:
+  - 'Meeting: 9:15 AM'
+  - 'Start: 10 AM'
 - name: 'BEPC 2026 Race Series #12'
   date: '2026-07-20'
   clubs:
@@ -271,7 +358,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427437&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: Elk River Challenge
   date: '2026-07-25'
   clubs:
@@ -281,7 +372,10 @@ upcoming:
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/
-  notes: 'Meeting: TBD, Start: 11:30 AM · Aberdeen, WA'
+  location: Aberdeen, WA
+  timing:
+  - 'Meeting: TBD'
+  - 'Start: 11:30 AM'
 - name: 'BEPC 2026 Race Series #13'
   date: '2026-07-27'
   clubs:
@@ -296,7 +390,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427438&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: 'BEPC 2026 Race Series #14'
   date: '2026-08-03'
   clubs:
@@ -311,7 +409,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427439&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: 'BEPC 2026 Race Series #15'
   date: '2026-08-10'
   clubs:
@@ -326,14 +428,21 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427440&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: Gorge Challenge
   date: '2026-08-16'
   clubs:
   - pnw
   distance: 8.5 mi
   url: https://gorgechallenge.com
-  notes: 'Meeting: TBD, Start: TBD'
+  location: Columbia River Gorge, OR
+  timing:
+  - 'Meeting: TBD'
+  - 'Start: TBD'
 - name: 'BEPC 2026 Race Series #16'
   date: '2026-08-17'
   clubs:
@@ -348,7 +457,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427442&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: Round Shaw Row
   date: '2026-08-22'
   clubs:
@@ -360,7 +473,10 @@ upcoming:
     url: https://www.soundrowers.org/race-schedule/
   - label: Register
     url: https://www.webscorer.com/register?raceid=389054
-  notes: 'Meeting: TBD, Start: 10:00 AM · Shaw Island, WA'
+  location: Shaw Island, WA
+  timing:
+  - 'Meeting: TBD'
+  - 'Start: 10:00 AM'
 - name: 'BEPC 2026 Race Series #17'
   date: '2026-08-24'
   clubs:
@@ -375,14 +491,21 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427443&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: Da Grind
   date: '2026-08-29'
   clubs:
   - pnw
   distance: 4/12 mi
   url: https://www.pnworca.org
-  notes: 'Meeting: TBD, Start: TBD'
+  location: Alki Beach, West Seattle, WA
+  timing:
+  - 'Meeting: TBD'
+  - 'Start: TBD'
 - name: 'BEPC 2026 Race Series #18'
   date: '2026-08-31'
   clubs:
@@ -397,7 +520,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427444&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 6 PM, Meeting: 6:30 PM, Start: 7 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 6 PM'
+  - 'Meeting: 6:30 PM'
+  - 'Start: 7 PM'
 - name: Bainbridge Island Marathon
   date: '2026-09-05'
   clubs:
@@ -407,7 +534,23 @@ upcoming:
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/
-  notes: 'Meeting: TBD, Start: Full 10 AM, Half 11 AM · Bainbridge Island, WA'
+  location: Bainbridge Island, WA
+  timing:
+  - 'Meeting: TBD'
+  - 'Start: Full 10 AM'
+  - Half 11 AM
+- name: Whey-Ah-Wichen Whipper Snapper
+  date: '2026-09-12'
+  clubs:
+  - pnw
+  distance: 7km/12km/18km
+  url: https://www.deepcovekayak.com/
+  links:
+  - label: Info
+    url: https://www.deepcovekayak.com/
+  location: North Vancouver, BC (Coast Outdoors / Deep Cove Kayak)
+  timing:
+  - Date TBC
 - name: 'BEPC 2026 Race Series #19'
   date: '2026-09-07'
   clubs:
@@ -422,7 +565,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427446&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 5:30 PM, Meeting: 6 PM, Start: 6:30 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 5:30 PM'
+  - 'Meeting: 6 PM'
+  - 'Start: 6:30 PM'
 - name: 'BEPC 2026 Race Series #20'
   date: '2026-09-14'
   clubs:
@@ -437,7 +584,11 @@ upcoming:
     url: https://www.webscorer.com/registerlist?raceid=427448&details=1
   - label: Info
     url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  notes: 'Reg: 5:30 PM, Meeting: 6 PM, Start: 6:30 PM · Shilshole Bay, Seattle, WA'
+  location: Shilshole Bay, Seattle, WA
+  timing:
+  - 'Reg: 5:30 PM'
+  - 'Meeting: 6 PM'
+  - 'Start: 6:30 PM'
 - name: Narrows Challenge (incl. USA SUP Nationals 10K)
   date: '2026-09-19'
   clubs:
@@ -453,7 +604,10 @@ upcoming:
     url: https://register.pacificmultisports.com/Events/1371/Register
   - label: Info
     url: http://www.narrowschallenge.com/
-  notes: 'Meeting: TBD, Start: TBD'
+  location: Gig Harbor, WA
+  timing:
+  - 'Meeting: TBD'
+  - 'Start: TBD'
 - name: Lake Samish Salmon Row
   date: '2026-09-26'
   clubs:
@@ -467,7 +621,10 @@ upcoming:
     url: https://register.pacificmultisports.com/Events/1303/Register
   - label: Start List
     url: https://register.pacificmultisports.com/Events/1303/Participants
-  notes: 'Meeting: 9:15 AM, Start: 10:00 AM · Bellingham, WA'
+  location: Bellingham, WA
+  timing:
+  - 'Meeting: 9:15 AM'
+  - 'Start: 10:00 AM'
 - name: Mercer Island Sausage Pull
   date: '2026-10-10'
   clubs:
@@ -477,8 +634,10 @@ upcoming:
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/
-  notes: 'Meeting: 8:30AM, Start: Long 9AM early start/9:30 AM; Short 10:30 AM · Mercer
-    Island, WA'
+  location: Mercer Island, WA
+  timing:
+  - 'Meeting: 8:30AM'
+  - 'Start: Long 9AM early start/9:30 AM; Short 10:30 AM'
 - name: Port Angeles Coastal Endurance Regatta
   date: '2026-10-25'
   clubs:
@@ -488,4 +647,7 @@ upcoming:
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/
-  notes: 'Meeting: 9:15 AM, Start: 10 AM · Port Angeles, WA'
+  location: Port Angeles, WA
+  timing:
+  - 'Meeting: 9:15 AM'
+  - 'Start: 10 AM'
