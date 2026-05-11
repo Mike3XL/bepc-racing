@@ -515,32 +515,11 @@ def sync_upcoming(upcoming_path: Path, dry_run: bool = False) -> None:
 
     # Write back (skip if dry run)
     if not dry_run:
+        out = {'upcoming': existing}
         with open(upcoming_path, 'w') as f:
             f.write("# Upcoming races — auto-synced via cli.py sync-upcoming\n")
             f.write("# Manual entries OK; past entries are pruned automatically\n\n")
-            f.write("upcoming:\n")
-            for r in existing:
-                if not r.get('date'):
-                    continue  # skip entries with no date (e.g. Date TBC)
-                f.write(f"  - name: \"{r['name']}\"\n")
-                f.write(f"    date: \"{r['date']}\"\n")
-                clubs_str = '[' + ', '.join(r.get('clubs', [])) + ']'
-                f.write(f"    clubs: {clubs_str}\n")
-                if r.get('source_id'):
-                    f.write(f"    source_id: {r['source_id']}\n")
-                if r.get('distance'):
-                    f.write(f"    distance: \"{r['distance']}\"\n")
-                if r.get('url'):
-                    f.write(f"    url: {r['url']}\n")
-                if r.get('series_url'):
-                    f.write(f"    series_url: {r['series_url']}\n")
-                if r.get('links'):
-                    f.write(f"    links:\n")
-                    for lnk in r['links']:
-                        f.write(f"      - label: \"{lnk['label']}\"\n")
-                        f.write(f"        url: {lnk['url']}\n")
-                if r.get('notes'):
-                    f.write(f"    notes: \"{r['notes']}\"\n")
+            yaml.dump(out, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
 
     prefix = "[DRY RUN] Would " if dry_run else ""
     if pruned:
