@@ -24,7 +24,8 @@ _PATTERNS = [
     # Kayak quads — sprint K4 before generic
     ('k-4\\b|k4\\b',            'Sprint-K4',     'K4'),
     # Kayak singles — use \b or $ to avoid matching doubles
-    ('surfski',                 'Kayak-1',       'Surfski'),
+    ('surf.?ski',               'Kayak-1',       'HPK'),
+    ('high.?performance.?kayak', 'Kayak-1',      'HPK'),
     ('hpk(?!-?[23])\\b|hpk1\\b|hpdk\\b', 'Kayak-1', 'HPK'),
     ('fsk(?!-?2)\\b',           'Kayak-1',       'FSK'),
     ('sk(?!-?2)\\b',            'Kayak-1',       'SK'),
@@ -81,7 +82,7 @@ _STRIP = [re.compile(p, re.I) for p in [
     r'^(?:masters?|open|junior|senior|novice|elite)\s+[\d+\-\(\)]+\s+(?:men|women|mixed)\s+(.+)$',
     r'^(?:masters?|open|junior|senior|novice|elite)\s+(?:men|women|mixed)\s+(.+)$',
     r'^(?:masters?)\s+[\d+\-\(\)]+\s+(.+)$',
-    r'^(?:masters?)\s+([a-z][a-z0-9\-]+)(?:\s+[\d\(].*)?$',
+    r'^(?:masters?)\s+([a-z][a-z0-9\-\s]+?)(?:\s+[\d\(].*)?$',
     r'^(?:men|women|mixed|male|female)\s+(.+)$',
     r'^(?:junior|senior|master|open|any|novice|elite|rec)\s+(.+)$',
 ]]
