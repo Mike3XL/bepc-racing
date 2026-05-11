@@ -15,7 +15,7 @@ import re
 _PATTERNS = [
     # Kayak doubles — must come before singles; use $ or \b to avoid partial match
     ('hpk-3\\b|hpk3\\b',        'Kayak-3',       'HPK-3'),
-    ('hpk-2\\b|hpk2\\b|hpk.*double|hpk.*2x', 'Kayak-2', 'HPK-2'),
+    ('hpk-2\\b|hpk2\\b|hpk.*double|hpk.*2x|high.?performance.*double', 'Kayak-2', 'HPK-2'),
     ('fsk-2\\b|fsk2\\b',        'Kayak-2',       'FSK-2'),
     ('sk-2\\b|sk2\\b',          'Kayak-2',       'SK-2'),
     # Surfski doubles — before generic K2 so "K2 Surfski" maps correctly
@@ -25,9 +25,10 @@ _PATTERNS = [
     ('k-4\\b|k4\\b',            'Sprint-K4',     'K4'),
     # Kayak singles — use \b or $ to avoid matching doubles
     ('surf.?ski',               'Kayak-1',       'HPK'),
-    ('high.?performance.?kayak', 'Kayak-1',      'HPK'),
+    ('high.?performance.?kayak|performance.?kayak', 'Kayak-1', 'HPK'),
     ('hpk(?!-?[23])\\b|hpk1\\b|hpdk\\b', 'Kayak-1', 'HPK'),
     ('fsk(?!-?2)\\b',           'Kayak-1',       'FSK'),
+    ('sea.?kayak',              'Kayak-1',       'SK'),
     ('sk(?!-?2)\\b',            'Kayak-1',       'SK'),
     ('k-1\\b|k1\\b',            'Sprint-K1',     'K1'),
     ('pk\\b',                   'Kayak-1',       'PK'),
@@ -41,7 +42,7 @@ _PATTERNS = [
     ('8[x+]|eight|oct',         'OW-8',          None),
     ('4[x+]|quad',              'OW-4',          None),
     ('2x\\b|rowboat.*2x',       'OW-2',          None),
-    ('1x\\b|rowboat|wherry|gig|row\\b', 'OW-1',  None),
+    ('1x\\b|rowboat|wherry|gig|row\\b|ocean.?row', 'OW-1',  None),
     # OC (outrigger canoe) — larger before smaller
     ('oc-?6',                   'OC-6',          'OC-6'),
     ('oc-?3',                   'OC-3',          'OC-3'),
@@ -68,7 +69,7 @@ _PATTERNS = [
     ('c-?1.*sprint|sprint.*c-?1', 'Sprint-C1',  'C1'),
     ('c-?4\\b',                 'Canoe-4',       None),
     ('c-?3\\b',                 'Canoe-3',       None),
-    ('c-?2\\b',                 'Canoe-2',       None),
+    ('c-?2\\b|canoe.*tandem|tandem.*canoe', 'Canoe-2', None),
     ('c-?1\\b|^canoe$',         'Canoe-1',       None),
     # Other
     ('pedal|dragon|rowing',     'Other',         None),
@@ -86,6 +87,7 @@ _STRIP = [re.compile(p, re.I) for p in [
     r'^(?:masters?)\s+([a-z][a-z0-9\-\s]+?)(?:\s+[\d\(].*)?$',
     r'^(?:men|women|mixed|male|female)\s+(.+)$',
     r'^(?:junior|senior|master|open|any|novice|elite|rec)\s+(.+)$',
+    r'^u\d+\s+(.+)$',  # U18, U16, U14 age prefix
     r'^(.+?)-[mwf]$',  # trailing gender code e.g. SS1-M, HPK-W
 ]]
 
