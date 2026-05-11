@@ -1315,15 +1315,6 @@ def main():
     sub = parser.add_subparsers(dest="command")
 
     # --- Data refresh ---
-    uc_p = sub.add_parser("update-club", help="Auto-discover and fetch new races for a club")
-    uc_p.add_argument("club", help="Club ID e.g. bepc, sound-rowers")
-    uc_p.add_argument("--year", default=None, help="Season year (default: current year)")
-    uc_p.add_argument("--dry-run", action="store_true", help="Report without fetching")
-
-    us_p = sub.add_parser("update-site", help="Auto-discover and fetch new races for all clubs in a site")
-    us_p.add_argument("site", help="Site ID e.g. pnw")
-    us_p.add_argument("--dry-run", action="store_true", help="Report without fetching")
-
     # --- Build ---
     bc_p = sub.add_parser("build-club", help="Generate pages for a single club (fast, skips site-wide pages)")
     bc_p.add_argument("club", help="Club ID e.g. bepc")
@@ -1390,13 +1381,7 @@ def main():
     args = parser.parse_args()
 
     from datetime import date as _date
-    if args.command == "update-club":
-        if not args.year:
-            args.year = str(_date.today().year)
-        cmd_update_club(args)
-    elif args.command == "update-site":
-        cmd_update_site(args)
-    elif args.command == "build-club":
+    if args.command == "build-club":
         cmd_build_club(args)
     elif args.command == "build-site":
         cmd_build_site(args)
