@@ -1329,11 +1329,11 @@ def main():
     bc_p.add_argument("club", help="Club ID e.g. bepc")
 
     bs_p = sub.add_parser("build-site", help="Generate full site for a named site config")
-    bs_p.add_argument("site", help="Site ID e.g. pnw")
+    bs_p.add_argument("site", nargs="?", default="pnw", help="Site ID (default: pnw)")
 
     # --- Publish ---
     ps_p = sub.add_parser("publish-site", help="Push built site to GitHub Pages")
-    ps_p.add_argument("site", help="Site ID e.g. pnw")
+    ps_p.add_argument("site", nargs="?", default="pnw", help="Site ID (default: pnw)")
 
     # --- Manual fetch (when you have the ID/file) ---
     fetch_p = sub.add_parser("fetch", help="Manually fetch races by source type")
@@ -1378,24 +1378,14 @@ def main():
     audit_src_p.add_argument("--club", default=CURRENT_CLUB)
 
     pr_p = sub.add_parser("process-results", help="Check past upcoming races for results, fetch+build+publish")
-    pr_p.add_argument("site", help="Site ID e.g. pnw")
+    pr_p.add_argument("site", nargs="?", default="pnw", help="Site ID (default: pnw)")
     pr_p.add_argument("--dry-run", action="store_true", help="Check only, don't fetch or modify")
 
     # --- Dev ---
     serve_p = sub.add_parser("serve", help="Serve site/ locally for testing")
     serve_p.add_argument("--port", type=int, default=8080)
 
-    # --- Legacy aliases (kept for backward compat) ---
-    sub.add_parser("process", help="[legacy] Rebuild data.json (now called automatically)")
-    gen_p = sub.add_parser("generate", help="[legacy] Use build-site instead")
-    gen_p.add_argument("--club", default=None)
-    pub_p = sub.add_parser("publish", help="[legacy] Use build-site + publish-site instead")
-    pub_p.add_argument("--club", default=None)
-    pub_p.add_argument("--branch", default=None)
-    sync_p = sub.add_parser("sync", help="[legacy] Use update-club instead")
-    sync_p.add_argument("--club", default=CURRENT_CLUB)
-    sync_p.add_argument("--year", required=True)
-    sync_p.add_argument("--dry-run", action="store_true")
+    # (legacy commands process/generate/publish/sync removed — use build-site, publish-site, update-club)
 
     args = parser.parse_args()
 
@@ -1436,17 +1426,6 @@ def main():
         cmd_audit_sources(args)
     elif args.command == "serve":
         cmd_serve(args)
-    # Legacy aliases
-    elif args.command == "process":
-        cmd_process(args)
-    elif args.command == "generate":
-        print("⚠️  'generate' is deprecated — use 'build-site pnw' instead")
-        cmd_generate(args)
-    elif args.command == "publish":
-        print("⚠️  'publish' is deprecated — use 'build-site pnw && publish-site pnw' instead")
-        cmd_publish(args)
-    elif args.command == "sync":
-        cmd_sync(args)
     else:
         parser.print_help()
 
