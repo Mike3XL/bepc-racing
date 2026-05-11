@@ -110,6 +110,14 @@ The primary "% vs hcap" column is implemented as **vs Projected**. Remaining ide
 
 ## Lower Priority
 
+### Name Collision Detection and Splitting
+When two different people share the same canonical name (e.g. a BC HPK paddler and a Seattle SUP paddler both named "Jonathan Foley"), the system merges their results and index incorrectly. Need a mechanism to:
+- Detect suspicious collisions (same name, very different craft categories or geographically impossible same-day results)
+- Split into distinct canonical names (e.g. suffix with location or club)
+- Store the split in corrections/aliases so it persists across re-fetches
+
+Known cases to investigate: Jonathan Foley (BEPC SUP 2017-2019 vs BC HPK at Board the Fjord 2026).
+
 ### GitHub Actions Publish
 Move `cli.py publish` to a GitHub Actions workflow triggered on push to `main`. The action would run `bepc generate` then push the result to `gh-pages`, so publishing is fire-and-forget with no local wait. Requires all data files needed by `generate` to be committed to the repo (or fetched as part of the action).
 

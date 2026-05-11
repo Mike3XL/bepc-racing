@@ -350,7 +350,7 @@
     "scott vesey": "Scott Vesey",
     "gabriel somjen": "Gabriel Somjen",
     "Rick McVicar": "Rick Mcvicar",
-    "Á'a:Líya Warbus": "Á'a:líya Warbus",
+    "\u00c1'a:L\u00edya Warbus": "\u00c1'a:l\u00edya Warbus",
     "Darren Harbulot": "Darren HARBULOT",
     "coby davis": "Coby Davis",
     "Rod Bayne": "rod bayne",
@@ -480,7 +480,7 @@
     "Shaun Clarke": "Shawn Clarke",
     "Douglas Miyasato": "Douglas Miyata",
     "Matt Stodola +1": "Matt Stodola",
-    "Seth ONeal Mulu Tapasa": "Seth O’Neal / Mulu Tapasa",
+    "Seth ONeal Mulu Tapasa": "Seth O\u2019Neal / Mulu Tapasa",
     "North Cascades W 4X": "North Cascades 2X",
     "Nils Rein": "Nils Rain",
     "Kris Stolmeier": "Kris Stolmerer",
@@ -709,7 +709,6 @@
     "John Harwood": "Jon Harwood",
     "Paul M. HIRSH": "Paul Hirsh",
     "Dean Williams Jr.": "Dean Williams",
-    "Michael Lim": "Michael Lampi",
     "Steve Pacmier": "Steve Price",
     "Jim Vohn": "Jim Bohn",
     "Michael Cade": "Michael Dee",
@@ -856,7 +855,7 @@
     "Peter Curtain": "Peter Turcan",
     "Wendy Cartwr": "Wendy Carter",
     "Marin Miller": "Marin Millar",
-    "Tamlyn Bohm": "Tamlyn Böhm",
+    "Tamlyn Bohm": "Tamlyn B\u00f6hm",
     "Eric Wormus": "Eric Wermus",
     "Darrell Bednaric": "Darrell Bednark",
     "Nathan Grocholski Jr.": "Nathan Grocholski",
@@ -1559,9 +1558,9 @@
       "David Morris",
       "David Oreiro"
     ],
-    "Brian O’Neill (Jericho) / Brian O’Neill": [
-      "Brian O’Neill (Jericho)",
-      "Brian O’Neill"
+    "Brian O\u2019Neill (Jericho) / Brian O\u2019Neill": [
+      "Brian O\u2019Neill (Jericho)",
+      "Brian O\u2019Neill"
     ],
     "David Harmon / David Morton": [
       "David Harmon",
@@ -2223,8 +2222,8 @@
       "Stephanie McNicol",
       "Stephanie Ryn"
     ],
-    "Michael O’Donnell / Michael Dee": [
-      "Michael O’Donnell",
+    "Michael O\u2019Donnell / Michael Dee": [
+      "Michael O\u2019Donnell",
       "Michael Dee"
     ],
     "Melat Peterson / Nate Peterson": [
@@ -2789,7 +2788,7 @@
     },
     {
       "raw": "Seth ONeal Mulu Tapasa",
-      "suggested": "Seth O’Neal / Mulu Tapasa",
+      "suggested": "Seth O\u2019Neal / Mulu Tapasa",
       "confidence": 0.958,
       "method": "fuzzy"
     },
@@ -4804,8 +4803,8 @@
       "method": "fuzzy"
     },
     {
-      "raw": "Brian O’Neill (Jericho)",
-      "suggested": "Brian O’Neill",
+      "raw": "Brian O\u2019Neill (Jericho)",
+      "suggested": "Brian O\u2019Neill",
       "confidence": 0.913,
       "method": "fuzzy"
     },
@@ -6682,7 +6681,7 @@
       "method": "fuzzy"
     },
     {
-      "raw": "Michael O’Donnell",
+      "raw": "Michael O\u2019Donnell",
       "suggested": "Michael Dee",
       "confidence": 0.899,
       "method": "fuzzy"
@@ -10427,7 +10426,7 @@
     },
     {
       "raw": "Jeremy Roberts",
-      "suggested": "Jeremy Roberts & D’Andre Roberts",
+      "suggested": "Jeremy Roberts & D\u2019Andre Roberts",
       "confidence": 0.887,
       "method": "fuzzy"
     },
@@ -10870,8 +10869,8 @@
       "method": "fuzzy"
     },
     {
-      "raw": "Tamlyn Böhm",
-      "suggested": "Tamlyn Böhm / Kirsten Chuli",
+      "raw": "Tamlyn B\u00f6hm",
+      "suggested": "Tamlyn B\u00f6hm / Kirsten Chuli",
       "confidence": 0.881,
       "method": "fuzzy"
     },
@@ -11380,5 +11379,6 @@
       "method": "nickname"
     }
   ],
-  "rejected": []
+  "rejected": [],
+  "decisions": []
 }
