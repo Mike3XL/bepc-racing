@@ -35,7 +35,8 @@ _PATTERNS = [
     # Non-sprint (fitness/plastic) kayak — PaddleGuru uses this term
     ('kayak.*non.?sprint|non.?sprint.*kayak|fitness.*kayak', 'Kayak-1', 'HPK'),
     ('kayak',                   'Kayak-1',       'Kayak'),
-    ('ss\\b',                   'Kayak-1',       'Surfski'),  # bare SS = surfski
+    ('ss-?2\\b',                'Kayak-2',       'Surfski-2'),  # SS2 = double surfski
+    ('ss-?1\\b|ss\\b',          'Kayak-1',       'HPK'),        # SS/SS1 = surfski = HPK
     # Open water rowing — larger before smaller
     ('8[x+]|eight|oct',         'OW-8',          None),
     ('4[x+]|quad',              'OW-4',          None),
@@ -85,6 +86,7 @@ _STRIP = [re.compile(p, re.I) for p in [
     r'^(?:masters?)\s+([a-z][a-z0-9\-\s]+?)(?:\s+[\d\(].*)?$',
     r'^(?:men|women|mixed|male|female)\s+(.+)$',
     r'^(?:junior|senior|master|open|any|novice|elite|rec)\s+(.+)$',
+    r'^(.+?)-[mwf]$',  # trailing gender code e.g. SS1-M, HPK-W
 ]]
 
 # Pure division labels — not craft
