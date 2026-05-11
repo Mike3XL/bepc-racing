@@ -643,6 +643,65 @@ def _has_results_paddleguru(source_id: str) -> bool:
         return False
 
 
+def _scan_organizer_results(candidates: list, upcoming: list, today, year: str, site_id: str) -> None:
+    """Scan WebScorer organizer pages for results not covered by upcoming.yaml source_ids.
+
+    Finds race IDs on organizer result pages that aren't in known source_ids,
+    and appends them to candidates as synthetic race entries for fetching.
+    """
+    import yaml as _yaml
+    clubs_path = DATA_DIR.parent / "data" / "clubs.yaml"
+    if not clubs_path.exists():
+        return
+    clubs_cfg = _yaml.safe_load(clubs_path.read_text()) or {}
+
+    # Collect all known source_ids already in upcoming or already fetched
+    known_ids: set[int] = set()
+    for r in upcoming:
+        sid = r.get("source_id")
+        if sid:
+            known_ids.add(int(sid))
+
+    # Also collect IDs already in data/ to avoid re-fetching
+    for common_dir in DATA_DIR.glob("*/*/common"):
+        for f in common_dir.glob("*.raw.json"):
+            # filename: YYYY-MM-DD__RACEID__name.raw.json
+            parts = f.stem.split("__")
+            if len(parts) >= 2 and parts[1].isdigit():
+                known_ids.add(int(parts[1]))
+
+    from bepc.fetcher_upcoming import scan_webscorer_organizer_results
+
+    for org_id, org_cfg in clubs_cfg.get("organizers", {}).items():
+        # Find webscorer_organizer fetch sources
+        for ds in org_cfg.get("data_sources", {}).get("fetch_sources", []):
+            if ds.get("type") != "webscorer_organizer":
+                continue
+            slug = ds.get("id")
+            if not slug:
+                continue
+            # Find which clubs use this organizer
+            org_clubs = [
+                cid for cid, ccfg in clubs_cfg.get("clubs", {}).items()
+                if org_id in ccfg.get("organizers", [])
+            ]
+            if not org_clubs:
+                continue
+
+            new_ids = scan_webscorer_organizer_results(slug, known_ids, lookback_days=14)
+            for race_id in new_ids:
+                club = org_clubs[0]
+                synthetic = {
+                    "name": f"{org_cfg.get('short_name', org_id)} (race {race_id})",
+                    "date": str(today),
+                    "clubs": org_clubs,
+                    "source_id": race_id,
+                    "source_type": "webscorer",
+                }
+                candidates.append((synthetic, today, "webscorer"))
+                print(f"  Organizer scan ({slug}): found new race ID {race_id}")
+
+
 def cmd_process_results(args):
     """Check past upcoming races for posted results; fetch, build, publish if found."""
     import yaml as _yaml
@@ -666,6 +725,9 @@ def cmd_process_results(args):
             src_type = _infer_source_type(r)
             if src_type:
                 candidates.append((r, d, src_type))
+
+    # Also scan WebScorer organizer pages for results not in upcoming.yaml
+    _scan_organizer_results(candidates, upcoming, today, year, site_id)
 
     if not candidates:
         print("No past races with source_id found in upcoming.yaml.")

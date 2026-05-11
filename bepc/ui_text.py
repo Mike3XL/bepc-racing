@@ -37,7 +37,7 @@ RESULTS_COLUMNS = {
     "vs_projected":   ("{gold_cup} vs Par", "vs Par",  "Improvement vs personal par (+ve is best)"),
     "finish_time":    ("{gold_flag} Time",  "Finish",   "Finish time"),
     "projected_time": ("Par",  "Par",     "Personal par time (RacePar * Index)"),
-    "race_index":     ("Index",      "Index",    "Racer Speed Index"),
+    "race_index":     ("Index",      "Index",    "Pace index"),
     "new_index":      ("New Index",       "New",      "Index for next race"),
     "par_estimate":   ("RacePar vote",    "ParVote",  "Vote for RacePar (Finish ÷ Index)"),
     "finish_points":  ("Finish Points",   "Pts",      "Points, by time"),

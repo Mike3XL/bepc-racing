@@ -110,6 +110,11 @@ The primary "% vs hcap" column is implemented as **vs Projected**. Remaining ide
 
 ## Lower Priority
 
+### GitHub Actions Publish
+Move `cli.py publish` to a GitHub Actions workflow triggered on push to `main`. The action would run `bepc generate` then push the result to `gh-pages`, so publishing is fire-and-forget with no local wait. Requires all data files needed by `generate` to be committed to the repo (or fetched as part of the action).
+
+
+
 ### Future clubs
 - **Wavechaser Paddle Series** — weekly Vancouver BC series, own club entry (Jericho Sailing Centre, 18 races/year May-Aug)
 - **SCKC Friday Night Races** — already tracked as `sckc-duck-island`

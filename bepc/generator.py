@@ -2131,7 +2131,7 @@ def generate_clubs_page(data: dict) -> None:
     html = _head("Series — PaddleRace") + _nav("Series", data=data, depth=0) + f"""
 <div class="container" style="max-width:800px">
   <h1 class="mb-4">Series</h1>
-  <p class="text-muted mb-4">Each series is a collection of races with a consistent and competitive field of paddlers. Within a series, each paddler builds an Index that reflects their relative performance. From that index we calculate a projected finish time for each race, and how each paddler performs against their projection determines the podium.</p>
+  <p class="text-muted mb-4">Each series is a collection of races with a consistent and competitive field of paddlers. Within a series, each paddler builds a pace index that reflects their relative performance. From it we calculate a projected finish time for each race, and how each paddler performs against their projection determines the podium.</p>
   {sections}
 </div>""" + _foot()
     (SITE_DIR / "series.html").write_text(html)
@@ -2154,7 +2154,7 @@ dl dt:first-child { margin-top: 0; }
 
   <h2>How indexed results work</h2>
 
-  <p>Each racer has a performance <strong>index</strong> per series and craft category — a multiplier reflecting their typical pace.</p>
+  <p>Each racer has a <strong>pace index</strong> per series and craft category — a multiplier reflecting their relative speed.</p>
 
   <p>After each race, every racer's finish time divided by their index gives an estimate of the <strong>par time</strong> for the course. We sort the estimates and take the 30th-percentile value to be the <em>official par time</em>. Once we have the par time we calculate the projected time for each racer as <em>par x index</em> and compare their actual result with their projected time.</p>
 

@@ -334,6 +334,95 @@ def fetch_bepc_webscorer() -> list[dict]:
         race_num += 1
         race_url = f'https://www.webscorer.com/register?raceid={raceid}'
         name = f'BEPC {d.year} Race Series #{race_num}'
+        notes = _bepc_notes(d)
+
+        races.append({
+            'name': name,
+            'date': d.strftime('%Y-%m-%d'),
+            'clubs': ['bepc'],
+            'distance': '~3 mi',
+            'source_id': int(raceid),
+            'url': race_url,
+            'links': [
+                {'label': 'Register', 'url': race_url},
+                {'label': 'Info', 'url': 'https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/'},
+            ],
+            'notes': notes + (' · ' if notes else '') + 'Shilshole Bay, Seattle, WA',
+        })
+    return races
+
+
+def scan_webscorer_organizer_results(org_slug: str, known_ids: set[int],
+                                      lookback_days: int = 30) -> list[int]:
+    """Scan a WebScorer organizer page for recent results not in known_ids.
+
+    Returns a list of race IDs that have results posted within lookback_days
+    and are not already in known_ids. These are candidates for fetching.
+    """
+    url = f"https://www.webscorer.com/{org_slug}"
+    try:
+        html = _fetch(url)
+    except Exception as e:
+        print(f"  scan_webscorer_organizer_results({org_slug}): ERROR — {e}")
+        return []
+
+    cutoff = date.today().toordinal() - lookback_days
+    found = []
+
+    # Results links look like: href="/race?raceid=431358" or href="race?raceid=431358"
+    for m in re.finditer(r'href=["\'](?:https://www\.webscorer\.com)?/?race\?raceid=(\d+)["\']', html):
+        race_id = int(m.group(1))
+        if race_id not in known_ids:
+            found.append(race_id)
+
+    # Deduplicate preserving order
+    seen = set()
+    result = []
+    for rid in found:
+        if rid not in seen:
+            seen.add(rid)
+            result.append(rid)
+    return result
+    """Fetch upcoming BEPC races from WebScorer registration page."""
+    import urllib.request as _req
+    import re as _re
+    from datetime import datetime as _dt
+
+    url = 'https://www.webscorer.com/bepc827?pg=register'
+    try:
+        r = _req.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        with _req.urlopen(r, timeout=15) as resp:
+            html = resp.read().decode('utf-8', errors='replace')
+    except Exception as e:
+        print(f"  BEPC WebScorer: ERROR fetching register page — {e}")
+        return []
+
+    # Extract (raceid, date) pairs from register page
+    pairs = _re.findall(
+        r'href=\"/register\?raceid=(\d+)\".*?lbRaceDate[^>]*>([^<]+)<',
+        html, _re.DOTALL
+    )
+    today = date.today()
+    races = []
+    seen_ids = set()
+    race_num = 0
+    for raceid, date_str in pairs:
+        if raceid in seen_ids:
+            continue
+        seen_ids.add(raceid)
+        d = None
+        for fmt in ('%B %d, %Y', '%b %d, %Y', '%m/%d/%Y'):
+            try:
+                d = _dt.strptime(date_str.strip(), fmt).date()
+                break
+            except ValueError:
+                pass
+        if not d or d <= today:
+            continue
+
+        race_num += 1
+        race_url = f'https://www.webscorer.com/register?raceid={raceid}'
+        name = f'BEPC {d.year} Race Series #{race_num}'
         # Use _bepc_notes for timing (consistent by month, no need to parse each page)
         notes = _bepc_notes(d)
 
@@ -431,6 +520,8 @@ def sync_upcoming(upcoming_path: Path, dry_run: bool = False) -> None:
             f.write("# Manual entries OK; past entries are pruned automatically\n\n")
             f.write("upcoming:\n")
             for r in existing:
+                if not r.get('date'):
+                    continue  # skip entries with no date (e.g. Date TBC)
                 f.write(f"  - name: \"{r['name']}\"\n")
                 f.write(f"    date: \"{r['date']}\"\n")
                 clubs_str = '[' + ', '.join(r.get('clubs', [])) + ']'
