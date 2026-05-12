@@ -24,7 +24,7 @@ _PATTERNS = [
     # Kayak quads — sprint K4 before generic
     ('k-4\\b|k4\\b',            'Sprint-K4',     'K4'),
     # Kayak singles — use \b or $ to avoid matching doubles
-    ('surf.?ski',               'Kayak-1',       'HPK'),
+    ('surf.?ski',               'Kayak-1',       'Surfski'),
     ('high.?performance.?kayak|performance.?kayak', 'Kayak-1', 'HPK'),
     ('hpk(?!-?[23])\\b|hpk1\\b|hpdk\\b', 'Kayak-1', 'HPK'),
     ('fsk(?!-?2)\\b',           'Kayak-1',       'FSK'),
