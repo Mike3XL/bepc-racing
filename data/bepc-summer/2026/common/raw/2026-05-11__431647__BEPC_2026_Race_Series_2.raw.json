@@ -18,7 +18,7 @@
     "TimedOn": "samsung SM-X200",
     "TimedWith": "Webscorer PRO 7.6",
     "Visibility": "Public",
-    "UpdatedFrom": "App",
+    "UpdatedFrom": "Website",
     "UpdatedTime": "Monday, May 11, 2026 8:11 PM (GMT-7)",
     "ImageUrl": "https://s.ws-images.com/images/stocksmall/paddling-64x48.jpg"
   },
@@ -82,8 +82,8 @@
         },
         {
           "Place": "4",
-          "Bib": "23",
-          "Name": "Annett McPherson",
+          "Bib": "26",
+          "Name": "Elizabeth Holmes",
           "FirstName": "Annett",
           "LastName": "McPherson",
           "Distance": "Race Course",
@@ -337,8 +337,8 @@
         },
         {
           "Place": "19",
-          "Bib": "26",
-          "Name": "Elizabeth Holmes",
+          "Bib": "23",
+          "Name": "Annett McPherson",
           "FirstName": "Elizabeth",
           "LastName": "Holmes",
           "Distance": "Race Course",
@@ -753,8 +753,8 @@
       "Racers": [
         {
           "Place": "1",
-          "Bib": "23",
-          "Name": "Annett McPherson",
+          "Bib": "26",
+          "Name": "Elizabeth Holmes",
           "FirstName": "Annett",
           "LastName": "McPherson",
           "Distance": "Race Course",
@@ -770,8 +770,8 @@
         },
         {
           "Place": "2",
-          "Bib": "26",
-          "Name": "Elizabeth Holmes",
+          "Bib": "23",
+          "Name": "Annett McPherson",
           "FirstName": "Elizabeth",
           "LastName": "Holmes",
           "Distance": "Race Course",
@@ -2176,8 +2176,8 @@
       "Racers": [
         {
           "Place": "1",
-          "Bib": "23",
-          "Name": "Annett McPherson",
+          "Bib": "26",
+          "Name": "Elizabeth Holmes",
           "FirstName": "Annett",
           "LastName": "McPherson",
           "Distance": "Race Course",
@@ -2193,8 +2193,8 @@
         },
         {
           "Place": "2",
-          "Bib": "26",
-          "Name": "Elizabeth Holmes",
+          "Bib": "23",
+          "Name": "Annett McPherson",
           "FirstName": "Elizabeth",
           "LastName": "Holmes",
           "Distance": "Race Course",
