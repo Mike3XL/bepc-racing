@@ -1,7 +1,7 @@
 """Fetch upcoming race schedules from external sources and merge into upcoming.yaml."""
 import re
 import urllib.request
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -350,6 +350,55 @@ def fetch_bepc_webscorer() -> list[dict]:
             'notes': notes + (' · ' if notes else '') + 'Shilshole Bay, Seattle, WA',
         })
     return races
+
+
+def _name_match(a: str, b: str, threshold: float = 0.6) -> bool:
+    """Return True if two race names are approximately the same (word overlap ratio)."""
+    wa = set(re.sub(r'[^a-z0-9]', ' ', a.lower()).split())
+    wb = set(re.sub(r'[^a-z0-9]', ' ', b.lower()).split())
+    if not wa or not wb:
+        return False
+    return len(wa & wb) / max(len(wa), len(wb)) >= threshold
+
+
+def find_webscorer_results_id(org_slug: str, race_name: str, race_date: date,
+                               known_ids: set[int], date_window_days: int = 3) -> int | None:
+    """Search a WebScorer organizer page for the results ID matching a known upcoming race.
+
+    Matches by date proximity (within date_window_days) AND race name similarity.
+    Returns the results race ID, or None if not found.
+    """
+    url = f"https://www.webscorer.com/{org_slug}"
+    try:
+        html = _fetch(url)
+    except Exception as e:
+        print(f"  find_webscorer_results_id({org_slug}): ERROR — {e}")
+        return None
+
+    # Parse race blocks: each has raceid, name (from link text or alt), and date
+    # Pattern: raceid in href, name in link text, date as "Month DD, YYYY"
+    block_pattern = re.compile(
+        r'race\?raceid=(\d+)[^>]*>([^<]{3,80})</a>.*?(\w+ \d+, \d{4})',
+        re.DOTALL
+    )
+
+    race_name_lower = race_name.lower()
+    cutoff_low = race_date - timedelta(days=date_window_days)
+    cutoff_high = race_date + timedelta(days=date_window_days)
+
+    for m in block_pattern.finditer(html):
+        race_id = int(m.group(1))
+        if race_id in known_ids:
+            continue
+        candidate_name = m.group(2).strip().lower()
+        try:
+            candidate_date = datetime.strptime(m.group(3), "%B %d, %Y").date()
+        except ValueError:
+            continue
+        if cutoff_low <= candidate_date <= cutoff_high and _name_match(candidate_name, race_name_lower):
+            return race_id
+
+    return None
 
 
 def scan_webscorer_organizer_results(org_slug: str, known_ids: set[int],

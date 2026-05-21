@@ -733,6 +733,19 @@ def cmd_process_results(args):
         print("No past races with source_id found in upcoming.yaml.")
         return
 
+    # Collect already-fetched IDs to avoid re-fetching
+    fetched_ids: set[int] = set()
+    for common_dir in DATA_DIR.glob("*/*/common"):
+        for f in common_dir.glob("raw/*.raw.json"):
+            parts = f.stem.split("__")
+            if len(parts) >= 2 and parts[1].isdigit():
+                fetched_ids.add(int(parts[1]))
+
+    # Load clubs config for organizer slug lookup
+    import yaml as _yaml2
+    clubs_path = DATA_DIR.parent / "data" / "clubs.yaml"
+    clubs_cfg = _yaml2.safe_load(clubs_path.read_text()) if clubs_path.exists() else {}
+
     fetched = []
     for race, race_date, src_type in candidates:
         name = race["name"]
@@ -741,9 +754,41 @@ def cmd_process_results(args):
         club = clubs[0] if clubs else "pnw"
         print(f"Checking {name} ({race_date}) [{src_type}:{source_id}]...", end=" ", flush=True)
 
+        results_id = None
         has_results = False
+
         if src_type == "webscorer":
-            has_results = _has_results_webscorer(int(source_id))
+            # Registration ID ≠ results ID — search organizer page by name+date
+            from bepc.fetcher_upcoming import find_webscorer_results_id
+            org_slugs = []
+            results_source = race.get("results_source", {})
+            if results_source.get("type") == "webscorer" and results_source.get("organizer"):
+                org_slugs = [results_source["organizer"]]
+            else:
+                # Fallback: traverse clubs config
+                for cid in clubs:
+                    club_cfg = clubs_cfg.get("clubs", {}).get(cid, {})
+                    for org_id in club_cfg.get("organizers", []):
+                        org_cfg = clubs_cfg.get("clubs", {}).get(org_id, {})
+                        for ds in org_cfg.get("data_sources", {}).get("fetch_sources", []):
+                            if ds.get("type") == "webscorer_organizer" and ds.get("id") not in org_slugs:
+                                org_slugs.append(ds["id"])
+                    for ds in club_cfg.get("data_sources", {}).get("fetch_sources", []):
+                        if ds.get("type") == "webscorer_organizer" and ds.get("id") not in org_slugs:
+                            org_slugs.append(ds["id"])
+            for slug in org_slugs:
+                rid = find_webscorer_results_id(slug, name, race_date, fetched_ids)
+                if rid:
+                    results_id = rid
+                    has_results = True
+                    break
+            if not has_results:
+                already = any(
+                    find_webscorer_results_id(slug, name, race_date, set()) is not None
+                    for slug in org_slugs
+                )
+                print("already processed" if already else "no results yet")
+                continue
         elif src_type == "raceresult":
             has_results = _has_results_raceresult(int(source_id))
         elif src_type == "paddleguru":
@@ -755,7 +800,7 @@ def cmd_process_results(args):
 
         print("results available!")
         if dry_run:
-            print(f"  [dry-run] would fetch {src_type}:{source_id} for {club}/{year}")
+            print(f"  [dry-run] would fetch {src_type}:{results_id or source_id} for {club}/{year}")
             fetched.append(race)
             continue
 
@@ -763,7 +808,7 @@ def cmd_process_results(args):
             out_dir = DATA_DIR / club / year / "common"
             if src_type == "webscorer":
                 from bepc.fetcher import fetch_season
-                fetch_season([int(source_id)], out_dir)
+                fetch_season([results_id], out_dir)
             elif src_type == "raceresult":
                 from bepc.fetcher_raceresult import fetch_event
                 rr_id = _resolve_rr_id_from_pms(int(source_id))

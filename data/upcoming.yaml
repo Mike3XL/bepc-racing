@@ -18,11 +18,17 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Board the Fjord + 2026
   date: '2026-05-09'
   clubs:
   - pnw
   source_id: 419780
+  results_source:
+    type: webscorer
+    organizer: deepcovekayak
   distance: 14km/7km/4km
   url: https://www.webscorer.com/register?raceid=419780
   links:
@@ -69,25 +75,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
-- name: 'BEPC 2026 Race Series #3'
-  date: '2026-05-18'
-  clubs:
-  - bepc-summer
-  source_id: 427427
-  distance: ~3 mi
-  url: https://www.webscorer.com/register?raceid=427427
-  links:
-  - label: Register
-    url: https://www.webscorer.com/register?raceid=427427
-  - label: Start List
-    url: https://www.webscorer.com/registerlist?raceid=427427&details=1
-  - label: Info
-    url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  location: Shilshole Bay, Seattle, WA
-  timing:
-  - 'Reg: 6 PM'
-  - 'Meeting: 6:30 PM'
-  - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Ski to Sea
   date: '2026-05-24'
   clubs: []
@@ -118,6 +108,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Seventy48
   date: '2026-05-29'
   clubs: []
@@ -161,6 +154,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: 'BEPC 2026 Race Series #6'
   date: '2026-06-08'
   clubs:
@@ -180,6 +176,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Nch'I-Wanna Columbia River Race
   date: '2026-06-13'
   clubs:
@@ -212,6 +211,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Rat Island Regatta
   date: '2026-06-20'
   clubs:
@@ -248,6 +250,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Bremerton Bridges Tidal Race
   date: '2026-06-27'
   clubs:
@@ -293,6 +298,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: 'BEPC 2026 Race Series #10'
   date: '2026-07-06'
   clubs:
@@ -312,6 +320,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: 'BEPC 2026 Race Series #11'
   date: '2026-07-13'
   clubs:
@@ -331,6 +342,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Budd Inlet
   date: '2026-07-18'
   clubs:
@@ -363,6 +377,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Elk River Challenge
   date: '2026-07-25'
   clubs:
@@ -395,6 +412,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: 'BEPC 2026 Race Series #14'
   date: '2026-08-03'
   clubs:
@@ -414,6 +434,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: 'BEPC 2026 Race Series #15'
   date: '2026-08-10'
   clubs:
@@ -433,6 +456,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Gorge Challenge
   date: '2026-08-16'
   clubs:
@@ -462,6 +488,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Round Shaw Row
   date: '2026-08-22'
   clubs:
@@ -496,6 +525,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Da Grind
   date: '2026-08-29'
   clubs:
@@ -525,6 +557,9 @@ upcoming:
   - 'Reg: 6 PM'
   - 'Meeting: 6:30 PM'
   - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Bainbridge Island Marathon
   date: '2026-09-05'
   clubs:
@@ -570,6 +605,9 @@ upcoming:
   - 'Reg: 5:30 PM'
   - 'Meeting: 6 PM'
   - 'Start: 6:30 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: 'BEPC 2026 Race Series #20'
   date: '2026-09-14'
   clubs:
@@ -589,6 +627,9 @@ upcoming:
   - 'Reg: 5:30 PM'
   - 'Meeting: 6 PM'
   - 'Start: 6:30 PM'
+  results_source:
+    type: webscorer
+    organizer: bepc827
 - name: Narrows Challenge (incl. USA SUP Nationals 10K)
   date: '2026-09-19'
   clubs:
