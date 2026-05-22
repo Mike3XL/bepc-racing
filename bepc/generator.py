@@ -759,6 +759,7 @@ def generate_data_files(data: dict) -> None:
                 "courses": [
                     {
                         "label": c["name"].split(" — ")[-1] if " — " in c["name"] else "Results",
+                        "short_label": _short_course_label(c["name"].split(" — ")[-1] if " — " in c["name"] else "Results"),
                         "finish": sorted(c["results"], key=lambda x: x["original_place"]),
                         "handicap": sorted(c["results"], key=lambda x: x["adjusted_place"]),
                     }
@@ -1092,6 +1093,7 @@ function rows(results, placeField) {
             # Build inline course data
             courses_json = _json.dumps([{
                 "label": c["name"].split(" — ")[-1] if " — " in c["name"] else "Results",
+                "short_label": _short_course_label(c["name"].split(" — ")[-1] if " — " in c["name"] else "Results"),
                 "finish": sorted(c["results"], key=lambda x: x["original_place"]),
                 "handicap": sorted(c["results"], key=lambda x: x["adjusted_place"]),
             } for c in courses])
@@ -1147,7 +1149,7 @@ document.addEventListener('DOMContentLoaded', () => {{
   sortedCourses.forEach((course, i) => {{
     const origIdx = COURSES.indexOf(course);
     const active = i === 0 ? 'active' : '';
-    tabNav += `<li class="nav-item"><button class="nav-link ${{active}}" data-bs-toggle="tab" data-bs-target="#course-${{origIdx}}">${{course.label || 'Results'}}</button></li>`;
+    tabNav += `<li class="nav-item"><button class="nav-link ${{active}}" data-bs-toggle="tab" data-bs-target="#course-${{origIdx}}">${{course.short_label || course.label || 'Results'}}</button></li>`;
     tabContent += `<div class="tab-pane ${{active}} p-3 border border-top-0" id="course-${{origIdx}}">${{podiumForCourse(course)}}${{tableHtml(origIdx)}}</div>`;
   }});
   tabNav += '</ul>';
@@ -1296,6 +1298,31 @@ def _short_label(name: str, date: str = "") -> str:
             return date_prefix + v
     base = _re_module.sub(r'^(BEPC\s+)?\d{4}\s+', '', base)
     return date_prefix + base[:20]
+
+
+def _short_course_label(label: str) -> str:
+    """Shorten a course distance label for compact UI display."""
+    if not label or label in ("Results", "Race Course", "Overall"):
+        return label
+    import re as _re2
+    # Numeric distance: extract first number + unit
+    m = _re2.search(r'(\d+(?:\.\d+)?)\+?\s*(NM|km|mi|mile)', label, _re2.I)
+    if m:
+        unit = 'km' if 'km' in m.group(2).lower() else ('NM' if m.group(2).upper() == 'NM' else 'mi')
+        return f"{m.group(1)} {unit}"
+    low = label.lower()
+    if 'downwind' in low: return 'Downwind'
+    if 'sup tech' in low or 'technical' in low: return 'SUP Tech'
+    if 'long' in low: return 'Long'
+    if 'short' in low: return 'Short'
+    if 'medium' in low: return 'Medium'
+    if 'regular' in low: return 'Regular'
+    if 'kids' in low: return 'Kids'
+    if 'rowers' in low: return 'Rowers'
+    if 'singles' in low: return 'Singles'
+    if 'doubles' in low: return 'Doubles'
+    if 'fun' in low: return 'Fun'
+    return label.split('(')[0].strip()
 
 
 def _race_slug(name: str, date: str, race_id) -> str:
@@ -2650,10 +2677,25 @@ def generate_platform_home(data: dict) -> None:
 
     def _short_dist(lbl):
         if not lbl: return ""
-        m = _re.search(r'(\d+(?:\.\d+)?)\s*(mi|mile|km|m)', lbl, _re.I)
-        if not m: return lbl.split()[0]
-        unit = 'km' if 'km' in m.group(2).lower() else ('m' if m.group(2).lower() == 'm' else 'mi.')
-        return f"{m.group(1)} {unit}"
+        import re as _re2
+        # Extract numeric distance if present: "13 miles (main course)" -> "13 mi"
+        m = _re2.search(r'(\d+(?:\.\d+)?)\s*(mi|mile|km|NM)', lbl, _re2.I)
+        if m:
+            unit = 'km' if 'km' in m.group(2).lower() else ('NM' if 'nm' in m.group(2).lower() else 'mi')
+            return f"{m.group(1)} {unit}"
+        # Keyword fallbacks
+        low = lbl.lower()
+        if 'downwind' in low: return 'Downwind'
+        if 'sup tech' in low or 'technical' in low: return 'SUP Tech'
+        if 'long' in low: return 'Long'
+        if 'short' in low: return 'Short'
+        if 'medium' in low or 'medium' in low: return 'Medium'
+        if 'regular' in low: return 'Regular'
+        if 'kids' in low: return 'Kids'
+        if 'rowers' in low: return 'Rowers'
+        if 'singles' in low: return 'Singles'
+        if 'doubles' in low: return 'Doubles'
+        return lbl.split('(')[0].strip()
 
     def _podium_col_c(place, entry, cid):
         tc, bg, bdr, fw = _PODIUM_COLORS.get(place, ("#555","#f8f9fa","#ccc","400"))
@@ -3239,7 +3281,7 @@ function podiumHtml(course) {{
       rows += '<div class="d-flex align-items-center gap-1 text-nowrap">' + CUP[p] + nameHtml + '</div>';
     }}
   }});
-  var lbl = course.label ? '<div class="text-muted small fw-semibold mb-1">' + course.label + '</div>' : '';
+  var lbl = course.label ? '<div class="text-muted small fw-semibold mb-1">' + (course.short_label || course.label) + '</div>' : '';
   return '<div class="me-3">' + lbl + rows + '</div>';
 }}
 
@@ -3255,7 +3297,7 @@ function finishPodiumHtml(course) {{
       rows += '<div class="d-flex align-items-center gap-1 text-nowrap">' + MEDAL[p] + nameHtml + '</div>';
     }}
   }});
-  var lbl = course.label ? '<div class="text-muted small fw-semibold mb-1">' + course.label + '</div>' : '';
+  var lbl = course.label ? '<div class="text-muted small fw-semibold mb-1">' + (course.short_label || course.label) + '</div>' : '';
   return '<div class="me-3">' + lbl + rows + '</div>';
 }}
 
@@ -3281,7 +3323,7 @@ function _rlPodiumCol(icon, name, slug, h, bg, bdr, tc, time, calc) {{
 var _rlColors = {{1:['#7A5C00','#FFF8DC','#FFD700'],2:['#555','#EBEBEB','#A0A0A0'],3:['#5C2E00','#FDF0E0','#DDA84A']}};
 var _rlH = {{1:66,2:58,3:58}};
 function _rlCourseBlock(course, ci, isFirst) {{
-  var dist = course.label || '';
+  var dist = course.short_label || course.label || '';
   var parValid = (course.corr_top10||[]).some(function(e){{return e.predicted;}});
   // corrected cols
   var cCols=''; [2,1,3].forEach(function(p){{
