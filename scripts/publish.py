@@ -20,6 +20,7 @@ from pathlib import Path
 REPO = Path(__file__).parent.parent
 LOG = Path("/tmp/bepc-publish.log")
 SITE_URL = "https://pnw.paddlerace.org/"
+FINGERPRINT_URL = "https://pnw.paddlerace.org/data.json"  # changes on every publish
 POLL_INTERVAL = 15   # seconds between site checks
 POLL_TIMEOUT = 300   # give up after 5 minutes
 
@@ -37,7 +38,7 @@ def log(msg: str):
 
 def site_fingerprint() -> str:
     try:
-        req = urllib.request.Request(SITE_URL, headers={"Cache-Control": "no-cache", "Pragma": "no-cache"})
+        req = urllib.request.Request(FINGERPRINT_URL, headers={"Cache-Control": "no-cache", "Pragma": "no-cache"})
         with urllib.request.urlopen(req, timeout=10) as r:
             return hashlib.md5(r.read()).hexdigest()
     except Exception as e:
