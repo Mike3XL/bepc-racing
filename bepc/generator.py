@@ -1339,8 +1339,7 @@ def _build_race_slugs(data: dict) -> dict:
                 base_name = race["name"].split(" — ")[0]
                 slug = _race_slug(base_name, race["date"], rid)
                 if slug in slugs:
-                    # Collision — append race_id suffix
-                    print(f"WARNING: slug collision '{slug}' for {rid} and {slugs[slug]} in {club_id}")
+                    # Collision — append race_id suffix to make unique
                     slug = f"{slug}-{str(rid).replace('/', '-')}"
                 slugs[slug] = rid
                 id_to_slug[rid] = slug
