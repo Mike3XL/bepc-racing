@@ -3063,7 +3063,7 @@ document.addEventListener('DOMContentLoaded',function(){{
 }});
 </script>
 </body>
-<!-- paddlerace.org -->
+<!-- built: {__import__('datetime').datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')} -->
 </html>"""
 
     (SITE_DIR / "index.html").write_text(html)

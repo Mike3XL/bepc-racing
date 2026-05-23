@@ -20,7 +20,7 @@ from pathlib import Path
 REPO = Path(__file__).parent.parent
 LOG = Path("/tmp/bepc-publish.log")
 SITE_URL = "https://pnw.paddlerace.org/"
-FINGERPRINT_URL = "https://pnw.paddlerace.org/data.json"  # changes on every publish
+FINGERPRINT_URL = "https://pnw.paddlerace.org/index.html"  # rebuilt on every publish
 POLL_INTERVAL = 15   # seconds between site checks
 POLL_TIMEOUT = 300   # give up after 5 minutes
 
