@@ -26,6 +26,8 @@ POLL_TIMEOUT = 300   # give up after 5 minutes
 
 
 def notify(title: str, message: str):
+    # NOTE: First-time setup — macOS requires notification permission for osascript.
+    # To grant it: open Script Editor, run 'display notification "test"', click Allow.
     script = f'display notification "{message}" with title "{title}" sound name "Glass"'
     subprocess.run(["osascript", "-e", script], capture_output=True)
 
