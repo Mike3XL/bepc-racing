@@ -40,6 +40,15 @@ jobs:
             echo "fetched=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: Commit fetched data to main
+        if: steps.process.outputs.fetched == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ data/upcoming.yaml
+          git commit -m "data: auto-fetch race results [skip ci]" || echo "Nothing to commit"
+          git push
+
       - name: Deploy to GitHub Pages
         if: steps.process.outputs.fetched == 'true'
         uses: peaceiris/actions-gh-pages@v4
