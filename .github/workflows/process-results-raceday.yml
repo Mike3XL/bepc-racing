@@ -12,6 +12,7 @@ on:
 jobs:
   process-results:
     runs-on: ubuntu-latest
+    environment: github-pages
     permissions:
       contents: write
 
