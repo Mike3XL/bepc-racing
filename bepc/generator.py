@@ -3063,6 +3063,7 @@ document.addEventListener('DOMContentLoaded',function(){{
 }});
 </script>
 </body>
+<!-- paddlerace.org -->
 </html>"""
 
     (SITE_DIR / "index.html").write_text(html)
