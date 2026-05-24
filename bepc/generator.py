@@ -1535,7 +1535,7 @@ function makeChart(id, data, yLabel) {
           title: { display: true, text: yLabel },
           afterDataLimits: scale => {
             const span = scale.max - scale.min;
-            const minSpan = 0.2;
+            const minSpan = 0.1;
             if (span < minSpan) {
               const mid = (scale.max + scale.min) / 2;
               scale.min = mid - minSpan / 2;
@@ -1845,7 +1845,7 @@ new Chart(document.getElementById('chart-pts-{cid}'), {{
 new Chart(document.getElementById('chart-hcap-{cid}'), {{
   type:'line',data:{{labels:{json.dumps(race_labels)},datasets:[
     {{label:'Index',data:{json.dumps(hcap_data)},borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}}
-  ]}},options:{{responsive:true,plugins:{{legend:{{position:'top'}}}},scales:{{y:{{title:{{display:true,text:'Index'}},afterDataLimits:function(s){{var sp=s.max-s.min;if(sp<0.2){{var m=(s.max+s.min)/2;s.min=m-0.1;s.max=m+0.1;}}}}}}}}}}
+  ]}},options:{{responsive:true,plugins:{{legend:{{position:'top'}}}},scales:{{y:{{title:{{display:true,text:'Index'}},afterDataLimits:function(s){{var sp=s.max-s.min;if(sp<0.1){{var m=(s.max+s.min)/2;s.min=m-0.05;s.max=m+0.05;}}}}}}}}}}
 }});"""
 
                     rows = "".join(
