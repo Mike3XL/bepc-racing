@@ -1,22 +1,4 @@
 upcoming:
-- name: 'BEPC 2026 Race Series #3'
-  date: '2026-05-18'
-  clubs:
-  - bepc-summer
-  source_id: 427427
-  results_source: {type: webscorer, organizer: bepc827}
-  distance: ~3 mi
-  url: https://www.webscorer.com/register?raceid=427427
-  links:
-  - label: Register
-    url: https://www.webscorer.com/register?raceid=427427
-  - label: Info
-    url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  location: Shilshole Bay, Seattle, WA
-  timing:
-  - 'Reg: 6 PM'
-  - 'Meeting: 6:30 PM'
-  - 'Start: 7 PM'
 - name: 'BEPC 2026 Race Series #1'
   date: '2026-05-04'
   clubs:
