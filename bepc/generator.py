@@ -1531,7 +1531,18 @@ function makeChart(id, data, yLabel) {
         else resetHighlight(chart);
       },
       scales: {
-        y: { title: { display: true, text: yLabel } },
+        y: {
+          title: { display: true, text: yLabel },
+          afterDataLimits: scale => {
+            const span = scale.max - scale.min;
+            const minSpan = 0.05;  // minimum 5% range for index charts
+            if (span < minSpan) {
+              const mid = (scale.max + scale.min) / 2;
+              scale.min = mid - minSpan / 2;
+              scale.max = mid + minSpan / 2;
+            }
+          }
+        },
         x: { title: { display: true, text: 'Race' } }
       }
     }
