@@ -368,6 +368,13 @@ def cmd_build_site(args):
     site_clubs = site_cfg.get("clubs", list(data["clubs"].keys()))
     data["site_clubs"] = site_clubs
     data["current_club"] = site_clubs[0]
+    # Copy static assets into site/
+    import shutil as _shutil
+    assets_dir = Path(__file__).parent / "assets"
+    if assets_dir.exists():
+        SITE_DIR.mkdir(exist_ok=True)
+        for f in assets_dir.iterdir():
+            _shutil.copy2(f, SITE_DIR / f.name)
     generate_all(data)
 
 
