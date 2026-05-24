@@ -1535,7 +1535,7 @@ function makeChart(id, data, yLabel) {
           title: { display: true, text: yLabel },
           afterDataLimits: scale => {
             const span = scale.max - scale.min;
-            const minSpan = 0.05;  // minimum 5% range for index charts
+            const minSpan = 0.2;
             if (span < minSpan) {
               const mid = (scale.max + scale.min) / 2;
               scale.min = mid - minSpan / 2;
