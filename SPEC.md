@@ -95,7 +95,7 @@ Club and season selectors persist via localStorage. Racer search in navbar on al
 | `par` | tide marker | Par racer | is_par_racer |
 | `consistent_1/2/3` | heartbeat | Consistent performer | closest adj_time_vs_par to 1.0 |
 | `streak_N` | lightning bolt | Improving streak | N consecutive improvements |
-| `fresh` | EST badge | Establishing handicap | first 2 races |
+| `fresh` | EST badge | Establishing handicap | first 3 races (established on 4th) |
 
 ## Craft Normalization
 

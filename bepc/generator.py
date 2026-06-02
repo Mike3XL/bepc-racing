@@ -2551,7 +2551,7 @@ def generate_platform_home(data: dict) -> None:
                 "date": race_date.strftime("%b %d, %Y"),
                 "clubs_html": club_badges,
                 "club_keys": race_clubs,
-                "organizer": race.get("organizer", ""),
+                "organizer": race.get("organizer", "") or race.get("results_source", {}).get("organizer", ""),
                 "distance": race.get("distance", ""),
                 "url": race.get("url", ""),
                 "links": race.get("links", []),
@@ -2612,17 +2612,13 @@ def generate_platform_home(data: dict) -> None:
             f'<option value="{clubs_cfg.get(c,{}).get("short_name",c)}">{clubs_cfg.get(c,{}).get("short_name",c)}</option>'
             for c in _club_keys_seen
         )
-        _org_keys_seen = sorted(set(r.get('organizer','') for r in upcoming_races if r.get('organizer')))
+        _org_keys_seen = sorted(set(r.get('organizer','') for r in upcoming_races if r.get('organizer') and r.get('organizer') != '--'))
         _org_options = ''.join(
             f'<option value="{oid}">{organizers_cfg.get(oid,{}).get("name", oid)}</option>'
             for oid in _org_keys_seen
         )
         _show_more = (
-            '<button id="upcoming-show-more" class="btn btn-sm btn-outline-secondary mb-3"'
-            ' onclick="var rows=document.querySelectorAll(\'#upcoming-table .upcoming-extra\');'
-            f'var expand=this.textContent===\'{HOME_PAGE["show_more_label"]}\';'
-            'rows.forEach(function(r){if(!r.dataset.filtered)r.style.display=expand?\'\':\'none\';});'
-            f'this.textContent=expand?\'{HOME_PAGE["show_less_label"]}\':\'{HOME_PAGE["show_more_label"]}\';">{HOME_PAGE["show_more_label"]}</button>'
+            f'<button id="upcoming-show-more" class="btn btn-sm btn-outline-secondary mb-3">{HOME_PAGE["show_more_label"]}</button>'
             if upcoming_rows_hidden else ''
         )
         upcoming_section_html = (
@@ -2850,8 +2846,9 @@ def generate_platform_home(data: dict) -> None:
             _date_fmt = f'{_d.strftime("%b")} {_d.day}, {_d.year}' if _d.year > 1 else _date_str
         except Exception:
             _date_fmt = _date_str
+        _card_clubs = ' '.join(clubs_cfg.get(c["id"], {}).get("short_name", c["id"]) for c in clubs_sorted if c["id"] != "none")
         feed_rows += (
-            f'<div class="rc-card feed-row">'
+            f'<div class="rc-card feed-row" data-clubs="{_card_clubs}">'
             f'<div class="rc-name">{r["name"]}</div>'
             f'<div class="rc-meta-row">'
             f'<span class="rc-date">{_date_fmt}</span>'
@@ -2867,7 +2864,7 @@ def generate_platform_home(data: dict) -> None:
     _feed_row_list = ['<div class="rc-card' + s.rstrip() for s in _feed_row_list]
     feed_rows_visible = ''.join(_feed_row_list[:5])
     feed_rows_hidden = ''.join(
-        r.replace('<div class="rc-card', '<div class="rc-card feed-hidden" style="display:none"', 1)
+        r.replace('<div class="rc-card feed-row"', '<div class="rc-card feed-row" style="display:none"', 1)
         for r in _feed_row_list[5:]
     )
     # Collect unique club short names from recent races.
@@ -2931,27 +2928,85 @@ def generate_platform_home(data: dict) -> None:
 (function(){{
   var clubSel = document.getElementById('upcoming-club-filter');
   var orgSel = document.getElementById('upcoming-org-filter');
+  var showMoreBtn = document.getElementById('upcoming-show-more');
   if (!clubSel && !orgSel) return;
+
+  // Store all org options keyed by organizer id -> label
+  var allOrgOptions = orgSel ? Array.from(orgSel.options).slice(1).map(function(o){{return {{val:o.value,text:o.text}};}}): [];
+
   function applyFilter() {{
     var clubVal = clubSel ? clubSel.value : '';
     var orgVal = orgSel ? orgSel.value : '';
-    var btn = document.getElementById('upcoming-show-more');
-    document.querySelectorAll('#upcoming-table tbody tr').forEach(function(r) {{
+    var rows = Array.from(document.querySelectorAll('#upcoming-table tbody tr'));
+
+    // Determine which rows match the club filter (to rebuild org dropdown)
+    var clubMatchRows = rows.filter(function(r) {{
+      var clubs = r.getAttribute('data-clubs') || '';
+      var shortNames = clubs.split(' ').map(function(c) {{ return {club_short_json}[c] || c; }});
+      return !clubVal || shortNames.indexOf(clubVal) >= 0;
+    }});
+
+    // Rebuild org dropdown to only show organizers present in club-matched rows
+    if (orgSel) {{
+      var presentOrgs = new Set(clubMatchRows.map(function(r){{return r.getAttribute('data-organizer')||'';}}).filter(Boolean));
+      while (orgSel.options.length > 1) orgSel.remove(1);
+      allOrgOptions.filter(function(o){{return presentOrgs.has(o.val);}}).forEach(function(o){{
+        var opt = document.createElement('option'); opt.value=o.val; opt.text=o.text; orgSel.add(opt);
+      }});
+      // Restore or reset selected value after DOM rebuild
+      if (orgVal && presentOrgs.has(orgVal)) {{
+        orgSel.value = orgVal;
+      }} else {{
+        orgSel.value = ''; orgVal = '';
+      }}
+    }}
+
+    // Now apply both filters, respecting show-more state
+    var expanded = showMoreBtn && showMoreBtn.textContent === '{HOME_PAGE["show_less_label"]}';
+    var visibleCount = 0;
+    rows.forEach(function(r) {{
       var clubs = r.getAttribute('data-clubs') || '';
       var shortNames = clubs.split(' ').map(function(c) {{ return {club_short_json}[c] || c; }});
       var orgId = r.getAttribute('data-organizer') || '';
-      var clubMatch = !clubVal || shortNames.indexOf(clubVal) >= 0;
-      var orgMatch = !orgVal || orgId === orgVal;
-      var match = clubMatch && orgMatch;
-      r.dataset.filtered = match ? '' : '1';
-      if (!match) {{ r.style.display = 'none'; }}
-      else if (!r.classList.contains('upcoming-extra') || (btn && btn.textContent === '{HOME_PAGE["show_less_label"]}')) {{
-        r.style.display = '';
+      var match = (!clubVal || shortNames.indexOf(clubVal) >= 0) && (!orgVal || orgId === orgVal);
+      if (!match) {{
+        r.style.display = 'none';
+      }} else {{
+        visibleCount++;
+        if (expanded || visibleCount <= 5) {{
+          r.style.display = '';
+        }} else {{
+          r.style.display = 'none';
+        }}
       }}
     }});
+
+    // Update show-more button visibility
+    if (showMoreBtn) {{
+      var totalMatching = rows.filter(function(r) {{
+        var clubs = r.getAttribute('data-clubs') || '';
+        var shortNames = clubs.split(' ').map(function(c) {{ return {club_short_json}[c] || c; }});
+        var orgId = r.getAttribute('data-organizer') || '';
+        return (!clubVal || shortNames.indexOf(clubVal) >= 0) && (!orgVal || orgId === orgVal);
+      }}).length;
+      showMoreBtn.style.display = totalMatching > 5 ? '' : 'none';
+      if (!expanded && totalMatching <= 5) showMoreBtn.textContent = '{HOME_PAGE["show_more_label"]}';
+    }}
   }}
+
+  if (showMoreBtn) {{
+    showMoreBtn.addEventListener('click', function() {{
+      var expanding = showMoreBtn.textContent === '{HOME_PAGE["show_more_label"]}';
+      showMoreBtn.textContent = expanding ? '{HOME_PAGE["show_less_label"]}' : '{HOME_PAGE["show_more_label"]}';
+      applyFilter();
+    }});
+    // Remove inline onclick
+    showMoreBtn.removeAttribute('onclick');
+  }}
+
   if (clubSel) clubSel.addEventListener('change', applyFilter);
   if (orgSel) orgSel.addEventListener('change', applyFilter);
+  applyFilter();
 }})();
 </script>
 <div class="container-fluid px-2 px-sm-3">
@@ -3056,8 +3111,8 @@ function _applyFeedFilter(showAll){{
   var rows=Array.from(document.querySelectorAll('#feed-table .rc-card'));
   var matching=rows.filter(function(r){{
     if(!_feedFilter)return true;
-    var pills=r.querySelectorAll('.sel-pill.corr-pill');
-    return Array.from(pills).some(function(p){{return p.textContent.trim()===_feedFilter;}});
+    var clubs=(r.getAttribute('data-clubs')||'').split(' ');
+    return clubs.indexOf(_feedFilter)>=0;
   }});
   rows.forEach(function(r){{r.style.display='none';}});
   var limit=showAll?matching.length:5;

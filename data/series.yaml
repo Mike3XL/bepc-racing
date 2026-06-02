@@ -35,10 +35,14 @@ series:
 
 # Organizers — real-world race organizers (filter-only, not analytical)
 organizers:
+  --:
+    name: "—"
+  unknown:
+    name: Unknown
   bepc:
     name: Ballard Elks Paddle Club
   salmon-bay-paddle:
-    name: Salmon Bay Paddle (Rob Casey)
+    name: Salmon Bay Paddle
   sckc:
     name: Seattle Canoe and Kayak Club
   sound-rowers:
@@ -54,13 +58,19 @@ organizers:
   whatcom-events:
     name: Whatcom Events
   coast-outdoors:
-    name: Coast Outdoors
+    name: Coast Outdoors / Deep Cove Kayak
   ocean-flight:
     name: Ocean Flight
   jericho:
     name: Jericho Outrigger Canoe Club
   pacific-paddle-events:
     name: Pacific Paddle Events
+  pacific-multisports:
+    name: Pacific Multisports
+  gorge-canoe-club:
+    name: Gorge Canoe Club
+  gorge-challenge:
+    name: Gorge Challenge
 
 
 # Results platforms — where race results are published (informational + filtering)

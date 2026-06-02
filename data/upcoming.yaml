@@ -21,6 +21,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: Board the Fjord + 2026
   date: '2026-05-09'
   clubs:
@@ -39,6 +40,7 @@ upcoming:
   - label: Info
     url: http://www.deepcovekayak.com/
   location: Deep Cove, North Vancouver, BC
+  organizer: coast-outdoors
 - name: Commencement Bay
   date: '2026-05-09'
   clubs:
@@ -56,6 +58,7 @@ upcoming:
   timing:
   - 'Meeting: 9:15 AM'
   - 'Start: 10 AM'
+  organizer: sound-rowers
 - name: 'BEPC 2026 Race Series #2'
   date: '2026-05-11'
   clubs:
@@ -78,6 +81,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: Ski to Sea
   date: '2026-05-24'
   clubs: []
@@ -89,6 +93,7 @@ upcoming:
   - label: Results
     url: https://skitosea.com/results/
   location: Bellingham to Fairhaven, WA
+  organizer: --
 - name: Seventy48
   date: '2026-05-29'
   clubs: []
@@ -100,6 +105,7 @@ upcoming:
   location: Tacoma to Port Townsend, WA
   timing:
   - 'Start: 7 PM'
+  organizer: --
 - name: Guano Rocks
   date: '2026-05-30'
   clubs:
@@ -119,7 +125,8 @@ upcoming:
   results_source:
     type: webscorer
     organizer: soundrowers
-- name: 'Urban Surf 2026 Race 1/8'
+  organizer: sound-rowers
+- name: Urban Surf 2026 Race 1/8
   date: '2026-06-03'
   clubs:
   - urban-surf
@@ -131,8 +138,9 @@ upcoming:
   - 'Start: 7 PM'
   results_source:
     type: webscorer
-    organizer: "60473"
-- name: 'Urban Surf 2026 Race 2/8'
+    organizer: '60473'
+  organizer: --
+- name: Urban Surf 2026 Race 2/8
   date: '2026-06-10'
   clubs:
   - urban-surf
@@ -144,8 +152,9 @@ upcoming:
   - 'Start: 7 PM'
   results_source:
     type: webscorer
-    organizer: "60473"
-- name: 'Urban Surf 2026 Race 3/8'
+    organizer: '60473'
+  organizer: --
+- name: Urban Surf 2026 Race 3/8
   date: '2026-06-17'
   clubs:
   - urban-surf
@@ -157,8 +166,9 @@ upcoming:
   - 'Start: 7 PM'
   results_source:
     type: webscorer
-    organizer: "60473"
-- name: 'Urban Surf 2026 Race 4/8'
+    organizer: '60473'
+  organizer: --
+- name: Urban Surf 2026 Race 4/8
   date: '2026-06-24'
   clubs:
   - urban-surf
@@ -170,8 +180,9 @@ upcoming:
   - 'Start: 7 PM'
   results_source:
     type: webscorer
-    organizer: "60473"
-- name: 'Urban Surf 2026 Race 5/8'
+    organizer: '60473'
+  organizer: --
+- name: Urban Surf 2026 Race 5/8
   date: '2026-07-08'
   clubs:
   - urban-surf
@@ -183,8 +194,9 @@ upcoming:
   - 'Start: 7 PM'
   results_source:
     type: webscorer
-    organizer: "60473"
-- name: 'Urban Surf 2026 Race 6/8'
+    organizer: '60473'
+  organizer: --
+- name: Urban Surf 2026 Race 6/8
   date: '2026-07-15'
   clubs:
   - urban-surf
@@ -196,8 +208,9 @@ upcoming:
   - 'Start: 7 PM'
   results_source:
     type: webscorer
-    organizer: "60473"
-- name: 'Urban Surf 2026 Race 7/8'
+    organizer: '60473'
+  organizer: --
+- name: Urban Surf 2026 Race 7/8
   date: '2026-07-22'
   clubs:
   - urban-surf
@@ -209,7 +222,8 @@ upcoming:
   - 'Start: 7 PM'
   results_source:
     type: webscorer
-    organizer: "60473"
+    organizer: '60473'
+  organizer: --
 - name: 'BEPC 2026 Race Series #5'
   date: '2026-06-01'
   clubs:
@@ -232,6 +246,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: 'BEPC 2026 Race Series #6'
   date: '2026-06-08'
   clubs:
@@ -254,19 +269,24 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: Nch'I-Wanna Columbia River Race
   date: '2026-06-13'
   clubs:
   - pnw
-  distance: TBD
+  distance: ~6 mi
   url: https://paddleguru.com/races/NCHIWANAChallenge
   links:
+  - label: Schedule
+    url: https://paddleguru.com/races/NCHIWANAChallenge/schedule
   - label: Start List
     url: https://paddleguru.com/races/NCHIWANAChallenge/startlist
-  location: Kennewick, WA
+  location: Bob's Beach, Stevenson, WA
   timing:
-  - 'Meeting: TBD'
-  - 'Start: TBD'
+  - 'Check-in: 9:30 AM'
+  - 'Start: 11:30 AM'
+  - 'Food/Awards: 1 PM'
+  organizer: ocean-flight
 - name: 'BEPC 2026 Race Series #7'
   date: '2026-06-15'
   clubs:
@@ -289,6 +309,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: Rat Island Regatta
   date: '2026-06-20'
   clubs:
@@ -306,6 +327,7 @@ upcoming:
   timing:
   - 'Meeting: 9:15am'
   - 'Start: 10 AM'
+  organizer: sound-rowers
 - name: 'BEPC 2026 Race Series #8'
   date: '2026-06-22'
   clubs:
@@ -328,32 +350,43 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: Bremerton Bridges Tidal Race
   date: '2026-06-27'
   clubs:
   - pnw
   distance: 5.5/11 mi
-  url: https://www.pnworca.org
+  url: https://www.salmonbaypaddle.com/bremerton-bridges-tidal-race/
   links:
+  - label: Register
+    url: https://www.salmonbaypaddle.com/bremerton-bridges-tidal-race/
   - label: Info
     url: https://www.salmonbaypaddle.com/bremerton-bridges-tidal-race/
   location: Lions Park, Bremerton, WA
   timing:
-  - 'Meeting: TBD'
-  - 'Start: TBD'
+  - 'Check-in: 10:30 AM'
+  - 'Safety meeting: 11:45 AM'
+  - 'Start: 12:30 PM'
+  - 'Awards: 3 PM'
+  organizer: salmon-bay-paddle
 - name: 'BEPC 2026 Race Series #9'
-- name: GCC Race
+  organizer: --
+- name: GCC Cascade Classic 2026
   date: '2026-06-28'
   clubs:
   - pnw
-  distance: TBD
-  url: https://www.gorgecanoeclub.com/
+  distance: ~7 mi (downwind)
+  url: https://paddleguru.com/races/GCCCascadeClassic2026
   links:
-  - label: Info
-    url: https://www.gorgecanoeclub.com/
-  location: Columbia River Gorge (Gorge Canoe Club)
+  - label: Register
+    url: https://paddleguru.com/races/GCCCascadeClassic2026
+  location: Home Valley, WA (Columbia River Gorge)
   timing:
-  - More info coming soon
+  - 'Check-in: 8:30 AM'
+  - 'Start: 10:45 AM'
+  - 'Awards: 2 PM @ Backwoods Brewing'
+  notes: Downwind course Home Valley → Drano (~7 mi). Course subject to change.
+  organizer: gorge-canoe-club
 - name: 'BEPC 2026 Race Series #9'
   date: '2026-06-29'
   clubs:
@@ -376,6 +409,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: 'BEPC 2026 Race Series #10'
   date: '2026-07-06'
   clubs:
@@ -398,6 +432,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: 'BEPC 2026 Race Series #11'
   date: '2026-07-13'
   clubs:
@@ -420,6 +455,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: Budd Inlet
   date: '2026-07-18'
   clubs:
@@ -433,6 +469,7 @@ upcoming:
   timing:
   - 'Meeting: 9:15 AM'
   - 'Start: 10 AM'
+  organizer: sound-rowers
 - name: 'BEPC 2026 Race Series #12'
   date: '2026-07-20'
   clubs:
@@ -455,19 +492,24 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: Elk River Challenge
   date: '2026-07-25'
   clubs:
   - pnw
-  distance: 3/7 mi
-  url: https://soundrowers.org/?page_id=253
+  distance: 3/7+ mi
+  url: https://soundrowers.org/race-schedule/elk-river/
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/
-  location: Aberdeen, WA
+  location: Brady's Oysters, Aberdeen, WA
   timing:
-  - 'Meeting: TBD'
+  - 'Check-in: 9:30 AM'
+  - 'Meeting: 10:45 AM'
   - 'Start: 11:30 AM'
+  notes: Grilled oysters after the race. Course through Elk River estuary changes
+    yearly.
+  organizer: sound-rowers
 - name: 'BEPC 2026 Race Series #13'
   date: '2026-07-27'
   clubs:
@@ -490,6 +532,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: 'BEPC 2026 Race Series #14'
   date: '2026-08-03'
   clubs:
@@ -512,6 +555,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: 'BEPC 2026 Race Series #15'
   date: '2026-08-10'
   clubs:
@@ -534,6 +578,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: Gorge Challenge
   date: '2026-08-16'
   clubs:
@@ -544,6 +589,7 @@ upcoming:
   timing:
   - 'Meeting: TBD'
   - 'Start: TBD'
+  organizer: gorge-challenge
 - name: 'BEPC 2026 Race Series #16'
   date: '2026-08-17'
   clubs:
@@ -566,21 +612,24 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: Round Shaw Row
   date: '2026-08-22'
   clubs:
   - pnw
   distance: 14 mi
-  url: https://soundrowers.org/?page_id=261
+  url: https://www.soundrowers.org/race-schedule/round-shaw-row/
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/
   - label: Register
     url: https://www.webscorer.com/register?raceid=389054
-  location: Shaw Island, WA
+  location: Shaw Island, WA (ferry from Anacortes)
   timing:
-  - 'Meeting: TBD'
+  - 'Meeting: ~9:30 AM'
   - 'Start: 10:00 AM'
+  notes: Ferry reservation required (wsdot.wa.gov/ferries). No Shaw camping in 2026.
+  organizer: sound-rowers
 - name: 'BEPC 2026 Race Series #17'
   date: '2026-08-24'
   clubs:
@@ -603,6 +652,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: Da Grind
   date: '2026-08-29'
   clubs:
@@ -613,6 +663,7 @@ upcoming:
   timing:
   - 'Meeting: TBD'
   - 'Start: TBD'
+  organizer: pnworca
 - name: 'BEPC 2026 Race Series #18'
   date: '2026-08-31'
   clubs:
@@ -635,32 +686,41 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: Bainbridge Island Marathon
   date: '2026-09-05'
   clubs:
   - pnw
-  distance: 12/26.2 mi
-  url: https://soundrowers.org/?page_id=270
+  distance: 26.2/12 mi
+  url: https://www.soundrowers.org/race-schedule/bainbridge-island-marathon/
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/
-  location: Bainbridge Island, WA
+  location: Fay Bainbridge State Park, Bainbridge Island, WA
   timing:
-  - 'Meeting: TBD'
-  - 'Start: Full 10 AM'
-  - Half 11 AM
+  - 'Optional early start: 9:00 AM'
+  - 'Long start: 10:00 AM'
+  - 'Short start: 11:00 AM'
+  notes: Zoom safety meeting Sept 4 at 6 PM (evening before). Camping at Fay Bainbridge
+    State Park.
+  organizer: sound-rowers
 - name: Whey-Ah-Wichen Whipper Snapper
   date: '2026-09-12'
   clubs:
   - pnw
   distance: 7km/12km/18km
-  url: https://www.deepcovekayak.com/
+  url: https://www.thewhipper.ca/
   links:
   - label: Info
-    url: https://www.deepcovekayak.com/
-  location: North Vancouver, BC (Coast Outdoors / Deep Cove Kayak)
+    url: https://www.thewhipper.ca/
+  location: Cates Park / Whey-Ah-Wichen, North Vancouver, BC
   timing:
-  - Date TBC
+  - 'Check-in: 8:30 AM'
+  - 'Meeting: 10:15 AM (mandatory)'
+  - 'Start: 11:00 AM'
+  - 'Awards: 2:30 PM'
+  notes: BC Surfski Championships. Race jersey + post-race meal included.
+  organizer: coast-outdoors
 - name: 'BEPC 2026 Race Series #19'
   date: '2026-09-07'
   clubs:
@@ -683,6 +743,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: 'BEPC 2026 Race Series #20'
   date: '2026-09-14'
   clubs:
@@ -705,6 +766,7 @@ upcoming:
   results_source:
     type: webscorer
     organizer: bepc827
+  organizer: --
 - name: Narrows Challenge (incl. USA SUP Nationals 10K)
   date: '2026-09-19'
   clubs:
@@ -724,12 +786,13 @@ upcoming:
   timing:
   - 'Meeting: TBD'
   - 'Start: TBD'
-- name: Lake Samish Salmon Row
+  organizer: ghckrt
+- name: Lake Samish Salmon Row
   date: '2026-09-26'
   clubs:
   - pnw
   distance: 6 mi
-  url: https://soundrowers.org/?page_id=278
+  url: https://www.soundrowers.org/race-schedule/lake-samish-salmon-roe/
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/
@@ -737,10 +800,12 @@ upcoming:
     url: https://register.pacificmultisports.com/Events/1303/Register
   - label: Start List
     url: https://register.pacificmultisports.com/Events/1303/Participants
-  location: Bellingham, WA
+  location: Lutherwood Camp, Lake Samish, Bellingham, WA
   timing:
   - 'Meeting: 9:15 AM'
   - 'Start: 10:00 AM'
+  notes: 3 wave start (rowers / doubles / singles). Post-race lunch included.
+  organizer: sound-rowers
 - name: Mercer Island Sausage Pull
   date: '2026-10-10'
   clubs:
@@ -754,6 +819,7 @@ upcoming:
   timing:
   - 'Meeting: 8:30AM'
   - 'Start: Long 9AM early start/9:30 AM; Short 10:30 AM'
+  organizer: sound-rowers
 - name: Port Angeles Coastal Endurance Regatta
   date: '2026-10-25'
   clubs:
@@ -767,3 +833,18 @@ upcoming:
   timing:
   - 'Meeting: 9:15 AM'
   - 'Start: 10 AM'
+  organizer: sound-rowers
+- name: Hobuck Coastal Surf Race
+  date: '2026-10-03'
+  clubs:
+  - pnw
+  distance: 5.5 mi
+  url: https://www.salmonbaypaddle.com/hobuck-coastal-surf-race/
+  links:
+  - label: Info
+    url: https://www.salmonbaypaddle.com/hobuck-coastal-surf-race/
+  location: Neah Bay, WA (Hobuck Beach)
+  timing:
+  - 'Start: ~12 PM'
+  notes: Rough water / surf race on Makah Bay. Part of Hobuck Hoedown festival.
+  organizer: salmon-bay-paddle

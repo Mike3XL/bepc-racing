@@ -31,7 +31,7 @@ Example: "Eli Holmes" → canonical is "Elizabeth Holmes" (page: elizabeth-holme
 - HTML pages fetch JSON data files — no inline data blobs in HTML
 - All dynamic DOM injection must be followed by Bootstrap tooltip initialization
 - localStorage keys: bepc_season, bepc_result_tab, bepc_distance
-- Fresh racers (first 2 races) are ineligible for handicap trophies and handicap points
+- Fresh racers (first 3 races) are ineligible for handicap trophies and handicap points — established on 4th ranked race
 - process → generate → publish is always manual, never automatic
 
 ## After pulling new race data
