@@ -27,8 +27,10 @@ def fetch_raw(race_id: int) -> dict:
 
 
 def _get_overall_groups(raw: dict) -> list[dict]:
-    """Return all Overall=True groups from a race result."""
-    return [g for g in raw.get("Results", []) if g.get("Grouping", {}).get("Overall") is True]
+    """Return all Overall=True or AllRacers=True groups from a race result."""
+    return [g for g in raw.get("Results", [])
+            if g.get("Grouping", {}).get("Overall") is True
+            or g.get("Grouping", {}).get("AllRacers") is True]
 
 
 def _valid_racers(group: dict) -> list[dict]:

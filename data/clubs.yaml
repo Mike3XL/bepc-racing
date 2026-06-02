@@ -5,7 +5,7 @@
 sites:
   pnw:
     domain: pnw.paddlerace.org
-    clubs: [pnw, bepc-summer, sckc-duck-island, none]
+    clubs: [pnw, bepc-summer, sckc-duck-island, urban-surf, none]
     gh_branch: gh-pages
     gh_url: https://pnw.paddlerace.org/
 
@@ -483,6 +483,7 @@ clubs:
     type: org
     description: >
       Short weekly paddle race series in Seattle. Similar format to BEPC.
+      Spotty record keeping — not all years have results.
     homepage_url: null
     logo: null
     gh_branch: gh-pages-urban-surf
@@ -490,27 +491,43 @@ clubs:
 
     data_sources:
       race_lists:
+        - url: https://www.webscorer.com/60473
+          notes: Primary — most Urban Surf races (2019+, all named "Urban Surf")
         - url: https://www.webscorer.com/135348
-          notes: Primary — all Urban Surf races
+          notes: 2021 only
+        - url: https://www.webscorer.com/13754
+          notes: Rob Casey — 2016/2017 Urban Surf races (filter by name)
       fetch_sources:
         - type: webscorer_organizer
+          id: "60473"
+          cmd: "cli.py fetch webscorer --club urban-surf --year YYYY <race_ids>"
+          notes: All races on this page are Urban Surf — fetch all
+        - type: webscorer_organizer
           id: "135348"
-          cmd: "cli.py fetch --club urban-surf --year YYYY <race_ids>"
-          notes: All Urban Surf races
+          cmd: "cli.py fetch webscorer --club urban-surf --year YYYY <race_ids>"
+          notes: 2021 only
+        - type: webscorer_organizer
+          id: "13754"
+          cmd: "cli.py fetch webscorer --club urban-surf --year YYYY <race_ids>"
+          notes: Rob Casey — only fetch races with 'Urban Surf' in name (2016/2017)
 
     race_inclusion:
       include_organizers:
-        - "135348"                     # Urban Surf
+        - "60473"                     # Urban Surf (primary)
+        - "135348"                    # Urban Surf 2021
+        - "13754"                     # Rob Casey (Urban Surf named races only)
       include_urls: []
       exclude_urls: []
-      include_patterns: []
+      include_patterns:
+        - "Urban Surf"                # Only races with this in the name (for 13754)
+        - "Race \\d/8"               # 2019 races named "Race N/8" (on 60473)
       exclude_patterns: []
 
     handicap:
       num_races_to_establish: 3
       update_faster: 0.30
       update_slower: 0.15
-      carry_over: false
+      carry_over: true
       carry_over_seasons: all
 
     display:

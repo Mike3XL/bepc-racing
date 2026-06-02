@@ -1,0 +1,383 @@
+{
+  "RaceInfo": {
+    "RaceId": 279363,
+    "Name": "Urban Surf Summer Race 1/8",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=279363",
+    "Date": "Jun 8, 2022",
+    "Sport": "Paddling - SUP",
+    "StartTime": "Wednesday, June 8, 2022 7:01 PM (GMT-7)",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.645130878479,
+    "Longitude": -122.333008777483,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPhone",
+    "TimedWith": "Webscorer PRO 5.4",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Wednesday, June 8, 2022 7:51 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/images/stocksmall/sup-64x48.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "AllRacers": true,
+        "LapCount": "Time limited"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Marius Lina",
+          "Gender": "Male",
+          "Time": "17:44.9",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "17:33.1",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "17:33.1",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "0:11.8",
+              "LapRank": 1,
+              "LapBehind": "-",
+              "RaceTime": "17:44.9",
+              "RaceRank": 1,
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "CompletedLaps": 2,
+          "StartTime": "19:01:30.0"
+        },
+        {
+          "Place": "2",
+          "Name": "Scott Vande Vusse",
+          "Gender": "Male",
+          "Time": "-1 lap",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "18:03.6",
+              "LapRank": 2,
+              "LapBehind": "+0:30.5",
+              "RaceTime": "18:03.6",
+              "RaceRank": 2,
+              "RaceBehind": "+0:30.5"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "-",
+              "LapRank": "-",
+              "RaceTime": "-",
+              "RaceRank": "-",
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "CompletedLaps": 1,
+          "StartTime": "19:01:30.0"
+        },
+        {
+          "Place": "3",
+          "Name": "Nick Papa",
+          "Gender": "Male",
+          "Time": "-1 lap",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "18:26.5",
+              "LapRank": 3,
+              "LapBehind": "+0:53.4",
+              "RaceTime": "18:26.5",
+              "RaceRank": 3,
+              "RaceBehind": "+0:53.4"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "-",
+              "LapRank": "-",
+              "RaceTime": "-",
+              "RaceRank": "-",
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "CompletedLaps": 1,
+          "StartTime": "19:01:30.0"
+        },
+        {
+          "Place": "4",
+          "Name": "Christian Oliver",
+          "Gender": "Male",
+          "Time": "-1 lap",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "18:33.6",
+              "LapRank": 4,
+              "LapBehind": "+1:00.5",
+              "RaceTime": "18:33.6",
+              "RaceRank": 4,
+              "RaceBehind": "+1:00.5"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "-",
+              "LapRank": "-",
+              "RaceTime": "-",
+              "RaceRank": "-",
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "CompletedLaps": 1,
+          "StartTime": "19:01:30.0"
+        },
+        {
+          "Place": "5",
+          "Name": "Pat Ogawa",
+          "Gender": "Male",
+          "Time": "-1 lap",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:01.2",
+              "LapRank": 5,
+              "LapBehind": "+1:28.1",
+              "RaceTime": "19:01.2",
+              "RaceRank": 5,
+              "RaceBehind": "+1:28.1"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "-",
+              "LapRank": "-",
+              "RaceTime": "-",
+              "RaceRank": "-",
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "CompletedLaps": 1,
+          "StartTime": "19:01:30.0"
+        },
+        {
+          "Place": "6",
+          "Name": "Ivan Storck",
+          "Gender": "",
+          "Time": "-1 lap",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:02.2",
+              "LapRank": 6,
+              "LapBehind": "+1:29.1",
+              "RaceTime": "19:02.2",
+              "RaceRank": 6,
+              "RaceBehind": "+1:29.1"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "-",
+              "LapRank": "-",
+              "RaceTime": "-",
+              "RaceRank": "-",
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "CompletedLaps": 1,
+          "StartTime": "19:01:30.0"
+        },
+        {
+          "Place": "7",
+          "Name": "Lucas Hansen",
+          "Gender": "Male",
+          "Time": "-1 lap",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:25.3",
+              "LapRank": 7,
+              "LapBehind": "+1:52.2",
+              "RaceTime": "19:25.3",
+              "RaceRank": 7,
+              "RaceBehind": "+1:52.2"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "-",
+              "LapRank": "-",
+              "RaceTime": "-",
+              "RaceRank": "-",
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "CompletedLaps": 1,
+          "StartTime": "19:01:30.0"
+        },
+        {
+          "Place": "8",
+          "Name": "Bruce Barry",
+          "Gender": "Male",
+          "Time": "-1 lap",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:29.1",
+              "LapRank": 8,
+              "LapBehind": "+1:56.0",
+              "RaceTime": "19:29.1",
+              "RaceRank": 8,
+              "RaceBehind": "+1:56.0"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "-",
+              "LapRank": "-",
+              "RaceTime": "-",
+              "RaceRank": "-",
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "CompletedLaps": 1,
+          "StartTime": "19:01:30.0"
+        },
+        {
+          "Place": "9",
+          "Name": "Alex Vaughn",
+          "Gender": "Male",
+          "Time": "-1 lap",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "19:55.3",
+              "LapRank": 9,
+              "LapBehind": "+2:22.2",
+              "RaceTime": "19:55.3",
+              "RaceRank": 9,
+              "RaceBehind": "+2:22.2"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "-",
+              "LapRank": "-",
+              "RaceTime": "-",
+              "RaceRank": "-",
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "CompletedLaps": 1,
+          "StartTime": "19:01:30.0"
+        },
+        {
+          "Place": "10",
+          "Name": "Brown Fihaki",
+          "Gender": "Male",
+          "Time": "-1 lap",
+          "LapTimes": [
+            {
+              "LapNumber": 1,
+              "LapTime": "20:06.2",
+              "LapRank": 10,
+              "LapBehind": "+2:33.1",
+              "RaceTime": "20:06.2",
+              "RaceRank": 10,
+              "RaceBehind": "+2:33.1"
+            },
+            {
+              "LapNumber": 2,
+              "LapTime": "-",
+              "LapRank": "-",
+              "RaceTime": "-",
+              "RaceRank": "-",
+              "RaceBehind": "-"
+            }
+          ],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "CompletedLaps": 1,
+          "StartTime": "19:01:30.0"
+        },
+        {
+          "Place": "-",
+          "Name": "Spencer Lazzar",
+          "Gender": "Male",
+          "Time": "DNF",
+          "LapTimes": [],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "CompletedLaps": 0,
+          "StartTime": "19:01:30.0"
+        },
+        {
+          "Place": "-",
+          "Name": "Robb McEachran",
+          "Gender": "Male",
+          "Time": "DNF",
+          "LapTimes": [],
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "CompletedLaps": 0,
+          "StartTime": "19:01:30.0"
+        }
+      ]
+    }
+  ]
+}

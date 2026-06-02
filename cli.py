@@ -15,7 +15,7 @@ DATA_DIR = Path(__file__).parent / "data"
 SITE_DIR = Path(__file__).parent / "site"
 
 # Series metadata (replaces per-club config)
-SERIES_ORDER = ["bepc-summer", "pnw", "sckc-duck-island", "none"]
+SERIES_ORDER = ["bepc-summer", "pnw", "sckc-duck-island", "urban-surf", "none"]
 
 
 def _load_series_config() -> dict:
@@ -121,11 +121,11 @@ def build_data_json() -> dict:
             print(f"  {series_id}/{year}: {len(races)} races")
 
             if do_carry_over:
-                carry_over = {}
+                new_carry_over = {}
                 for race in races:
                     for r in race.racer_results:
                         key = (r.canonical_name, r.craft_category)
-                        carry_over[key] = {
+                        new_carry_over[key] = {
                             "handicap": r.handicap_post,
                             "carried_over": True,
                             "outlier_streak": r.outlier_streak_post,
@@ -134,6 +134,12 @@ def build_data_json() -> dict:
                                                  + (0 if r.handicap_note.startswith(("Small group","Course not eligible"))
                                                     else 1)),
                         }
+                # Merge: preserve existing entries for racers who sat out this season
+                # so their ranked-race count and handicap survive gap years.
+                for k, v in carry_over.items():
+                    if k not in new_carry_over:
+                        new_carry_over[k] = v
+                carry_over = new_carry_over
                 if carry_over:
                     hcap_values = sorted(v["handicap"] for v in carry_over.values())
                     p33_idx = len(hcap_values) // 3

@@ -104,15 +104,112 @@ upcoming:
   date: '2026-05-30'
   clubs:
   - pnw
+  source_id: 434155
   distance: 3.2/5.5 mi
   url: https://soundrowers.org/?page_id=283
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/
+  - label: Results
+    url: https://www.webscorer.com/racealldetails?raceid=434155
   location: Lake Entiat, WA
   timing:
   - 'Meeting: 9:15 AM'
   - 'Start: 10 AM'
+  results_source:
+    type: webscorer
+    organizer: soundrowers
+- name: 'Urban Surf 2026 Race 1/8'
+  date: '2026-06-03'
+  clubs:
+  - urban-surf
+  distance: ~3 mi
+  url: https://www.webscorer.com/60473
+  location: Gasworks Park, Seattle, WA (South Lake Union)
+  timing:
+  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: "60473"
+- name: 'Urban Surf 2026 Race 2/8'
+  date: '2026-06-10'
+  clubs:
+  - urban-surf
+  distance: ~3 mi
+  url: https://www.webscorer.com/60473
+  location: Gasworks Park, Seattle, WA (South Lake Union)
+  timing:
+  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: "60473"
+- name: 'Urban Surf 2026 Race 3/8'
+  date: '2026-06-17'
+  clubs:
+  - urban-surf
+  distance: ~3 mi
+  url: https://www.webscorer.com/60473
+  location: Gasworks Park, Seattle, WA (South Lake Union)
+  timing:
+  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: "60473"
+- name: 'Urban Surf 2026 Race 4/8'
+  date: '2026-06-24'
+  clubs:
+  - urban-surf
+  distance: ~3 mi
+  url: https://www.webscorer.com/60473
+  location: Gasworks Park, Seattle, WA (South Lake Union)
+  timing:
+  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: "60473"
+- name: 'Urban Surf 2026 Race 5/8'
+  date: '2026-07-08'
+  clubs:
+  - urban-surf
+  distance: ~3 mi
+  url: https://www.webscorer.com/60473
+  location: Gasworks Park, Seattle, WA (South Lake Union)
+  timing:
+  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: "60473"
+- name: 'Urban Surf 2026 Race 6/8'
+  date: '2026-07-15'
+  clubs:
+  - urban-surf
+  distance: ~3 mi
+  url: https://www.webscorer.com/60473
+  location: Gasworks Park, Seattle, WA (South Lake Union)
+  timing:
+  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: "60473"
+- name: 'Urban Surf 2026 Race 7/8'
+  date: '2026-07-22'
+  clubs:
+  - urban-surf
+  distance: ~3 mi
+  url: https://www.webscorer.com/60473
+  location: Gasworks Park, Seattle, WA (South Lake Union)
+  timing:
+  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: "60473"
 - name: 'BEPC 2026 Race Series #5'
   date: '2026-06-01'
   clubs:

@@ -1,0 +1,182 @@
+{
+  "RaceInfo": {
+    "RaceId": 280221,
+    "Name": "Urban Surf Summer Race 2/8",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=280221",
+    "Date": "Jun 15, 2022",
+    "Sport": "Paddling - SUP",
+    "StartTime": "Wednesday, June 15, 2022 7:00 PM (GMT-7)",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6471025450599,
+    "Longitude": -122.333651147897,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPhone",
+    "TimedWith": "Webscorer PRO 5.4",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Friday, June 17, 2022 12:50 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/280221_8da509aab10307a.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Female"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Michele Black",
+          "FirstName": "Michele",
+          "LastName": "Black",
+          "Gender": "Female",
+          "Time": "29:36.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:00:54.0"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Overall": true,
+        "Gender": "Male"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Spencer Lazzar",
+          "FirstName": null,
+          "LastName": null,
+          "Gender": "Male",
+          "Time": "23:05.7",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.49%",
+          "PercentMedian": "11.64%",
+          "StartTime": "19:00:54.0"
+        },
+        {
+          "Place": "2",
+          "Name": "Christian Oliver",
+          "FirstName": "Christian",
+          "LastName": "Oliver",
+          "Gender": "Male",
+          "Time": "23:42.1",
+          "Difference": "+0:36.4",
+          "PercentBack": "+2.63%",
+          "PercentWinning": "97.44%",
+          "PercentAverage": "8.14%",
+          "PercentMedian": "9.32%",
+          "StartTime": "19:00:54.0"
+        },
+        {
+          "Place": "3",
+          "Name": "Scott Vande Vusse",
+          "FirstName": "Scott",
+          "LastName": "Vande Vusse",
+          "Gender": "Male",
+          "Time": "23:47.0",
+          "Difference": "+0:41.3",
+          "PercentBack": "+2.98%",
+          "PercentWinning": "97.11%",
+          "PercentAverage": "7.82%",
+          "PercentMedian": "9.00%",
+          "StartTime": "19:00:54.0"
+        },
+        {
+          "Place": "4",
+          "Name": "Nick Papa",
+          "FirstName": "Nick",
+          "LastName": "Papa",
+          "Gender": "Male",
+          "Time": "25:31.8",
+          "Difference": "+2:26.1",
+          "PercentBack": "+10.54%",
+          "PercentWinning": "90.46%",
+          "PercentAverage": "1.05%",
+          "PercentMedian": "2.32%",
+          "StartTime": "19:00:54.0"
+        },
+        {
+          "Place": "5",
+          "Name": "Ivan Storck",
+          "FirstName": "Ivan",
+          "LastName": "Storck",
+          "Gender": "Male",
+          "Time": "26:08.2",
+          "Difference": "+3:02.5",
+          "PercentBack": "+13.17%",
+          "PercentWinning": "88.36%",
+          "PercentAverage": "-1.30%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:00:54.0"
+        },
+        {
+          "Place": "6",
+          "Name": "Ahmed Fakhry",
+          "FirstName": "Ahmed",
+          "LastName": "Fakhry",
+          "Gender": "Male",
+          "Time": "26:37.6",
+          "Difference": "+3:31.9",
+          "PercentBack": "+15.29%",
+          "PercentWinning": "86.74%",
+          "PercentAverage": "-3.20%",
+          "PercentMedian": "-1.87%",
+          "StartTime": "19:00:54.0"
+        },
+        {
+          "Place": "7",
+          "Name": "Brown Fihaki",
+          "FirstName": null,
+          "LastName": null,
+          "Gender": "Male",
+          "Time": "26:44.9",
+          "Difference": "+3:39.2",
+          "PercentBack": "+15.82%",
+          "PercentWinning": "86.34%",
+          "PercentAverage": "-3.67%",
+          "PercentMedian": "-2.34%",
+          "StartTime": "19:00:54.0"
+        },
+        {
+          "Place": "8",
+          "Name": "Waleed Ammar",
+          "FirstName": "Waleed",
+          "LastName": "Ammar",
+          "Gender": "Male",
+          "Time": "27:28.9",
+          "Difference": "+4:23.2",
+          "PercentBack": "+18.99%",
+          "PercentWinning": "84.04%",
+          "PercentAverage": "-6.51%",
+          "PercentMedian": "-5.15%",
+          "StartTime": "19:00:54.0"
+        },
+        {
+          "Place": "9",
+          "Name": "Cody Bean",
+          "FirstName": "Cody",
+          "LastName": "Bean",
+          "Gender": "Male",
+          "Time": "29:06.4",
+          "Difference": "+6:00.7",
+          "PercentBack": "+26.03%",
+          "PercentWinning": "79.35%",
+          "PercentAverage": "-12.81%",
+          "PercentMedian": "-11.36%",
+          "StartTime": "19:00:54.0"
+        }
+      ]
+    }
+  ]
+}

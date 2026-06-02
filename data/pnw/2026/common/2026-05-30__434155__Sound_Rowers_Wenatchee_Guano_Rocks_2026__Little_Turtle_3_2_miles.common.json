@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 434155,
+    "distance": "Little Turtle - 3.2 miles",
+    "name": "Sound Rowers: Wenatchee Guano Rocks 2026 \u2014 Little Turtle - 3.2 miles",
+    "displayURL": "https://www.webscorer.com/race?raceid=434155",
+    "date": "May 30, 2026",
+    "sport": "Paddling",
+    "startTime": "Saturday, May 30, 2026 10:04 AM (GMT-7)",
+    "country": "United States",
+    "city": "East Wenatchee",
+    "pointsWeight": 0.111111
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Carrie Weisse",
+      "craftCategory": "1x OW-II",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 2601.7,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2601.7,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "A Denny",
+      "craftCategory": "HPK",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 2644.8,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 2644.8,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

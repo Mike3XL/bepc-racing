@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 279363,
+    "distance": "",
+    "name": "Urban Surf Summer Race 1/8",
+    "displayURL": "https://www.webscorer.com/race?raceid=279363",
+    "date": "Jun 8, 2022",
+    "sport": "Paddling - SUP",
+    "startTime": "Wednesday, June 8, 2022 7:01 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 1.0
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Marius Lina",
+      "craftCategory": "Unknown",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 1064.9,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1064.9,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

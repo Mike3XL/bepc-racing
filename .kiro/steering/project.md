@@ -42,6 +42,11 @@ Example: "Eli Holmes" → canonical is "Elizabeth Holmes" (page: elizabeth-holme
 - Check pointsWeight is 1.0 for single-course races
 - Run process and verify race/racer counts before generating
 
+## Fetcher notes
+
+- **AllRacers=True grouping** — Some organizers (e.g. Urban Surf / 60473) use `AllRacers=True` instead of `Overall=True` in WebScorer results. `_get_overall_groups()` in `fetcher.py` handles both.
+- **Carry-over gap years** — `carry_over` dict is merged (not replaced) each season so racers who skip a season retain their handicap and ranked-race count. Fix in `cli.py` `build_data_json()`.
+
 ## Coding principles (learned from craft normalization work)
 
 - **Simplicity first.** If a solution requires nested conditions, lookaheads, or ordering tricks to work correctly, step back and redesign. The craft.py rewrite (imperative → declarative table) cut 40% of code and eliminated most bugs.

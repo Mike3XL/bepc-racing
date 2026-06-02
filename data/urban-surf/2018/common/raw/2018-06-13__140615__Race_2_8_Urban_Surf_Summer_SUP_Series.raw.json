@@ -1,0 +1,187 @@
+{
+  "RaceInfo": {
+    "RaceId": 140615,
+    "Name": "Race 2 / 8 Urban Surf Summer SUP Series",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=140615",
+    "Date": "Jun 13, 2018",
+    "Sport": "Paddling - SUP",
+    "StartTime": "Wednesday, June 13, 2018 7:14 PM (GMT-7)",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.64181636825597,
+    "Longitude": -122.3335342753906,
+    "StartType": "Mass",
+    "CompletionState": "Final results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPhone",
+    "TimedWith": "Webscorer FAN 3.0",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Tuesday, June 19, 2018 6:55 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/140615_8d5d22b3d8851c4.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "AllRacers": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "Spencer Lazzar",
+          "Time": "23:34.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.89%",
+          "PercentMedian": "9.39%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "2",
+          "Name": "Blake Hanley",
+          "Time": "24:01.3",
+          "Difference": "+0:27.3",
+          "PercentBack": "+1.93%",
+          "PercentWinning": "98.11%",
+          "PercentAverage": "10.19%",
+          "PercentMedian": "7.64%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "3",
+          "Name": "Scott Vande Vusse",
+          "Time": "24:24.2",
+          "Difference": "+0:50.2",
+          "PercentBack": "+3.55%",
+          "PercentWinning": "96.57%",
+          "PercentAverage": "8.76%",
+          "PercentMedian": "6.18%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "4",
+          "Name": "Layne Stambaugh",
+          "Time": "24:50.6",
+          "Difference": "+1:16.6",
+          "PercentBack": "+5.42%",
+          "PercentWinning": "94.86%",
+          "PercentAverage": "7.12%",
+          "PercentMedian": "4.49%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "5",
+          "Name": "Matt James",
+          "Time": "24:53.4",
+          "Difference": "+1:19.4",
+          "PercentBack": "+5.62%",
+          "PercentWinning": "94.68%",
+          "PercentAverage": "6.94%",
+          "PercentMedian": "4.31%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "6",
+          "Name": "Christian Oliver",
+          "Time": "25:00.6",
+          "Difference": "+1:26.6",
+          "PercentBack": "+6.12%",
+          "PercentWinning": "94.23%",
+          "PercentAverage": "6.49%",
+          "PercentMedian": "3.84%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "7",
+          "Name": "Eric Nordstrom",
+          "Time": "25:48.4",
+          "Difference": "+2:14.4",
+          "PercentBack": "+9.50%",
+          "PercentWinning": "91.32%",
+          "PercentAverage": "3.52%",
+          "PercentMedian": "0.78%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "8",
+          "Name": "Robb McEarhon",
+          "Time": "26:12.8",
+          "Difference": "+2:38.8",
+          "PercentBack": "+11.23%",
+          "PercentWinning": "89.90%",
+          "PercentAverage": "2.00%",
+          "PercentMedian": "-0.78%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "9",
+          "Name": "Scott Harrington",
+          "Time": "26:22.4",
+          "Difference": "+2:48.4",
+          "PercentBack": "+11.91%",
+          "PercentWinning": "89.36%",
+          "PercentAverage": "1.40%",
+          "PercentMedian": "-1.40%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "10",
+          "Name": "Sarah Sandstrom",
+          "Time": "26:56.7",
+          "Difference": "+3:22.7",
+          "PercentBack": "+14.34%",
+          "PercentWinning": "87.46%",
+          "PercentAverage": "-0.74%",
+          "PercentMedian": "-3.59%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "11",
+          "Name": "Nick Papa",
+          "Time": "27:46.4",
+          "Difference": "+4:12.4",
+          "PercentBack": "+17.85%",
+          "PercentWinning": "84.85%",
+          "PercentAverage": "-3.84%",
+          "PercentMedian": "-6.78%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "12",
+          "Name": "Michaela Carpeuter",
+          "Time": "29:29.6",
+          "Difference": "+5:55.6",
+          "PercentBack": "+25.15%",
+          "PercentWinning": "79.91%",
+          "PercentAverage": "-10.27%",
+          "PercentMedian": "-13.39%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "13",
+          "Name": "Pedro Ardila",
+          "Time": "30:11.9",
+          "Difference": "+6:37.9",
+          "PercentBack": "+28.14%",
+          "PercentWinning": "78.04%",
+          "PercentAverage": "-12.90%",
+          "PercentMedian": "-16.10%",
+          "StartTime": "19:14:25.6"
+        },
+        {
+          "Place": "14",
+          "Name": "Sydney Dela Cruz",
+          "Time": "34:55.2",
+          "Difference": "+11:21.2",
+          "PercentBack": "+48.18%",
+          "PercentWinning": "67.49%",
+          "PercentAverage": "-30.56%",
+          "PercentMedian": "-34.26%",
+          "StartTime": "19:14:25.6"
+        }
+      ]
+    }
+  ]
+}

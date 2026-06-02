@@ -1,0 +1,319 @@
+{
+  "RaceInfo": {
+    "RaceId": 185497,
+    "Name": "Race 3/8",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=185497",
+    "Date": "Jun 19, 2019",
+    "Sport": "Paddling - SUP",
+    "StartTime": "Wednesday, June 19, 2019 7:17 PM (GMT-7)",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.6452504226731,
+    "Longitude": -122.333024125373,
+    "StartType": "Mass",
+    "CompletionState": "Preliminary results",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPhone",
+    "TimedWith": "Webscorer FAN 3.1",
+    "Visibility": "Public",
+    "UpdatedFrom": "App",
+    "UpdatedTime": "Thursday, June 20, 2019 10:50 AM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/images/stocksmall/sup-64x48.jpg"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "AllRacers": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Name": "David Ralston",
+          "Time": "16:34.1",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "24.78%",
+          "PercentMedian": "24.51%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "2",
+          "Name": "Shamu*",
+          "Time": "18:06.9",
+          "Difference": "+1:32.8",
+          "PercentBack": "+9.34%",
+          "PercentWinning": "91.46%",
+          "PercentAverage": "17.76%",
+          "PercentMedian": "17.47%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "3",
+          "Name": "Namu*",
+          "Time": "18:10.2",
+          "Difference": "+1:36.1",
+          "PercentBack": "+9.67%",
+          "PercentWinning": "91.19%",
+          "PercentAverage": "17.51%",
+          "PercentMedian": "17.21%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "4",
+          "Name": "Rob schippers",
+          "Time": "18:36.6",
+          "Difference": "+2:02.5",
+          "PercentBack": "+12.32%",
+          "PercentWinning": "89.03%",
+          "PercentAverage": "15.51%",
+          "PercentMedian": "15.21%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "5",
+          "Name": "Maddie Sickle*",
+          "Time": "18:40.9",
+          "Difference": "+2:06.8",
+          "PercentBack": "+12.76%",
+          "PercentWinning": "88.69%",
+          "PercentAverage": "15.18%",
+          "PercentMedian": "14.88%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "6",
+          "Name": "Jack Manca",
+          "Time": "18:47.7",
+          "Difference": "+2:13.6",
+          "PercentBack": "+13.44%",
+          "PercentWinning": "88.15%",
+          "PercentAverage": "14.67%",
+          "PercentMedian": "14.37%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "7",
+          "Name": "Scott Vande Vusse",
+          "Time": "20:18.3",
+          "Difference": "+3:44.2",
+          "PercentBack": "+22.55%",
+          "PercentWinning": "81.60%",
+          "PercentAverage": "7.81%",
+          "PercentMedian": "7.49%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "8",
+          "Name": "Marius",
+          "Time": "20:47.7",
+          "Difference": "+4:13.6",
+          "PercentBack": "+25.51%",
+          "PercentWinning": "79.67%",
+          "PercentAverage": "5.59%",
+          "PercentMedian": "5.25%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "9",
+          "Name": "Nick Papa",
+          "Time": "20:54.9",
+          "Difference": "+4:20.8",
+          "PercentBack": "+26.23%",
+          "PercentWinning": "79.22%",
+          "PercentAverage": "5.04%",
+          "PercentMedian": "4.71%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "10",
+          "Name": "Christian Oliver",
+          "Time": "20:59.6",
+          "Difference": "+4:25.5",
+          "PercentBack": "+26.71%",
+          "PercentWinning": "78.92%",
+          "PercentAverage": "4.69%",
+          "PercentMedian": "4.35%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "11",
+          "Name": "Brendan Dowd",
+          "Time": "21:20.7",
+          "Difference": "+4:46.6",
+          "PercentBack": "+28.83%",
+          "PercentWinning": "77.62%",
+          "PercentAverage": "3.09%",
+          "PercentMedian": "2.75%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "12",
+          "Name": "David Wiviott",
+          "Time": "21:45.7",
+          "Difference": "+5:11.6",
+          "PercentBack": "+31.34%",
+          "PercentWinning": "76.14%",
+          "PercentAverage": "1.20%",
+          "PercentMedian": "0.85%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "13",
+          "Name": "Robb McEarhon",
+          "Time": "21:56.9",
+          "Difference": "+5:22.8",
+          "PercentBack": "+32.47%",
+          "PercentWinning": "75.49%",
+          "PercentAverage": "0.35%",
+          "PercentMedian": "0.00%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "14",
+          "Name": "Patrick Aio",
+          "Time": "22:14.9",
+          "Difference": "+5:40.8",
+          "PercentBack": "+34.28%",
+          "PercentWinning": "74.47%",
+          "PercentAverage": "-1.01%",
+          "PercentMedian": "-1.37%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "15",
+          "Name": "Eric Nordstrom",
+          "Time": "22:34.7",
+          "Difference": "+6:00.6",
+          "PercentBack": "+36.27%",
+          "PercentWinning": "73.38%",
+          "PercentAverage": "-2.51%",
+          "PercentMedian": "-2.87%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "16",
+          "Name": "Ivan Stork",
+          "Time": "22:43.4",
+          "Difference": "+6:09.3",
+          "PercentBack": "+37.15%",
+          "PercentWinning": "72.91%",
+          "PercentAverage": "-3.17%",
+          "PercentMedian": "-3.53%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "17",
+          "Name": "Chris Grieve",
+          "Time": "22:58.0",
+          "Difference": "+6:23.9",
+          "PercentBack": "+38.62%",
+          "PercentWinning": "72.14%",
+          "PercentAverage": "-4.27%",
+          "PercentMedian": "-4.64%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "18",
+          "Name": "Troy Trimmer",
+          "Time": "24:47.2",
+          "Difference": "+8:13.1",
+          "PercentBack": "+49.60%",
+          "PercentWinning": "66.84%",
+          "PercentAverage": "-12.54%",
+          "PercentMedian": "-12.93%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "19",
+          "Name": "Jonathon Foley",
+          "Time": "24:48.8",
+          "Difference": "+8:14.7",
+          "PercentBack": "+49.76%",
+          "PercentWinning": "66.77%",
+          "PercentAverage": "-12.66%",
+          "PercentMedian": "-13.05%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "20",
+          "Name": "Michele Black",
+          "Time": "24:54.0",
+          "Difference": "+8:19.9",
+          "PercentBack": "+50.29%",
+          "PercentWinning": "66.54%",
+          "PercentAverage": "-13.05%",
+          "PercentMedian": "-13.45%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "21",
+          "Name": "Michaela James",
+          "Time": "25:01.2",
+          "Difference": "+8:27.1",
+          "PercentBack": "+51.01%",
+          "PercentWinning": "66.22%",
+          "PercentAverage": "-13.59%",
+          "PercentMedian": "-13.99%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "22",
+          "Name": "Antoine Issa",
+          "Time": "25:10.2",
+          "Difference": "+8:36.1",
+          "PercentBack": "+51.92%",
+          "PercentWinning": "65.83%",
+          "PercentAverage": "-14.28%",
+          "PercentMedian": "-14.68%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "23",
+          "Name": "Evan Vernon",
+          "Time": "25:27.2",
+          "Difference": "+8:53.1",
+          "PercentBack": "+53.63%",
+          "PercentWinning": "65.09%",
+          "PercentAverage": "-15.56%",
+          "PercentMedian": "-15.97%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "24",
+          "Name": "Jeff Gassen",
+          "Time": "26:04.2",
+          "Difference": "+9:30.1",
+          "PercentBack": "+57.35%",
+          "PercentWinning": "63.55%",
+          "PercentAverage": "-18.36%",
+          "PercentMedian": "-18.78%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "25",
+          "Name": "Ian Mycerlily",
+          "Time": "26:54.6",
+          "Difference": "+10:20.5",
+          "PercentBack": "+62.42%",
+          "PercentWinning": "61.57%",
+          "PercentAverage": "-22.18%",
+          "PercentMedian": "-22.61%",
+          "StartTime": "19:17:07.6"
+        },
+        {
+          "Place": "-",
+          "Name": "Marius Lina",
+          "Time": "-",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "-",
+          "PercentAverage": "-",
+          "PercentMedian": "-",
+          "StartTime": "19:17:07.6"
+        }
+      ]
+    }
+  ]
+}

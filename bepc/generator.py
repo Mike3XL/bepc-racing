@@ -2534,7 +2534,7 @@ def generate_platform_home(data: dict) -> None:
                 race_date = datetime.strptime(race["date"], "%Y-%m-%d").date()
             except Exception:
                 continue
-            if race_date <= today:
+            if race_date < today:
                 continue
             # Support both 'club' (single) and 'clubs' (list)
             race_clubs = race.get("clubs", [race.get("club", "")] if race.get("club") else [])
@@ -3193,7 +3193,7 @@ const MEDAL = {
                     race_date = _dt.strptime(str(race["date"]), "%Y-%m-%d").date()
                 except Exception:
                     continue
-                if race_date <= today:
+                if race_date < today:
                     continue
                 race_clubs = race.get("clubs", [race.get("club", "")] if race.get("club") else [])
                 if club_id not in race_clubs:

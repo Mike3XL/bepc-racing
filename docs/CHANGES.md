@@ -1,6 +1,29 @@
 # Changes
 
-## 2026-03-30
+## 2026-06-01
+
+### New: Urban Surf series
+
+- Added `urban-surf` as a new club/series in the PNW site
+- Fetched 59 races across 9 years: 2016, 2017, 2018, 2019, 2021, 2022, 2023, 2024, 2025 (2020 missing — no records)
+- Data sources: organizer 60473 (primary, 2018+), 135348 (2021), 13754/Rob Casey (2016–2017)
+- Added `race_names.json` for urban-surf: all races display as "Urban Surf #N"
+- Added 7 upcoming 2026 races (Wednesdays, June 3 – July 22, Gasworks Park, 7 PM start)
+- Added 11 name aliases for urban-surf racer variants
+- Known data issue: craft is Unknown for 2018–2025 (blank at source) — to be resolved later
+
+### Bug fixes
+
+- **Fetcher: `AllRacers=True` grouping** — `_get_overall_groups()` now accepts both `Overall=True` and `AllRacers=True` WebScorer result groups. Previously, races using `AllRacers` (e.g. Urban Surf) were silently skipped.
+- **Carry-over gap-year bug** — When a racer skips a season, their handicap and ranked-race count are now preserved into the next season. Previously, `carry_over` was rebuilt from scratch each season, dropping absent racers and resetting their establishment counter.
+- **Upcoming races: show today** — Changed `race_date <= today` to `race_date < today` so races scheduled for today appear in the upcoming list until results are fetched.
+
+### Data
+
+- Fetched Guano Rocks 2026 (Sound Rowers, WebScorer 434155, 18 racers) — added `results_source` to upcoming.yaml
+- Removed 2016/2017 Urban Surf races from `none/` (now in `urban-surf/`)
+
+
 
 ### Data
 
