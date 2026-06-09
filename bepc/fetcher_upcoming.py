@@ -375,10 +375,19 @@ def find_webscorer_results_id(org_slug: str, race_name: str, race_date: date,
         print(f"  find_webscorer_results_id({org_slug}): ERROR — {e}")
         return None
 
-    # Parse race blocks: each has raceid, name (from link text or alt), and date
-    # Pattern: raceid in href, name in link text, date as "Month DD, YYYY"
+    # Parse race rows on the organizer "posted races" listing.
+    #
+    # Each row references the raceid twice: first in an image-thumbnail anchor
+    # (whose content is an <img>, with the name only in the alt attribute), then
+    # in a TEXT anchor (id="...racetxtlink_N") whose anchor text is the race name.
+    # The race date follows in a separate <span id="...lbRaceDate_N"> cell.
+    #
+    # We deliberately match the TEXT link (not the image link) so the captured
+    # group is the human-readable name, then the date span. Matching the image
+    # link instead yields no name text and silently fails for every race.
     block_pattern = re.compile(
-        r'race\?raceid=(\d+)[^>]*>([^<]{3,80})</a>.*?(\w+ \d+, \d{4})',
+        r'race\?raceid=(\d+)"\s+id="[^"]*racetxtlink_\d+"[^>]*>([^<]{3,80})</a>'
+        r'.*?lbRaceDate_\d+"[^>]*>([^<]+)</span>',
         re.DOTALL
     )
 
@@ -391,13 +400,24 @@ def find_webscorer_results_id(org_slug: str, race_name: str, race_date: date,
         if race_id in known_ids:
             continue
         candidate_name = m.group(2).strip().lower()
-        try:
-            candidate_date = datetime.strptime(m.group(3), "%B %d, %Y").date()
-        except ValueError:
+        candidate_date = _parse_webscorer_date(m.group(3))
+        if candidate_date is None:
             continue
         if cutoff_low <= candidate_date <= cutoff_high and _name_match(candidate_name, race_name_lower):
             return race_id
 
+    return None
+
+
+def _parse_webscorer_date(date_str: str) -> date | None:
+    """Parse a WebScorer date cell. The site uses the abbreviated month form
+    ("Jun 8, 2026"); accept the full form ("June 8, 2026") as a fallback."""
+    s = date_str.strip()
+    for fmt in ("%b %d, %Y", "%B %d, %Y"):
+        try:
+            return datetime.strptime(s, fmt).date()
+        except ValueError:
+            continue
     return None
 
 
