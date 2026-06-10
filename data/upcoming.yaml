@@ -247,29 +247,6 @@ upcoming:
     type: webscorer
     organizer: bepc827
   organizer: --
-- name: 'BEPC 2026 Race Series #6'
-  date: '2026-06-08'
-  clubs:
-  - bepc-summer
-  source_id: 427431
-  distance: ~3 mi
-  url: https://www.webscorer.com/register?raceid=427431
-  links:
-  - label: Register
-    url: https://www.webscorer.com/register?raceid=427431
-  - label: Start List
-    url: https://www.webscorer.com/registerlist?raceid=427431&details=1
-  - label: Info
-    url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  location: Shilshole Bay, Seattle, WA
-  timing:
-  - 'Reg: 6 PM'
-  - 'Meeting: 6:30 PM'
-  - 'Start: 7 PM'
-  results_source:
-    type: webscorer
-    organizer: bepc827
-  organizer: --
 - name: Nch'I-Wanna Columbia River Race
   date: '2026-06-13'
   clubs:
