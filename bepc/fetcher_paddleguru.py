@@ -20,6 +20,7 @@ from __future__ import annotations
 import json
 import re
 import urllib.request
+from datetime import datetime
 from pathlib import Path
 
 
@@ -248,7 +249,7 @@ def fetch_paddleguru_race(
         by_event.setdefault(short, []).append(r)
 
     # Build racer-result dicts per course (pre-correction)
-    display_date = display_date or date_iso
+    display_date = display_date or datetime.strptime(date_iso, "%Y-%m-%d").strftime("%b %d, %Y")
     courses: dict[str, list[dict]] = {}
     for course, entries in by_event.items():
         entries.sort(key=lambda e: e["overall"])
