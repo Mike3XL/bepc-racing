@@ -9,6 +9,20 @@ Currently past races are silently pruned from `upcoming.yaml`. Some events witho
 - Expires after N weeks
 - Allows manual entry of result links for non-WebScorer events
 
+### Alias Decision Audit Trail
+`name-decisions.json` records alias decisions (e.g. "Robert Schroeter" → "Robert Schade") but stores no context about *why* the decision was made, who made it, or what evidence supported it. Wrong decisions are hard to diagnose later.
+
+Add to each alias entry:
+- `reason`: brief human-readable explanation (e.g. "same person, different spelling" vs "same first name, different person — see Gorge 2024")
+- `date`: ISO date when decision was recorded
+- `source_races`: list of race IDs/names where the alias variant was first seen
+- `confidence`: `high` / `medium` / `uncertain`
+- `split_from`: for splits (one person → two canonical names), record the original merged name
+
+Update `audit_names.py` to display this context when reviewing pending decisions, and to warn when `confidence` is `uncertain`.
+
+Known bad decisions to fix: `"Robert Schroeter" → "Robert Schade"` and `"Robert Laubscher" → "Robert Schade"` (both wrong — different people; caused spurious results on Robert Schade's racer page).
+
 ### Alias Transparency
 When a racer's name is corrected via aliases.json, the original source name is lost. Add transparency so viewers can see when a result was listed under a different name in the source data.
 - Store `original_name` in race result data when an alias is applied
@@ -133,6 +147,15 @@ As more years are added, the trajectories page will have many racers. Consider a
 - Filter by craft category (HPK, OC1, SUP, etc.)
 - Filter by minimum races (e.g. show only racers with 5+ appearances)
 - "Local regulars" toggle — hide racers who only appear in one large international event (e.g. Gorge Downwind)
+
+### Terminology Consistency
+Audit and standardize all user-facing labels for the indexed scoring system. Currently inconsistent across tooltips, column headers, podium labels, standings, trajectories, and racer pages. Candidate canonical vocabulary:
+- **Index** — racer's pace multiplier
+- **Par** — predicted time for a race (RacePar × Index)
+- **vs Par** — % faster/slower than par (currently also "Improvement vs Par", "vs Projected")
+- **Index Points** — points by par result (currently "Par Points", "Index Pts.", "Corrected Points", "Indexed Points")
+- **Place vs Par** — ranking by par result (currently "Place (Indexed)", "Corrected time")
+- All UI text strings live in `bepc/ui_text.py` — centralized, one build propagates everywhere.
 
 ## Done (removed from backlog)
 

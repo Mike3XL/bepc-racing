@@ -748,6 +748,7 @@ def cmd_process_results(args):
 
     # Collect already-fetched IDs to avoid re-fetching
     fetched_ids: set[int] = set()
+    already_done: list = []  # races confirmed processed but not yet removed from upcoming.yaml
     for common_dir in DATA_DIR.glob("*/*/common"):
         for f in common_dir.glob("raw/*.raw.json"):
             parts = f.stem.split("__")
@@ -800,7 +801,11 @@ def cmd_process_results(args):
                     find_webscorer_results_id(slug, name, race_date, set()) is not None
                     for slug in org_slugs
                 )
-                print("already processed" if already else "no results yet")
+                if already:
+                    print("already processed — will remove from upcoming")
+                    already_done.append(race)
+                else:
+                    print("no results yet")
                 continue
         elif src_type == "raceresult":
             has_results = _has_results_raceresult(int(source_id))
@@ -843,22 +848,29 @@ def cmd_process_results(args):
             print(f"  ERROR: {e}")
             continue
 
-    if not fetched:
+    if not fetched and not already_done:
         print("Nothing new to process.")
         return
 
     if dry_run:
-        print(f"\n[dry-run] Would remove {len(fetched)} race(s) from upcoming and rebuild.")
+        print(f"\n[dry-run] Would remove {len(fetched)} newly-fetched + {len(already_done)} already-done race(s) from upcoming and rebuild.")
         return
 
-    # Remove processed races from upcoming.yaml
-    fetched_names = {r["name"] for r in fetched}
-    data["upcoming"] = [r for r in upcoming if r["name"] not in fetched_names]
+    # Remove all processed races (newly fetched + already done) from upcoming.yaml
+    remove_names = {r["name"] for r in fetched} | {r["name"] for r in already_done}
+    data["upcoming"] = [r for r in upcoming if r["name"] not in remove_names]
     upcoming_path.write_text(_yaml.dump(data, allow_unicode=True, sort_keys=False,
                                         default_flow_style=False))
-    print(f"\nRemoved {len(fetched)} race(s) from upcoming.yaml")
+    if already_done:
+        print(f"\nCleaned up {len(already_done)} already-processed race(s) from upcoming.yaml")
+    if fetched:
+        print(f"\nRemoved {len(fetched)} race(s) from upcoming.yaml")
 
-    # Build + publish
+    if not fetched:
+        print("No new results to publish — skipping build+publish.")
+        return
+
+    # Build + publish (only when new results were actually fetched)
     try:
         import types
         site_args = types.SimpleNamespace(site=site_id)

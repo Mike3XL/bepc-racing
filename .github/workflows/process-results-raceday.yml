@@ -43,6 +43,11 @@ jobs:
           else
             echo "fetched=false" >> $GITHUB_OUTPUT
           fi
+          if echo "$output" | grep -q "already-processed"; then
+            echo "cleanup=true" >> $GITHUB_OUTPUT
+          else
+            echo "cleanup=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Commit fetched data to main
         if: steps.process.outputs.fetched == 'true'
@@ -51,6 +56,14 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/
           git diff --cached --quiet && echo "Nothing to commit" || (git commit -m "data: auto-fetch race results [skip ci]" && git push)
+
+      - name: Commit upcoming.yaml cleanup to main
+        if: steps.process.outputs.fetched != 'true' && steps.process.outputs.cleanup == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/upcoming.yaml
+          git diff --cached --quiet && echo "Nothing to commit" || (git commit -m "data: remove already-processed races from upcoming.yaml [skip ci]" && git push)
 
       - name: Deploy to GitHub Pages
         if: steps.process.outputs.fetched == 'true'
