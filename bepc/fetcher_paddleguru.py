@@ -202,6 +202,23 @@ def _normalize_course_name(event_name: str, rules=None) -> str:
     return event_name
 
 
+def _normalize_name_case(name: str) -> str:
+    """Normalize a name with ALL CAPS or all-lowercase words to Title Case.
+
+    Preserves mixed-case words that look intentional (e.g. McAlpin, O'Brien).
+    Only normalizes words that are entirely uppercase or entirely lowercase.
+    """
+    def fix_word(w: str) -> str:
+        if len(w) <= 1:
+            return w
+        if w == w.upper():  # ALL CAPS
+            return w.capitalize()
+        if w == w.lower():  # all lower
+            return w.capitalize()
+        return w  # mixed — leave alone (McAlpin, O'Brien, etc.)
+    return " ".join(fix_word(w) for w in name.split())
+
+
 def _race_filename(date_iso: str, race_id: str, base_name: str, course: str) -> str:
     safe_base = re.sub(r"[^A-Za-z0-9]+", "_", base_name).strip("_")
     return f"{date_iso}__{race_id}__{safe_base}__{_course_slug(course)}.common.json"
@@ -256,6 +273,8 @@ def fetch_paddleguru_race(
         racer_results = []
         for e in entries:
             names = [n.strip() for n in e["athletes"] if n.strip()]
+            # Normalize case: some PaddleGuru entries have ALL CAPS surnames or lowercase names
+            names = [_normalize_name_case(n) for n in names]
             canonical = " & ".join(names)
             canonical = re.sub(r"\s+", " ", canonical).strip()
             gender = {"male": "Male", "female": "Female", "mixed": "Female/Male"}.get(e.get("gender", "").lower(), "")
