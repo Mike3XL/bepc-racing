@@ -2,7 +2,11 @@ name: Process Results (Background)
 
 on:
   schedule:
-    - cron: '0 2 * * *'          # daily at 7PM PDT (02:00 UTC)
+    # Daily backstops — guarantee a catch-up even if the race-day windows are
+    # skipped by GitHub. process-results is time-independent (scans upcoming.yaml),
+    # so a late run still fetches any results posted earlier that day.
+    - cron: '0 6 * * *'          # daily 11PM PDT (06:00 UTC) — same-evening catch-up
+    - cron: '0 15 * * *'         # daily 8AM PDT (15:00 UTC) — next-morning catch-up
   workflow_dispatch:
 
 jobs:

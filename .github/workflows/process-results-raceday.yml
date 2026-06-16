@@ -5,8 +5,11 @@ on:
     # Saturday 11AM-5PM PDT (18:00-00:00 UTC) — every 15 min
     - cron: '*/15 18-23 * * 6'
     - cron: '0 0 * * 0'          # Sat 5PM PDT = Sun 00:00 UTC
-    # Monday BEPC 7PM-9PM PDT = Tue 02:00-04:00 UTC — every 5 min
-    - cron: '*/5 2,3 * * 2'
+    # Monday BEPC 7:00-9:59 PM PDT = Tue 02:00-04:59 UTC — every 15 min.
+    # NOTE: GitHub drops/delays high-frequency (*/5) schedules; */15 is far more
+    # reliable. The daily backstops in process-results-background.yml guarantee a
+    # catch-up if these race-day runs are skipped entirely.
+    - cron: '*/15 2,3,4 * * 2'
   workflow_dispatch:
 
 jobs:
