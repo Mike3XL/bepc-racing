@@ -28,10 +28,15 @@ upcoming:
   clubs:
   - urban-surf
   distance: ~3 mi
-  url: https://www.webscorer.com/60473
+  url: https://urbansurf.com/products/summer-race-series
+  links:
+  - label: Register
+    url: https://www.webscorer.com/60473?pg=register
+  - label: Info
+    url: https://urbansurf.com/products/summer-race-series
   location: Gasworks Park, Seattle, WA (South Lake Union)
   timing:
-  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Check-in: by 6:30 PM @ Urban Surf store'
   - 'Start: 7 PM'
   results_source:
     type: webscorer
@@ -42,10 +47,15 @@ upcoming:
   clubs:
   - urban-surf
   distance: ~3 mi
-  url: https://www.webscorer.com/60473
+  url: https://urbansurf.com/products/summer-race-series
+  links:
+  - label: Register
+    url: https://www.webscorer.com/60473?pg=register
+  - label: Info
+    url: https://urbansurf.com/products/summer-race-series
   location: Gasworks Park, Seattle, WA (South Lake Union)
   timing:
-  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Check-in: by 6:30 PM @ Urban Surf store'
   - 'Start: 7 PM'
   results_source:
     type: webscorer
@@ -56,10 +66,15 @@ upcoming:
   clubs:
   - urban-surf
   distance: ~3 mi
-  url: https://www.webscorer.com/60473
+  url: https://urbansurf.com/products/summer-race-series
+  links:
+  - label: Register
+    url: https://www.webscorer.com/60473?pg=register
+  - label: Info
+    url: https://urbansurf.com/products/summer-race-series
   location: Gasworks Park, Seattle, WA (South Lake Union)
   timing:
-  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Check-in: by 6:30 PM @ Urban Surf store'
   - 'Start: 7 PM'
   results_source:
     type: webscorer
@@ -70,10 +85,15 @@ upcoming:
   clubs:
   - urban-surf
   distance: ~3 mi
-  url: https://www.webscorer.com/60473
+  url: https://urbansurf.com/products/summer-race-series
+  links:
+  - label: Register
+    url: https://www.webscorer.com/60473?pg=register
+  - label: Info
+    url: https://urbansurf.com/products/summer-race-series
   location: Gasworks Park, Seattle, WA (South Lake Union)
   timing:
-  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Check-in: by 6:30 PM @ Urban Surf store'
   - 'Start: 7 PM'
   results_source:
     type: webscorer
@@ -84,10 +104,15 @@ upcoming:
   clubs:
   - urban-surf
   distance: ~3 mi
-  url: https://www.webscorer.com/60473
+  url: https://urbansurf.com/products/summer-race-series
+  links:
+  - label: Register
+    url: https://www.webscorer.com/60473?pg=register
+  - label: Info
+    url: https://urbansurf.com/products/summer-race-series
   location: Gasworks Park, Seattle, WA (South Lake Union)
   timing:
-  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Check-in: by 6:30 PM @ Urban Surf store'
   - 'Start: 7 PM'
   results_source:
     type: webscorer
@@ -98,10 +123,15 @@ upcoming:
   clubs:
   - urban-surf
   distance: ~3 mi
-  url: https://www.webscorer.com/60473
+  url: https://urbansurf.com/products/summer-race-series
+  links:
+  - label: Register
+    url: https://www.webscorer.com/60473?pg=register
+  - label: Info
+    url: https://urbansurf.com/products/summer-race-series
   location: Gasworks Park, Seattle, WA (South Lake Union)
   timing:
-  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Check-in: by 6:30 PM @ Urban Surf store'
   - 'Start: 7 PM'
   results_source:
     type: webscorer
@@ -112,10 +142,34 @@ upcoming:
   clubs:
   - urban-surf
   distance: ~3 mi
-  url: https://www.webscorer.com/60473
+  url: https://urbansurf.com/products/summer-race-series
+  links:
+  - label: Register
+    url: https://www.webscorer.com/60473?pg=register
+  - label: Info
+    url: https://urbansurf.com/products/summer-race-series
   location: Gasworks Park, Seattle, WA (South Lake Union)
   timing:
-  - 'Reg: 6 PM @ Urban Surf store'
+  - 'Check-in: by 6:30 PM @ Urban Surf store'
+  - 'Start: 7 PM'
+  results_source:
+    type: webscorer
+    organizer: '60473'
+  organizer: --
+- name: Urban Surf 2026 Race 8/8
+  date: '2026-07-29'
+  clubs:
+  - urban-surf
+  distance: ~3 mi
+  url: https://urbansurf.com/products/summer-race-series
+  links:
+  - label: Register
+    url: https://www.webscorer.com/60473?pg=register
+  - label: Info
+    url: https://urbansurf.com/products/summer-race-series
+  location: Gasworks Park, Seattle, WA (South Lake Union)
+  timing:
+  - 'Check-in: by 6:30 PM @ Urban Surf store'
   - 'Start: 7 PM'
   results_source:
     type: webscorer
