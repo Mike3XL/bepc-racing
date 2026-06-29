@@ -615,6 +615,19 @@ def _infer_source_type(race: dict) -> str | None:
     return None
 
 
+def _paddleguru_slug_from_url(url: str) -> str | None:
+    """Extract the paddleguru race slug from a race URL.
+
+    PaddleGuru races are identified by a URL slug (not a numeric source_id),
+    so the slug doubles as the source_id for fetching. Handles trailing paths
+    like /schedule, /startlist, /results and query strings.
+    e.g. https://paddleguru.com/races/GCCCascadeClassic2026/schedule -> GCCCascadeClassic2026
+    """
+    import re
+    m = re.search(r"paddleguru\.com/races/([^/?#]+)", url or "")
+    return m.group(1) if m else None
+
+
 def _has_results_webscorer(source_id: int) -> bool:
     from bepc.fetcher import fetch_raw, _get_overall_groups, _valid_racers
     try:
@@ -734,10 +747,19 @@ def cmd_process_results(args):
         d = r.get("date")
         if isinstance(d, str):
             d = date.fromisoformat(d)
-        if d and d <= today and r.get("source_id"):
-            src_type = _infer_source_type(r)
-            if src_type:
-                candidates.append((r, d, src_type))
+        if not (d and d <= today):
+            continue
+        src_type = _infer_source_type(r)
+        if not src_type:
+            continue
+        # PaddleGuru races are keyed by URL slug, not a numeric source_id.
+        # Derive the slug as the source_id so they auto-process without manual entry.
+        if not r.get("source_id") and src_type == "paddleguru":
+            slug = _paddleguru_slug_from_url(r.get("url", ""))
+            if slug:
+                r = {**r, "source_id": slug}
+        if r.get("source_id"):
+            candidates.append((r, d, src_type))
 
     # Also scan WebScorer organizer pages for results not in upcoming.yaml
     _scan_organizer_results(candidates, upcoming, today, year, site_id)
@@ -748,12 +770,18 @@ def cmd_process_results(args):
 
     # Collect already-fetched IDs to avoid re-fetching
     fetched_ids: set[int] = set()
+    fetched_slugs: set[str] = set()  # non-numeric race IDs (e.g. paddleguru slugs)
     already_done: list = []  # races confirmed processed but not yet removed from upcoming.yaml
     for common_dir in DATA_DIR.glob("*/*/common"):
-        for f in common_dir.glob("raw/*.raw.json"):
+        raw_files = list(common_dir.glob("raw/*.raw.json")) + list(common_dir.glob("raw/*.raw.html"))
+        for f in raw_files:
             parts = f.stem.split("__")
-            if len(parts) >= 2 and parts[1].isdigit():
-                fetched_ids.add(int(parts[1]))
+            if len(parts) >= 2:
+                rid = parts[1]
+                if rid.isdigit():
+                    fetched_ids.add(int(rid))
+                else:
+                    fetched_slugs.add(rid)
 
     # Load clubs config for organizer slug lookup
     import yaml as _yaml2
@@ -810,6 +838,10 @@ def cmd_process_results(args):
         elif src_type == "raceresult":
             has_results = _has_results_raceresult(int(source_id))
         elif src_type == "paddleguru":
+            if str(source_id) in fetched_slugs:
+                print("already processed — will remove from upcoming")
+                already_done.append(race)
+                continue
             has_results = _has_results_paddleguru(str(source_id))
 
         if not has_results:
