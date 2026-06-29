@@ -175,23 +175,6 @@ upcoming:
     type: webscorer
     organizer: '60473'
   organizer: --
-- name: Nch'I-Wanna Columbia River Race
-  date: '2026-06-13'
-  clubs:
-  - pnw
-  distance: ~6 mi
-  url: https://paddleguru.com/races/NCHIWANAChallenge
-  links:
-  - label: Schedule
-    url: https://paddleguru.com/races/NCHIWANAChallenge/schedule
-  - label: Start List
-    url: https://paddleguru.com/races/NCHIWANAChallenge/startlist
-  location: Bob's Beach, Stevenson, WA
-  timing:
-  - 'Check-in: 9:30 AM'
-  - 'Start: 11:30 AM'
-  - 'Food/Awards: 1 PM'
-  organizer: ocean-flight
 - name: Rat Island Regatta
   date: '2026-06-20'
   clubs:
@@ -230,22 +213,6 @@ upcoming:
   organizer: salmon-bay-paddle
 - name: 'BEPC 2026 Race Series #9'
   organizer: --
-- name: GCC Cascade Classic 2026
-  date: '2026-06-28'
-  clubs:
-  - pnw
-  distance: ~7 mi (downwind)
-  url: https://paddleguru.com/races/GCCCascadeClassic2026
-  links:
-  - label: Register
-    url: https://paddleguru.com/races/GCCCascadeClassic2026
-  location: Home Valley, WA (Columbia River Gorge)
-  timing:
-  - 'Check-in: 8:30 AM'
-  - 'Start: 10:45 AM'
-  - 'Awards: 2 PM @ Backwoods Brewing'
-  notes: Downwind course Home Valley → Drano (~7 mi). Course subject to change.
-  organizer: gorge-canoe-club
 - name: 'BEPC 2026 Race Series #9'
   date: '2026-06-29'
   clubs:
