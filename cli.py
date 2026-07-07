@@ -858,7 +858,12 @@ def cmd_process_results(args):
             out_dir = DATA_DIR / club / year / "common"
             if src_type == "webscorer":
                 from bepc.fetcher import fetch_season
-                fetch_season([results_id], out_dir)
+                num_fetched = fetch_season([results_id], out_dir)
+                if num_fetched == 0:
+                    raise RuntimeError(
+                        f"fetch_season reported 0 races written for webscorer:{results_id} "
+                        "(see FAILED message above for the underlying cause)"
+                    )
             elif src_type == "raceresult":
                 from bepc.fetcher_raceresult import fetch_event
                 rr_id = _resolve_rr_id_from_pms(int(source_id))

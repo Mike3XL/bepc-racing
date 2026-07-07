@@ -19,13 +19,14 @@ Common format spec: see `bepc/loader.py` → `load_common_json()`
 ### 1. WebScorer (`bepc/fetcher.py`)
 
 **Source:** WebScorer API (`www.webscorer.com/json/race`)  
-**Auth:** API ID required — stored in `.env` as `WEBSCORER_API_ID` (never commit this file)  
+**Auth:** API ID + API Token (`apipriv`) required — stored in `.env` as `WEBSCORER_API_ID` and `WEBSCORER_API_TOKEN` (never commit this file). The token requires an active PRO Results subscription on the organizer account (bepc827@gmail.com) — see webscorer.com "Organizers / My organizer settings".  
 **Raw format:** JSON  
 **Used for:** BEPC weekly races, Sound Rowers events
 
 **Setup:**
 ```bash
 echo "WEBSCORER_API_ID=your_id_here" >> .env
+echo "WEBSCORER_API_TOKEN=your_token_here" >> .env
 ```
 
 **Usage (via CLI):**
@@ -107,7 +108,7 @@ python3 cli.py fetch-raceresult --club pnw-regional 281775 299092 313433
 
 | Fetcher | Secret | Storage |
 |---------|--------|---------|
-| WebScorer | `WEBSCORER_API_ID` | `.env` file (gitignored) |
+| WebScorer | `WEBSCORER_API_ID`, `WEBSCORER_API_TOKEN` | `.env` file (gitignored) |
 | Jericho | None | — |
 | PDF | None | — |
 | Race Result | None (dynamic per-event key) | — |
@@ -117,7 +118,7 @@ python3 cli.py fetch-raceresult --club pnw-regional 281775 299092 313433
 If you need to set up a new environment:
 ```bash
 cp .env.example .env
-# Edit .env and add your WEBSCORER_API_ID
+# Edit .env and add your WEBSCORER_API_ID and WEBSCORER_API_TOKEN
 ```
 
 ---

@@ -6,21 +6,35 @@ from pathlib import Path
 
 def _load_api_id() -> str:
     """Load WebScorer API ID from .env file or environment variable."""
+    return _load_env_var("WEBSCORER_API_ID")
+
+
+def _load_api_token() -> str:
+    """Load WebScorer API Token (apipriv) from .env file or environment variable.
+
+    Required by WebScorer as of ~2026-07 alongside the API ID; obtained from
+    'Organizers / My organizer settings' on webscorer.com and requires an
+    active PRO Results subscription.
+    """
+    return _load_env_var("WEBSCORER_API_TOKEN")
+
+
+def _load_env_var(name: str) -> str:
     env_file = Path(__file__).parent.parent / ".env"
     if env_file.exists():
         for line in env_file.read_text().splitlines():
-            if line.startswith("WEBSCORER_API_ID="):
+            if line.startswith(f"{name}="):
                 return line.split("=", 1)[1].strip()
-    val = os.environ.get("WEBSCORER_API_ID", "")
+    val = os.environ.get(name, "")
     if not val:
-        raise RuntimeError("WEBSCORER_API_ID not set. Add it to .env or set the environment variable.")
+        raise RuntimeError(f"{name} not set. Add it to .env or set the environment variable.")
     return val
 
-API_URL = "https://www.webscorer.com/json/race?raceid={race_id}&apiid={api_id}"
+API_URL = "https://www.webscorer.com/json/race?raceid={race_id}&apiid={api_id}&apipriv={api_token}"
 
 
 def fetch_raw(race_id: int) -> dict:
-    url = API_URL.format(race_id=race_id, api_id=_load_api_id())
+    url = API_URL.format(race_id=race_id, api_id=_load_api_id(), api_token=_load_api_token())
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.loads(resp.read())
@@ -121,9 +135,19 @@ def _date_slug(date_str: str) -> str:
     return date_str
 
 
-def fetch_season(race_ids: list[int], out_dir: Path) -> None:
+def fetch_season(race_ids: list[int], out_dir: Path) -> int:
+    """Fetch each race_id and write its common/raw files to out_dir.
+
+    Returns the number of race_ids that were successfully fetched and
+    written. Callers MUST check this return value (or catch the raised
+    error) rather than assuming success — a per-race failure is caught
+    and logged internally so one bad race doesn't abort a whole season
+    fetch, but that also means a plain function call with no return
+    value would look identical whether it wrote 0 or all races.
+    """
     from bepc.provenance import log_provenance, save_raw
     out_dir.mkdir(parents=True, exist_ok=True)
+    succeeded = 0
     for race_id in race_ids:
         print(f"  Fetching {race_id}...", end=" ", flush=True)
         try:
@@ -198,5 +222,7 @@ def fetch_season(race_ids: list[int], out_dir: Path) -> None:
 
             groups_str = f"{len(group_racers)} groups, {total} total" if multi else f"{total} racers"
             print(f"OK ({groups_str})")
+            succeeded += 1
         except Exception as e:
             print(f"FAILED: {e}")
+    return succeeded
