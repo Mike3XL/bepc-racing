@@ -990,7 +990,38 @@
     "Len Duncan": "Leonard Duncan",
     "Derek Seward": "Derrick Seward",
     "Don Loves Flatwater Kiesling": "Don Kiesling",
-    "Donald Kiesling": "Don Kiesling"
+    "Donald Kiesling": "Don Kiesling",
+    "Michael Vanderwater": "Michael VanDerwater",
+    "Junette Mccarthy": "Junette McCarthy",
+    "Axel Mclean": "Axel McLean",
+    "Scott VanDe Vusse": "Scott Vande Vusse",
+    "Brittany Foxely": "Brittany Foxley",
+    "Maddie Sickle": "Maddie Sickle*",
+    "Owen Lilleleht": "Owen Lilleleth",
+    "Waleed Ammar*": "Waleed Ammar",
+    "Harry Oesterreigher": "Harry Oesterreicher",
+    "Michaela Carpenter": "Michaela Carpeuter",
+    "Federico Gonzales": "Federico Gonzalez",
+    "Jeanine Mackie": "Jeannine Mackie",
+    "Yakov Polyykov": "Yakov Polyakov",
+    "Lindi Mondari": "Lindi Mondavi",
+    "Eric Messener": "Eric Messner",
+    "Layne Stambaugh Jr": "Layne Stambaugh",
+    "Nico Weekind": "Nico Wedekind",
+    "Annette McPherson": "Annett McPherson",
+    "Matt Radfer": "Matt Radford",
+    "Robb McEarhon": "Robb McEachran",
+    "Gabriel Mark Somjen": "Gabriel Somjen",
+    "Veri Gonzalez": "Veri Gonzales",
+    "David Ralston": "Dave Ralston",
+    "Darcie Gray": "Darcy Gray",
+    "Robb Mccherron": "Robb McEarhon",
+    "Terence Quong": "Terrance Quong",
+    "Joan M": "Joan Macasiray",
+    "Margaret Strozyk, family course": "course Margaret Strozyk",
+    "Damon Carson-Hull, family course": "course Damon Carson-Hull",
+    "Bob Stewart": "Robert Stewart",
+    "Michael Ehmann": "Mike Ehmann"
   },
   "uniques": {
     "Mick Liddell / Mike Liddell": [
@@ -10216,18 +10247,6 @@
       "method": "last_first"
     },
     {
-      "raw": "Margaret Strozyk, family course",
-      "suggested": "course Margaret Strozyk",
-      "confidence": 0.85,
-      "method": "last_first"
-    },
-    {
-      "raw": "Damon Carson-Hull, family course",
-      "suggested": "course Damon Carson-Hull",
-      "confidence": 0.85,
-      "method": "last_first"
-    },
-    {
       "raw": "Kathy Lazara Whitman, RIRSC",
       "suggested": "RIRSC Kathy Lazara Whitman",
       "confidence": 0.85,
@@ -11374,6 +11393,217 @@
       "method": "nickname"
     }
   ],
-  "rejected": [],
+  "rejected": [
+    {
+      "raw": "Debbie Natelson",
+      "suggested": "Debbie Natelson/Jerry",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Tom Kreyche",
+      "suggested": "Tom Kreyche/Lizzy",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Susan Horne",
+      "suggested": "Susan Horst",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Rod Sternagel",
+      "suggested": "Rod Sternagel/Mel Stach",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Robert Schroeter",
+      "suggested": "Robert Schade",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Jen Butler",
+      "suggested": "Evan Butler",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Jack Manca",
+      "suggested": "Jack Malone",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Maggie Hochberg",
+      "suggested": "Maggie Hogan",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Stacey Castleberry",
+      "suggested": "Stacey Castleberry & Jeff Castleberry",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Adam Tisquatch",
+      "suggested": "Adam Tischler",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Erin Thompson",
+      "suggested": "Kris Thompson",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Patrick Hwang",
+      "suggested": "Patrick Hwang & Tyler Hwang",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Tamar Clarke",
+      "suggested": "Tamar Clarke/Shawn Clarke",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Evan Young",
+      "suggested": "Nate Young",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Bruce Rolfe",
+      "suggested": "Bruce Rolfe /John Rolfe",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Brandon Nelson",
+      "suggested": "Brandon Nelson, Heather Nelson",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Jason Park",
+      "suggested": "Jason Park & Drea Park",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Peter Gumplinger",
+      "suggested": "Peter Gumplinger / Silke Gumplinger",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Dave Anderson",
+      "suggested": "Dave Anderson / Will Anderson",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Donna McKeever",
+      "suggested": "Donna McKeever & Katie McKeever",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Amanda Roberts",
+      "suggested": "Amanda Roberts / Jeremy Roberts",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Ryan Woolbright",
+      "suggested": "Ryan Woolbright Rebecca Woolbright",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Alan Kipust",
+      "suggested": "Alan Kipust/Sandra Kipust",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Malia Winter",
+      "suggested": "Malia Widmann",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Steve Hissong",
+      "suggested": "Steve Hiegel",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Don Kiesling",
+      "suggested": "DJ / Don Kiesling",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Jeremy Roberts",
+      "suggested": "Jeremy Roberts & D’Andre Roberts",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Jeff Castleberry",
+      "suggested": "Jeff Castleberry & Stacey Castleberry",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "John Murillo",
+      "suggested": "John Murillo & Linda Murillo",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Paul Smit",
+      "suggested": "Paul Smit / Matt Smit",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Sara Harmon",
+      "suggested": "Sara Harmon & Carson Hayes",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Sean Lee",
+      "suggested": "Sean Lee / Ryan Lee",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Richard Humphrey",
+      "suggested": "Richard Hundahl",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Dean Williams",
+      "suggested": "Dean & Zachary Williams",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    },
+    {
+      "raw": "Anna Williams",
+      "suggested": "Dean/Dean Williams",
+      "method": "fuzzy",
+      "reason": "rejected by user"
+    }
+  ],
   "decisions": []
 }
