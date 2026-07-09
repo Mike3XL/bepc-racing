@@ -57,7 +57,7 @@ clubs:
     annualPointsRule: top10results
     annualPointsRuleDescription: >
       Only your best 10 results count toward Index Pts and Finish Pts each
-      season — so racing more than 10 times never lowers your total.
+      season.
   sckc-duck-island:
     name: SCKC Duck Island
     short_name: SCKC
