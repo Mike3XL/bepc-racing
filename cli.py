@@ -160,6 +160,10 @@ def build_data_json() -> dict:
                 "current_season": current_season,
                 "min_races_for_page": 1,
                 "seasons": seasons,
+                "annual_points_rule": (clubs_cfg.get(series_id, {}) or {}).get(
+                    "annualPointsRule", "countAll"),
+                "annual_points_rule_description": (clubs_cfg.get(series_id, {}) or {}).get(
+                    "annualPointsRuleDescription", ""),
             }
     return {"clubs": clubs, "current_club": CURRENT_CLUB}
 

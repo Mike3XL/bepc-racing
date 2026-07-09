@@ -102,6 +102,14 @@ PLACE_MUTE_REASONS = {
     "ineligible": "Race has insufficient number of racers - no ranking or index updates",
 }
 
+# Tooltip text for muted points cells (race_points / handicap_points) when a
+# race's points don't count toward the racer's season total under a best-N
+# annualPointsRule (see bepc/generator.py _fmt_points_cell).
+POINTS_MUTE_REASONS = {
+    "top10results": "Not one of your best 10 results this season - doesn't count toward season total",
+    "default": "Doesn't count toward season total",
+}
+
 
 # ---------------------------------------------------------------------------
 # Race results table — miscellaneous tooltips and filter labels

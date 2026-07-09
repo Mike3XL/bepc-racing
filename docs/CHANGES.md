@@ -1,5 +1,21 @@
 # Changes
 
+## 2026-07-09
+
+### New: Best-10-results annual points rule (BEPC Summer)
+
+- Added `annualPointsRule` / `annualPointsRuleDescription` config per series in `data/clubs.yaml`. Default `countAll` (unchanged behavior); BEPC Summer set to `top10results`.
+- Under `top10results`, a racer's season Finish Pts and Index Pts are each the sum of their best 10 per-race point values (independent per metric) — racing more than 10 times never lowers a racer's total.
+- Standings page shows a banner with the rule description when the club's rule isn't `countAll`.
+- Racer detail page's per-race table now mutes (greys out, with tooltip) points from races that didn't make a racer's top-10 set for that metric.
+- Regression-tested: for every racer-season with ≤10 races, the new computation matches the old raw cumulative sum exactly (1065 bepc-summer records checked).
+
+### New upcoming races
+
+- The Westerly Relay (PNW, 7/12) — Gorge, WA
+- Gorge Ultra Distance (PNW, 7/12) — SUP downwind race, same weekend
+- Duck Island Race #1–7 (SCKC, weekly Fridays 7/10–8/21)
+
 ## 2026-06-01
 
 ### New: Urban Surf series

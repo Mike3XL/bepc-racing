@@ -54,6 +54,10 @@ clubs:
       update_faster: 0.30
       update_slower: 0.15
       carry_over: true
+    annualPointsRule: top10results
+    annualPointsRuleDescription: >
+      Only your best 10 results count toward Index Pts and Finish Pts each
+      season — so racing more than 10 times never lowers your total.
   sckc-duck-island:
     name: SCKC Duck Island
     short_name: SCKC

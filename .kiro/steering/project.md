@@ -128,6 +128,17 @@ Every page (results, standings, trajectories, racer) shows all clubs in the sele
 ### Upcoming races: notes field is competitor-facing only (2026-07-09)
 `notes` in `upcoming.yaml` MUST only contain information relevant to competitors (format, team composition, handicaps, schedule quirks, registration counts). It MUST NOT contain information for site-operator purposes (data-source uncertainty, "would be a new results source", TODO-style tracking notes). Site-operator notes belong in the diary/memory system or a code comment, not in the published `notes` field.
 
+### Annual points rule: best-N results (2026-07-09)
+Each series has an `annualPointsRule` in `data/clubs.yaml` (default `countAll`; BEPC Summer uses `top10results`) plus an optional `annualPointsRuleDescription` shown on the standings page banner when the rule isn't `countAll`.
+
+Under `top10results`, a racer's season Finish Pts and Index Pts are each the sum of their best `BEST_N_RESULTS` (10) per-race point values — computed independently per metric, since a race can rank well on one metric and poorly on the other. Racing more than 10 times never lowers a racer's total; it only gives them more chances to post a result in their top 10.
+
+Implementation:
+- `bepc/generator.py`: `_season_points_summary()` (season-wide, used for standings-data.json) and `_racer_points_total()` (single racer's already-filtered results, used on the racer detail page) both compute per-race point lists and select the top N per `annualPointsRule`.
+- `_fmt_points_cell()` renders a race's `race_points`/`handicap_points` cell muted (reusing the `place-muted` CSS class and `data-bs-toggle="tooltip"` pattern from `_fmt_indexed_place()`) when that specific race isn't in the racer's top-10 set for that metric. Only applies when `annualPointsRule != countAll`.
+- The per-race results page (`results/{slug}.html`) does NOT show points at all — only the racer detail page and standings page display season point totals, so muting is only implemented there.
+- Verified: for every racer-season with ≤10 total races, the new top-10 computation is byte-identical to the old raw cumulative sum (regression-tested against all 1065 bepc-summer racer-season records with ≤10 races before this feature shipped).
+
 ### Results page naming (2026-04-20)
 Nav item and file renamed from "Races"/"races.html" to "Results"/"results.html". Old races.html files deleted.
 

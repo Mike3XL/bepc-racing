@@ -5,7 +5,7 @@ from pathlib import Path
 from bepc.craft import display_craft_ui
 from bepc.ui_text import (
     RESULTS_COLUMNS, RESULTS_COLUMN_STYLES,
-    TROPHIES, TROPHY_ORDER, PLACE_MUTE_REASONS, STREAK_TROPHY,
+    TROPHIES, TROPHY_ORDER, PLACE_MUTE_REASONS, POINTS_MUTE_REASONS, STREAK_TROPHY,
     RESULTS_TOOLTIPS, RESULTS_FILTER, RACER_STATS_LABELS,
     SELECTOR_PLACEHOLDERS, SEARCH,
     HOME_PAGE, STANDINGS_PAGE,
@@ -655,10 +655,59 @@ def _final_states_for_season(season_races: list) -> dict:
     return racers
 
 
+BEST_N_RESULTS = 10  # used by "top10results" annualPointsRule
+
+
+def _season_points_summary(season_races: list, annual_points_rule: str) -> dict:
+    """Compute each racer's season point totals and which races count toward them.
+
+    Returns {(name, craft): {
+        "points": int,               # season finish-points total per annualPointsRule
+        "handicap_points": int,      # season index-points total per annualPointsRule
+        "total_races": int,          # races raced this season, regardless of rule
+        "counted_race_ids_pts": set[str],   # race_ids counted toward finish points
+        "counted_race_ids_hpts": set[str],  # race_ids counted toward index points
+    }}
+
+    With "countAll" (default), every race counts — equivalent to summing all
+    per-race race_points/handicap_points. With "top10results", only the racer's
+    best BEST_N_RESULTS race_points count toward "points", and independently
+    the best BEST_N_RESULTS handicap_points count toward "handicap_points" — the
+    two counted-race sets can differ per racer, since a race can rank well on
+    one metric and poorly on the other.
+    """
+    per_racer: dict = {}
+    for race in season_races:
+        race_id = race.get("race_id", "")
+        for r in race["results"]:
+            key = (r["canonical_name"], r["craft_category"])
+            per_racer.setdefault(key, []).append(
+                (race_id, r.get("race_points", 0), r.get("handicap_points", 0)))
+
+    summary = {}
+    for key, entries in per_racer.items():
+        total_races = len(entries)
+        if annual_points_rule == "top10results":
+            by_pts = sorted(entries, key=lambda e: -e[1])[:BEST_N_RESULTS]
+            by_hpts = sorted(entries, key=lambda e: -e[2])[:BEST_N_RESULTS]
+        else:
+            by_pts = entries
+            by_hpts = entries
+        summary[key] = {
+            "points": sum(e[1] for e in by_pts),
+            "handicap_points": sum(e[2] for e in by_hpts),
+            "total_races": total_races,
+            "counted_race_ids_pts": {e[0] for e in by_pts},
+            "counted_race_ids_hpts": {e[0] for e in by_hpts},
+        }
+    return summary
+
+
 def generate_data_files(data: dict) -> None:
     """Write per-page JSON data files to site/."""
     club = data["clubs"][data["current_club"]]
     current_year = club["current_season"]
+    annual_points_rule = club.get("annual_points_rule", "countAll")
 
     # standings-data.json
     standings_data = {"current_year": current_year, "seasons": {}}
@@ -713,25 +762,34 @@ def generate_data_files(data: dict) -> None:
                             parts.append(f'<span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="{tooltip}">{_streak_icon(n)}</span>')
             return ''.join(parts)
 
-        pts = sorted(_final_states_for_season(season["races"]).values(), key=lambda r: -r["season_points"])
-        hpts = sorted(_final_states_for_season(season["races"]).values(), key=lambda r: -r["season_handicap_points"])
+        final_states = _final_states_for_season(season["races"])
+        points_summary = _season_points_summary(season["races"], annual_points_rule)
+        pts = sorted(final_states.values(),
+                     key=lambda r: -points_summary[(r["canonical_name"], r["craft_category"])]["points"])
+        hpts = sorted(final_states.values(),
+                      key=lambda r: -points_summary[(r["canonical_name"], r["craft_category"])]["handicap_points"])
         distances = set(r.get("distance", "") for r in season["races"])
         # "Established" = processor's per-series handicap-established signal (inverse of is_fresh_racer).
         # num_races_to_establish is series-configured in data/clubs.yaml and carry_over:true
         # preserves established status across seasons within the series.
         standings_data["seasons"][year] = {
             "multi_dist": len([d for d in distances if d]) > 1,
+            "annual_points_rule": annual_points_rule,
+            "annual_points_rule_description": club.get("annual_points_rule_description", ""),
             "pts": [{"name": r["canonical_name"], "craft": display_craft_ui(r["craft_category"]), "gender": r["gender"],
                      "trophies": trophy_summary(r["canonical_name"], r["craft_category"]),
-                     "course": r.get("_distance", ""), "races": r["num_races"], "points": r["season_points"]} for r in pts],
+                     "course": r.get("_distance", ""),
+                     "races": points_summary[(r["canonical_name"], r["craft_category"])]["total_races"],
+                     "points": points_summary[(r["canonical_name"], r["craft_category"])]["points"]} for r in pts],
             "hpts": [{"name": r["canonical_name"], "craft": display_craft_ui(r["craft_category"]),
                       "gender": r["gender"],
                       "trophies": trophy_summary(r["canonical_name"], r["craft_category"]),
-                      "course": r.get("_distance", ""), "races": r["num_races"],
+                      "course": r.get("_distance", ""),
+                      "races": points_summary[(r["canonical_name"], r["craft_category"])]["total_races"],
                       "established": not r.get("is_fresh_racer", False),
-                      "hpts": r["season_handicap_points"],
+                      "hpts": points_summary[(r["canonical_name"], r["craft_category"])]["handicap_points"],
                       "hcap": round(r["handicap_post"], 3),
-                      "points": r["season_points"]} for r in hpts],
+                      "points": points_summary[(r["canonical_name"], r["craft_category"])]["points"]} for r in hpts],
         }
     (SITE_DIR / f"standings-data-{data['current_club']}.json").write_text(json.dumps(standings_data))
     (SITE_DIR / data['current_club'] / "standings-data.json").write_text(json.dumps(standings_data))
@@ -809,6 +867,7 @@ def generate_standings(data: dict) -> None:
     </div>
     <span class="text-muted small">{STANDINGS_PAGE["sort_hint"]}</span>
   </div>
+  <div id="pts-rule-banner" class="alert alert-light border small py-2 px-3 mb-2 d-none"></div>
   <table id="tbl-standings" class="table table-striped table-hover">
     <thead><tr>
       <th style="width:55px">#</th>
@@ -838,6 +897,13 @@ function render(year) {{
   _currentYear = year;
   const s = SEASONS[year];
   if (dtStandings) {{ dtStandings.destroy(); dtStandings = null; }}
+  const banner = document.getElementById('pts-rule-banner');
+  if (s.annual_points_rule_description) {{
+    banner.textContent = s.annual_points_rule_description;
+    banner.classList.remove('d-none');
+  }} else {{
+    banner.classList.add('d-none');
+  }}
   const filter = document.querySelector('input[name="filter"]:checked').value;
   const racerLink = (name, slug) => RACER_SLUGS.has(slug) ? `<a href="racer/${{slug}}.html">${{name}}</a>` : name;
   const rows = (s.hpts || []).filter(r => filter === 'all' || r.established);
@@ -1667,6 +1733,17 @@ def _fmt_indexed_place(r: dict) -> str:
     return f'<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="{reason}">({ap})</span>'
 
 
+def _fmt_points_cell(value: int, counted: bool, annual_points_rule: str) -> str:
+    """Render a race_points/handicap_points cell, muted when this race's points
+    don't count toward the racer's season total (excluded by a best-N rule like
+    "top10results"). Under "countAll" every race counts, so no muting applies.
+    """
+    if annual_points_rule == "countAll" or counted:
+        return str(value)
+    reason = POINTS_MUTE_REASONS.get(annual_points_rule, POINTS_MUTE_REASONS["default"])
+    return f'<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="{reason}">{value}</span>'
+
+
 def _racer_trophy_badges(trophies: list) -> str:
     """Render trophy badges for racer page race table (Python-side, not JS).
 
@@ -1683,6 +1760,24 @@ def _racer_trophy_badges(trophies: list) -> str:
             meta = TROPHIES[t]
             parts.append(_icon_span(meta["icon"], meta["css"], meta["tooltip"]))
     return "".join(parts)
+
+
+def _racer_points_total(results: list, annual_points_rule: str) -> tuple[int, int, set, set]:
+    """Compute one racer's (points, handicap_points, counted_race_ids_pts,
+    counted_race_ids_hpts) across their per-race results in one club/year/craft,
+    per annual_points_rule. Mirrors _season_points_summary but for a single
+    racer's already-filtered results list (used on the racer detail page)."""
+    if annual_points_rule == "top10results":
+        by_pts = sorted(results, key=lambda r: -r.get("race_points", 0))[:BEST_N_RESULTS]
+        by_hpts = sorted(results, key=lambda r: -r.get("handicap_points", 0))[:BEST_N_RESULTS]
+    else:
+        by_pts = results
+        by_hpts = results
+    points = sum(r.get("race_points", 0) for r in by_pts)
+    handicap_points = sum(r.get("handicap_points", 0) for r in by_hpts)
+    counted_pts = {r["race_id"] for r in by_pts}
+    counted_hpts = {r["race_id"] for r in by_hpts}
+    return points, handicap_points, counted_pts, counted_hpts
 
 
 def generate_racer_pages(data: dict) -> None:
@@ -1830,6 +1925,9 @@ var _rs=document.getElementById('racer-select');if(_rs)_rs.addEventListener('cha
 
                     last = results[-1]
                     cid = f"{club_id}-{year}-{_slug(craft)}"
+                    annual_points_rule = data["clubs"].get(club_id, {}).get("annual_points_rule", "countAll")
+                    season_pts, season_hpts, counted_pts_ids, counted_hpts_ids = \
+                        _racer_points_total(results, annual_points_rule)
                     race_labels = [_short_label(r["name"], r.get("date", "")) for r in results]
                     pts_data = [r["season_points"] for r in results]
                     hpts_data = [r["season_handicap_points"] for r in results]
@@ -1848,22 +1946,13 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
   ]}},options:{{responsive:true,plugins:{{legend:{{position:'top'}}}},scales:{{y:{{title:{{display:true,text:'Index'}},afterDataLimits:function(s){{var sp=s.max-s.min;if(sp<0.1){{var m=(s.max+s.min)/2;s.min=m-0.05;s.max=m+0.05;}}}}}}}}}}
 }});"""
 
-                    rows = "".join(
-                        f'<tr><td><a href="../results/{data["race_slugs"].get(data["current_club"], {}).get(r["race_id"], str(r["race_id"]))}.html">{r["name"].split(" — ")[0] + (" — " + r["name"].split(" — ")[1] if " — " in r["name"] else "")}</a></td>'
-                        f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
-                        f'<td>{r["original_place"]}</td><td>{_fmt_indexed_place(r)}</td>'
-                        f'<td>{_fmt_time(r["time_seconds"])}</td><td>{_fmt_time(r["adjusted_time_seconds"])}</td>'
-                        f'<td>{r["handicap"]:.3f}</td><td>{r["handicap_post"]:.3f}</td>'
-                        f'<td>{r["race_points"]}</td><td>{r["handicap_points"]}</td></tr>'
-                        for r in results
-                    )
 
                     _racer_thead = _render_racer_page_thead()
                     craft_content += f"""{cw_open}
 <div class="row mb-3">
   <div class="col-6 col-sm-3"><strong>{RACER_STATS_LABELS['races']}:</strong> {len(results)}</div>
-  <div class="col-6 col-sm-3"><strong>{RACER_STATS_LABELS['finish_pts']}:</strong> {last["season_points"]}</div>
-  <div class="col-6 col-sm-3"><strong>{RACER_STATS_LABELS['corr_pts']}:</strong> {last["season_handicap_points"]}</div>
+  <div class="col-6 col-sm-3"><strong>{RACER_STATS_LABELS['finish_pts']}:</strong> {season_pts}</div>
+  <div class="col-6 col-sm-3"><strong>{RACER_STATS_LABELS['corr_pts']}:</strong> {season_hpts}</div>
   <div class="col-6 col-sm-3"><strong>{RACER_STATS_LABELS['hcap']}:</strong> {last["handicap_post"]:.3f}</div>
 </div>
 <div class="row mb-3">
@@ -1881,7 +1970,8 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
       f'<td>{_fmt_time(r["time_seconds"])}</td>'
       + (f'<td>{_fmt_time(r["time_seconds"] / r["adjusted_time_versus_par"])}</td>' if r.get("adjusted_time_versus_par") else '<td></td>') +
       f'<td>{r["handicap"]:.3f}</td><td>{r["handicap_post"]:.3f}</td>'
-      f'<td>{r["race_points"]}</td><td>{r["handicap_points"]}</td></tr>'
+      f'<td>{_fmt_points_cell(r["race_points"], r["race_id"] in counted_pts_ids, annual_points_rule)}</td>'
+      f'<td>{_fmt_points_cell(r["handicap_points"], r["race_id"] in counted_hpts_ids, annual_points_rule)}</td></tr>'
       for r in results
   )}</tbody>
 </table>{cw_close}"""
