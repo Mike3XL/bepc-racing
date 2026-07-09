@@ -1580,18 +1580,18 @@ function resetHighlight(chart) {
   <h1 class="mb-3">Trajectories</h1>
   <div id="traj-content">
   <ul class="nav nav-tabs mb-3" id="traj-tabs">
-    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-pts">Finish Points</button></li>
-    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-hpts">Corrected Points</button></li>
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-hpts">Indexed Points</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-pts">Finish Points</button></li>
     <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-hnum">Index</button></li>
   </ul>
   <div class="tab-content">
-    <div class="tab-pane active" id="tab-pts">
-      <p class="text-muted small">Overall season points over time. Click legend to toggle racers.</p>
-      <div class="traj-scroll"><canvas id="chart-pts"></canvas></div>
-    </div>
-    <div class="tab-pane" id="tab-hpts">
-      <p class="text-muted small">Corrected points over time. First two races provisional (no points awarded).</p>
+    <div class="tab-pane active" id="tab-hpts">
+      <p class="text-muted small">Indexed points over time. First three races provisional (no points awarded).</p>
       <div class="traj-scroll"><canvas id="chart-hpts"></canvas></div>
+    </div>
+    <div class="tab-pane" id="tab-pts">
+      <p class="text-muted small">Finish order points over time. Click legend to toggle racers.</p>
+      <div class="traj-scroll"><canvas id="chart-pts"></canvas></div>
     </div>
     <div class="tab-pane" id="tab-hnum">
       <p class="text-muted small">Index over time. Values below 1.0 = faster than par; above 1.0 = slower. Racers with 4+ races shown.</p>
@@ -1609,7 +1609,7 @@ function loadTrajSeason(year) {{
   ['pts','hpts','hnum'].forEach(k => {{
     if (charts[k]) charts[k].destroy();
     charts[k] = makeChart('chart-' + k, s[k],
-      k === 'pts' ? 'Season Points' : k === 'hpts' ? 'Corrected Points' : 'Index');
+      k === 'pts' ? 'Season Points' : k === 'hpts' ? 'Indexed Points' : 'Index');
   }});
 }}
 window.addEventListener('DOMContentLoaded', () => {{
