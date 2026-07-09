@@ -69,7 +69,44 @@ When doing a general cleanup or review pass, cover all of:
 7. docs/CHANGES.md — summarise what changed in this session (create if missing)
 8. .kiro/steering/project.md — update conventions if anything new was established
 
-## Data review checklist (run when adding new seasons or clubs)
+## Data Investigation Files
+
+**CRITICAL: Always use the per-club data files for race result investigation, NOT `site/data.json`.**
+
+The per-club files are the authoritative processed output served directly to the website via HTTP:
+
+| File (local) | URL | Contains |
+|---|---|---|
+| `site/races-data-pnw.json` | https://pnw.paddlerace.org/races-data-pnw.json | Full processed race results for PNW |
+| `site/races-data-bepc-summer.json` | https://pnw.paddlerace.org/races-data-bepc-summer.json | BEPC Summer |
+| `site/standings-data-pnw.json` | https://pnw.paddlerace.org/standings-data-pnw.json | Standings |
+| `site/trajectories-data-pnw.json` | https://pnw.paddlerace.org/trajectories-data-pnw.json | Trajectories |
+
+Structure of `races-data-pnw.json`:
+```
+{
+  current_year: "2026",
+  seasons: {
+    "2026": [
+      {race_id, name, date, courses: [
+        {label, short_label,
+         finish: [{canonical_name, handicap, adjusted_time_seconds, adjusted_place,
+                   eligible_adjusted_place, time_versus_par, adjusted_time_versus_par,
+                   handicap_post, num_races, is_fresh_racer, is_par_racer, trophies,
+                   handicap_note, num_ranked_races_pre, ...}],
+         handicap: [same entries, sorted by adjusted_place]}
+      ]}
+    ]
+  }
+}
+```
+
+Key fields: `handicap` = pre-race handicap, `handicap_post` = post-race, `is_par_racer` = True for par racer, `adjusted_time_versus_par` = Jordan's "+0.3%" value.
+
+`site/data.json` — large aggregated file used internally for generating racer pages. Not for race investigation.
+`data/*/common/*.common.json` — raw fetched data BEFORE handicap processing. Do not use for investigating processed handicap results.
+
+
 
 - **PNW Regional racer page threshold:** currently `min_races_for_page = 3` in CLUB_META (only generate pages for racers with 3+ appearances across all seasons). Review annually — increase to 4-5 as more years accumulate. Check: `python3 -c "..."` count script in FUTURE_WORK.md.
 - Alias check: compare all new canonical names against `data/<club>/aliases.json`
@@ -87,6 +124,9 @@ Every page (results, standings, trajectories, racer) shows all clubs in the sele
 
 ### Upcoming races: location vs notes split (2026-04-20)
 `upcoming.yaml` has separate `location` and `notes` fields. `location` shows under race name (grey, small). `notes` shows in the Notes column (timing info only). Extracted from old combined notes field.
+
+### Upcoming races: notes field is competitor-facing only (2026-07-09)
+`notes` in `upcoming.yaml` MUST only contain information relevant to competitors (format, team composition, handicaps, schedule quirks, registration counts). It MUST NOT contain information for site-operator purposes (data-source uncertainty, "would be a new results source", TODO-style tracking notes). Site-operator notes belong in the diary/memory system or a code comment, not in the published `notes` field.
 
 ### Results page naming (2026-04-20)
 Nav item and file renamed from "Races"/"races.html" to "Results"/"results.html". Old races.html files deleted.

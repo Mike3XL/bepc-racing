@@ -118,6 +118,187 @@ upcoming:
     type: webscorer
     organizer: '60473'
   organizer: --
+- name: The Westerly Relay
+  date: '2026-07-12'
+  clubs:
+  - pnw
+  distance: 2-leg relay (Stevenson to Home Valley to Drano Lake, ~21 mi total course)
+  url: https://threeoceans.co/pages/the-gorge-race
+  links:
+  - label: Info
+    url: https://threeoceans.co/pages/the-gorge-race
+  - label: Register
+    url: https://threeoceans.co/pages/the-gorge-race
+  - label: Start List
+    url: https://www.webscorer.com/registerlist?pid=1&raceid=436539
+  location: Stevenson, WA (Columbia River Gorge)
+  timing:
+  - 'Safety meeting: 9 AM'
+  - 'Start: 10 AM'
+  notes: Two-person teams, preferably mixed craft (Surfski/OC1) and co-ed. Age
+    handicaps instead of age categories (Under 40 none, 40-49 2.5%, 50-59 5%,
+    60-69 9%, 70+ 11%).
+  organizer: --
+- name: Gorge Ultra Distance
+  date: '2026-07-12'
+  clubs:
+  - pnw
+  distance: 17 mi or 7 mi (short course option)
+  url: https://runsignup.com/Race/WA/Stevenson/GorgeUltraDistance
+  links:
+  - label: Info
+    url: https://runsignup.com/Race/WA/Stevenson/GorgeUltraDistance
+  - label: Register
+    url: https://runsignup.com/Race/WA/Stevenson/GorgeUltraDistance
+  - label: Participants
+    url: https://runsignup.com/Race/FindARunner/?raceId=204158
+  - label: Aggregator listing
+    url: https://findarace.com/us/events/gorge-ultra-distance
+  location: Home Valley to Bingen Harbor, WA (Columbia River Gorge)
+  timing:
+  - 'Check-in: 6:30-8 AM (small conditions) or 6:30-10 AM (medium/large
+    conditions)'
+  - 'Start: 9 AM (small conditions) or 11:30 AM (medium/large conditions)'
+  notes: SUP downwind race. Conditions-dependent schedule — race day start
+    time shifts by up to 2.5 hrs depending on wind. 29 registered as of
+    7/9.
+  organizer: --
+- name: Duck Island Race #1
+  date: '2026-07-10'
+  clubs:
+  - sckc-duck-island
+  distance: ~1 mi (1.75 km around Duck Island)
+  url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  links:
+  - label: Info
+    url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  - label: Results
+    url: https://www.webscorer.com/sckc
+  location: Green Lake Small Craft Center, Seattle, WA
+  timing:
+  - 'Sign-in: by 6:15 PM'
+  - 'Start: 6:30 PM'
+  notes: Friday night race series, all summer. Free, all human-powered paddle
+    craft welcome. BBQ/potluck after. Knock-off 100m races may follow if there's
+    interest.
+  results_source:
+    type: webscorer
+    organizer: sckc
+  organizer: sckc
+- name: Duck Island Race #2
+  date: '2026-07-17'
+  clubs:
+  - sckc-duck-island
+  distance: ~1 mi (1.75 km around Duck Island)
+  url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  links:
+  - label: Info
+    url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  - label: Results
+    url: https://www.webscorer.com/sckc
+  location: Green Lake Small Craft Center, Seattle, WA
+  timing:
+  - 'Sign-in: by 6:15 PM'
+  - 'Start: 6:30 PM'
+  results_source:
+    type: webscorer
+    organizer: sckc
+  organizer: sckc
+- name: Duck Island Race #3
+  date: '2026-07-24'
+  clubs:
+  - sckc-duck-island
+  distance: ~1 mi (1.75 km around Duck Island)
+  url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  links:
+  - label: Info
+    url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  - label: Results
+    url: https://www.webscorer.com/sckc
+  location: Green Lake Small Craft Center, Seattle, WA
+  timing:
+  - 'Sign-in: by 6:15 PM'
+  - 'Start: 6:30 PM'
+  results_source:
+    type: webscorer
+    organizer: sckc
+  organizer: sckc
+- name: Duck Island Race #4
+  date: '2026-07-31'
+  clubs:
+  - sckc-duck-island
+  distance: ~1 mi (1.75 km around Duck Island)
+  url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  links:
+  - label: Info
+    url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  - label: Results
+    url: https://www.webscorer.com/sckc
+  location: Green Lake Small Craft Center, Seattle, WA
+  timing:
+  - 'Sign-in: by 6:15 PM'
+  - 'Start: 6:30 PM'
+  results_source:
+    type: webscorer
+    organizer: sckc
+  organizer: sckc
+- name: Duck Island Race #5
+  date: '2026-08-07'
+  clubs:
+  - sckc-duck-island
+  distance: ~1 mi (1.75 km around Duck Island)
+  url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  links:
+  - label: Info
+    url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  - label: Results
+    url: https://www.webscorer.com/sckc
+  location: Green Lake Small Craft Center, Seattle, WA
+  timing:
+  - 'Sign-in: by 6:15 PM'
+  - 'Start: 6:30 PM'
+  results_source:
+    type: webscorer
+    organizer: sckc
+  organizer: sckc
+- name: Duck Island Race #6
+  date: '2026-08-14'
+  clubs:
+  - sckc-duck-island
+  distance: ~1 mi (1.75 km around Duck Island)
+  url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  links:
+  - label: Info
+    url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  - label: Results
+    url: https://www.webscorer.com/sckc
+  location: Green Lake Small Craft Center, Seattle, WA
+  timing:
+  - 'Sign-in: by 6:15 PM'
+  - 'Start: 6:30 PM'
+  results_source:
+    type: webscorer
+    organizer: sckc
+  organizer: sckc
+- name: Duck Island Race #7
+  date: '2026-08-21'
+  clubs:
+  - sckc-duck-island
+  distance: ~1 mi (1.75 km around Duck Island)
+  url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  links:
+  - label: Info
+    url: https://seattlecanoekayak.club/index.php?id=duck-island-race-series
+  - label: Results
+    url: https://www.webscorer.com/sckc
+  location: Green Lake Small Craft Center, Seattle, WA
+  timing:
+  - 'Sign-in: by 6:15 PM'
+  - 'Start: 6:30 PM'
+  results_source:
+    type: webscorer
+    organizer: sckc
+  organizer: sckc
 - name: Urban Surf 2026 Race 6/8
   date: '2026-07-15'
   clubs:
