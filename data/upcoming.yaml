@@ -135,9 +135,9 @@ upcoming:
   timing:
   - 'Safety meeting: 9 AM'
   - 'Start: 10 AM'
-  notes: Two-person teams, preferably mixed craft (Surfski/OC1) and co-ed. Age
-    handicaps instead of age categories (Under 40 none, 40-49 2.5%, 50-59 5%,
-    60-69 9%, 70+ 11%).
+  notes: Two-person teams, preferably mixed craft (Surfski/OC1) and co-ed. Age handicaps
+    instead of age categories (Under 40 none, 40-49 2.5%, 50-59 5%, 60-69 9%, 70+
+    11%).
   organizer: --
 - name: Gorge Ultra Distance
   date: '2026-07-12'
@@ -156,14 +156,12 @@ upcoming:
     url: https://findarace.com/us/events/gorge-ultra-distance
   location: Home Valley to Bingen Harbor, WA (Columbia River Gorge)
   timing:
-  - 'Check-in: 6:30-8 AM (small conditions) or 6:30-10 AM (medium/large
-    conditions)'
+  - 'Check-in: 6:30-8 AM (small conditions) or 6:30-10 AM (medium/large conditions)'
   - 'Start: 9 AM (small conditions) or 11:30 AM (medium/large conditions)'
-  notes: SUP downwind race. Conditions-dependent schedule — race day start
-    time shifts by up to 2.5 hrs depending on wind. 29 registered as of
-    7/9.
+  notes: SUP downwind race. Conditions-dependent schedule — race day start time shifts
+    by up to 2.5 hrs depending on wind. 29 registered as of 7/9.
   organizer: --
-- name: Duck Island Race #1
+- name: Duck Island Race
   date: '2026-07-10'
   clubs:
   - sckc-duck-island
@@ -178,14 +176,13 @@ upcoming:
   timing:
   - 'Sign-in: by 6:15 PM'
   - 'Start: 6:30 PM'
-  notes: Friday night race series, all summer. Free, all human-powered paddle
-    craft welcome. BBQ/potluck after. Knock-off 100m races may follow if there's
-    interest.
+  notes: Friday night race series, all summer. Free, all human-powered paddle craft
+    welcome. BBQ/potluck after. Knock-off 100m races may follow if there's interest.
   results_source:
     type: webscorer
     organizer: sckc
   organizer: sckc
-- name: Duck Island Race #2
+- name: Duck Island Race
   date: '2026-07-17'
   clubs:
   - sckc-duck-island
@@ -204,7 +201,7 @@ upcoming:
     type: webscorer
     organizer: sckc
   organizer: sckc
-- name: Duck Island Race #3
+- name: Duck Island Race
   date: '2026-07-24'
   clubs:
   - sckc-duck-island
@@ -223,7 +220,7 @@ upcoming:
     type: webscorer
     organizer: sckc
   organizer: sckc
-- name: Duck Island Race #4
+- name: Duck Island Race
   date: '2026-07-31'
   clubs:
   - sckc-duck-island
@@ -242,7 +239,7 @@ upcoming:
     type: webscorer
     organizer: sckc
   organizer: sckc
-- name: Duck Island Race #5
+- name: Duck Island Race
   date: '2026-08-07'
   clubs:
   - sckc-duck-island
@@ -261,7 +258,7 @@ upcoming:
     type: webscorer
     organizer: sckc
   organizer: sckc
-- name: Duck Island Race #6
+- name: Duck Island Race
   date: '2026-08-14'
   clubs:
   - sckc-duck-island
@@ -280,7 +277,7 @@ upcoming:
     type: webscorer
     organizer: sckc
   organizer: sckc
-- name: Duck Island Race #7
+- name: Duck Island Race
   date: '2026-08-21'
   clubs:
   - sckc-duck-island
@@ -392,29 +389,6 @@ upcoming:
   - 'Start: 12:30 PM'
   - 'Awards: 3 PM'
   organizer: salmon-bay-paddle
-- name: 'BEPC 2026 Race Series #11'
-  date: '2026-07-13'
-  clubs:
-  - bepc-summer
-  source_id: 427436
-  distance: ~3 mi
-  url: https://www.webscorer.com/register?raceid=427436
-  links:
-  - label: Register
-    url: https://www.webscorer.com/register?raceid=427436
-  - label: Start List
-    url: https://www.webscorer.com/registerlist?raceid=427436&details=1
-  - label: Info
-    url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  location: Shilshole Bay, Seattle, WA
-  timing:
-  - 'Reg: 6 PM'
-  - 'Meeting: 6:30 PM'
-  - 'Start: 7 PM'
-  results_source:
-    type: webscorer
-    organizer: bepc827
-  organizer: --
 - name: Budd Inlet
   date: '2026-07-18'
   clubs:
