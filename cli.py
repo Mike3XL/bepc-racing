@@ -597,7 +597,16 @@ def _are_duplicates(a: dict, b: dict) -> tuple[bool, list[str]]:
 
 
 def _notify_error(msg: str) -> None:
-    """Send a Mac notification on failure (cron-friendly)."""
+    """Send a Mac notification on failure (cron-friendly).
+
+    No-op in GitHub Actions (or any non-macOS CI): Ubuntu runners have an
+    unrelated `terminal-notifier` binary on PATH (from a preinstalled Ruby
+    gem) whose shebang only works on macOS, so it doesn't raise
+    FileNotFoundError there — it just prints a shell syntax error to stderr
+    that gets confused with the real failure in the logs.
+    """
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        return
     import subprocess
     try:
         subprocess.run(["terminal-notifier", "-title", "BEPC process-results",

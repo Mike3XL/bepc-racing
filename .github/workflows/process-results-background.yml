@@ -31,6 +31,7 @@ jobs:
         id: process
         env:
           WEBSCORER_API_ID: ${{ secrets.WEBSCORER_API_ID }}
+          WEBSCORER_API_TOKEN: ${{ secrets.WEBSCORER_API_TOKEN }}
           GITHUB_ACTIONS: 'true'
         run: |
           output=$(python cli.py process-results pnw 2>&1)
