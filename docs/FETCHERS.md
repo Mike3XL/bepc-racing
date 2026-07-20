@@ -63,7 +63,7 @@ python3 cli.py fetch-jericho 2025   # fetches all known 2025 Jericho races
 
 **Usage (via CLI):**
 ```bash
-python3 cli.py import-pdf <file.pdf> --club pnw-regional --year 2024 \
+python3 cli.py fetch pdf <file.pdf> --club pnw --year 2024 \
     --race-id 99001 --name "Event Name" --date "Mar 1, 2024"
 ```
 

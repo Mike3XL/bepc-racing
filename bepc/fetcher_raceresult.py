@@ -7,7 +7,7 @@ Usage:
     from bepc.fetcher_raceresult import fetch_event
     from pathlib import Path
     fetch_event(rr_id=281775, name="2024 Peter Marcus Rough Water Race",
-                date="Mar 16, 2024", out_dir=Path("data/pnw-regional/2024/common"))
+                date="Mar 16, 2024", out_dir=Path("data/pnw/2024/common"))
 
 Event catalog: data/sources/pacificmultisports_events.json
 """

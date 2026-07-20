@@ -156,7 +156,7 @@ def fetch_soundrowers() -> list[dict]:
         races.append({
             "name": name_raw,
             "date": d.strftime("%Y-%m-%d"),
-            "clubs": ["sound-rowers", "pnw-regional"],
+            "clubs": ["pnw"],
             "distance": distance,
             "url": url,
             "links": links,
@@ -184,7 +184,7 @@ def fetch_paddlers_cup() -> list[dict]:
     return [{
         "name": "Paddlers Cup",
         "date": d.strftime("%Y-%m-%d"),
-        "clubs": ["pnw-regional"],
+        "clubs": ["pnw"],
         "distance": "2.5K/5K/10K",
         "url": "https://gigharborpaddlerscup.com",
         "links": [

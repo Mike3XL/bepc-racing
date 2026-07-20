@@ -1143,7 +1143,7 @@ def cmd_fetch_raceresult(args):
             if not catalog_entry:
                 catalog.setdefault("events", []).append({
                     "pms_id": resolved_pms_id, "rr_id": rr_id, "year": int(year),
-                    "date": date, "name": resolved_name or f"Event {rr_id}", "type": "pnw-regional",
+                    "date": date, "name": resolved_name or f"Event {rr_id}", "type": "pnw",
                 })
                 catalog_path.write_text(json.dumps(catalog, indent=2))
                 print(f"  Catalog updated: pms:{resolved_pms_id} <-> rr:{rr_id}")
@@ -1554,12 +1554,12 @@ def main():
 
     fj = fetch_sub.add_parser("jericho", help="Fetch PNW smallboat races from Jericho year page")
     fj.add_argument("year", help="Year e.g. 2025")
-    fj.add_argument("--club", default="pnw-regional")
+    fj.add_argument("--club", default="pnw")
     fj.add_argument("--dry-run", action="store_true")
 
     fju = fetch_sub.add_parser("jericho-url", help="Import Jericho-format HTML results from URL")
     fju.add_argument("url")
-    fju.add_argument("--club", default="pnw-regional")
+    fju.add_argument("--club", default="pnw")
     fju.add_argument("--year", required=True)
     fju.add_argument("--race-id", required=True)
     fju.add_argument("--name", required=True)
@@ -1583,7 +1583,7 @@ def main():
 
     fpdf = fetch_sub.add_parser("pdf", help="Import Pacific Multisports PDF results")
     fpdf.add_argument("pdf", help="Path to PDF file")
-    fpdf.add_argument("--club", default="pnw-regional")
+    fpdf.add_argument("--club", default="pnw")
     fpdf.add_argument("--year", required=True)
     fpdf.add_argument("--race-id", required=True)
     fpdf.add_argument("--name", required=True)

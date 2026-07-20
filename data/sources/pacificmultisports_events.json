@@ -57,7 +57,7 @@
       "year": 2022,
       "date": "Feb 26, 2022",
       "name": "2022 BBOP PNWORCA Winter Series #4",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1006
     },
     {
@@ -65,7 +65,7 @@
       "year": 2022,
       "date": "Mar 26, 2022",
       "name": "2022 SPOCC PNWORCA Winter Series #7",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1014
     },
     {
@@ -73,7 +73,7 @@
       "year": 2022,
       "date": "Mar 19, 2022",
       "name": "2022 Bellingham Bay Rough Water Race",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1007
     },
     {
@@ -81,7 +81,7 @@
       "year": 2023,
       "date": "Oct 15, 2023",
       "name": "2023 Peter Marcus - Paddle 4 Food",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1159
     },
     {
@@ -89,7 +89,7 @@
       "year": 2024,
       "date": "Jul 12, 2024",
       "name": "2024 Gorge Downwind Champs",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1173
     },
     {
@@ -97,7 +97,7 @@
       "year": 2024,
       "date": "Mar 16, 2024",
       "name": "2024 Peter Marcus Rough Water Race",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1190
     },
     {
@@ -105,7 +105,7 @@
       "year": 2024,
       "date": "Jul 6, 2024",
       "name": "2024 The Gorge Outrigger Canoe Race",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1200
     },
     {
@@ -113,7 +113,7 @@
       "year": 2024,
       "date": "Oct 12, 2024",
       "name": "2024 Narrows Challenge",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1216
     },
     {
@@ -121,7 +121,7 @@
       "year": 2024,
       "date": "Aug 24, 2024",
       "name": "2024 BBOP Challenge - Outrigger Canoe Race",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1246
     },
     {
@@ -129,7 +129,7 @@
       "year": 2024,
       "date": "Oct 13, 2024",
       "name": "2024 Peter Marcus - Paddle 4 Food",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1250
     },
     {
@@ -137,7 +137,7 @@
       "year": 2025,
       "date": "Jul 18, 2025",
       "name": "2025 Gorge Downwind Champs",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1270
     },
     {
@@ -145,7 +145,7 @@
       "year": 2025,
       "date": "Mar 15, 2025",
       "name": "2025 Peter Marcus Rough Water Race",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1287
     },
     {
@@ -153,7 +153,7 @@
       "year": 2025,
       "date": "Oct 11, 2025",
       "name": "2025 Narrows Challenge",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1304
     },
     {
@@ -161,7 +161,7 @@
       "year": 2025,
       "date": "Oct 18, 2025",
       "name": "2025 Peter Marcus - Paddle 4 Food",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1332
     },
     {
@@ -169,7 +169,7 @@
       "year": 2026,
       "date": "Mar 14, 2026",
       "name": "2026 Peter Marcus Rough Water Race",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1363
     },
     {
@@ -177,7 +177,7 @@
       "year": 2026,
       "date": "Feb 21, 2026",
       "name": "2026 BBOP PNWORCA Winter Series #4",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1368
     },
     {
@@ -185,7 +185,7 @@
       "year": 2023,
       "date": "Jul 10, 2023",
       "name": "2023 Gorge Downwind Champs",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1088
     },
     {
@@ -193,7 +193,7 @@
       "year": 2025,
       "date": "Sep 20, 2025",
       "name": "2025 Salmon Row and Paddle",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1303
     },
     {
@@ -201,7 +201,7 @@
       "year": 2023,
       "date": "Oct 14, 2023",
       "name": "2023 Narrows Challenge",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1129
     },
     {
@@ -209,7 +209,7 @@
       "year": 2022,
       "date": "Oct 8, 2022",
       "name": "2022 Narrows Challenge",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1027
     },
     {
@@ -217,7 +217,7 @@
       "year": 2026,
       "date": "Jul 16, 2026",
       "name": "2026 Gorge Downwind Champs",
-      "type": "pnw-regional",
+      "type": "pnw",
       "pms_id": 1353
     }
   ]

@@ -25,6 +25,14 @@ series:
       La Conner, Rat Island, Paddlers Cup, etc.
     sort_order: 30
 
+  urban-surf:
+    name: Urban Surf
+    description: >
+      Short weekly paddle race series in Seattle, organized by Urban Surf /
+      2100 Project. Similar format to BEPC Summer. Spotty record keeping —
+      not all years have results.
+    sort_order: 40
+
   none:
     name: None
     description: >

@@ -2893,7 +2893,7 @@ def generate_platform_home(data: dict) -> None:
             )
         return html
 
-    _CLUB_PREF = ["pnw-regional"]
+    _CLUB_PREF = ["pnw"]
 
     for r in recent_races:
         _race_counter[0] += 1

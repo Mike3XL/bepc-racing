@@ -60,7 +60,7 @@ Sites are defined in `data/clubs.yaml`:
 sites:
   pnw:
     domain: pnw.paddlerace.org
-    clubs: [bepc, sound-rowers, pnw-regional, sckc]
+    clubs: [pnw, bepc-summer, sckc-duck-island, urban-surf, none]
     gh_branch: gh-pages
     gh_url: https://pnw.paddlerace.org/
 ```
@@ -111,21 +111,22 @@ bepc-racing/
 │   ├── processor.py            # Season processing pipeline
 │   └── generator.py            # HTML + JSON data file generation
 ├── data/
-│   ├── clubs.yaml              # Club configuration (name, type, short_name, etc.)
+│   ├── clubs.yaml              # Club/series configuration (name, type, short_name, etc.)
+│   ├── series.yaml             # Series/organizer/tag enum (see docs/SERIES_SYSTEM.md)
 │   ├── upcoming.yaml           # Upcoming races for home page
 │   ├── sources/                # External source metadata (WebScorer event lists, etc.)
-│   ├── bepc/<year>/common/     # Normalized per-race JSON (source of truth)
-│   ├── sound-rowers/<year>/common/
-│   ├── sckc/<year>/common/
-│   └── pnw-regional/<year>/common/
+│   ├── pnw/<year>/common/      # PNW series — normalized per-race JSON (source of truth)
+│   ├── bepc-summer/<year>/common/
+│   ├── sckc-duck-island/<year>/common/
+│   └── urban-surf/<year>/common/
 ├── site/                       # Generated static site (gitignored)
 │   ├── index.html              # Home page
 │   ├── about.html
 │   ├── clubs.html
-│   ├── bepc/                   # Per-club pages
-│   ├── sound-rowers/
-│   ├── sckc/
-│   └── pnw-regional/
+│   ├── pnw/                    # Per-series pages
+│   ├── bepc-summer/
+│   ├── sckc-duck-island/
+│   └── urban-surf/
 └── SPEC.md                     # Architecture and design spec
 ```
 
