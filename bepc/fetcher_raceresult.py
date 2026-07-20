@@ -101,11 +101,15 @@ def fetch_event(rr_id: int, name: str, date: str, out_dir: Path,
     key = config.get("key", "")
     contests = config.get("contests", {})  # {id: label}
     event_name = config.get("eventname", name)
-    event_date = config.get("Time") and date or date  # use provided date
+
+    # If no explicit name was given (placeholder "Event {rr_id}"), use the real
+    # event name from raceresult.com for the filename slug too — otherwise files
+    # get written as "Event_411085" instead of "2026_Gorge_Downwind_Champs".
+    slug_source_name = event_name if name == f"Event {rr_id}" else name
 
     # Save raw config
     date_slug = _date_slug(date)
-    name_slug = _name_slug(name)
+    name_slug = _name_slug(slug_source_name)
     raw_config_fname = f"{date_slug}__{rr_id}__{name_slug}.config.json"
     save_raw(out_dir, raw_config_fname, json.dumps(config, indent=2))
 

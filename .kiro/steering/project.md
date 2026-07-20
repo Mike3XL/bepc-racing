@@ -24,6 +24,55 @@ Never start editing code to "try something" — always analyze first.
 Example: "Matt Sun" → canonical is "Matthew Sun" (page: matthew-sun.html)
 Example: "Eli Holmes" → canonical is "Elizabeth Holmes" (page: elizabeth-holmes.html)
 
+## Alias merges — never assume, always verify plausibility
+
+Before accepting or keeping any alias merge (two raw names → one canonical person):
+1. Check whether the two raw entries appear as **separate rows in the same race** — if so,
+   they are almost certainly two different people (families racing together are common:
+   Wyse, Probasco, Grocholski Jr./Sr., Tsukigase, etc. all had this exact bug).
+2. **Cross-check plausible performance level.** If one name is a known/top racer, their
+   result should be near the front of the field. A huge place/time gap between the two
+   entries under review (e.g. 7th place vs 230th) is a strong signal they are NOT the
+   same person, regardless of how similar the names look.
+3. Different last names merged onto one canonical name is a red flag on its own —
+   legitimate aliases are almost always typo/format variants (case, whitespace,
+   nickname↔formal, "Last, First" flips), not full name changes.
+4. `data/aliases.json` is the ONLY file the site build reads for name canonicalization.
+   `data/name-decisions.json` is a working/reference file for the `audit-names` review
+   process (pending/rejected/uniques) — accepted aliases there do NOT take effect on the
+   live site until manually merged into `data/aliases.json`.
+5. `cli.py audit-names` requires manual review of every candidate (no auto-accept — this
+   was removed 2026-07-20 after it caused the false merges above). Must be run manually
+   by Mike in his own terminal (hangs in an agent session — see below).
+
+## Adding a Pacific Multisports (PMS) race — e.g. Gorge Downwind Champs
+
+Gorge Downwind Champs and most PNWORCA/Sound Rowers PMS events run on `raceresult.com`
+under the hood, wrapped by `register.pacificmultisports.com` / `gbrc.pacificmultisports.com`.
+
+1. **Confirm the actual race date and results link before fetching anything.** Pull
+   `gorgedownwindchamps.com` (or the relevant organizer site) — its Results page links
+   directly to the current year's PMS results page and states the actual date the race
+   ran (schedule says "Thu/Fri/Sat based on wind," so don't assume the published schedule
+   date). The PMS results URL (`register.pacificmultisports.com/Events/Results/<ID>`)
+   gives the `pms_id` needed below. This single check gives you race name, date, and ID
+   together — don't guess or reuse last year's date.
+2. Fetch (auto-resolves the raceresult.com ID, auto-fills the correct public results link,
+   auto-updates the event catalog, prints a sanity summary):
+   ```bash
+   python3.13 cli.py fetch raceresult --pms-id <ID> --club pnw --year <YYYY> --date "Mon D, YYYY"
+   ```
+   `--club pnw` is correct for Gorge Downwind Champs and all PNWORCA/Sound Rowers PMS
+   events — NOT `pnw-regional` (not a real data folder; see docs/FETCHERS.md).
+3. Build and publish:
+   ```bash
+   python3.13 cli.py build-site pnw
+   python3.13 cli.py publish-site pnw
+   ```
+4. Ask Mike to run `cli.py audit-names` manually afterward if new racers were added.
+
+Full fetcher details: `docs/FETCHERS.md`.
+
 ## Conventions
 
 - Handicap result is the primary competition — always default to handicap view
@@ -40,6 +89,7 @@ Example: "Eli Holmes" → canonical is "Elizabeth Holmes" (page: elizabeth-holme
 - Check for obvious duplicates: same person with different capitalisation, spelling, or abbreviation
 - Verify racer counts per race look reasonable (not 0, not wildly different from similar races)
 - Check pointsWeight is 1.0 for single-course races
+- **`cli.py audit-names` does not work when run via an AI agent session (execute_bash) — it hangs/blocks. Ask Mike to run it manually in his own terminal instead.**
 - Run process and verify race/racer counts before generating
 
 ## Fetcher notes

@@ -26,14 +26,6 @@ _NAMER = NickNamer()
 
 # Jaro-Winkler threshold for fuzzy candidates
 _FUZZY_THRESHOLD = 0.88
-# Above this → auto-accept (very high confidence)
-_AUTO_ACCEPT = 0.97
-# Auto-accept if BOTH names are rare (total occurrences ≤ this) and confidence ≥ this
-_LOW_VOLUME_MAX_COUNT = 3
-_LOW_VOLUME_MIN_CONF = 0.93
-# Auto-accept if raw is rare relative to suggested (ratio ≥ this) and confidence ≥ this
-_COUNT_RATIO_MIN = 5       # suggested must be at least 5× more common than raw
-_COUNT_RATIO_MIN_CONF = 0.90  # minimum confidence to use ratio rule
 
 _PERSON_NAME_RE = re.compile(r'\b[A-Z][a-z]{1,}\s+[A-Z][a-z]{1,}\b')
 
@@ -312,7 +304,8 @@ def _prompt(candidate: dict) -> str:
     method = candidate["method"]
     count = candidate.get("count", "?")
     sug_count = candidate.get("sug_count", "?")
-    print(f"\n  [{method} {conf:.2f}] {raw!r} ({count}x)  →  {suggested!r} ({sug_count}x)")
+    print(f"\n  Confidence: {conf:.2f} ({method})")
+    print(f"  {raw!r} ({count}x)  →  {suggested!r} ({sug_count}x)")
     print("  [y]es  [n]o  [r]everse  [u]nique  [s]kip  [q]uit  ", end="", flush=True)
     while True:
         ch = input().strip().lower()
@@ -335,35 +328,12 @@ def cmd_audit_names(args):
         print("No new candidates found.")
         return
 
-    # Split: high-confidence auto-accept, low-volume auto-accept, count-ratio auto-accept, needs review
-    auto = [c for c in candidates
-            if c["confidence"] >= _AUTO_ACCEPT
-            or (c["confidence"] >= _LOW_VOLUME_MIN_CONF and _is_low_volume(c, raw_names))
-            or _is_count_ratio_match(c, raw_names)
-            or _is_club_suffix(c["raw"], c["suggested"])]
-    review = [c for c in candidates if c not in auto]
+    # All candidates require manual review — no auto-accept.
+    # (Auto-accept was removed after it produced false merges of distinct people,
+    # e.g. "Peter Hornsby" -> "Peter Conmy" at 0.902 confidence. See FUTURE_WORK.md
+    # for the idea of using confidence to batch/sort review instead of skipping it.)
+    review = sorted(candidates, key=lambda c: -c["confidence"])
 
-    # Auto-accept
-    if auto:
-        print(f"\nAuto-accepting {len(auto)} aliases:")
-        for c in auto:
-            raw, suggested = c["raw"], c["suggested"]
-            # Club-suffix: bare name is canonical, suffixed variant aliases to it
-            if _is_club_suffix(raw, suggested):
-                raw, suggested = suggested, raw
-            decisions["aliases"][raw] = suggested
-            if c["confidence"] >= _AUTO_ACCEPT:
-                rule = ""
-            elif _is_club_suffix(c["raw"], c["suggested"]):
-                rule = " club-suffix"
-            elif _is_count_ratio_match(c, raw_names):
-                rule = " ratio"
-            else:
-                rule = " low-vol"
-            tag = f"{c['method']} {c['confidence']:.2f}{rule}"
-            print(f"  {c['raw']!r} ({c['count']}x) → {c['suggested']!r} ({c['sug_count']}x)  [{tag}]")
-
-    # Interactive review
     if review:
         print(f"\n{len(review)} candidates need review (q to stop and save):")
         for c in review:

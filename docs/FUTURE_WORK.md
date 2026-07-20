@@ -23,6 +23,19 @@ Update `audit_names.py` to display this context when reviewing pending decisions
 
 Known bad decisions to fix: `"Robert Schroeter" → "Robert Schade"` and `"Robert Laubscher" → "Robert Schade"` (both wrong — different people; caused spurious results on Robert Schade's racer page).
 
+### Remove Auto-Accept from audit-names, Add Confidence-Based Batching (2026-07-20)
+`audit_names.py` used to auto-accept high-confidence fuzzy matches (`_AUTO_ACCEPT = 0.97`, plus low-volume and count-ratio heuristics) without human review. This caused numerous false merges of distinct people who happen to share a last name and race together (often families: Wyse, Probasco, Grocholski Jr./Sr., Denny, etc.) or have similar-looking names (Peter Hornsby/Peter Carlson → Peter Conmy at confidence 0.902). Found and fixed 2026-07-20 while investigating duplicate racer entries on the 2026 Gorge Downwind Champs page — see `data/name-decisions.json`'s `rejected`/removed entries and the corresponding cleanup in `data/aliases.json`.
+
+Auto-accept has been removed entirely — **every** candidate now requires manual y/n/r/u/s/q review, and the confidence score is shown first at each prompt.
+
+Also fixed as part of this: the site build (`build-site`/`build-club`) previously read `name-decisions.json`'s `aliases` section directly (`bepc/loader.py: _load_global_aliases`), which meant accepted-but-unmerged decisions could silently affect the live site without a deliberate merge step. The build now reads **only** `data/aliases.json`. `name-decisions.json` remains the working/reference file for the `audit-names` review process (pending/rejected/uniques), but its `aliases` section must be manually merged into `data/aliases.json` to take effect.
+
+Future improvement — instead of auto-accepting, use the confidence score (and existing heuristics like `_is_club_suffix`, `_is_low_volume`, `_is_count_ratio_match` in `audit_names.py`, currently unused but left in place) to make the *review* more efficient without skipping it:
+- Sort/group candidates by confidence so the highest-confidence (likely-correct) ones are reviewed first
+- Batch visually similar candidates together for faster y/n scanning
+- Surface a red flag when the raw/suggested pair's typical race placement differs wildly (see: Jonas Decker at 230th vs Jonas Ecker's 7th place finish — a large performance gap is a strong signal they are different people)
+- Still require an explicit decision per name; never apply a merge without one
+
 ### Alias Transparency
 When a racer's name is corrected via aliases.json, the original source name is lost. Add transparency so viewers can see when a result was listed under a different name in the source data.
 - Store `original_name` in race result data when an alias is applied

@@ -82,7 +82,37 @@ python3 cli.py import-pdf <file.pdf> --club pnw-regional --year 2024 \
 3. Parses grouped results (one group per course/distance)
 
 **Event catalog:** `data/sources/pacificmultisports_events.json`  
-Contains all known Pacific Multisports paddling events with their `gbrc_id` and `rr_id`.
+Contains all known Pacific Multisports paddling events with their `pms_id` and `rr_id`.
+Auto-updated by the CLI on first fetch of a new event (see below) — no manual editing needed.
+
+**displayURL:** always `register.pacificmultisports.com/Events/Results/{pms_id}` (the public
+PMS results page), never the raw `my.raceresult.com` link — the latter is just the API backend
+PMS wraps and isn't meant to be shown to end users. Reverse mapping lives in
+`data/sources/pms_rr_mapping.json` (rr_id → pms_id), also auto-updated on first fetch.
+
+**Usage (via CLI — preferred, by PMS event ID):**
+```bash
+# First fetch of a new event: --date is REQUIRED (raceresult.com's config has no
+# reliable event-date field — see 2026-07-20 Gorge Downwind Champs incident in
+# docs/FUTURE_WORK.md). pms-id is the number in the PMS results URL, e.g.
+# register.pacificmultisports.com/Events/Results/1353 -> --pms-id 1353
+python3 cli.py fetch raceresult --pms-id 1353 --club pnw --year 2026 --date "Jul 16, 2026"
+
+# Re-fetch (results updated, or building on a fresh workspace) — catalog already has
+# the date/name, so no extra flags needed:
+python3 cli.py fetch raceresult --pms-id 1353 --club pnw --year 2026
+```
+`--club` defaults to `pnw` — this is the series id used by `clubs.yaml` and the actual
+data folder (`data/pnw/...`), NOT `pnw-regional` (a legacy name that doesn't correspond
+to any real directory; using it silently writes files nothing else will read).
+
+Each fetch prints a sanity summary (racer count, duplicate canonical names within the
+race, unrecognized craft categories) so problems are visible immediately.
+
+**Usage (via CLI — by raceresult.com ID directly, if already known):**
+```bash
+python3 cli.py fetch raceresult 411085 --club pnw --year 2026 --date "Jul 16, 2026"
+```
 
 **Usage (programmatic):**
 ```python
@@ -93,14 +123,11 @@ fetch_event(
     rr_id=281775,
     name="2024 Peter Marcus Rough Water Race",
     date="Mar 16, 2024",
-    out_dir=Path("data/pnw-regional/2024/common")
+    out_dir=Path("data/pnw/2024/common"),
+    pms_id=1190,  # PMS event ID — needed for a correct displayURL
 )
 ```
 
-**Usage (via CLI — to be added):**
-```bash
-python3 cli.py fetch-raceresult --club pnw-regional 281775 299092 313433
-```
 
 ---
 

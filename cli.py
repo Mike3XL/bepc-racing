@@ -652,12 +652,12 @@ def _has_results_webscorer(source_id: int) -> bool:
 
 
 def _has_results_raceresult(source_id: int) -> bool:
-    """Check gbrc PMS results page for an embedded raceresult ID (means results are published)."""
+    """Check the PMS results page for an embedded raceresult ID (means results are published)."""
     return _resolve_rr_id_from_pms(source_id) is not None
 
 
 def _resolve_rr_id_from_pms(pms_id: int) -> int | None:
-    """Extract raceresult.com event ID from gbrc PMS results page."""
+    """Extract raceresult.com event ID from the PMS results page."""
     import urllib.request, re
     url = f"https://gbrc.pacificmultisports.com/Events/Results/{pms_id}"
     try:
@@ -1063,24 +1063,121 @@ def cmd_audit_sources(args):
 
 
 def cmd_fetch_raceresult(args):
-    """Fetch one or more raceresult.com events into a club's data folder."""
+    """Fetch one or more raceresult.com events into a club's data folder.
+
+    Two ways to specify the event:
+      --pms-id <ID>    Pacific Multisports event ID (from the results URL). Preferred —
+                       auto-resolves the raceresult.com rr_id, no manual lookup needed.
+      rr_ids           raceresult.com event ID(s) directly, if already known.
+
+    On first fetch of a new event, --date is required (raceresult.com's config has no
+    reliable event-date field, so guessing would silently corrupt the data — see
+    2026-07-20 Gorge Downwind Champs incident). The catalog and reverse ID mapping are
+    updated automatically so subsequent fetches (e.g. a re-fetch after results update)
+    don't need --date again.
+    """
     from bepc.fetcher_raceresult import fetch_event
     club = args.club
     year = args.year
     out_dir = DATA_DIR / club / year / "common"
-    for rr_id in args.rr_ids:
+    catalog_path = DATA_DIR / "sources" / "pacificmultisports_events.json"
+    mapping_path = DATA_DIR / "sources" / "pms_rr_mapping.json"
+
+    pms_id = getattr(args, "pms_id", None)
+    rr_ids = list(args.rr_ids)
+
+    if pms_id and not rr_ids:
+        print(f"Resolving rr_id for pms:{pms_id} ...")
+        resolved = _resolve_rr_id_from_pms(pms_id)
+        if not resolved:
+            print(f"  FAILED: could not resolve a raceresult.com ID from "
+                  f"https://gbrc.pacificmultisports.com/Events/Results/{pms_id} "
+                  f"— results may not be published yet.")
+            sys.exit(1)
+        print(f"  -> rr:{resolved}")
+        rr_ids = [resolved]
+    elif not rr_ids:
+        print("ERROR: provide either rr_ids or --pms-id")
+        sys.exit(1)
+
+    catalog = json.loads(catalog_path.read_text()) if catalog_path.exists() else {"events": [], "excluded": []}
+    mapping = json.loads(mapping_path.read_text()) if mapping_path.exists() else {}
+
+    for rr_id in rr_ids:
         # Look up name/date from catalog if available
-        catalog_path = DATA_DIR / "sources" / "pacificmultisports_events.json"
-        name, date = f"Event {rr_id}", f"Jan 1, {year}"
-        if catalog_path.exists():
-            catalog = json.loads(catalog_path.read_text())
-            for e in catalog.get("events", []):
-                if e.get("rr_id") == rr_id:
-                    name = e.get("name", name)
-                    date = e.get("date") or date
-                    break
-        print(f"Fetching rr:{rr_id} → {name}")
-        fetch_event(rr_id=rr_id, name=name, date=date, out_dir=out_dir)
+        name, date = None, None
+        catalog_entry = next((e for e in catalog.get("events", []) if e.get("rr_id") == rr_id), None)
+        if catalog_entry:
+            name = catalog_entry.get("name")
+            date = catalog_entry.get("date")
+
+        name = args.name or name
+        date = args.date or date
+
+        if not date:
+            print(f"ERROR: rr:{rr_id} is not in {catalog_path.name} and no --date was given.")
+            print("  raceresult.com's config has no reliable event-date field, so a date")
+            print("  MUST be supplied explicitly on first fetch. Check the organizer's site")
+            print("  (e.g. gorgedownwindchamps.com Results page) for the actual race date,")
+            print("  then re-run with --date 'Mon D, YYYY'.")
+            sys.exit(1)
+
+        print(f"Fetching rr:{rr_id}" + (f" (pms:{pms_id})" if pms_id else "") + f" → {name or '(name from raceresult.com)'}")
+        written = fetch_event(rr_id=rr_id, name=name or f"Event {rr_id}", date=date,
+                               out_dir=out_dir, pms_id=pms_id or (catalog_entry or {}).get("pms_id"))
+
+        # Resolve the real event name (from the written file) for the catalog entry —
+        # 'name' may still be the "Event {rr_id}" placeholder if none was given.
+        resolved_name = name
+        if not resolved_name and written:
+            try:
+                resolved_name = json.loads((out_dir / written[0]).read_text())["raceInfo"]["name"]
+            except Exception:
+                resolved_name = f"Event {rr_id}"
+
+        # Auto-update catalog + reverse mapping so future fetches don't need --date/--pms-id again
+        resolved_pms_id = pms_id or (catalog_entry or {}).get("pms_id")
+        if resolved_pms_id:
+            mapping[str(rr_id)] = resolved_pms_id
+            mapping_path.write_text(json.dumps(mapping, indent=2))
+            if not catalog_entry:
+                catalog.setdefault("events", []).append({
+                    "pms_id": resolved_pms_id, "rr_id": rr_id, "year": int(year),
+                    "date": date, "name": resolved_name or f"Event {rr_id}", "type": "pnw-regional",
+                })
+                catalog_path.write_text(json.dumps(catalog, indent=2))
+                print(f"  Catalog updated: pms:{resolved_pms_id} <-> rr:{rr_id}")
+
+
+        _print_fetch_sanity_summary(out_dir, written)
+
+
+def _print_fetch_sanity_summary(out_dir: Path, written_filenames: list[str]) -> None:
+    """Print racer count, unknown-craft count, and in-race duplicate names for each
+    freshly-written common.json file, so problems are visible without a separate
+    manual check."""
+    from bepc.craft import normalize_craft
+    from collections import Counter
+    for fname in written_filenames:
+        try:
+            data = json.loads((out_dir / fname).read_text())
+        except Exception:
+            continue
+        results = data.get("racerResults", [])
+        names = Counter(r["canonicalName"] for r in results)
+        dupes = {n: c for n, c in names.items() if c > 1}
+        unknown_crafts = Counter(r["craftCategory"] for r in results
+                                  if normalize_craft(r["craftCategory"])[0] == "Unknown")
+        print(f"  Sanity check — {fname}:")
+        print(f"    {len(results)} racers, {len(names)} unique names")
+        if dupes:
+            print(f"    ⚠ duplicate canonical names in this race: {dupes}")
+            print(f"      (check for a same-named different person before assuming a data bug — "
+                  f"compare finish place/time plausibility, e.g. a top racer's usual pace)")
+        if unknown_crafts:
+            print(f"    ⚠ unrecognized craft categories: {dict(unknown_crafts)}")
+        if not dupes and not unknown_crafts:
+            print(f"    OK — no duplicate names, no unrecognized craft categories")
 
 
 def _scan_pacificmultisports(verbose: bool = True) -> list[dict]:
@@ -1125,9 +1222,9 @@ def _scan_pacificmultisports(verbose: bool = True) -> list[dict]:
                 continue
             if rr_id and rr_id in excluded_rr_ids:
                 continue
-            new_events.append({"gbrc_id": eid, "rr_id": rr_id, "name": name})
+            new_events.append({"pms_id": eid, "rr_id": rr_id, "name": name})
             if verbose:
-                print(f"  NEW: gbrc:{eid} rr:{rr_id} — {name}")
+                print(f"  NEW: pms:{eid} rr:{rr_id} — {name}")
         except Exception:
             pass
         time.sleep(0.1)
@@ -1469,9 +1566,20 @@ def main():
     fju.add_argument("--date", required=True)
 
     frr = fetch_sub.add_parser("raceresult", help="Fetch events from raceresult.com (Pacific Multisports)")
-    frr.add_argument("rr_ids", nargs="+", type=int, help="raceresult event ID(s)")
-    frr.add_argument("--club", default="pnw-regional")
+    frr.add_argument("rr_ids", nargs="*", type=int, default=[], help="raceresult event ID(s) (omit if using --pms-id)")
+    frr.add_argument("--pms-id", type=int, default=None,
+                      help="Pacific Multisports event ID (from the results URL, e.g. "
+                           "register.pacificmultisports.com/Events/Results/<ID>). "
+                           "Auto-resolves the raceresult.com rr_id — use this instead of "
+                           "rr_ids when you only have the PMS results link.")
+    frr.add_argument("--club", default="pnw", help="Series/data-folder id from clubs.yaml (default: pnw)")
     frr.add_argument("--year", required=True)
+    frr.add_argument("--date", default=None,
+                      help="Race date, e.g. 'Jul 16, 2026'. Required unless the event is "
+                           "already in data/sources/pacificmultisports_events.json.")
+    frr.add_argument("--name", default=None,
+                      help="Race name override. Usually auto-filled from raceresult.com; "
+                           "only needed if that lookup fails.")
 
     fpdf = fetch_sub.add_parser("pdf", help="Import Pacific Multisports PDF results")
     fpdf.add_argument("pdf", help="Path to PDF file")
