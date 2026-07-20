@@ -282,7 +282,7 @@ def fetch_bepc_monday(season_start: str, season_end: str, skip_dates: list[str] 
             races.append({
                 "name": f"BEPC {d.year} Race Series #{race_num}",
                 "date": ds,
-                "clubs": ["bepc"],
+                "clubs": ["bepc-summer"],
                 "distance": "~3 mi",
                 "url": "https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/",
                 "links": [{"label": "Info", "url": "https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/"}],
@@ -339,7 +339,7 @@ def fetch_bepc_webscorer() -> list[dict]:
         races.append({
             'name': name,
             'date': d.strftime('%Y-%m-%d'),
-            'clubs': ['bepc'],
+            'clubs': ['bepc-summer'],
             'distance': '~3 mi',
             'source_id': int(raceid),
             'url': race_url,
@@ -498,7 +498,7 @@ def scan_webscorer_organizer_results(org_slug: str, known_ids: set[int],
         races.append({
             'name': name,
             'date': d.strftime('%Y-%m-%d'),
-            'clubs': ['bepc'],
+            'clubs': ['bepc-summer'],
             'distance': '~3 mi',
             'source_id': int(raceid),
             'url': race_url,
@@ -543,7 +543,7 @@ def sync_upcoming(upcoming_path: Path, dry_run: bool = False) -> None:
     if clubs_yaml_path.exists():
         with open(clubs_yaml_path) as f:
             clubs_cfg = yaml.safe_load(f) or {}
-        bepc_season = clubs_cfg.get('clubs', {}).get('bepc', {}).get('monday_season', {})
+        bepc_season = clubs_cfg.get('clubs', {}).get('bepc-summer', {}).get('monday_season', {})
 
     # Fetch all sources
     sources = [
