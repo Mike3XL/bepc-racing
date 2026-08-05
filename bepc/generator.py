@@ -331,9 +331,19 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
 </nav>
 <script>
 (function(){{
-  var RACERS={_RACER_SEARCH_MAP};
+  var RACERS=null,_racersLoading=false;
   var depth={depth};
   var _races=null,_racesLoading=false;
+
+  function loadRacers(cb){{
+    if(RACERS){{cb();return;}}
+    if(_racersLoading)return;
+    _racersLoading=true;
+    var url=pfx()+'racers-index.json';
+    fetch(url).then(function(r){{return r.json();}}).then(function(d){{
+      RACERS=d;_racersLoading=false;cb();
+    }}).catch(function(){{RACERS=[];_racersLoading=false;cb();}});
+  }}
 
   function fuzzy(str,q){{
     str=str.toLowerCase();q=q.toLowerCase();
@@ -363,15 +373,19 @@ def _nav(active: str = "", data: dict = None, depth: int = 1) -> str:
     if(q.length<2){{res.style.display='none';return;}}
     var p=pfx(),html='';
 
-    var rs=RACERS.map(function(r){{return {{r:r,s:fuzzy(r.name,q)}};}})
-      .filter(function(x){{return x.s>0.15;}})
-      .sort(function(a,b){{return b.s-a.s;}}).slice(0,5);
-    if(rs.length){{
-      html+=sectionHdr('Racers');
-      rs.forEach(function(x){{
-        var r=x.r;if(!r.clubs||!r.clubs.length)return;
-        html+=resultLink(p+r.clubs[0]+'/racer/'+r.slug+'.html',r.name,'');
-      }});
+    if(!RACERS){{
+      loadRacers(function(){{render(document.getElementById('nav-search').value.trim());}});
+    }} else {{
+      var rs=RACERS.map(function(r){{return {{r:r,s:fuzzy(r.name,q)}};}})
+        .filter(function(x){{return x.s>0.15;}})
+        .sort(function(a,b){{return b.s-a.s;}}).slice(0,5);
+      if(rs.length){{
+        html+=sectionHdr('Racers');
+        rs.forEach(function(x){{
+          var r=x.r;if(!r.clubs||!r.clubs.length)return;
+          html+=resultLink(p+r.clubs[0]+'/racer/'+r.slug+'.html',r.name,'');
+        }});
+      }}
     }}
 
     if(_races){{
@@ -2456,6 +2470,11 @@ def _build_search_map(data: dict, verify_files: bool = False) -> None:
         for name, clubs in sorted(racer_clubs.items())
         if _slug(name) in _SLUG_CLUBS
     ])
+    # Written once as a shared file so per-page nav search doesn't embed this
+    # (large, identical-on-every-page) array inline. See nav() below, which
+    # fetches this lazily instead of inlining RACERS directly.
+    SITE_DIR.mkdir(exist_ok=True)
+    (SITE_DIR / "racers-index.json").write_text(_RACER_SEARCH_MAP)
 
 
 def generate_how_it_works(data: dict = None) -> None:
