@@ -14,6 +14,15 @@ on:
     # Monday 7:45 PM PDT = Tue 02:45 UTC — 45min after 7PM race start.
     - cron: '45 2 * * 2'
   workflow_dispatch:
+    inputs:
+      poll_interval_seconds:
+        description: 'Seconds between polls (lower for fast manual test runs; ignored on schedule)'
+        required: false
+        default: '180'
+      give_up_after_seconds:
+        description: 'Total seconds to poll before giving up (lower for fast manual test runs; ignored on schedule)'
+        required: false
+        default: '14400'
 
 jobs:
   poll-for-results:
@@ -41,8 +50,13 @@ jobs:
           WEBSCORER_API_TOKEN: ${{ secrets.WEBSCORER_API_TOKEN }}
           GITHUB_ACTIONS: 'true'
         run: |
-          POLL_INTERVAL_SECONDS=180   # 3 minutes between checks
-          GIVE_UP_AFTER_SECONDS=14400 # 4 hours (~7:45PM to midnight PDT)
+          POLL_INTERVAL_SECONDS="${{ inputs.poll_interval_seconds }}"
+          GIVE_UP_AFTER_SECONDS="${{ inputs.give_up_after_seconds }}"
+          # Scheduled (cron) triggers have no `inputs` context — fall back to
+          # the real production values used for the live Monday-night run.
+          if [ -z "$POLL_INTERVAL_SECONDS" ]; then POLL_INTERVAL_SECONDS=180; fi
+          if [ -z "$GIVE_UP_AFTER_SECONDS" ]; then GIVE_UP_AFTER_SECONDS=14400; fi
+          echo "Using POLL_INTERVAL_SECONDS=$POLL_INTERVAL_SECONDS GIVE_UP_AFTER_SECONDS=$GIVE_UP_AFTER_SECONDS"
           start_ts=$(date +%s)
           fetched=false
           cleanup=false
