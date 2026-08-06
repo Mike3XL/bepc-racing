@@ -1,20 +1,24 @@
-name: Process Results (Race Day)
+name: Process Results (Monday Night Poll)
+
+# BEPC races run every Monday: Reg 6PM, Start 7PM PDT. Rather than relying on
+# GitHub's cron scheduling (which we've observed drops/delays most ticks in a
+# tight */15 window — see git history), this runs ONE job that starts 45min
+# after race start and polls WebScorer every few minutes until results appear.
+# As soon as results are found, it fetches, builds, publishes, sends exactly
+# one email, and exits — no further polling. If results never show up within
+# the time budget, it gives up quietly and the daily backstops in
+# process-results-background.yml will catch it later.
 
 on:
   schedule:
-    # Saturday 11AM-5PM PDT (18:00-00:00 UTC) — every 15 min
-    - cron: '*/15 18-23 * * 6'
-    - cron: '0 0 * * 0'          # Sat 5PM PDT = Sun 00:00 UTC
-    # Monday BEPC 7:00-9:59 PM PDT = Tue 02:00-04:59 UTC — every 15 min.
-    # NOTE: GitHub drops/delays high-frequency (*/5) schedules; */15 is far more
-    # reliable. The daily backstops in process-results-background.yml guarantee a
-    # catch-up if these race-day runs are skipped entirely.
-    - cron: '*/15 2,3,4 * * 2'
+    # Monday 7:45 PM PDT = Tue 02:45 UTC — 45min after 7PM race start.
+    - cron: '45 2 * * 2'
   workflow_dispatch:
 
 jobs:
-  process-results:
+  poll-for-results:
     runs-on: ubuntu-latest
+    timeout-minutes: 300  # hard stop well past our own give-up point, as a safety net
     permissions:
       contents: write
 
@@ -30,28 +34,48 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml
 
-      - name: Process results
+      - name: Poll until results appear
         id: process
         env:
           WEBSCORER_API_ID: ${{ secrets.WEBSCORER_API_ID }}
           WEBSCORER_API_TOKEN: ${{ secrets.WEBSCORER_API_TOKEN }}
           GITHUB_ACTIONS: 'true'
         run: |
-          output=$(python cli.py process-results pnw 2>&1)
-          echo "$output"
-          if echo "$output" | grep -q "Fetched "; then
-            echo "fetched=true" >> $GITHUB_OUTPUT
-            echo "summary<<EOF" >> $GITHUB_OUTPUT
-            echo "$output" | grep -E "Fetched |Removed |results available" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
-          else
-            echo "fetched=false" >> $GITHUB_OUTPUT
-          fi
-          if echo "$output" | grep -q "already-processed"; then
-            echo "cleanup=true" >> $GITHUB_OUTPUT
-          else
-            echo "cleanup=false" >> $GITHUB_OUTPUT
-          fi
+          POLL_INTERVAL_SECONDS=180   # 3 minutes between checks
+          GIVE_UP_AFTER_SECONDS=14400 # 4 hours (~7:45PM to midnight PDT)
+          start_ts=$(date +%s)
+          fetched=false
+          cleanup=false
+          summary=""
+
+          while true; do
+            output=$(python cli.py process-results pnw 2>&1)
+            echo "$output"
+
+            if echo "$output" | grep -q "Fetched "; then
+              fetched=true
+              summary=$(echo "$output" | grep -E "Fetched |Removed |results available")
+              break
+            fi
+            if echo "$output" | grep -q "already-processed"; then
+              cleanup=true
+            fi
+
+            elapsed=$(( $(date +%s) - start_ts ))
+            if [ "$elapsed" -ge "$GIVE_UP_AFTER_SECONDS" ]; then
+              echo "Gave up after $((elapsed / 60)) minutes — no results yet. Daily backstops will retry."
+              break
+            fi
+
+            echo "No results yet (elapsed ${elapsed}s) — sleeping ${POLL_INTERVAL_SECONDS}s before retry..."
+            sleep "$POLL_INTERVAL_SECONDS"
+          done
+
+          echo "fetched=$fetched" >> "$GITHUB_OUTPUT"
+          echo "cleanup=$cleanup" >> "$GITHUB_OUTPUT"
+          echo "summary<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$summary" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
 
       - name: Commit fetched data to main
         if: steps.process.outputs.fetched == 'true'
@@ -104,7 +128,7 @@ jobs:
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
           to: mike.liddell@gmail.com
           from: BEPC Racing <mike.liddell@gmail.com>
-          subject: 'BEPC: process-results failed'
+          subject: 'BEPC: Monday poll job failed'
           body: |
-            The process-results workflow failed.
+            The Monday night polling workflow failed.
             Check: https://github.com/Mike3XL/bepc-racing/actions
