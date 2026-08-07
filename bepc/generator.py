@@ -198,7 +198,7 @@ def _club_name(data: dict) -> str:
     return data["clubs"][data["current_club"]]["name"]
 
 
-_SEASON_JS = """
+_SEASON_JS = r"""
 <script>
 function getSeason(fallback) {
   var h = location.hash.replace('#', '');
@@ -974,7 +974,7 @@ def generate_races(data: dict) -> None:
     # Shared JS for rendering race results (badges, tables, podium)
     _MUTE_REASONS_JS = json.dumps(PLACE_MUTE_REASONS)
     _RACE_JS = """
-const MUTE_REASONS = """ + _MUTE_REASONS_JS + """;
+const MUTE_REASONS = """ + _MUTE_REASONS_JS + r""";
 function slug(name) { return name.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, ''); }
 function racerLink(name) { const s = slug(name); return RACER_SLUGS.has(s) ? `<a href="../racer/${s}.html">${name}</a>` : name; }
 function display_craft_ui(cat) {
@@ -1205,7 +1205,7 @@ function rows(results, placeField) {
 </div>"""
             source_link = f'<a href="{display_url}" target="_blank" class="btn btn-outline-secondary btn-sm">Source ({_source_name(display_url)}) ↗</a>' if display_url else ''
 
-            html = _head(base_name) + _nav("Results", data=data, depth=2) + _selector_bar(data, show_season=True, page="results", season_navigate_url="../results.html", race_nav_html=race_nav_html, depth=2) + f"""
+            html = _head(base_name) + _nav("Results", data=data, depth=2) + _selector_bar(data, show_season=True, page="results", season_navigate_url="../results.html", race_nav_html=race_nav_html, depth=2) + rf"""
 <div class="container-fluid px-2 px-sm-3">
   <h1 class="mb-1">{base_name}</h1>
   <p class="text-muted">{date} · {total_starters} starters{(' · <a href="' + display_url + '" target="_blank">Source (' + _source_name(display_url) + ') ↗</a>') if display_url else ''}</p>
