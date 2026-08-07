@@ -356,29 +356,6 @@ upcoming:
   notes: Grilled oysters after the race. Course through Elk River estuary changes
     yearly.
   organizer: sound-rowers
-- name: 'BEPC 2026 Race Series #14'
-  date: '2026-08-03'
-  clubs:
-  - bepc-summer
-  source_id: 442240
-  distance: ~3 mi
-  url: https://www.webscorer.com/register?raceid=442240
-  links:
-  - label: Register
-    url: https://www.webscorer.com/register?raceid=442240
-  - label: Start List
-    url: https://www.webscorer.com/registerlist?raceid=442240&details=1
-  - label: Info
-    url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  location: Shilshole Bay, Seattle, WA
-  timing:
-  - 'Reg: 6 PM'
-  - 'Meeting: 6:30 PM'
-  - 'Start: 7 PM'
-  results_source:
-    type: webscorer
-    organizer: bepc827
-  organizer: --
 - name: 'BEPC 2026 Race Series #15'
   date: '2026-08-10'
   clubs:
