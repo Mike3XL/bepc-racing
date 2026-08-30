@@ -19,7 +19,8 @@ _PATTERNS = [
     ('fsk-2\\b|fsk2\\b',        'Kayak-2',       'FSK-2'),
     ('sk-2\\b|sk2\\b',          'Kayak-2',       'SK-2'),
     # Surfski doubles — before generic K2 so "K2 Surfski" maps correctly
-    ('k2.*surfski|surfski.*double|surfski.*2x|double.*kayak|\\bdk\\b', 'Kayak-2', 'Surfski-2'),
+    # Word order varies by source: "Surfski Double" vs "Double Surfski"
+    ('k2.*surfski|surfski.*double|double.*surfski|surfski.*2x|double.*kayak|\\bdk\\b', 'Kayak-2', 'Surfski-2'),
     ('k-2\\b|k2\\b',            'Sprint-K2',     'K2'),
     # Kayak quads — sprint K4 before generic
     ('k-4\\b|k4\\b',            'Sprint-K4',     'K4'),

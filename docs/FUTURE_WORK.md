@@ -2,6 +2,18 @@
 
 ## High Priority
 
+### Correction Transparency UI (marker + tooltip for manual corrections)
+Add a visual marker (e.g. `*`) next to manually-corrected values, with a tooltip showing the source value and what was corrected. Raised 2026-08-30 after fixing Lambert Wixson's Da Grind 2026 time (1:08:13 in source PDF -> actual 1:00:13).
+
+**Two distinct correction types, very different scale:**
+- **Time/result corrections** — rare (2 total as of 2026-08-30: a `move` correction for Lisi Cole at Paddlers Cup 2026, and a note-only entry for Lambert Wixson's Da Grind time). High-stakes — changes a race outcome. Uses `meta.yaml`'s `corrections:` mechanism (`bepc/corrections.py`).
+- **Name canonicalization** — routine, huge population (992 entries in `data/aliases.json` as of 2026-08-30). Ranges from simple typos to club-suffix stripping to genuine multi-person disambiguation.
+
+**Open design questions (discussed 2026-08-30, not yet decided):**
+- Scope the trial to time corrections only first (rarer, higher-value, easier to scope), or build both marker types together?
+- Placement: time corrections obviously go on the result row. For name corrections — every occurrence of a corrected name across all race tables, or just once on the racer's own page (e.g. "also raced as: ...")?
+- **Data plumbing gap:** once a correction/alias is applied, the original raw value doesn't survive into the built site's data model today. Time corrections: the pre-correction value only lives in a `meta.yaml` note (not machine-readable) or the original raw source file. Name corrections: the raw pre-alias name only lives in `raw/*.raw.json`/`raw/*.raw.html`, never propagated to `common.json` or beyond. Showing "original value" in a tooltip requires carrying that value forward through the load/build pipeline — a real pipeline change, not just a template tweak. See also "Alias Transparency" future-work item above, which covers the name-correction half of this same gap.
+
 ### Past Races — Meaningful "Completed" Entries
 Currently past races are silently pruned from `upcoming.yaml`. Some events without WebScorer results still have web pages/results worth linking to (e.g. Seventy48, Ski to Sea, unofficial Facebook-organised races). Consider a "Recently Completed" section on the home page that:
 - Keeps pruned entries with a `completed: true` flag (or separate `completed.yaml`)

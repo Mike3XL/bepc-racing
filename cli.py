@@ -1591,7 +1591,8 @@ def main():
     fpdf.add_argument("--url", default=None)
 
     # --- Diagnostics ---
-    sub.add_parser("audit-crafts", help="List unrecognized craft values")
+    audit_craft_p = sub.add_parser("audit-crafts", help="List unrecognized craft values")
+    audit_craft_p.add_argument("--club", default=None, help="Limit to a single club/series id (default: all clubs)")
     sub.add_parser("audit-names", help="Find and resolve racer name alias candidates")
     audit_src_p = sub.add_parser("audit-sources", help="Detect duplicate race sources")
     audit_src_p.add_argument("--club", default=CURRENT_CLUB)
