@@ -5,10 +5,17 @@ organizer: sckc
 results_platform: webscorer
 tags: []
 courses:
-  ? ''
-  : distance_mi: 0.0
-    starters: 21
+  C4:
+    distance_mi: 0.0
+    starters: 1
+    is_primary: false
+  K1:
+    distance_mi: 0.0
+    starters: 18
     is_primary: true
-    _note: classes collapsed (SCKC pattern)
+  K2:
+    distance_mi: 0.0
+    starters: 2
+    is_primary: false
 corrections: []
 notes: ''

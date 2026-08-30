@@ -1,25 +1,31 @@
-race_id: 2025-10-18__411968
-name: '2025 Duck Island Race #8'
-date: '2025-10-18'
+race_id: 2026-07-17__444004
+name: '2026 Duck Island Race #2'
+date: '2026-07-17'
 organizer: sckc
 results_platform: webscorer
 tags: []
 courses:
-  C4:
+  C1:
+    distance_mi: 0.0
+    starters: 2
+    is_primary: false
+  C2:
     distance_mi: 0.0
     starters: 1
     is_primary: false
   K1:
     distance_mi: 0.0
-    starters: 12
+    starters: 14
     is_primary: true
   K2:
     distance_mi: 0.0
-    starters: 3
+    starters: 1
     is_primary: false
   K4:
     distance_mi: 0.0
     starters: 1
     is_primary: false
-corrections: []
+corrections:
+  - edit: {course: "K1", racer: "Maija"}
+    set: {canonicalName: "Maija Malinen"}
 notes: ''

@@ -5,10 +5,23 @@ organizer: sckc
 results_platform: webscorer
 tags: []
 courses:
-  ? ''
-  : distance_mi: 0.0
-    starters: 10
+  C1:
+    distance_mi: 0.0
+    starters: 1
+    is_primary: false
+  C2:
+    distance_mi: 0.0
+    starters: 3
+    is_primary: false
+  K1:
+    distance_mi: 0.0
+    starters: 5
     is_primary: true
-    _note: classes collapsed (SCKC pattern)
-corrections: []
+  K2:
+    distance_mi: 0.0
+    starters: 1
+    is_primary: false
+corrections:
+  - edit: {course: "K1", racer: "Calvin"}
+    set: {canonicalName: "Calvin Huo"}
 notes: ''

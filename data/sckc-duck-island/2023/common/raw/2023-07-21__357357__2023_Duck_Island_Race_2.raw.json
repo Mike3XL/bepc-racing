@@ -19,7 +19,7 @@
     "TimedOn": "iPad",
     "TimedWith": "Webscorer PRO",
     "Visibility": "Public",
-    "UpdatedFrom": "File upload",
+    "UpdatedFrom": "Website",
     "UpdatedTime": "Saturday, July 27, 2024 7:14 PM (GMT-7)",
     "ImageUrl": "https://s.ws-images.com/uploadedimages/large/357357_8dc99f6de71874b.jpg"
   },
@@ -42,7 +42,8 @@
           "PercentBack": "-",
           "PercentWinning": "100%",
           "PercentAverage": "0.00%",
-          "PercentMedian": "0.00%"
+          "PercentMedian": "0.00%",
+          "StartTime": "18:30:00.00"
         }
       ]
     },
@@ -64,7 +65,8 @@
           "PercentBack": "-",
           "PercentWinning": "100%",
           "PercentAverage": "30.71%",
-          "PercentMedian": "25.61%"
+          "PercentMedian": "25.61%",
+          "StartTime": "18:30:00.00"
         },
         {
           "Place": "2",
@@ -78,11 +80,12 @@
           "PercentBack": "+34.42%",
           "PercentWinning": "74.39%",
           "PercentAverage": "6.86%",
-          "PercentMedian": "0.00%"
+          "PercentMedian": "0.00%",
+          "StartTime": "18:30:00.00"
         },
         {
           "Place": "3",
-          "Name": "Torsten",
+          "Name": "Torsten Bennett",
           "TeamName": "Nelo Viper K1",
           "Distance": "K1",
           "Category": "Open",
@@ -92,7 +95,8 @@
           "PercentBack": "+98.56%",
           "PercentWinning": "50.36%",
           "PercentAverage": "-37.58%",
-          "PercentMedian": "-47.72%"
+          "PercentMedian": "-47.72%",
+          "StartTime": "18:30:00.00"
         }
       ]
     },
@@ -114,7 +118,8 @@
           "PercentBack": "-",
           "PercentWinning": "100%",
           "PercentAverage": "0.00%",
-          "PercentMedian": "0.00%"
+          "PercentMedian": "0.00%",
+          "StartTime": "18:30:00.00"
         }
       ]
     },
@@ -136,7 +141,8 @@
           "PercentBack": "-",
           "PercentWinning": "100%",
           "PercentAverage": "0.00%",
-          "PercentMedian": "0.00%"
+          "PercentMedian": "0.00%",
+          "StartTime": "18:30:00.00"
         }
       ]
     },
@@ -158,7 +164,8 @@
           "PercentBack": "-",
           "PercentWinning": "100%",
           "PercentAverage": "0.00%",
-          "PercentMedian": "0.00%"
+          "PercentMedian": "0.00%",
+          "StartTime": "18:30:00.00"
         }
       ]
     },
@@ -180,11 +187,12 @@
           "PercentBack": "-",
           "PercentWinning": "100%",
           "PercentAverage": "33.01%",
-          "PercentMedian": "33.01%"
+          "PercentMedian": "33.01%",
+          "StartTime": "18:30:00.00"
         },
         {
           "Place": "2",
-          "Name": "Torsten",
+          "Name": "Torsten Bennett",
           "TeamName": "Nelo Viper K1",
           "Distance": "K1",
           "Category": "Open",
@@ -194,7 +202,8 @@
           "PercentBack": "+98.56%",
           "PercentWinning": "50.36%",
           "PercentAverage": "-33.01%",
-          "PercentMedian": "-33.01%"
+          "PercentMedian": "-33.01%",
+          "StartTime": "18:30:00.00"
         }
       ]
     },
@@ -216,7 +225,8 @@
           "PercentBack": "-",
           "PercentWinning": "100%",
           "PercentAverage": "0.00%",
-          "PercentMedian": "0.00%"
+          "PercentMedian": "0.00%",
+          "StartTime": "18:30:00.00"
         }
       ]
     }
