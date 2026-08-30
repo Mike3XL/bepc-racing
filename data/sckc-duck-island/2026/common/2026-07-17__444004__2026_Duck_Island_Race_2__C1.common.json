@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 444004,
+    "distance": "C1",
+    "name": "2026 Duck Island Race #2 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=444004",
+    "date": "Jul 17, 2026",
+    "sport": "Paddling",
+    "startTime": "Friday, July 17, 2026 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.105263
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Azusa Murphy",
+      "craftCategory": "Open",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 599.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 599.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Jane Lentini",
+      "craftCategory": "Junior",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 651.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 651.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

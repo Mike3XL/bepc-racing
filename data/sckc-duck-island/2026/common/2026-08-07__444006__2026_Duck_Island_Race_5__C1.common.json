@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 444006,
+    "distance": "C1",
+    "name": "2026 Duck Island Race #5 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=444006",
+    "date": "Aug 7, 2026",
+    "sport": "Paddling",
+    "startTime": "Friday, August 7, 2026 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.045455
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Mark Parrish",
+      "craftCategory": "Master 40+",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 565.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 565.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

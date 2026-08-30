@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 444006,
+    "distance": "C6",
+    "name": "2026 Duck Island Race #5 \u2014 C6",
+    "displayURL": "https://www.webscorer.com/race?raceid=444006",
+    "date": "Aug 7, 2026",
+    "sport": "Paddling",
+    "startTime": "Friday, August 7, 2026 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.045455
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "C6 Nora, Jane, Kevin, Kevin, Gus, Torste",
+      "craftCategory": "Open",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 682.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 682.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

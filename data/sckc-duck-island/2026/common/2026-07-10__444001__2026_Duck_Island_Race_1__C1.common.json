@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 444001,
+    "distance": "C1",
+    "name": "2026 Duck Island Race #1 \u2014 C1",
+    "displayURL": "https://www.webscorer.com/race?raceid=444001",
+    "date": "Jul 10, 2026",
+    "sport": "Paddling",
+    "startTime": "Friday, July 10, 2026 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.125
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Gus Starkie",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 677.1,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 677.1,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "Maija Malinen",
+      "craftCategory": "Master 40+",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 847.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 847.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

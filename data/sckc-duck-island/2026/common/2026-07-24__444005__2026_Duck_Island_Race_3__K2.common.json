@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 444005,
+    "distance": "K2",
+    "name": "2026 Duck Island Race #3 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=444005",
+    "date": "Jul 24, 2026",
+    "sport": "Paddling",
+    "startTime": "Friday, July 24, 2026 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.15
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Mike Liddell & Lachlan Liddell",
+      "craftCategory": "Open",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 560.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 560.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "K2 Sue Spaulding & Annett McPherson",
+      "craftCategory": "Master 40+",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 652.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 652.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "K2 Bex & Mattie",
+      "craftCategory": "Junior",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 1286.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 1286.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

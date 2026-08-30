@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 444887,
+    "distance": "K2",
+    "name": "2026 Duck Island Race #7 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=444887",
+    "date": "Aug 21, 2026",
+    "sport": "Paddling",
+    "startTime": "Friday, August 21, 2026 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.086957
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Elizabeth Holmes & Yolande S",
+      "craftCategory": "Master 40+",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 568.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 568.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "K2 Becky Bronstein & Kaitlin Voellinger",
+      "craftCategory": "Open",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 629.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 629.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

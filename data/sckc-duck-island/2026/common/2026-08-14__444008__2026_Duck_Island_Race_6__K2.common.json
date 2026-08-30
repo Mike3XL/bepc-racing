@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 444008,
+    "distance": "K2",
+    "name": "2026 Duck Island Race #6 \u2014 K2",
+    "displayURL": "https://www.webscorer.com/race?raceid=444008",
+    "date": "Aug 14, 2026",
+    "sport": "Paddling",
+    "startTime": "Friday, August 14, 2026 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.230769
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K2 Elizabeth Holmes & Breona Gutschmidt",
+      "craftCategory": "Master 40+",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 562.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 562.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "K2 Gus Starkie & Alex",
+      "craftCategory": "Junior",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 595.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 595.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "K2 Sebastian Kanter & Fredrik Johansson",
+      "craftCategory": "Open",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 626.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 626.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

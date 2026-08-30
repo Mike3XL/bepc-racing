@@ -1,0 +1,35 @@
+{
+  "raceInfo": {
+    "raceId": 444005,
+    "distance": "C2",
+    "name": "2026 Duck Island Race #3 \u2014 C2",
+    "displayURL": "https://www.webscorer.com/race?raceid=444005",
+    "date": "Jul 24, 2026",
+    "sport": "Paddling",
+    "startTime": "Friday, July 24, 2026 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.05
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "C2 Mark Parrish & Nora Tsong",
+      "craftCategory": "Open",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 599.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 599.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}

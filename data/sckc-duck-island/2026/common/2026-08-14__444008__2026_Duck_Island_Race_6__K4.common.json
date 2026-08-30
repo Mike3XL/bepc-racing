@@ -1,0 +1,54 @@
+{
+  "raceInfo": {
+    "raceId": 444008,
+    "distance": "K4",
+    "name": "2026 Duck Island Race #6 \u2014 K4",
+    "displayURL": "https://www.webscorer.com/race?raceid=444008",
+    "date": "Aug 14, 2026",
+    "sport": "Paddling",
+    "startTime": "Friday, August 14, 2026 6:30 PM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.153846
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "K4 Soren O, Kevin L, Ethan ?, Girts B",
+      "craftCategory": "Open",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 393.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 393.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "K4 Luis, Paul, Sue, Annett",
+      "craftCategory": "Master 40+",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 528.0,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 528.0,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}
