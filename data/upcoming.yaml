@@ -367,29 +367,6 @@ upcoming:
   - 'Meeting: TBD'
   - 'Start: TBD'
   organizer: gorge-challenge
-- name: 'BEPC 2026 Race Series #16'
-  date: '2026-08-17'
-  clubs:
-  - bepc-summer
-  source_id: 427442
-  distance: ~3 mi
-  url: https://www.webscorer.com/register?raceid=427442
-  links:
-  - label: Register
-    url: https://www.webscorer.com/register?raceid=427442
-  - label: Start List
-    url: https://www.webscorer.com/registerlist?raceid=427442&details=1
-  - label: Info
-    url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  location: Shilshole Bay, Seattle, WA
-  timing:
-  - 'Reg: 6 PM'
-  - 'Meeting: 6:30 PM'
-  - 'Start: 7 PM'
-  results_source:
-    type: webscorer
-    organizer: bepc827
-  organizer: --
 - name: Round Shaw Row
   date: '2026-08-22'
   clubs:
@@ -407,29 +384,6 @@ upcoming:
   - 'Start: 10:00 AM'
   notes: Ferry reservation required (wsdot.wa.gov/ferries). No Shaw camping in 2026.
   organizer: sound-rowers
-- name: 'BEPC 2026 Race Series #17'
-  date: '2026-08-24'
-  clubs:
-  - bepc-summer
-  source_id: 427443
-  distance: ~3 mi
-  url: https://www.webscorer.com/register?raceid=427443
-  links:
-  - label: Register
-    url: https://www.webscorer.com/register?raceid=427443
-  - label: Start List
-    url: https://www.webscorer.com/registerlist?raceid=427443&details=1
-  - label: Info
-    url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  location: Shilshole Bay, Seattle, WA
-  timing:
-  - 'Reg: 6 PM'
-  - 'Meeting: 6:30 PM'
-  - 'Start: 7 PM'
-  results_source:
-    type: webscorer
-    organizer: bepc827
-  organizer: --
 - name: Da Grind
   date: '2026-08-29'
   clubs:
