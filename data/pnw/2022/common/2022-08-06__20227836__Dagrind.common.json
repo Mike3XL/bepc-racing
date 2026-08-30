@@ -12,7 +12,7 @@
     {
       "originalPlace": 1,
       "canonicalName": "Gorge Canoe Club Novice Men",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 2210.0,
@@ -31,7 +31,7 @@
     {
       "originalPlace": 2,
       "canonicalName": "Wakinikona Open Coed Short",
-      "craftCategory": "Mix Open Spec",
+      "craftCategory": "OC-6",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 2238.0,
@@ -69,7 +69,7 @@
     {
       "originalPlace": 4,
       "canonicalName": "Kikaha Wahine",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 2418.0,
@@ -88,7 +88,7 @@
     {
       "originalPlace": 5,
       "canonicalName": "Seattle Outrigger Canoe Club Novice 1",
-      "craftCategory": "Mix Novice Spec",
+      "craftCategory": "OC-6",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 2504.0,
@@ -107,7 +107,7 @@
     {
       "originalPlace": 6,
       "canonicalName": "SPOCC - Keiki",
-      "craftCategory": "Mix Keiki Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 2578.0,
@@ -126,7 +126,7 @@
     {
       "originalPlace": 7,
       "canonicalName": "Kikaha O'Ke Kai Juniors",
-      "craftCategory": "Mix Juniors Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 2600.0,
@@ -145,7 +145,7 @@
     {
       "originalPlace": 1,
       "canonicalName": "Seattle Outrigger Canoe Club Women 1",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 5225.0,
@@ -164,7 +164,7 @@
     {
       "originalPlace": 2,
       "canonicalName": "SPOCC Women",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 5454.0,
@@ -183,7 +183,7 @@
     {
       "originalPlace": 3,
       "canonicalName": "Hui Hei Hei Wa'a Silverdale Mixed Open",
-      "craftCategory": "Mix Open Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 5532.0,
@@ -202,7 +202,7 @@
     {
       "originalPlace": 4,
       "canonicalName": "Hui Hei Hei Wa'a Silverdale Masters 60 Mixed",
-      "craftCategory": "Mix Masters 60+ Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 5587.0,
@@ -221,7 +221,7 @@
     {
       "originalPlace": 5,
       "canonicalName": "BBOP Kupuna",
-      "craftCategory": "Mix Masters 60+ Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 5610.0,
@@ -240,7 +240,7 @@
     {
       "originalPlace": 6,
       "canonicalName": "Wakinikona Open Mixed Coed Long",
-      "craftCategory": "Mix Open Spec",
+      "craftCategory": "OC-6",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 5633.0,
@@ -259,7 +259,7 @@
     {
       "originalPlace": 7,
       "canonicalName": "Bend OCC Boo Crew",
-      "craftCategory": "Mix Open Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Unknown",
       "handicap": 1.0,
       "timeSeconds": 5872.0,
@@ -278,7 +278,7 @@
     {
       "originalPlace": 8,
       "canonicalName": "Mountain Home CC Fine Grind",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 5927.0,
@@ -297,7 +297,7 @@
     {
       "originalPlace": 9,
       "canonicalName": "Kikaha Masters Wahine",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6001.0,
@@ -316,7 +316,7 @@
     {
       "originalPlace": 10,
       "canonicalName": "SPOCC Blue Women",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6225.0,
@@ -335,7 +335,7 @@
     {
       "originalPlace": 11,
       "canonicalName": "Zamboanga Pimalya",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6308.0,
@@ -354,7 +354,7 @@
     {
       "originalPlace": 12,
       "canonicalName": "MHCC Women's Masters",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6390.0,
@@ -373,7 +373,7 @@
     {
       "originalPlace": 13,
       "canonicalName": "Seattle Outrigger Canoe Club Women 2",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6977.0,
@@ -392,7 +392,7 @@
     {
       "originalPlace": 1,
       "canonicalName": "Kikaha Masters Men",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 4672.0,
@@ -411,7 +411,7 @@
     {
       "originalPlace": 2,
       "canonicalName": "SPOCC Men",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 4713.0,
@@ -430,7 +430,7 @@
     {
       "originalPlace": 3,
       "canonicalName": "Seattle Outrigger Canoe Club Men 1",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 4720.0,
@@ -449,7 +449,7 @@
     {
       "originalPlace": 4,
       "canonicalName": "Mountain Home CC Sun-Strokers",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5190.0,
@@ -468,7 +468,7 @@
     {
       "originalPlace": 5,
       "canonicalName": "Kikaha Kona Bound Kupunas",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5274.0,
@@ -487,7 +487,7 @@
     {
       "originalPlace": 6,
       "canonicalName": "Zamboanga Mag-anak",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5304.0,
@@ -506,7 +506,7 @@
     {
       "originalPlace": 7,
       "canonicalName": "Seattle Outrigger Canoe Club Men 2",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5325.0,
@@ -525,7 +525,7 @@
     {
       "originalPlace": 8,
       "canonicalName": "SPOCC Men",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5341.0,
@@ -544,7 +544,7 @@
     {
       "originalPlace": 9,
       "canonicalName": "Wakinikona Open Men",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5577.0,
@@ -563,7 +563,7 @@
     {
       "originalPlace": 10,
       "canonicalName": "Kikaha Master 40 Men",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6180.0,

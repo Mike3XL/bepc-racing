@@ -12,7 +12,7 @@
     {
       "originalPlace": 1,
       "canonicalName": "Ka'io Open Men - Sand Point Outrigger Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5387.0,
@@ -31,7 +31,7 @@
     {
       "originalPlace": 2,
       "canonicalName": "Kikaha Master Men - Kikaha O Ke Kai",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5488.0,
@@ -50,7 +50,7 @@
     {
       "originalPlace": 3,
       "canonicalName": "Mountain Home Canoe Club -",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5866.0,
@@ -69,7 +69,7 @@
     {
       "originalPlace": 4,
       "canonicalName": "BBOP Open Men - Bellingham Bay Outrigger Paddlers",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5948.0,
@@ -88,7 +88,7 @@
     {
       "originalPlace": 5,
       "canonicalName": "Bend Braddahs - Bend Oregon Outrigger Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 5975.0,
@@ -107,7 +107,7 @@
     {
       "originalPlace": 6,
       "canonicalName": "Master Senior - Kikaha O Ke Kai",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6117.0,
@@ -126,7 +126,7 @@
     {
       "originalPlace": 7,
       "canonicalName": "Super Occasional Crumpet Consumers - Seattle Outrigger Canoe Club",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6193.0,
@@ -145,7 +145,7 @@
     {
       "originalPlace": 8,
       "canonicalName": "Kane o Wakinikona - Hui Wa'a O Wakinikona",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6240.0,
@@ -164,7 +164,7 @@
     {
       "originalPlace": 9,
       "canonicalName": "Elepaio Open Men - Sand Point Outrigger Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6320.0,
@@ -183,7 +183,7 @@
     {
       "originalPlace": 10,
       "canonicalName": "The Dudes - Hui Heihei Wa'a",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6436.0,
@@ -202,7 +202,7 @@
     {
       "originalPlace": 11,
       "canonicalName": "Open Men Mixed - Kikaha O Ke Kai",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6658.0,
@@ -221,7 +221,7 @@
     {
       "originalPlace": 12,
       "canonicalName": "We Average 60+ - Hui Wa'a O Puget Sound",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6790.0,
@@ -240,7 +240,7 @@
     {
       "originalPlace": 13,
       "canonicalName": "Elemakule - Kikaha O Ke Kai",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 6983.0,

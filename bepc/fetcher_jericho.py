@@ -31,6 +31,32 @@ def _craft_from_division(div: str) -> str:
     return div.split()[0] if div else div
 
 
+# Outrigger team-crew division strings use "Unlimited"/"Spec" as the hull
+# class (OC6 Unlimited vs OC6 Spec). Word order varies by source year, e.g.
+# "Unlimited Mixed Open" (2024/2025) vs "Men Novice Spec" (2022), and
+# "Spec - OC12 Mix Open". These bare words are also used elsewhere (e.g.
+# WebScorer individual SUP races) to mean "SUP-Unlimited", so this check is
+# scoped to Jericho division strings only — it fires when the division
+# contains Unlimited/Spec as a whole word AND contains no craft-specific
+# word (SUP, Surfski, OC1/OC2, Kayak, V1, Prone) that would indicate an
+# individual/small-craft entry instead of an OC6/OC12 team crew.
+_OC6_TEAM_DIVISION = re.compile(r'\b(Unlimited|Spec)\b', re.I)
+_NON_OC6_CRAFT_HINT = re.compile(
+    r'\b(SUP|Surf.?ski|OC-?1|OC-?2\b|Kayak|V-?1|Prone|HPK)\b', re.I)
+
+
+def _oc6_craft_from_division(div: str) -> str | None:
+    """Return 'OC-6' or 'OC-12' if `div` is an outrigger team-crew division
+    string (e.g. "Unlimited Mixed Open", "Men Novice Spec",
+    "Spec - OC12 Mix Open"), else None."""
+    div = div.strip()
+    if not _OC6_TEAM_DIVISION.search(div):
+        return None
+    if _NON_OC6_CRAFT_HINT.search(div):
+        return None
+    return 'OC-12' if re.search(r'OC-?12', div, re.I) else 'OC-6'
+
+
 def _gender_from_division(div: str) -> str:
     div = div.strip()
     # Dash format: HPK1-M, OC1-W, OC2-Mx
@@ -81,7 +107,8 @@ def parse_jericho_html(html: str) -> dict[str, list]:
             time_sec = _parse_time(time_str)
             if time_sec is None:
                 continue
-            cat, spec = _normalize_craft_full(division); craft = spec if spec else _craft_from_division(division)
+            cat, spec = _normalize_craft_full(division)
+            craft = _oc6_craft_from_division(division) or spec or _craft_from_division(division)
             gender = _gender_from_division(division)
             courses[current_course].append({
                 "originalPlace": place,
@@ -201,7 +228,8 @@ def import_jericho_url(url: str, out_dir: Path, race_id: int, race_name: str,
         time_sec = _parse_time(time_str)
         if time_sec is None:
             continue
-        cat, spec = _normalize_craft_full(division); craft = spec if spec else _craft_from_division(division)
+        cat, spec = _normalize_craft_full(division)
+        craft = _oc6_craft_from_division(division) or spec or _craft_from_division(division)
         gender = _gender_from_division(division)
         courses[current_course].append({
             "originalPlace": place,

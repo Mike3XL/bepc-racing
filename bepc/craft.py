@@ -44,6 +44,7 @@ _PATTERNS = [
     ('2x\\b|rowboat.*2x',       'OW-2',          None),
     ('1x\\b|rowboat|wherry|gig|row\\b|ocean.?row', 'OW-1',  None),
     # OC (outrigger canoe) — larger before smaller
+    ('oc-?12',                  'OC-12',         'OC-12'),
     ('oc-?6',                   'OC-6',          'OC-6'),
     ('oc-?3',                   'OC-3',          'OC-3'),
     ('oc-?2',                   'OC-2',          'OC-2'),

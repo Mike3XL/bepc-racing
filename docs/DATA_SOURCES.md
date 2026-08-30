@@ -96,6 +96,12 @@ Each race must appear in exactly one `data/<club>/<year>/common/*.common.json` f
 - **Source:** Unknown
 - **Status:** Excluded from PNW Regional — weekly club series (future: own club entry)
 
+### Da Grind (Alki Beach, Seattle — hosted by Seattle Outrigger Canoe Club)
+- **Source:** Jericho HTML through 2025 (`jerichooutrigger.com/races{YEAR}/dagrind.html`). **2026 moved off Jericho** — Jericho's 2026 index no longer lists it; results now published on `seattleoutrigger.com/dagrind` as an **image-only PDF** (printed from Google Sheets, no extractable text layer — `pdftotext` returns nothing). Check both sources each year; the event may move back or Seattle Outrigger's site structure may change.
+- **2026 import:** manual visual transcription (no OCR/automated fetcher exists for this source yet). Script kept at `/tmp/import_dagrind_2026.py` during authoring — not committed; re-derive by hand if re-transcribing a future year, or write a proper `bepc/fetcher_*.py` module if this becomes a recurring pattern (e.g. an image-PDF fetcher using vision-based transcription).
+- **Scope — exception to the general "OC6-only races excluded" rule:** Da Grind is tracked in full, including its OC6/OC12 **Long Course** (12 mi, team crews only, no individual paddlers). Rationale (Mike, 2026-08-30): most OC6 participation is on the Long Course, and there's a standing hope the Long Course opens to individual craft (surfski etc.) in the future — better to have the historical data already in place. Team crew names (e.g. "Kikaha Masters Men") appear as pseudo-individual entries in results/standings; this is accepted, not a bug.
+- **Craft categorization:** Da Grind's raw division strings label OC6/OC12 team divisions with bare words like "Unlimited" and "Spec" (e.g. "Unlimited Mixed Open", "Spec - OC12 Mix Open"), which historically got misnormalized by `craft.py`'s generic `SUP-Unlimited`/`Spec→Kayak-1` patterns (those patterns exist for genuine SUP-Unlimited entries elsewhere, e.g. WebScorer BEPC races — the ambiguity is real, not a typo). Fixed 2026-08-30 in `bepc/fetcher_jericho.py` via `_oc6_craft_from_division()`, which recognizes Jericho outrigger-division shape and maps to `OC-6`/`OC-12` before falling through to `craft.py`. Also added an `OC-12` pattern to `craft.py` (previously only OC-1/2/3/6 existed). 2022/2024/2025 common.json files were re-imported from live Jericho pages to apply the fix retroactively.
+
 ---
 
 ## Exclusion List (races NOT to import)

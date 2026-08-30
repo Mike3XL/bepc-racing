@@ -12,7 +12,7 @@
     {
       "originalPlace": 1,
       "canonicalName": "Mixed Plate - Hui Wa'a O Puget Sound",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 6038.0,
@@ -31,7 +31,7 @@
     {
       "originalPlace": 2,
       "canonicalName": "Ka'io Open Women - Sand Point Outrigger Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6106.0,
@@ -50,7 +50,7 @@
     {
       "originalPlace": 3,
       "canonicalName": "Hui Heihei - Kahikina - Hui Heihei Wa'a",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 6207.0,
@@ -69,7 +69,7 @@
     {
       "originalPlace": 4,
       "canonicalName": "BBOP Open Women - Bellingham Bay Outrigger Paddlers",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6320.0,
@@ -88,7 +88,7 @@
     {
       "originalPlace": 5,
       "canonicalName": "Linda's Legends - Mountain Home Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 6404.0,
@@ -107,7 +107,7 @@
     {
       "originalPlace": 6,
       "canonicalName": "What the Spec? - Seattle Outrigger Canoe Club",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6618.0,
@@ -126,7 +126,7 @@
     {
       "originalPlace": 7,
       "canonicalName": "Kikaha Women's Masters - Kikaha O Ke Kai",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6731.0,
@@ -145,7 +145,7 @@
     {
       "originalPlace": 8,
       "canonicalName": "Bop em SOCC em Robots - Seattle Outrigger Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6816.0,
@@ -164,7 +164,7 @@
     {
       "originalPlace": 9,
       "canonicalName": "Elepaio Master Women - Sand Point Outrigger Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6872.0,
@@ -183,7 +183,7 @@
     {
       "originalPlace": 10,
       "canonicalName": "Wakinikona Wa'a Kaulua - Hui Wa'a O Wakinikona",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-12",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 6879.0,
@@ -202,7 +202,7 @@
     {
       "originalPlace": 11,
       "canonicalName": "Mana Wahine - Mountain Home Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 6945.0,
@@ -221,7 +221,7 @@
     {
       "originalPlace": 12,
       "canonicalName": "HHW Team 50 Plus - Hui Heihei Wa'a",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 7042.0,
@@ -240,7 +240,7 @@
     {
       "originalPlace": 13,
       "canonicalName": "Pineapple Juice - Kai PDX Va'a",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 7103.0,
@@ -259,7 +259,7 @@
     {
       "originalPlace": 14,
       "canonicalName": "Keiki Open Mixed - Sand Point Outrigger Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 7105.0,
@@ -278,7 +278,7 @@
     {
       "originalPlace": 15,
       "canonicalName": "Bend Broods - Bend Oregon Outrigger Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 7156.0,
@@ -297,7 +297,7 @@
     {
       "originalPlace": 16,
       "canonicalName": "Socc Hops...and Monkeys! - Seattle Outrigger Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 7157.0,
@@ -316,7 +316,7 @@
     {
       "originalPlace": 17,
       "canonicalName": "BBOP Mixed Kupuna - Bellingham Bay Outrigger Paddlers",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 7193.0,
@@ -335,7 +335,7 @@
     {
       "originalPlace": 18,
       "canonicalName": "Club Sake V12 - Club Sake",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-12",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 7222.0,
@@ -354,7 +354,7 @@
     {
       "originalPlace": 19,
       "canonicalName": "Uhane Open Women - Sand Point Outrigger Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 7262.0,
@@ -373,7 +373,7 @@
     {
       "originalPlace": 20,
       "canonicalName": "Wahine o Wakinikona - Hui Wa'a O Wakinikona",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 7287.0,

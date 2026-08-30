@@ -12,7 +12,7 @@
     {
       "originalPlace": 1,
       "canonicalName": "Shawtys - Hui Wa'a O Puget Sound",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 2189.0,
@@ -31,7 +31,7 @@
     {
       "originalPlace": 2,
       "canonicalName": "Hui Heihei - Ka Kai Koa - Hui Heihei Wa'a",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 2324.0,
@@ -50,7 +50,7 @@
     {
       "originalPlace": 3,
       "canonicalName": "New SOCCs - Seattle Outrigger Canoe Club",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 2368.0,
@@ -88,7 +88,7 @@
     {
       "originalPlace": 5,
       "canonicalName": "Kikaha Open Women - Kikaha O Ke Kai",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 2407.0,
@@ -126,7 +126,7 @@
     {
       "originalPlace": 7,
       "canonicalName": "Richard Campbell",
-      "craftCategory": "OC1",
+      "craftCategory": "OC-1",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 2518.0,
@@ -145,7 +145,7 @@
     {
       "originalPlace": 8,
       "canonicalName": "Mostly Novice + OG's - Hui Wa'a O Wakinikona",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 2528.0,
@@ -221,7 +221,7 @@
     {
       "originalPlace": 12,
       "canonicalName": "Gig Harbor - Gig Harbor Canoe + Kayak Racing Team",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 2664.0,
@@ -278,7 +278,7 @@
     {
       "originalPlace": 15,
       "canonicalName": "Gig Harbor/Sand Point - Gig Harbor/Sand Point",
-      "craftCategory": "Spec",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 2706.0,
@@ -411,7 +411,7 @@
     {
       "originalPlace": 22,
       "canonicalName": "Sunni Christensen",
-      "craftCategory": "OC1",
+      "craftCategory": "OC-1",
       "gender": "Female",
       "handicap": 1.0,
       "timeSeconds": 2932.0,
@@ -430,7 +430,7 @@
     {
       "originalPlace": 23,
       "canonicalName": "Rich Barrientos - Sake",
-      "craftCategory": "OC1",
+      "craftCategory": "OC-1",
       "gender": "Male",
       "handicap": 1.0,
       "timeSeconds": 2954.0,
@@ -468,7 +468,7 @@
     {
       "originalPlace": 25,
       "canonicalName": "Bryan Pule - Hui Wa'a O Wakinikona",
-      "craftCategory": "Unlimited",
+      "craftCategory": "OC-6",
       "gender": "Mixed",
       "handicap": 1.0,
       "timeSeconds": 3110.0,

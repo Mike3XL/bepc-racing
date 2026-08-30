@@ -1,0 +1,35 @@
+race_id: 2026-08-29__SOCCDaGrind2026
+name: Dagrind
+date: '2026-08-29'
+organizer: seattle-outrigger
+results_platform: manual-pdf-transcription
+tags: []
+courses:
+  Short Course:
+    distance_mi: 4.0
+    starters: 46
+    is_primary: true
+  Women's/All-Gender Long Course:
+    distance_mi: 12.0
+    starters: 20
+    is_primary: false
+  Men's Long Course:
+    distance_mi: 12.0
+    starters: 11
+    is_primary: false
+corrections:
+  - note: >
+      Lambert Wixson's Short Course time was printed as 1:08:13 in the
+      source PDF but the correct time is 1:00:13 (confirmed by Mike,
+      2026-08-30). Transcription already used the corrected time directly
+      (not the raw PDF value) since this is a manual one-off import with
+      no automated re-fetch step. Recorded here for auditability only —
+      no `apply_corrections` action needed.
+notes: >
+  2026 results moved off Jericho (jerichooutrigger.com/races2026/dagrind.html
+  404s) onto Seattle Outrigger Canoe Club's own site:
+  https://www.seattleoutrigger.com/dagrind — results published as an
+  image-only PDF (printed from Google Sheets, no extractable text layer):
+  https://www.seattleoutrigger.com/s/2026_DA-GRIND_RESULTS-xy6f.pdf
+  Transcribed visually (Short Course + both Long Course sheets); DNS/DNF
+  rows (no time) omitted, consistent with existing fetcher convention.
