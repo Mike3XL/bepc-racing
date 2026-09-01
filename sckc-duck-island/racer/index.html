@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Racers</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+  .hcap-reset  { background:#FFE0B2; border:1px solid #F57C00; }
+  /* Muted place text for non-eligible (fresh/outlier/skipped) rows */
+  .place-muted { color:#999; font-style:italic; }
+  /* Preserve explicit newlines (
+) in tooltip text */
+  .tooltip-inner { white-space: pre-line; text-align: left; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  var h = location.hash.replace('#', '');
+  if (h && /^\d{4}$/.test(h)) return h;
+  return localStorage.getItem('pc_year') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('pc_year', year);
+  location.hash = year;
+}
+function getDistance() {
+  return localStorage.getItem('pc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('pc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('pc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('pc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container-fluid px-2 px-sm-3">
+    <a class="navbar-brand" href="../../index.html"><img src="../../logo.png" alt="PaddleRace" style="height:36px;margin-right:6px;vertical-align:middle">PaddleRace</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../series.html">Series</a></li>
+<li class="nav-item"><a class="nav-link" href="../results.html">Results</a></li>
+<li class="nav-item"><a class="nav-link" href="../standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link" href="../trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link active" href="../racer/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="../../how-it-works.html">How it works</a></li>
+<li class="nav-item"><a class="nav-link" href="../../about.html">About</a></li>
+</ul>
+      <div class="position-relative ms-2" style="min-width:180px;max-width:280px">
+        <input id="nav-search" type="text" class="form-control form-control-sm"
+               placeholder="Search…" autocomplete="off">
+        <style>.ns-item{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;font-size:.82rem;color:#333;text-decoration:none;border-bottom:1px solid #f5f5f5}.ns-item:hover{background:#f0f4ff}</style>
+<div id="nav-search-results" class="position-absolute shadow"
+             style="z-index:1050;display:none;min-width:320px;right:0;background:#fff;border:1px solid #dee2e6;border-radius:8px;overflow:hidden;max-height:420px;overflow-y:auto"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+(function(){
+  var RACERS=null,_racersLoading=false;
+  var depth=2;
+  var _races=null,_racesLoading=false;
+
+  function loadRacers(cb){
+    if(RACERS){cb();return;}
+    if(_racersLoading)return;
+    _racersLoading=true;
+    var url=pfx()+'racers-index.json';
+    fetch(url).then(function(r){return r.json();}).then(function(d){
+      RACERS=d;_racersLoading=false;cb();
+    }).catch(function(){RACERS=[];_racersLoading=false;cb();});
+  }
+
+  function fuzzy(str,q){
+    str=str.toLowerCase();q=q.toLowerCase();
+    if(str===q)return 2;
+    if(str.includes(q))return 1+(str.startsWith(q)?0.3:0);
+    var bg=function(s){var b={};for(var i=0;i<s.length-1;i++)b[s.slice(i,i+2)]=1;return b;};
+    var sb=bg(str),qb=bg(q),hits=0,tot=0;
+    for(var k in qb){tot++;if(sb[k])hits++;}
+    return tot>0?hits/tot:0;
+  }
+
+  function pfx(){return depth===0?'':depth===1?'../':'../../';}
+
+  function sectionHdr(label){
+    return '<div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;padding:8px 12px 3px;background:#fafafa;border-bottom:1px solid #f0f0f0">'+label+'</div>';
+  }
+  function resultLink(href,primary,secondary){
+    return '<a href="'+href+'" class="ns-item">'
+      +'<span style="font-weight:500">'+primary+'</span>'
+      +(secondary?'<span style="font-size:.7rem;color:#aaa;margin-left:8px;white-space:nowrap">'+secondary+'</span>':'')
+      +'</a>';
+  }
+
+  function render(q){
+    var res=document.getElementById('nav-search-results');
+    res.innerHTML='';
+    if(q.length<2){res.style.display='none';return;}
+    var p=pfx(),html='';
+
+    if(!RACERS){
+      loadRacers(function(){render(document.getElementById('nav-search').value.trim());});
+    } else {
+      var rs=RACERS.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rs.length){
+        html+=sectionHdr('Racers');
+        rs.forEach(function(x){
+          var r=x.r;if(!r.clubs||!r.clubs.length)return;
+          html+=resultLink(p+r.clubs[0]+'/racer/'+r.slug+'.html',r.name,'');
+        });
+      }
+    }
+
+    if(_races){
+      var all=[];
+      Object.entries(_races.seasons||{}).forEach(function([yr,s]){
+        (Array.isArray(s)?s:(s.races||[])).forEach(function(race){all.push(race);});
+      });
+      var rr=all.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rr.length){
+        html+=sectionHdr('Results');
+        rr.forEach(function(x){
+          var r=x.r;
+          html+=resultLink(p+(_races.club_id||'pnw')+'/results/'+r.slug+'.html',r.name,r.date);
+        });
+      }
+    } else if(!_racesLoading){
+      _racesLoading=true;
+      var url=p+(depth===0?'pnw/':'')+'races-list.json';
+      fetch(url).then(function(r){return r.json();}).then(function(d){
+        _races=d;_racesLoading=false;
+        render(document.getElementById('nav-search').value.trim());
+      }).catch(function(){_racesLoading=false;});
+    }
+
+    if(!html){res.style.display='none';return;}
+    res.innerHTML=html;res.style.display='';
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    var inp=document.getElementById('nav-search');
+    var res=document.getElementById('nav-search-results');
+    if(!inp)return;
+    inp.addEventListener('input',function(){render(this.value.trim());});
+    inp.addEventListener('focus',function(){if(this.value.trim().length>=2)render(this.value.trim());});
+    document.addEventListener('click',function(e){if(!inp.contains(e.target)&&!res.contains(e.target))res.style.display='none';});
+    inp.addEventListener('keydown',function(e){
+      var items=res.querySelectorAll('a');if(!items.length)return;
+      var active=res.querySelector('a[data-sel]');
+      var idx=active?Array.from(items).indexOf(active):-1;
+      if(e.key==='ArrowDown'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx+1)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='ArrowUp'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx-1+items.length)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='Enter'&&active){window.location.href=active.href;}
+      else if(e.key==='Escape'){res.style.display='none';}
+    });
+  });
+})();
+</script><div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Series</span>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group"><a class="btn btn-sm btn-outline-secondary" data-club="bepc-summer" href="../../bepc-summer/racer/index.html">BEPC</a>
+<a class="btn btn-sm btn-outline-secondary" data-club="pnw" href="../../pnw/racer/index.html">PNW</a>
+<a class="btn btn-sm btn-outline-secondary active" data-club="sckc-duck-island" href="index.html">SCKC</a>
+<a class="btn btn-sm btn-outline-secondary" data-club="urban-surf" href="../../urban-surf/racer/index.html">Urban Surf</a>
+</div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var ALL_CLUB_SEASONS = {"bepc-summer":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015"],"current":"2026"},"pnw":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012"],"current":"2026"},"sckc-duck-island":{"years":["2026", "2025", "2024", "2023", "2022", "2019", "2018", "2017", "2016", "2015"],"current":"2026"},"urban-surf":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"],"current":"2026"},"none":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2018", "2017", "2016", "2015"],"current":"2026"}};
+  var info = ALL_CLUB_SEASONS['sckc-duck-island'];
+  var hash = location.hash.replace('#', '');
+  var saved = localStorage.getItem('pc_year');
+  var active = (hash && info.years.indexOf(hash) >= 0) ? hash
+             : (saved && info.years.indexOf(saved) >= 0) ? saved
+             : info.current;
+  var sel = document.getElementById('season-select');
+  var prevBtn = document.getElementById('season-prev');
+  var nextBtn = document.getElementById('season-next');
+  var navigateUrl = '';
+  function updateNavBtns(yr) {
+    var idx = info.years.indexOf(yr);
+    if (prevBtn) prevBtn.disabled = idx >= info.years.length - 1;
+    if (nextBtn) nextBtn.disabled = idx <= 0;
+  }
+  function goYear(yr) {
+    if (navigateUrl) {
+      window.location.href = navigateUrl + '#' + yr;
+      return;
+    }
+    if (sel) sel.value = yr;
+    localStorage.setItem('pc_year', yr);
+    location.hash = yr;
+    updateNavBtns(yr);
+    document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {
+      a.href = a.getAttribute('href').split('#')[0] + '#' + yr;
+    });
+  }
+  if (sel) {
+    sel.innerHTML = info.years.map(function(y) {
+      return '<option value="' + y + '"' + (y === active ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+    sel.addEventListener('change', function() { goYear(this.value); });
+  }
+  if (prevBtn) prevBtn.addEventListener('click', function() {
+    var idx = info.years.indexOf(sel ? sel.value : active);
+    if (idx < info.years.length - 1) goYear(info.years[idx + 1]);
+  });
+  if (nextBtn) nextBtn.addEventListener('click', function() {
+    var idx = info.years.indexOf(sel ? sel.value : active);
+    if (idx > 0) goYear(info.years[idx - 1]);
+  });
+  if (!navigateUrl && location.hash !== '#' + active) location.replace(location.pathname + '#' + active);
+  localStorage.setItem('pc_year', active);
+  localStorage.setItem('pc_club', 'sckc-duck-island');
+  updateNavBtns(active);
+  document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {
+    a.href = a.getAttribute('href').split('#')[0] + '#' + active;
+  });
+})();</script>
+<div class="container">
+  <h1>Racers</h1>
+  <table id="racer-index" class="table table-striped table-hover">
+    <thead><tr><th>Name</th><th>Craft</th></tr></thead>
+    <tbody><tr><td><a href="aaron-small.html">Aaron Small</a></td><td>K-1</td></tr>
+<tr><td><a href="abigail-maxey.html">Abigail Maxey</a></td><td>K-1</td></tr>
+<tr><td><a href="adam.html">Adam</a></td><td>K-1</td></tr>
+<tr><td><a href="alex.html">Alex</a></td><td>K-1</td></tr>
+<tr><td><a href="alex-ciuca.html">Alex Ciuca</a></td><td>K-1</td></tr>
+<tr><td><a href="allison-connell.html">Allison Connell</a></td><td>K-1</td></tr>
+<tr><td><a href="amanda-royac.html">Amanda Royac</a></td><td>K-1</td></tr>
+<tr><td><a href="amber-zipperer.html">Amber Zipperer</a></td><td>K-1</td></tr>
+<tr><td><a href="andy-kim.html">Andy Kim</a></td><td>K-1</td></tr>
+<tr><td><a href="annett-mcpherson.html">Annett McPherson</a></td><td>K-1</td></tr>
+<tr><td><a href="antoinette.html">Antoinette</a></td><td>K-1</td></tr>
+<tr><td><a href="arthur-vernon.html">Arthur Vernon</a></td><td>K-1</td></tr>
+<tr><td><a href="avery-brown.html">Avery Brown</a></td><td>K-1</td></tr>
+<tr><td><a href="azamat-rustamov.html">Azamat Rustamov</a></td><td>K-1</td></tr>
+<tr><td><a href="azusa-murphy.html">Azusa Murphy</a></td><td>K-1</td></tr>
+<tr><td><a href="becky-bronstein.html">Becky Bronstein</a></td><td>K-1</td></tr>
+<tr><td><a href="becky-chan.html">Becky Chan</a></td><td>K-1</td></tr>
+<tr><td><a href="bee-dietz.html">Bee Dietz</a></td><td>K-1</td></tr>
+<tr><td><a href="ben-bergquist.html">Ben Bergquist</a></td><td>K-1</td></tr>
+<tr><td><a href="ben-karlinsey.html">Ben Karlinsey</a></td><td>K-1</td></tr>
+<tr><td><a href="ben-moy.html">Ben Moy</a></td><td>K-1</td></tr>
+<tr><td><a href="ben-watters.html">Ben Watters</a></td><td>K-1</td></tr>
+<tr><td><a href="breona-gutschmidt.html">Breona Gutschmidt</a></td><td>K-1</td></tr>
+<tr><td><a href="c2-andreea-ghzila-emma-tsong.html">C2 Andreea Ghzila & Emma Tsong</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-azusa-murphy-jane-lentini.html">C2 Azusa Murphy & Jane Lentini</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-claire-ritchie-doug-ritchie.html">C2 Claire Ritchie & Doug Ritchie</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-doug-ritchie-h.html">C2 Doug Ritchie & H</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-doug-ritchie-rhonda-eastman.html">C2 Doug Ritchie & Rhonda Eastman</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-doug-ritchie-claire-and-adam.html">C2 Doug Ritchie, Claire and Adam</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-einar-ogle-cian-donovan.html">C2 Einar Ogle & Cian Donovan</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-hana-neutz-naomi-prahl.html">C2 Hana Neutz & Naomi Prahl</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-jane-lentini-nora-tsong.html">C2 Jane Lentini & Nora Tsong</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-jenny-sebastian-kanter.html">C2 Jenny & Sebastian Kanter</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-karol-osusky-karel-zikan.html">C2 Karol Osusky & Karel Zikan</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-luis-buen-abad-janice-buen-abad.html">C2 Luis Buen Abad & Janice Buen Abad</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-mark-parrish-nora-tsong.html">C2 Mark Parrish & Nora Tsong</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-neil-bransfield-and-co.html">C2 Neil Bransfield and co</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-nora-tsong-emma-tsong.html">C2 Nora Tsong & Emma Tsong</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-owen-jennings-owen-white.html">C2 Owen Jennings & Owen White</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-rob-karlinsey-michelle-karlinsey.html">C2 Rob Karlinsey & Michelle Karlinsey</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-sebastian-kanter-gus-starkie.html">C2 Sebastian Kanter & Gus Starkie</a></td><td>C-2</td></tr>
+<tr><td><a href="c2-soren-ogle-skye-davidson.html">C2 Soren Ogle & Skye Davidson</a></td><td>C-2</td></tr>
+<tr><td><a href="c3-jane-l-emma-t-sebastian-k.html">C3 Jane L, Emma T, Sebastian K</a></td><td></td></tr>
+<tr><td><a href="c3-sebastian-kevin-jane.html">C3 Sebastian, Kevin, Jane</a></td><td></td></tr>
+<tr><td><a href="c4-hana-n-reidar-j-azusa-m-lydia.html">C4 Hana N, Reidar J, Azusa M, Lydia</a></td><td></td></tr>
+<tr><td><a href="c4-jane-l-sebastian-k-jane-l-solea.html">C4 Jane L, Sebastian K, Jane L, Solea</a></td><td></td></tr>
+<tr><td><a href="c4-soren-o-mark-p-sebastian-k-torsten.html">C4 Soren O, Mark P, Sebastian K, Torsten</a></td><td></td></tr>
+<tr><td><a href="c6-jake-einar-soren-anna-stephan-ellenor.html">C6 Jake-Einar-Soren-Anna-Stephan-Ellenor</a></td><td></td></tr>
+<tr><td><a href="c6-nora-jane-kevin-kevin-gus-torste.html">C6 Nora, Jane, Kevin, Kevin, Gus, Torste</a></td><td></td></tr>
+<tr><td><a href="c6-sebastian-jane-delia-andy-emma-n.html">C6 Sebastian, Jane, Delia, Andy, Emma, N</a></td><td></td></tr>
+<tr><td><a href="c6-soren-miles-kevin-gus-nora-emma.html">C6 Soren-Miles-Kevin-Gus-Nora-Emma</a></td><td></td></tr>
+<tr><td><a href="c6-the-c6-legends.html">C6 The C6 Legends</a></td><td></td></tr>
+<tr><td><a href="caleb-chuck.html">Caleb Chuck</a></td><td>C-1</td></tr>
+<tr><td><a href="calvin-hou.html">Calvin Hou</a></td><td>K-1</td></tr>
+<tr><td><a href="carl-delica.html">Carl Delica</a></td><td>SUP</td></tr>
+<tr><td><a href="chris-flynn.html">Chris Flynn</a></td><td>K-1</td></tr>
+<tr><td><a href="cian-donovan.html">Cian Donovan</a></td><td>K-1</td></tr>
+<tr><td><a href="cooper-beitlers.html">Cooper Beitlers</a></td><td>K-1</td></tr>
+<tr><td><a href="cooper-riley.html">Cooper Riley</a></td><td>K-1</td></tr>
+<tr><td><a href="dave-riley.html">Dave Riley</a></td><td>K-1</td></tr>
+<tr><td><a href="david-hilubek.html">David Hilubek</a></td><td>K-1</td></tr>
+<tr><td><a href="david-jennings.html">David Jennings</a></td><td>K-1</td></tr>
+<tr><td><a href="delia-ward-smith.html">Delia Ward-Smith</a></td><td>K-1</td></tr>
+<tr><td><a href="dexter-barlow.html">Dexter Barlow</a></td><td>K-1</td></tr>
+<tr><td><a href="doug-bosworth.html">Doug Bosworth</a></td><td>C-1</td></tr>
+<tr><td><a href="doug-ritchie.html">Doug Ritchie</a></td><td>K-1</td></tr>
+<tr><td><a href="egor-klevak.html">Egor Klevak</a></td><td>K-1</td></tr>
+<tr><td><a href="einar-ogle.html">Einar Ogle</a></td><td>K-1</td></tr>
+<tr><td><a href="eli-holmes.html">Eli Holmes</a></td><td>K-1</td></tr>
+<tr><td><a href="eliza.html">Eliza</a></td><td>K-1</td></tr>
+<tr><td><a href="ella-bloomquist.html">Ella Bloomquist</a></td><td>K-1</td></tr>
+<tr><td><a href="emma-tsong.html">Emma Tsong</a></td><td>K-1</td></tr>
+<tr><td><a href="ethan-chin.html">Ethan Chin</a></td><td>K-1</td></tr>
+<tr><td><a href="ethan-durde.html">Ethan Durde</a></td><td>K-1</td></tr>
+<tr><td><a href="ethan-karlinsey.html">Ethan Karlinsey</a></td><td>K-1</td></tr>
+<tr><td><a href="finn-connell.html">Finn Connell</a></td><td>K-1</td></tr>
+<tr><td><a href="fredrik-johansson.html">Fredrik Johansson</a></td><td>K-1</td></tr>
+<tr><td><a href="galen.html">Galen</a></td><td>K-1</td></tr>
+<tr><td><a href="george-lipps.html">George Lipps</a></td><td>K-1</td></tr>
+<tr><td><a href="girts-beitlers.html">Girts Beitlers</a></td><td>K-1</td></tr>
+<tr><td><a href="greg-barton.html">Greg Barton</a></td><td>K-1</td></tr>
+<tr><td><a href="gus-starkie.html">Gus Starkie</a></td><td>C-1</td></tr>
+<tr><td><a href="hana-neutz.html">Hana Neutz</a></td><td>C-1</td></tr>
+<tr><td><a href="hannah-wang.html">Hannah Wang</a></td><td>K-1</td></tr>
+<tr><td><a href="hugo-barribeau.html">Hugo Barribeau</a></td><td>K-1</td></tr>
+<tr><td><a href="ian-page-nichols.html">Ian Page-Nichols</a></td><td>K-1</td></tr>
+<tr><td><a href="ilya.html">Ilya</a></td><td>K-1</td></tr>
+<tr><td><a href="isaac-chan.html">Isaac Chan</a></td><td>K-1</td></tr>
+<tr><td><a href="isabella-flynn.html">Isabella Flynn</a></td><td>C-1</td></tr>
+<tr><td><a href="ivan-storck.html">Ivan Storck</a></td><td>K-1</td></tr>
+<tr><td><a href="jake-zikan.html">Jake Zikan</a></td><td>K-1</td></tr>
+<tr><td><a href="james-girton.html">James Girton</a></td><td>K-1</td></tr>
+<tr><td><a href="jane-lentini.html">Jane Lentini</a></td><td>K-1</td></tr>
+<tr><td><a href="jared-ogle.html">Jared Ogle</a></td><td>K-1</td></tr>
+<tr><td><a href="jean-bjorklund.html">Jean Bjorklund</a></td><td>K-1</td></tr>
+<tr><td><a href="jim-erickson.html">Jim Erickson</a></td><td>K-1</td></tr>
+<tr><td><a href="johnny-grady.html">Johnny Grady</a></td><td>C-1</td></tr>
+<tr><td><a href="julie-roberts.html">Julie Roberts</a></td><td>K-1</td></tr>
+<tr><td><a href="jupiter-grant.html">Jupiter Grant</a></td><td>K-1</td></tr>
+<tr><td><a href="juraj-osusky.html">Juraj Osusky</a></td><td>K-1</td></tr>
+<tr><td><a href="k2-aaron-small-leana-girton.html">K2 Aaron Small & Leana Girton</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-alex-young.html">K2 Alex + Young</a></td><td></td></tr>
+<tr><td><a href="k2-andreea-ghzila-elena-wolgamot.html">K2 Andreea Ghzila & Elena Wolgamot</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-avery-riley-dave-riley.html">K2 Avery Riley & Dave Riley</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-becky-bronstein-kaitlin-voellinger.html">K2 Becky Bronstein & Kaitlin Voellinger</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-bee-dietz-elizabeth-holmes.html">K2 Bee Dietz & Elizabeth Holmes</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-bee-dietz-karol-osusky.html">K2 Bee Dietz & Karol Osusky</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-ben-karlinsey-seth-karlinsey.html">K2 Ben Karlinsey & Seth Karlinsey</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-bex-mattie.html">K2 Bex & Mattie</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-bobo-and-hana-ondrusek.html">K2 Bobo and Hana Ondrusek</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-breona-gutschmidt-becky-bronstein.html">K2 Breona Gutschmidt & Becky Bronstein</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-breona-gutschmidt-liz-graf-brennen.html">K2 Breona Gutschmidt & Liz Graf-Brennen</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-calvin-huo-liang-yiiu.html">K2 Calvin Huo & Liang-Yiiu</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-cooper-beitlers-johann.html">K2 Cooper Beitlers & Johann</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-cooper-riley-dave-riley.html">K2 Cooper Riley & Dave Riley</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-david-peter.html">K2 David & Peter</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-david-fort-anna-fort.html">K2 David Fort & Anna Fort</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-delia-ward-smith-gretchen-ward-smith.html">K2 Delia Ward-Smith & Gretchen Ward-Smith</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-delia-ward-smith-lillian-balet.html">K2 Delia Ward-Smith & Lillian Balet</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-delia-ward-smith-nora-tsong.html">K2 Delia Ward-Smith & Nora Tsong</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-delia-ward-smith-teal.html">K2 Delia Ward-Smith & Teal</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-doug-ritchie-aaron-small.html">K2 Doug Ritchie & Aaron Small</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-einar-ogle-jake-zikan.html">K2 Einar Ogle & Jake Zikan</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-einar-ogle-soren-ogle.html">K2 Einar Ogle & Soren Ogle</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-elizabeth-holmes-becky-chan.html">K2 Elizabeth Holmes & Becky Chan</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-elizabeth-holmes-breona-gutschmidt.html">K2 Elizabeth Holmes & Breona Gutschmidt</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-elizabeth-holmes-julie-roberts.html">K2 Elizabeth Holmes & Julie Roberts</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-elizabeth-holmes-luis-buen-abad.html">K2 Elizabeth Holmes & Luis Buen Abad</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-elizabeth-holmes-paul-elrif.html">K2 Elizabeth Holmes & Paul Elrif</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-elizabeth-holmes-sara-matasick.html">K2 Elizabeth Holmes & Sara Matasick</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-elizabeth-holmes-yolande-s.html">K2 Elizabeth Holmes & Yolande S</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-eric-mccluskey-owen-jennings.html">K2 Eric McCluskey & Owen Jennings</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-eric-mccluskey-owen-white.html">K2 Eric McCluskey & Owen White</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-girts-beitlers-cooper-beitlers.html">K2 Girts Beitlers & Cooper Beitlers</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-girts-beitlers-royal-mcdonald.html">K2 Girts Beitlers & Royal McDonald</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-gus-starkie-alex.html">K2 Gus Starkie & Alex</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-jaden-nolen.html">K2 Jaden & Nolen</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-jake-zikan-elias-haynie-gay.html">K2 Jake Zikan & Elias Haynie-Gay</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-jake-zikan-elizabeth-holmes.html">K2 Jake Zikan & Elizabeth Holmes</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-jake-zikan-karina-zikan.html">K2 Jake Zikan & Karina Zikan</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-jake-zikan-miles-parsons.html">K2 Jake Zikan & Miles Parsons</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-julie-roberts-becky-bronstein.html">K2 Julie Roberts & Becky Bronstein</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-karel-zikan-elizabeth-holmes.html">K2 Karel Zikan & Elizabeth Holmes</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-karla-ogle-soren-ogle.html">K2 Karla Ogle & Soren Ogle</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-kevin-lentini-gus-starkie.html">K2 Kevin Lentini & Gus Starkie</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-kevin-lentini-miles-parsons.html">K2 Kevin Lentini & Miles Parsons</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-kyrstin-szewczyk-elizabeth-holmes.html">K2 Kyrstin Szewczyk & Elizabeth Holmes</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-leana-girton-james-girton.html">K2 Leana Girton & James Girton</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-liz-graf-brennen-breona-gutschmidt.html">K2 Liz Graf-Brennen & Breona Gutschmidt</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-lucas-cooper-riley.html">K2 Lucas & Cooper Riley</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-melat-peterson-cooper-riley.html">K2 Melat Peterson & Cooper Riley</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-melat-peterson-nora-tsong.html">K2 Melat Peterson & Nora Tsong</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-melat-peterson-tim-peterson.html">K2 Melat Peterson & Tim Peterson</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-mike-liddell-lachlan-liddell.html">K2 Mike Liddell & Lachlan Liddell</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-miles-parsons-einar-ogle.html">K2 Miles Parsons & Einar Ogle</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-nora-tsong-emma-tsong.html">K2 Nora Tsong & Emma Tsong</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-nora-tsong-gus-starkie.html">K2 Nora Tsong & Gus Starkie</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-peter-turcan-juraj-osusky.html">K2 Peter Turcan & Juraj Osusky</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-philip-and-teresa-studenovka.html">K2 Philip and Teresa Studenovka</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-ronan-nopp-hayden-lewis-gosch.html">K2 Ronan Nopp & Hayden Lewis-Gosch</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-sebastian-kanter-fredrik-johansson.html">K2 Sebastian Kanter & Fredrik Johansson</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-soren-ogle-azamat-rustamov.html">K2 Soren Ogle & Azamat Rustamov</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-soren-ogle-gus-starkie.html">K2 Soren Ogle & Gus Starkie</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-soren-ogle-leo-ciuca.html">K2 Soren Ogle & Leo Ciuca</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-soren-ogle-miles-parsons.html">K2 Soren Ogle & Miles Parsons</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-soren-ogle-nora-tsong.html">K2 Soren Ogle & Nora Tsong</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-soren-ogle-sebastian-kauffman.html">K2 Soren Ogle & Sebastian Kauffman</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-steve-small-noah-small.html">K2 Steve Small & Noah Small</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-sue-spaulding-annett-mcpherson.html">K2 Sue Spaulding & Annett McPherson</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-tai-flynn-kelvin.html">K2 Tai Flynn & Kelvin</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-vaughn-schenk-einar-ogle.html">K2 Vaughn Schenk & Einar Ogle</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-vaughn-schenk-eric-mccluskey.html">K2 Vaughn Schenk & Eric McCluskey</a></td><td>K-2</td></tr>
+<tr><td><a href="k2-vaughn-schenk-liam-jennings.html">K2 Vaughn Schenk & Liam Jennings</a></td><td>K-2</td></tr>
+<tr><td><a href="k4-aaron-s-nevin-h-hana-n-naomi-p.html">K4 Aaron S, Nevin H, Hana N, Naomi P</a></td><td></td></tr>
+<tr><td><a href="k4-cooper-amy.html">K4 Cooper, Amy, _, _</a></td><td></td></tr>
+<tr><td><a href="k4-delia-w-emma-t-nora-t-melat-p.html">K4 Delia W, Emma T, Nora T, Melat P</a></td><td></td></tr>
+<tr><td><a href="k4-einar-o-hana-n-hayden-ronan-n.html">K4 Einar O, Hana N, Hayden, Ronan N</a></td><td></td></tr>
+<tr><td><a href="k4-einar-o-jake-z-elizabeth-h-soren-o.html">K4 Einar O, Jake Z, Elizabeth H, Soren O</a></td><td></td></tr>
+<tr><td><a href="k4-eli-breona-beckyc-liz.html">K4 Eli, Breona, BeckyC, Liz</a></td><td></td></tr>
+<tr><td><a href="k4-eric-m-hayden-l-ronan-n-einar-o.html">K4 Eric M, Hayden L, Ronan N, Einar O</a></td><td></td></tr>
+<tr><td><a href="k4-luis-b-kendal-s-sue-s-paul-e.html">K4 Luis B, Kendal S, Sue S, Paul E</a></td><td></td></tr>
+<tr><td><a href="k4-luis-paul-sue-annett.html">K4 Luis, Paul, Sue, Annett</a></td><td></td></tr>
+<tr><td><a href="k4-nora-cooper-kevin-gus.html">K4 Nora, Cooper, Kevin, Gus</a></td><td></td></tr>
+<tr><td><a href="k4-soren-o-kevin-l-ethan-girts-b.html">K4 Soren O, Kevin L, Ethan ?, Girts B</a></td><td></td></tr>
+<tr><td><a href="k4-soren-o-miles-p-delia-w-lillian-b.html">K4 Soren O, Miles P, Delia W, Lillian B</a></td><td></td></tr>
+<tr><td><a href="k4-soren-o-miles-p-kevin-l-nora-t.html">K4 Soren O, Miles P, Kevin L, Nora T</a></td><td></td></tr>
+<tr><td><a href="k4-vaughn-s-liam-j-jake-z-einar-o.html">K4 Vaughn S, Liam J, Jake Z, Einar O</a></td><td></td></tr>
+<tr><td><a href="karel-chromy.html">Karel Chromy</a></td><td>K-1</td></tr>
+<tr><td><a href="karel-zikan.html">Karel Zikan</a></td><td>C-1</td></tr>
+<tr><td><a href="karla-ogle.html">Karla Ogle</a></td><td>K-1</td></tr>
+<tr><td><a href="karol-osusky.html">Karol Osusky</a></td><td>K-1</td></tr>
+<tr><td><a href="katie-parrish.html">Katie Parrish</a></td><td>K-1</td></tr>
+<tr><td><a href="keller-morrison.html">Keller Morrison</a></td><td>K-1</td></tr>
+<tr><td><a href="kendal-swinski.html">Kendal Swinski</a></td><td>K-1</td></tr>
+<tr><td><a href="kerry-connell.html">Kerry Connell</a></td><td>K-1</td></tr>
+<tr><td><a href="kevin-armitano.html">Kevin Armitano</a></td><td>K-1</td></tr>
+<tr><td><a href="kevin-lentini.html">Kevin Lentini</a></td><td>K-1</td></tr>
+<tr><td><a href="kevin-olney.html">Kevin Olney</a></td><td>K-1</td></tr>
+<tr><td><a href="kyle-peterson.html">Kyle Peterson</a></td><td>K-1</td></tr>
+<tr><td><a href="kyrstin-szewczyk.html">Kyrstin Szewczyk</a></td><td>K-1</td></tr>
+<tr><td><a href="lachlan-liddell.html">Lachlan Liddell</a></td><td>K-1</td></tr>
+<tr><td><a href="laurie-ward.html">Laurie Ward</a></td><td>K-1</td></tr>
+<tr><td><a href="leana-girton.html">Leana Girton</a></td><td>K-1</td></tr>
+<tr><td><a href="lee-bjorklund.html">Lee Bjorklund</a></td><td>K-1</td></tr>
+<tr><td><a href="leo-malmberg.html">Leo Malmberg</a></td><td>K-1</td></tr>
+<tr><td><a href="liam-jennings.html">Liam Jennings</a></td><td>C-1</td></tr>
+<tr><td><a href="lila-fox.html">Lila Fox</a></td><td>K-1</td></tr>
+<tr><td><a href="lilian-andrews.html">Lilian Andrews</a></td><td>K-1</td></tr>
+<tr><td><a href="lillian-balet.html">Lillian Balet</a></td><td>K-1</td></tr>
+<tr><td><a href="liz-erickson.html">Liz Erickson</a></td><td>K-1</td></tr>
+<tr><td><a href="liz-graf-brennen.html">Liz Graf-Brennen</a></td><td>K-1</td></tr>
+<tr><td><a href="lorenzo-flynn.html">Lorenzo Flynn</a></td><td>K-1</td></tr>
+<tr><td><a href="ludovit-tatos.html">Ludovit Tatos</a></td><td>K-1</td></tr>
+<tr><td><a href="luis-buen-abad.html">Luis Buen Abad</a></td><td>K-1</td></tr>
+<tr><td><a href="lydia-sampson.html">Lydia Sampson</a></td><td>K-1</td></tr>
+<tr><td><a href="lynne-peeplks.html">Lynne Peeplks</a></td><td>K-1</td></tr>
+<tr><td><a href="maija-malinen.html">Maija Malinen</a></td><td>C-1</td></tr>
+<tr><td><a href="marc-lentini.html">Marc Lentini</a></td><td>K-1</td></tr>
+<tr><td><a href="marin-millar.html">Marin Millar</a></td><td>K-1</td></tr>
+<tr><td><a href="mark-parrish.html">Mark Parrish</a></td><td>C-1</td></tr>
+<tr><td><a href="marta.html">Marta</a></td><td>K-1</td></tr>
+<tr><td><a href="martine-andrews.html">Martine Andrews</a></td><td>K-1</td></tr>
+<tr><td><a href="max-dale.html">Max Dale</a></td><td>K-1</td></tr>
+<tr><td><a href="maya-perry.html">Maya Perry</a></td><td>K-1</td></tr>
+<tr><td><a href="meg-ludlum.html">Meg Ludlum</a></td><td>K-1</td></tr>
+<tr><td><a href="meg-theasey.html">Meg Theasey</a></td><td>K-1</td></tr>
+<tr><td><a href="melat-peterson.html">Melat Peterson</a></td><td>K-1</td></tr>
+<tr><td><a href="meryl-bezrutczyk-lauriat.html">Meryl Bezrutczyk-Lauriat</a></td><td>SUP</td></tr>
+<tr><td><a href="michal-lahav.html">Michal Lahav</a></td><td>K-1</td></tr>
+<tr><td><a href="mike-lawrence.html">Mike Lawrence</a></td><td>K-1</td></tr>
+<tr><td><a href="mike-liddell.html">Mike Liddell</a></td><td>K-1</td></tr>
+<tr><td><a href="mike-swinford.html">Mike Swinford</a></td><td>K-1</td></tr>
+<tr><td><a href="miles-cross-whiter.html">Miles Cross-Whiter</a></td><td>K-1</td></tr>
+<tr><td><a href="miles-parsons.html">Miles Parsons</a></td><td>K-1</td></tr>
+<tr><td><a href="mina.html">Mina</a></td><td>K-1</td></tr>
+<tr><td><a href="nathan-mitchell.html">Nathan Mitchell</a></td><td>K-1</td></tr>
+<tr><td><a href="nathaniel-errez.html">Nathaniel Errez</a></td><td>K-1</td></tr>
+<tr><td><a href="nicolas-miatre.html">Nicolas Miatre</a></td><td>K-1</td></tr>
+<tr><td><a href="nikolay-shoop.html">Nikolay Shoop</a></td><td>K-1</td></tr>
+<tr><td><a href="nora-davis.html">Nora Davis</a></td><td>K-1</td></tr>
+<tr><td><a href="nora-tsong.html">Nora Tsong</a></td><td>K-1</td></tr>
+<tr><td><a href="odin-harris.html">Odin Harris</a></td><td>K-1</td></tr>
+<tr><td><a href="oscar-white.html">Oscar White</a></td><td>K-1</td></tr>
+<tr><td><a href="owen-jennings.html">Owen Jennings</a></td><td>K-1</td></tr>
+<tr><td><a href="owen-lilleleth.html">Owen Lilleleth</a></td><td>K-1</td></tr>
+<tr><td><a href="owen-white.html">Owen White</a></td><td>K-1</td></tr>
+<tr><td><a href="parker-duff.html">Parker Duff</a></td><td>K-1</td></tr>
+<tr><td><a href="patrick-armitano.html">Patrick Armitano</a></td><td>K-1</td></tr>
+<tr><td><a href="paul-elrif.html">Paul Elrif</a></td><td>K-1</td></tr>
+<tr><td><a href="philip-murphy.html">Philip Murphy</a></td><td>K-1</td></tr>
+<tr><td><a href="pilar-moreno.html">Pilar Moreno</a></td><td>K-1</td></tr>
+<tr><td><a href="pilar-pasquel.html">Pilar Pasquel</a></td><td>K-1</td></tr>
+<tr><td><a href="reuben-stambaugh.html">Reuben Stambaugh</a></td><td>K-1</td></tr>
+<tr><td><a href="robbie-magus.html">Robbie Magus</a></td><td>K-1</td></tr>
+<tr><td><a href="rowing-shell-owen-evan-sara-caeline.html">Rowing-Shell Owen, Evan, Sara, Caeline</a></td><td></td></tr>
+<tr><td><a href="rowing-shell-sara-nora.html">Rowing-Shell Sara & Nora</a></td><td></td></tr>
+<tr><td><a href="sup-jitka-and-nicole-studenovska.html">SUP Jitka and Nicole Studenovska</a></td><td></td></tr>
+<tr><td><a href="sabine-mecking.html">Sabine Mecking</a></td><td>K-1</td></tr>
+<tr><td><a href="sarah-hess.html">Sarah Hess</a></td><td>K-1</td></tr>
+<tr><td><a href="sebastian-kanter.html">Sebastian Kanter</a></td><td>C-1</td></tr>
+<tr><td><a href="sebastian-kauffman.html">Sebastian Kauffman</a></td><td>K-1</td></tr>
+<tr><td><a href="seth-karlinsey.html">Seth Karlinsey</a></td><td>K-1</td></tr>
+<tr><td><a href="shad-rich.html">Shad Rich</a></td><td>K-1</td></tr>
+<tr><td><a href="simon-smith.html">Simon Smith</a></td><td>K-1</td></tr>
+<tr><td><a href="skye-davidson.html">Skye Davidson</a></td><td>K-1</td></tr>
+<tr><td><a href="soren-ogle.html">Soren Ogle</a></td><td>K-1</td></tr>
+<tr><td><a href="stefan-lukacovic.html">Stefan Lukacovic</a></td><td>K-1</td></tr>
+<tr><td><a href="stephen-harris.html">Stephen Harris</a></td><td>K-1</td></tr>
+<tr><td><a href="steve-small.html">Steve Small</a></td><td>K-1</td></tr>
+<tr><td><a href="sue-spaulding.html">Sue Spaulding</a></td><td>K-1</td></tr>
+<tr><td><a href="tai-flynn.html">Tai Flynn</a></td><td>K-1</td></tr>
+<tr><td><a href="thomas-hughes.html">Thomas Hughes</a></td><td>K-1</td></tr>
+<tr><td><a href="tina-fay.html">Tina Fay</a></td><td>K-1</td></tr>
+<tr><td><a href="tomaso.html">Tomaso</a></td><td>K-1</td></tr>
+<tr><td><a href="torsten-bennett.html">Torsten Bennett</a></td><td>K-1</td></tr>
+<tr><td><a href="vadim-kin.html">Vadim Kin</a></td><td>C-1</td></tr>
+<tr><td><a href="vaughn-schenk.html">Vaughn Schenk</a></td><td>K-1</td></tr>
+<tr><td><a href="veronica-so.html">Veronica So</a></td><td>K-1</td></tr>
+<tr><td><a href="wilbert-lam.html">Wilbert Lam</a></td><td>C-1</td></tr>
+<tr><td><a href="row-boat.html">row boat</a></td><td></td></tr>
+</tbody>
+  </table>
+</div>
+<script>
+$(document).ready(function() {
+  $('#racer-index').DataTable({
+    order: [[0, 'asc']],
+    pageLength: 50,
+    responsive: true
+  });
+});
+</script>
+</body></html>

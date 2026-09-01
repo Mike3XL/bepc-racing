@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C2 Einar Ogle & Cian Donovan</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+  .hcap-reset  { background:#FFE0B2; border:1px solid #F57C00; }
+  /* Muted place text for non-eligible (fresh/outlier/skipped) rows */
+  .place-muted { color:#999; font-style:italic; }
+  /* Preserve explicit newlines (
+) in tooltip text */
+  .tooltip-inner { white-space: pre-line; text-align: left; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  var h = location.hash.replace('#', '');
+  if (h && /^\d{4}$/.test(h)) return h;
+  return localStorage.getItem('pc_year') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('pc_year', year);
+  location.hash = year;
+}
+function getDistance() {
+  return localStorage.getItem('pc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('pc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('pc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('pc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container-fluid px-2 px-sm-3">
+    <a class="navbar-brand" href="../../index.html"><img src="../../logo.png" alt="PaddleRace" style="height:36px;margin-right:6px;vertical-align:middle">PaddleRace</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../series.html">Series</a></li>
+<li class="nav-item"><a class="nav-link" href="../results.html">Results</a></li>
+<li class="nav-item"><a class="nav-link" href="../standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link" href="../trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link active" href="../racer/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="../../how-it-works.html">How it works</a></li>
+<li class="nav-item"><a class="nav-link" href="../../about.html">About</a></li>
+</ul>
+      <div class="position-relative ms-2" style="min-width:180px;max-width:280px">
+        <input id="nav-search" type="text" class="form-control form-control-sm"
+               placeholder="Search…" autocomplete="off">
+        <style>.ns-item{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;font-size:.82rem;color:#333;text-decoration:none;border-bottom:1px solid #f5f5f5}.ns-item:hover{background:#f0f4ff}</style>
+<div id="nav-search-results" class="position-absolute shadow"
+             style="z-index:1050;display:none;min-width:320px;right:0;background:#fff;border:1px solid #dee2e6;border-radius:8px;overflow:hidden;max-height:420px;overflow-y:auto"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+(function(){
+  var RACERS=null,_racersLoading=false;
+  var depth=2;
+  var _races=null,_racesLoading=false;
+
+  function loadRacers(cb){
+    if(RACERS){cb();return;}
+    if(_racersLoading)return;
+    _racersLoading=true;
+    var url=pfx()+'racers-index.json';
+    fetch(url).then(function(r){return r.json();}).then(function(d){
+      RACERS=d;_racersLoading=false;cb();
+    }).catch(function(){RACERS=[];_racersLoading=false;cb();});
+  }
+
+  function fuzzy(str,q){
+    str=str.toLowerCase();q=q.toLowerCase();
+    if(str===q)return 2;
+    if(str.includes(q))return 1+(str.startsWith(q)?0.3:0);
+    var bg=function(s){var b={};for(var i=0;i<s.length-1;i++)b[s.slice(i,i+2)]=1;return b;};
+    var sb=bg(str),qb=bg(q),hits=0,tot=0;
+    for(var k in qb){tot++;if(sb[k])hits++;}
+    return tot>0?hits/tot:0;
+  }
+
+  function pfx(){return depth===0?'':depth===1?'../':'../../';}
+
+  function sectionHdr(label){
+    return '<div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;padding:8px 12px 3px;background:#fafafa;border-bottom:1px solid #f0f0f0">'+label+'</div>';
+  }
+  function resultLink(href,primary,secondary){
+    return '<a href="'+href+'" class="ns-item">'
+      +'<span style="font-weight:500">'+primary+'</span>'
+      +(secondary?'<span style="font-size:.7rem;color:#aaa;margin-left:8px;white-space:nowrap">'+secondary+'</span>':'')
+      +'</a>';
+  }
+
+  function render(q){
+    var res=document.getElementById('nav-search-results');
+    res.innerHTML='';
+    if(q.length<2){res.style.display='none';return;}
+    var p=pfx(),html='';
+
+    if(!RACERS){
+      loadRacers(function(){render(document.getElementById('nav-search').value.trim());});
+    } else {
+      var rs=RACERS.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rs.length){
+        html+=sectionHdr('Racers');
+        rs.forEach(function(x){
+          var r=x.r;if(!r.clubs||!r.clubs.length)return;
+          html+=resultLink(p+r.clubs[0]+'/racer/'+r.slug+'.html',r.name,'');
+        });
+      }
+    }
+
+    if(_races){
+      var all=[];
+      Object.entries(_races.seasons||{}).forEach(function([yr,s]){
+        (Array.isArray(s)?s:(s.races||[])).forEach(function(race){all.push(race);});
+      });
+      var rr=all.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rr.length){
+        html+=sectionHdr('Results');
+        rr.forEach(function(x){
+          var r=x.r;
+          html+=resultLink(p+(_races.club_id||'pnw')+'/results/'+r.slug+'.html',r.name,r.date);
+        });
+      }
+    } else if(!_racesLoading){
+      _racesLoading=true;
+      var url=p+(depth===0?'pnw/':'')+'races-list.json';
+      fetch(url).then(function(r){return r.json();}).then(function(d){
+        _races=d;_racesLoading=false;
+        render(document.getElementById('nav-search').value.trim());
+      }).catch(function(){_racesLoading=false;});
+    }
+
+    if(!html){res.style.display='none';return;}
+    res.innerHTML=html;res.style.display='';
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    var inp=document.getElementById('nav-search');
+    var res=document.getElementById('nav-search-results');
+    if(!inp)return;
+    inp.addEventListener('input',function(){render(this.value.trim());});
+    inp.addEventListener('focus',function(){if(this.value.trim().length>=2)render(this.value.trim());});
+    document.addEventListener('click',function(e){if(!inp.contains(e.target)&&!res.contains(e.target))res.style.display='none';});
+    inp.addEventListener('keydown',function(e){
+      var items=res.querySelectorAll('a');if(!items.length)return;
+      var active=res.querySelector('a[data-sel]');
+      var idx=active?Array.from(items).indexOf(active):-1;
+      if(e.key==='ArrowDown'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx+1)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='ArrowUp'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx-1+items.length)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='Enter'&&active){window.location.href=active.href;}
+      else if(e.key==='Escape'){res.style.display='none';}
+    });
+  });
+})();
+</script>
+<div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Series</span>
+        <div class="btn-group flex-wrap" id="club-nav"><a class="btn btn-sm btn-outline-secondary active" href="c2-einar-ogle-cian-donovan.html">SCKC</a>
+</div>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Season</span>
+        <button id="season-prev" class="btn btn-sm btn-outline-secondary" disabled>&larr;</button>
+        <select id="season-select" class="form-select form-select-sm" style="min-width:110px"></select>
+        <button id="season-next" class="btn btn-sm btn-outline-secondary" disabled>&rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid px-2 px-sm-3">
+  
+  <div class="d-flex flex-wrap align-items-baseline gap-3 mb-2">
+    <h2 class="mb-0">C2 Einar Ogle & Cian Donovan</h2>
+    <div class="text-muted small" id="racer-stats-bar">
+  <span id="stat-season-label">2018 season:</span>
+  <span id="stat-races">1</span> races,
+  <span id="stat-wins">0</span> wins,
+  <span id="stat-podiums">0</span> podiums
+</div>
+<script>var racerSeasonStats = {"2018": {"races": 1, "wins": 0, "podiums": 0}};</script>
+  </div>
+  <div data-season="2018" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-sckc-duck-island-2018-canoe-2">Canoe-2</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-sckc-duck-island-2018-canoe-2">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Finish Pts:</strong> 2</div>
+  <div class="col-6 col-sm-3"><strong>Corr Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.000</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-sckc-duck-island-2018-canoe-2" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-sckc-duck-island-2018-canoe-2" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th><span class="d-none d-lg-inline" style="vertical-align:middle"></span><span class="d-lg-none"></span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Race</span><span class="d-lg-none">Race</span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Date</span><span class="d-lg-none">Date</span></th><th data-bs-toggle="tooltip" data-bs-title="Place by Time vs Par"><span class="d-none d-lg-inline" style="vertical-align:middle">Place vs Par</span><span class="d-lg-none">Place vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Place on Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle">Place</span><span class="d-lg-none">Place</span></th><th data-bs-toggle="tooltip" data-bs-title="Improvement vs personal par (+ve is best)"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> vs Par</span><span class="d-lg-none">vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> Time</span><span class="d-lg-none">Finish</span></th><th data-bs-toggle="tooltip" data-bs-title="Personal par time (RacePar * Index)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par</span><span class="d-lg-none">Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Pace index"><span class="d-none d-lg-inline" style="vertical-align:middle">Index</span><span class="d-lg-none">Index</span></th><th data-bs-toggle="tooltip" data-bs-title="Index for next race"><span class="d-none d-lg-inline" style="vertical-align:middle">New Index</span><span class="d-lg-none">New</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by time"><span class="d-none d-lg-inline" style="vertical-align:middle">Finish Points</span><span class="d-lg-none">Pts</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by par result)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par Points</span><span class="d-lg-none">Par Pts</span></th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing index — not included in ranking"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span><span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="1st Place (Finish time)"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg></span></td><td><a href="../results/2018-07-06-3.html">2018 Duck Island Race #3 — C2</a></td><td class="text-muted small text-nowrap">Jul 6, 2018</td><td>1</td><td><span class="place-muted" data-bs-toggle="tooltip" data-bs-title="Establishing index - excluded from ranking">(1)</span></td><td></td><td>18:33</td><td></td><td>1.000</td><td>1.000</td><td>2</td><td>0</td></tr></tbody>
+</table></div></div></div>
+</div>
+<script>
+new Chart(document.getElementById('chart-pts-sckc-duck-island-2018-canoe-2'), {
+  type:'line',data:{labels:["07/06 - #3"],datasets:[
+    {label:'Finish Pts',data:[2],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Corr Pts',data:[0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-sckc-duck-island-2018-canoe-2'), {
+  type:'line',data:{labels:["07/06 - #3"],datasets:[
+    {label:'Index',data:[1.0],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Index'},afterDataLimits:function(s){var sp=s.max-s.min;if(sp<0.1){var m=(s.max+s.min)/2;s.min=m-0.05;s.max=m+0.05;}}}}}
+});</script>
+<script>
+var _rs=document.getElementById('racer-select');if(_rs)_rs.addEventListener('change', function() {
+  window.location.href = this.value + '.html';
+});
+</script>
+<script>
+(function() {
+  var club = 'sckc-duck-island';
+  localStorage.setItem('pc_club', club);
+  var availYears = ['2018'];
+  var storedSeason = localStorage.getItem('pc_year');
+  var season = (storedSeason && availYears.indexOf(storedSeason) >= 0) ? storedSeason : availYears[0];
+  localStorage.setItem('pc_year', season);
+
+  function showSeason(s) {
+    document.querySelectorAll('[data-season]').forEach(function(el) {
+      el.style.display = el.dataset.season === s ? '' : 'none';
+    });
+    if (typeof racerSeasonStats !== 'undefined' && racerSeasonStats[s]) {
+      var st = racerSeasonStats[s];
+      var el;
+      if ((el = document.getElementById('stat-season-label'))) el.textContent = s + ' season:';
+      if ((el = document.getElementById('stat-races'))) el.textContent = st.races;
+      if ((el = document.getElementById('stat-wins'))) el.textContent = st.wins;
+      if ((el = document.getElementById('stat-podiums'))) el.textContent = st.podiums;
+    }
+  }
+
+  showSeason(season);
+
+  var sel = document.getElementById('season-select');
+  var prevBtn = document.getElementById('season-prev');
+  var nextBtn = document.getElementById('season-next');
+  function updateNavBtns(yr) {
+    var idx = availYears.indexOf(yr);
+    if (prevBtn) prevBtn.disabled = idx >= availYears.length - 1;
+    if (nextBtn) nextBtn.disabled = idx <= 0;
+  }
+  function goSeason(yr) {
+    if (sel) sel.value = yr;
+    localStorage.setItem('pc_year', yr);
+    showSeason(yr);
+    updateNavBtns(yr);
+  }
+  if (sel) {
+    sel.innerHTML = availYears.map(function(y) {
+      return '<option value="' + y + '"' + (y === season ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+    sel.addEventListener('change', function() { goSeason(this.value); });
+  }
+  if (prevBtn) prevBtn.addEventListener('click', function() {
+    var idx = availYears.indexOf(sel ? sel.value : season);
+    if (idx < availYears.length - 1) goSeason(availYears[idx + 1]);
+  });
+  if (nextBtn) nextBtn.addEventListener('click', function() {
+    var idx = availYears.indexOf(sel ? sel.value : season);
+    if (idx > 0) goSeason(availYears[idx - 1]);
+  });
+  updateNavBtns(season);
+
+  // Restore saved craft tab
+  var savedCraft = localStorage.getItem('pc_craft');
+  if (savedCraft) {
+    var craftBtn = document.querySelector('[data-bs-target="#' + savedCraft + '"]');
+    if (craftBtn) bootstrap.Tab.getOrCreateInstance(craftBtn).show();
+  }
+  document.querySelectorAll('[data-bs-target^="#c-"]').forEach(function(btn) {
+    btn.addEventListener('shown.bs.tab', function() {
+      localStorage.setItem('pc_craft', btn.getAttribute('data-bs-target').substring(1));
+    });
+  });
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function(el) {
+    bootstrap.Tooltip.getOrCreateInstance(el);
+  });
+})();
+</script>
+
+</body></html>

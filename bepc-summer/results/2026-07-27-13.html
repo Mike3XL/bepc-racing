@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BEPC 2026 Race Series #13</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+  .hcap-reset  { background:#FFE0B2; border:1px solid #F57C00; }
+  /* Muted place text for non-eligible (fresh/outlier/skipped) rows */
+  .place-muted { color:#999; font-style:italic; }
+  /* Preserve explicit newlines (
+) in tooltip text */
+  .tooltip-inner { white-space: pre-line; text-align: left; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  var h = location.hash.replace('#', '');
+  if (h && /^\d{4}$/.test(h)) return h;
+  return localStorage.getItem('pc_year') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('pc_year', year);
+  location.hash = year;
+}
+function getDistance() {
+  return localStorage.getItem('pc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('pc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('pc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('pc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container-fluid px-2 px-sm-3">
+    <a class="navbar-brand" href="../../index.html"><img src="../../logo.png" alt="PaddleRace" style="height:36px;margin-right:6px;vertical-align:middle">PaddleRace</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../series.html">Series</a></li>
+<li class="nav-item"><a class="nav-link active" href="../results.html">Results</a></li>
+<li class="nav-item"><a class="nav-link" href="../standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link" href="../trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link" href="../racer/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="../../how-it-works.html">How it works</a></li>
+<li class="nav-item"><a class="nav-link" href="../../about.html">About</a></li>
+</ul>
+      <div class="position-relative ms-2" style="min-width:180px;max-width:280px">
+        <input id="nav-search" type="text" class="form-control form-control-sm"
+               placeholder="Search…" autocomplete="off">
+        <style>.ns-item{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;font-size:.82rem;color:#333;text-decoration:none;border-bottom:1px solid #f5f5f5}.ns-item:hover{background:#f0f4ff}</style>
+<div id="nav-search-results" class="position-absolute shadow"
+             style="z-index:1050;display:none;min-width:320px;right:0;background:#fff;border:1px solid #dee2e6;border-radius:8px;overflow:hidden;max-height:420px;overflow-y:auto"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+(function(){
+  var RACERS=null,_racersLoading=false;
+  var depth=2;
+  var _races=null,_racesLoading=false;
+
+  function loadRacers(cb){
+    if(RACERS){cb();return;}
+    if(_racersLoading)return;
+    _racersLoading=true;
+    var url=pfx()+'racers-index.json';
+    fetch(url).then(function(r){return r.json();}).then(function(d){
+      RACERS=d;_racersLoading=false;cb();
+    }).catch(function(){RACERS=[];_racersLoading=false;cb();});
+  }
+
+  function fuzzy(str,q){
+    str=str.toLowerCase();q=q.toLowerCase();
+    if(str===q)return 2;
+    if(str.includes(q))return 1+(str.startsWith(q)?0.3:0);
+    var bg=function(s){var b={};for(var i=0;i<s.length-1;i++)b[s.slice(i,i+2)]=1;return b;};
+    var sb=bg(str),qb=bg(q),hits=0,tot=0;
+    for(var k in qb){tot++;if(sb[k])hits++;}
+    return tot>0?hits/tot:0;
+  }
+
+  function pfx(){return depth===0?'':depth===1?'../':'../../';}
+
+  function sectionHdr(label){
+    return '<div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;padding:8px 12px 3px;background:#fafafa;border-bottom:1px solid #f0f0f0">'+label+'</div>';
+  }
+  function resultLink(href,primary,secondary){
+    return '<a href="'+href+'" class="ns-item">'
+      +'<span style="font-weight:500">'+primary+'</span>'
+      +(secondary?'<span style="font-size:.7rem;color:#aaa;margin-left:8px;white-space:nowrap">'+secondary+'</span>':'')
+      +'</a>';
+  }
+
+  function render(q){
+    var res=document.getElementById('nav-search-results');
+    res.innerHTML='';
+    if(q.length<2){res.style.display='none';return;}
+    var p=pfx(),html='';
+
+    if(!RACERS){
+      loadRacers(function(){render(document.getElementById('nav-search').value.trim());});
+    } else {
+      var rs=RACERS.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rs.length){
+        html+=sectionHdr('Racers');
+        rs.forEach(function(x){
+          var r=x.r;if(!r.clubs||!r.clubs.length)return;
+          html+=resultLink(p+r.clubs[0]+'/racer/'+r.slug+'.html',r.name,'');
+        });
+      }
+    }
+
+    if(_races){
+      var all=[];
+      Object.entries(_races.seasons||{}).forEach(function([yr,s]){
+        (Array.isArray(s)?s:(s.races||[])).forEach(function(race){all.push(race);});
+      });
+      var rr=all.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rr.length){
+        html+=sectionHdr('Results');
+        rr.forEach(function(x){
+          var r=x.r;
+          html+=resultLink(p+(_races.club_id||'pnw')+'/results/'+r.slug+'.html',r.name,r.date);
+        });
+      }
+    } else if(!_racesLoading){
+      _racesLoading=true;
+      var url=p+(depth===0?'pnw/':'')+'races-list.json';
+      fetch(url).then(function(r){return r.json();}).then(function(d){
+        _races=d;_racesLoading=false;
+        render(document.getElementById('nav-search').value.trim());
+      }).catch(function(){_racesLoading=false;});
+    }
+
+    if(!html){res.style.display='none';return;}
+    res.innerHTML=html;res.style.display='';
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    var inp=document.getElementById('nav-search');
+    var res=document.getElementById('nav-search-results');
+    if(!inp)return;
+    inp.addEventListener('input',function(){render(this.value.trim());});
+    inp.addEventListener('focus',function(){if(this.value.trim().length>=2)render(this.value.trim());});
+    document.addEventListener('click',function(e){if(!inp.contains(e.target)&&!res.contains(e.target))res.style.display='none';});
+    inp.addEventListener('keydown',function(e){
+      var items=res.querySelectorAll('a');if(!items.length)return;
+      var active=res.querySelector('a[data-sel]');
+      var idx=active?Array.from(items).indexOf(active):-1;
+      if(e.key==='ArrowDown'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx+1)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='ArrowUp'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx-1+items.length)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='Enter'&&active){window.location.href=active.href;}
+      else if(e.key==='Escape'){res.style.display='none';}
+    });
+  });
+})();
+</script><div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Series</span>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group"><a class="btn btn-sm btn-outline-secondary active" data-club="bepc-summer" href="results.html">BEPC</a>
+<a class="btn btn-sm btn-outline-secondary" data-club="pnw" href="../../pnw/results.html">PNW</a>
+<a class="btn btn-sm btn-outline-secondary" data-club="sckc-duck-island" href="../../sckc-duck-island/results.html">SCKC</a>
+<a class="btn btn-sm btn-outline-secondary" data-club="urban-surf" href="../../urban-surf/results.html">Urban Surf</a>
+</div>
+      </div>
+      <div class='d-flex align-items-center gap-2'>
+        <span class='text-muted small fw-semibold'>Season</span>
+        <button id='season-prev' class='btn btn-sm btn-outline-secondary' disabled>&larr;</button>
+        <select id='season-select' class='form-select form-select-sm' style='min-width:110px'></select>
+        <button id='season-next' class='btn btn-sm btn-outline-secondary' disabled>&rarr;</button>
+      </div>
+      <div class="d-flex align-items-center gap-1">
+  <span class="text-muted small fw-semibold">Race</span>
+  <a href="2026-07-20-12.html" class="btn btn-outline-secondary btn-sm">&larr;</a>
+  <select class="form-select form-select-sm" style="min-width:140px" onchange="window.location.href=this.value"><option value="2026-05-04-01.html">05/04 - #01</option>
+<option value="2026-05-11-02.html">05/11 - #02</option>
+<option value="2026-05-18-03.html">05/18 - #03</option>
+<option value="2026-05-25-04.html">05/25 - #04</option>
+<option value="2026-06-01-05.html">06/01 - #05</option>
+<option value="2026-06-08-06.html">06/08 - #06</option>
+<option value="2026-06-15-07.html">06/15 - #07</option>
+<option value="2026-06-22-08.html">06/22 - #08</option>
+<option value="2026-06-29-09.html">06/29 - #09</option>
+<option value="2026-07-06-10.html">07/06 - #10</option>
+<option value="2026-07-13-11.html">07/13 - #11</option>
+<option value="2026-07-20-12.html">07/20 - #12</option>
+<option value="2026-07-27-13.html" selected>07/27 - #13</option>
+<option value="2026-08-03-14.html">08/03 - #14</option>
+<option value="2026-08-10-15.html">08/10 - #15</option>
+<option value="2026-08-17-16.html">08/17 - #16</option>
+<option value="2026-08-24-17.html">08/24 - #17</option>
+<option value="2026-08-31-18.html">08/31 - #18</option>
+</select>
+  <a href="2026-08-03-14.html" class="btn btn-outline-secondary btn-sm">&rarr;</a>
+</div>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var ALL_CLUB_SEASONS = {"bepc-summer":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015"],"current":"2026"},"pnw":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012"],"current":"2026"},"sckc-duck-island":{"years":["2026", "2025", "2024", "2023", "2022", "2019", "2018", "2017", "2016", "2015"],"current":"2026"},"urban-surf":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"],"current":"2026"},"none":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2018", "2017", "2016", "2015"],"current":"2026"}};
+  var info = ALL_CLUB_SEASONS['bepc-summer'];
+  var hash = location.hash.replace('#', '');
+  var saved = localStorage.getItem('pc_year');
+  var active = (hash && info.years.indexOf(hash) >= 0) ? hash
+             : (saved && info.years.indexOf(saved) >= 0) ? saved
+             : info.current;
+  var sel = document.getElementById('season-select');
+  var prevBtn = document.getElementById('season-prev');
+  var nextBtn = document.getElementById('season-next');
+  var navigateUrl = '../results.html';
+  function updateNavBtns(yr) {
+    var idx = info.years.indexOf(yr);
+    if (prevBtn) prevBtn.disabled = idx >= info.years.length - 1;
+    if (nextBtn) nextBtn.disabled = idx <= 0;
+  }
+  function goYear(yr) {
+    if (navigateUrl) {
+      window.location.href = navigateUrl + '#' + yr;
+      return;
+    }
+    if (sel) sel.value = yr;
+    localStorage.setItem('pc_year', yr);
+    location.hash = yr;
+    updateNavBtns(yr);
+    document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {
+      a.href = a.getAttribute('href').split('#')[0] + '#' + yr;
+    });
+  }
+  if (sel) {
+    sel.innerHTML = info.years.map(function(y) {
+      return '<option value="' + y + '"' + (y === active ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+    sel.addEventListener('change', function() { goYear(this.value); });
+  }
+  if (prevBtn) prevBtn.addEventListener('click', function() {
+    var idx = info.years.indexOf(sel ? sel.value : active);
+    if (idx < info.years.length - 1) goYear(info.years[idx + 1]);
+  });
+  if (nextBtn) nextBtn.addEventListener('click', function() {
+    var idx = info.years.indexOf(sel ? sel.value : active);
+    if (idx > 0) goYear(info.years[idx - 1]);
+  });
+  if (!navigateUrl && location.hash !== '#' + active) location.replace(location.pathname + '#' + active);
+  localStorage.setItem('pc_year', active);
+  localStorage.setItem('pc_club', 'bepc-summer');
+  updateNavBtns(active);
+  document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {
+    a.href = a.getAttribute('href').split('#')[0] + '#' + active;
+  });
+})();</script>
+<div class="container-fluid px-2 px-sm-3">
+  <h1 class="mb-1">BEPC 2026 Race Series #13</h1>
+  <p class="text-muted">Jul 27, 2026 · 25 starters · <a href="https://www.webscorer.com/race?raceid=441526" target="_blank">Source (WebScorer) ↗</a></p>
+  <div id="course-content"></div>
+</div>
+<script>
+const RACER_SLUGS = new Set(["aaron-jones", "aaron-thompson", "abigail-mccarthy", "adam-gardner", "adam-kollgaard", "adam-tischler", "addie-thompson", "adrianne-keffeler", "ahmed-fakhry", "ahmed-sabbour", "ahmed-salem", "aj-henson", "alan-lamp", "alex-simanis", "alex-smith", "alexa-carr", "alexander-vaughan", "alexandre-braure", "alison-cardinal", "alison-loomis", "alyson-sharron", "amanda-chase", "amber-fitzgerald", "amy-merten", "amy-sung", "andrea-gierlich", "andrew-ellsberry", "andrew-parker", "andy-bernard", "andy-neilsen", "angela-veetutu", "anna-guthrie", "anna-williams", "anne-polyakov", "anneka-mcsherry", "annett-mcpherson", "annett-mcpherson-2", "antoine-deux", "antoine-issa", "ari-marshall", "arun-jacob", "aubrey-nelson", "autumn-peele", "ayman-zaki", "babbette-siebol", "babette-sieblel", "becky-bronstein", "becky-eli-bronstein", "ben-koltz", "ben-smith", "bill-baldwin", "bill-ramsey", "blake-bidleman", "blake-hanley", "bob-rueter", "boe-zinter", "brandon-donahue", "brendan-dowd", "brent-turner", "breona-gutschmidt", "breona-gutschmidt-julie-roberts", "breonna-gutschidt", "breonna-gutschmidt", "brianna-thomas", "brice-howard", "bridger-ammar", "brittany-foxley", "brown-fihaki", "bruce-barry", "bruce-pence", "bryan-taylor", "calvin-rowland", "carl-delica", "carlin-olson", "caroline-keene", "caroline-mccrory", "carson-ward", "casey-krebs", "chad-coker", "chance-gladu", "charli-kasper", "charlie-baird", "chie-kawahara", "chloe-deux-pancera", "chris-grieve", "chris-hawkins", "chris-johnston", "chris-lebeau", "christian-bollacker", "christian-oliver", "christiana-truebenbach", "christy-spangler", "chritine-ingersoll", "cody-bean", "coleman-brown", "colin-farrell", "dan-gavere", "dan-krogan", "dan-strauss", "dan-taylor", "daniel-maldonado", "daojia-ny", "darci-gillespie", "darcy-foral", "darrell-kirk", "dave-mccallum", "dave-ralston", "dave-reid", "dave-rider", "dave-van-miller", "dave-wiviott", "david-alber", "david-bentz", "david-bond", "david-mooney", "dean-peterson", "debb-ladd", "debra-o-conner", "dee-pedersen", "doc-doolittle", "doug-broadbent", "edgar-valetin", "edison-hidalgo", "eli-and-paul", "eli-holmes", "eli-holmes-luis-buen-abad", "eli-holmes-paul-elrif", "eli-luis-holmes", "eli-luis-holmes-abad", "eli-paul", "elisa-kunz", "elishia-van-luven", "elsa-deux-pancera", "emily-nevin", "emma-whybrew", "erdogan-kirac", "eric-horne", "eric-lundquist", "eric-messner", "eric-nordstrom", "erica-lichty", "erik-peterson", "erik-sandstrom", "erika-obrietan", "erin-thompson", "ethan-huff", "ethan-rider", "evan-escamilla", "evan-vernon", "faith-flugel", "federico-gonzalez", "fip-ninove", "fletch-newland", "frank-harris", "frederick-lefebvre", "fredrick-lefevre", "gail-stringer", "gary-winberg", "gib-lopez", "girts-beitlers", "graison-poledna", "greg-gilbert", "greg-mccaslin", "grivan-thapar", "haley-brown", "harry-o", "harry-oesterreicher", "heidi-palmer", "hilary-sparrow", "holly-rasmussen", "hugues-bindel", "ian-london-and-ivan-storck", "ian-mckerlich", "ivan-meljac", "ivan-storck", "izumi-fairbanks", "jac-howard", "jacob-selander", "james-girton", "james-mouradian", "jan-brandt", "jaxon-rider", "jay-mullen", "jay-ruffo", "jeannine-mackie", "jeff-beck", "jeff-gassen", "jeff-reibman", "jeff-rudd", "jennifer-donogh", "jenny-hu", "jeremiah-smith", "jeremy-clark", "jeremy-stafford", "jesse-knipper", "jesse-mccoy", "jessi-wasson", "jillian-chong", "jim-bohn", "jim-jarvie", "jim-kelly", "joanne-bromwell", "jodi-detch", "joe-arya", "john-foster", "john-giebelhausen", "john-hansen", "john-martin", "john-patton", "john-schalka", "jon-king", "jon-kingma", "jonas-ecker", "jonathan-foley", "jordan-van-voast", "jose-quiray", "joseph-king", "josh-proctor", "josh-waddell", "josha-crowley", "julia-comstock-ross", "julie-roberts", "justin-mayfield", "justine-laprun", "kat-downing", "katherine-stevenson", "kea-lani", "kealani-quong", "kelly-reed", "kelsey-fatland", "ken-unger", "kendal-luis-swinski", "kendal-swinski", "kendall-sworski", "kerri-seger", "kiku-huckle", "kris-stolmerer", "kristin-svorinic", "kristoffer-jonson", "lachlan-liddell", "lambert-wixson", "lance-hammer", "lance-jorgensen", "lance-kahn", "layne-stambaugh", "leonard-duncan", "leslie-morgan", "leslie-whalby", "levi-goetz", "levi-goltz", "lindi-mondavi", "lindsay-lambert", "lindsey-thomas", "lindsey-virdeh", "lisa-miller", "lisa-worthington", "liz-aplin", "liza-sheehan", "loic-le-garrec", "louis-buenabab", "luca-erbeck", "lucy-ferdon", "luis-buen-abad", "luke-burritt", "luke-hansen", "lydia-garas", "makoto-tsukigase", "marco-scheuer", "marius-lina", "mark-eiliwger", "mark-herman", "mark-mcalpin", "mark-palfreeman", "mark-parrish", "mark-snyder", "mark-stephenson", "mark-volkert", "martin-lundgren", "masato-tsukigase", "matt-eccles", "matt-jones", "matt-kearney", "matt-radford", "matthew-henry", "matthew-sun", "matthew-thormodson", "maureen-peterson", "mayur-deshpande", "megan-herndon", "megan-kelly", "meghan-urback", "mei-parnes", "melissa-bauco", "meryl-bezrutczyk-lauriat", "michael-bateman", "michael-lampi", "michael-myers", "michael-schlafmann", "michael-schutzler", "michaela-carpeuter", "michele-black", "mick-liddell", "mignon-fontenelle", "mike-adams", "mike-and-lachlin-liddell", "mike-breen", "mike-ehmann", "mike-gallagher", "mike-lemberg", "mike-liddell", "mindy-churchhill", "minnie-fontenelle", "molly-brown", "murphy-mccullough", "naresh-narayanan", "natasha-shaffer", "nate-rooks", "nathanial-lodwig", "ned-sherry", "nick-bannon", "nick-gasca", "nick-gasca-24", "nick-leman", "nick-papa", "nico-wedekind", "nicole-storck", "noam-gundle", "owen-lilleleth", "paal-ryan", "pat-knipper", "pat-ogawa", "patricia-hughes", "patrick-gallagher", "patrick-hwang", "paul-bindel", "paul-e", "paul-elrif", "paul-guillien", "paul-thomas", "periscope", "peter-allen", "peter-kahn", "race-barry", "rachel-olsen", "rebecca-paley-williams", "regan-bell", "reis-pearson", "rennick-woods", "rich-barrientos", "richard-campbell", "richard-humphrey", "rick-renaud", "rob-casey", "rob-haberfield", "robb-mceachran", "robbie-magus", "robert-blackmore", "robert-picardo", "robert-strauss", "robert-te-winkel", "rocky-regan", "rogan-ahlers", "rogan-carr", "roger-sung", "rosemary-ferrentino", "rosie-dixon", "russ-ho", "ryan", "ryan-anderson", "sabine-mecking", "sam-wilson", "sarah-brown", "sarah-hess", "sarah-sandstrom", "scott-greene", "scott-harrington", "scott-harrington-pat-ogawa", "scott-tennican", "scott-vande-vusse", "sean-nordquist", "sean-pietersen", "sean-thomas", "seychelle", "shad-rich", "shane-donogh", "shane-moncrieff", "skyler-palmer", "solar-lesaffre", "sonia-ramos", "soren-ogle", "spencer-lazzar", "stacey-schiernbeck", "stacy-blume", "stephanie-hammond", "stephen-harris", "steve-mauri", "sue-rogers", "sue-spaulding", "susan-clementson", "susan-horst", "susan-leipziger", "suzanne-westcott", "sydney-dela-cruz", "tamara-wiesman", "tanja-carter", "tarlan-virdeh", "taylor-buell", "ted-sweeney", "teresa-hamilton", "terrance-quong", "terry-sagona", "thiago-ausland", "tim-everson", "tim-everson-2", "tim-smith", "timmion-nichols", "tom-mattausch", "tom-phillips", "tomas-valasek", "tony-devita", "tony-fajardo", "tracy-landboe", "tran-luu", "travis-boothe", "travis-harth", "troy-kasper", "troy-nebeker", "troy-trimmer", "tyler-hwang", "tyler-martin", "tyler-nodine", "tyler-peterson", "valerie-trask", "veri-gonzales", "vicki-gezon", "vincent-roger", "waleed-ammar", "wes-van-wambeck", "whitney-goltz", "will-fennie", "will-hinckley", "will-stauffer-norris", "yakov-poliyskov", "yakov-polyakov", "yiling-wong", "yuko-muto", "zach-koehn", "zane-larwood"]);
+const COURSES = [{"label": "Results", "short_label": "Results", "finish": [{"original_place": 1, "canonical_name": "Ivan Storck", "craft_category": "OC-1", "gender": "Male", "time_seconds": 1463.6, "handicap": 1.0744758339525267, "adjusted_time_seconds": 1362.1525526693845, "adjusted_place": 1, "eligible_adjusted_place": 0, "time_versus_par": 1.0298197430575189, "adjusted_time_versus_par": 0.9584391854298504, "handicap_post": 1.047682179415522, "num_races": 3, "race_points": 10, "handicap_points": 0, "season_points": 25, "season_handicap_points": 0, "handicap_sequence": [1.0639030487105283, 1.0744758339525267, 1.047682179415522], "handicap_points_sequence": [0, 0, 0], "handicap_std_dev": 0.011019176778625765, "handicap_note": "Ranked race 3 of 3 (fresh, 60% adjustment).", "is_par_racer": false, "is_fresh_racer": true, "is_outlier": false, "included_in_par": false, "carried_over": false, "craft_specific": "OC-1", "trophies": ["fresh", "finish_1"], "num_ranked_races_pre": 2, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 2, "canonical_name": "Richard Campbell", "craft_category": "OC-1", "gender": "Male", "time_seconds": 1551.2, "handicap": 1.0708783675601456, "adjusted_time_seconds": 1448.5305212899234, "adjusted_place": 11, "eligible_adjusted_place": 10, "time_versus_par": 1.0914569454979663, "adjusted_time_versus_par": 1.0192165408894254, "handicap_post": 1.0739651542508188, "num_races": 12, "race_points": 9, "handicap_points": 1, "season_points": 74, "season_handicap_points": 2, "handicap_sequence": [1.0233605867816993, 1.0374682575249319, 1.0422917700831387, 1.0470491409371958, 1.0524894353971888, 1.0609112640829377, 1.0610682854904478, 1.0610682854904478, 1.06312558478285, 1.0638616035988127, 1.0708783675601456, 1.0739651542508188], "handicap_points_sequence": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1], "handicap_std_dev": 0.014153537354080625, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "OC-1", "trophies": ["finish_2"], "num_ranked_races_pre": 97, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 3, "canonical_name": "Ahmed Fakhry", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1565.7, "handicap": 1.1087715539842986, "adjusted_time_seconds": 1412.103326761729, "adjusted_place": 7, "eligible_adjusted_place": 6, "time_versus_par": 1.1016594504681316, "adjusted_time_versus_par": 0.9935856006671437, "handicap_post": 1.1066379229294485, "num_races": 10, "race_points": 8, "handicap_points": 5, "season_points": 62, "season_handicap_points": 12, "handicap_sequence": [1.0966112633531142, 1.0928701824491867, 1.094236847818293, 1.0963758058998243, 1.0985453077675416, 1.0997440932243203, 1.1008421738345202, 1.1056834042645864, 1.1087715539842986, 1.1066379229294485], "handicap_points_sequence": [0, 7, 0, 0, 0, 0, 0, 0, 0, 5], "handicap_std_dev": 0.005146363096798398, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["consistent_2", "finish_3"], "num_ranked_races_pre": 88, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 4, "canonical_name": "Shad Rich", "craft_category": "Kayak-1", "gender": "Male", "time_seconds": 1581.2, "handicap": 1.026435380096287, "adjusted_time_seconds": 1540.4769074227274, "adjusted_place": 20, "eligible_adjusted_place": 19, "time_versus_par": 1.1125655764707223, "adjusted_time_versus_par": 1.0839119520279548, "handicap_post": 1.0393549095524524, "num_races": 11, "race_points": 7, "handicap_points": 0, "season_points": 88, "season_handicap_points": 36, "handicap_sequence": [1.130324982480113, 1.0570219839104198, 1.0500837445976832, 1.0393851246143762, 1.0418044468650833, 1.0333397549157022, 1.027017249545106, 1.027017249545106, 1.025744144975334, 1.026435380096287, 1.0393549095524524], "handicap_points_sequence": [0, 0, 7, 10, 0, 7, 5, 3, 3, 1, 0], "handicap_std_dev": 0.028638661415637232, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "Surfski", "trophies": [], "num_ranked_races_pre": 11, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 5, "canonical_name": "Robb McEachran", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1583.6, "handicap": 1.1216993587309823, "adjusted_time_seconds": 1411.7864895559733, "adjusted_place": 6, "eligible_adjusted_place": 5, "time_versus_par": 1.1142542669485427, "adjusted_time_versus_par": 0.9933626673453191, "handicap_post": 1.1194658311962504, "num_races": 3, "race_points": 6, "handicap_points": 6, "season_points": 12, "season_handicap_points": 6, "handicap_sequence": [1.1118892947519061, 1.1216993587309823, 1.1194658311962504], "handicap_points_sequence": [0, 0, 6], "handicap_std_dev": 0.004198278814181537, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["consistent_3"], "num_ranked_races_pre": 60, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 6, "canonical_name": "Nick Papa", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1601.5, "handicap": 1.148932816731129, "adjusted_time_seconds": 1393.9022166295906, "adjusted_place": 4, "eligible_adjusted_place": 3, "time_versus_par": 1.1268490834289537, "adjusted_time_versus_par": 0.9807789167646838, "handicap_post": 1.1423076967404764, "num_races": 3, "race_points": 5, "handicap_points": 8, "season_points": 16, "season_handicap_points": 8, "handicap_sequence": [0.9910196178050933, 1.148932816731129, 1.1423076967404764], "handicap_points_sequence": [0, 0, 8], "handicap_std_dev": 0.07292961099421139, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["hcap_3"], "num_ranked_races_pre": 62, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 7, "canonical_name": "Alexander Vaughan", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1663.5, "handicap": 1.1505941107912245, "adjusted_time_seconds": 1445.7748257168355, "adjusted_place": 9, "eligible_adjusted_place": 8, "time_versus_par": 1.170473587439316, "adjusted_time_versus_par": 1.0172775755252397, "handicap_post": 1.1535760322884383, "num_races": 11, "race_points": 4, "handicap_points": 3, "season_points": 25, "season_handicap_points": 31, "handicap_sequence": [1.1538371901322364, 1.141304530405465, 1.1364126393337894, 1.1401985146235916, 1.1416136763123437, 1.1447581713534276, 1.1475496069569122, 1.1497802324540893, 1.1435994009344677, 1.1505941107912245, 1.1535760322884383], "handicap_points_sequence": [6, 9, 4, 0, 0, 0, 0, 0, 9, 0, 3], "handicap_std_dev": 0.005477902725035131, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 156, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 8, "canonical_name": "Chris Grieve", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1723.5, "handicap": 1.182063355586995, "adjusted_time_seconds": 1458.0436757927714, "adjusted_place": 14, "eligible_adjusted_place": 13, "time_versus_par": 1.2126908493848279, "adjusted_time_versus_par": 1.0259101964823396, "handicap_post": 1.18665747965667, "num_races": 11, "race_points": 3, "handicap_points": 0, "season_points": 7, "season_handicap_points": 17, "handicap_sequence": [1.1734221995956267, 1.1734221995956267, 1.1717832901684677, 1.1624985401242054, 1.1644480754075985, 1.1659541857249989, 1.1701933568371399, 1.1736184922177069, 1.182063355586995, 1.182063355586995, 1.18665747965667], "handicap_points_sequence": [3, 0, 2, 9, 0, 0, 0, 0, 0, 3, 0], "handicap_std_dev": 0.0073428029144644, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 163, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 9, "canonical_name": "Tim Everson", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1727.9, "handicap": 1.1942696159916366, "adjusted_time_seconds": 1446.8257224858514, "adjusted_place": 10, "eligible_adjusted_place": 9, "time_versus_par": 1.2157867819274988, "adjusted_time_versus_par": 1.018017008594827, "handicap_post": 1.197497190882016, "num_races": 10, "race_points": 2, "handicap_points": 2, "season_points": 2, "season_handicap_points": 21, "handicap_sequence": [1.1892226865175763, 1.18540985569436, 1.1857115479486533, 1.1857115479486533, 1.1872091385821837, 1.1914239072605486, 1.1939315438778515, 1.1947819910723507, 1.1942696159916366, 1.197497190882016], "handicap_points_sequence": [7, 6, 0, 2, 0, 0, 0, 0, 4, 2], "handicap_std_dev": 0.00422329003621433, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 67, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 10, "canonical_name": "Calvin Rowland", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1751.4, "handicap": 1.2017652315780267, "adjusted_time_seconds": 1457.35619069313, "adjusted_place": 13, "eligible_adjusted_place": 12, "time_versus_par": 1.2323218761894907, "adjusted_time_versus_par": 1.025426467506753, "handicap_post": 1.2063487282697463, "num_races": 13, "race_points": 1, "handicap_points": 0, "season_points": 1, "season_handicap_points": 23, "handicap_sequence": [1.1855486425781687, 1.18359037815931, 1.1862708614685205, 1.1862708614685205, 1.1906562010307555, 1.1890395483075344, 1.194572557615282, 1.201826464743134, 1.202191503708583, 1.2038720246395154, 1.2060634467820757, 1.2017652315780267, 1.2063487282697463], "handicap_points_sequence": [0, 5, 0, 5, 0, 4, 0, 0, 0, 1, 0, 8, 0], "handicap_std_dev": 0.008319461523685156, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 49, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 11, "canonical_name": "Tyler Peterson", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1780.0, "handicap": 1.1738341088116482, "adjusted_time_seconds": 1516.3982598887117, "adjusted_place": 17, "eligible_adjusted_place": 16, "time_versus_par": 1.2524454377168515, "adjusted_time_versus_par": 1.0669697091906682, "handicap_post": 1.1856258081474287, "num_races": 2, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 0, "handicap_sequence": [1.1738341088116482, 1.1856258081474287], "handicap_points_sequence": [0, 0], "handicap_std_dev": 0.005895849667890252, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 9, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 12, "canonical_name": "Yakov Polyakov", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1805.0, "handicap": 1.3054502015042948, "adjusted_time_seconds": 1382.6647680011574, "adjusted_place": 2, "eligible_adjusted_place": 1, "time_versus_par": 1.2700359635274814, "adjusted_time_versus_par": 0.9728720115589204, "handicap_post": 1.2948259301112508, "num_races": 10, "race_points": 0, "handicap_points": 10, "season_points": 0, "season_handicap_points": 26, "handicap_sequence": [1.3080491942757337, 1.3080491942757337, 1.3081944724641117, 1.3083146996341761, 1.3091812795184619, 1.3186364756453426, 1.3060425410690752, 1.3116277789467203, 1.3054502015042948, 1.2948259301112508], "handicap_points_sequence": [0, 0, 1, 1, 0, 0, 8, 0, 6, 10], "handicap_std_dev": 0.005580829976238359, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["hcap_1"], "num_ranked_races_pre": 50, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 13, "canonical_name": "James Mouradian", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1822.2, "handicap": 1.2522275045052231, "adjusted_time_seconds": 1455.1668873620397, "adjusted_place": 12, "eligible_adjusted_place": 11, "time_versus_par": 1.2821382452851948, "adjusted_time_versus_par": 1.0238860276366393, "handicap_post": 1.256714115622219, "num_races": 4, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 1, "handicap_sequence": [1.2437331598955252, 1.2518985626210348, 1.2522275045052231, 1.256714115622219], "handicap_points_sequence": [0, 0, 1, 0], "handicap_std_dev": 0.004682149188553702, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 31, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 14, "canonical_name": "Eric Nordstrom", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1839.1, "handicap": 1.1950469331595472, "adjusted_time_seconds": 1538.9353748121514, "adjusted_place": 19, "eligible_adjusted_place": 18, "time_versus_par": 1.2940294407331805, "adjusted_time_versus_par": 1.082827297260984, "handicap_post": 1.209894309295592, "num_races": 8, "race_points": 0, "handicap_points": 0, "season_points": 4, "season_handicap_points": 15, "handicap_sequence": [1.2032024536084616, 1.21346870592064, 1.2145776973821334, 1.2081419796814923, 1.2085761553573904, 1.205302429340498, 1.1950469331595472, 1.209894309295592], "handicap_points_sequence": [0, 0, 0, 8, 0, 0, 7, 0], "handicap_std_dev": 0.005820213654397239, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 19, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 15, "canonical_name": "Meryl Bezrutczyk-Lauriat", "craft_category": "SUP-1", "gender": "Female", "time_seconds": 1866.0, "handicap": 1.3129568465054184, "adjusted_time_seconds": 1421.2195967952548, "adjusted_place": 8, "eligible_adjusted_place": 7, "time_versus_par": 1.3129568465054184, "adjusted_time_versus_par": 1.0, "handicap_post": 1.3129568465054184, "num_races": 10, "race_points": 0, "handicap_points": 4, "season_points": 0, "season_handicap_points": 79, "handicap_sequence": [1.4899118997396414, 1.4215609990788782, 1.4222183010505378, 1.3742990732539937, 1.3598916882696745, 1.3498015924183995, 1.328093176822807, 1.3152767517801691, 1.3129568465054184, 1.3129568465054184], "handicap_points_sequence": [10, 10, 4, 10, 9, 9, 9, 8, 6, 4], "handicap_std_dev": 0.05615555177327144, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": true, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["consistent_1", "par"], "num_ranked_races_pre": 17, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 16, "canonical_name": "Travis Harth", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1910.2, "handicap": 1.3781651678791005, "adjusted_time_seconds": 1386.0457690565956, "adjusted_place": 3, "eligible_adjusted_place": 2, "time_versus_par": 1.3440568961386121, "adjusted_time_versus_par": 0.9752509550121786, "handicap_post": 1.3679326863569539, "num_races": 9, "race_points": 0, "handicap_points": 9, "season_points": 0, "season_handicap_points": 25, "handicap_sequence": [1.372159697536931, 1.3774649693443743, 1.3722394154495594, 1.3708980638581152, 1.3716900277204456, 1.3780042617623376, 1.3712229196164634, 1.3781651678791005, 1.3679326863569539], "handicap_points_sequence": [0, 0, 7, 4, 0, 0, 5, 0, 9], "handicap_std_dev": 0.0034489128789807633, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["hcap_2"], "num_ranked_races_pre": 68, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 17, "canonical_name": "Gib Lopez", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1937.5, "handicap": 1.3732390232937466, "adjusted_time_seconds": 1410.8978605580694, "adjusted_place": 5, "eligible_adjusted_place": 4, "time_versus_par": 1.3632657503238201, "adjusted_time_versus_par": 0.9927374092923711, "handicap_post": 1.3702470414027685, "num_races": 1, "race_points": 0, "handicap_points": 7, "season_points": 0, "season_handicap_points": 7, "handicap_sequence": [1.3702470414027685], "handicap_points_sequence": [7], "handicap_std_dev": 0.0, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 4, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 18, "canonical_name": "John Hansen", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1953.0, "handicap": 1.3361947059249504, "adjusted_time_seconds": 1461.613334748307, "adjusted_place": 15, "eligible_adjusted_place": 14, "time_versus_par": 1.3741718763264106, "adjusted_time_versus_par": 1.0284218836020393, "handicap_post": 1.3418912814851693, "num_races": 11, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 29, "handicap_sequence": [1.3461783875762632, 1.363361966282852, 1.368079865810153, 1.3693260468437796, 1.3629626707080105, 1.3485580608647334, 1.3452299510734795, 1.3513186775101425, 1.3398971047624795, 1.3361947059249504, 1.3418912814851693], "handicap_points_sequence": [0, 0, 0, 1, 6, 7, 5, 0, 6, 4, 0], "handicap_std_dev": 0.011275263339940335, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 85, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 19, "canonical_name": "Jeremiah Smith", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1984.9, "handicap": 1.1013887812306788, "adjusted_time_seconds": 1802.1792429936468, "adjusted_place": 21, "eligible_adjusted_place": 0, "time_versus_par": 1.3966173872607746, "adjusted_time_versus_par": 1.2680512195704505, "handicap_post": 1.1013887812306788, "num_races": 1, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 0, "handicap_sequence": [1.1013887812306788], "handicap_points_sequence": [0], "handicap_std_dev": 0.0, "handicap_note": "Outlier (>10% slower than predicted). No change. Streak 1/3.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": true, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["outlier"], "num_ranked_races_pre": 42, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 1, "outlier_tvp_window_post": [1.3966173872607746]}, {"original_place": 20, "canonical_name": "Breona Gutschmidt", "craft_category": "Kayak-1", "gender": "Female", "time_seconds": 2025.5, "handicap": 1.3674414460367232, "adjusted_time_seconds": 1481.2334421123026, "adjusted_place": 16, "eligible_adjusted_place": 15, "time_versus_par": 1.4251844011772374, "adjusted_time_versus_par": 1.0422270038017873, "handicap_post": 1.3761028893078002, "num_races": 5, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 0, "handicap_sequence": [1.3512082927690352, 1.3674414460367232, 1.3674414460367232, 1.3674414460367232, 1.3761028893078002], "handicap_points_sequence": [0, 0, 0, 0, 0], "handicap_std_dev": 0.00808788855135603, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "Kayak", "trophies": [], "num_ranked_races_pre": 9, "outlier_streak_pre": 2, "outlier_tvp_window_pre": [1.5050850099180737, 1.5236952894218823], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 21, "canonical_name": "Owen Lilleleth", "craft_category": "Kayak-1", "gender": "Male", "time_seconds": 2031.5, "handicap": 1.0138431083885897, "adjusted_time_seconds": 2003.7617094708887, "adjusted_place": 22, "eligible_adjusted_place": 0, "time_versus_par": 1.4294061273717886, "adjusted_time_versus_par": 1.4098888827519853, "handicap_post": 1.346293523575149, "num_races": 2, "race_points": 0, "handicap_points": 0, "season_points": 10, "season_handicap_points": 0, "handicap_sequence": [1.0138431083885897, 1.346293523575149], "handicap_points_sequence": [0, 0], "handicap_std_dev": 0.16622520759327963, "handicap_note": "Ranked race 2 of 3 (fresh, 80% adjustment).", "is_par_racer": false, "is_fresh_racer": true, "is_outlier": false, "included_in_par": false, "carried_over": false, "craft_specific": "Surfski", "trophies": ["fresh"], "num_ranked_races_pre": 1, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 22, "canonical_name": "Nick Gasca", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 2367.6, "handicap": 1.5522556338383602, "adjusted_time_seconds": 1525.2642337947175, "adjusted_place": 18, "eligible_adjusted_place": 17, "time_versus_par": 1.6658931563698973, "adjusted_time_versus_par": 1.0732079949038669, "handicap_post": 1.5693012622180906, "num_races": 8, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 16, "handicap_sequence": [1.5479487052973149, 1.5700785443117244, 1.581419778025206, 1.5628868171877752, 1.5561138248815372, 1.5567047733852297, 1.5522556338383602, 1.5693012622180906], "handicap_points_sequence": [0, 0, 0, 8, 3, 0, 5, 0], "handicap_std_dev": 0.010316859220073643, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 19, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 23, "canonical_name": "Lachlan Liddell", "craft_category": "Kayak-1", "gender": "Male", "time_seconds": 2411.9, "handicap": 1.0, "adjusted_time_seconds": 2411.9, "adjusted_place": 23, "eligible_adjusted_place": 0, "time_versus_par": 1.6970635681063337, "adjusted_time_versus_par": 1.6970635681063337, "handicap_post": 1.6970635681063337, "num_races": 1, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 0, "handicap_sequence": [1.6970635681063337], "handicap_points_sequence": [0], "handicap_std_dev": 0.0, "handicap_note": "Ranked race 1 of 3 (fresh, 100% adjustment).", "is_par_racer": false, "is_fresh_racer": true, "is_outlier": false, "included_in_par": false, "carried_over": false, "craft_specific": "Surfski", "trophies": ["fresh"], "num_ranked_races_pre": 0, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 24, "canonical_name": "Paul Elrif", "craft_category": "Kayak-1", "gender": "Male", "time_seconds": 2793.8, "handicap": 1.0, "adjusted_time_seconds": 2793.8, "adjusted_place": 24, "eligible_adjusted_place": 0, "time_versus_par": 1.9657764403895168, "adjusted_time_versus_par": 1.9657764403895168, "handicap_post": 1.9657764403895168, "num_races": 1, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 0, "handicap_sequence": [1.9657764403895168], "handicap_points_sequence": [0], "handicap_std_dev": 0.0, "handicap_note": "Ranked race 1 of 3 (fresh, 100% adjustment).", "is_par_racer": false, "is_fresh_racer": true, "is_outlier": false, "included_in_par": false, "carried_over": false, "craft_specific": "Surfski", "trophies": ["fresh"], "num_ranked_races_pre": 0, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 25, "canonical_name": "Joanne Bromwell", "craft_category": "SUP-1", "gender": "Female", "time_seconds": 2879.9, "handicap": 1.0, "adjusted_time_seconds": 2879.9, "adjusted_place": 25, "eligible_adjusted_place": 0, "time_versus_par": 2.0263582112813263, "adjusted_time_versus_par": 2.0263582112813263, "handicap_post": 2.0263582112813263, "num_races": 1, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 0, "handicap_sequence": [2.0263582112813263], "handicap_points_sequence": [0], "handicap_std_dev": 0.0, "handicap_note": "Ranked race 1 of 3 (fresh, 100% adjustment).", "is_par_racer": false, "is_fresh_racer": true, "is_outlier": false, "included_in_par": false, "carried_over": false, "craft_specific": "SUP", "trophies": ["fresh"], "num_ranked_races_pre": 0, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}], "handicap": [{"original_place": 1, "canonical_name": "Ivan Storck", "craft_category": "OC-1", "gender": "Male", "time_seconds": 1463.6, "handicap": 1.0744758339525267, "adjusted_time_seconds": 1362.1525526693845, "adjusted_place": 1, "eligible_adjusted_place": 0, "time_versus_par": 1.0298197430575189, "adjusted_time_versus_par": 0.9584391854298504, "handicap_post": 1.047682179415522, "num_races": 3, "race_points": 10, "handicap_points": 0, "season_points": 25, "season_handicap_points": 0, "handicap_sequence": [1.0639030487105283, 1.0744758339525267, 1.047682179415522], "handicap_points_sequence": [0, 0, 0], "handicap_std_dev": 0.011019176778625765, "handicap_note": "Ranked race 3 of 3 (fresh, 60% adjustment).", "is_par_racer": false, "is_fresh_racer": true, "is_outlier": false, "included_in_par": false, "carried_over": false, "craft_specific": "OC-1", "trophies": ["fresh", "finish_1"], "num_ranked_races_pre": 2, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 12, "canonical_name": "Yakov Polyakov", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1805.0, "handicap": 1.3054502015042948, "adjusted_time_seconds": 1382.6647680011574, "adjusted_place": 2, "eligible_adjusted_place": 1, "time_versus_par": 1.2700359635274814, "adjusted_time_versus_par": 0.9728720115589204, "handicap_post": 1.2948259301112508, "num_races": 10, "race_points": 0, "handicap_points": 10, "season_points": 0, "season_handicap_points": 26, "handicap_sequence": [1.3080491942757337, 1.3080491942757337, 1.3081944724641117, 1.3083146996341761, 1.3091812795184619, 1.3186364756453426, 1.3060425410690752, 1.3116277789467203, 1.3054502015042948, 1.2948259301112508], "handicap_points_sequence": [0, 0, 1, 1, 0, 0, 8, 0, 6, 10], "handicap_std_dev": 0.005580829976238359, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["hcap_1"], "num_ranked_races_pre": 50, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 16, "canonical_name": "Travis Harth", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1910.2, "handicap": 1.3781651678791005, "adjusted_time_seconds": 1386.0457690565956, "adjusted_place": 3, "eligible_adjusted_place": 2, "time_versus_par": 1.3440568961386121, "adjusted_time_versus_par": 0.9752509550121786, "handicap_post": 1.3679326863569539, "num_races": 9, "race_points": 0, "handicap_points": 9, "season_points": 0, "season_handicap_points": 25, "handicap_sequence": [1.372159697536931, 1.3774649693443743, 1.3722394154495594, 1.3708980638581152, 1.3716900277204456, 1.3780042617623376, 1.3712229196164634, 1.3781651678791005, 1.3679326863569539], "handicap_points_sequence": [0, 0, 7, 4, 0, 0, 5, 0, 9], "handicap_std_dev": 0.0034489128789807633, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["hcap_2"], "num_ranked_races_pre": 68, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 6, "canonical_name": "Nick Papa", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1601.5, "handicap": 1.148932816731129, "adjusted_time_seconds": 1393.9022166295906, "adjusted_place": 4, "eligible_adjusted_place": 3, "time_versus_par": 1.1268490834289537, "adjusted_time_versus_par": 0.9807789167646838, "handicap_post": 1.1423076967404764, "num_races": 3, "race_points": 5, "handicap_points": 8, "season_points": 16, "season_handicap_points": 8, "handicap_sequence": [0.9910196178050933, 1.148932816731129, 1.1423076967404764], "handicap_points_sequence": [0, 0, 8], "handicap_std_dev": 0.07292961099421139, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["hcap_3"], "num_ranked_races_pre": 62, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 17, "canonical_name": "Gib Lopez", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1937.5, "handicap": 1.3732390232937466, "adjusted_time_seconds": 1410.8978605580694, "adjusted_place": 5, "eligible_adjusted_place": 4, "time_versus_par": 1.3632657503238201, "adjusted_time_versus_par": 0.9927374092923711, "handicap_post": 1.3702470414027685, "num_races": 1, "race_points": 0, "handicap_points": 7, "season_points": 0, "season_handicap_points": 7, "handicap_sequence": [1.3702470414027685], "handicap_points_sequence": [7], "handicap_std_dev": 0.0, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 4, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 5, "canonical_name": "Robb McEachran", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1583.6, "handicap": 1.1216993587309823, "adjusted_time_seconds": 1411.7864895559733, "adjusted_place": 6, "eligible_adjusted_place": 5, "time_versus_par": 1.1142542669485427, "adjusted_time_versus_par": 0.9933626673453191, "handicap_post": 1.1194658311962504, "num_races": 3, "race_points": 6, "handicap_points": 6, "season_points": 12, "season_handicap_points": 6, "handicap_sequence": [1.1118892947519061, 1.1216993587309823, 1.1194658311962504], "handicap_points_sequence": [0, 0, 6], "handicap_std_dev": 0.004198278814181537, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["consistent_3"], "num_ranked_races_pre": 60, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 3, "canonical_name": "Ahmed Fakhry", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1565.7, "handicap": 1.1087715539842986, "adjusted_time_seconds": 1412.103326761729, "adjusted_place": 7, "eligible_adjusted_place": 6, "time_versus_par": 1.1016594504681316, "adjusted_time_versus_par": 0.9935856006671437, "handicap_post": 1.1066379229294485, "num_races": 10, "race_points": 8, "handicap_points": 5, "season_points": 62, "season_handicap_points": 12, "handicap_sequence": [1.0966112633531142, 1.0928701824491867, 1.094236847818293, 1.0963758058998243, 1.0985453077675416, 1.0997440932243203, 1.1008421738345202, 1.1056834042645864, 1.1087715539842986, 1.1066379229294485], "handicap_points_sequence": [0, 7, 0, 0, 0, 0, 0, 0, 0, 5], "handicap_std_dev": 0.005146363096798398, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["consistent_2", "finish_3"], "num_ranked_races_pre": 88, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 15, "canonical_name": "Meryl Bezrutczyk-Lauriat", "craft_category": "SUP-1", "gender": "Female", "time_seconds": 1866.0, "handicap": 1.3129568465054184, "adjusted_time_seconds": 1421.2195967952548, "adjusted_place": 8, "eligible_adjusted_place": 7, "time_versus_par": 1.3129568465054184, "adjusted_time_versus_par": 1.0, "handicap_post": 1.3129568465054184, "num_races": 10, "race_points": 0, "handicap_points": 4, "season_points": 0, "season_handicap_points": 79, "handicap_sequence": [1.4899118997396414, 1.4215609990788782, 1.4222183010505378, 1.3742990732539937, 1.3598916882696745, 1.3498015924183995, 1.328093176822807, 1.3152767517801691, 1.3129568465054184, 1.3129568465054184], "handicap_points_sequence": [10, 10, 4, 10, 9, 9, 9, 8, 6, 4], "handicap_std_dev": 0.05615555177327144, "handicap_note": "Faster than expected. Handicap adjusted 30% towards result.", "is_par_racer": true, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["consistent_1", "par"], "num_ranked_races_pre": 17, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 7, "canonical_name": "Alexander Vaughan", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1663.5, "handicap": 1.1505941107912245, "adjusted_time_seconds": 1445.7748257168355, "adjusted_place": 9, "eligible_adjusted_place": 8, "time_versus_par": 1.170473587439316, "adjusted_time_versus_par": 1.0172775755252397, "handicap_post": 1.1535760322884383, "num_races": 11, "race_points": 4, "handicap_points": 3, "season_points": 25, "season_handicap_points": 31, "handicap_sequence": [1.1538371901322364, 1.141304530405465, 1.1364126393337894, 1.1401985146235916, 1.1416136763123437, 1.1447581713534276, 1.1475496069569122, 1.1497802324540893, 1.1435994009344677, 1.1505941107912245, 1.1535760322884383], "handicap_points_sequence": [6, 9, 4, 0, 0, 0, 0, 0, 9, 0, 3], "handicap_std_dev": 0.005477902725035131, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 156, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 9, "canonical_name": "Tim Everson", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1727.9, "handicap": 1.1942696159916366, "adjusted_time_seconds": 1446.8257224858514, "adjusted_place": 10, "eligible_adjusted_place": 9, "time_versus_par": 1.2157867819274988, "adjusted_time_versus_par": 1.018017008594827, "handicap_post": 1.197497190882016, "num_races": 10, "race_points": 2, "handicap_points": 2, "season_points": 2, "season_handicap_points": 21, "handicap_sequence": [1.1892226865175763, 1.18540985569436, 1.1857115479486533, 1.1857115479486533, 1.1872091385821837, 1.1914239072605486, 1.1939315438778515, 1.1947819910723507, 1.1942696159916366, 1.197497190882016], "handicap_points_sequence": [7, 6, 0, 2, 0, 0, 0, 0, 4, 2], "handicap_std_dev": 0.00422329003621433, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 67, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 2, "canonical_name": "Richard Campbell", "craft_category": "OC-1", "gender": "Male", "time_seconds": 1551.2, "handicap": 1.0708783675601456, "adjusted_time_seconds": 1448.5305212899234, "adjusted_place": 11, "eligible_adjusted_place": 10, "time_versus_par": 1.0914569454979663, "adjusted_time_versus_par": 1.0192165408894254, "handicap_post": 1.0739651542508188, "num_races": 12, "race_points": 9, "handicap_points": 1, "season_points": 74, "season_handicap_points": 2, "handicap_sequence": [1.0233605867816993, 1.0374682575249319, 1.0422917700831387, 1.0470491409371958, 1.0524894353971888, 1.0609112640829377, 1.0610682854904478, 1.0610682854904478, 1.06312558478285, 1.0638616035988127, 1.0708783675601456, 1.0739651542508188], "handicap_points_sequence": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1], "handicap_std_dev": 0.014153537354080625, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "OC-1", "trophies": ["finish_2"], "num_ranked_races_pre": 97, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 13, "canonical_name": "James Mouradian", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1822.2, "handicap": 1.2522275045052231, "adjusted_time_seconds": 1455.1668873620397, "adjusted_place": 12, "eligible_adjusted_place": 11, "time_versus_par": 1.2821382452851948, "adjusted_time_versus_par": 1.0238860276366393, "handicap_post": 1.256714115622219, "num_races": 4, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 1, "handicap_sequence": [1.2437331598955252, 1.2518985626210348, 1.2522275045052231, 1.256714115622219], "handicap_points_sequence": [0, 0, 1, 0], "handicap_std_dev": 0.004682149188553702, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 31, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 10, "canonical_name": "Calvin Rowland", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1751.4, "handicap": 1.2017652315780267, "adjusted_time_seconds": 1457.35619069313, "adjusted_place": 13, "eligible_adjusted_place": 12, "time_versus_par": 1.2323218761894907, "adjusted_time_versus_par": 1.025426467506753, "handicap_post": 1.2063487282697463, "num_races": 13, "race_points": 1, "handicap_points": 0, "season_points": 1, "season_handicap_points": 23, "handicap_sequence": [1.1855486425781687, 1.18359037815931, 1.1862708614685205, 1.1862708614685205, 1.1906562010307555, 1.1890395483075344, 1.194572557615282, 1.201826464743134, 1.202191503708583, 1.2038720246395154, 1.2060634467820757, 1.2017652315780267, 1.2063487282697463], "handicap_points_sequence": [0, 5, 0, 5, 0, 4, 0, 0, 0, 1, 0, 8, 0], "handicap_std_dev": 0.008319461523685156, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 49, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 8, "canonical_name": "Chris Grieve", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1723.5, "handicap": 1.182063355586995, "adjusted_time_seconds": 1458.0436757927714, "adjusted_place": 14, "eligible_adjusted_place": 13, "time_versus_par": 1.2126908493848279, "adjusted_time_versus_par": 1.0259101964823396, "handicap_post": 1.18665747965667, "num_races": 11, "race_points": 3, "handicap_points": 0, "season_points": 7, "season_handicap_points": 17, "handicap_sequence": [1.1734221995956267, 1.1734221995956267, 1.1717832901684677, 1.1624985401242054, 1.1644480754075985, 1.1659541857249989, 1.1701933568371399, 1.1736184922177069, 1.182063355586995, 1.182063355586995, 1.18665747965667], "handicap_points_sequence": [3, 0, 2, 9, 0, 0, 0, 0, 0, 3, 0], "handicap_std_dev": 0.0073428029144644, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 163, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 18, "canonical_name": "John Hansen", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1953.0, "handicap": 1.3361947059249504, "adjusted_time_seconds": 1461.613334748307, "adjusted_place": 15, "eligible_adjusted_place": 14, "time_versus_par": 1.3741718763264106, "adjusted_time_versus_par": 1.0284218836020393, "handicap_post": 1.3418912814851693, "num_races": 11, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 29, "handicap_sequence": [1.3461783875762632, 1.363361966282852, 1.368079865810153, 1.3693260468437796, 1.3629626707080105, 1.3485580608647334, 1.3452299510734795, 1.3513186775101425, 1.3398971047624795, 1.3361947059249504, 1.3418912814851693], "handicap_points_sequence": [0, 0, 0, 1, 6, 7, 5, 0, 6, 4, 0], "handicap_std_dev": 0.011275263339940335, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 85, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 20, "canonical_name": "Breona Gutschmidt", "craft_category": "Kayak-1", "gender": "Female", "time_seconds": 2025.5, "handicap": 1.3674414460367232, "adjusted_time_seconds": 1481.2334421123026, "adjusted_place": 16, "eligible_adjusted_place": 15, "time_versus_par": 1.4251844011772374, "adjusted_time_versus_par": 1.0422270038017873, "handicap_post": 1.3761028893078002, "num_races": 5, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 0, "handicap_sequence": [1.3512082927690352, 1.3674414460367232, 1.3674414460367232, 1.3674414460367232, 1.3761028893078002], "handicap_points_sequence": [0, 0, 0, 0, 0], "handicap_std_dev": 0.00808788855135603, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "Kayak", "trophies": [], "num_ranked_races_pre": 9, "outlier_streak_pre": 2, "outlier_tvp_window_pre": [1.5050850099180737, 1.5236952894218823], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 11, "canonical_name": "Tyler Peterson", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1780.0, "handicap": 1.1738341088116482, "adjusted_time_seconds": 1516.3982598887117, "adjusted_place": 17, "eligible_adjusted_place": 16, "time_versus_par": 1.2524454377168515, "adjusted_time_versus_par": 1.0669697091906682, "handicap_post": 1.1856258081474287, "num_races": 2, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 0, "handicap_sequence": [1.1738341088116482, 1.1856258081474287], "handicap_points_sequence": [0, 0], "handicap_std_dev": 0.005895849667890252, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 9, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 22, "canonical_name": "Nick Gasca", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 2367.6, "handicap": 1.5522556338383602, "adjusted_time_seconds": 1525.2642337947175, "adjusted_place": 18, "eligible_adjusted_place": 17, "time_versus_par": 1.6658931563698973, "adjusted_time_versus_par": 1.0732079949038669, "handicap_post": 1.5693012622180906, "num_races": 8, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 16, "handicap_sequence": [1.5479487052973149, 1.5700785443117244, 1.581419778025206, 1.5628868171877752, 1.5561138248815372, 1.5567047733852297, 1.5522556338383602, 1.5693012622180906], "handicap_points_sequence": [0, 0, 0, 8, 3, 0, 5, 0], "handicap_std_dev": 0.010316859220073643, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 19, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 14, "canonical_name": "Eric Nordstrom", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1839.1, "handicap": 1.1950469331595472, "adjusted_time_seconds": 1538.9353748121514, "adjusted_place": 19, "eligible_adjusted_place": 18, "time_versus_par": 1.2940294407331805, "adjusted_time_versus_par": 1.082827297260984, "handicap_post": 1.209894309295592, "num_races": 8, "race_points": 0, "handicap_points": 0, "season_points": 4, "season_handicap_points": 15, "handicap_sequence": [1.2032024536084616, 1.21346870592064, 1.2145776973821334, 1.2081419796814923, 1.2085761553573904, 1.205302429340498, 1.1950469331595472, 1.209894309295592], "handicap_points_sequence": [0, 0, 0, 8, 0, 0, 7, 0], "handicap_std_dev": 0.005820213654397239, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": [], "num_ranked_races_pre": 19, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 4, "canonical_name": "Shad Rich", "craft_category": "Kayak-1", "gender": "Male", "time_seconds": 1581.2, "handicap": 1.026435380096287, "adjusted_time_seconds": 1540.4769074227274, "adjusted_place": 20, "eligible_adjusted_place": 19, "time_versus_par": 1.1125655764707223, "adjusted_time_versus_par": 1.0839119520279548, "handicap_post": 1.0393549095524524, "num_races": 11, "race_points": 7, "handicap_points": 0, "season_points": 88, "season_handicap_points": 36, "handicap_sequence": [1.130324982480113, 1.0570219839104198, 1.0500837445976832, 1.0393851246143762, 1.0418044468650833, 1.0333397549157022, 1.027017249545106, 1.027017249545106, 1.025744144975334, 1.026435380096287, 1.0393549095524524], "handicap_points_sequence": [0, 0, 7, 10, 0, 7, 5, 3, 3, 1, 0], "handicap_std_dev": 0.028638661415637232, "handicap_note": "Slower than predicted. Handicap adjusted 15% towards result.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": false, "included_in_par": true, "carried_over": true, "craft_specific": "Surfski", "trophies": [], "num_ranked_races_pre": 11, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 19, "canonical_name": "Jeremiah Smith", "craft_category": "SUP-1", "gender": "Male", "time_seconds": 1984.9, "handicap": 1.1013887812306788, "adjusted_time_seconds": 1802.1792429936468, "adjusted_place": 21, "eligible_adjusted_place": 0, "time_versus_par": 1.3966173872607746, "adjusted_time_versus_par": 1.2680512195704505, "handicap_post": 1.1013887812306788, "num_races": 1, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 0, "handicap_sequence": [1.1013887812306788], "handicap_points_sequence": [0], "handicap_std_dev": 0.0, "handicap_note": "Outlier (>10% slower than predicted). No change. Streak 1/3.", "is_par_racer": false, "is_fresh_racer": false, "is_outlier": true, "included_in_par": true, "carried_over": true, "craft_specific": "SUP", "trophies": ["outlier"], "num_ranked_races_pre": 42, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 1, "outlier_tvp_window_post": [1.3966173872607746]}, {"original_place": 21, "canonical_name": "Owen Lilleleth", "craft_category": "Kayak-1", "gender": "Male", "time_seconds": 2031.5, "handicap": 1.0138431083885897, "adjusted_time_seconds": 2003.7617094708887, "adjusted_place": 22, "eligible_adjusted_place": 0, "time_versus_par": 1.4294061273717886, "adjusted_time_versus_par": 1.4098888827519853, "handicap_post": 1.346293523575149, "num_races": 2, "race_points": 0, "handicap_points": 0, "season_points": 10, "season_handicap_points": 0, "handicap_sequence": [1.0138431083885897, 1.346293523575149], "handicap_points_sequence": [0, 0], "handicap_std_dev": 0.16622520759327963, "handicap_note": "Ranked race 2 of 3 (fresh, 80% adjustment).", "is_par_racer": false, "is_fresh_racer": true, "is_outlier": false, "included_in_par": false, "carried_over": false, "craft_specific": "Surfski", "trophies": ["fresh"], "num_ranked_races_pre": 1, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 23, "canonical_name": "Lachlan Liddell", "craft_category": "Kayak-1", "gender": "Male", "time_seconds": 2411.9, "handicap": 1.0, "adjusted_time_seconds": 2411.9, "adjusted_place": 23, "eligible_adjusted_place": 0, "time_versus_par": 1.6970635681063337, "adjusted_time_versus_par": 1.6970635681063337, "handicap_post": 1.6970635681063337, "num_races": 1, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 0, "handicap_sequence": [1.6970635681063337], "handicap_points_sequence": [0], "handicap_std_dev": 0.0, "handicap_note": "Ranked race 1 of 3 (fresh, 100% adjustment).", "is_par_racer": false, "is_fresh_racer": true, "is_outlier": false, "included_in_par": false, "carried_over": false, "craft_specific": "Surfski", "trophies": ["fresh"], "num_ranked_races_pre": 0, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 24, "canonical_name": "Paul Elrif", "craft_category": "Kayak-1", "gender": "Male", "time_seconds": 2793.8, "handicap": 1.0, "adjusted_time_seconds": 2793.8, "adjusted_place": 24, "eligible_adjusted_place": 0, "time_versus_par": 1.9657764403895168, "adjusted_time_versus_par": 1.9657764403895168, "handicap_post": 1.9657764403895168, "num_races": 1, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 0, "handicap_sequence": [1.9657764403895168], "handicap_points_sequence": [0], "handicap_std_dev": 0.0, "handicap_note": "Ranked race 1 of 3 (fresh, 100% adjustment).", "is_par_racer": false, "is_fresh_racer": true, "is_outlier": false, "included_in_par": false, "carried_over": false, "craft_specific": "Surfski", "trophies": ["fresh"], "num_ranked_races_pre": 0, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}, {"original_place": 25, "canonical_name": "Joanne Bromwell", "craft_category": "SUP-1", "gender": "Female", "time_seconds": 2879.9, "handicap": 1.0, "adjusted_time_seconds": 2879.9, "adjusted_place": 25, "eligible_adjusted_place": 0, "time_versus_par": 2.0263582112813263, "adjusted_time_versus_par": 2.0263582112813263, "handicap_post": 2.0263582112813263, "num_races": 1, "race_points": 0, "handicap_points": 0, "season_points": 0, "season_handicap_points": 0, "handicap_sequence": [2.0263582112813263], "handicap_points_sequence": [0], "handicap_std_dev": 0.0, "handicap_note": "Ranked race 1 of 3 (fresh, 100% adjustment).", "is_par_racer": false, "is_fresh_racer": true, "is_outlier": false, "included_in_par": false, "carried_over": false, "craft_specific": "SUP", "trophies": ["fresh"], "num_ranked_races_pre": 0, "outlier_streak_pre": 0, "outlier_tvp_window_pre": [], "outlier_streak_post": 0, "outlier_tvp_window_post": []}]}];
+
+const MUTE_REASONS = {"fresh": "Establishing index - excluded from ranking", "outlier": "Outlier result - excluded from ranking", "auto_reset": "Auto-reset applied - excluded from ranking", "ineligible": "Race has insufficient number of racers - no ranking or index updates"};
+function slug(name) { return name.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, ''); }
+function racerLink(name) { const s = slug(name); return RACER_SLUGS.has(s) ? `<a href="../racer/${s}.html">${name}</a>` : name; }
+function display_craft_ui(cat) {
+  if (!cat || cat === 'Unknown') return '';
+  const sprint = cat.match(/^Sprint-K(\d+)$/); if (sprint) return 'K-' + sprint[1] + ' (sprint)';
+  const vaa = cat.match(/^Va'a-(\d+)$/); if (vaa) return 'V-' + vaa[1];
+  const canoe = cat.match(/^Canoe-(\d+)$/); if (canoe) return 'C-' + canoe[1];
+  const kayak = cat.match(/^Kayak-(\d+)$/); if (kayak) return 'K-' + kayak[1];
+  if (/^(OW|SUP|Prone)-1$/.test(cat)) return cat.slice(0, -2);
+  return cat;
+}
+function craft_cell(cat, specific) {
+  const display = display_craft_ui(cat);
+  if (!display) return '<td></td>';
+  if (!specific || specific === display || cat.startsWith('Sprint-')) return `<td>${display}</td>`;
+  return `<td>${display} (${specific})</td>`;
+}
+function fmtTime(s) {
+  s = Math.floor(s);
+  const m = Math.floor(s / 60), sec = s % 60, h = Math.floor(m / 60);
+  return h ? h+':'+String(m%60).padStart(2,'0')+':'+String(sec).padStart(2,'0')
+           : m+':'+String(sec).padStart(2,'0');
+}
+
+function badges(trophies) {
+  const I = {"hcap_1": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" style=\"display:block\"><path d=\"M4 3 Q4 15 12 15 Q20 15 20 3 Z\" fill=\"#FFD700\" stroke=\"#B8860B\" stroke-width=\"1.8\"/><path d=\"M4 5 Q0 5 0 9 Q0 13 4 12\" fill=\"none\" stroke=\"#B8860B\" stroke-width=\"1.8\"/><path d=\"M20 5 Q24 5 24 9 Q24 13 20 12\" fill=\"none\" stroke=\"#B8860B\" stroke-width=\"1.8\"/><rect x=\"11\" y=\"15\" width=\"2\" height=\"3.5\" fill=\"#B8860B\"/><rect x=\"6\" y=\"18.5\" width=\"12\" height=\"2.5\" rx=\"1\" fill=\"#B8860B\"/><text x=\"12\" y=\"12.5\" text-anchor=\"middle\" font-size=\"9\" font-weight=\"bold\" fill=\"#7A5C00\">1</text></svg>", "hcap_2": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" style=\"display:block\"><path d=\"M4 3 Q4 15 12 15 Q20 15 20 3 Z\" fill=\"#C0C0C0\" stroke=\"#707070\" stroke-width=\"1.8\"/><path d=\"M4 5 Q0 5 0 9 Q0 13 4 12\" fill=\"none\" stroke=\"#707070\" stroke-width=\"1.8\"/><path d=\"M20 5 Q24 5 24 9 Q24 13 20 12\" fill=\"none\" stroke=\"#707070\" stroke-width=\"1.8\"/><rect x=\"11\" y=\"15\" width=\"2\" height=\"3.5\" fill=\"#707070\"/><rect x=\"6\" y=\"18.5\" width=\"12\" height=\"2.5\" rx=\"1\" fill=\"#707070\"/><text x=\"12\" y=\"12.5\" text-anchor=\"middle\" font-size=\"9\" font-weight=\"bold\" fill=\"#111\">2</text></svg>", "hcap_3": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" style=\"display:block\"><path d=\"M4 3 Q4 15 12 15 Q20 15 20 3 Z\" fill=\"#DDA84A\" stroke=\"#B07020\" stroke-width=\"1.8\"/><path d=\"M4 5 Q0 5 0 9 Q0 13 4 12\" fill=\"none\" stroke=\"#B07020\" stroke-width=\"1.8\"/><path d=\"M20 5 Q24 5 24 9 Q24 13 20 12\" fill=\"none\" stroke=\"#B07020\" stroke-width=\"1.8\"/><rect x=\"11\" y=\"15\" width=\"2\" height=\"3.5\" fill=\"#B07020\"/><rect x=\"6\" y=\"18.5\" width=\"12\" height=\"2.5\" rx=\"1\" fill=\"#B07020\"/><text x=\"12\" y=\"12.5\" text-anchor=\"middle\" font-size=\"9\" font-weight=\"bold\" fill=\"#5C2E00\">3</text></svg>", "finish_1": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" style=\"display:block\"><rect x=\"4\" y=\"1\" width=\"2\" height=\"22\" rx=\"1\" fill=\"#555\"/><path d=\"M6 2 L21 9 L6 18 Z\" fill=\"#FFD700\" stroke=\"#9A7000\" stroke-width=\"1.2\"/><text x=\"11\" y=\"9\" text-anchor=\"middle\" dominant-baseline=\"central\" font-size=\"9\" font-weight=\"bold\" fill=\"#7A5C00\">1</text></svg>", "finish_2": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" style=\"display:block\"><rect x=\"4\" y=\"1\" width=\"2\" height=\"22\" rx=\"1\" fill=\"#555\"/><path d=\"M6 2 L21 9 L6 18 Z\" fill=\"#C0C0C0\" stroke=\"#707070\" stroke-width=\"1.2\"/><text x=\"11\" y=\"9\" text-anchor=\"middle\" dominant-baseline=\"central\" font-size=\"9\" font-weight=\"bold\" fill=\"#333\">2</text></svg>", "finish_3": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" style=\"display:block\"><rect x=\"4\" y=\"1\" width=\"2\" height=\"22\" rx=\"1\" fill=\"#555\"/><path d=\"M6 2 L21 9 L6 18 Z\" fill=\"#DDA84A\" stroke=\"#B07020\" stroke-width=\"1.2\"/><text x=\"11\" y=\"9\" text-anchor=\"middle\" dominant-baseline=\"central\" font-size=\"9\" font-weight=\"bold\" fill=\"#5C2E00\">3</text></svg>", "par": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" style=\"display:block\"><rect x=\"11\" y=\"1\" width=\"2\" height=\"13\" rx=\"1\" fill=\"#1565C0\"/><rect x=\"4\" y=\"6\" width=\"16\" height=\"2.5\" rx=\"1.25\" fill=\"#1565C0\"/><rect x=\"8\" y=\"2\" width=\"8\" height=\"1.5\" rx=\"0.75\" fill=\"#1565C0\"/><rect x=\"8\" y=\"11\" width=\"8\" height=\"1.5\" rx=\"0.75\" fill=\"#1565C0\"/><text x=\"12\" y=\"23\" text-anchor=\"middle\" font-size=\"7\" fill=\"#1565C0\" font-weight=\"bold\">PAR</text></svg>", "consistent": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" style=\"display:block\"><line x1=\"1\" y1=\"17\" x2=\"23\" y2=\"17\" stroke=\"#BBDEFB\" stroke-width=\"0.8\"/><polyline points=\"1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17\" fill=\"none\" stroke=\"#42A5F5\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>", "est": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" style=\"display:block\"><rect x=\"2\" y=\"6\" width=\"20\" height=\"12\" rx=\"3\" fill=\"#388E3C\"/><text x=\"12\" y=\"15\" text-anchor=\"middle\" font-size=\"8\" font-weight=\"bold\" fill=\"white\" font-family=\"system-ui,sans-serif\">EST</text></svg>", "outlier": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" style=\"display:block\"><text x=\"12\" y=\"18\" text-anchor=\"middle\" font-size=\"16\">\ud83e\udd37</text></svg>", "auto_reset": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" style=\"display:block\"><g transform=\"translate(0 0) scale(1.5)\" fill=\"#F57C00\"><path fill-rule=\"evenodd\" d=\"M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z\"/><path d=\"M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466\"/></g></svg>"};
+  const M = {"hcap_1": ["hcap_1", "hcap-gold", "1st Place (vs Par)"], "hcap_2": ["hcap_2", "hcap-silver", "2nd Place (vs Par)"], "hcap_3": ["hcap_3", "hcap-bronze", "3rd Place (vs Par)"], "finish_1": ["finish_1", "plain-medal", "1st Place (Finish time)"], "finish_2": ["finish_2", "plain-medal", "2nd Place (Finish time)"], "finish_3": ["finish_3", "plain-medal", "3rd Place (Finish time)"], "consistent_1": ["consistent", "hcap-consist", "Consistent racer"], "consistent_2": ["consistent", "hcap-consist", "Consistent racer"], "consistent_3": ["consistent", "hcap-consist", "Consistent racer"], "par": ["par", "hcap-par", "Chosen to define RacePar"], "fresh": ["est", "hcap-est", "Establishing index \u2014 not included in ranking"], "outlier": ["outlier", "hcap-outlier", "Outlier result \u2014 >10% off prediction, index unchanged"], "auto_reset": ["auto_reset", "hcap-reset", "Index auto-reset after 3 consecutive outliers"]};  // trophy_key -> [icon_key, css, tooltip]
+  const b = (key, cls, title) => `<span class="hcap-medal ${cls}" data-bs-toggle="tooltip" data-bs-title="${title}">${I[key]}</span>`;
+  const streakCss = "hcap-streak";
+  const streakTooltip = (n) => "{n} consecutive races faster than projected".replace('{n}', n);
+  const streak = (n) => `<span class="hcap-medal ${streakCss}" data-bs-toggle="tooltip" data-bs-title="${streakTooltip(n)}"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">${n}</text></svg></span>`;
+  if (!trophies || !trophies.length) return '';
+  const ORDER = ["hcap_1", "hcap_2", "hcap_3", "finish_1", "finish_2", "finish_3", "consistent_1", "consistent_2", "consistent_3", "par", "auto_reset", "fresh", "outlier"];
+  const sorted = [...trophies].sort((a,b) => {
+    const ai = a.startsWith('streak_') ? ORDER.length + parseInt(a.split('_')[1]) : ORDER.indexOf(a);
+    const bi = b.startsWith('streak_') ? ORDER.length + parseInt(b.split('_')[1]) : ORDER.indexOf(b);
+    return ai - bi;
+  });
+  return `<span style="display:flex;justify-content:center;gap:2px;flex-wrap:wrap">${sorted.map(t => {
+    if (t.startsWith('streak_')) return streak(parseInt(t.split('_')[1]));
+    const spec = M[t];
+    if (!spec) return '';
+    return b(spec[0], spec[1], spec[2]);
+  }).join('')}</span>`;
+}
+
+function podiumForCourse(course) {
+  const pr = [null, null, null];
+  course.handicap.forEach(r => {
+    if (r.trophies && r.trophies.includes('hcap_1')) pr[0] = r;
+    if (r.trophies && r.trophies.includes('hcap_2')) pr[1] = r;
+    if (r.trophies && r.trophies.includes('hcap_3')) pr[2] = r;
+  });
+  const cfg = [
+    {idx:1, label:'2nd', bg:'#EBEBEB', border:'#A0A0A0', nameColor:'#333', h:'52px', w:'135px', maxw:'180px', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text></svg>'},
+    {idx:0, label:'1st', bg:'#FFF8DC', border:'#FFD700', nameColor:'#7A5C00', h:'64px', w:'180px', maxw:'240px', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A5C00">1</text></svg>'},
+    {idx:2, label:'3rd', bg:'#FDF0E0', border:'#DDA84A', nameColor:'#5C2E00', h:'44px', w:'135px', maxw:'180px', cup:'<svg width="36" height="36" viewBox="0 0 24 24"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg>'},
+  ];
+  let html = '<div class="d-flex justify-content-center mb-3" style="width:100%"><div style="display:flex;flex-direction:column;align-items:stretch;width:100%;max-width:600px"><div style="display:flex;align-items:flex-end;gap:6px">';
+  cfg.forEach(c => {
+    const r = pr[c.idx];
+    const s = r ? slug(r.canonical_name) : null;
+    const name = r ? (RACER_SLUGS.has(s)
+      ? `<a href="../racer/${s}.html" style="color:${c.nameColor};font-weight:600;font-size:0.85em;text-decoration:none;text-align:center;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.canonical_name}</a>`
+      : `<span style="font-weight:600;font-size:0.85em;color:${c.nameColor};text-align:center;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.canonical_name}</span>`)
+      : '<span style="color:#bbb;font-size:0.85em">—</span>';
+    html += `<div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;min-width:${c.w};max-width:${c.maxw};min-width:0">${c.cup}${name}<div style="width:100%;height:${c.h};background:${c.bg};border:1px solid ${c.border};border-bottom:none;border-radius:4px 4px 0 0;display:flex;align-items:center;justify-content:center;font-weight:bold;color:${c.nameColor};font-size:0.85em">${c.label}</div></div>`;
+  });
+  html += '</div><div style="height:3px;background:#CCC;border-radius:2px;width:100%"></div></div></div>';
+  return html;
+}
+
+function tableHtml(id_suffix) {
+  return `
+  <div class="d-flex align-items-center gap-2 mb-2">
+    <select id="racer-filter-${id_suffix}" class="form-select form-select-sm ms-auto" style="width:auto" aria-label="Filter racers">
+      <option value="all">All racers</option>
+      <option value="established">Established only</option>
+    </select>
+  </div>
+  <table id="tbl-results-${id_suffix}" class="table table-sm table-striped">
+    <thead class="text-nowrap"><tr><th><span class="d-none d-lg-inline" style="vertical-align:middle">Trophies</span><span class="d-lg-none">Trophies</span></th><th data-bs-toggle="tooltip" data-bs-title="Finish line order"><span class="d-none d-lg-inline" style="vertical-align:middle">Place</span><span class="d-lg-none">Place</span></th><th data-bs-toggle="tooltip" data-bs-title="Athlete name"><span class="d-none d-lg-inline" style="vertical-align:middle">Racer</span><span class="d-lg-none">Racer</span></th><th data-bs-toggle="tooltip" data-bs-title="Craft category (sub-category)"><span class="d-none d-lg-inline" style="vertical-align:middle">Craft</span><span class="d-lg-none">Craft</span></th><th style="text-align:center;min-width:95px" data-bs-toggle="tooltip" data-bs-title="Improvement vs personal par (+ve is best)"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> vs Par</span><span class="d-lg-none">vs Par</span></th><th style="text-align:center;min-width:75px" data-bs-toggle="tooltip" data-bs-title="Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> Time</span><span class="d-lg-none">Finish</span></th><th data-bs-toggle="tooltip" data-bs-title="Personal par time (RacePar * Index)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par</span><span class="d-lg-none">Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Pace index"><span class="d-none d-lg-inline" style="vertical-align:middle">Index</span><span class="d-lg-none">Index</span></th><th data-bs-toggle="tooltip" data-bs-title="Index for next race"><span class="d-none d-lg-inline" style="vertical-align:middle">New Index</span><span class="d-lg-none">New</span></th><th data-bs-toggle="tooltip" data-bs-title="Vote for RacePar (Finish ÷ Index)"><span class="d-none d-lg-inline" style="vertical-align:middle">RacePar vote</span><span class="d-lg-none">ParVote</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by time"><span class="d-none d-lg-inline" style="vertical-align:middle">Finish Points</span><span class="d-lg-none">Pts</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by par result)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par Points</span><span class="d-lg-none">Par Pts</span></th></tr></thead>
+    <tbody id="body-results-${id_suffix}"></tbody>
+  </table>`;
+}
+function rows(results, placeField) {
+  const isHcap = placeField === 'adjusted_place';
+  return results.map(r => {
+    // For handicap view: prefer eligible_adjusted_place (position among ranked racers).
+    // When it's 0 (fresh/outlier/auto-reset/ineligible), fall back to adjusted_place muted.
+    let placeCellVal = r[placeField];
+    let placeCellHtml;
+    if (isHcap) {
+      const eap = r.eligible_adjusted_place || 0;
+      if (eap > 0) {
+        placeCellVal = eap;
+        placeCellHtml = String(eap);
+      } else {
+        const ap = r.adjusted_place || 0;
+        placeCellVal = 9999; // sort muted values to the bottom
+        let reason;
+        if (r.is_fresh_racer) reason = MUTE_REASONS.fresh;
+        else if (r.is_outlier) reason = MUTE_REASONS.outlier;
+        else if ((r.trophies||[]).includes('auto_reset')) reason = MUTE_REASONS.auto_reset;
+        else reason = MUTE_REASONS.ineligible;
+        placeCellHtml = ap > 0
+          ? `<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="${reason}">(${ap})</span>`
+          : `<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="${reason}">—</span>`;
+      }
+    } else {
+      placeCellHtml = String(r[placeField]);
+    }
+    // Predicted time (in seconds) for sorting; 999999 sorts empty to the end
+    const predSec = (!r.is_fresh_racer && r.time_versus_par > 0)
+      ? (r.time_seconds / r.time_versus_par * r.handicap) : null;
+    const predSort = predSec != null ? predSec : 999999;
+    const predCell = predSec != null ? fmtTime(predSec) : '<span style="color:#999">—</span>';
+    const pct = r.adjusted_time_versus_par != null && !r.is_fresh_racer
+      ? ((1 - r.adjusted_time_versus_par) * 100) : null;
+    // pctHtml — use pct (or -999 for "—") as sort key so empties sort to the bottom
+    // under desc (positive = beat projection sorts to top).
+    const pctSort = pct != null ? pct : -999;
+    // Per-row tooltip: "{time} is {pct}% {direction} than projected {projected}"
+    const pctTip = (pct != null && predSec != null)
+      ? `${'{time} was {pct}% {direction} than Personal Par {projected}'
+          .replace('{time}', fmtTime(r.time_seconds))
+          .replace('{pct}', Math.abs(pct).toFixed(1))
+          .replace('{direction}', pct >= 0 ? 'faster' : 'slower')
+          .replace('{projected}', fmtTime(predSec))
+        }`
+      : '';
+    const pctTipAttr = pctTip ? ` data-bs-toggle="tooltip" data-bs-title="${pctTip}"` : '';
+    const pctHtml = pct != null
+      ? `<td data-order="${pctSort}"${pctTipAttr} style="text-align:center;white-space:nowrap;font-size:0.85em;color:${pct >= 0 ? '#2E7D32' : '#666'};font-weight:${pct >= 0 ? 'bold' : 'normal'}">${pct > 0 ? '+' : ''}${pct.toFixed(1)}%</td>`
+      : `<td data-order="${pctSort}"></td>`;
+    const hcapPostNote = r.is_outlier ? ' data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off prediction, index unchanged"' : '';
+    const hcapPostHtml = `<td data-order="${r.handicap_post}" style="padding-left:8px">${r.handicap_post.toFixed(3)}${r.is_outlier ? `<sup${hcapPostNote}>^</sup>` : ''}</td>`;
+    const s = slug(r.canonical_name);
+    const isFresh = r.is_fresh_racer ? 'true' : 'false';
+    // Par estimate
+    const parSec = (r.included_in_par && r.adjusted_time_seconds) ? r.adjusted_time_seconds : null;
+    const parSort = parSec != null ? parSec : 999999;
+    const parDisplay = parSec != null ? fmtTime(parSec) : '<span style="color:#999">—</span>';
+    const parCell = parSec != null && r.trophies && r.trophies.includes('par')
+      ? '<span data-bs-toggle="tooltip" data-bs-title="RacePar. Defines par for an Index=1.0 racer" style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:2px 4px;font-weight:bold;color:#1565C0">' + fmtTime(parSec) + '</span>'
+      : parDisplay;
+    return `<tr data-fresh="${isFresh}"><td>${badges(r.trophies)}</td>
+    <td data-order="${placeCellVal}">${placeCellHtml}</td><td>${racerLink(r.canonical_name)}</td>
+    ${craft_cell(r.craft_category, r.craft_specific)}
+    ${pctHtml}
+    <td data-order="${r.time_seconds}">${isHcap ? fmtTime(r.time_seconds) : '<strong>' + fmtTime(r.time_seconds) + '</strong>'}</td>
+    <td data-order="${predSort}">${predCell}</td>
+    <td data-order="${r.handicap}">${r.handicap.toFixed(3)}</td>
+    ${hcapPostHtml}
+    <td data-order="${parSort}">${parCell}</td>
+    <td data-order="${r.race_points || 0}">${r.race_points || 0}</td><td data-order="${r.handicap_points || 0}">${r.handicap_points || 0}</td></tr>`;
+  }).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const sortedCourses = [...COURSES].sort((a,b) => {
+    // Sort by distance descending (longest course first); fall back to finisher count
+    const distRe = /(\d+(?:\.\d+)?)\s*(mi|mile|km)/i;
+    const da = a.label.match(distRe), db = b.label.match(distRe);
+    const toKm = (m) => m ? parseFloat(m[1]) * (/mi/i.test(m[2]) ? 1.609 : 1) : 0;
+    const diff = toKm(db) - toKm(da);
+    return diff !== 0 ? diff : b.finish.length - a.finish.length;
+  });
+  let tabNav = '<ul class="nav nav-tabs mb-0">';
+  let tabContent = '<div class="tab-content">';
+  sortedCourses.forEach((course, i) => {
+    const origIdx = COURSES.indexOf(course);
+    const active = i === 0 ? 'active' : '';
+    tabNav += `<li class="nav-item"><button class="nav-link ${active}" data-bs-toggle="tab" data-bs-target="#course-${origIdx}">${course.short_label || course.label || 'Results'}</button></li>`;
+    tabContent += `<div class="tab-pane ${active} p-3 border border-top-0" id="course-${origIdx}">${podiumForCourse(course)}${tableHtml(origIdx)}</div>`;
+  });
+  tabNav += '</ul>';
+  tabContent += '</div>';
+  document.getElementById('course-content').innerHTML = tabNav + tabContent;
+  const _dts = {};
+  COURSES.forEach((course, i) => {
+    document.getElementById(`body-results-${i}`).innerHTML = rows(course.handicap, 'original_place');
+    // Disable sorting on Trophies (0), Racer (2), Craft (3)
+    _dts[i] = $(`#tbl-results-${i}`).DataTable({
+      order: [[4, 'desc']],
+      paging: false,
+      searching: false,
+      info: false,
+      autoWidth: false,
+      columnDefs: [{ orderable: false, targets: [0, 2, 3] }],
+    });
+  });
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => bootstrap.Tooltip.getOrCreateInstance(el));
+  const savedDist = getDistance();
+  COURSES.forEach((course, i) => {
+    const btn = document.querySelector(`[data-bs-target="#course-${i}"]`);
+    if (btn) {
+      if (savedDist && course.label === savedDist) bootstrap.Tab.getOrCreateInstance(btn).show();
+      btn.addEventListener('shown.bs.tab', () => setDistance(course.label));
+    }
+  });
+  // Racer filter
+  function applyFilter() {
+    // Collect filter value from each per-course selector (they're synced)
+    const filters = document.querySelectorAll('[id^="racer-filter-"]');
+    if (!filters.length) return;
+    const f = filters[0].value;
+    filters.forEach(sel => { sel.value = f; });
+    document.querySelectorAll('#course-content tr[data-fresh]').forEach(function(tr) {
+      var show = f === 'all'
+        || (f === 'established' && tr.dataset.fresh === 'false');
+      tr.style.display = show ? '' : 'none';
+    });
+  }
+  document.querySelectorAll('[id^="racer-filter-"]').forEach(sel => sel.addEventListener('change', applyFilter));
+});
+</script>
+
+</body></html>
