@@ -217,12 +217,12 @@ function fetchData(url, cb) {
   <div class="d-flex flex-wrap align-items-baseline gap-3 mb-2">
     <h2 class="mb-0">Ethan Huff</h2>
     <div class="text-muted small" id="racer-stats-bar">
-  <span id="stat-season-label">2025 season:</span>
+  <span id="stat-season-label">2026 season:</span>
   <span id="stat-races">1</span> races,
   <span id="stat-wins">0</span> wins,
   <span id="stat-podiums">0</span> podiums
 </div>
-<script>var racerSeasonStats = {"2024": {"races": 10, "wins": 0, "podiums": 0}, "2025": {"races": 1, "wins": 0, "podiums": 0}};</script>
+<script>var racerSeasonStats = {"2024": {"races": 10, "wins": 0, "podiums": 0}, "2025": {"races": 1, "wins": 0, "podiums": 0}, "2026": {"races": 1, "wins": 0, "podiums": 0}};</script>
   </div>
   <div data-season="2024" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-bepc-summer-2024-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-bepc-summer-2024-sup-1">
 <div class="row mb-3">
@@ -252,6 +252,20 @@ function fetchData(url, cb) {
 <table class="table table-sm table-striped table-hover">
   <thead><tr><th><span class="d-none d-lg-inline" style="vertical-align:middle"></span><span class="d-lg-none"></span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Race</span><span class="d-lg-none">Race</span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Date</span><span class="d-lg-none">Date</span></th><th data-bs-toggle="tooltip" data-bs-title="Place by Time vs Par"><span class="d-none d-lg-inline" style="vertical-align:middle">Place vs Par</span><span class="d-lg-none">Place vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Place on Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle">Place</span><span class="d-lg-none">Place</span></th><th data-bs-toggle="tooltip" data-bs-title="Improvement vs personal par (+ve is best)"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> vs Par</span><span class="d-lg-none">vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> Time</span><span class="d-lg-none">Finish</span></th><th data-bs-toggle="tooltip" data-bs-title="Personal par time (RacePar * Index)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par</span><span class="d-lg-none">Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Pace index"><span class="d-none d-lg-inline" style="vertical-align:middle">Index</span><span class="d-lg-none">Index</span></th><th data-bs-toggle="tooltip" data-bs-title="Index for next race"><span class="d-none d-lg-inline" style="vertical-align:middle">New Index</span><span class="d-lg-none">New</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by time"><span class="d-none d-lg-inline" style="vertical-align:middle">Finish Points</span><span class="d-lg-none">Pts</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by par result)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par Points</span><span class="d-lg-none">Par Pts</span></th></tr></thead>
   <tbody><tr><td style="white-space:nowrap"></td><td><a href="../results/2025-06-09-06.html">BEPC 2025 Race Series #6</a></td><td class="text-muted small text-nowrap">Jun 9, 2025</td><td>6</td><td>13</td><td style="text-align:right;font-size:0.85em;color:#666;font-weight:normal">-1.5%</td><td>28:22</td><td>27:57</td><td>1.064</td><td>1.066</td><td>5</td><td>0</td></tr></tbody>
+</table></div></div></div><div data-season="2026" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-bepc-summer-2026-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-bepc-summer-2026-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Finish Pts:</strong> 4</div>
+  <div class="col-6 col-sm-3"><strong>Corr Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.067</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-bepc-summer-2026-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-bepc-summer-2026-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th><span class="d-none d-lg-inline" style="vertical-align:middle"></span><span class="d-lg-none"></span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Race</span><span class="d-lg-none">Race</span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Date</span><span class="d-lg-none">Date</span></th><th data-bs-toggle="tooltip" data-bs-title="Place by Time vs Par"><span class="d-none d-lg-inline" style="vertical-align:middle">Place vs Par</span><span class="d-lg-none">Place vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Place on Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle">Place</span><span class="d-lg-none">Place</span></th><th data-bs-toggle="tooltip" data-bs-title="Improvement vs personal par (+ve is best)"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> vs Par</span><span class="d-lg-none">vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> Time</span><span class="d-lg-none">Finish</span></th><th data-bs-toggle="tooltip" data-bs-title="Personal par time (RacePar * Index)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par</span><span class="d-lg-none">Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Pace index"><span class="d-none d-lg-inline" style="vertical-align:middle">Index</span><span class="d-lg-none">Index</span></th><th data-bs-toggle="tooltip" data-bs-title="Index for next race"><span class="d-none d-lg-inline" style="vertical-align:middle">New Index</span><span class="d-lg-none">New</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by time"><span class="d-none d-lg-inline" style="vertical-align:middle">Finish Points</span><span class="d-lg-none">Pts</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by par result)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par Points</span><span class="d-lg-none">Par Pts</span></th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"></td><td><a href="../results/2026-09-07-19.html">BEPC 2026 Race Series #19</a></td><td class="text-muted small text-nowrap">Sep 7, 2026</td><td>7</td><td>23</td><td style="text-align:right;font-size:0.85em;color:#666;font-weight:normal">-6.1%</td><td>33:44</td><td>31:48</td><td>1.057</td><td>1.067</td><td>4</td><td>0</td></tr></tbody>
 </table></div></div></div>
 </div>
 <script>
@@ -276,6 +290,17 @@ new Chart(document.getElementById('chart-hcap-bepc-summer-2025-sup-1'), {
   type:'line',data:{labels:["06/09 - #06"],datasets:[
     {label:'Index',data:[1.0659],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
   ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Index'},afterDataLimits:function(s){var sp=s.max-s.min;if(sp<0.1){var m=(s.max+s.min)/2;s.min=m-0.05;s.max=m+0.05;}}}}}
+});
+new Chart(document.getElementById('chart-pts-bepc-summer-2026-sup-1'), {
+  type:'line',data:{labels:["09/07 - #19"],datasets:[
+    {label:'Finish Pts',data:[4],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Corr Pts',data:[0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-bepc-summer-2026-sup-1'), {
+  type:'line',data:{labels:["09/07 - #19"],datasets:[
+    {label:'Index',data:[1.0668],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Index'},afterDataLimits:function(s){var sp=s.max-s.min;if(sp<0.1){var m=(s.max+s.min)/2;s.min=m-0.05;s.max=m+0.05;}}}}}
 });</script>
 <script>
 var _rs=document.getElementById('racer-select');if(_rs)_rs.addEventListener('change', function() {
@@ -286,7 +311,7 @@ var _rs=document.getElementById('racer-select');if(_rs)_rs.addEventListener('cha
 (function() {
   var club = 'bepc-summer';
   localStorage.setItem('pc_club', club);
-  var availYears = ['2025', '2024'];
+  var availYears = ['2026', '2025', '2024'];
   var storedSeason = localStorage.getItem('pc_year');
   var season = (storedSeason && availYears.indexOf(storedSeason) >= 0) ? storedSeason : availYears[0];
   localStorage.setItem('pc_year', season);
