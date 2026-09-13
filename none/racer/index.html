@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Racers</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+  .hcap-reset  { background:#FFE0B2; border:1px solid #F57C00; }
+  /* Muted place text for non-eligible (fresh/outlier/skipped) rows */
+  .place-muted { color:#999; font-style:italic; }
+  /* Preserve explicit newlines (
+) in tooltip text */
+  .tooltip-inner { white-space: pre-line; text-align: left; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  var h = location.hash.replace('#', '');
+  if (h && /^\d{4}$/.test(h)) return h;
+  return localStorage.getItem('pc_year') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('pc_year', year);
+  location.hash = year;
+}
+function getDistance() {
+  return localStorage.getItem('pc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('pc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('pc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('pc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container-fluid px-2 px-sm-3">
+    <a class="navbar-brand" href="../../index.html"><img src="../../logo.png" alt="PaddleRace" style="height:36px;margin-right:6px;vertical-align:middle">PaddleRace</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../series.html">Series</a></li>
+<li class="nav-item"><a class="nav-link" href="../results.html">Results</a></li>
+<li class="nav-item"><a class="nav-link" href="../standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link" href="../trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link active" href="../racer/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="../../how-it-works.html">How it works</a></li>
+<li class="nav-item"><a class="nav-link" href="../../about.html">About</a></li>
+</ul>
+      <div class="position-relative ms-2" style="min-width:180px;max-width:280px">
+        <input id="nav-search" type="text" class="form-control form-control-sm"
+               placeholder="Search…" autocomplete="off">
+        <style>.ns-item{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;font-size:.82rem;color:#333;text-decoration:none;border-bottom:1px solid #f5f5f5}.ns-item:hover{background:#f0f4ff}</style>
+<div id="nav-search-results" class="position-absolute shadow"
+             style="z-index:1050;display:none;min-width:320px;right:0;background:#fff;border:1px solid #dee2e6;border-radius:8px;overflow:hidden;max-height:420px;overflow-y:auto"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+(function(){
+  var RACERS=null,_racersLoading=false;
+  var depth=2;
+  var _races=null,_racesLoading=false;
+
+  function loadRacers(cb){
+    if(RACERS){cb();return;}
+    if(_racersLoading)return;
+    _racersLoading=true;
+    var url=pfx()+'racers-index.json';
+    fetch(url).then(function(r){return r.json();}).then(function(d){
+      RACERS=d;_racersLoading=false;cb();
+    }).catch(function(){RACERS=[];_racersLoading=false;cb();});
+  }
+
+  function fuzzy(str,q){
+    str=str.toLowerCase();q=q.toLowerCase();
+    if(str===q)return 2;
+    if(str.includes(q))return 1+(str.startsWith(q)?0.3:0);
+    var bg=function(s){var b={};for(var i=0;i<s.length-1;i++)b[s.slice(i,i+2)]=1;return b;};
+    var sb=bg(str),qb=bg(q),hits=0,tot=0;
+    for(var k in qb){tot++;if(sb[k])hits++;}
+    return tot>0?hits/tot:0;
+  }
+
+  function pfx(){return depth===0?'':depth===1?'../':'../../';}
+
+  function sectionHdr(label){
+    return '<div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;padding:8px 12px 3px;background:#fafafa;border-bottom:1px solid #f0f0f0">'+label+'</div>';
+  }
+  function resultLink(href,primary,secondary){
+    return '<a href="'+href+'" class="ns-item">'
+      +'<span style="font-weight:500">'+primary+'</span>'
+      +(secondary?'<span style="font-size:.7rem;color:#aaa;margin-left:8px;white-space:nowrap">'+secondary+'</span>':'')
+      +'</a>';
+  }
+
+  function render(q){
+    var res=document.getElementById('nav-search-results');
+    res.innerHTML='';
+    if(q.length<2){res.style.display='none';return;}
+    var p=pfx(),html='';
+
+    if(!RACERS){
+      loadRacers(function(){render(document.getElementById('nav-search').value.trim());});
+    } else {
+      var rs=RACERS.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rs.length){
+        html+=sectionHdr('Racers');
+        rs.forEach(function(x){
+          var r=x.r;if(!r.clubs||!r.clubs.length)return;
+          html+=resultLink(p+r.clubs[0]+'/racer/'+r.slug+'.html',r.name,'');
+        });
+      }
+    }
+
+    if(_races){
+      var all=[];
+      Object.entries(_races.seasons||{}).forEach(function([yr,s]){
+        (Array.isArray(s)?s:(s.races||[])).forEach(function(race){all.push(race);});
+      });
+      var rr=all.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rr.length){
+        html+=sectionHdr('Results');
+        rr.forEach(function(x){
+          var r=x.r;
+          html+=resultLink(p+(_races.club_id||'pnw')+'/results/'+r.slug+'.html',r.name,r.date);
+        });
+      }
+    } else if(!_racesLoading){
+      _racesLoading=true;
+      var url=p+(depth===0?'pnw/':'')+'races-list.json';
+      fetch(url).then(function(r){return r.json();}).then(function(d){
+        _races=d;_racesLoading=false;
+        render(document.getElementById('nav-search').value.trim());
+      }).catch(function(){_racesLoading=false;});
+    }
+
+    if(!html){res.style.display='none';return;}
+    res.innerHTML=html;res.style.display='';
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    var inp=document.getElementById('nav-search');
+    var res=document.getElementById('nav-search-results');
+    if(!inp)return;
+    inp.addEventListener('input',function(){render(this.value.trim());});
+    inp.addEventListener('focus',function(){if(this.value.trim().length>=2)render(this.value.trim());});
+    document.addEventListener('click',function(e){if(!inp.contains(e.target)&&!res.contains(e.target))res.style.display='none';});
+    inp.addEventListener('keydown',function(e){
+      var items=res.querySelectorAll('a');if(!items.length)return;
+      var active=res.querySelector('a[data-sel]');
+      var idx=active?Array.from(items).indexOf(active):-1;
+      if(e.key==='ArrowDown'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx+1)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='ArrowUp'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx-1+items.length)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='Enter'&&active){window.location.href=active.href;}
+      else if(e.key==='Escape'){res.style.display='none';}
+    });
+  });
+})();
+</script><div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Series</span>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group"><a class="btn btn-sm btn-outline-secondary" data-club="bepc-summer" href="../../bepc-summer/racer/index.html">BEPC</a>
+<a class="btn btn-sm btn-outline-secondary" data-club="pnw" href="../../pnw/racer/index.html">PNW</a>
+<a class="btn btn-sm btn-outline-secondary" data-club="sckc-duck-island" href="../../sckc-duck-island/racer/index.html">SCKC</a>
+<a class="btn btn-sm btn-outline-secondary" data-club="urban-surf" href="../../urban-surf/racer/index.html">Urban Surf</a>
+</div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var ALL_CLUB_SEASONS = {"bepc-summer":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015"],"current":"2026"},"pnw":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012"],"current":"2026"},"sckc-duck-island":{"years":["2026", "2025", "2024", "2023", "2022", "2019", "2018", "2017", "2016", "2015"],"current":"2026"},"urban-surf":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"],"current":"2026"},"none":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2018", "2017", "2016", "2015"],"current":"2026"}};
+  var info = ALL_CLUB_SEASONS['none'];
+  var hash = location.hash.replace('#', '');
+  var saved = localStorage.getItem('pc_year');
+  var active = (hash && info.years.indexOf(hash) >= 0) ? hash
+             : (saved && info.years.indexOf(saved) >= 0) ? saved
+             : info.current;
+  var sel = document.getElementById('season-select');
+  var prevBtn = document.getElementById('season-prev');
+  var nextBtn = document.getElementById('season-next');
+  var navigateUrl = '';
+  function updateNavBtns(yr) {
+    var idx = info.years.indexOf(yr);
+    if (prevBtn) prevBtn.disabled = idx >= info.years.length - 1;
+    if (nextBtn) nextBtn.disabled = idx <= 0;
+  }
+  function goYear(yr) {
+    if (navigateUrl) {
+      window.location.href = navigateUrl + '#' + yr;
+      return;
+    }
+    if (sel) sel.value = yr;
+    localStorage.setItem('pc_year', yr);
+    location.hash = yr;
+    updateNavBtns(yr);
+    document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {
+      a.href = a.getAttribute('href').split('#')[0] + '#' + yr;
+    });
+  }
+  if (sel) {
+    sel.innerHTML = info.years.map(function(y) {
+      return '<option value="' + y + '"' + (y === active ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+    sel.addEventListener('change', function() { goYear(this.value); });
+  }
+  if (prevBtn) prevBtn.addEventListener('click', function() {
+    var idx = info.years.indexOf(sel ? sel.value : active);
+    if (idx < info.years.length - 1) goYear(info.years[idx + 1]);
+  });
+  if (nextBtn) nextBtn.addEventListener('click', function() {
+    var idx = info.years.indexOf(sel ? sel.value : active);
+    if (idx > 0) goYear(info.years[idx - 1]);
+  });
+  if (!navigateUrl && location.hash !== '#' + active) location.replace(location.pathname + '#' + active);
+  localStorage.setItem('pc_year', active);
+  localStorage.setItem('pc_club', 'none');
+  updateNavBtns(active);
+  document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {
+    a.href = a.getAttribute('href').split('#')[0] + '#' + active;
+  });
+})();</script>
+<div class="container">
+  <h1>Racers</h1>
+  <table id="racer-index" class="table table-striped table-hover">
+    <thead><tr><th>Name</th><th>Craft</th></tr></thead>
+    <tbody><tr><td><a href="abigail-mccarthy.html">Abigail McCarthy</a></td><td>Prone</td></tr>
+<tr><td><a href="adam-tischler.html">Adam Tischler</a></td><td>SUP</td></tr>
+<tr><td><a href="ahmed-fakhry.html">Ahmed Fakhry</a></td><td>SUP</td></tr>
+<tr><td><a href="ahmed-salem.html">Ahmed Salem</a></td><td>SUP</td></tr>
+<tr><td><a href="alan-lamp.html">Alan Lamp</a></td><td>SUP</td></tr>
+<tr><td><a href="alex-simanis.html">Alex Simanis</a></td><td>SUP</td></tr>
+<tr><td><a href="alexander-vaughan.html">Alexander Vaughan</a></td><td>SUP</td></tr>
+<tr><td><a href="amber-zipperer.html">Amber Zipperer</a></td><td>K-1</td></tr>
+<tr><td><a href="amy-merten.html">Amy Merten</a></td><td>SUP</td></tr>
+<tr><td><a href="anna-unger.html">Anna Unger</a></td><td>SUP</td></tr>
+<tr><td><a href="anna-williams.html">Anna Williams</a></td><td>K-1</td></tr>
+<tr><td><a href="audrey-frey.html">Audrey Frey</a></td><td>SUP</td></tr>
+<tr><td><a href="autumn-peele.html">Autumn Peele</a></td><td>SUP</td></tr>
+<tr><td><a href="beau-whitehead.html">Beau Whitehead</a></td><td></td></tr>
+<tr><td><a href="ben-koltz.html">Ben Koltz</a></td><td>SUP</td></tr>
+<tr><td><a href="bodie-von-allmen.html">Bodie Von Allmen</a></td><td>SUP</td></tr>
+<tr><td><a href="brad-rice.html">Brad Rice</a></td><td></td></tr>
+<tr><td><a href="brandon-falk.html">Brandon Falk</a></td><td></td></tr>
+<tr><td><a href="brian-huvane.html">Brian Huvane</a></td><td></td></tr>
+<tr><td><a href="brittany-foxley.html">Brittany Foxley</a></td><td>SUP</td></tr>
+<tr><td><a href="brown-fihaki.html">Brown Fihaki</a></td><td>SUP</td></tr>
+<tr><td><a href="bruce-barry.html">Bruce Barry</a></td><td>SUP</td></tr>
+<tr><td><a href="bruce-pence.html">Bruce Pence</a></td><td>SUP</td></tr>
+<tr><td><a href="carl-delica.html">Carl Delica</a></td><td>SUP</td></tr>
+<tr><td><a href="carol-peebles.html">Carol Peebles</a></td><td></td></tr>
+<tr><td><a href="caylin-bennetsen.html">Caylin Bennetsen</a></td><td></td></tr>
+<tr><td><a href="charlie-butt.html">Charlie Butt</a></td><td>OC-1</td></tr>
+<tr><td><a href="chris-fry.html">Chris Fry</a></td><td></td></tr>
+<tr><td><a href="chris-grieve.html">Chris Grieve</a></td><td></td></tr>
+<tr><td><a href="chris-hawkins.html">Chris Hawkins</a></td><td>SUP</td></tr>
+<tr><td><a href="chris-merchant.html">Chris Merchant</a></td><td></td></tr>
+<tr><td><a href="christian-oliver.html">Christian Oliver</a></td><td>SUP</td></tr>
+<tr><td><a href="cody-bean.html">Cody Bean</a></td><td>SUP</td></tr>
+<tr><td><a href="colin-brooks.html">Colin Brooks</a></td><td></td></tr>
+<tr><td><a href="corey-von-allmen.html">Corey Von Allmen</a></td><td>SUP</td></tr>
+<tr><td><a href="dan-krogan.html">Dan Krogan</a></td><td>SUP</td></tr>
+<tr><td><a href="dan-legg.html">Dan Legg</a></td><td></td></tr>
+<tr><td><a href="dan-strauss.html">Dan Strauss</a></td><td>K-1</td></tr>
+<tr><td><a href="dan-taylor.html">Dan Taylor</a></td><td>SUP</td></tr>
+<tr><td><a href="darrel-templeton.html">Darrel Templeton</a></td><td>SUP</td></tr>
+<tr><td><a href="darrell-kirk.html">Darrell Kirk</a></td><td>SUP</td></tr>
+<tr><td><a href="dave-billenness.html">Dave Billenness</a></td><td>SUP</td></tr>
+<tr><td><a href="dave-reid.html">Dave Reid</a></td><td>SUP</td></tr>
+<tr><td><a href="dennis-peele.html">Dennis Peele</a></td><td>SUP</td></tr>
+<tr><td><a href="doug-broadbent.html">Doug Broadbent</a></td><td>SUP</td></tr>
+<tr><td><a href="elizabeth-bailey.html">Elizabeth Bailey</a></td><td>SUP</td></tr>
+<tr><td><a href="eric-nordstrom.html">Eric Nordstrom</a></td><td>SUP</td></tr>
+<tr><td><a href="evan-vernon.html">Evan Vernon</a></td><td>SUP</td></tr>
+<tr><td><a href="frederick-lefebvre.html">Frederick Lefebvre</a></td><td>SUP</td></tr>
+<tr><td><a href="hesham-salem.html">Hesham Salem</a></td><td>SUP</td></tr>
+<tr><td><a href="hilary-gaddis.html">Hilary Gaddis</a></td><td>SUP</td></tr>
+<tr><td><a href="holly-rasmussen.html">Holly Rasmussen</a></td><td></td></tr>
+<tr><td><a href="holly-tichenor.html">Holly Tichenor</a></td><td>SUP</td></tr>
+<tr><td><a href="ivan-storck.html">Ivan Storck</a></td><td>SUP</td></tr>
+<tr><td><a href="jackie-gayan.html">Jackie Gayan</a></td><td>SUP</td></tr>
+<tr><td><a href="jacob-selander.html">Jacob Selander</a></td><td>K-1</td></tr>
+<tr><td><a href="james-berns.html">James Berns</a></td><td></td></tr>
+<tr><td><a href="jan-brandt.html">Jan Brandt</a></td><td>SUP</td></tr>
+<tr><td><a href="jeremiah-smith.html">Jeremiah Smith</a></td><td>SUP</td></tr>
+<tr><td><a href="jeremy-clark.html">Jeremy Clark</a></td><td>SUP</td></tr>
+<tr><td><a href="jeremy-stafford.html">Jeremy Stafford</a></td><td>SUP</td></tr>
+<tr><td><a href="jessi-wasson.html">Jessi Wasson</a></td><td>SUP</td></tr>
+<tr><td><a href="jessie-wassen.html">Jessie Wassen</a></td><td>SUP</td></tr>
+<tr><td><a href="jim-bohn.html">Jim Bohn</a></td><td>SUP</td></tr>
+<tr><td><a href="jim-schulz.html">Jim Schulz</a></td><td>K-1</td></tr>
+<tr><td><a href="joe-threadgill.html">Joe Threadgill</a></td><td></td></tr>
+<tr><td><a href="john-foster.html">John Foster</a></td><td>SUP</td></tr>
+<tr><td><a href="john-hansen.html">John Hansen</a></td><td>SUP</td></tr>
+<tr><td><a href="john-misasi.html">John Misasi</a></td><td></td></tr>
+<tr><td><a href="john-schalka.html">John Schalka</a></td><td></td></tr>
+<tr><td><a href="jordan-van-voast.html">Jordan Van Voast</a></td><td>K-1</td></tr>
+<tr><td><a href="josh-sanderson.html">Josh Sanderson</a></td><td>SUP</td></tr>
+<tr><td><a href="katie-everts.html">Katie Everts</a></td><td></td></tr>
+<tr><td><a href="kendra-bean.html">Kendra Bean</a></td><td>SUP</td></tr>
+<tr><td><a href="kerri-seger.html">Kerri Seger</a></td><td>K-1</td></tr>
+<tr><td><a href="kevin-olney.html">Kevin Olney</a></td><td>K-1</td></tr>
+<tr><td><a href="kevin-patrick.html">Kevin Patrick</a></td><td>SUP</td></tr>
+<tr><td><a href="kylie-gayan.html">Kylie Gayan</a></td><td>SUP</td></tr>
+<tr><td><a href="lambert-wixson.html">Lambert Wixson</a></td><td>SUP</td></tr>
+<tr><td><a href="lance-jorgensen.html">Lance Jorgensen</a></td><td>SUP</td></tr>
+<tr><td><a href="levi-goltz.html">Levi Goltz</a></td><td>SUP</td></tr>
+<tr><td><a href="lindsey-virdeh.html">Lindsey Virdeh</a></td><td>SUP</td></tr>
+<tr><td><a href="liza-sheehan.html">Liza Sheehan</a></td><td>SUP</td></tr>
+<tr><td><a href="lucy-hochberg.html">Lucy Hochberg</a></td><td>SUP</td></tr>
+<tr><td><a href="luke-burritt.html">Luke Burritt</a></td><td>SUP</td></tr>
+<tr><td><a href="maggie-hochberg.html">Maggie Hochberg</a></td><td>SUP</td></tr>
+<tr><td><a href="manny-de-leon.html">Manny De Leon</a></td><td>SUP</td></tr>
+<tr><td><a href="marco-scheuer.html">Marco Scheuer</a></td><td>SUP</td></tr>
+<tr><td><a href="marius-lina.html">Marius Lina</a></td><td>SUP</td></tr>
+<tr><td><a href="mark-werley.html">Mark Werley</a></td><td>SUP</td></tr>
+<tr><td><a href="matt-kearney.html">Matt Kearney</a></td><td>SUP</td></tr>
+<tr><td><a href="matt-radford.html">Matt Radford</a></td><td>SUP</td></tr>
+<tr><td><a href="meryl-bezrutczyk-lauriat.html">Meryl Bezrutczyk-Lauriat</a></td><td>SUP</td></tr>
+<tr><td><a href="michele-black.html">Michele Black</a></td><td>SUP</td></tr>
+<tr><td><a href="mike-liddell.html">Mike Liddell</a></td><td>K-1</td></tr>
+<tr><td><a href="minnie-fontenelle.html">Minnie Fontenelle</a></td><td>SUP</td></tr>
+<tr><td><a href="misako-yamamoto.html">Misako Yamamoto</a></td><td>SUP</td></tr>
+<tr><td><a href="natasha-shaffer.html">Natasha Shaffer</a></td><td>SUP</td></tr>
+<tr><td><a href="nattie-blue.html">Nattie Blue</a></td><td>OC-1</td></tr>
+<tr><td><a href="neal-parker.html">Neal Parker</a></td><td>SUP</td></tr>
+<tr><td><a href="ned-sherry.html">Ned Sherry</a></td><td>SUP</td></tr>
+<tr><td><a href="nick-bannon.html">Nick Bannon</a></td><td>SUP</td></tr>
+<tr><td><a href="nick-papa.html">Nick Papa</a></td><td>SUP</td></tr>
+<tr><td><a href="paal-ryan.html">Paal Ryan</a></td><td>SUP</td></tr>
+<tr><td><a href="patrick-hwang.html">Patrick Hwang</a></td><td>SUP</td></tr>
+<tr><td><a href="rennick-woods.html">Rennick Woods</a></td><td>Prone</td></tr>
+<tr><td><a href="richard-campbell.html">Richard Campbell</a></td><td>OC-1</td></tr>
+<tr><td><a href="richard-farr.html">Richard Farr</a></td><td></td></tr>
+<tr><td><a href="rob-casey.html">Rob Casey</a></td><td>SUP-Unlimited</td></tr>
+<tr><td><a href="rogan-carr.html">Rogan Carr</a></td><td>SUP</td></tr>
+<tr><td><a href="ryan-milley.html">Ryan Milley</a></td><td>SUP</td></tr>
+<tr><td><a href="sarah-hess.html">Sarah Hess</a></td><td>K-1</td></tr>
+<tr><td><a href="sarah-sandstrom.html">Sarah Sandstrom</a></td><td>SUP</td></tr>
+<tr><td><a href="scott-dahlquist.html">Scott Dahlquist</a></td><td>SUP</td></tr>
+<tr><td><a href="scott-greene.html">Scott Greene</a></td><td></td></tr>
+<tr><td><a href="scott-tennican.html">Scott Tennican</a></td><td>SUP</td></tr>
+<tr><td><a href="sean-nordquist.html">Sean Nordquist</a></td><td>SUP</td></tr>
+<tr><td><a href="sean-thomas.html">Sean Thomas</a></td><td>SUP-Unlimited</td></tr>
+<tr><td><a href="shane-donogh.html">Shane Donogh</a></td><td>SUP</td></tr>
+<tr><td><a href="skyler-palmer.html">Skyler Palmer</a></td><td>SUP</td></tr>
+<tr><td><a href="susan-horst.html">Susan Horst</a></td><td>SUP</td></tr>
+<tr><td><a href="sydney-dela-cruz.html">Sydney Dela Cruz</a></td><td></td></tr>
+<tr><td><a href="tamara-rice.html">Tamara Rice</a></td><td></td></tr>
+<tr><td><a href="ted-sweeney.html">Ted Sweeney</a></td><td>SUP</td></tr>
+<tr><td><a href="tim-everson.html">Tim Everson</a></td><td>SUP</td></tr>
+<tr><td><a href="tony-devita.html">Tony DeVita</a></td><td>SUP</td></tr>
+<tr><td><a href="tran-luu.html">Tran Luu</a></td><td>SUP</td></tr>
+<tr><td><a href="treacy-morgan.html">Treacy Morgan</a></td><td></td></tr>
+<tr><td><a href="troy-trimmer.html">Troy Trimmer</a></td><td>SUP</td></tr>
+<tr><td><a href="vicki-gezon.html">Vicki Gezon</a></td><td>SUP</td></tr>
+<tr><td><a href="wes-van-wambeck.html">Wes Van Wambeck</a></td><td>SUP</td></tr>
+<tr><td><a href="will-threadgill.html">Will Threadgill</a></td><td></td></tr>
+<tr><td><a href="yakov-polyakov.html">Yakov Polyakov</a></td><td>SUP</td></tr>
+</tbody>
+  </table>
+</div>
+<script>
+$(document).ready(function() {
+  $('#racer-index').DataTable({
+    order: [[0, 'asc']],
+    pageLength: 50,
+    responsive: true
+  });
+});
+</script>
+</body></html>

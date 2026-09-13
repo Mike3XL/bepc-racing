@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trajectories</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+  .hcap-reset  { background:#FFE0B2; border:1px solid #F57C00; }
+  /* Muted place text for non-eligible (fresh/outlier/skipped) rows */
+  .place-muted { color:#999; font-style:italic; }
+  /* Preserve explicit newlines (
+) in tooltip text */
+  .tooltip-inner { white-space: pre-line; text-align: left; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  var h = location.hash.replace('#', '');
+  if (h && /^\d{4}$/.test(h)) return h;
+  return localStorage.getItem('pc_year') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('pc_year', year);
+  location.hash = year;
+}
+function getDistance() {
+  return localStorage.getItem('pc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('pc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('pc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('pc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container-fluid px-2 px-sm-3">
+    <a class="navbar-brand" href="../index.html"><img src="../logo.png" alt="PaddleRace" style="height:36px;margin-right:6px;vertical-align:middle">PaddleRace</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li class="nav-item"><a class="nav-link" href="results.html">Results</a></li>
+<li class="nav-item"><a class="nav-link" href="standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link active" href="trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link" href="racer/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="../how-it-works.html">How it works</a></li>
+<li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+</ul>
+      <div class="position-relative ms-2" style="min-width:180px;max-width:280px">
+        <input id="nav-search" type="text" class="form-control form-control-sm"
+               placeholder="Search…" autocomplete="off">
+        <style>.ns-item{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;font-size:.82rem;color:#333;text-decoration:none;border-bottom:1px solid #f5f5f5}.ns-item:hover{background:#f0f4ff}</style>
+<div id="nav-search-results" class="position-absolute shadow"
+             style="z-index:1050;display:none;min-width:320px;right:0;background:#fff;border:1px solid #dee2e6;border-radius:8px;overflow:hidden;max-height:420px;overflow-y:auto"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+(function(){
+  var RACERS=null,_racersLoading=false;
+  var depth=1;
+  var _races=null,_racesLoading=false;
+
+  function loadRacers(cb){
+    if(RACERS){cb();return;}
+    if(_racersLoading)return;
+    _racersLoading=true;
+    var url=pfx()+'racers-index.json';
+    fetch(url).then(function(r){return r.json();}).then(function(d){
+      RACERS=d;_racersLoading=false;cb();
+    }).catch(function(){RACERS=[];_racersLoading=false;cb();});
+  }
+
+  function fuzzy(str,q){
+    str=str.toLowerCase();q=q.toLowerCase();
+    if(str===q)return 2;
+    if(str.includes(q))return 1+(str.startsWith(q)?0.3:0);
+    var bg=function(s){var b={};for(var i=0;i<s.length-1;i++)b[s.slice(i,i+2)]=1;return b;};
+    var sb=bg(str),qb=bg(q),hits=0,tot=0;
+    for(var k in qb){tot++;if(sb[k])hits++;}
+    return tot>0?hits/tot:0;
+  }
+
+  function pfx(){return depth===0?'':depth===1?'../':'../../';}
+
+  function sectionHdr(label){
+    return '<div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;padding:8px 12px 3px;background:#fafafa;border-bottom:1px solid #f0f0f0">'+label+'</div>';
+  }
+  function resultLink(href,primary,secondary){
+    return '<a href="'+href+'" class="ns-item">'
+      +'<span style="font-weight:500">'+primary+'</span>'
+      +(secondary?'<span style="font-size:.7rem;color:#aaa;margin-left:8px;white-space:nowrap">'+secondary+'</span>':'')
+      +'</a>';
+  }
+
+  function render(q){
+    var res=document.getElementById('nav-search-results');
+    res.innerHTML='';
+    if(q.length<2){res.style.display='none';return;}
+    var p=pfx(),html='';
+
+    if(!RACERS){
+      loadRacers(function(){render(document.getElementById('nav-search').value.trim());});
+    } else {
+      var rs=RACERS.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rs.length){
+        html+=sectionHdr('Racers');
+        rs.forEach(function(x){
+          var r=x.r;if(!r.clubs||!r.clubs.length)return;
+          html+=resultLink(p+r.clubs[0]+'/racer/'+r.slug+'.html',r.name,'');
+        });
+      }
+    }
+
+    if(_races){
+      var all=[];
+      Object.entries(_races.seasons||{}).forEach(function([yr,s]){
+        (Array.isArray(s)?s:(s.races||[])).forEach(function(race){all.push(race);});
+      });
+      var rr=all.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rr.length){
+        html+=sectionHdr('Results');
+        rr.forEach(function(x){
+          var r=x.r;
+          html+=resultLink(p+(_races.club_id||'pnw')+'/results/'+r.slug+'.html',r.name,r.date);
+        });
+      }
+    } else if(!_racesLoading){
+      _racesLoading=true;
+      var url=p+(depth===0?'pnw/':'')+'races-list.json';
+      fetch(url).then(function(r){return r.json();}).then(function(d){
+        _races=d;_racesLoading=false;
+        render(document.getElementById('nav-search').value.trim());
+      }).catch(function(){_racesLoading=false;});
+    }
+
+    if(!html){res.style.display='none';return;}
+    res.innerHTML=html;res.style.display='';
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    var inp=document.getElementById('nav-search');
+    var res=document.getElementById('nav-search-results');
+    if(!inp)return;
+    inp.addEventListener('input',function(){render(this.value.trim());});
+    inp.addEventListener('focus',function(){if(this.value.trim().length>=2)render(this.value.trim());});
+    document.addEventListener('click',function(e){if(!inp.contains(e.target)&&!res.contains(e.target))res.style.display='none';});
+    inp.addEventListener('keydown',function(e){
+      var items=res.querySelectorAll('a');if(!items.length)return;
+      var active=res.querySelector('a[data-sel]');
+      var idx=active?Array.from(items).indexOf(active):-1;
+      if(e.key==='ArrowDown'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx+1)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='ArrowUp'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx-1+items.length)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='Enter'&&active){window.location.href=active.href;}
+      else if(e.key==='Escape'){res.style.display='none';}
+    });
+  });
+})();
+</script><div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Series</span>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group"><a class="btn btn-sm btn-outline-secondary" data-club="bepc-summer" href="../bepc-summer/trajectories.html">BEPC</a>
+<a class="btn btn-sm btn-outline-secondary active" data-club="pnw" href="trajectories.html">PNW</a>
+<a class="btn btn-sm btn-outline-secondary" data-club="sckc-duck-island" href="../sckc-duck-island/trajectories.html">SCKC</a>
+<a class="btn btn-sm btn-outline-secondary" data-club="urban-surf" href="../urban-surf/trajectories.html">Urban Surf</a>
+</div>
+      </div>
+      <div class='d-flex align-items-center gap-2'>
+        <span class='text-muted small fw-semibold'>Season</span>
+        <button id='season-prev' class='btn btn-sm btn-outline-secondary' disabled>&larr;</button>
+        <select id='season-select' class='form-select form-select-sm' style='min-width:110px'></select>
+        <button id='season-next' class='btn btn-sm btn-outline-secondary' disabled>&rarr;</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var ALL_CLUB_SEASONS = {"bepc-summer":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015"],"current":"2026"},"pnw":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012"],"current":"2026"},"sckc-duck-island":{"years":["2026", "2025", "2024", "2023", "2022", "2019", "2018", "2017", "2016", "2015"],"current":"2026"},"urban-surf":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"],"current":"2026"},"none":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2018", "2017", "2016", "2015"],"current":"2026"}};
+  var info = ALL_CLUB_SEASONS['pnw'];
+  var hash = location.hash.replace('#', '');
+  var saved = localStorage.getItem('pc_year');
+  var active = (hash && info.years.indexOf(hash) >= 0) ? hash
+             : (saved && info.years.indexOf(saved) >= 0) ? saved
+             : info.current;
+  var sel = document.getElementById('season-select');
+  var prevBtn = document.getElementById('season-prev');
+  var nextBtn = document.getElementById('season-next');
+  var navigateUrl = '';
+  function updateNavBtns(yr) {
+    var idx = info.years.indexOf(yr);
+    if (prevBtn) prevBtn.disabled = idx >= info.years.length - 1;
+    if (nextBtn) nextBtn.disabled = idx <= 0;
+  }
+  function goYear(yr) {
+    if (navigateUrl) {
+      window.location.href = navigateUrl + '#' + yr;
+      return;
+    }
+    if (sel) sel.value = yr;
+    localStorage.setItem('pc_year', yr);
+    location.hash = yr;
+    updateNavBtns(yr);
+    document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {
+      a.href = a.getAttribute('href').split('#')[0] + '#' + yr;
+    });
+  }
+  if (sel) {
+    sel.innerHTML = info.years.map(function(y) {
+      return '<option value="' + y + '"' + (y === active ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+    sel.addEventListener('change', function() { goYear(this.value); });
+  }
+  if (prevBtn) prevBtn.addEventListener('click', function() {
+    var idx = info.years.indexOf(sel ? sel.value : active);
+    if (idx < info.years.length - 1) goYear(info.years[idx + 1]);
+  });
+  if (nextBtn) nextBtn.addEventListener('click', function() {
+    var idx = info.years.indexOf(sel ? sel.value : active);
+    if (idx > 0) goYear(info.years[idx - 1]);
+  });
+  if (!navigateUrl && location.hash !== '#' + active) location.replace(location.pathname + '#' + active);
+  localStorage.setItem('pc_year', active);
+  localStorage.setItem('pc_club', 'pnw');
+  updateNavBtns(active);
+  document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {
+    a.href = a.getAttribute('href').split('#')[0] + '#' + active;
+  });
+})();</script>
+<div class="container">
+  <h1 class="mb-3">Trajectories</h1>
+  <div id="traj-content">
+  <ul class="nav nav-tabs mb-3" id="traj-tabs">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-hpts">Indexed Points</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-pts">Finish Points</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-hnum">Index</button></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab-hpts">
+      <p class="text-muted small">Indexed points over time. First three races provisional (no points awarded).</p>
+      <div class="traj-scroll"><canvas id="chart-hpts"></canvas></div>
+    </div>
+    <div class="tab-pane" id="tab-pts">
+      <p class="text-muted small">Finish order points over time. Click legend to toggle racers.</p>
+      <div class="traj-scroll"><canvas id="chart-pts"></canvas></div>
+    </div>
+    <div class="tab-pane" id="tab-hnum">
+      <p class="text-muted small">Index over time. Values below 1.0 = faster than par; above 1.0 = slower. Racers with 4+ races shown.</p>
+      <div class="traj-scroll"><canvas id="chart-hnum"></canvas></div>
+    </div>
+  </div>
+  </div>
+</div>
+<script>
+
+const endLabelPlugin = {
+  id: 'endLabel',
+  _labelRects: [],
+  _activeIndex: null,
+  afterDatasetsDraw(chart) {
+    const ctx = chart.ctx;
+    const LINE_HEIGHT = 14;
+
+    const items = [];
+    chart.data.datasets.forEach((ds, i) => {
+      const meta = chart.getDatasetMeta(i);
+      if (meta.hidden) return;
+      let last = null;
+      for (let j = meta.data.length - 1; j >= 0; j--) {
+        if (ds.data[j] !== null && ds.data[j] !== undefined) { last = meta.data[j]; break; }
+      }
+      if (!last) return;
+      items.push({ label: ds.label, color: ds._origColor || ds.borderColor, idealY: last.y, x: last.x, index: i });
+    });
+
+    items.sort((a, b) => a.idealY - b.idealY);
+
+    const placed = [];
+    for (const item of items) {
+      let y = item.idealY;
+      for (const p of placed) {
+        if (Math.abs(p - y) < LINE_HEIGHT) y = p + LINE_HEIGHT;
+      }
+      placed.push(y);
+      item.placedY = y;
+    }
+
+    const labelX = chart.chartArea.right + 8;
+    this._labelRects = [];
+
+    ctx.save();
+    ctx.font = 'bold 11px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    items.forEach(item => {
+      ctx.fillStyle = item.color;
+      ctx.beginPath();
+      ctx.arc(item.x, item.idealY, 3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillText(item.label, labelX, item.placedY);
+      const w = ctx.measureText(item.label).width;
+      this._labelRects.push({ x: labelX, y: item.placedY - 7, w, h: 14, index: item.index });
+    });
+    ctx.restore();
+  },
+  afterEvent(chart, args) {
+    const e = args.event;
+    if (e.type !== 'mousemove') return;
+    const hit = this._labelRects.find(r =>
+      e.x >= r.x && e.x <= r.x + r.w && e.y >= r.y && e.y <= r.y + r.h
+    );
+    const newIndex = hit ? hit.index : null;
+    if (newIndex === this._activeIndex) return;
+    this._activeIndex = newIndex;
+    if (newIndex !== null) {
+      highlightDataset(chart, newIndex);
+      chart.canvas.style.cursor = 'pointer';
+    } else {
+      resetHighlight(chart);
+      chart.canvas.style.cursor = 'default';
+    }
+  }
+};
+
+function makeChart(id, data, yLabel) {
+  const canvas = document.getElementById(id);
+  const n = data.datasets.length;
+  const h = Math.max(window.innerHeight - 220, n * 22 + 100);
+  canvas.height = h;
+  canvas.width = 1100;
+  const plugin = Object.assign({}, endLabelPlugin, { _labelRects: [], _activeIndex: null });
+  const chart = new Chart(canvas, {
+    type: 'line',
+    data: data,
+    plugins: [plugin],
+    options: {
+      responsive: false,
+      maintainAspectRatio: false,
+      layout: { padding: { right: 160 } },
+      interaction: { mode: 'nearest', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ctx.parsed.y !== null
+              ? ctx.dataset.label + ': ' + ctx.parsed.y
+              : null,
+          },
+          filter: item => item.parsed.y !== null,
+          itemSort: (a, b) => b.parsed.y - a.parsed.y,
+        }
+      },
+      onHover: (e, elements, chart) => {
+        const newIndex = elements.length ? elements[0].datasetIndex : null;
+        if (newIndex === chart._hoverIndex) return;
+        chart._hoverIndex = newIndex;
+        if (newIndex !== null) highlightDataset(chart, newIndex);
+        else resetHighlight(chart);
+      },
+      scales: {
+        y: {
+          title: { display: true, text: yLabel },
+          afterDataLimits: scale => {
+            const span = scale.max - scale.min;
+            const minSpan = 0.1;
+            if (span < minSpan) {
+              const mid = (scale.max + scale.min) / 2;
+              scale.min = mid - minSpan / 2;
+              scale.max = mid + minSpan / 2;
+            }
+          }
+        },
+        x: { title: { display: true, text: 'Race' } }
+      }
+    }
+  });
+  document.getElementById(id).addEventListener('mouseleave', () => {
+    chart._hoverIndex = null;
+    plugin._activeIndex = null;
+    resetHighlight(chart);
+  });
+  return chart;
+}
+
+function highlightDataset(chart, index) {
+  chart.data.datasets.forEach((ds, i) => {
+    if (!ds._origColor) ds._origColor = ds.borderColor;
+    ds.borderWidth = i === index ? 3 : 1;
+    ds.borderColor = i === index ? ds._origColor : ds._origColor + '44';
+    ds.pointRadius = i === index ? 5 : 2;
+  });
+  chart.update('none');
+}
+
+function resetHighlight(chart) {
+  chart.data.datasets.forEach(ds => {
+    ds.borderWidth = 2;
+    ds.borderColor = ds._origColor || ds.borderColor;
+    ds.pointRadius = 4;
+  });
+  chart.update('none');
+}
+        
+let ALL_SEASONS = null;
+let charts = {};
+function loadTrajSeason(year) {
+  const s = ALL_SEASONS[year];
+  ['pts','hpts','hnum'].forEach(k => {
+    if (charts[k]) charts[k].destroy();
+    charts[k] = makeChart('chart-' + k, s[k],
+      k === 'pts' ? 'Season Points' : k === 'hpts' ? 'Indexed Points' : 'Index');
+  });
+}
+window.addEventListener('DOMContentLoaded', () => {
+  fetchData('trajectories-data.json', d => {
+    ALL_SEASONS = d.seasons;
+    const sel = document.getElementById('season-select');
+    const yr = getSeason(d.current_year);
+    if (ALL_SEASONS[yr]) sel.value = yr;
+    loadTrajSeason(ALL_SEASONS[yr] ? yr : d.current_year);
+    window.addEventListener('hashchange', () => {
+      const y = location.hash.replace('#','');
+      if (ALL_SEASONS[y]) { if (sel) sel.value = y; loadTrajSeason(y); }
+    });
+    if (sel) sel.addEventListener('change', e => loadTrajSeason(e.target.value));
+  });
+});
+</script>
+
+</body></html>

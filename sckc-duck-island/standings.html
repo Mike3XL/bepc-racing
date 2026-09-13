@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standings</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+  .hcap-reset  { background:#FFE0B2; border:1px solid #F57C00; }
+  /* Muted place text for non-eligible (fresh/outlier/skipped) rows */
+  .place-muted { color:#999; font-style:italic; }
+  /* Preserve explicit newlines (
+) in tooltip text */
+  .tooltip-inner { white-space: pre-line; text-align: left; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  var h = location.hash.replace('#', '');
+  if (h && /^\d{4}$/.test(h)) return h;
+  return localStorage.getItem('pc_year') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('pc_year', year);
+  location.hash = year;
+}
+function getDistance() {
+  return localStorage.getItem('pc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('pc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('pc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('pc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container-fluid px-2 px-sm-3">
+    <a class="navbar-brand" href="../index.html"><img src="../logo.png" alt="PaddleRace" style="height:36px;margin-right:6px;vertical-align:middle">PaddleRace</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../series.html">Series</a></li>
+<li class="nav-item"><a class="nav-link" href="results.html">Results</a></li>
+<li class="nav-item"><a class="nav-link active" href="standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link" href="trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link" href="racer/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="../how-it-works.html">How it works</a></li>
+<li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+</ul>
+      <div class="position-relative ms-2" style="min-width:180px;max-width:280px">
+        <input id="nav-search" type="text" class="form-control form-control-sm"
+               placeholder="Search…" autocomplete="off">
+        <style>.ns-item{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;font-size:.82rem;color:#333;text-decoration:none;border-bottom:1px solid #f5f5f5}.ns-item:hover{background:#f0f4ff}</style>
+<div id="nav-search-results" class="position-absolute shadow"
+             style="z-index:1050;display:none;min-width:320px;right:0;background:#fff;border:1px solid #dee2e6;border-radius:8px;overflow:hidden;max-height:420px;overflow-y:auto"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+(function(){
+  var RACERS=null,_racersLoading=false;
+  var depth=1;
+  var _races=null,_racesLoading=false;
+
+  function loadRacers(cb){
+    if(RACERS){cb();return;}
+    if(_racersLoading)return;
+    _racersLoading=true;
+    var url=pfx()+'racers-index.json';
+    fetch(url).then(function(r){return r.json();}).then(function(d){
+      RACERS=d;_racersLoading=false;cb();
+    }).catch(function(){RACERS=[];_racersLoading=false;cb();});
+  }
+
+  function fuzzy(str,q){
+    str=str.toLowerCase();q=q.toLowerCase();
+    if(str===q)return 2;
+    if(str.includes(q))return 1+(str.startsWith(q)?0.3:0);
+    var bg=function(s){var b={};for(var i=0;i<s.length-1;i++)b[s.slice(i,i+2)]=1;return b;};
+    var sb=bg(str),qb=bg(q),hits=0,tot=0;
+    for(var k in qb){tot++;if(sb[k])hits++;}
+    return tot>0?hits/tot:0;
+  }
+
+  function pfx(){return depth===0?'':depth===1?'../':'../../';}
+
+  function sectionHdr(label){
+    return '<div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;padding:8px 12px 3px;background:#fafafa;border-bottom:1px solid #f0f0f0">'+label+'</div>';
+  }
+  function resultLink(href,primary,secondary){
+    return '<a href="'+href+'" class="ns-item">'
+      +'<span style="font-weight:500">'+primary+'</span>'
+      +(secondary?'<span style="font-size:.7rem;color:#aaa;margin-left:8px;white-space:nowrap">'+secondary+'</span>':'')
+      +'</a>';
+  }
+
+  function render(q){
+    var res=document.getElementById('nav-search-results');
+    res.innerHTML='';
+    if(q.length<2){res.style.display='none';return;}
+    var p=pfx(),html='';
+
+    if(!RACERS){
+      loadRacers(function(){render(document.getElementById('nav-search').value.trim());});
+    } else {
+      var rs=RACERS.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rs.length){
+        html+=sectionHdr('Racers');
+        rs.forEach(function(x){
+          var r=x.r;if(!r.clubs||!r.clubs.length)return;
+          html+=resultLink(p+r.clubs[0]+'/racer/'+r.slug+'.html',r.name,'');
+        });
+      }
+    }
+
+    if(_races){
+      var all=[];
+      Object.entries(_races.seasons||{}).forEach(function([yr,s]){
+        (Array.isArray(s)?s:(s.races||[])).forEach(function(race){all.push(race);});
+      });
+      var rr=all.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rr.length){
+        html+=sectionHdr('Results');
+        rr.forEach(function(x){
+          var r=x.r;
+          html+=resultLink(p+(_races.club_id||'pnw')+'/results/'+r.slug+'.html',r.name,r.date);
+        });
+      }
+    } else if(!_racesLoading){
+      _racesLoading=true;
+      var url=p+(depth===0?'pnw/':'')+'races-list.json';
+      fetch(url).then(function(r){return r.json();}).then(function(d){
+        _races=d;_racesLoading=false;
+        render(document.getElementById('nav-search').value.trim());
+      }).catch(function(){_racesLoading=false;});
+    }
+
+    if(!html){res.style.display='none';return;}
+    res.innerHTML=html;res.style.display='';
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    var inp=document.getElementById('nav-search');
+    var res=document.getElementById('nav-search-results');
+    if(!inp)return;
+    inp.addEventListener('input',function(){render(this.value.trim());});
+    inp.addEventListener('focus',function(){if(this.value.trim().length>=2)render(this.value.trim());});
+    document.addEventListener('click',function(e){if(!inp.contains(e.target)&&!res.contains(e.target))res.style.display='none';});
+    inp.addEventListener('keydown',function(e){
+      var items=res.querySelectorAll('a');if(!items.length)return;
+      var active=res.querySelector('a[data-sel]');
+      var idx=active?Array.from(items).indexOf(active):-1;
+      if(e.key==='ArrowDown'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx+1)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='ArrowUp'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx-1+items.length)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='Enter'&&active){window.location.href=active.href;}
+      else if(e.key==='Escape'){res.style.display='none';}
+    });
+  });
+})();
+</script><div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Series</span>
+        <div class="btn-group flex-wrap" id="club-btn-group" role="group"><a class="btn btn-sm btn-outline-secondary" data-club="bepc-summer" href="../bepc-summer/standings.html">BEPC</a>
+<a class="btn btn-sm btn-outline-secondary" data-club="pnw" href="../pnw/standings.html">PNW</a>
+<a class="btn btn-sm btn-outline-secondary active" data-club="sckc-duck-island" href="standings.html">SCKC</a>
+<a class="btn btn-sm btn-outline-secondary" data-club="urban-surf" href="../urban-surf/standings.html">Urban Surf</a>
+</div>
+      </div>
+      <div class='d-flex align-items-center gap-2'>
+        <span class='text-muted small fw-semibold'>Season</span>
+        <button id='season-prev' class='btn btn-sm btn-outline-secondary' disabled>&larr;</button>
+        <select id='season-select' class='form-select form-select-sm' style='min-width:110px'></select>
+        <button id='season-next' class='btn btn-sm btn-outline-secondary' disabled>&rarr;</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  var ALL_CLUB_SEASONS = {"bepc-summer":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015"],"current":"2026"},"pnw":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012"],"current":"2026"},"sckc-duck-island":{"years":["2026", "2025", "2024", "2023", "2022", "2019", "2018", "2017", "2016", "2015"],"current":"2026"},"urban-surf":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2019", "2018", "2017", "2016"],"current":"2026"},"none":{"years":["2026", "2025", "2024", "2023", "2022", "2021", "2020", "2018", "2017", "2016", "2015"],"current":"2026"}};
+  var info = ALL_CLUB_SEASONS['sckc-duck-island'];
+  var hash = location.hash.replace('#', '');
+  var saved = localStorage.getItem('pc_year');
+  var active = (hash && info.years.indexOf(hash) >= 0) ? hash
+             : (saved && info.years.indexOf(saved) >= 0) ? saved
+             : info.current;
+  var sel = document.getElementById('season-select');
+  var prevBtn = document.getElementById('season-prev');
+  var nextBtn = document.getElementById('season-next');
+  var navigateUrl = '';
+  function updateNavBtns(yr) {
+    var idx = info.years.indexOf(yr);
+    if (prevBtn) prevBtn.disabled = idx >= info.years.length - 1;
+    if (nextBtn) nextBtn.disabled = idx <= 0;
+  }
+  function goYear(yr) {
+    if (navigateUrl) {
+      window.location.href = navigateUrl + '#' + yr;
+      return;
+    }
+    if (sel) sel.value = yr;
+    localStorage.setItem('pc_year', yr);
+    location.hash = yr;
+    updateNavBtns(yr);
+    document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {
+      a.href = a.getAttribute('href').split('#')[0] + '#' + yr;
+    });
+  }
+  if (sel) {
+    sel.innerHTML = info.years.map(function(y) {
+      return '<option value="' + y + '"' + (y === active ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+    sel.addEventListener('change', function() { goYear(this.value); });
+  }
+  if (prevBtn) prevBtn.addEventListener('click', function() {
+    var idx = info.years.indexOf(sel ? sel.value : active);
+    if (idx < info.years.length - 1) goYear(info.years[idx + 1]);
+  });
+  if (nextBtn) nextBtn.addEventListener('click', function() {
+    var idx = info.years.indexOf(sel ? sel.value : active);
+    if (idx > 0) goYear(info.years[idx - 1]);
+  });
+  if (!navigateUrl && location.hash !== '#' + active) location.replace(location.pathname + '#' + active);
+  localStorage.setItem('pc_year', active);
+  localStorage.setItem('pc_club', 'sckc-duck-island');
+  updateNavBtns(active);
+  document.querySelectorAll('#club-btn-group a[data-club]').forEach(function(a) {
+    a.href = a.getAttribute('href').split('#')[0] + '#' + active;
+  });
+})();</script>
+<div class="container-fluid px-2 px-sm-3">
+  <h1 class="mb-3" id="standings-title">Standings</h1>
+  <div class="d-flex align-items-center gap-3 mb-2 flex-wrap">
+    <div class="btn-group btn-group-sm" role="group" aria-label="Filter">
+      <input type="radio" class="btn-check" name="filter" id="f-est" value="established" checked>
+      <label class="btn btn-outline-secondary" for="f-est">Established</label>
+      <input type="radio" class="btn-check" name="filter" id="f-all" value="all">
+      <label class="btn btn-outline-secondary" for="f-all">All</label>
+    </div>
+    <span class="text-muted small">Click column headers to sort. Shift+click for multi-column.</span>
+  </div>
+  <div id="pts-rule-banner" class="alert alert-light border small py-2 px-3 mb-2 d-none"></div>
+  <table id="tbl-standings" class="table table-striped table-hover">
+    <thead><tr>
+      <th style="width:55px">#</th>
+      <th style="min-width:180px">Racer</th>
+      <th style="width:75px">Craft</th>
+      <th style="min-width:160px;white-space:nowrap">Trophies</th>
+      <th style="width:70px">Races</th>
+      <th style="width:75px">Index</th>
+      <th style="width:90px">Index Pts.</th>
+      <th style="width:90px">Finish Pts.</th>
+    </tr></thead>
+    <tbody id="body-standings"></tbody>
+  </table>
+</div>
+<style>
+#tbl-standings td:nth-child(2) { white-space: normal; }
+#tbl-standings td:nth-child(4) { white-space: nowrap; line-height: 1; }
+</style>
+<script>
+const RACER_SLUGS = new Set(["aaron-small", "abigail-maxey", "adam", "alex", "alex-ciuca", "allison-connell", "amanda-royac", "amber-zipperer", "andy-kim", "annett-mcpherson", "antoinette", "arthur-vernon", "avery-brown", "azamat-rustamov", "azusa-murphy", "becky-bronstein", "becky-chan", "bee-dietz", "ben-bergquist", "ben-karlinsey", "ben-moy", "ben-watters", "breona-gutschmidt", "c2-andreea-ghzila-emma-tsong", "c2-azusa-murphy-jane-lentini", "c2-claire-ritchie-doug-ritchie", "c2-doug-ritchie-claire-and-adam", "c2-doug-ritchie-h", "c2-doug-ritchie-rhonda-eastman", "c2-einar-ogle-cian-donovan", "c2-hana-neutz-naomi-prahl", "c2-jane-lentini-nora-tsong", "c2-jenny-sebastian-kanter", "c2-karol-osusky-karel-zikan", "c2-luis-buen-abad-janice-buen-abad", "c2-mark-parrish-nora-tsong", "c2-neil-bransfield-and-co", "c2-nora-tsong-emma-tsong", "c2-owen-jennings-owen-white", "c2-rob-karlinsey-michelle-karlinsey", "c2-sebastian-kanter-gus-starkie", "c2-soren-ogle-skye-davidson", "c3-jane-l-emma-t-sebastian-k", "c3-sebastian-kevin-jane", "c4-hana-n-reidar-j-azusa-m-lydia", "c4-jane-l-sebastian-k-jane-l-solea", "c4-soren-o-mark-p-sebastian-k-torsten", "c6-jake-einar-soren-anna-stephan-ellenor", "c6-nora-jane-kevin-kevin-gus-torste", "c6-sebastian-jane-delia-andy-emma-n", "c6-soren-miles-kevin-gus-nora-emma", "c6-the-c6-legends", "caleb-chuck", "calvin-hou", "carl-delica", "chris-flynn", "cian-donovan", "cooper-beitlers", "cooper-riley", "dave-riley", "david-hilubek", "david-jennings", "delia-ward-smith", "dexter-barlow", "doug-bosworth", "doug-ritchie", "egor-klevak", "einar-ogle", "eli-holmes", "eliza", "ella-bloomquist", "emma-tsong", "ethan-chin", "ethan-durde", "ethan-karlinsey", "finn-connell", "fredrik-johansson", "galen", "george-lipps", "girts-beitlers", "greg-barton", "gus-starkie", "hana-neutz", "hannah-wang", "hugo-barribeau", "ian-page-nichols", "ilya", "isaac-chan", "isabella-flynn", "ivan-storck", "jake-zikan", "james-girton", "jane-lentini", "jared-ogle", "jean-bjorklund", "jim-erickson", "johnny-grady", "julie-roberts", "jupiter-grant", "juraj-osusky", "k2-aaron-small-leana-girton", "k2-alex-young", "k2-andreea-ghzila-elena-wolgamot", "k2-avery-riley-dave-riley", "k2-becky-bronstein-kaitlin-voellinger", "k2-bee-dietz-elizabeth-holmes", "k2-bee-dietz-karol-osusky", "k2-ben-karlinsey-seth-karlinsey", "k2-bex-mattie", "k2-bobo-and-hana-ondrusek", "k2-breona-gutschmidt-becky-bronstein", "k2-breona-gutschmidt-liz-graf-brennen", "k2-calvin-huo-liang-yiiu", "k2-cooper-beitlers-johann", "k2-cooper-riley-dave-riley", "k2-david-fort-anna-fort", "k2-david-peter", "k2-delia-ward-smith-gretchen-ward-smith", "k2-delia-ward-smith-lillian-balet", "k2-delia-ward-smith-nora-tsong", "k2-delia-ward-smith-teal", "k2-doug-ritchie-aaron-small", "k2-einar-ogle-jake-zikan", "k2-einar-ogle-soren-ogle", "k2-elizabeth-holmes-becky-chan", "k2-elizabeth-holmes-breona-gutschmidt", "k2-elizabeth-holmes-julie-roberts", "k2-elizabeth-holmes-luis-buen-abad", "k2-elizabeth-holmes-paul-elrif", "k2-elizabeth-holmes-sara-matasick", "k2-elizabeth-holmes-yolande-s", "k2-eric-mccluskey-owen-jennings", "k2-eric-mccluskey-owen-white", "k2-girts-beitlers-cooper-beitlers", "k2-girts-beitlers-royal-mcdonald", "k2-gus-starkie-alex", "k2-jaden-nolen", "k2-jake-zikan-elias-haynie-gay", "k2-jake-zikan-elizabeth-holmes", "k2-jake-zikan-karina-zikan", "k2-jake-zikan-miles-parsons", "k2-julie-roberts-becky-bronstein", "k2-karel-zikan-elizabeth-holmes", "k2-karla-ogle-soren-ogle", "k2-kevin-lentini-gus-starkie", "k2-kevin-lentini-miles-parsons", "k2-kyrstin-szewczyk-elizabeth-holmes", "k2-leana-girton-james-girton", "k2-liz-graf-brennen-breona-gutschmidt", "k2-lucas-cooper-riley", "k2-melat-peterson-cooper-riley", "k2-melat-peterson-nora-tsong", "k2-melat-peterson-tim-peterson", "k2-mike-liddell-lachlan-liddell", "k2-miles-parsons-einar-ogle", "k2-nora-tsong-emma-tsong", "k2-nora-tsong-gus-starkie", "k2-peter-turcan-juraj-osusky", "k2-philip-and-teresa-studenovka", "k2-ronan-nopp-hayden-lewis-gosch", "k2-sebastian-kanter-fredrik-johansson", "k2-soren-ogle-azamat-rustamov", "k2-soren-ogle-gus-starkie", "k2-soren-ogle-leo-ciuca", "k2-soren-ogle-miles-parsons", "k2-soren-ogle-nora-tsong", "k2-soren-ogle-sebastian-kauffman", "k2-steve-small-noah-small", "k2-sue-spaulding-annett-mcpherson", "k2-tai-flynn-kelvin", "k2-vaughn-schenk-einar-ogle", "k2-vaughn-schenk-eric-mccluskey", "k2-vaughn-schenk-liam-jennings", "k4-aaron-s-nevin-h-hana-n-naomi-p", "k4-cooper-amy", "k4-delia-w-emma-t-nora-t-melat-p", "k4-einar-o-hana-n-hayden-ronan-n", "k4-einar-o-jake-z-elizabeth-h-soren-o", "k4-eli-breona-beckyc-liz", "k4-eric-m-hayden-l-ronan-n-einar-o", "k4-luis-b-kendal-s-sue-s-paul-e", "k4-luis-paul-sue-annett", "k4-nora-cooper-kevin-gus", "k4-soren-o-kevin-l-ethan-girts-b", "k4-soren-o-miles-p-delia-w-lillian-b", "k4-soren-o-miles-p-kevin-l-nora-t", "k4-vaughn-s-liam-j-jake-z-einar-o", "karel-chromy", "karel-zikan", "karla-ogle", "karol-osusky", "katie-parrish", "keller-morrison", "kendal-swinski", "kerry-connell", "kevin-armitano", "kevin-lentini", "kevin-olney", "kyle-peterson", "kyrstin-szewczyk", "lachlan-liddell", "laurie-ward", "leana-girton", "lee-bjorklund", "leo-malmberg", "liam-jennings", "lila-fox", "lilian-andrews", "lillian-balet", "liz-erickson", "liz-graf-brennen", "lorenzo-flynn", "ludovit-tatos", "luis-buen-abad", "lydia-sampson", "lynne-peeplks", "maija-malinen", "marc-lentini", "marin-millar", "mark-parrish", "marta", "martine-andrews", "max-dale", "maya-perry", "meg-ludlum", "meg-theasey", "melat-peterson", "meryl-bezrutczyk-lauriat", "michal-lahav", "mike-lawrence", "mike-liddell", "mike-swinford", "miles-cross-whiter", "miles-parsons", "mina", "nathan-mitchell", "nathaniel-errez", "nicolas-miatre", "nikolay-shoop", "nora-davis", "nora-tsong", "odin-harris", "oscar-white", "owen-jennings", "owen-lilleleth", "owen-white", "parker-duff", "patrick-armitano", "paul-elrif", "philip-murphy", "pilar-moreno", "pilar-pasquel", "reuben-stambaugh", "robbie-magus", "row-boat", "rowing-shell-owen-evan-sara-caeline", "rowing-shell-sara-nora", "sabine-mecking", "sarah-hess", "sebastian-kanter", "sebastian-kauffman", "seth-karlinsey", "shad-rich", "simon-smith", "skye-davidson", "soren-ogle", "stefan-lukacovic", "stephen-harris", "steve-small", "sue-spaulding", "sup-jitka-and-nicole-studenovska", "tai-flynn", "thomas-hughes", "tina-fay", "tomaso", "torsten-bennett", "vadim-kin", "vaughn-schenk", "veronica-so", "wilbert-lam"]);
+const SERIES_NAME = "SCKC Duck Island";
+let SEASONS = null;
+let dtStandings = null;
+let _currentYear = null;
+
+function render(year) {
+  _currentYear = year;
+  const s = SEASONS[year];
+  if (dtStandings) { dtStandings.destroy(); dtStandings = null; }
+  const banner = document.getElementById('pts-rule-banner');
+  if (s.annual_points_rule_description) {
+    banner.textContent = s.annual_points_rule_description;
+    banner.classList.remove('d-none');
+  } else {
+    banner.classList.add('d-none');
+  }
+  const filter = document.querySelector('input[name="filter"]:checked').value;
+  const racerLink = (name, slug) => RACER_SLUGS.has(slug) ? `<a href="racer/${slug}.html">${name}</a>` : name;
+  const rows = (s.hpts || []).filter(r => filter === 'all' || r.established);
+  const row = r => `<tr><td></td><td>${racerLink(r.name, r.name.toLowerCase().replace(/ /g,'-'))}</td><td>${r.craft}</td><td>${r.trophies||''}</td><td>${r.races}</td><td>${r.hcap}</td><td>${r.hpts}</td><td>${r.points}</td></tr>`;
+  document.getElementById('body-standings').innerHTML = rows.map(row).join('');
+  document.getElementById('standings-title').textContent = `Standings: ${SERIES_NAME}, ${year}`;
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => bootstrap.Tooltip.getOrCreateInstance(el));
+
+  const dt = $('#tbl-standings').DataTable({
+    order: [[6, 'desc']],
+    pageLength: 100,
+    responsive: true,
+    autoWidth: false,
+    columnDefs: [{targets: 0, orderable: false}],
+  });
+  dtStandings = dt;
+  dt.on('draw', () => {
+    dt.column(0, {search:'applied', order:'applied'}).nodes().each((cell, i) => {
+      cell.innerHTML = i + 1;
+    });
+  }).draw(false);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  fetchData('standings-data.json', d => {
+    SEASONS = d.seasons;
+    const yr = getSeason(d.current_year);
+    const sel = document.getElementById('season-select');
+    if (sel && SEASONS[yr]) sel.value = yr;
+    render(SEASONS[yr] ? yr : d.current_year);
+    window.addEventListener('hashchange', () => {
+      const y = location.hash.replace('#','');
+      if (SEASONS[y]) { if (sel) sel.value = y; render(y); }
+    });
+    if (sel) sel.addEventListener('change', e => render(e.target.value));
+    document.querySelectorAll('input[name="filter"]').forEach(el => {
+      el.addEventListener('change', () => render(_currentYear));
+    });
+  });
+});
+</script>
+
+</body></html>

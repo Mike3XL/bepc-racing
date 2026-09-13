@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>David Alber</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+<style>
+  body { padding-top: 1rem; }
+  .navbar-brand { font-weight: bold; }
+  .traj-scroll { height: calc(100vh - 220px); overflow: auto; }
+  .hcap-medal { font-size:1.3em; padding: 2px 5px; border-radius: 4px; line-height:1; display:inline-block; }
+  .hcap-gold   { background:#FFF8DC; border:1px solid #FFD700; }
+  .hcap-silver { background:#EBEBEB; border:1px solid #A0A0A0; }
+  .hcap-bronze { background:#FDF0E0; border:1px solid #DDA84A; }
+  .plain-medal { background:#F8F8F8; border:1px solid #DDDDDD; }
+  .hcap-par    { background:#E3F2FD; border:1px solid #1565C0; }
+  .hcap-consist{ background:#E3F2FD; border:1px solid #42A5F5; }
+  .hcap-streak { background:#FFF3E0; border:1px solid #FF9800; }
+  .hcap-est    { background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }
+  .hcap-outlier{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }
+  .hcap-reset  { background:#FFE0B2; border:1px solid #F57C00; }
+  /* Muted place text for non-eligible (fresh/outlier/skipped) rows */
+  .place-muted { color:#999; font-style:italic; }
+  /* Preserve explicit newlines (
+) in tooltip text */
+  .tooltip-inner { white-space: pre-line; text-align: left; }
+</style>
+</head>
+<body>
+
+<script>
+function getSeason(fallback) {
+  var h = location.hash.replace('#', '');
+  if (h && /^\d{4}$/.test(h)) return h;
+  return localStorage.getItem('pc_year') || fallback;
+}
+function setSeason(year) {
+  localStorage.setItem('pc_year', year);
+  location.hash = year;
+}
+function getDistance() {
+  return localStorage.getItem('pc_distance') || '';
+}
+function setDistance(dist) {
+  if (dist) localStorage.setItem('pc_distance', dist);
+}
+function getResultTab() {
+  return localStorage.getItem('pc_result_tab') || '';
+}
+function setResultTab(tab) {
+  if (tab) localStorage.setItem('pc_result_tab', tab);
+}
+function fetchData(url, cb) {
+  fetch(url).then(r => r.json()).then(cb);
+}
+</script><nav class="navbar navbar-expand-md navbar-dark bg-dark mb-0">
+  <div class="container-fluid px-2 px-sm-3">
+    <a class="navbar-brand" href="../../index.html"><img src="../../logo.png" alt="PaddleRace" style="height:36px;margin-right:6px;vertical-align:middle">PaddleRace</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../../series.html">Series</a></li>
+<li class="nav-item"><a class="nav-link" href="../results.html">Results</a></li>
+<li class="nav-item"><a class="nav-link" href="../standings.html">Standings</a></li>
+<li class="nav-item"><a class="nav-link" href="../trajectories.html">Trajectories</a></li>
+<li class="nav-item"><a class="nav-link active" href="../racer/index.html">Racers</a></li>
+<li class="nav-item"><a class="nav-link" href="../../how-it-works.html">How it works</a></li>
+<li class="nav-item"><a class="nav-link" href="../../about.html">About</a></li>
+</ul>
+      <div class="position-relative ms-2" style="min-width:180px;max-width:280px">
+        <input id="nav-search" type="text" class="form-control form-control-sm"
+               placeholder="Search…" autocomplete="off">
+        <style>.ns-item{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;font-size:.82rem;color:#333;text-decoration:none;border-bottom:1px solid #f5f5f5}.ns-item:hover{background:#f0f4ff}</style>
+<div id="nav-search-results" class="position-absolute shadow"
+             style="z-index:1050;display:none;min-width:320px;right:0;background:#fff;border:1px solid #dee2e6;border-radius:8px;overflow:hidden;max-height:420px;overflow-y:auto"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+(function(){
+  var RACERS=null,_racersLoading=false;
+  var depth=2;
+  var _races=null,_racesLoading=false;
+
+  function loadRacers(cb){
+    if(RACERS){cb();return;}
+    if(_racersLoading)return;
+    _racersLoading=true;
+    var url=pfx()+'racers-index.json';
+    fetch(url).then(function(r){return r.json();}).then(function(d){
+      RACERS=d;_racersLoading=false;cb();
+    }).catch(function(){RACERS=[];_racersLoading=false;cb();});
+  }
+
+  function fuzzy(str,q){
+    str=str.toLowerCase();q=q.toLowerCase();
+    if(str===q)return 2;
+    if(str.includes(q))return 1+(str.startsWith(q)?0.3:0);
+    var bg=function(s){var b={};for(var i=0;i<s.length-1;i++)b[s.slice(i,i+2)]=1;return b;};
+    var sb=bg(str),qb=bg(q),hits=0,tot=0;
+    for(var k in qb){tot++;if(sb[k])hits++;}
+    return tot>0?hits/tot:0;
+  }
+
+  function pfx(){return depth===0?'':depth===1?'../':'../../';}
+
+  function sectionHdr(label){
+    return '<div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#aaa;padding:8px 12px 3px;background:#fafafa;border-bottom:1px solid #f0f0f0">'+label+'</div>';
+  }
+  function resultLink(href,primary,secondary){
+    return '<a href="'+href+'" class="ns-item">'
+      +'<span style="font-weight:500">'+primary+'</span>'
+      +(secondary?'<span style="font-size:.7rem;color:#aaa;margin-left:8px;white-space:nowrap">'+secondary+'</span>':'')
+      +'</a>';
+  }
+
+  function render(q){
+    var res=document.getElementById('nav-search-results');
+    res.innerHTML='';
+    if(q.length<2){res.style.display='none';return;}
+    var p=pfx(),html='';
+
+    if(!RACERS){
+      loadRacers(function(){render(document.getElementById('nav-search').value.trim());});
+    } else {
+      var rs=RACERS.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rs.length){
+        html+=sectionHdr('Racers');
+        rs.forEach(function(x){
+          var r=x.r;if(!r.clubs||!r.clubs.length)return;
+          html+=resultLink(p+r.clubs[0]+'/racer/'+r.slug+'.html',r.name,'');
+        });
+      }
+    }
+
+    if(_races){
+      var all=[];
+      Object.entries(_races.seasons||{}).forEach(function([yr,s]){
+        (Array.isArray(s)?s:(s.races||[])).forEach(function(race){all.push(race);});
+      });
+      var rr=all.map(function(r){return {r:r,s:fuzzy(r.name,q)};})
+        .filter(function(x){return x.s>0.15;})
+        .sort(function(a,b){return b.s-a.s;}).slice(0,5);
+      if(rr.length){
+        html+=sectionHdr('Results');
+        rr.forEach(function(x){
+          var r=x.r;
+          html+=resultLink(p+(_races.club_id||'pnw')+'/results/'+r.slug+'.html',r.name,r.date);
+        });
+      }
+    } else if(!_racesLoading){
+      _racesLoading=true;
+      var url=p+(depth===0?'pnw/':'')+'races-list.json';
+      fetch(url).then(function(r){return r.json();}).then(function(d){
+        _races=d;_racesLoading=false;
+        render(document.getElementById('nav-search').value.trim());
+      }).catch(function(){_racesLoading=false;});
+    }
+
+    if(!html){res.style.display='none';return;}
+    res.innerHTML=html;res.style.display='';
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    var inp=document.getElementById('nav-search');
+    var res=document.getElementById('nav-search-results');
+    if(!inp)return;
+    inp.addEventListener('input',function(){render(this.value.trim());});
+    inp.addEventListener('focus',function(){if(this.value.trim().length>=2)render(this.value.trim());});
+    document.addEventListener('click',function(e){if(!inp.contains(e.target)&&!res.contains(e.target))res.style.display='none';});
+    inp.addEventListener('keydown',function(e){
+      var items=res.querySelectorAll('a');if(!items.length)return;
+      var active=res.querySelector('a[data-sel]');
+      var idx=active?Array.from(items).indexOf(active):-1;
+      if(e.key==='ArrowDown'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx+1)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='ArrowUp'){e.preventDefault();if(active){delete active.dataset.sel;active.style.background='';}var n=items[(idx-1+items.length)%items.length];n.dataset.sel='1';n.style.background='#e8f0fe';}
+      else if(e.key==='Enter'&&active){window.location.href=active.href;}
+      else if(e.key==='Escape'){res.style.display='none';}
+    });
+  });
+})();
+</script>
+<div class="bg-light border-bottom mb-4">
+  <div class="container py-2">
+    <div class="d-flex flex-wrap align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Series</span>
+        <div class="btn-group flex-wrap" id="club-nav"><a class="btn btn-sm btn-outline-secondary" href="../../bepc-summer/racer/david-alber.html">BEPC</a>
+<a class="btn btn-sm btn-outline-secondary active" href="david-alber.html">PNW</a>
+</div>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-semibold">Season</span>
+        <button id="season-prev" class="btn btn-sm btn-outline-secondary" disabled>&larr;</button>
+        <select id="season-select" class="form-select form-select-sm" style="min-width:110px"></select>
+        <button id="season-next" class="btn btn-sm btn-outline-secondary" disabled>&rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid px-2 px-sm-3">
+  
+  <div class="d-flex flex-wrap align-items-baseline gap-3 mb-2">
+    <h2 class="mb-0">David Alber</h2>
+    <div class="text-muted small" id="racer-stats-bar">
+  <span id="stat-season-label">2026 season:</span>
+  <span id="stat-races">5</span> races,
+  <span id="stat-wins">0</span> wins,
+  <span id="stat-podiums">0</span> podiums
+</div>
+<script>var racerSeasonStats = {"2023": {"races": 1, "wins": 0, "podiums": 0}, "2024": {"races": 7, "wins": 0, "podiums": 1}, "2025": {"races": 5, "wins": 0, "podiums": 2}, "2026": {"races": 5, "wins": 0, "podiums": 0}};</script>
+  </div>
+  <div data-season="2023" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-pnw-2023-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-pnw-2023-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Finish Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Corr Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.709</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-pnw-2023-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-pnw-2023-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th><span class="d-none d-lg-inline" style="vertical-align:middle"></span><span class="d-lg-none"></span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Race</span><span class="d-lg-none">Race</span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Date</span><span class="d-lg-none">Date</span></th><th data-bs-toggle="tooltip" data-bs-title="Place by Time vs Par"><span class="d-none d-lg-inline" style="vertical-align:middle">Place vs Par</span><span class="d-lg-none">Place vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Place on Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle">Place</span><span class="d-lg-none">Place</span></th><th data-bs-toggle="tooltip" data-bs-title="Improvement vs personal par (+ve is best)"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> vs Par</span><span class="d-lg-none">vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> Time</span><span class="d-lg-none">Finish</span></th><th data-bs-toggle="tooltip" data-bs-title="Personal par time (RacePar * Index)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par</span><span class="d-lg-none">Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Pace index"><span class="d-none d-lg-inline" style="vertical-align:middle">Index</span><span class="d-lg-none">Index</span></th><th data-bs-toggle="tooltip" data-bs-title="Index for next race"><span class="d-none d-lg-inline" style="vertical-align:middle">New Index</span><span class="d-lg-none">New</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by time"><span class="d-none d-lg-inline" style="vertical-align:middle">Finish Points</span><span class="d-lg-none">Pts</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by par result)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par Points</span><span class="d-lg-none">Par Pts</span></th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing index — not included in ranking"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span></td><td><a href="../results/2023-10-14-narrows-challenge.html">2023 Narrows Challenge — 10 km - Intermediate</a></td><td class="text-muted small text-nowrap">Oct 14, 2023</td><td>29</td><td><span class="place-muted" data-bs-toggle="tooltip" data-bs-title="Establishing index - excluded from ranking">(31)</span></td><td style="text-align:right;font-size:0.85em;color:#666;font-weight:normal">-70.9%</td><td>1:23:42</td><td>48:58</td><td>1.000</td><td>1.709</td><td>0</td><td>0</td></tr></tbody>
+</table></div></div></div><div data-season="2024" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-pnw-2024-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-pnw-2024-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 7</div>
+  <div class="col-6 col-sm-3"><strong>Finish Pts:</strong> 1</div>
+  <div class="col-6 col-sm-3"><strong>Corr Pts:</strong> 16</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.457</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-pnw-2024-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-pnw-2024-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th><span class="d-none d-lg-inline" style="vertical-align:middle"></span><span class="d-lg-none"></span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Race</span><span class="d-lg-none">Race</span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Date</span><span class="d-lg-none">Date</span></th><th data-bs-toggle="tooltip" data-bs-title="Place by Time vs Par"><span class="d-none d-lg-inline" style="vertical-align:middle">Place vs Par</span><span class="d-lg-none">Place vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Place on Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle">Place</span><span class="d-lg-none">Place</span></th><th data-bs-toggle="tooltip" data-bs-title="Improvement vs personal par (+ve is best)"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> vs Par</span><span class="d-lg-none">vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> Time</span><span class="d-lg-none">Finish</span></th><th data-bs-toggle="tooltip" data-bs-title="Personal par time (RacePar * Index)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par</span><span class="d-lg-none">Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Pace index"><span class="d-none d-lg-inline" style="vertical-align:middle">Index</span><span class="d-lg-none">Index</span></th><th data-bs-toggle="tooltip" data-bs-title="Index for next race"><span class="d-none d-lg-inline" style="vertical-align:middle">New Index</span><span class="d-lg-none">New</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by time"><span class="d-none d-lg-inline" style="vertical-align:middle">Finish Points</span><span class="d-lg-none">Pts</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by par result)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par Points</span><span class="d-lg-none">Par Pts</span></th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing index — not included in ranking"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span></td><td><a href="../results/2024-01-06-pnworca-1.html">PNWORCA Race #1 — Long Course</a></td><td class="text-muted small text-nowrap">Jan 6, 2024</td><td>31</td><td><span class="place-muted" data-bs-toggle="tooltip" data-bs-title="Establishing index - excluded from ranking">(1)</span></td><td style="text-align:right;font-size:0.85em;color:#2E7D32;font-weight:bold">+12.9%</td><td>1:38:50</td><td>1:53:28</td><td>1.685</td><td>1.511</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing index — not included in ranking"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span></td><td><a href="../results/2024-01-20-pnworca-2.html">PNWORCA Race #2 — Long Course</a></td><td class="text-muted small text-nowrap">Jan 20, 2024</td><td>47</td><td><span class="place-muted" data-bs-toggle="tooltip" data-bs-title="Establishing index - excluded from ranking">(11)</span></td><td style="text-align:right;font-size:0.85em;color:#2E7D32;font-weight:bold">+0.8%</td><td>1:24:46</td><td>1:25:28</td><td>1.511</td><td>1.504</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-consist" data-bs-toggle="tooltip" data-bs-title="Consistent racer"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="hcap-medal hcap-par" data-bs-toggle="tooltip" data-bs-title="Chosen to define RacePar"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text></svg></span></td><td><a href="../results/2024-02-10-pnworca-3.html">PNWORCA Race #3</a></td><td class="text-muted small text-nowrap">Feb 10, 2024</td><td>36</td><td>7</td><td style="text-align:right;font-size:0.85em;color:#2E7D32;font-weight:bold">+0.0%</td><td>1:16:37</td><td>1:16:37</td><td>1.504</td><td>1.504</td><td>0</td><td>4</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-outlier" data-bs-toggle="tooltip" data-bs-title="Outlier result — >10% off prediction, index unchanged"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><text x="12" y="18" text-anchor="middle" font-size="16">🤷</text></svg></span></td><td><a href="../results/2024-03-02-pnworca-5.html">PNWORCA Race #5 — Long Course</a></td><td class="text-muted small text-nowrap">Mar 2, 2024</td><td>52</td><td><span class="place-muted" data-bs-toggle="tooltip" data-bs-title="Outlier result - excluded from ranking">(31)</span></td><td style="text-align:right;font-size:0.85em;color:#666;font-weight:normal">-10.9%</td><td>1:59:51</td><td>1:48:01</td><td>1.504</td><td>1.504</td><td>0</td><td>0</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../results/2024-03-16-st-paddles-day.html">Alderbrook St. Paddles Day Race 2024</a></td><td class="text-muted small text-nowrap">Mar 16, 2024</td><td>19</td><td>4</td><td style="text-align:right;font-size:0.85em;color:#2E7D32;font-weight:bold">+2.0%</td><td>1:12:50</td><td>1:14:19</td><td>1.504</td><td>1.495</td><td>0</td><td>7</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-silver" data-bs-toggle="tooltip" data-bs-title="2nd Place (vs Par)"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text></svg></span></td><td><a href="../results/2024-03-30-pnworca-7.html">2024 PNWORCA Winter Series #7 : SPOCC — 5 Mile Short Course</a></td><td class="text-muted small text-nowrap">Mar 30, 2024</td><td>10</td><td>2</td><td style="text-align:right;font-size:0.85em;color:#2E7D32;font-weight:bold">+2.4%</td><td>59:46</td><td>1:01:13</td><td>1.495</td><td>1.484</td><td>1</td><td>2</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-streak" data-bs-toggle="tooltip" data-bs-title="3 consecutive races faster than projected"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">3</text></svg></span></td><td><a href="../results/2024-10-12-narrows-challenge.html">2024 Narrows Challenge — 20km - Expert</a></td><td class="text-muted small text-nowrap">Oct 12, 2024</td><td>18</td><td>4</td><td style="text-align:right;font-size:0.85em;color:#2E7D32;font-weight:bold">+6.3%</td><td>2:05:43</td><td>2:14:06</td><td>1.484</td><td>1.457</td><td>0</td><td>3</td></tr></tbody>
+</table></div></div><div class="mt-3 pt-2 border-top"><span class="text-muted small fw-semibold">Frequent competitors this season: </span><a href="makoto-tsukigase.html" class="badge bg-light text-dark border text-decoration-none">Makoto Tsukigase</a> <a href="steven-kala.html" class="badge bg-light text-dark border text-decoration-none">Steven Kala</a> <a href="graeme-galves.html" class="badge bg-light text-dark border text-decoration-none">Graeme Galves</a> <a href="manny-de-leon.html" class="badge bg-light text-dark border text-decoration-none">Manny De Leon</a> <a href="doug-thomas.html" class="badge bg-light text-dark border text-decoration-none">Doug Thomas</a> <a href="rob-varnel.html" class="badge bg-light text-dark border text-decoration-none">Rob Varnel</a> <a href="masato-tsukigase.html" class="badge bg-light text-dark border text-decoration-none">Masato Tsukigase</a> <a href="mignon-fontenelle.html" class="badge bg-light text-dark border text-decoration-none">Mignon Fontenelle</a> <a href="traci-cole.html" class="badge bg-light text-dark border text-decoration-none">Traci Cole</a> <a href="pam-watts-cornall.html" class="badge bg-light text-dark border text-decoration-none">Pam Watts Cornall</a> <a href="brian-huvane.html" class="badge bg-light text-dark border text-decoration-none">Brian Huvane</a> <a href="danielle-kala.html" class="badge bg-light text-dark border text-decoration-none">Danielle Kala</a></div></div><div data-season="2025" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-pnw-2025-sup-1">SUP-1</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-pnw-2025-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 5</div>
+  <div class="col-6 col-sm-3"><strong>Finish Pts:</strong> 2</div>
+  <div class="col-6 col-sm-3"><strong>Corr Pts:</strong> 23</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.399</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-pnw-2025-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-pnw-2025-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th><span class="d-none d-lg-inline" style="vertical-align:middle"></span><span class="d-lg-none"></span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Race</span><span class="d-lg-none">Race</span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Date</span><span class="d-lg-none">Date</span></th><th data-bs-toggle="tooltip" data-bs-title="Place by Time vs Par"><span class="d-none d-lg-inline" style="vertical-align:middle">Place vs Par</span><span class="d-lg-none">Place vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Place on Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle">Place</span><span class="d-lg-none">Place</span></th><th data-bs-toggle="tooltip" data-bs-title="Improvement vs personal par (+ve is best)"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> vs Par</span><span class="d-lg-none">vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> Time</span><span class="d-lg-none">Finish</span></th><th data-bs-toggle="tooltip" data-bs-title="Personal par time (RacePar * Index)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par</span><span class="d-lg-none">Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Pace index"><span class="d-none d-lg-inline" style="vertical-align:middle">Index</span><span class="d-lg-none">Index</span></th><th data-bs-toggle="tooltip" data-bs-title="Index for next race"><span class="d-none d-lg-inline" style="vertical-align:middle">New Index</span><span class="d-lg-none">New</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by time"><span class="d-none d-lg-inline" style="vertical-align:middle">Finish Points</span><span class="d-lg-none">Pts</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by par result)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par Points</span><span class="d-lg-none">Par Pts</span></th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-bronze" data-bs-toggle="tooltip" data-bs-title="3rd Place (vs Par)"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B07020" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B07020" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B07020"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B07020"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg></span></td><td><a href="../results/2025-01-11-pnworca-1.html">PNWORCA Race #1 — Long Course</a></td><td class="text-muted small text-nowrap">Jan 11, 2025</td><td>43</td><td>3</td><td style="text-align:right;font-size:0.85em;color:#2E7D32;font-weight:bold">+3.6%</td><td>1:26:28</td><td>1:29:42</td><td>1.441</td><td>1.426</td><td>0</td><td>6</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-silver" data-bs-toggle="tooltip" data-bs-title="2nd Place (vs Par)"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#707070" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#707070" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#707070"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#707070"/><text x="12" y="12.5" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">2</text></svg></span></td><td><a href="../results/2025-02-08-pnworca-3.html">PNWORCA Race #3</a></td><td class="text-muted small text-nowrap">Feb 8, 2025</td><td>30</td><td>2</td><td style="text-align:right;font-size:0.85em;color:#2E7D32;font-weight:bold">+5.2%</td><td>1:13:12</td><td>1:17:11</td><td>1.426</td><td>1.404</td><td>0</td><td>9</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../results/2025-03-15-st-paddles-day.html">Alderbrook St. Paddles Day Race 2025 — Long</a></td><td class="text-muted small text-nowrap">Mar 15, 2025</td><td>8</td><td>7</td><td style="text-align:right;font-size:0.85em;color:#666;font-weight:normal">-1.0%</td><td>1:15:33</td><td>1:14:47</td><td>1.404</td><td>1.406</td><td>2</td><td>2</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-consist" data-bs-toggle="tooltip" data-bs-title="Consistent racer"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td><td><a href="../results/2025-07-26-da-grind.html">Da Grind — Short Course</a></td><td class="text-muted small text-nowrap">Jul 26, 2025</td><td>13</td><td>5</td><td style="text-align:right;font-size:0.85em;color:#666;font-weight:normal">-0.1%</td><td>44:25</td><td>44:23</td><td>1.406</td><td>1.406</td><td>0</td><td>3</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../results/2025-10-11-narrows-challenge.html">2025 Narrows Challenge — 20km - Expert</a></td><td class="text-muted small text-nowrap">Oct 11, 2025</td><td>15</td><td>4</td><td style="text-align:right;font-size:0.85em;color:#2E7D32;font-weight:bold">+1.6%</td><td>2:17:06</td><td>2:19:20</td><td>1.406</td><td>1.399</td><td>0</td><td>3</td></tr></tbody>
+</table></div></div><div class="mt-3 pt-2 border-top"><span class="text-muted small fw-semibold">Frequent competitors this season: </span><a href="ahmed-fakhry.html" class="badge bg-light text-dark border text-decoration-none">Ahmed Fakhry</a> <a href="alex-younger.html" class="badge bg-light text-dark border text-decoration-none">Alex Younger</a> <a href="brent-campbell.html" class="badge bg-light text-dark border text-decoration-none">Brent Campbell</a> <a href="steven-kala.html" class="badge bg-light text-dark border text-decoration-none">Steven Kala</a> <a href="manny-de-leon.html" class="badge bg-light text-dark border text-decoration-none">Manny De Leon</a> <a href="brendan-fitzpatrick.html" class="badge bg-light text-dark border text-decoration-none">Brendan Fitzpatrick</a> <a href="thomas-akeson.html" class="badge bg-light text-dark border text-decoration-none">Thomas Akeson</a> <a href="ned-sherry.html" class="badge bg-light text-dark border text-decoration-none">Ned Sherry</a> <a href="rich-barrientos.html" class="badge bg-light text-dark border text-decoration-none">Rich Barrientos</a> <a href="brian-kummer.html" class="badge bg-light text-dark border text-decoration-none">Brian Kummer</a> <a href="van-douglas.html" class="badge bg-light text-dark border text-decoration-none">Van Douglas</a> <a href="beau-whitehead.html" class="badge bg-light text-dark border text-decoration-none">Beau Whitehead</a></div></div><div data-season="2026" style="display:none"><ul class="nav nav-tabs mb-2"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#c-pnw-2026-sup-1">SUP-1</button></li><li class="nav-item"><button class="nav-link " data-bs-toggle="tab" data-bs-target="#c-pnw-2026-unknown">Unknown</button></li></ul><div class="tab-content"><div class="tab-pane active" id="c-pnw-2026-sup-1">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 3</div>
+  <div class="col-6 col-sm-3"><strong>Finish Pts:</strong> 4</div>
+  <div class="col-6 col-sm-3"><strong>Corr Pts:</strong> 5</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.371</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-pnw-2026-sup-1" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-pnw-2026-sup-1" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th><span class="d-none d-lg-inline" style="vertical-align:middle"></span><span class="d-lg-none"></span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Race</span><span class="d-lg-none">Race</span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Date</span><span class="d-lg-none">Date</span></th><th data-bs-toggle="tooltip" data-bs-title="Place by Time vs Par"><span class="d-none d-lg-inline" style="vertical-align:middle">Place vs Par</span><span class="d-lg-none">Place vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Place on Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle">Place</span><span class="d-lg-none">Place</span></th><th data-bs-toggle="tooltip" data-bs-title="Improvement vs personal par (+ve is best)"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> vs Par</span><span class="d-lg-none">vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> Time</span><span class="d-lg-none">Finish</span></th><th data-bs-toggle="tooltip" data-bs-title="Personal par time (RacePar * Index)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par</span><span class="d-lg-none">Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Pace index"><span class="d-none d-lg-inline" style="vertical-align:middle">Index</span><span class="d-lg-none">Index</span></th><th data-bs-toggle="tooltip" data-bs-title="Index for next race"><span class="d-none d-lg-inline" style="vertical-align:middle">New Index</span><span class="d-lg-none">New</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by time"><span class="d-none d-lg-inline" style="vertical-align:middle">Finish Points</span><span class="d-lg-none">Pts</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by par result)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par Points</span><span class="d-lg-none">Par Pts</span></th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-consist" data-bs-toggle="tooltip" data-bs-title="Consistent racer"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><line x1="1" y1="17" x2="23" y2="17" stroke="#BBDEFB" stroke-width="0.8"/><polyline points="1,17 3,7 5,20 7,11 9,19 11,15 13,17 16,16 19,17 22,17" fill="none" stroke="#42A5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="hcap-medal hcap-par" data-bs-toggle="tooltip" data-bs-title="Chosen to define RacePar"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="11" y="1" width="2" height="13" rx="1" fill="#1565C0"/><rect x="4" y="6" width="16" height="2.5" rx="1.25" fill="#1565C0"/><rect x="8" y="2" width="8" height="1.5" rx="0.75" fill="#1565C0"/><rect x="8" y="11" width="8" height="1.5" rx="0.75" fill="#1565C0"/><text x="12" y="23" text-anchor="middle" font-size="7" fill="#1565C0" font-weight="bold">PAR</text></svg></span></td><td><a href="../results/2026-03-14-st-paddles-day.html">Alderbrook St. Paddles Day 2026 — Long</a></td><td class="text-muted small text-nowrap">Mar 14, 2026</td><td>6</td><td>6</td><td style="text-align:right;font-size:0.85em;color:#2E7D32;font-weight:bold">+0.0%</td><td>1:05:56</td><td>1:05:56</td><td>1.381</td><td>1.381</td><td>4</td><td>4</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../results/2026-04-25-gig-harbor-paddlers.html">Gig Harbor Paddlers Cup 2026 — 10K</a></td><td class="text-muted small text-nowrap">Apr 25, 2026</td><td>42</td><td>10</td><td style="text-align:right;font-size:0.85em;color:#666;font-weight:normal">-1.0%</td><td>1:13:31</td><td>1:12:47</td><td>1.381</td><td>1.383</td><td>0</td><td>1</td></tr><tr><td style="white-space:nowrap"></td><td><a href="../results/2026-05-09-board-the-fjord.html">Board the Fjord 2026 — 14km</a></td><td class="text-muted small text-nowrap">May 9, 2026</td><td>55</td><td>12</td><td style="text-align:right;font-size:0.85em;color:#2E7D32;font-weight:bold">+2.8%</td><td>1:33:25</td><td>1:36:06</td><td>1.383</td><td>1.371</td><td>0</td><td>0</td></tr></tbody>
+</table></div><div class="tab-pane " id="c-pnw-2026-unknown">
+<div class="row mb-3">
+  <div class="col-6 col-sm-3"><strong>Races:</strong> 2</div>
+  <div class="col-6 col-sm-3"><strong>Finish Pts:</strong> 17</div>
+  <div class="col-6 col-sm-3"><strong>Corr Pts:</strong> 0</div>
+  <div class="col-6 col-sm-3"><strong>Hcap:</strong> 1.350</div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6"><canvas id="chart-pts-pnw-2026-unknown" style="max-height:220px"></canvas></div>
+  <div class="col-md-6"><canvas id="chart-hcap-pnw-2026-unknown" style="max-height:220px"></canvas></div>
+</div>
+<table class="table table-sm table-striped table-hover">
+  <thead><tr><th><span class="d-none d-lg-inline" style="vertical-align:middle"></span><span class="d-lg-none"></span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Race</span><span class="d-lg-none">Race</span></th><th><span class="d-none d-lg-inline" style="vertical-align:middle">Date</span><span class="d-lg-none">Date</span></th><th data-bs-toggle="tooltip" data-bs-title="Place by Time vs Par"><span class="d-none d-lg-inline" style="vertical-align:middle">Place vs Par</span><span class="d-lg-none">Place vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Place on Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle">Place</span><span class="d-lg-none">Place</span></th><th data-bs-toggle="tooltip" data-bs-title="Improvement vs personal par (+ve is best)"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><path d="M4 3 Q4 15 12 15 Q20 15 20 3 Z" fill="#FFD700" stroke="#B8860B" stroke-width="1.8"/><path d="M4 5 Q0 5 0 9 Q0 13 4 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><path d="M20 5 Q24 5 24 9 Q24 13 20 12" fill="none" stroke="#B8860B" stroke-width="1.8"/><rect x="11" y="15" width="2" height="3.5" fill="#B8860B"/><rect x="6" y="18.5" width="12" height="2.5" rx="1" fill="#B8860B"/></svg></span> vs Par</span><span class="d-lg-none">vs Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Finish time"><span class="d-none d-lg-inline" style="vertical-align:middle"><span style="display:inline-block;vertical-align:middle"><svg width="18" height="18" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#FFD700" stroke="#9A7000" stroke-width="1.2"/></svg></span> Time</span><span class="d-lg-none">Finish</span></th><th data-bs-toggle="tooltip" data-bs-title="Personal par time (RacePar * Index)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par</span><span class="d-lg-none">Par</span></th><th data-bs-toggle="tooltip" data-bs-title="Pace index"><span class="d-none d-lg-inline" style="vertical-align:middle">Index</span><span class="d-lg-none">Index</span></th><th data-bs-toggle="tooltip" data-bs-title="Index for next race"><span class="d-none d-lg-inline" style="vertical-align:middle">New Index</span><span class="d-lg-none">New</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by time"><span class="d-none d-lg-inline" style="vertical-align:middle">Finish Points</span><span class="d-lg-none">Pts</span></th><th data-bs-toggle="tooltip" data-bs-title="Points, by par result)"><span class="d-none d-lg-inline" style="vertical-align:middle">Par Points</span><span class="d-lg-none">Par Pts</span></th></tr></thead>
+  <tbody><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing index — not included in ranking"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span><span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="2nd Place (Finish time)"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#C0C0C0" stroke="#707070" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#333">2</text></svg></span></td><td><a href="../results/2026-04-25-gig-harbor-paddlers.html">Gig Harbor Paddlers Cup 2026 — SUP Technical</a></td><td class="text-muted small text-nowrap">Apr 25, 2026</td><td>2</td><td><span class="place-muted" data-bs-toggle="tooltip" data-bs-title="Establishing index - excluded from ranking">(11)</span></td><td style="text-align:right;font-size:0.85em;color:#666;font-weight:normal">-34.8%</td><td>5:44</td><td>4:15</td><td>1.000</td><td>1.348</td><td>9</td><td>0</td></tr><tr><td style="white-space:nowrap"><span class="hcap-medal hcap-est" data-bs-toggle="tooltip" data-bs-title="Establishing index — not included in ranking"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text></svg></span><span class="hcap-medal plain-medal" data-bs-toggle="tooltip" data-bs-title="3rd Place (Finish time)"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><rect x="4" y="1" width="2" height="22" rx="1" fill="#555"/><path d="M6 2 L21 9 L6 18 Z" fill="#DDA84A" stroke="#B07020" stroke-width="1.2"/><text x="11" y="9" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="bold" fill="#5C2E00">3</text></svg></span></td><td><a href="../results/2026-04-25-gig-harbor-paddlers.html">Gig Harbor Paddlers Cup 2026 — SUP Technical</a></td><td class="text-muted small text-nowrap">Apr 25, 2026</td><td>3</td><td><span class="place-muted" data-bs-toggle="tooltip" data-bs-title="Establishing index - excluded from ranking">(12)</span></td><td style="text-align:right;font-size:0.85em;color:#666;font-weight:normal">-35.0%</td><td>5:45</td><td>4:15</td><td>1.000</td><td>1.350</td><td>8</td><td>0</td></tr></tbody>
+</table></div></div><div class="mt-3 pt-2 border-top"><span class="text-muted small fw-semibold">Frequent competitors this season: </span><a href="ahmed-fakhry.html" class="badge bg-light text-dark border text-decoration-none">Ahmed Fakhry</a> <a href="eric-nordstrom.html" class="badge bg-light text-dark border text-decoration-none">Eric Nordstrom</a> <a href="chris-grieve.html" class="badge bg-light text-dark border text-decoration-none">Chris Grieve</a> <a href="alex-younger.html" class="badge bg-light text-dark border text-decoration-none">Alex Younger</a> <a href="bob-rueter.html" class="badge bg-light text-dark border text-decoration-none">Bob Rueter</a> <a href="ahmed-salem.html" class="badge bg-light text-dark border text-decoration-none">Ahmed Salem</a> <a href="jay-junio.html" class="badge bg-light text-dark border text-decoration-none">Jay Junio</a> <a href="manny-de-leon.html" class="badge bg-light text-dark border text-decoration-none">Manny De Leon</a> <a href="meryl-bezrutczyk-lauriat.html" class="badge bg-light text-dark border text-decoration-none">Meryl Bezrutczyk-Lauriat</a> <a href="ethan-huff.html" class="badge bg-light text-dark border text-decoration-none">Ethan Huff</a> <a href="lisi-cole.html" class="badge bg-light text-dark border text-decoration-none">Lisi Cole</a> <a href="tony-nelson.html" class="badge bg-light text-dark border text-decoration-none">Tony Nelson</a></div></div>
+</div>
+<script>
+new Chart(document.getElementById('chart-pts-pnw-2023-sup-1'), {
+  type:'line',data:{labels:["10/14 - Narrows Challenge"],datasets:[
+    {label:'Finish Pts',data:[0],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Corr Pts',data:[0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-pnw-2023-sup-1'), {
+  type:'line',data:{labels:["10/14 - Narrows Challenge"],datasets:[
+    {label:'Index',data:[1.7091],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Index'},afterDataLimits:function(s){var sp=s.max-s.min;if(sp<0.1){var m=(s.max+s.min)/2;s.min=m-0.05;s.max=m+0.05;}}}}}
+});
+new Chart(document.getElementById('chart-pts-pnw-2024-sup-1'), {
+  type:'line',data:{labels:["01/06 - PNWORCA #1", "01/20 - PNWORCA #2", "02/10 - PNWORCA #3", "03/02 - PNWORCA #5", "03/16 - St. Paddles Day", "03/30 - PNWORCA #7", "10/12 - Narrows Challenge"],datasets:[
+    {label:'Finish Pts',data:[0, 0, 0, 0, 0, 1, 1],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Corr Pts',data:[0, 0, 4, 4, 11, 13, 16],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-pnw-2024-sup-1'), {
+  type:'line',data:{labels:["01/06 - PNWORCA #1", "01/20 - PNWORCA #2", "02/10 - PNWORCA #3", "03/02 - PNWORCA #5", "03/16 - St. Paddles Day", "03/30 - PNWORCA #7", "10/12 - Narrows Challenge"],datasets:[
+    {label:'Index',data:[1.5114, 1.504, 1.504, 1.504, 1.495, 1.4844, 1.4566],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Index'},afterDataLimits:function(s){var sp=s.max-s.min;if(sp<0.1){var m=(s.max+s.min)/2;s.min=m-0.05;s.max=m+0.05;}}}}}
+});
+new Chart(document.getElementById('chart-pts-pnw-2025-sup-1'), {
+  type:'line',data:{labels:["01/11 - PNWORCA #1", "02/08 - PNWORCA #3", "03/15 - St. Paddles Day", "07/26 - Da Grind", "10/11 - Narrows Challenge"],datasets:[
+    {label:'Finish Pts',data:[0, 0, 2, 2, 2],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Corr Pts',data:[6, 15, 17, 20, 23],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-pnw-2025-sup-1'), {
+  type:'line',data:{labels:["01/11 - PNWORCA #1", "02/08 - PNWORCA #3", "03/15 - St. Paddles Day", "07/26 - Da Grind", "10/11 - Narrows Challenge"],datasets:[
+    {label:'Index',data:[1.4257, 1.4036, 1.4058, 1.4059, 1.3991],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Index'},afterDataLimits:function(s){var sp=s.max-s.min;if(sp<0.1){var m=(s.max+s.min)/2;s.min=m-0.05;s.max=m+0.05;}}}}}
+});
+new Chart(document.getElementById('chart-pts-pnw-2026-sup-1'), {
+  type:'line',data:{labels:["03/14 - St. Paddles Day", "04/25 - Gig Harbor Paddlers ", "05/09 - Board the Fjord"],datasets:[
+    {label:'Finish Pts',data:[4, 4, 4],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Corr Pts',data:[4, 5, 5],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-pnw-2026-sup-1'), {
+  type:'line',data:{labels:["03/14 - St. Paddles Day", "04/25 - Gig Harbor Paddlers ", "05/09 - Board the Fjord"],datasets:[
+    {label:'Index',data:[1.381, 1.3831, 1.3715],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Index'},afterDataLimits:function(s){var sp=s.max-s.min;if(sp<0.1){var m=(s.max+s.min)/2;s.min=m-0.05;s.max=m+0.05;}}}}}
+});
+new Chart(document.getElementById('chart-pts-pnw-2026-unknown'), {
+  type:'line',data:{labels:["04/25 - Gig Harbor Paddlers ", "04/25 - Gig Harbor Paddlers "],datasets:[
+    {label:'Finish Pts',data:[9, 8],borderColor:'#4363d8',backgroundColor:'#4363d8',tension:0.3,pointRadius:4},
+    {label:'Corr Pts',data:[0, 0],borderColor:'#e6194b',backgroundColor:'#e6194b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Points'}}}}
+});
+new Chart(document.getElementById('chart-hcap-pnw-2026-unknown'), {
+  type:'line',data:{labels:["04/25 - Gig Harbor Paddlers ", "04/25 - Gig Harbor Paddlers "],datasets:[
+    {label:'Index',data:[1.3478, 1.3496],borderColor:'#3cb44b',backgroundColor:'#3cb44b',tension:0.3,pointRadius:4}
+  ]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{y:{title:{display:true,text:'Index'},afterDataLimits:function(s){var sp=s.max-s.min;if(sp<0.1){var m=(s.max+s.min)/2;s.min=m-0.05;s.max=m+0.05;}}}}}
+});</script>
+<script>
+var _rs=document.getElementById('racer-select');if(_rs)_rs.addEventListener('change', function() {
+  window.location.href = this.value + '.html';
+});
+</script>
+<script>
+(function() {
+  var club = 'pnw';
+  localStorage.setItem('pc_club', club);
+  var availYears = ['2026', '2025', '2024', '2023'];
+  var storedSeason = localStorage.getItem('pc_year');
+  var season = (storedSeason && availYears.indexOf(storedSeason) >= 0) ? storedSeason : availYears[0];
+  localStorage.setItem('pc_year', season);
+
+  function showSeason(s) {
+    document.querySelectorAll('[data-season]').forEach(function(el) {
+      el.style.display = el.dataset.season === s ? '' : 'none';
+    });
+    if (typeof racerSeasonStats !== 'undefined' && racerSeasonStats[s]) {
+      var st = racerSeasonStats[s];
+      var el;
+      if ((el = document.getElementById('stat-season-label'))) el.textContent = s + ' season:';
+      if ((el = document.getElementById('stat-races'))) el.textContent = st.races;
+      if ((el = document.getElementById('stat-wins'))) el.textContent = st.wins;
+      if ((el = document.getElementById('stat-podiums'))) el.textContent = st.podiums;
+    }
+  }
+
+  showSeason(season);
+
+  var sel = document.getElementById('season-select');
+  var prevBtn = document.getElementById('season-prev');
+  var nextBtn = document.getElementById('season-next');
+  function updateNavBtns(yr) {
+    var idx = availYears.indexOf(yr);
+    if (prevBtn) prevBtn.disabled = idx >= availYears.length - 1;
+    if (nextBtn) nextBtn.disabled = idx <= 0;
+  }
+  function goSeason(yr) {
+    if (sel) sel.value = yr;
+    localStorage.setItem('pc_year', yr);
+    showSeason(yr);
+    updateNavBtns(yr);
+  }
+  if (sel) {
+    sel.innerHTML = availYears.map(function(y) {
+      return '<option value="' + y + '"' + (y === season ? ' selected' : '') + '>' + y + ' Season</option>';
+    }).join('');
+    sel.addEventListener('change', function() { goSeason(this.value); });
+  }
+  if (prevBtn) prevBtn.addEventListener('click', function() {
+    var idx = availYears.indexOf(sel ? sel.value : season);
+    if (idx < availYears.length - 1) goSeason(availYears[idx + 1]);
+  });
+  if (nextBtn) nextBtn.addEventListener('click', function() {
+    var idx = availYears.indexOf(sel ? sel.value : season);
+    if (idx > 0) goSeason(availYears[idx - 1]);
+  });
+  updateNavBtns(season);
+
+  // Restore saved craft tab
+  var savedCraft = localStorage.getItem('pc_craft');
+  if (savedCraft) {
+    var craftBtn = document.querySelector('[data-bs-target="#' + savedCraft + '"]');
+    if (craftBtn) bootstrap.Tab.getOrCreateInstance(craftBtn).show();
+  }
+  document.querySelectorAll('[data-bs-target^="#c-"]').forEach(function(btn) {
+    btn.addEventListener('shown.bs.tab', function() {
+      localStorage.setItem('pc_craft', btn.getAttribute('data-bs-target').substring(1));
+    });
+  });
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function(el) {
+    bootstrap.Tooltip.getOrCreateInstance(el);
+  });
+})();
+</script>
+
+</body></html>
