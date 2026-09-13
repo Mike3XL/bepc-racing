@@ -444,8 +444,9 @@ upcoming:
   date: '2026-09-19'
   clubs:
   - pnw
+  source_id: 1378
   distance: 20K/10K/5K
-  url: http://www.narrowschallenge.com/
+  url: https://register.pacificmultisports.com/Events/1378/Register
   links:
   - label: Register (all craft)
     url: https://register.pacificmultisports.com/Events/1378/Register
@@ -464,8 +465,9 @@ upcoming:
   date: '2026-09-26'
   clubs:
   - pnw
+  source_id: 1303
   distance: 6 mi
-  url: https://www.soundrowers.org/race-schedule/lake-samish-salmon-roe/
+  url: https://register.pacificmultisports.com/Events/1303/Register
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/

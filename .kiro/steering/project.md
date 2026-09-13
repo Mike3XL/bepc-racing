@@ -15,6 +15,26 @@ Follow the architecture and conventions described in #[[file:SPEC.md]]
 
 Never start editing code to "try something" — always analyze first.
 
+## CRITICAL: Sync with origin before investigating git history or data state
+
+This repo is updated by GitHub Actions (auto-fetch commits, `[skip ci]`) that push
+directly to `origin/main` throughout the day. A local clone can silently diverge —
+`git log`, `git show`, and file contents will all look consistent locally while
+missing real commits that already landed upstream, leading to wrong conclusions
+(e.g. "this race was never fetched" when it actually was, hours earlier, by an
+Action run the local clone just hasn't seen).
+
+**Before drawing any conclusion from git history, `upcoming.yaml` state, or
+`data/` contents**, run:
+```bash
+git fetch origin main --quiet
+git log --oneline HEAD..origin/main   # commits on origin we don't have locally
+git log --oneline origin/main..HEAD   # commits we have that origin doesn't
+```
+If either list is non-empty, reconcile (merge — never rebase, per repo git-integrity
+rules) before proceeding. Don't investigate "why didn't X happen" using local state
+alone; local state may simply be stale.
+
 **Whenever a racer name is mentioned** (in conversation, debugging, or analysis), ALWAYS:
 1. Check `data/<club>/aliases.json` — the name Mike uses may not be the canonical name
 2. Common patterns: Matt → Matthew, Eli → Elizabeth, typos (MAtthew), last-first format (Sun, Matthew)
