@@ -399,11 +399,16 @@ upcoming:
   date: '2026-09-12'
   clubs:
   - pnw
+  source_id: 1411
   distance: 26.2/12 mi
-  url: https://www.soundrowers.org/race-schedule/bainbridge-island-marathon/
+  url: https://register.pacificmultisports.com/Events/1411/Register
   links:
   - label: Series
     url: https://www.soundrowers.org/race-schedule/
+  - label: Info
+    url: https://www.soundrowers.org/race-schedule/bainbridge-island-marathon/
+  - label: Register
+    url: https://register.pacificmultisports.com/Events/1411/Register
   location: Fay Bainbridge State Park, Bainbridge Island, WA
   timing:
   - 'Optional early start: 9:00 AM'
@@ -412,46 +417,6 @@ upcoming:
   notes: Zoom safety meeting Sept 11 at 6 PM (evening before). Camping at Fay Bainbridge
     State Park.
   organizer: sound-rowers
-- name: Whey-Ah-Wichen Whipper Snapper
-  date: '2026-09-12'
-  clubs:
-  - pnw
-  distance: 7km/12km/18km
-  url: https://www.thewhipper.ca/
-  links:
-  - label: Info
-    url: https://www.thewhipper.ca/
-  location: Cates Park / Whey-Ah-Wichen, North Vancouver, BC
-  timing:
-  - 'Check-in: 8:30 AM'
-  - 'Meeting: 10:15 AM (mandatory)'
-  - 'Start: 11:00 AM'
-  - 'Awards: 2:30 PM'
-  notes: BC Surfski Championships. Race jersey + post-race meal included.
-  organizer: coast-outdoors
-- name: 'BEPC 2026 Race Series #19'
-  date: '2026-09-07'
-  clubs:
-  - bepc-summer
-  source_id: 427446
-  distance: ~3 mi
-  url: https://www.webscorer.com/register?raceid=427446
-  links:
-  - label: Register
-    url: https://www.webscorer.com/register?raceid=427446
-  - label: Start List
-    url: https://www.webscorer.com/registerlist?raceid=427446&details=1
-  - label: Info
-    url: https://ballardelks.org/membership/ballard-elks-paddling-club-bepc/elks-monday-night-races/
-  location: Shilshole Bay, Seattle, WA
-  timing:
-  - 'Reg: 5:30 PM'
-  - 'Meeting: 6 PM'
-  - 'Start: 6:30 PM'
-  results_source:
-    type: webscorer
-    organizer: bepc827
-  organizer: --
 - name: 'BEPC 2026 Race Series #20'
   date: '2026-09-14'
   clubs:
