@@ -6,6 +6,7 @@ from bepc.craft import display_craft_ui
 from bepc.ui_text import (
     RESULTS_COLUMNS, RESULTS_COLUMN_STYLES,
     TROPHIES, TROPHY_ORDER, PLACE_MUTE_REASONS, POINTS_MUTE_REASONS, STREAK_TROPHY,
+    WIN_TROPHY, TROPHY_COL_FINISH_HCAP, TROPHY_COL_NOTABLE, TROPHY_COL_OTHER,
     RESULTS_TOOLTIPS, RESULTS_FILTER, RACER_STATS_LABELS,
     SELECTOR_PLACEHOLDERS, SEARCH,
     HOME_PAGE, STANDINGS_PAGE,
@@ -29,7 +30,22 @@ _SLUG_CLUBS: dict[str, list] = {}  # slug -> [club_ids], populated by _build_sea
 # Shared JS for badge rendering — used in both per-race pages and racer pages.
 # Built from TROPHIES + TROPHY_ORDER + _ICONS so Python and JS stay in sync.
 def _BADGES_JS_LAZY() -> str:
-    """Serialize _ICONS + TROPHIES + TROPHY_ORDER into the runtime JS badges() function."""
+    """Serialize _ICONS + TROPHIES + TROPHY_ORDER into the runtime JS badges() function.
+
+    Renders the single "Trophies" table cell as three zones left to right
+    (see TROPHY_COL_FINISH_HCAP / TROPHY_COL_NOTABLE / TROPHY_COL_OTHER in
+    ui_text.py):
+      Zone 1 "finish/hcap" (pop): finish flag, then vs-Par podium trophy
+      Zone 2 "notable": Notable Win (beating nearby/higher-ranked racers)
+      Zone 3 "other" (muted/smaller): par, consistent streak, data-quality flags
+    Each zone is a plain sorted flex-wrap — no internal sub-grid. Zones 1 and
+    2 are padded with transparent spacer icons up to the race's max count for
+    that zone (see trophyCellHtml), so zone 3 always starts at a consistent
+    x-position regardless of how many finish/hcap/notable icons a racer has.
+    "fresh" (EST) is never rendered here; it's shown instead in the vs-Par
+    column (see pctHtml) since it's a data-availability state, not an
+    achievement.
+    """
     icons_js = json.dumps({k: v for k, v in _ICONS.items()})
     # render map: {trophy_key: [icon_key, css, tooltip]}
     # consistent_1/2/3 all use icon "consistent" and css "hcap-consist" — but their tooltip is shared.
@@ -39,29 +55,70 @@ def _BADGES_JS_LAZY() -> str:
     }
     render_js = json.dumps(render_map)
     order_js = json.dumps(TROPHY_ORDER)
+    col_finish_hcap_js = json.dumps(TROPHY_COL_FINISH_HCAP)
+    col_notable_js = json.dumps(TROPHY_COL_NOTABLE)
+    col_other_js = json.dumps(TROPHY_COL_OTHER)
     streak_css = STREAK_TROPHY["css"]
     streak_tooltip_template = STREAK_TROPHY["tooltip"]  # contains "{n}"
+    win_css = WIN_TROPHY["css"]
+    win_tooltip_template = WIN_TROPHY["tooltip"]  # contains "{n}", "{plural}", "{names}"
     return r"""
-function badges(trophies) {
+function badges(trophies, winBeats) {
   const I = """ + icons_js + r""";
   const M = """ + render_js + r""";  // trophy_key -> [icon_key, css, tooltip]
   const b = (key, cls, title) => `<span class="hcap-medal ${cls}" data-bs-toggle="tooltip" data-bs-title="${title}">${I[key]}</span>`;
   const streakCss = """ + json.dumps(streak_css) + r""";
   const streakTooltip = (n) => """ + json.dumps(streak_tooltip_template) + r""".replace('{n}', n);
   const streak = (n) => `<span class="hcap-medal ${streakCss}" data-bs-toggle="tooltip" data-bs-title="${streakTooltip(n)}"><svg width="24" height="24" viewBox="0 0 24 24" style="display:block"><polygon points="14,2 7,13 12,13 10,22 17,11 12,11" fill="#FF9800" stroke="#E65100" stroke-width="0.8" stroke-linejoin="round"/><text x="22" y="9" text-anchor="end" font-size="9" font-weight="bold" fill="#E65100">${n}</text></svg></span>`;
-  if (!trophies || !trophies.length) return '';
+  const winCss = """ + json.dumps(win_css) + r""";
+  const winTooltip = (n, names) => """ + json.dumps(win_tooltip_template) + r""".replace('{n}', n).replace('{plural}', n === 1 ? '' : 's').replace('{names}', (names||[]).join(', '));
+  const win = (key) => {
+    const names = winBeats || [];
+    return `<span class="hcap-medal ${winCss}" data-bs-toggle="tooltip" data-bs-title="${winTooltip(names.length, names)}">${I[key]}</span>`;
+  };
+  if (!trophies || !trophies.length) return [0, '', 0, '', ''];
   const ORDER = """ + order_js + r""";
-  const sorted = [...trophies].sort((a,b) => {
+  const COL_FINISH_HCAP = """ + col_finish_hcap_js + r""";
+  const COL_NOTABLE = """ + col_notable_js + r""";
+  const COL_OTHER = """ + col_other_js + r""";
+  const renderOne = (t) => {
+    if (t.startsWith('streak_')) return streak(parseInt(t.split('_')[1]));
+    if (t === 'win_double' || t === 'win_single') return win(t);
+    const spec = M[t];
+    if (!spec) return '';
+    return b(spec[0], spec[1], spec[2]);
+  };
+  const sortWithin = (list) => [...list].sort((a,b) => {
     const ai = a.startsWith('streak_') ? ORDER.length + parseInt(a.split('_')[1]) : ORDER.indexOf(a);
     const bi = b.startsWith('streak_') ? ORDER.length + parseInt(b.split('_')[1]) : ORDER.indexOf(b);
     return ai - bi;
   });
-  return `<span style="display:flex;justify-content:center;gap:2px;flex-wrap:wrap">${sorted.map(t => {
-    if (t.startsWith('streak_')) return streak(parseInt(t.split('_')[1]));
-    const spec = M[t];
-    if (!spec) return '';
-    return b(spec[0], spec[1], spec[2]);
-  }).join('')}</span>`;
+  const finishHcap = sortWithin(trophies.filter(t => COL_FINISH_HCAP.includes(t)));
+  const notable = sortWithin(trophies.filter(t => COL_NOTABLE.includes(t)));
+  const other = sortWithin(trophies.filter(t => COL_OTHER.includes(t) || t.startsWith('streak_')));
+  return [
+    finishHcap.length, finishHcap.map(renderOne).join(''),
+    notable.length, notable.map(renderOne).join(''),
+    other.map(renderOne).join(''),
+  ];
+}
+// Invisible spacer icons, same markup shape as a real badge so flex sizing matches.
+// spacerFull: fills one icon slot in a padded zone (for count padding across rows).
+// spacerHalf: a single fixed visual gap between two adjacent zones.
+const spacerFull = () => '<span class="hcap-medal" style="visibility:hidden"><svg width="24" height="24" viewBox="0 0 24 24"></svg></span>';
+const spacerHalf = () => '<span class="hcap-medal" style="visibility:hidden;width:12px;padding-left:0;padding-right:0"><svg width="12" height="24" viewBox="0 0 24 24"></svg></span>';
+// Combines all three zones into one cell's HTML:
+//   [finish/hcap icons][padding to maxFinishHcap][half-spacer]
+//   [notable icons][padding to maxNotable][half-spacer]
+//   [other icons]
+// Padding keeps each zone starting at the same x-position across every row
+// in the race, regardless of how many finish/hcap or notable icons a given
+// racer has.
+function trophyCellHtml(trophies, winBeats, maxFinishHcap, maxNotable) {
+  const [fhCount, fhHtml, notableCount, notableHtml, otherHtml] = badges(trophies, winBeats);
+  const fhPad = spacerFull().repeat(Math.max(0, maxFinishHcap - fhCount));
+  const notablePad = spacerFull().repeat(Math.max(0, maxNotable - notableCount));
+  return fhHtml + fhPad + spacerHalf() + notableHtml + notablePad + spacerHalf() + otherHtml;
 }
 """
 
@@ -80,6 +137,8 @@ _ICONS = {
     "est":      _svg('<rect x="2" y="6" width="20" height="12" rx="3" fill="#388E3C"/><text x="12" y="15" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="system-ui,sans-serif">EST</text>'),
     "outlier":  _svg('<text x="12" y="18" text-anchor="middle" font-size="16">🤷</text>'),
     "auto_reset": _svg('<g transform="translate(0 0) scale(1.5)" fill="#F57C00"><path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"/></g>'),
+    "win_single": _svg('<polyline points="4,15 12,7 20,15" fill="none" stroke="#2E7D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'),
+    "win_double": _svg('<polyline points="4,19 12,11 20,19" fill="none" stroke="#2E7D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="4,11 12,3 20,11" fill="none" stroke="#2E7D32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'),
 }
 
 def _streak_icon(n):
@@ -139,9 +198,20 @@ def _render_th(key: str) -> str:
 
 
 def _render_thead() -> str:
-    """Build the full <thead> row for the race results table from RESULTS_COLUMNS."""
-    ths = "".join(_render_th(k) for k in RESULTS_COLUMNS)
-    return f'<thead class="text-nowrap"><tr>{ths}</tr></thead>'
+    """Build the full <thead> row for the race results table from RESULTS_COLUMNS.
+
+    "trophies" renders as ONE real <th> / <td> pair — major and minor trophy
+    icons share a single cell, with transparent spacer icons padding the
+    major slot area so minor icons align at a consistent x-position across
+    rows (see badges()/trophyCellHtml() in the JS, and _trophy_cell_html on
+    the Python/racer-page side). A prior two-column (Major <th>, empty Minor
+    <th>) approach was abandoned after repeated width/alignment bugs with
+    DataTables' autoWidth:false — see diary/session notes.
+    """
+    parts = []
+    for k in RESULTS_COLUMNS:
+        parts.append(_render_th(k))
+    return f'<thead class="text-nowrap"><tr>{"".join(parts)}</tr></thead>'
 
 
 def _racer_page_col(key: str) -> tuple:
@@ -157,7 +227,11 @@ def _racer_page_col(key: str) -> tuple:
 
 
 def _render_racer_page_thead() -> str:
-    """Build the racer-page race-history <thead> from RACER_PAGE_COLUMN_ORDER."""
+    """Build the racer-page race-history <thead> from RACER_PAGE_COLUMN_ORDER.
+
+    "trophies" renders as ONE real <th> cell — see _render_thead's docstring
+    for the single-cell approach and why the old two-column split was dropped.
+    """
     parts = []
     for key in RACER_PAGE_COLUMN_ORDER:
         long_html, short_text, tooltip = _racer_page_col(key)
@@ -258,6 +332,16 @@ def _head(title: str, extra_css: str = "") -> str:
   .hcap-est    {{ background:#F8F8F8; border:1px solid #DDDDDD; opacity:0.75; }}
   .hcap-outlier{{ background:#FFF3E0; border:1px solid #FF9800; opacity:0.85; }}
   .hcap-reset  {{ background:#FFE0B2; border:1px solid #F57C00; }}
+  .hcap-win    {{ background:#E8F5E9; border:1px solid #2E7D32; }}
+  /* Trophy column — ONE real table column. Major icons render first, padded
+     with transparent full-size spacers up to the race's max major-trophy
+     count (computed in JS per course), then a fixed-width transparent
+     half-spacer for visual separation, then Minor icons. This keeps Minor
+     icons starting at the same x-position across every row regardless of
+     how many Major trophies a given racer has, without depending on two
+     separate <td>s / flex auto-sizing (which proved unreliable with
+     DataTables' autoWidth:false — see prior investigation). */
+  .trophy-cell {{ display:flex; align-items:center; gap:2px; white-space:nowrap; }}
   /* Muted place text for non-eligible (fresh/outlier/skipped) rows */
   .place-muted {{ color:#999; font-style:italic; }}
   /* Preserve explicit newlines (\n) in tooltip text */
@@ -728,6 +812,7 @@ def generate_data_files(data: dict) -> None:
     for year, season in _all_seasons(data).items():
         # Aggregate trophies per (name, craft) across all races
         trophy_totals: dict[tuple, dict] = {}
+        win_beats_totals: dict[tuple, list] = {}  # (name, craft, win_code) -> flattened beaten-names list across the season
         for race in season["races"]:
             for r in race["results"]:
                 key = (r["canonical_name"], r["craft_category"])
@@ -735,6 +820,8 @@ def generate_data_files(data: dict) -> None:
                     trophy_totals[key] = {}
                 for t in r.get("trophies", []):
                     trophy_totals[key][t] = trophy_totals[key].get(t, 0) + 1
+                    if t in ("win_double", "win_single"):
+                        win_beats_totals.setdefault((*key, t), []).extend(r.get("win_beats") or [])
 
         def trophy_summary(name, craft):
             counts = trophy_totals.get((name, craft), {})
@@ -763,6 +850,27 @@ def generate_data_files(data: dict) -> None:
                 if n < 4:
                     for _ in range(n - 1):
                         parts.append(_icon_span(icon_key, cls, label))
+
+            # Notable results — win_double and win_single are rendered as two
+            # independent badges (not merged), each a single icon with a
+            # count bubble when that type occurred more than once this season
+            # (see _icon_span: count>1 shows a numeric bubble, count==1 shows
+            # a bare icon — no special-casing needed here, unlike the medal
+            # loop above). Tooltip lists everyone beaten (deduped) across all
+            # qualifying races of that type; {n}/{plural} is the race count.
+            for win_code in ("win_double", "win_single"):
+                win_count = counts.get(win_code, 0)
+                if not win_count:
+                    continue
+                seen = set()
+                names = [n for n in win_beats_totals.get((name, craft, win_code), []) if not (n in seen or seen.add(n))]
+                plural = '' if win_count == 1 else 's'
+                tooltip = (WIN_TROPHY["tooltip"]
+                           .replace("{n}", str(win_count))
+                           .replace("{plural}", plural)
+                           .replace("{names}", ", ".join(names)))
+                css = WIN_TROPHY["css"]
+                parts.append(_icon_span(win_code, css, tooltip, win_count))
 
             if streak_codes:
                 for code, cnt in sorted(streak_codes.items(), key=lambda x: int(x[0].split('_')[1])):
@@ -1038,6 +1146,14 @@ function tableHtml(id_suffix) {
 }
 function rows(results, placeField) {
   const isHcap = placeField === 'adjusted_place';
+  // Max major-trophy count across this course's results, so every row's major
+  // slot area is padded to the same width and minor icons always start at the
+  // same x-position (see trophyCellHtml).
+  // Max finish/hcap and notable trophy counts across this course's results,
+  // so every row's zone widths are padded consistently and later zones
+  // always start at the same x-position (see trophyCellHtml).
+  const maxFinishHcap = Math.max(0, ...results.map(r => badges(r.trophies, r.win_beats)[0]));
+  const maxNotable = Math.max(0, ...results.map(r => badges(r.trophies, r.win_beats)[2]));
   return results.map(r => {
     // For handicap view: prefer eligible_adjusted_place (position among ranked racers).
     // When it's 0 (fresh/outlier/auto-reset/ineligible), fall back to adjusted_place muted.
@@ -1083,9 +1199,12 @@ function rows(results, placeField) {
         }`
       : '';
     const pctTipAttr = pctTip ? ` data-bs-toggle="tooltip" data-bs-title="${pctTip}"` : '';
+    const estTip = '""" + PLACE_MUTE_REASONS["fresh"] + """';
     const pctHtml = pct != null
       ? `<td data-order="${pctSort}"${pctTipAttr} style="text-align:center;white-space:nowrap;font-size:0.85em;color:${pct >= 0 ? '#2E7D32' : '#666'};font-weight:${pct >= 0 ? 'bold' : 'normal'}">${pct > 0 ? '+' : ''}${pct.toFixed(1)}%</td>`
-      : `<td data-order="${pctSort}"></td>`;
+      : (r.is_fresh_racer
+          ? `<td data-order="${pctSort}" data-bs-toggle="tooltip" data-bs-title="${estTip}" style="text-align:center;white-space:nowrap;font-size:0.85em;color:#999;font-style:italic">EST</td>`
+          : `<td data-order="${pctSort}"></td>`);
     const hcapPostNote = r.is_outlier ? ' data-bs-toggle="tooltip" data-bs-title=\"""" + RESULTS_TOOLTIPS["new_outlier_frozen"] + """\"' : '';
     const hcapPostHtml = `<td data-order="${r.handicap_post}" style="padding-left:8px">${r.handicap_post.toFixed(3)}${r.is_outlier ? `<sup${hcapPostNote}>^</sup>` : ''}</td>`;
     const s = slug(r.canonical_name);
@@ -1097,7 +1216,8 @@ function rows(results, placeField) {
     const parCell = parSec != null && r.trophies && r.trophies.includes('par')
       ? '<span data-bs-toggle="tooltip" data-bs-title=\"""" + RESULTS_TOOLTIPS["race_par"] + """\" style="background:#E3F2FD;border:1px solid #1565C0;border-radius:3px;padding:2px 4px;font-weight:bold;color:#1565C0">' + fmtTime(parSec) + '</span>'
       : parDisplay;
-    return `<tr data-fresh="${isFresh}"><td>${badges(r.trophies)}</td>
+    const trophyHtml = trophyCellHtml(r.trophies, r.win_beats, maxFinishHcap, maxNotable);
+    return `<tr data-fresh="${isFresh}"><td class="trophy-cell">${trophyHtml}</td>
     <td data-order="${placeCellVal}">${placeCellHtml}</td><td>${racerLink(r.canonical_name)}</td>
     ${craft_cell(r.craft_category, r.craft_specific)}
     ${pctHtml}
@@ -1238,9 +1358,12 @@ document.addEventListener('DOMContentLoaded', () => {{
   const _dts = {{}};
   COURSES.forEach((course, i) => {{
     document.getElementById(`body-results-${{i}}`).innerHTML = rows(course.handicap, 'original_place');
-    // Disable sorting on Trophies (0), Racer (2), Craft (3)
+    // Disable sorting on Trophies (0), Racer (2), Craft (3). Default sort by
+    // Finish Time (5) ascending. Column indices: 0=trophies, 1=place,
+    // 2=racer, 3=craft, 4=vs_projected, 5=finish_time, 6=projected_time(Par)...
+    // — shifted by one from the old two-<td> Major/Minor trophy layout.
     _dts[i] = $(`#tbl-results-${{i}}`).DataTable({{
-      order: [[4, 'desc']],
+      order: [[5, 'asc']],
       paging: false,
       searching: false,
       info: false,
@@ -1758,22 +1881,74 @@ def _fmt_points_cell(value: int, counted: bool, annual_points_rule: str) -> str:
     return f'<span class="place-muted" data-bs-toggle="tooltip" data-bs-title="{reason}">{value}</span>'
 
 
-def _racer_trophy_badges(trophies: list) -> str:
+def _racer_trophy_badges(trophies: list, win_beats: list | None = None) -> tuple[int, str, int, str, str]:
     """Render trophy badges for racer page race table (Python-side, not JS).
 
-    Reads trophy metadata from bepc.ui_text.TROPHIES.
+    Reads trophy metadata from bepc.ui_text.TROPHIES. Returns (finish_hcap_count,
+    finish_hcap_html, notable_count, notable_html, other_html) for the three
+    trophy zones — see TROPHY_COL_FINISH_HCAP / TROPHY_COL_NOTABLE /
+    TROPHY_COL_OTHER in ui_text.py. Mirrors the JS badges() function used on
+    the main results page.
     """
-    parts = []
-    for t in trophies:
+    if not trophies:
+        return 0, "", 0, "", ""
+
+    def render_one(t: str) -> str:
         if t.startswith('streak_'):
             n = t.split('_')[1]
             tooltip = STREAK_TROPHY["tooltip"].replace("{n}", n)
             css = STREAK_TROPHY["css"]
-            parts.append(f'<span class="hcap-medal {css}" data-bs-toggle="tooltip" data-bs-title="{tooltip}">{_streak_icon(n)}</span>')
-        elif t in TROPHIES:
+            return f'<span class="hcap-medal {css}" data-bs-toggle="tooltip" data-bs-title="{tooltip}">{_streak_icon(n)}</span>'
+        if t in ('win_double', 'win_single'):
+            names = win_beats or []
+            n = len(names)
+            plural = '' if n == 1 else 's'
+            tooltip = (WIN_TROPHY["tooltip"]
+                       .replace("{n}", str(n))
+                       .replace("{plural}", plural)
+                       .replace("{names}", ", ".join(names)))
+            css = WIN_TROPHY["css"]
+            return f'<span class="hcap-medal {css}" data-bs-toggle="tooltip" data-bs-title="{tooltip}">{_ICONS[t]}</span>'
+        if t in TROPHIES:
             meta = TROPHIES[t]
-            parts.append(_icon_span(meta["icon"], meta["css"], meta["tooltip"]))
-    return "".join(parts)
+            return _icon_span(meta["icon"], meta["css"], meta["tooltip"])
+        return ""
+
+    def sort_key(t: str) -> int:
+        if t.startswith('streak_'):
+            return len(TROPHY_ORDER) + int(t.split('_')[1])
+        return TROPHY_ORDER.index(t) if t in TROPHY_ORDER else len(TROPHY_ORDER)
+
+    finish_hcap = sorted([t for t in trophies if t in TROPHY_COL_FINISH_HCAP], key=sort_key)
+    notable = sorted([t for t in trophies if t in TROPHY_COL_NOTABLE], key=sort_key)
+    other = sorted([t for t in trophies if t in TROPHY_COL_OTHER or t.startswith('streak_')], key=sort_key)
+
+    return (
+        len(finish_hcap), "".join(render_one(t) for t in finish_hcap),
+        len(notable), "".join(render_one(t) for t in notable),
+        "".join(render_one(t) for t in other),
+    )
+
+
+# Invisible spacer icons — mirrors the JS spacerFull/spacerHalf in badges() so
+# the racer page's server-rendered trophy cells align the same way as the
+# main results page's client-rendered ones.
+_SPACER_FULL = '<span class="hcap-medal" style="visibility:hidden"><svg width="24" height="24" viewBox="0 0 24 24"></svg></span>'
+_SPACER_HALF = '<span class="hcap-medal" style="visibility:hidden;width:12px;padding-left:0;padding-right:0"><svg width="12" height="24" viewBox="0 0 24 24"></svg></span>'
+
+
+def _trophy_cell_html(trophies: list, win_beats: list | None, max_finish_hcap: int, max_notable: int) -> str:
+    """Build one trophy cell's inner HTML across three zones:
+      [finish/hcap icons][padding to max_finish_hcap][half-spacer]
+      [notable icons][padding to max_notable][half-spacer]
+      [other icons]
+    Keeps each zone starting at the same x-position across all rows
+    regardless of how many finish/hcap or notable trophies a given racer has.
+    """
+    fh_count, fh_html, notable_count, notable_html, other_html = _racer_trophy_badges(trophies, win_beats)
+    fh_pad = _SPACER_FULL * max(0, max_finish_hcap - fh_count)
+    notable_pad = _SPACER_FULL * max(0, max_notable - notable_count)
+    return fh_html + fh_pad + _SPACER_HALF + notable_html + notable_pad + _SPACER_HALF + other_html
 
 
 def _racer_points_total(results: list, annual_points_rule: str) -> tuple[int, int, set, set]:
@@ -1962,6 +2137,8 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 
 
                     _racer_thead = _render_racer_page_thead()
+                    _racer_max_fh = max([0] + [_racer_trophy_badges(r.get("trophies", []), r.get("win_beats", []))[0] for r in results])
+                    _racer_max_notable = max([0] + [_racer_trophy_badges(r.get("trophies", []), r.get("win_beats", []))[2] for r in results])
                     craft_content += f"""{cw_open}
 <div class="row mb-3">
   <div class="col-6 col-sm-3"><strong>{RACER_STATS_LABELS['races']}:</strong> {len(results)}</div>
@@ -1976,8 +2153,8 @@ new Chart(document.getElementById('chart-hcap-{cid}'), {{
 <table class="table table-sm table-striped table-hover">
   {_racer_thead}
   <tbody>{"".join(
-      f'<tr><td style="white-space:nowrap">{_racer_trophy_badges(r.get("trophies",[]))}</td>'
-      f'<td><a href="../results/{data["race_slugs"].get(data["current_club"], {}).get(r["race_id"], str(r["race_id"]))}.html">{r["name"].split(" — ")[0] + (" — " + r["name"].split(" — ")[1] if " — " in r["name"] else "")}</a></td>'
+      f'<tr><td class="trophy-cell">{_trophy_cell_html(r.get("trophies",[]), r.get("win_beats",[]), _racer_max_fh, _racer_max_notable)}</td>'
+      + f'<td><a href="../results/{data["race_slugs"].get(data["current_club"], {}).get(r["race_id"], str(r["race_id"]))}.html">{r["name"].split(" — ")[0] + (" — " + r["name"].split(" — ")[1] if " — " in r["name"] else "")}</a></td>'
       f'<td class="text-muted small text-nowrap">{r["date"]}</td>'
       f'<td>{r["original_place"]}</td><td>{_fmt_indexed_place(r)}</td>'
       + (f'<td style="text-align:right;font-size:0.85em;color:{"#2E7D32" if (1-r["adjusted_time_versus_par"])*100>=0 else "#666"};font-weight:{"bold" if (1-r["adjusted_time_versus_par"])*100>=0 else "normal"}">{(1-r["adjusted_time_versus_par"])*100:+.1f}%</td>' if r.get("adjusted_time_versus_par") else '<td></td>') +
@@ -2321,6 +2498,9 @@ dl dt:first-child { margin-top: 0; }
 
     <dt>What is the streak trophy?</dt>
     <dd>Awared to racers who have three or more consecutive races beating their projected time. Rewards steady improvement.</dd>
+
+    <dt>What is a Notable Result?</dt>
+    <dd>Recognition for beating a higher-ranked racer in a close, genuinely-contested finish. The gap between indexes must be at least 1% and the margin of victory must be within 2% to capture that genuine racing was happening. A single standout result can be awarded the double-arrow badge. Hover over a "notable result" badge to see who got beaten!</dd>
 
     <dt>Why track indexed time at all?</dt>
     <dd>Finish time shows who was fastest. Indexed time shows who performed best relative to their own history — rewarding improvement rather than raw speed.</dd>

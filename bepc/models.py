@@ -48,6 +48,7 @@ class RacerResult:
     carried_over: bool = False  # True if handicap was carried from previous season
     craft_specific: str = ""  # original craft string from source data
     trophies: list = field(default_factory=list)  # e.g. ["finish_1", "hcap_2", "par"]
+    win_beats: list = field(default_factory=list)  # names beaten for win_double/win_single trophy
 
     # Ranked-race tracking for establishment and outlier-reset.
     # "Ranked" = race where a handicap decision was made (not small-group / ineligible).

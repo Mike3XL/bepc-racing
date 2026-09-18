@@ -73,13 +73,43 @@ TROPHIES = {
     "auto_reset":   {"css": "hcap-reset",   "icon": "auto_reset", "tooltip": "Index auto-reset after 3 consecutive outliers"},
 }
 
-# Badge display sort order (streak_N always renders after these, sorted by N)
+# Badge display sort order (streak_N always renders after these, sorted by N).
+# "fresh" (EST) is intentionally NOT rendered as a trophy badge at all — an
+# establishing-index racer's EST status is shown in the "vs Par" column
+# instead (muted grey text, same treatment as a below-par result), since
+# it's a data-availability state, not an achievement. See generator.py's
+# pctHtml construction.
 TROPHY_ORDER = [
-    "hcap_1", "hcap_2", "hcap_3",
     "finish_1", "finish_2", "finish_3",
+    "hcap_1", "hcap_2", "hcap_3",
+    "win_double", "win_single",
+    "par",
     "consistent_1", "consistent_2", "consistent_3",
-    "par", "auto_reset", "fresh", "outlier",
+    "outlier", "auto_reset",
 ]
+
+# ---------------------------------------------------------------------------
+# Trophy column layout — the single "Trophies" table cell renders three
+# zones left to right (plain sorted flex, each zone padded to a uniform
+# per-race width with transparent spacer icons so later zones always start
+# at the same x-position regardless of how many icons an earlier zone has
+# for a given racer — see generator.py badges()/trophyCellHtml() [JS] and
+# _racer_trophy_badges()/_trophy_cell_html() [Python]):
+#
+#   Zone 1 "finish/hcap" (should visually pop): finish-place flag, then
+#     vs-Par (handicap) podium trophy — in that priority order.
+#   Zone 2 "notable": Notable Win — beating higher-ranked/nearby competitors.
+#   Zone 3 "other" (informational/novelty, muted/smaller): par marker,
+#     consistent streak, then data-quality flags (outlier, auto_reset).
+#     streak_N (variable suffix) also belongs here, matched by prefix in
+#     the renderer rather than listed.
+#
+# "fresh" (EST) is deliberately absent from all three — see TROPHY_ORDER note.
+# ---------------------------------------------------------------------------
+TROPHY_COL_FINISH_HCAP = ["finish_1", "finish_2", "finish_3", "hcap_1", "hcap_2", "hcap_3"]
+TROPHY_COL_NOTABLE = ["win_double", "win_single"]
+TROPHY_COL_OTHER = ["par", "consistent_1", "consistent_2", "consistent_3", "outlier", "auto_reset"]
+# streak_N also belongs in TROPHY_COL_OTHER (matched by prefix, not listed)
 
 
 # Streak trophy (streak_N) — N is variable (streak_3, streak_4, ...).
@@ -88,6 +118,17 @@ TROPHY_ORDER = [
 STREAK_TROPHY = {
     "css": "hcap-streak",
     "tooltip": "{n} consecutive races faster than projected",  # {n} is replaced at render time
+}
+
+# WinPoints trophy (win_double / win_single) — "beat a higher-ranked racer in
+# a close contest". win_double is the single best (highest-net) racer this
+# race/course; win_single is everyone else within the display cap (see
+# handicap.compute_win_trophies). Not in TROPHIES because the tooltip needs
+# the per-racer beaten-names list substituted at render time, same pattern as
+# STREAK_TROPHY's {n}.
+WIN_TROPHY = {
+    "css": "hcap-win",
+    "tooltip": "Notable result: Beat {n} higher ranked racer{plural} in close contests: {names}",
 }
 
 

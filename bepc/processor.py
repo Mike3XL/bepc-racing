@@ -1,5 +1,5 @@
 from .models import RaceResult, RunningRecord
-from .handicap import calculate_par_racer, compute_new_handicap, std_dev
+from .handicap import calculate_par_racer, compute_new_handicap, compute_win_trophies, std_dev
 from .points import race_points, handicap_points
 
 
@@ -176,6 +176,12 @@ def process_season(races: list[RaceResult], carry_over: dict | None = None,
                 r.trophies.append(finish_podium[r.original_place])
             if r.is_par_racer:
                 r.trophies.append("par")
+
+        # WinPoints — "beat a higher-ranked racer in a close contest" — same
+        # eligibility gate as other trophies (skipped for small-group / other
+        # ineligible races where handicap wasn't updated this race).
+        if not skip_handicap_update:
+            compute_win_trophies(racers)
 
         # Streaks — consecutive races beating par (adjusted_time_versus_par < 1.0)
         streak_state: dict[tuple, tuple[int, float]] = {}  # key -> (streak, last_atvp)
