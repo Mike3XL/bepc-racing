@@ -440,27 +440,6 @@ upcoming:
     type: webscorer
     organizer: bepc827
   organizer: --
-- name: Narrows Challenge (incl. USA SUP Nationals 10K)
-  date: '2026-09-19'
-  clubs:
-  - pnw
-  source_id: 1378
-  distance: 20K/10K/5K
-  url: https://register.pacificmultisports.com/Events/1378/Register
-  links:
-  - label: Register (all craft)
-    url: https://register.pacificmultisports.com/Events/1378/Register
-  - label: Start List
-    url: https://register.pacificmultisports.com/Events/1378/Participants
-  - label: Register (SUP Nationals)
-    url: https://register.pacificmultisports.com/Events/1371/Register
-  - label: Info
-    url: http://www.narrowschallenge.com/
-  location: Gig Harbor, WA
-  timing:
-  - 'Meeting: TBD'
-  - 'Start: TBD'
-  organizer: ghckrt
 - name: Lake Samish Salmon Row
   date: '2026-09-26'
   clubs:
