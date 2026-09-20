@@ -3,7 +3,8 @@
   "contests": {
     "1": "20km - Expert",
     "2": "10 km - Intermediate",
-    "3": "5 km - Short"
+    "3": "5 km - Short",
+    "4": "10 km - USA SUP"
   },
   "splits": [
     {
@@ -31,6 +32,14 @@
       "TypeOfSport": 255
     },
     {
+      "ID": 16,
+      "Name": "Start",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 255
+    },
+    {
       "ID": 11,
       "Name": "Finish",
       "Label": "",
@@ -53,13 +62,21 @@
       "SplitType": 0,
       "Contest": 3,
       "TypeOfSport": 10
+    },
+    {
+      "ID": 17,
+      "Name": "Finish",
+      "Label": "",
+      "SplitType": 0,
+      "Contest": 4,
+      "TypeOfSport": 10
     }
   ],
   "eventname": "2026 Narrows Challenge",
   "TimerLogo": "",
   "TimerURL": "",
-  "EventOver": false,
-  "Time": 12539,
+  "EventOver": true,
+  "Time": 38892,
   "server": "my-us-1.raceresult.com",
   "BrandColorDark": "",
   "ListCommentsEnabled": {

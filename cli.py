@@ -882,15 +882,28 @@ def cmd_process_results(args):
                 rr_id = _resolve_rr_id_from_pms(int(source_id))
                 if not rr_id:
                     raise ValueError(f"Could not resolve raceresult ID from PMS event {source_id}")
-                fetch_event(rr_id=rr_id, name=name,
-                            date=race_date.strftime("%b %d, %Y"), out_dir=out_dir,
-                            pms_id=int(source_id))
+                written = fetch_event(rr_id=rr_id, name=name,
+                                       date=race_date.strftime("%b %d, %Y"), out_dir=out_dir,
+                                       pms_id=int(source_id))
+                if not written:
+                    raise RuntimeError(
+                        f"fetch_event wrote 0 .common.json files for raceresult:{rr_id} "
+                        f"(PMS event {source_id}) — results may not be posted yet, or the "
+                        "raceresult list endpoint returned no data. Not marking as fetched, "
+                        "so this race stays in upcoming.yaml for retry."
+                    )
             elif src_type == "paddleguru":
                 from bepc.fetcher_paddleguru import fetch_paddleguru_race
-                fetch_paddleguru_race(
+                written = fetch_paddleguru_race(
                     race_url=f"https://paddleguru.com/races/{source_id}/results",
                     race_id=str(source_id), date_iso=str(race_date),
                     base_name=name, out_dir=out_dir)
+                if not written:
+                    raise RuntimeError(
+                        f"fetch_paddleguru_race wrote 0 .common.json files for "
+                        f"paddleguru:{source_id} — results may not be posted yet. Not "
+                        "marking as fetched, so this race stays in upcoming.yaml for retry."
+                    )
             fetched.append(race)
             print(f"  Fetched {name}")
         except Exception as e:
