@@ -440,26 +440,6 @@ upcoming:
     type: webscorer
     organizer: bepc827
   organizer: --
-- name: Lake Samish Salmon Row
-  date: '2026-09-26'
-  clubs:
-  - pnw
-  source_id: 1303
-  distance: 6 mi
-  url: https://register.pacificmultisports.com/Events/1303/Register
-  links:
-  - label: Series
-    url: https://www.soundrowers.org/race-schedule/
-  - label: Register
-    url: https://register.pacificmultisports.com/Events/1303/Register
-  - label: Start List
-    url: https://register.pacificmultisports.com/Events/1303/Participants
-  location: Lutherwood Camp, Lake Samish, Bellingham, WA
-  timing:
-  - 'Meeting: 9:15 AM'
-  - 'Start: 10:00 AM'
-  notes: 3 wave start (rowers / doubles / singles). Post-race lunch included.
-  organizer: sound-rowers
 - name: Mercer Island Sausage Pull
   date: '2026-10-10'
   clubs:
