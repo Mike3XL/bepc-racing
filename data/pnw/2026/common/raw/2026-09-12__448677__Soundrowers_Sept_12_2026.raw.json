@@ -1,0 +1,906 @@
+{
+  "RaceInfo": {
+    "RaceId": 448677,
+    "Name": "Soundrowers Sept 12 2026",
+    "DisplayURL": "https://www.webscorer.com/race?raceid=448677",
+    "Date": "Sep 12, 2026",
+    "Sport": "Rowing",
+    "StartTime": "Saturday, September 12, 2026 9:00:00 AM (GMT-7)",
+    "OrganizerName": "Sound Rowers and Paddlers",
+    "OrganizerUrl": "http://soundrowers.org",
+    "Country": "United States",
+    "City": "Seattle",
+    "StateOrProvince": "WA",
+    "Latitude": 47.64922222773961,
+    "Longitude": -122.3215616685342,
+    "StartType": "Wave",
+    "WaveGrouping": "By distance",
+    "CompletionState": "Final results",
+    "TimingMode": "Bib sync",
+    "ResultsOrder": "Fastest time",
+    "TimedOn": "iPad",
+    "TimedWith": "Webscorer PRO 7.0",
+    "Visibility": "Public",
+    "UpdatedFrom": "File upload",
+    "UpdatedTime": "Monday, September 21, 2026 9:44:47 PM (GMT-7)",
+    "ImageUrl": "https://s.ws-images.com/uploadedimages/large/448677.jpg?639256238870000000"
+  },
+  "Results": [
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "32",
+          "Name": "A Storb/Neubert/Jenkins/R Storb",
+          "Distance": "Long Course",
+          "Category": "4x OW",
+          "Gender": "Male",
+          "Time": "3:36:06.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.26%",
+          "PercentMedian": "12.27%"
+        },
+        {
+          "Place": "2",
+          "Bib": "26",
+          "Name": "Egor Klevak",
+          "Distance": "Long Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "3:43:44.8",
+          "Difference": "+7:38.8",
+          "PercentBack": "+3.54%",
+          "PercentWinning": "96.58%",
+          "PercentAverage": "8.12%",
+          "PercentMedian": "9.16%"
+        },
+        {
+          "Place": "3",
+          "Bib": "24",
+          "Name": "Ivan Medvedev",
+          "Distance": "Long Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "3:50:09.1",
+          "Difference": "+14:03.1",
+          "PercentBack": "+6.50%",
+          "PercentWinning": "93.89%",
+          "PercentAverage": "5.49%",
+          "PercentMedian": "6.56%"
+        },
+        {
+          "Place": "4",
+          "Bib": "18",
+          "Name": "Meghan Beamish And Sarah Jacobson",
+          "Distance": "Long Course",
+          "Category": "2x OW",
+          "Gender": "Female",
+          "Time": "4:06:19.3",
+          "Difference": "+30:13.3",
+          "PercentBack": "+13.99%",
+          "PercentWinning": "87.73%",
+          "PercentAverage": "-1.15%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "5",
+          "Bib": "20",
+          "Name": "Carson Hayes",
+          "Distance": "Long Course",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Male",
+          "Time": "4:10:03.9",
+          "Difference": "+33:57.9",
+          "PercentBack": "+15.72%",
+          "PercentWinning": "86.42%",
+          "PercentAverage": "-2.69%",
+          "PercentMedian": "-1.52%"
+        },
+        {
+          "Place": "6",
+          "Bib": "10",
+          "Name": "Gary Nelson",
+          "Distance": "Long Course",
+          "Category": "Other - 1 person",
+          "Gender": "Male",
+          "Time": "4:16:39.0",
+          "Difference": "+40:33.0",
+          "PercentBack": "+18.76%",
+          "PercentWinning": "84.20%",
+          "PercentAverage": "-5.39%",
+          "PercentMedian": "-4.19%"
+        },
+        {
+          "Place": "7",
+          "Bib": "17",
+          "Name": "Kaiwa Grubbe",
+          "Distance": "Long Course",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "4:41:36.3",
+          "Difference": "+1:05:30.3",
+          "PercentBack": "+30.31%",
+          "PercentWinning": "76.74%",
+          "PercentAverage": "-15.64%",
+          "PercentMedian": "-14.32%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - Early Start",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "6",
+          "Name": "Rod Sternagel / Haleigh Werner",
+          "Distance": "Long Course - Early Start",
+          "Category": "2x OW",
+          "Gender": "Female/Male",
+          "Time": "4:57:50.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "6.44%",
+          "PercentMedian": "5.43%"
+        },
+        {
+          "Place": "2",
+          "Bib": "7",
+          "Name": "CharlotteKimSydneyElisaFemke",
+          "Distance": "Long Course - Early Start",
+          "Category": "4x+-OW (Open Water coxed quad)",
+          "Gender": "Female",
+          "Time": "5:14:55.8",
+          "Difference": "+17:05.6",
+          "PercentBack": "+5.74%",
+          "PercentWinning": "94.57%",
+          "PercentAverage": "1.08%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Bib": "8",
+          "Name": "Dave Vanmiller",
+          "Distance": "Long Course - Early Start",
+          "Category": "Prone Paddleboard",
+          "Gender": "Male",
+          "Time": "5:42:17.6",
+          "Difference": "+44:27.4",
+          "PercentBack": "+14.93%",
+          "PercentWinning": "87.01%",
+          "PercentAverage": "-7.52%",
+          "PercentMedian": "-8.69%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Overall": true
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "11",
+          "Name": "Kevin  & Ember Olney",
+          "Distance": "Short Course",
+          "Category": "HPK-2 (Double HPK)",
+          "Gender": "Female/Male",
+          "Time": "1:48:54.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "29.69%",
+          "PercentMedian": "24.71%"
+        },
+        {
+          "Place": "2",
+          "Bib": "30",
+          "Name": "Steve Goodson",
+          "Distance": "Short Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "1:54:19.5",
+          "Difference": "+5:24.9",
+          "PercentBack": "+4.97%",
+          "PercentWinning": "95.26%",
+          "PercentAverage": "26.20%",
+          "PercentMedian": "20.97%"
+        },
+        {
+          "Place": "3",
+          "Bib": "27",
+          "Name": "Michael Bryan Brown",
+          "Distance": "Short Course",
+          "Category": "Hpk-1",
+          "Gender": "Male",
+          "Time": "2:01:05.3",
+          "Difference": "+12:10.7",
+          "PercentBack": "+11.18%",
+          "PercentWinning": "89.94%",
+          "PercentAverage": "21.83%",
+          "PercentMedian": "16.30%"
+        },
+        {
+          "Place": "4",
+          "Bib": "25",
+          "Name": "Jordan Van Voast",
+          "Distance": "Short Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "2:01:47.9",
+          "Difference": "+12:53.3",
+          "PercentBack": "+11.83%",
+          "PercentWinning": "89.42%",
+          "PercentAverage": "21.37%",
+          "PercentMedian": "15.81%"
+        },
+        {
+          "Place": "5",
+          "Bib": "29",
+          "Name": "Dwight Liess",
+          "Distance": "Short Course",
+          "Category": "SK (Sea Kayak)",
+          "Gender": "Male",
+          "Time": "2:17:17.0",
+          "Difference": "+28:22.4",
+          "PercentBack": "+26.05%",
+          "PercentWinning": "79.33%",
+          "PercentAverage": "11.38%",
+          "PercentMedian": "5.10%"
+        },
+        {
+          "Place": "6",
+          "Bib": "1",
+          "Name": "Laurel White",
+          "Distance": "Short Course",
+          "Category": "HPK-2 (Double HPK)",
+          "Gender": "Female/Male",
+          "Time": "2:18:09.4",
+          "Difference": "+29:14.8",
+          "PercentBack": "+26.85%",
+          "PercentWinning": "78.83%",
+          "PercentAverage": "10.81%",
+          "PercentMedian": "4.50%"
+        },
+        {
+          "Place": "7",
+          "Bib": "22",
+          "Name": "Robert Donovan",
+          "Distance": "Short Course",
+          "Category": "FSK (Fast Sea Kayak)",
+          "Gender": "Male",
+          "Time": "2:20:11.4",
+          "Difference": "+31:16.8",
+          "PercentBack": "+28.72%",
+          "PercentWinning": "77.69%",
+          "PercentAverage": "9.50%",
+          "PercentMedian": "3.09%"
+        },
+        {
+          "Place": "8",
+          "Bib": "12",
+          "Name": "Sean Halberg",
+          "Distance": "Short Course",
+          "Category": "1x OW-II",
+          "Gender": "Male",
+          "Time": "2:24:39.8",
+          "Difference": "+35:45.2",
+          "PercentBack": "+32.83%",
+          "PercentWinning": "75.29%",
+          "PercentAverage": "6.61%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "9",
+          "Bib": "28",
+          "Name": "Dani Traphagen",
+          "Distance": "Short Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Female",
+          "Time": "2:27:06.2",
+          "Difference": "+38:11.6",
+          "PercentBack": "+35.07%",
+          "PercentWinning": "74.04%",
+          "PercentAverage": "5.04%",
+          "PercentMedian": "-1.69%"
+        },
+        {
+          "Place": "10",
+          "Bib": "13",
+          "Name": "Page Phillips",
+          "Distance": "Short Course",
+          "Category": "1x OW-II",
+          "Gender": "Male",
+          "Time": "2:29:27.9",
+          "Difference": "+40:33.3",
+          "PercentBack": "+37.24%",
+          "PercentWinning": "72.87%",
+          "PercentAverage": "3.51%",
+          "PercentMedian": "-3.32%"
+        },
+        {
+          "Place": "11",
+          "Bib": "15",
+          "Name": "Julie Fisher",
+          "Distance": "Short Course",
+          "Category": "1x OW-I",
+          "Gender": "Female",
+          "Time": "2:31:44.4",
+          "Difference": "+42:49.8",
+          "PercentBack": "+39.33%",
+          "PercentWinning": "71.77%",
+          "PercentAverage": "2.05%",
+          "PercentMedian": "-4.89%"
+        },
+        {
+          "Place": "12",
+          "Bib": "110",
+          "Name": "Tom Raney / Mary Raney Van Eaton",
+          "Distance": "Short Course",
+          "Category": "2x OW",
+          "Gender": "Female/Male",
+          "Time": "2:33:48.6",
+          "Difference": "+44:54.0",
+          "PercentBack": "+41.23%",
+          "PercentWinning": "70.81%",
+          "PercentAverage": "0.71%",
+          "PercentMedian": "-6.32%"
+        },
+        {
+          "Place": "13",
+          "Bib": "5",
+          "Name": "William Daly",
+          "Distance": "Short Course",
+          "Category": "1x OW-II",
+          "Gender": "Male",
+          "Time": "3:36:52.9",
+          "Difference": "+1:47:58.3",
+          "PercentBack": "+99.14%",
+          "PercentWinning": "50.22%",
+          "PercentAverage": "-40.01%",
+          "PercentMedian": "-49.92%"
+        },
+        {
+          "Place": "14",
+          "Bib": "21",
+          "Name": "George Davidson",
+          "Distance": "Short Course",
+          "Category": "2x Wherry",
+          "Gender": "Male",
+          "Time": "3:53:13.6",
+          "Difference": "+2:04:19.0",
+          "PercentBack": "+114.15%",
+          "PercentWinning": "46.70%",
+          "PercentAverage": "-50.56%",
+          "PercentMedian": "-61.22%"
+        },
+        {
+          "Place": "15",
+          "Bib": "19",
+          "Name": "Michael  Lampi",
+          "Distance": "Short Course",
+          "Category": "Pedal Boat",
+          "Gender": "Male",
+          "Time": "4:04:59.3",
+          "Difference": "+2:16:04.7",
+          "PercentBack": "+124.95%",
+          "PercentWinning": "44.46%",
+          "PercentAverage": "-58.15%",
+          "PercentMedian": "-69.35%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "1x-OWIII (Open Water shell > 24\u2019)"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "20",
+          "Name": "Carson Hayes",
+          "Distance": "Long Course",
+          "Category": "1x-OWIII (Open Water shell > 24\u2019)",
+          "Gender": "Male",
+          "Time": "4:10:03.9",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "2x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "18",
+          "Name": "Meghan Beamish And Sarah Jacobson",
+          "Distance": "Long Course",
+          "Category": "2x OW",
+          "Gender": "Female",
+          "Time": "4:06:19.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "4x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "32",
+          "Name": "A Storb/Neubert/Jenkins/R Storb",
+          "Distance": "Long Course",
+          "Category": "4x OW",
+          "Gender": "Male",
+          "Time": "3:36:06.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "HPK (High Performance Kayak)"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "26",
+          "Name": "Egor Klevak",
+          "Distance": "Long Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "3:43:44.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "1.41%",
+          "PercentMedian": "1.41%"
+        },
+        {
+          "Place": "2",
+          "Bib": "24",
+          "Name": "Ivan Medvedev",
+          "Distance": "Long Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "3:50:09.1",
+          "Difference": "+6:24.3",
+          "PercentBack": "+2.86%",
+          "PercentWinning": "97.22%",
+          "PercentAverage": "-1.41%",
+          "PercentMedian": "-1.41%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "OC-1 (Outrigger Canoe Single)"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "17",
+          "Name": "Kaiwa Grubbe",
+          "Distance": "Long Course",
+          "Category": "OC-1 (Outrigger Canoe Single)",
+          "Gender": "Male",
+          "Time": "4:41:36.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course",
+        "Category": "Other - 1 person"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "10",
+          "Name": "Gary Nelson",
+          "Distance": "Long Course",
+          "Category": "Other - 1 person",
+          "Gender": "Male",
+          "Time": "4:16:39.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - Early Start",
+        "Category": "2x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "6",
+          "Name": "Rod Sternagel / Haleigh Werner",
+          "Distance": "Long Course - Early Start",
+          "Category": "2x OW",
+          "Gender": "Female/Male",
+          "Time": "4:57:50.2",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - Early Start",
+        "Category": "4x+-OW (Open Water coxed quad)"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "7",
+          "Name": "CharlotteKimSydneyElisaFemke",
+          "Distance": "Long Course - Early Start",
+          "Category": "4x+-OW (Open Water coxed quad)",
+          "Gender": "Female",
+          "Time": "5:14:55.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Long Course - Early Start",
+        "Category": "Prone Paddleboard"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "8",
+          "Name": "Dave Vanmiller",
+          "Distance": "Long Course - Early Start",
+          "Category": "Prone Paddleboard",
+          "Gender": "Male",
+          "Time": "5:42:17.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "1x OW-I"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "15",
+          "Name": "Julie Fisher",
+          "Distance": "Short Course",
+          "Category": "1x OW-I",
+          "Gender": "Female",
+          "Time": "2:31:44.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "1x OW-II"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "12",
+          "Name": "Sean Halberg",
+          "Distance": "Short Course",
+          "Category": "1x OW-II",
+          "Gender": "Male",
+          "Time": "2:24:39.8",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "15.07%",
+          "PercentMedian": "3.21%"
+        },
+        {
+          "Place": "2",
+          "Bib": "13",
+          "Name": "Page Phillips",
+          "Distance": "Short Course",
+          "Category": "1x OW-II",
+          "Gender": "Male",
+          "Time": "2:29:27.9",
+          "Difference": "+4:48.1",
+          "PercentBack": "+3.32%",
+          "PercentWinning": "96.79%",
+          "PercentAverage": "12.25%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Bib": "5",
+          "Name": "William Daly",
+          "Distance": "Short Course",
+          "Category": "1x OW-II",
+          "Gender": "Male",
+          "Time": "3:36:52.9",
+          "Difference": "+1:12:13.1",
+          "PercentBack": "+49.92%",
+          "PercentWinning": "66.70%",
+          "PercentAverage": "-27.33%",
+          "PercentMedian": "-45.11%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "2x OW"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "110",
+          "Name": "Tom Raney / Mary Raney Van Eaton",
+          "Distance": "Short Course",
+          "Category": "2x OW",
+          "Gender": "Female/Male",
+          "Time": "2:33:48.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "2x Wherry"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "21",
+          "Name": "George Davidson",
+          "Distance": "Short Course",
+          "Category": "2x Wherry",
+          "Gender": "Male",
+          "Time": "3:53:13.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "FSK (Fast Sea Kayak)"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "22",
+          "Name": "Robert Donovan",
+          "Distance": "Short Course",
+          "Category": "FSK (Fast Sea Kayak)",
+          "Gender": "Male",
+          "Time": "2:20:11.4",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "HPK (High Performance Kayak)"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "30",
+          "Name": "Steve Goodson",
+          "Distance": "Short Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "1:54:19.5",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "10.50%",
+          "PercentMedian": "6.14%"
+        },
+        {
+          "Place": "2",
+          "Bib": "25",
+          "Name": "Jordan Van Voast",
+          "Distance": "Short Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Male",
+          "Time": "2:01:47.9",
+          "Difference": "+7:28.4",
+          "PercentBack": "+6.54%",
+          "PercentWinning": "93.86%",
+          "PercentAverage": "4.65%",
+          "PercentMedian": "0.00%"
+        },
+        {
+          "Place": "3",
+          "Bib": "28",
+          "Name": "Dani Traphagen",
+          "Distance": "Short Course",
+          "Category": "HPK (High Performance Kayak)",
+          "Gender": "Female",
+          "Time": "2:27:06.2",
+          "Difference": "+32:46.7",
+          "PercentBack": "+28.67%",
+          "PercentWinning": "77.72%",
+          "PercentAverage": "-15.16%",
+          "PercentMedian": "-20.78%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "Hpk-1"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "27",
+          "Name": "Michael Bryan Brown",
+          "Distance": "Short Course",
+          "Category": "Hpk-1",
+          "Gender": "Male",
+          "Time": "2:01:05.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "HPK-2 (Double HPK)"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "11",
+          "Name": "Kevin  & Ember Olney",
+          "Distance": "Short Course",
+          "Category": "HPK-2 (Double HPK)",
+          "Gender": "Female/Male",
+          "Time": "1:48:54.6",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "11.84%",
+          "PercentMedian": "11.84%"
+        },
+        {
+          "Place": "2",
+          "Bib": "1",
+          "Name": "Laurel White",
+          "Distance": "Short Course",
+          "Category": "HPK-2 (Double HPK)",
+          "Gender": "Female/Male",
+          "Time": "2:18:09.4",
+          "Difference": "+29:14.8",
+          "PercentBack": "+26.85%",
+          "PercentWinning": "78.83%",
+          "PercentAverage": "-11.84%",
+          "PercentMedian": "-11.84%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "Pedal Boat"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "19",
+          "Name": "Michael  Lampi",
+          "Distance": "Short Course",
+          "Category": "Pedal Boat",
+          "Gender": "Male",
+          "Time": "4:04:59.3",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    },
+    {
+      "Grouping": {
+        "Distance": "Short Course",
+        "Category": "SK (Sea Kayak)"
+      },
+      "Racers": [
+        {
+          "Place": "1",
+          "Bib": "29",
+          "Name": "Dwight Liess",
+          "Distance": "Short Course",
+          "Category": "SK (Sea Kayak)",
+          "Gender": "Male",
+          "Time": "2:17:17.0",
+          "Difference": "-",
+          "PercentBack": "-",
+          "PercentWinning": "100%",
+          "PercentAverage": "0.00%",
+          "PercentMedian": "0.00%"
+        }
+      ]
+    }
+  ]
+}

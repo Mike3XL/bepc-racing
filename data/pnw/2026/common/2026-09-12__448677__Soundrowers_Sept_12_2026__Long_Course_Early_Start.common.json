@@ -1,0 +1,73 @@
+{
+  "raceInfo": {
+    "raceId": 448677,
+    "distance": "Long Course - Early Start",
+    "name": "Soundrowers Sept 12 2026 \u2014 Long Course - Early Start",
+    "displayURL": "https://www.webscorer.com/race?raceid=448677",
+    "date": "Sep 12, 2026",
+    "sport": "Rowing",
+    "startTime": "Saturday, September 12, 2026 9:00:00 AM (GMT-7)",
+    "country": "United States",
+    "city": "Seattle",
+    "pointsWeight": 0.12
+  },
+  "racerResults": [
+    {
+      "originalPlace": 1,
+      "canonicalName": "Rod Sternagel / Haleigh Werner",
+      "craftCategory": "2x OW",
+      "gender": "Female/Male",
+      "handicap": 1.0,
+      "timeSeconds": 17870.2,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 17870.2,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 2,
+      "canonicalName": "CharlotteKimSydneyElisaFemke",
+      "craftCategory": "4x+-OW (Open Water coxed quad)",
+      "gender": "Female",
+      "handicap": 1.0,
+      "timeSeconds": 18895.8,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 18895.8,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    },
+    {
+      "originalPlace": 3,
+      "canonicalName": "Dave Vanmiller",
+      "craftCategory": "Prone Paddleboard",
+      "gender": "Male",
+      "handicap": 1.0,
+      "timeSeconds": 20537.6,
+      "timeVersusPar": 0.0,
+      "adjustedTimeSeconds": 20537.6,
+      "adjustedTimeVersusPar": 0.0,
+      "adjustedPlace": 0,
+      "handicapPost": 1.0,
+      "numRaces": 0,
+      "handicapSequence": null,
+      "handicapPointsSequence": null,
+      "handicapStdDev": 0.0,
+      "absoluteImprovement": 0.0,
+      "parRacer": false
+    }
+  ]
+}
