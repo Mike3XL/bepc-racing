@@ -440,20 +440,6 @@ upcoming:
     type: webscorer
     organizer: bepc827
   organizer: --
-- name: Mercer Island Sausage Pull
-  date: '2026-10-10'
-  clubs:
-  - pnw
-  distance: 14.3 mi/6.5m
-  url: https://soundrowers.org/?page_id=286
-  links:
-  - label: Series
-    url: https://www.soundrowers.org/race-schedule/
-  location: Mercer Island, WA
-  timing:
-  - 'Meeting: 8:30AM'
-  - 'Start: Long 9AM early start/9:30 AM; Short 10:30 AM'
-  organizer: sound-rowers
 - name: Port Angeles Coastal Endurance Regatta
   date: '2026-10-25'
   clubs:
