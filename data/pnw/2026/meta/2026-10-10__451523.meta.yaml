@@ -1,7 +1,7 @@
 race_id: 2026-10-10__451523
-name: 'Sound Rowers: Mercer Island Sausage Pull 2026 (Bratwurst Challenge)'
+name: Bratwurst Challenge
 date: '2026-10-10'
-organizer: sound-rowers
+organizer: howard-lee
 results_platform: webscorer
 tags: []
 courses:
@@ -14,5 +14,5 @@ courses:
     starters: 4
     is_primary: false
 corrections: []
-notes: 'One-off 2026 name: WebScorer lists this as "2026 Bratwurst Challenge" (race
-  451523). It is the regular Mercer Island Sausage Pull. Display name set in data/pnw/race_names.json.'
+notes: Independent event organized by Howard Lee. WebScorer lists it as "2026 Bratwurst
+  Challenge" (race 451523); display name set in data/pnw/race_names.json.
