@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8" />
+  <link rel="icon" href="./favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Surfski downwind sea-state sim · Shilshole Bay</title>
+  <style>html,body{color:#fff;background:#0a2a52;height:100%;margin:0;font-family:system-ui,sans-serif;overflow:hidden}#gl{width:100vw;height:100vh;display:block;position:fixed;inset:0}#v2d{background:#0a2a52;position:fixed}#v2d.full{width:100vw;height:100vh;inset:0}#v2d.inset{border:2px solid #ffffffb3;border-radius:8px;width:min(34vw,460px);height:min(34vw,460px);bottom:12px;right:12px;box-shadow:0 4px 18px #0006}#v2d.off{display:none}#hud{-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);background:#0514289e;border-radius:8px;min-width:300px;padding:10px 14px;font-size:13px;line-height:1.45;position:fixed;top:12px;left:12px}#hud .big{font-size:44px;font-weight:700;line-height:1}#hud small{font-size:16px;font-weight:400}#hud .run{color:#7dffa1;letter-spacing:.08em}#hud .bar{background:#fff3;border-radius:3px;height:6px;margin-top:6px}#hud .bar i{background:#ffd34d;border-radius:3px;height:100%;display:block}#hud .cap{opacity:.75;font-size:11px}#help{opacity:.85;background:#05142880;border-radius:6px;padding:6px 10px;font-size:12px;position:fixed;bottom:10px;left:12px}#banner{background:#ff5a36eb;border-radius:8px;padding:8px 18px;font-weight:600;display:none;position:fixed;top:16px;left:50%;transform:translate(-50%)}.lil-gui.root{max-height:92vh;position:fixed;top:12px;right:12px;overflow:auto}</style>
+  <script type="module" crossorigin src="./assets/main-bjIheyw1.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/fetch-Xj43Ir9V.js">
+</head>
+<body>
+  <canvas id="gl"></canvas>
+  <canvas id="v2d" class="inset"></canvas>
+  <div id="hud"></div>
+  <div id="banner"></div>
+  <div id="help">
+    <b>←/→ or A/D</b> steer · <b>Space</b> sprint · <b>S</b> brake · <b>T</b> autopilot · <b>V</b> main view · <b>M</b> inset · <b>P</b> pause · <b>R</b> restart
+  </div>
+  <div id="credit" style="position:fixed;left:14px;bottom:1px;font:10px system-ui,sans-serif;color:#fff;opacity:.55;pointer-events:none">Coastline data © OpenStreetMap contributors</div>
+</body>
+</html>
