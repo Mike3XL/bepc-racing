@@ -384,7 +384,10 @@ def cmd_build_site(args):
     if assets_dir.exists():
         SITE_DIR.mkdir(exist_ok=True)
         for f in assets_dir.iterdir():
-            _shutil.copy2(f, SITE_DIR / f.name)
+            if f.is_dir():                                   # e.g. assets/sim: the surfski simulator, published at /sim/
+                _shutil.copytree(f, SITE_DIR / f.name, dirs_exist_ok=True)
+            else:
+                _shutil.copy2(f, SITE_DIR / f.name)
     generate_all(data)
 
 
