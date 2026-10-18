@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="robots" content="noindex, nofollow" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Surfski sim · builds</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif; color: #eaf3ff; background: linear-gradient(180deg, #0f3a6b 0, #0a2a52 300px, #082244 100%); min-height: 100vh; }
+  main { max-width: 900px; margin: 0 auto; padding: 26px 20px 60px; }
+  h1 { margin: 0 0 4px; font-size: 26px; } .sub { opacity: .8; margin: 0 0 18px; }
+  .card { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16); border-radius: 12px; padding: 14px 18px; margin: 14px 0; }
+  .card.gold { border-color: #f4c542; background: rgba(244,197,66,.09); }
+  .row { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; } .row h2 { margin: 0; font-size: 18px; flex: 1; }
+  .tag { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; letter-spacing: .04em; background: #2b5d8f; }
+  .tag.gold { background: #f4c542; color: #2a1d00; } .tag.experiment { background: #8a4fd6; } .tag.archived { background: #555; }
+  .meta { opacity: .65; font-size: 12px; margin: 2px 0 8px; }
+  .btn { display: inline-block; background: #2b8cff; color: #fff; border: 0; border-radius: 8px; padding: 7px 16px; font-weight: 600; text-decoration: none; cursor: pointer; font: inherit; font-weight: 600; } .btn:hover { background: #4aa0ff; }
+  .btn.alt { background: rgba(255,255,255,.14); font-weight: 500; }
+  details { margin: 6px 0; } summary { cursor: pointer; font-weight: 600; color: #bfe3ff; } details > div, details > ul, details > ol { margin: 6px 0 6px 4px; }
+  ul, ol { padding-left: 22px; margin: 4px 0; } li { margin: 2px 0; }
+  .ok { color: #7dffa1; } .bad { color: #ff9a7a; }
+  .q { margin: 10px 0; } .q label { display: block; margin-bottom: 3px; } .q textarea { width: 100%; box-sizing: border-box; background: rgba(0,0,0,.25); color: inherit; border: 1px solid rgba(255,255,255,.25); border-radius: 6px; padding: 6px; font: inherit; min-height: 52px; }
+  .q .opts button { background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.3); border-radius: 6px; padding: 3px 12px; cursor: pointer; margin-right: 4px; font: inherit; } .q .opts button.on { background: #2b8cff; border-color: #2b8cff; }
+  a { color: #8fd0ff; } code { background: rgba(0,0,0,.3); padding: 0 4px; border-radius: 4px; }
+</style>
+</head>
+<body><main>
+  <h1>Surfski sim · builds for review</h1>
+  <p class="sub" id="sub">Loading…</p>
+  <div id="list"></div>
+  <p class="meta"><a href="../">← the sim</a> · this page is unlisted</p>
+</main>
+<script>
+const $ = (t, a = {}, ...kids) => { const e = document.createElement(t); for (const [k, v] of Object.entries(a)) k === 'class' ? (e.className = v) : k.startsWith('on') ? (e[k] = v) : e.setAttribute(k, v); for (const c of kids.flat()) e.append(c); return e; };
+const store = (id) => { try { return JSON.parse(localStorage.getItem('surfski.fb.' + id) || '{}'); } catch { return {}; } };
+const save = (id, v) => { try { localStorage.setItem('surfski.fb.' + id, JSON.stringify(v)); } catch { /* ignore */ } };
+function section(title, items, ordered) { return items?.length ? $('details', { open: '' }, $('summary', {}, title), $(ordered ? 'ol' : 'ul', {}, items.map((x) => $('li', {}, x)))) : ''; }
+function questions(b) {
+  if (!b.questions?.length) return '';
+  const ans = store(b.id), box = $('div');
+  const upd = (q, v) => { ans[q.id] = v; save(b.id, ans); };
+  for (const q of b.questions) {
+    const row = $('div', { class: 'q' }, $('label', {}, q.text));
+    if (q.type === 'text') row.append($('textarea', { oninput: (e) => upd(q, e.target.value) }));
+    else {
+      const opts = q.type === 'yn' ? ['Yes', 'Not sure', 'No'] : ['1', '2', '3', '4', '5'], wrap = $('div', { class: 'opts' });
+      for (const o of opts) wrap.append($('button', { class: ans[q.id] === o ? 'on' : '', onclick: (e) => { upd(q, o); [...wrap.children].forEach((c) => c.classList.toggle('on', c === e.target)); } }, o));
+      row.append(wrap);
+    }
+    if (q.type === 'text') row.querySelector('textarea').value = ans[q.id] ?? '';
+    box.append(row);
+  }
+  const text = () => `Feedback on build ${b.id} (${b.git?.sha}) ${new Date().toISOString().slice(0, 16)}\n` + b.questions.map((q) => `- ${q.text}\n  => ${ans[q.id] ?? '(no answer)'}`).join('\n');
+  box.append($('button', { class: 'btn alt', onclick: async (e) => { try { await navigator.clipboard.writeText(text()); e.target.textContent = 'Copied. Paste it to the Builder.'; } catch { prompt('Copy:', text()); } } }, 'Copy my answers'), ' ',
+    $('button', { class: 'btn alt', onclick: () => { const a = $('a', { href: URL.createObjectURL(new Blob([JSON.stringify({ build: b.id, sha: b.git?.sha, at: new Date().toISOString(), answers: ans }, null, 1)], { type: 'application/json' })), download: `feedback-${b.id}.json` }); a.click(); } }, 'Download answers (.json)'));
+  return $('details', {}, $('summary', {}, `Questions (${b.questions.length})`), box);
+}
+function card(b) {
+  const t = b.tests?.items ?? [], pass = t.filter((x) => x.ok).length;
+  return $('div', { class: 'card ' + b.status },
+    $('div', { class: 'row' }, $('h2', {}, b.title), $('span', { class: 'tag ' + b.status }, b.status === 'gold' ? 'current gold' : b.status), $('a', { class: 'btn', href: `./${b.id}/index.html?intro=0`, target: '_blank', rel: 'noopener' }, '▶ Open this build')),
+    $('div', { class: 'meta' }, `${b.id} · ${new Date(b.date).toLocaleString()} · ${b.git?.sha} on ${b.git?.branch} · ${b.sizeMB} MB`),
+    b.summary ? $('p', {}, b.summary) : '',
+    b.problem ? $('details', { open: '' }, $('summary', {}, 'The problem'), $('div', {}, b.problem)) : '',
+    section('What is implemented', b.implemented),
+    t.length ? $('details', {}, $('summary', {}, `Automated checks (${pass} of ${t.length} pass)`), $('ul', {}, t.map((x) => $('li', {}, $('span', { class: x.ok ? 'ok' : 'bad' }, x.ok ? 'PASS ' : 'FAIL '), `${x.name}: ${x.detail}`)))) : '',
+    section('Known issues', b.known),
+    section('How to review it', b.review, true),
+    questions(b));
+}
+fetch('./index.json?' + Date.now()).then((r) => r.json()).then((d) => {
+  document.getElementById('sub').textContent = `${d.builds.length} build(s), newest first after the gold. Updated ${new Date(d.updated).toLocaleString()}.`;
+  const list = document.getElementById('list'); d.builds.forEach((b) => list.append(card(b)));
+}).catch((e) => { document.getElementById('sub').textContent = 'Could not load index.json: ' + e; });
+</script>
+</body></html>
