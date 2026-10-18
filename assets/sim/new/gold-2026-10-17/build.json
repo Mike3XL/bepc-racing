@@ -1,0 +1,52 @@
+{
+ "id": "gold-2026-10-17",
+ "title": "Gold: what is live at /sim today",
+ "status": "gold",
+ "summary": "The published simulator as of the evening of 2026-10-16: new boat model, bucket, depower and brace, drone cam, foam on the back of the wave, welcome card and toolbar, auto quality.",
+ "problem": "Make the simulator something to show people: one page, clear first minute, runs on a laptop and degrades gracefully on a phone.",
+ "implemented": [
+  "One simulator page with a welcome card, toolbar (help, restart, share, full screen, about), friendly scenario names and an About page.",
+  "The v2 boat (V10 Gen 4 hull sections, dry hull has no lift, seat bucket), depower to idle and low brace, segmented trunk, drone camera.",
+  "Foam and spray streaks sit on the back of the wave.",
+  "Auto quality that follows the frame rate and the drawing-buffer size; phones start light."
+ ],
+ "review": [
+  "Open the build, press Start paddling, and paddle for a minute in the default sea.",
+  "Switch the camera with V (try Drone), and open the Settings panel to change the scenario.",
+  "Tap Down three times, then once more."
+ ],
+ "questions": [
+  {
+   "id": "q1",
+   "type": "scale",
+   "text": "How smooth does it feel on your laptop (1 = stuttering, 5 = perfectly smooth)?"
+  },
+  {
+   "id": "q2",
+   "type": "yn",
+   "text": "Did you notice the quality settings changing by themselves, and was a message shown?"
+  },
+  {
+   "id": "q3",
+   "type": "text",
+   "text": "What is the first thing that looks wrong?"
+  }
+ ],
+ "known": [
+  "The default desktop settings run at about 20 fps on an M1 Pro until auto quality steps down (item G-009).",
+  "The map inset's wave overlay costs 4 to 18 ms per frame (fixed in the next build).",
+  "Shilshole land height and sea floor are synthetic; the Gorge walls are procedural; the horizon is procedural."
+ ],
+ "date": "2026-10-18T03:57:02.636Z",
+ "git": {
+  "sha": "daa3b60",
+  "ref": "daa3b60",
+  "branch": "improve/G-011",
+  "subject": "feat: auto quality follows the real frame time and the drawing-buffer size; phones start light; light-effects switch; Low mesh"
+ },
+ "tests": {
+  "ran": false,
+  "items": []
+ },
+ "sizeMB": 2.8
+}

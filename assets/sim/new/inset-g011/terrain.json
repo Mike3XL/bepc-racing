@@ -1,0 +1,20 @@
+{
+ "lat0": 47.6777,
+ "lon0": -122.42,
+ "cell": 12,
+ "width": 613,
+ "height": 701,
+ "minE": -3747.5896544779143,
+ "minN": -4167.358000000106,
+ "maxE": 3608.4103455220857,
+ "maxN": 4244.641999999894,
+ "meadowPoint": [
+  1049.7448332955064,
+  1742.8510180000394
+ ],
+ "westPoint": [
+  -1193.2025652688772,
+  -1737.335071999985
+ ],
+ "note": "Coastline from OpenStreetMap (ODbL). Land elevation and bathymetry are synthetic placeholders."
+}
