@@ -1,0 +1,75 @@
+{
+ "id": "eve-e-plastic-bow",
+ "title": "eve-e-plastic-bow",
+ "status": "candidate",
+ "summary": "A bow that gives way like soft water: surface dent, softer plunge damping, more pitch inertia, a foam burst at the stem; boat settings and the paddler change live and are logged in the timeline; Auto quality gives quality back and everything it lowers has a control.",
+ "problem": "The bow met the water like a hard elastic surface: it did not sink in on a slam and did not cut in when leaving a face onto flat water or meeting the next wave. Changing boat settings or the paddler restarted the run. Auto quality lowered things you could not put back.",
+ "implemented": [
+  "Boat damping is relative to the moving surface, not to the water particles, so on a face buoyancy carries the weight (before, the damping held the hull up); a slam impulse when a section enters the water. The head-sea terms are refitted and the scorecard targets moved with the 0.8 hull drag (28 of 28 goals pass).",
+  "A plastic bow: a dent in the surface under a fast plunge (fills in 0.6 s), plunge damping that falls off with speed, pitch inertia 100 kg m2. At 14.5 mph a 25 degree face onto flat water cuts the bow in 25 cm, 15 degrees touches, down 15 and up 15 with a 1 m gap 47 cm, with 8 m to recover under 5 cm.",
+  "The dent drives a burst of foam round the stem.",
+  "Boat tuning sliders: Pitch inertia, Bow yield, Dent fill time, Plunge damping (all 1 = my setting), plus the earlier Planing, Surf push, Hull drag and the rest.",
+  "Boat settings and the paddler now change live, without a restart, and the change is logged with the step it happens on: clips replay it, rewinding restores the boat as it was.",
+  "Auto quality gives quality back when frame times are good for 20 s (trial, backs off if it is slow again). Settings, Rendering lists Picture size, Light effects, Foam trail reach, Spray streak reach, Mesh quality and a Restore full quality button; changing one turns Auto off."
+ ],
+ "review": [
+  "Gorge, Swell City, \"Swell City classic\" sea, Chase or Boyan camera; Planing 2 for speed. Look for the bow digging in and the foam at the stem when you drop off a steep face into the next wave.",
+  "Boat tuning: move Bow yield and Plunge damping while paddling and see the bow change at once; change the paddler type in the middle of a run.",
+  "Rendering: lower Picture size by hand, press Restore full quality."
+ ],
+ "questions": [
+  {
+   "id": "q1",
+   "type": "yn",
+   "text": "Does the bow now feel like it gives way in water instead of bouncing off it?"
+  },
+  {
+   "id": "q2",
+   "type": "scale",
+   "text": "When it digs in, is the depth right? (1 = too little, 3 = right, 5 = too much)"
+  },
+  {
+   "id": "q3",
+   "type": "yn",
+   "text": "Is the foam burst at the stem about right, not too heavy?"
+  },
+  {
+   "id": "q4",
+   "type": "yn",
+   "text": "Do you notice any bow-dig in ordinary head chop where it should lift over?"
+  },
+  {
+   "id": "q5",
+   "type": "text",
+   "text": "Which of the new sliders would you want kept in the menu?"
+  }
+ ],
+ "known": [
+  "Pearling in the shipped seas is still rare: the sea seldom has faces steeper than 15 degrees. Steeper fronts (current steepening, roller sharpening) are the next step (worklist G-039).",
+  "The dent drives foam only; there is no flying spray or water displaced on the surface mesh yet.",
+  "A clip that starts partway through a run replays to within about 2 cm, not exactly."
+ ],
+ "date": "2026-10-20T04:19:54.550Z",
+ "git": {
+  "sha": "75eb344",
+  "ref": "HEAD",
+  "branch": "improve/G-011",
+  "subject": "docs: release notes for the eve-e-plastic-bow candidate"
+ },
+ "tests": {
+  "ran": true,
+  "items": [
+   {
+    "name": "unit tests",
+    "ok": true,
+    "detail": "213 pass, 0 fail, 1 known-issue"
+   },
+   {
+    "name": "boat and sea scorecard (V10 Gen 4)",
+    "ok": true,
+    "detail": "28 of 28 scored goals pass"
+   }
+  ]
+ },
+ "sizeMB": 37.8
+}

@@ -1,0 +1,128 @@
+{
+ "fetched": "2026-10-18T06:25:36.283Z",
+ "source": "NOAA ENC Direct (public domain)",
+ "aids": [
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": null,
+   "lat": 32.90986,
+   "lon": -117.25306,
+   "colour": [],
+   "shape": "beacon",
+   "category": "17",
+   "light": null,
+   "chart": "enc_coastal"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": null,
+   "lat": 32.8932,
+   "lon": -117.25011,
+   "colour": [],
+   "shape": "beacon",
+   "category": "17",
+   "light": null,
+   "chart": "enc_coastal"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "Scripps Lighted Wave Buoy",
+   "lat": 32.95639,
+   "lon": -117.27944,
+   "colour": [
+    6
+   ],
+   "shape": "spherical",
+   "category": "10",
+   "light": null,
+   "chart": "enc_coastal"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "Scripps Del Mar Lighted Research Buoy",
+   "lat": 32.92694,
+   "lon": -117.315,
+   "colour": [
+    6
+   ],
+   "shape": "pillar",
+   "category": "10",
+   "light": null,
+   "chart": "enc_coastal"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "Blacks Beach Buoy",
+   "lat": 32.89298,
+   "lon": -117.25972,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": "27",
+   "light": null,
+   "chart": "enc_coastal"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "UCSD CDIP Wave Buoy 262",
+   "lat": 33.06208,
+   "lon": -117.31408,
+   "colour": [
+    6
+   ],
+   "shape": "spherical",
+   "category": "10,13",
+   "light": null,
+   "chart": "enc_coastal"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "Scripps Waverider CDIP Lighted Research Buoy 201",
+   "lat": 32.86785,
+   "lon": -117.26667,
+   "colour": [
+    6
+   ],
+   "shape": "spherical",
+   "category": "13,10",
+   "light": null,
+   "chart": "enc_coastal"
+  },
+  {
+   "kind": "light",
+   "type": "Light",
+   "name": null,
+   "lat": 32.83901,
+   "lon": -117.25,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": null,
+   "light": 1,
+   "chart": "enc_coastal"
+  },
+  {
+   "kind": "light",
+   "type": "Light",
+   "name": null,
+   "lat": 32.83823,
+   "lon": -117.24992,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": null,
+   "light": 1,
+   "chart": "enc_coastal"
+  }
+ ]
+}

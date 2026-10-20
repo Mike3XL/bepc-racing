@@ -1,0 +1,524 @@
+{
+ "fetched": "2026-10-18T06:26:08.423Z",
+ "source": "NOAA ENC Direct (public domain)",
+ "aids": [
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Light 1",
+   "lat": 21.27087,
+   "lon": -157.71558,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 7",
+   "lat": 21.27874,
+   "lon": -157.71351,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 11",
+   "lat": 21.28098,
+   "lon": -157.71419,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 2",
+   "lat": 21.27441,
+   "lon": -157.71438,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 3",
+   "lat": 21.27657,
+   "lon": -157.71381,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 13",
+   "lat": 21.28122,
+   "lon": -157.71491,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 18",
+   "lat": 21.28231,
+   "lon": -157.71634,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 20",
+   "lat": 21.28275,
+   "lon": -157.7171,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 12",
+   "lat": 21.28095,
+   "lon": -157.71368,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 9",
+   "lat": 21.27984,
+   "lon": -157.71381,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 1A",
+   "lat": 21.27457,
+   "lon": -157.7147,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 14",
+   "lat": 21.28151,
+   "lon": -157.71484,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 17",
+   "lat": 21.28214,
+   "lon": -157.71651,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 5",
+   "lat": 21.27776,
+   "lon": -157.71323,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 16",
+   "lat": 21.2818,
+   "lon": -157.71544,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 4",
+   "lat": 21.27638,
+   "lon": -157.71352,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 10",
+   "lat": 21.28034,
+   "lon": -157.71352,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 21",
+   "lat": 21.28294,
+   "lon": -157.71799,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 15",
+   "lat": 21.28159,
+   "lon": -157.71561,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 19",
+   "lat": 21.28251,
+   "lon": -157.71723,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 6",
+   "lat": 21.27765,
+   "lon": -157.71295,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Maunalua Bay Daybeacon 8",
+   "lat": 21.27954,
+   "lon": -157.71328,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Ala Wai Boat Harbor Channel Daybeacon 6",
+   "lat": 21.28207,
+   "lon": -157.8449,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Ala Wai Boat Harbor Channel Daybeacon 7",
+   "lat": 21.28533,
+   "lon": -157.84463,
+   "colour": [
+    4
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Ala Wai Boat Harbor Channel Daybeacon 8",
+   "lat": 21.28461,
+   "lon": -157.84418,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Kaiser Boat Channel Daybeacon 2",
+   "lat": 21.27758,
+   "lon": -157.83944,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Kaiser Boat Channel Daybeacon 4",
+   "lat": 21.27822,
+   "lon": -157.83967,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Kaiser Boat Channel Daybeacon 1",
+   "lat": 21.27717,
+   "lon": -157.8399,
+   "colour": [
+    4
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Kaiser Boat Channel Daybeacon 3",
+   "lat": 21.27839,
+   "lon": -157.84044,
+   "colour": [
+    4
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": null,
+   "lat": 21.27831,
+   "lon": -157.8399,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Ala Wai Boat Harbor Channel Range Front Light",
+   "lat": 21.28781,
+   "lon": -157.84366,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": null,
+   "lat": 21.27738,
+   "lon": -157.83966,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": null,
+   "lat": 21.27829,
+   "lon": -157.83956,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Ala Wai Boat Harbor Channel Range Rear Light",
+   "lat": 21.2886,
+   "lon": -157.84346,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": null,
+   "lat": 21.27742,
+   "lon": -157.84016,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Diamond Head Reef Lighted Buoy 2",
+   "lat": 21.24689,
+   "lon": -157.81566,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "light",
+   "type": "Light",
+   "name": null,
+   "lat": 21.25572,
+   "lon": -157.80955,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": null,
+   "light": 8,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "light",
+   "type": "Light",
+   "name": null,
+   "lat": 21.29277,
+   "lon": -157.84299,
+   "colour": [],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "enc_harbour"
+  }
+ ]
+}

@@ -1,0 +1,321 @@
+{
+ "fetched": "2026-10-18T06:26:01.563Z",
+ "source": "NOAA ENC Direct (public domain)",
+ "aids": [
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Kahului Harbor Entrance Breakwater Light 4",
+   "lat": 20.90032,
+   "lon": -156.47412,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Kahului Harbor Entrance Breakwater Light 3",
+   "lat": 20.90066,
+   "lon": -156.47151,
+   "colour": [
+    4
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Kahului Harbor Entrance Range Rear Light",
+   "lat": 20.88704,
+   "lon": -156.4719,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Kahului Boat Ramp Range Rear Daybeacon",
+   "lat": 20.89506,
+   "lon": -156.47906,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Kahului Harbor Entrance Range Front Light",
+   "lat": 20.89078,
+   "lon": -156.4721,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Kahului Boat Ramp Range Front Daybeacon",
+   "lat": 20.89522,
+   "lon": -156.47868,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "10",
+   "lat": 20.89324,
+   "lon": -156.47225,
+   "colour": [
+    3
+   ],
+   "shape": "conical ",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Kahului Boat Ramp Buoy 4",
+   "lat": 20.89622,
+   "lon": -156.47653,
+   "colour": [
+    3
+   ],
+   "shape": "conical ",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Kahului Boat Ramp Buoy 2",
+   "lat": 20.8965,
+   "lon": -156.47564,
+   "colour": [
+    3
+   ],
+   "shape": "conical ",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Waihee Reef Lighted Buoy 2",
+   "lat": 20.92852,
+   "lon": -156.47517,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Kahului Harbor Lighted Buoy 12",
+   "lat": 20.89429,
+   "lon": -156.47031,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Kahului Boat Ramp Buoy 5",
+   "lat": 20.89561,
+   "lon": -156.47742,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "5",
+   "lat": 20.89998,
+   "lon": -156.4715,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Kahului Boat Ramp Buoy 1",
+   "lat": 20.89639,
+   "lon": -156.47556,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "8",
+   "lat": 20.89515,
+   "lon": -156.47379,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Kahului Boat Ramp Buoy 3",
+   "lat": 20.896,
+   "lon": -156.47653,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Kahului Harbor Lighted Buoy 6",
+   "lat": 20.89701,
+   "lon": -156.47473,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Kahului Boat Ramp Buoy 9",
+   "lat": 20.89564,
+   "lon": -156.47861,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Kahului Boat Ramp Buoy 7",
+   "lat": 20.89572,
+   "lon": -156.47825,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Kahului Boat Ramp Buoy 8",
+   "lat": 20.89583,
+   "lon": -156.47803,
+   "colour": [
+    3
+   ],
+   "shape": "conical ",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Kahului Boat Ramp Buoy 6",
+   "lat": 20.89575,
+   "lon": -156.47739,
+   "colour": [
+    3
+   ],
+   "shape": "conical ",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "light",
+   "type": "Light",
+   "name": null,
+   "lat": 20.88729,
+   "lon": -156.4859,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": null,
+   "light": 1,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "light",
+   "type": "Light",
+   "name": null,
+   "lat": 20.89724,
+   "lon": -156.42616,
+   "colour": [
+    1,
+    4
+   ],
+   "shape": null,
+   "category": null,
+   "light": 1,
+   "chart": "enc_harbour"
+  }
+ ]
+}

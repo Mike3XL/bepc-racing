@@ -1,0 +1,34 @@
+{
+ "id": "round3-objects",
+ "title": "round3-objects",
+ "status": "candidate",
+ "summary": "",
+ "problem": "",
+ "implemented": [],
+ "review": [],
+ "questions": [],
+ "known": [],
+ "date": "2026-10-19T04:29:00.618Z",
+ "git": {
+  "sha": "a957ac4",
+  "ref": "HEAD",
+  "branch": "improve/G-011",
+  "subject": "feat: sea model without a shared wind: each wind sea carries its own wind, gusts are their own group, the current acts on every group including rollers and wakes"
+ },
+ "tests": {
+  "ran": true,
+  "items": [
+   {
+    "name": "unit tests",
+    "ok": true,
+    "detail": "169 pass, 0 fail, 1 known-issue"
+   },
+   {
+    "name": "boat and sea scorecard (V10 Gen 4)",
+    "ok": true,
+    "detail": "26 of 28 scored goals pass"
+   }
+  ]
+ },
+ "sizeMB": 28.6
+}

@@ -1,0 +1,483 @@
+{
+ "fetched": "2026-10-18T06:26:11.239Z",
+ "source": "NOAA ENC Direct (public domain)",
+ "aids": [
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Bonneville Pool Light 22",
+   "lat": 45.69825,
+   "lon": -121.81035,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Wyeth Boat Ramp Breakwater Light 1",
+   "lat": 45.69441,
+   "lon": -121.77409,
+   "colour": [
+    4
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Bonneville Pool Light 23",
+   "lat": 45.69674,
+   "lon": -121.73721,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Wyeth Boat Ramp Breakwater Light 2",
+   "lat": 45.69444,
+   "lon": -121.77351,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Bonneville Pool Daybeacon 28",
+   "lat": 45.70069,
+   "lon": -121.66893,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Bonneville Pool Light 25",
+   "lat": 45.6973,
+   "lon": -121.70661,
+   "colour": [
+    4
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Bonneville Pool Light 35",
+   "lat": 45.72715,
+   "lon": -121.51159,
+   "colour": [
+    4
+   ],
+   "shape": "lattice beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Little White Salmon Upper Range Rear Light",
+   "lat": 45.70512,
+   "lon": -121.60721,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Cook Point Range Front Light",
+   "lat": 45.70816,
+   "lon": -121.66147,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Hood River Breakwater Light",
+   "lat": 45.71554,
+   "lon": -121.50698,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "27",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Hood River Range Rear Light",
+   "lat": 45.72403,
+   "lon": -121.49423,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Wind River Regulatory Daybeacon B",
+   "lat": 45.71357,
+   "lon": -121.8117,
+   "colour": [
+    1,
+    11
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Wind River Regulatory Daybeacon C",
+   "lat": 45.71308,
+   "lon": -121.80876,
+   "colour": [
+    1,
+    11
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Wind Mountain Upper Range Front Light 26",
+   "lat": 45.69276,
+   "lon": -121.70256,
+   "colour": [],
+   "shape": "pile beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Wind Mountain Upper Range Rear Light",
+   "lat": 45.69187,
+   "lon": -121.68794,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Little White Salmon Upper Range Front Light 30",
+   "lat": 45.70492,
+   "lon": -121.61272,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Hood River Marina Entrance West Light",
+   "lat": 45.71393,
+   "lon": -121.50212,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "27",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Hood River Marina Entrance East Light",
+   "lat": 45.71372,
+   "lon": -121.50102,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "27",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Hood River Range Front Light",
+   "lat": 45.72409,
+   "lon": -121.49762,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Wind River Regulatory Daybeacon J",
+   "lat": 45.70869,
+   "lon": -121.7834,
+   "colour": [
+    1,
+    11
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Cook Point Range Rear Light",
+   "lat": 45.7113,
+   "lon": -121.65054,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Wind River Regulatory Daybeacon A",
+   "lat": 45.71407,
+   "lon": -121.81736,
+   "colour": [
+    1,
+    11
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Hood River Lighted Buoy 36",
+   "lat": 45.72281,
+   "lon": -121.50893,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Hood River Bridge Approach Buoy 38",
+   "lat": 45.71729,
+   "lon": -121.49357,
+   "colour": [
+    3
+   ],
+   "shape": "conical ",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "White Salmon Shoal Lighted Buoy 33",
+   "lat": 45.72564,
+   "lon": -121.52363,
+   "colour": [
+    4
+   ],
+   "shape": "pillar",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Hood River Bridge Approach Buoy 35A",
+   "lat": 45.71963,
+   "lon": -121.49523,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Bonneville Pool Lighted Buoy 34",
+   "lat": 45.72292,
+   "lon": -121.54431,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Bonneville Pool Lighted Buoy 32",
+   "lat": 45.70931,
+   "lon": -121.59808,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Hood River Bridge Approach Buoy 37",
+   "lat": 45.7183,
+   "lon": -121.49291,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "Wind River Regulatory Buoy G",
+   "lat": 45.70785,
+   "lon": -121.79023,
+   "colour": [
+    1,
+    11
+   ],
+   "shape": "pillar",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "Wind River Regulatory Buoy D",
+   "lat": 45.71073,
+   "lon": -121.80655,
+   "colour": [
+    1,
+    11
+   ],
+   "shape": "pillar",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "Wind River Regulatory Buoy H",
+   "lat": 45.70721,
+   "lon": -121.78373,
+   "colour": [
+    1,
+    11
+   ],
+   "shape": "pillar",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "Wind River Regulatory Buoy E",
+   "lat": 45.70961,
+   "lon": -121.80047,
+   "colour": [
+    1,
+    11
+   ],
+   "shape": "pillar",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "Wind River Regulatory Buoy F",
+   "lat": 45.70857,
+   "lon": -121.79459,
+   "colour": [
+    1,
+    11
+   ],
+   "shape": "pillar",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "light",
+   "type": "Light",
+   "name": null,
+   "lat": 45.69675,
+   "lon": -121.81622,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": 19,
+   "chart": "enc_harbour"
+  }
+ ]
+}

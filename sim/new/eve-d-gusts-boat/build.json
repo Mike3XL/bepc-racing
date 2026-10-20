@@ -1,0 +1,79 @@
+{
+ "id": "eve-d-gusts-boat",
+ "title": "eve-d-gusts-boat",
+ "status": "candidate",
+ "summary": "Gusts reworked as patches of ripples on glassy water, ripples only from a Ripples group, a 3 m wavelength floor, crest sharpening in the sea and per group, boat tuning multipliers with a planing drag taper, hull drag at 0.8, the Swell City classic sea and new Gorge starts.",
+ "problem": "Gusts roughened the whole sea and warped the ripples; ripples appeared even when no Ripples group was on; the shortest wind-sea components flickered; crest sharpening was a global lighting slider that also changed the boat; the boat could not scoot above 10 mph and the Gorge starts were in the wrong places.",
+ "implemented": [
+  "Gusts are patches of ripples: glass between them (or the Ripples group's own wind), rougher water inside. They are measured from the camera (a slider change never re-rolls the scene) and wander at the new Patch drift speed, apart from the gust wind. Veer is gone.",
+  "Ripples show only from a Ripples group (or under gusts); an empty sea is glass.",
+  "Wind sea and chop components stop at 3 m wavelength; the fine chop layer takes over from there.",
+  "Crest sharpening belongs to the sea (default 2) with a multiplier on each wave group. The shader and the CPU wave field agree.",
+  "Settings, Boat tuning: surf push, hull drag, paddle efficiency, mass, broaching, turn rate, turn drag, pearling and Planing (1 = off, 2 = about half the drag off by 16 mph). Saved in links and clips.",
+  "Hull drag of the three paddlers is 0.8 of before: flat-water speeds are about 0.5 mph higher at the same power.",
+  "Seas: Shilshole \"Undulating - smooth\" and Gorge \"Swell City classic\". Starts: The Hatchery and Drano added, Swell City, Bob's Beach and Viento moved to Mike's coordinates.",
+  "The map can be dragged by its title bar and resized from its corner, and starts lower left.",
+  "Fixes: a crash when the sea had no wind sea; the Distant land and Crest sharpening settings were removed."
+ ],
+ "review": [
+  "Gorge, Swell City, the \"Swell City classic\" sea: Chase and Boyan cameras; try Planing 1 / 2 / 3 and Surf push in Boat tuning.",
+  "A sea with only a Gusts group (glass with patches), then add a Ripples group.",
+  "Drag the map and resize it; reload to see it remembered.",
+  "Shilshole, \"Undulating - smooth\" on the Elite ski at high power."
+ ],
+ "questions": [
+  {
+   "id": "q1",
+   "type": "yn",
+   "text": "Do the gust patches read as ripples popping in, drifting and leaving over glass?"
+  },
+  {
+   "id": "q2",
+   "type": "scale",
+   "text": "Is the Patch drift default (0.8 m/s) about right? (1 = too fast, 5 = too slow)"
+  },
+  {
+   "id": "q3",
+   "type": "yn",
+   "text": "Does Planing 2 give believable speeds above 10 mph without making the ski too grabby?"
+  },
+  {
+   "id": "q4",
+   "type": "yn",
+   "text": "Does the flat-water pace at 160 W (now about 7.0 mph for Advanced) feel right?"
+  },
+  {
+   "id": "q5",
+   "type": "text",
+   "text": "Anything in Swell City classic that is wrong (positions, wave heights, the reverb)?"
+  }
+ ],
+ "known": [
+  "Pearling into the wave ahead is still rare (worklist G-039).",
+  "Easing off the roller train east of the Hatchery and a Tunnel 5 reverb are not in the sea.",
+  "The Hatchery and Drano starts reuse the Swell City heading and wind; points and headings are read from the map, not surveyed."
+ ],
+ "date": "2026-10-20T03:26:40.675Z",
+ "git": {
+  "sha": "34d5586",
+  "ref": "HEAD",
+  "branch": "improve/G-011",
+  "subject": "feat: the paddler and boat can change mid-run, logged in the timeline like boat settings"
+ },
+ "tests": {
+  "ran": true,
+  "items": [
+   {
+    "name": "unit tests",
+    "ok": true,
+    "detail": "208 pass, 0 fail, 1 known-issue"
+   },
+   {
+    "name": "boat and sea scorecard (V10 Gen 4)",
+    "ok": true,
+    "detail": "24 of 28 scored goals pass"
+   }
+  ]
+ },
+ "sizeMB": 37.8
+}

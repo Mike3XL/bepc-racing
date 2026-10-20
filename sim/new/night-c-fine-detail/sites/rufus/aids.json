@@ -1,0 +1,562 @@
+{
+ "fetched": "2026-10-18T06:26:14.742Z",
+ "source": "NOAA ENC Direct (public domain)",
+ "aids": [
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo Light 12",
+   "lat": 45.65286,
+   "lon": -121.00949,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo South Channel Light 2",
+   "lat": 45.64805,
+   "lon": -120.93509,
+   "colour": [
+    3
+   ],
+   "shape": "lattice beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo Daybeacon 20",
+   "lat": 45.64872,
+   "lon": -120.96719,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo South Channel Daybeacon 4",
+   "lat": 45.63912,
+   "lon": -120.91813,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo Boat Basin Light 22",
+   "lat": 45.65019,
+   "lon": -120.96428,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo Light 18",
+   "lat": 45.6456,
+   "lon": -120.97228,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo South Channel Light 3",
+   "lat": 45.64751,
+   "lon": -120.92918,
+   "colour": [
+    4
+   ],
+   "shape": "pile beacon",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo South Channel Daybeacon 5",
+   "lat": 45.6429,
+   "lon": -120.90576,
+   "colour": [
+    4
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo Daybeacon 27",
+   "lat": 45.66224,
+   "lon": -120.88536,
+   "colour": [
+    4
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo Daybeacon 40",
+   "lat": 45.68315,
+   "lon": -120.79724,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo Light 41",
+   "lat": 45.68959,
+   "lon": -120.78882,
+   "colour": [
+    4
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo Daybeacon 42",
+   "lat": 45.69214,
+   "lon": -120.76496,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "John Day Dam Lower Breakwater Light 2",
+   "lat": 45.71553,
+   "lon": -120.70439,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Lake Celilo Light 46",
+   "lat": 45.70963,
+   "lon": -120.71706,
+   "colour": [
+    3
+   ],
+   "shape": "pile beacon",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Hells Gate Range B Front Daybeacon",
+   "lat": 45.66301,
+   "lon": -120.8513,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "John Day Range Rear Light",
+   "lat": 45.7166,
+   "lon": -120.70162,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Miller Island South Channel Range A Rear Light",
+   "lat": 45.66247,
+   "lon": -120.94811,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Tidewater Mooring Barge Light B",
+   "lat": 45.66892,
+   "lon": -120.84521,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "5",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Miller Island South Channel Range B Front Light",
+   "lat": 45.63754,
+   "lon": -120.90042,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Shaver Biggs Mooring Barge Light A",
+   "lat": 45.66186,
+   "lon": -120.86424,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "27,5",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Lake Celilo Daybeacon JD",
+   "lat": 45.70447,
+   "lon": -120.72298,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "27",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Shaver Biggs Mooring Barge Light B",
+   "lat": 45.6623,
+   "lon": -120.86355,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "27,5",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "John Day Range Front Light",
+   "lat": 45.71552,
+   "lon": -120.70438,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Miller Island South Channel Range C Front Light",
+   "lat": 45.63568,
+   "lon": -120.91233,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Miller Island South Channel Range B Rear Light",
+   "lat": 45.63674,
+   "lon": -120.89774,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Tidewater Mooring Barge Light A",
+   "lat": 45.66932,
+   "lon": -120.84433,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "5",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Hells Gate Range A Rear Daybeacon",
+   "lat": 45.65527,
+   "lon": -120.90246,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "John Day Dam Lower Guidewall Light A",
+   "lat": 45.71726,
+   "lon": -120.70099,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Miller Island South Channel Range A Front Light",
+   "lat": 45.66098,
+   "lon": -120.94653,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Hells Gate Range A Front Daybeacon",
+   "lat": 45.65533,
+   "lon": -120.90507,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Hells Gate Range B Front Daybeacon",
+   "lat": 45.66316,
+   "lon": -120.85674,
+   "colour": [],
+   "shape": "lattice beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Lake Celilo Buoy 32",
+   "lat": 45.67251,
+   "lon": -120.84418,
+   "colour": [
+    3
+   ],
+   "shape": "conical ",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Lake Celilo Buoy 29",
+   "lat": 45.66499,
+   "lon": -120.86652,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Lake Celilo Lighted Buoy 11",
+   "lat": 45.6596,
+   "lon": -121.02744,
+   "colour": [
+    4
+   ],
+   "shape": "pillar",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Lake Celilo Lighted Buoy 31",
+   "lat": 45.67167,
+   "lon": -120.85722,
+   "colour": [
+    4
+   ],
+   "shape": "pillar",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Maryhill-Biggs Bridge Approach Buoy 34",
+   "lat": 45.67536,
+   "lon": -120.83788,
+   "colour": [
+    3
+   ],
+   "shape": "conical ",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Maryhill-Biggs Bridge Approach Buoy 36",
+   "lat": 45.67609,
+   "lon": -120.83374,
+   "colour": [
+    3
+   ],
+   "shape": "conical ",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Lake Celilo Buoy 45",
+   "lat": 45.70568,
+   "lon": -120.73071,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Maryhill-Biggs Bridge Approach Buoy 33",
+   "lat": 45.6766,
+   "lon": -120.83812,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Maryhill-Biggs Bridge Approach Buoy 35",
+   "lat": 45.67742,
+   "lon": -120.83459,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "John Day Dam Buoy B",
+   "lat": 45.71948,
+   "lon": -120.68477,
+   "colour": [
+    1,
+    11
+   ],
+   "shape": "can",
+   "category": "27",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "John Day Dam Buoy C",
+   "lat": 45.71782,
+   "lon": -120.683,
+   "colour": [
+    1,
+    11
+   ],
+   "shape": "can",
+   "category": "27",
+   "light": null,
+   "chart": "enc_harbour"
+  }
+ ]
+}

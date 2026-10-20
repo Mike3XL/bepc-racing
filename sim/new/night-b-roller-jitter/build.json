@@ -1,0 +1,46 @@
+{
+ "id": "night-b-roller-jitter",
+ "title": "night-b-roller-jitter",
+ "status": "candidate",
+ "summary": "Jittered water mesh (to break up circular moire), rollers whose Height setting now means what it says, a 2 m / 25 m roller preset, and the Home Valley rollers sea restored on the new Gorge terrain. Builds on the published night-a-near-water.",
+ "problem": "The regular rings-and-spokes water mesh can print circles and beat against the waves into circular moire. A roller set to 3 m behaved like a 4 to 5 ft wave.",
+ "implemented": [
+  "Water mesh: every other ring is shifted half a spoke and each vertex is nudged by a fixed random fraction of its cell (up to 0.3 of a cell). `?jitter=0` gives the old regular grid for comparison; `?jitter=0.6` is the default.",
+  "Rollers: the Height setting is now the height of the bigger rollers (average of the tallest third, crest to trough); the typical roller is about three quarters of it. The wave the old 3 m setting made is now made by 2 m, so a 2 m, 25 m roller looks as before. Old saved seas with rollers come out about 1.5 times taller than they did.",
+  "Roller group default is 2 m high, 25 m long. The roller preset is \"Rollers, 25 m long, 2 m high\" (replaces \"Small rollers\").",
+  "Home Valley rollers sea is offered again at Home Valley (it was lost when the start moved to the new Gorge terrain).",
+  "Opt-in experiment: `?sector=1` fans the water mesh over the camera's view only. Not measured; off by default."
+ ],
+ "review": [
+  "Look for circular or starburst patterns in the water near the boat while moving, with `?jitter=0` and without.",
+  "Sea tab, add a group, Rollers: check that 2 m / 25 m looks like the roller you liked."
+ ],
+ "questions": [],
+ "known": [
+  "A still frame shows no difference; whether the circular moire is gone needs your eyes in motion. Against an Ultra-density mesh, the jittered mesh differs by about 14 percent more in grey levels than the regular one (a different kind of error, not a lower quality).",
+  "Performance not measured on a quiet machine."
+ ],
+ "date": "2026-10-19T19:38:35.986Z",
+ "git": {
+  "sha": "ed0914e",
+  "ref": "HEAD",
+  "branch": "improve/G-011",
+  "subject": "feat: jittered water mesh (breaks circular moire), rollers' Height means the bigger rollers (2 m x 25 m = the old 3 m wave), roller preset, Home Valley rollers sea restored; opt-in view sector"
+ },
+ "tests": {
+  "ran": true,
+  "items": [
+   {
+    "name": "unit tests",
+    "ok": true,
+    "detail": "186 pass, 0 fail, 1 known-issue"
+   },
+   {
+    "name": "boat and sea scorecard (V10 Gen 4)",
+    "ok": true,
+    "detail": "26 of 28 scored goals pass"
+   }
+  ]
+ },
+ "sizeMB": 37.8
+}

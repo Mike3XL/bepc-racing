@@ -1,0 +1,51 @@
+{
+ "id": "night-a-near-water",
+ "title": "night-a-near-water",
+ "status": "gold",
+ "summary": "The sea editor and data model (groups, zones, auto sea from the weather, wind or shape profiles), purpose-written seas and calm presets for the Gorge and Shilshole, real Gorge terrain from Bonneville Dam to near The Dalles, objects on the water, a persistent foam field, free camera and a rebuilt Place, Start, Sea state menu.",
+ "problem": "Make the sea something you can describe, edit and share, and make the water and places worth paddling: believable seas for the places Mike knows, a clearer way to read them, and better-looking water near the paddler.",
+ "implemented": [
+  "Sea model with no shared wind: groups (wind sea, chop, swell, rollers, wake, gusts) plus a current that acts on every group. Each wind sea has its own wind and fetch (80 km maximum).",
+  "Sea panel (E): Auto from the weather (winds, age, fetch), Groups with editable names, readouts (height, wavelength, period, steepness), zones and time windows with soft edges, and a map inset showing them.",
+  "Wind or shape profile for a wind sea (height and wavelength), with an equivalent-wind readout; a Sea overview with steepness, face speed, share of steep faces and a rough surfable-at-idle verdict (thresholds are guesses).",
+  "Menu: Place, Start, Sea state. Gorge and Shilshole starts are geographic names; each place has two calm seas and written seas (4 Gorge, 5 Shilshole, first drafts from Mike's description).",
+  "Gorge terrain in two sections (Bonneville Dam to Hood River, Hood River to near The Dalles) with new starts at Stevenson (Bob's Beach), Viento, Hood River, Mosier and Lyle; Home Valley and Swell City moved onto it.",
+  "Objects on the water: charted buoys and lights (NOAA), sail boats, kite surfers, paddle boarders and power boats. Free camera and camera numbers 1 to 8.",
+  "Persistent foam field: crest foam and the ski wake drift and fade in the water. Per-place water colour (Shilshole navy, Gorge silt). Spray streaks fade near the camera.",
+  "The current acts mainly on waves longer than about 5 m, with moderate steepening caps. Auto seas use 40 waves for one wind."
+ ],
+ "review": [
+  "Shilshole (Place menu), then Gorge, Viento: open the Sea tab (E) and try Describe by: Shape, the overview card, and the calm seas.",
+  "Camera 7 Chase and 8 Boyan for the wake."
+ ],
+ "questions": [],
+ "known": [
+  "Gorge fetch (20 km) and roller sizes, and Shilshole fetches, are guesses. Gorge start points and headings are inferred from the map, not surveyed. The Gorge walls above the survey and the river bed are synthetic.",
+  "No splash, spray or drip effects yet. San Diego, Perth, Hawaii and Tarifa start names still carry wind.",
+  "Performance numbers from the overnight run were taken on a loaded machine and are unproven.",
+  "The test run reports one failure: the pre-existing head sea (v1) marker, not a regression."
+ ],
+ "date": "2026-10-19T17:38:25.474Z",
+ "git": {
+  "sha": "fee1603",
+  "ref": "fee1603",
+  "branch": "improve/G-011",
+  "subject": "feat: Home Valley and Swell City move to the new Gorge terrain; tests follow hidden starts"
+ },
+ "tests": {
+  "ran": true,
+  "items": [
+   {
+    "name": "unit tests",
+    "ok": false,
+    "detail": "183 pass, 1 fail, 1 known-issue"
+   },
+   {
+    "name": "boat and sea scorecard (V10 Gen 4)",
+    "ok": true,
+    "detail": "26 of 28 scored goals pass"
+   }
+  ]
+ },
+ "sizeMB": 37.8
+}

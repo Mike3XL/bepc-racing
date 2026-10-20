@@ -1,0 +1,78 @@
+{
+ "id": "eve-f-wallow-spray",
+ "title": "eve-f-wallow-spray",
+ "status": "candidate",
+ "summary": "Pitch inertia 6 by default, water scooped onto the foredeck (slow rebound, real speed loss on a slam), a depth-gated surface dent, bow spray and plunge particles, and cloud cover that dims the sun instead of brightening the scene.",
+ "problem": "The bow met the water like a hard surface: a slam did not wallow or rebound slowly, and the new boat settings did little. Clouds only whitened the sky, so full cloud cover was a brighter scene than clear.",
+ "implemented": [
+  "Pitch inertia defaults to 6 (the slider is in units of 100 kg m2, 1 to 15). Pitch damping is a slider and defaults to 0.",
+  "Water on the foredeck: the deck scoops up water at the speed it sweeps through it (up to 70 kg), the water weighs on the bow and drains over 1.2 s, and its momentum brakes the boat. Sliders: Water on deck, Deck drain time. On the 151 s clip the slam costs 3.8 mph (13.1 to 9.3), at Water on deck x2 5.8 mph and a rebound of 0.85 s.",
+  "The surface dent forms only on a fast plunge that goes deep (a slam), default yield 2.",
+  "Bow spray (droplets thrown up and aside, scaled by the speed at which the bow meets the water) and a plunge fan of white water thrown ahead and up. Settings, Rendering: Bow spray and plunge (0 = off). Off in light effects mode.",
+  "Water sheets: thin curved sheets of water thrown from the stem when the bow cuts in (V fans up and out along the bow line, and deck sheets thrown up that the boat runs under and that sweep aft toward the paddler), as well as the droplets. Triggers are lower so common cutting events show them, not only big slams.",
+  "The spray is now volumetric: curved, three-shell, lit sheets with a rolled lip, thousands of GPU-flown streaks that every sheet sheds, and faint mist round the base. Test links: ?autostart=1 starts at once, ?speed=mph the starting speed, ?fixedSpeed=mph holds a speed, ?splash=1..4 forces the spray (e.g. scenario=1&autostart=1&fixedSpeed=12&splash=3).",
+  "Cloud cover dims the direct sun: water body, glitter, the sun and its glare, the sun lamp on boat and land. Clouds are grey, and full cover has no blue gaps.",
+  "Fixed: the hull never received the forward speed, so the stagnation moment of piled water was 0.",
+  "Earlier in this build line: boat settings and the paddler change live and are logged in the timeline, Auto quality gives quality back and everything it lowers has a control."
+ ],
+ "review": [
+  "Gorge, Swell City, \"Swell City classic\" sea (Chase or Boyan camera) and the \"Big sea variant: steep short chop\" scenarios: let the bow drop off a steep face into the next wave. Look at the dive, the speed loss, how long it takes to come up, and the spray and white-water fan.",
+  "Boat tuning: raise Water on deck and Deck drain time for more wallowing; Pitch damping for calmer, shallower dives.",
+  "Lighting and surface: move Clouds from 0 to 1; the scene should get duller, with the glitter gone, not brighter."
+ ],
+ "questions": [
+  {
+   "id": "q1",
+   "type": "yn",
+   "text": "Does a slam now wallow and rebound slowly, with a believable loss of speed?"
+  },
+  {
+   "id": "q2",
+   "type": "scale",
+   "text": "Is the slam speed loss about right? (1 = too little, 3 = right, 5 = too much)"
+  },
+  {
+   "id": "q3",
+   "type": "yn",
+   "text": "Do the spray droplets and the plunge fan look right (size, amount, where they go)?"
+  },
+  {
+   "id": "q4",
+   "type": "yn",
+   "text": "Is full cloud cover now a duller scene than clear?"
+  },
+  {
+   "id": "q5",
+   "type": "text",
+   "text": "Which of the boat settings do you want kept, and what should the defaults be?"
+  }
+ ],
+ "known": [
+  "Pitch damping 0 means a steady 2 ft chop at the pitch resonance (lambda 10 m, 6.5 mph) cuts the bow about 30 cm. Damping 1000 to 2000 reduces it to 14 to 20 cm and the slam bury to 7 to 15 cm.",
+  "The spray has been seen with the forced ?splash=1 view, not triggered by a real slam in a screenshot.",
+  "Pearling in the shipped seas is still rare: steep fronts are scarce (worklist G-039)."
+ ],
+ "date": "2026-10-20T06:00:03.849Z",
+ "git": {
+  "sha": "1e30475",
+  "ref": "HEAD",
+  "branch": "improve/G-011",
+  "subject": "feat: volumetric bow spray (curved three-shell lit sheets, GPU streaks, mist); ?autostart, ?speed and ?fixedSpeed test params"
+ },
+ "tests": {
+  "ran": true,
+  "items": [
+   {
+    "name": "unit tests",
+    "ok": true,
+    "detail": "215 pass, 0 fail, 1 known-issue"
+   },
+   {
+    "name": "boat and sea scorecard (V10 Gen 4)",
+    "ok": true,
+    "detail": "28 of 28 scored goals pass"
+   }
+  ]
+ },
+ "sizeMB": 37.8
+}

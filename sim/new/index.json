@@ -1,124 +1,117 @@
 {
- "updated": "2026-10-18T03:57:02.686Z",
+ "updated": "2026-10-20T06:00:03.963Z",
  "builds": [
   {
-   "id": "gold-2026-10-17",
-   "title": "Gold: what is live at /sim today",
+   "id": "night-a-near-water",
+   "title": "night-a-near-water",
    "status": "gold",
-   "summary": "The published simulator as of the evening of 2026-10-16: new boat model, bucket, depower and brace, drone cam, foam on the back of the wave, welcome card and toolbar, auto quality.",
-   "problem": "Make the simulator something to show people: one page, clear first minute, runs on a laptop and degrades gracefully on a phone.",
+   "summary": "The sea editor and data model (groups, zones, auto sea from the weather, wind or shape profiles), purpose-written seas and calm presets for the Gorge and Shilshole, real Gorge terrain from Bonneville Dam to near The Dalles, objects on the water, a persistent foam field, free camera and a rebuilt Place, Start, Sea state menu.",
+   "problem": "Make the sea something you can describe, edit and share, and make the water and places worth paddling: believable seas for the places Mike knows, a clearer way to read them, and better-looking water near the paddler.",
    "implemented": [
-    "One simulator page with a welcome card, toolbar (help, restart, share, full screen, about), friendly scenario names and an About page.",
-    "The v2 boat (V10 Gen 4 hull sections, dry hull has no lift, seat bucket), depower to idle and low brace, segmented trunk, drone camera.",
-    "Foam and spray streaks sit on the back of the wave.",
-    "Auto quality that follows the frame rate and the drawing-buffer size; phones start light."
+    "Sea model with no shared wind: groups (wind sea, chop, swell, rollers, wake, gusts) plus a current that acts on every group. Each wind sea has its own wind and fetch (80 km maximum).",
+    "Sea panel (E): Auto from the weather (winds, age, fetch), Groups with editable names, readouts (height, wavelength, period, steepness), zones and time windows with soft edges, and a map inset showing them.",
+    "Wind or shape profile for a wind sea (height and wavelength), with an equivalent-wind readout; a Sea overview with steepness, face speed, share of steep faces and a rough surfable-at-idle verdict (thresholds are guesses).",
+    "Menu: Place, Start, Sea state. Gorge and Shilshole starts are geographic names; each place has two calm seas and written seas (4 Gorge, 5 Shilshole, first drafts from Mike's description).",
+    "Gorge terrain in two sections (Bonneville Dam to Hood River, Hood River to near The Dalles) with new starts at Stevenson (Bob's Beach), Viento, Hood River, Mosier and Lyle; Home Valley and Swell City moved onto it.",
+    "Objects on the water: charted buoys and lights (NOAA), sail boats, kite surfers, paddle boarders and power boats. Free camera and camera numbers 1 to 8.",
+    "Persistent foam field: crest foam and the ski wake drift and fade in the water. Per-place water colour (Shilshole navy, Gorge silt). Spray streaks fade near the camera.",
+    "The current acts mainly on waves longer than about 5 m, with moderate steepening caps. Auto seas use 40 waves for one wind."
    ],
    "review": [
-    "Open the build, press Start paddling, and paddle for a minute in the default sea.",
-    "Switch the camera with V (try Drone), and open the Settings panel to change the scenario.",
-    "Tap Down three times, then once more."
+    "Shilshole (Place menu), then Gorge, Viento: open the Sea tab (E) and try Describe by: Shape, the overview card, and the calm seas.",
+    "Camera 7 Chase and 8 Boyan for the wake."
    ],
-   "questions": [
-    {
-     "id": "q1",
-     "type": "scale",
-     "text": "How smooth does it feel on your laptop (1 = stuttering, 5 = perfectly smooth)?"
-    },
-    {
-     "id": "q2",
-     "type": "yn",
-     "text": "Did you notice the quality settings changing by themselves, and was a message shown?"
-    },
-    {
-     "id": "q3",
-     "type": "text",
-     "text": "What is the first thing that looks wrong?"
-    }
-   ],
+   "questions": [],
    "known": [
-    "The default desktop settings run at about 20 fps on an M1 Pro until auto quality steps down (item G-009).",
-    "The map inset's wave overlay costs 4 to 18 ms per frame (fixed in the next build).",
-    "Shilshole land height and sea floor are synthetic; the Gorge walls are procedural; the horizon is procedural."
+    "Gorge fetch (20 km) and roller sizes, and Shilshole fetches, are guesses. Gorge start points and headings are inferred from the map, not surveyed. The Gorge walls above the survey and the river bed are synthetic.",
+    "No splash, spray or drip effects yet. San Diego, Perth, Hawaii and Tarifa start names still carry wind.",
+    "Performance numbers from the overnight run were taken on a loaded machine and are unproven.",
+    "The test run reports one failure: the pre-existing head sea (v1) marker, not a regression."
    ],
-   "date": "2026-10-18T03:57:02.636Z",
+   "date": "2026-10-19T17:38:25.474Z",
    "git": {
-    "sha": "daa3b60",
-    "ref": "daa3b60",
+    "sha": "fee1603",
+    "ref": "fee1603",
     "branch": "improve/G-011",
-    "subject": "feat: auto quality follows the real frame time and the drawing-buffer size; phones start light; light-effects switch; Low mesh"
+    "subject": "feat: Home Valley and Swell City move to the new Gorge terrain; tests follow hidden starts"
    },
    "tests": {
-    "ran": false,
-    "items": []
+    "ran": true,
+    "items": [
+     {
+      "name": "unit tests",
+      "ok": false,
+      "detail": "183 pass, 1 fail, 1 known-issue"
+     },
+     {
+      "name": "boat and sea scorecard (V10 Gen 4)",
+      "ok": true,
+      "detail": "26 of 28 scored goals pass"
+     }
+    ]
    },
-   "sizeMB": 2.8
+   "sizeMB": 37.8
   },
   {
-   "id": "shoreline-1",
-   "title": "Shoreline 1: real terrain and 14 new places",
+   "id": "eve-f-wallow-spray",
+   "title": "eve-f-wallow-spray",
    "status": "candidate",
-   "summary": "Land and sea floor now come from public surveys, with a real distant skyline, and the menu gains San Diego, three Hawaii runs, three Gorge runs, Perth (south and north beaches) and Tarifa.",
-   "problem": "Shilshole land height and sea floor were invented shapes, the Gorge walls were procedural, and only Seattle had a real coastline. A downwind tool should put you on the actual water you would paddle, with the right shore, shoals and horizon.",
+   "summary": "Pitch inertia 6 by default, water scooped onto the foredeck (slow rebound, real speed loss on a slam), a depth-gated surface dent, bow spray and plunge particles, and cloud cover that dims the sun instead of brightening the scene.",
+   "problem": "The bow met the water like a hard surface: a slam did not wallow or rebound slowly, and the new boat settings did little. Clouds only whitened the sky, so full cloud cover was a brighter scene than clear.",
    "implemented": [
-    "A terrain pack per place (`public/sites/<id>/`), built by `scripts/build-site.mjs` from free data: USGS/NOAA CoNED topobathy (Shilshole 12 m, San Diego 15 m), NOAA CUDEM (Maui, Molokai channel, Oahu), USACE Columbia River DEM (Gorge, Rufus), Copernicus GLO-30 plus WA Department of Transport bathymetry (Perth), Copernicus plus EMODnet (Tarifa). Heights are shifted to mean sea level. The depth drives wave shoaling and the shore cut-out, as before.",
-    "Shilshole now uses the real survey: the breakwater, the shoals and the bluffs are real. The Ship Canal and Locks appear as water at Sound level: the survey covers the tidal side only, so the canal's pool (about 6 m higher) is not modelled.",
-    "A real skyline for each place from the 30 m Copernicus model, with Earth curvature and refraction.",
-    "Land colour follows biome (forest, arid, tropical, temperate) and slope, so rock faces show.",
-    "14 new scenarios (San Diego 2, Maliko, Kaiwi channel, Oahu south shore, Home Valley, Swell City, Rufus, Perth south 2, Perth north 2, Tarifa poniente and levante). Each has honest notes about what is sourced and what is estimated.",
-    "Tests: `test/sites.test.mjs` checks every pack and every scenario (start in water, origin matches, sea fits the shader)."
+    "Pitch inertia defaults to 6 (the slider is in units of 100 kg m2, 1 to 15). Pitch damping is a slider and defaults to 0.",
+    "Water on the foredeck: the deck scoops up water at the speed it sweeps through it (up to 70 kg), the water weighs on the bow and drains over 1.2 s, and its momentum brakes the boat. Sliders: Water on deck, Deck drain time. On the 151 s clip the slam costs 3.8 mph (13.1 to 9.3), at Water on deck x2 5.8 mph and a rebound of 0.85 s.",
+    "The surface dent forms only on a fast plunge that goes deep (a slam), default yield 2.",
+    "Bow spray (droplets thrown up and aside, scaled by the speed at which the bow meets the water) and a plunge fan of white water thrown ahead and up. Settings, Rendering: Bow spray and plunge (0 = off). Off in light effects mode.",
+    "Water sheets: thin curved sheets of water thrown from the stem when the bow cuts in (V fans up and out along the bow line, and deck sheets thrown up that the boat runs under and that sweep aft toward the paddler), as well as the droplets. Triggers are lower so common cutting events show them, not only big slams.",
+    "The spray is now volumetric: curved, three-shell, lit sheets with a rolled lip, thousands of GPU-flown streaks that every sheet sheds, and faint mist round the base. Test links: ?autostart=1 starts at once, ?speed=mph the starting speed, ?fixedSpeed=mph holds a speed, ?splash=1..4 forces the spray (e.g. scenario=1&autostart=1&fixedSpeed=12&splash=3).",
+    "Cloud cover dims the direct sun: water body, glitter, the sun and its glare, the sun lamp on boat and land. Clouds are grey, and full cover has no blue gaps.",
+    "Fixed: the hull never received the forward speed, so the stagnation moment of piled water was 0.",
+    "Earlier in this build line: boat settings and the paddler change live and are logged in the timeline, Auto quality gives quality back and everything it lowers has a control."
    ],
    "review": [
-    "Open the build, pick each place from the scenario list, press Space and look around with V (Drone is best).",
-    "Shilshole: look at the shore from the water. Do the bluffs, the breakwater and Meadow Point look right? The attribution line at the bottom names the data for each place.",
-    "Gorge (real terrain) against the old Gorge scenario: which looks more like the river?",
-    "Look at the horizon in each place: is it the right shape and distance?",
-    "Does any start put you somewhere wrong (on a reef, too close to land)?"
+    "Gorge, Swell City, \"Swell City classic\" sea (Chase or Boyan camera) and the \"Big sea variant: steep short chop\" scenarios: let the bow drop off a steep face into the next wave. Look at the dive, the speed loss, how long it takes to come up, and the spray and white-water fan.",
+    "Boat tuning: raise Water on deck and Deck drain time for more wallowing; Pitch damping for calmer, shallower dives.",
+    "Lighting and surface: move Clouds from 0 to 1; the scene should get duller, with the glitter gone, not brighter."
    ],
    "questions": [
     {
      "id": "q1",
      "type": "yn",
-     "text": "Does Shilshole look like Shilshole?"
+     "text": "Does a slam now wallow and rebound slowly, with a believable loss of speed?"
     },
     {
      "id": "q2",
-     "type": "yn",
-     "text": "Is the real-terrain Gorge better than the procedural one?"
+     "type": "scale",
+     "text": "Is the slam speed loss about right? (1 = too little, 3 = right, 5 = too much)"
     },
     {
      "id": "q3",
-     "type": "scale",
-     "text": "How believable is the land at each place (1 = cartoon, 5 = photo)?"
+     "type": "yn",
+     "text": "Do the spray droplets and the plunge fan look right (size, amount, where they go)?"
     },
     {
      "id": "q4",
      "type": "yn",
-     "text": "Is the Perth north run (Scarborough to Hillarys) one you would paddle? If not, which is?"
+     "text": "Is full cloud cover now a duller scene than clear?"
     },
     {
      "id": "q5",
      "type": "text",
-     "text": "Which place or run is wrong or missing?"
+     "text": "Which of the boat settings do you want kept, and what should the defaults be?"
     }
    ],
    "known": [
-    "Wave height, period and current are estimated from wind and fetch, not measured; the notes say where a number came from. The Perth north run is not a sourced club route. The San Diego run is a paddleboard course used as a stand-in.",
-    "Gorge and Rufus: the survey only reaches 1 to 2.5 km from the river, so the upper walls are synthetic, and the river bed is a made-up profile (no bathymetry exists).",
-    "Tarifa sea floor is about 100 m resolution; the Moroccan coast is beyond the pack and comes from the skyline.",
-    "Fetch is a straight-line estimate, so winding river reaches get less wave growth than a real channel.",
-    "The old procedural Gorge scenarios are still in the menu next to the real-terrain ones, for comparison.",
-    "Where the survey corridor ends in the Gorge and Rufus (1 to 2.5 km from the river) there is a visible edge where synthetic walls start (G-016).",
-    "Tarifa Poniente ends near Punta Carnero; Getares is just outside the terrain. Oahu's course passes south of Diamond Head, so you turn NW to reach Waikiki.",
-    "Frame rate on the M1 is not yet measured with a quiet machine; the mesh is not simplified for phones (G-015).",
-    "Build size is 26 MB on disk, 18 MB gzipped, against a 25 MB budget that does not say which (G-013 would halve it).",
-    "Land is a plain vertex-coloured mesh: no photo drape, buildings, trees or navigation marks yet (G-003 to G-005)."
+    "Pitch damping 0 means a steady 2 ft chop at the pitch resonance (lambda 10 m, 6.5 mph) cuts the bow about 30 cm. Damping 1000 to 2000 reduces it to 14 to 20 cm and the slam bury to 7 to 15 cm.",
+    "The spray has been seen with the forced ?splash=1 view, not triggered by a real slam in a screenshot.",
+    "Pearling in the shipped seas is still rare: steep fronts are scarce (worklist G-039)."
    ],
-   "date": "2026-10-18T02:35:11.974Z",
+   "date": "2026-10-20T06:00:03.849Z",
    "git": {
-    "sha": "752a8a6",
+    "sha": "1e30475",
     "ref": "HEAD",
     "branch": "improve/G-011",
-    "subject": "feat: attribution per site, tarifa/oahu headings from geometry, skyline outside the pack only and smoothed, gap fill and despike, cache fixes, hardware screenshot tool"
+    "subject": "feat: volumetric bow spray (curved three-shell lit sheets, GPU streaks, mist); ?autostart, ?speed and ?fixedSpeed test params"
    },
    "tests": {
     "ran": true,
@@ -126,66 +119,74 @@
      {
       "name": "unit tests",
       "ok": true,
-      "detail": "115 pass, 0 fail, 1 known-issue"
+      "detail": "215 pass, 0 fail, 1 known-issue"
      },
      {
       "name": "boat and sea scorecard (V10 Gen 4)",
       "ok": true,
-      "detail": "26 of 28 scored goals pass"
+      "detail": "28 of 28 scored goals pass"
      }
     ]
    },
-   "sizeMB": 28.4
+   "sizeMB": 37.8
   },
   {
-   "id": "inset-g011",
-   "title": "Map inset rework (G-011)",
+   "id": "eve-e-plastic-bow",
+   "title": "eve-e-plastic-bow",
    "status": "candidate",
-   "summary": "The map inset's wave overlay is drawn from a patch of sea sized to the waves, refreshed as fast as the eye can tell, at a fraction of the cost.",
-   "problem": "The overlay sampled the wave field 9,216 times every frame, costing 4 to 18 ms and holding the default desktop settings under budget. A first cheaper version showed false waves (aliasing), went stale when paused and juddered at high zoom.",
+   "summary": "A bow that gives way like soft water: surface dent, softer plunge damping, more pitch inertia, a foam burst at the stem; boat settings and the paddler change live and are logged in the timeline; Auto quality gives quality back and everything it lowers has a control.",
+   "problem": "The bow met the water like a hard elastic surface: it did not sink in on a slam and did not cut in when leaving a face onto flat water or meeting the next wave. Changing boat settings or the paddler restarted the run. Auto quality lowered things you could not put back.",
    "implemented": [
-    "Cells are no wider than 1/2.2 of the wavelength below which a quarter of the wave energy lies; the patch is the whole view up to 900 m, otherwise a smaller patch in the middle with feathered edges.",
-    "The grid sits on a world lattice, the image is cached and refreshed only as fast as a crest moves 1.2 screen pixels, and refreshed at once when the sea changes (scenario, sliders, crest sharpening) or time runs backwards.",
-    "A slow refresh is built across four frames, a fast or abrupt one in a single frame.",
-    "Skeptic suite: 7 scenario files (direction of travel, aliasing, judder, staleness, break-it cases, CPU cost, frame rate) all pass."
+    "Boat damping is relative to the moving surface, not to the water particles, so on a face buoyancy carries the weight (before, the damping held the hull up); a slam impulse when a section enters the water. The head-sea terms are refitted and the scorecard targets moved with the 0.8 hull drag (28 of 28 goals pass).",
+    "A plastic bow: a dent in the surface under a fast plunge (fills in 0.6 s), plunge damping that falls off with speed, pitch inertia 100 kg m2. At 14.5 mph a 25 degree face onto flat water cuts the bow in 25 cm, 15 degrees touches, down 15 and up 15 with a 1 m gap 47 cm, with 8 m to recover under 5 cm.",
+    "The dent drives a burst of foam round the stem.",
+    "Boat tuning sliders: Pitch inertia, Bow yield, Dent fill time, Plunge damping (all 1 = my setting), plus the earlier Planing, Surf push, Hull drag and the rest.",
+    "Boat settings and the paddler now change live, without a restart, and the change is logged with the step it happens on: clips replay it, rewinding restores the boat as it was.",
+    "Auto quality gives quality back when frame times are good for 20 s (trial, backs off if it is slow again). Settings, Rendering lists Picture size, Light effects, Foam trail reach, Spray streak reach, Mesh quality and a Restore full quality button; changing one turns Auto off."
    ],
    "review": [
-    "Open the build and let it run (Space). Look at the map in the bottom-right: do the light bands move the way the arrow says the waves go?",
-    "Change the map zoom with the mouse wheel over the map, from the whole view in to 60 m.",
-    "Pause, switch scenario in the panel: does the map change with it?"
+    "Gorge, Swell City, \"Swell City classic\" sea, Chase or Boyan camera; Planing 2 for speed. Look for the bow digging in and the foam at the stem when you drop off a steep face into the next wave.",
+    "Boat tuning: move Bow yield and Plunge damping while paddling and see the bow change at once; change the paddler type in the middle of a run.",
+    "Rendering: lower Picture size by hand, press Restore full quality."
    ],
    "questions": [
     {
      "id": "q1",
      "type": "yn",
-     "text": "Do the waves on the map move in the direction you expect?"
+     "text": "Does the bow now feel like it gives way in water instead of bouncing off it?"
     },
     {
      "id": "q2",
-     "type": "yn",
-     "text": "Is the small patch with soft edges acceptable at the default zoom?"
+     "type": "scale",
+     "text": "When it digs in, is the depth right? (1 = too little, 3 = right, 5 = too much)"
     },
     {
      "id": "q3",
-     "type": "scale",
-     "text": "Does the map look better or worse than before (1 = worse, 3 = same, 5 = better)?"
+     "type": "yn",
+     "text": "Is the foam burst at the stem about right, not too heavy?"
     },
     {
      "id": "q4",
+     "type": "yn",
+     "text": "Do you notice any bow-dig in ordinary head chop where it should lift over?"
+    },
+    {
+     "id": "q5",
      "type": "text",
-     "text": "Anything odd when you zoom or scrub?"
+     "text": "Which of the new sliders would you want kept in the menu?"
     }
    ],
    "known": [
-    "At the default zoom the waves fill a 457 m patch (about a third of the map width), not the whole 1.4 km map. This is a taste call: the alternative is a coarser overlay across the whole map that would show false waves.",
-    "The Waves and Profile insets still sample every frame (item G-012)."
+    "Pearling in the shipped seas is still rare: the sea seldom has faces steeper than 15 degrees. Steeper fronts (current steepening, roller sharpening) are the next step (worklist G-039).",
+    "The dent drives foam only; there is no flying spray or water displaced on the surface mesh yet.",
+    "A clip that starts partway through a run replays to within about 2 cm, not exactly."
    ],
-   "date": "2026-10-17T21:56:07.364Z",
+   "date": "2026-10-20T04:19:54.550Z",
    "git": {
-    "sha": "ae928bd",
+    "sha": "75eb344",
     "ref": "HEAD",
     "branch": "improve/G-011",
-    "subject": "feat: build picker: release script, picker page with notes, test results and questionnaire, local server"
+    "subject": "docs: release notes for the eve-e-plastic-bow candidate"
    },
    "tests": {
     "ran": true,
@@ -193,46 +194,227 @@
      {
       "name": "unit tests",
       "ok": true,
-      "detail": "89 pass, 0 fail, 1 known-issue"
+      "detail": "213 pass, 0 fail, 1 known-issue"
+     },
+     {
+      "name": "boat and sea scorecard (V10 Gen 4)",
+      "ok": true,
+      "detail": "28 of 28 scored goals pass"
+     }
+    ]
+   },
+   "sizeMB": 37.8
+  },
+  {
+   "id": "eve-d-gusts-boat",
+   "title": "eve-d-gusts-boat",
+   "status": "candidate",
+   "summary": "Gusts reworked as patches of ripples on glassy water, ripples only from a Ripples group, a 3 m wavelength floor, crest sharpening in the sea and per group, boat tuning multipliers with a planing drag taper, hull drag at 0.8, the Swell City classic sea and new Gorge starts.",
+   "problem": "Gusts roughened the whole sea and warped the ripples; ripples appeared even when no Ripples group was on; the shortest wind-sea components flickered; crest sharpening was a global lighting slider that also changed the boat; the boat could not scoot above 10 mph and the Gorge starts were in the wrong places.",
+   "implemented": [
+    "Gusts are patches of ripples: glass between them (or the Ripples group's own wind), rougher water inside. They are measured from the camera (a slider change never re-rolls the scene) and wander at the new Patch drift speed, apart from the gust wind. Veer is gone.",
+    "Ripples show only from a Ripples group (or under gusts); an empty sea is glass.",
+    "Wind sea and chop components stop at 3 m wavelength; the fine chop layer takes over from there.",
+    "Crest sharpening belongs to the sea (default 2) with a multiplier on each wave group. The shader and the CPU wave field agree.",
+    "Settings, Boat tuning: surf push, hull drag, paddle efficiency, mass, broaching, turn rate, turn drag, pearling and Planing (1 = off, 2 = about half the drag off by 16 mph). Saved in links and clips.",
+    "Hull drag of the three paddlers is 0.8 of before: flat-water speeds are about 0.5 mph higher at the same power.",
+    "Seas: Shilshole \"Undulating - smooth\" and Gorge \"Swell City classic\". Starts: The Hatchery and Drano added, Swell City, Bob's Beach and Viento moved to Mike's coordinates.",
+    "The map can be dragged by its title bar and resized from its corner, and starts lower left.",
+    "Fixes: a crash when the sea had no wind sea; the Distant land and Crest sharpening settings were removed."
+   ],
+   "review": [
+    "Gorge, Swell City, the \"Swell City classic\" sea: Chase and Boyan cameras; try Planing 1 / 2 / 3 and Surf push in Boat tuning.",
+    "A sea with only a Gusts group (glass with patches), then add a Ripples group.",
+    "Drag the map and resize it; reload to see it remembered.",
+    "Shilshole, \"Undulating - smooth\" on the Elite ski at high power."
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "yn",
+     "text": "Do the gust patches read as ripples popping in, drifting and leaving over glass?"
+    },
+    {
+     "id": "q2",
+     "type": "scale",
+     "text": "Is the Patch drift default (0.8 m/s) about right? (1 = too fast, 5 = too slow)"
+    },
+    {
+     "id": "q3",
+     "type": "yn",
+     "text": "Does Planing 2 give believable speeds above 10 mph without making the ski too grabby?"
+    },
+    {
+     "id": "q4",
+     "type": "yn",
+     "text": "Does the flat-water pace at 160 W (now about 7.0 mph for Advanced) feel right?"
+    },
+    {
+     "id": "q5",
+     "type": "text",
+     "text": "Anything in Swell City classic that is wrong (positions, wave heights, the reverb)?"
+    }
+   ],
+   "known": [
+    "Pearling into the wave ahead is still rare (worklist G-039).",
+    "Easing off the roller train east of the Hatchery and a Tunnel 5 reverb are not in the sea.",
+    "The Hatchery and Drano starts reuse the Swell City heading and wind; points and headings are read from the map, not surveyed."
+   ],
+   "date": "2026-10-20T03:26:40.675Z",
+   "git": {
+    "sha": "34d5586",
+    "ref": "HEAD",
+    "branch": "improve/G-011",
+    "subject": "feat: the paddler and boat can change mid-run, logged in the timeline like boat settings"
+   },
+   "tests": {
+    "ran": true,
+    "items": [
+     {
+      "name": "unit tests",
+      "ok": true,
+      "detail": "208 pass, 0 fail, 1 known-issue"
+     },
+     {
+      "name": "boat and sea scorecard (V10 Gen 4)",
+      "ok": true,
+      "detail": "24 of 28 scored goals pass"
+     }
+    ]
+   },
+   "sizeMB": 37.8
+  },
+  {
+   "id": "night-c-fine-detail",
+   "title": "night-c-fine-detail",
+   "status": "candidate",
+   "summary": "Fine water detail from three tiling slope maps (fine chop, ripples, capillary), a Ripples sea group that gusts act on, a 1.5 m wavelength floor for wind-sea components, and a fix for the faceted, rectangular sun. Builds on night-b-roller-jitter.",
+   "problem": "Fine visual detail was a few centimetres square at a few metres, and the sea looked spiky below about 10 km of fetch: waves under a metre cannot be held by the water mesh, and as components they printed hard glitter. Gusts changed almost nothing you could see. The sun was drawn rectangular.",
+   "implemented": [
+    "Three fine-detail layers in the water shader: fine chop (35 cm to 1.5 m), ripples (5 to 35 cm) and capillary (1 to 5 cm). Each is a tiling slope map baked at start-up (inverse FFT, equal slope per octave), drifts with the wind, is looked at twice at different scales so it does not repeat, and fades out per pixel as a pixel grows to its shortest wavelength. What a layer carried when it fades becomes roughness in the glitter lobe.",
+    "How much slope the layers carry follows the wind (Cox and Munk total mean square slope) minus what the wave components already hold; \"Amount\" scales it. Display only: the physics and the boat never see it.",
+    "New Ripples sea group (Wind category): wind, direction, amount, gust response, stretch across the wind, and a mix for each layer. Auto adds one from the lead wind; a model without one follows its strongest wind sea. Zones and time windows apply to it. Only the strongest enabled Ripples group is drawn.",
+    "Gusts now roughen the ripples and lulls leave the water glassy (gust response, default 1). Patches 280 m across travel at 0.9 of the wind.",
+    "Wind sea and chop components stop at 1.5 m wavelength at any fetch; the rest of their slope is in the layers.",
+    "The sky sphere now normalises its direction per pixel. Before, the sun was bright only near a vertex of the 32 x 16 sphere and about 30 times dimmer at the centre of a facet, so its shape followed the facets.",
+    "The sun is the right size: a disc 0.53 degrees across with a soft edge, a close glare of about 0.8 degrees and a faint wide haze. It was a saturated blob about 8 degrees across.",
+    "Settings: \"Ripples and fine detail (0 = off)\" scales the layers. `?layers=0` brings back the old value-noise ripples for comparison.",
+    "Optional highlight shoulder in the water shader (`?tm=0.7`, off by default)."
+   ],
+   "review": [
+    "Boyan and Chase cameras, close up and at a glitter patch; compare with `?layers=0`.",
+    "Sea tab (E): add a Ripples group; try Amount, Gust response and Stretch. Try a 2 km fetch wind sea.",
+    "Move the sun (Lighting and surface) and check its shape."
+   ],
+   "questions": [],
+   "known": [
+    "The look has not been tuned: the glitter patch is broader and the water slightly darker than before. Presets look different because the wind-sea tail is cut at 1.5 m.",
+    "Seen from straight above, the fine detail is subtle.",
+    "Tiling can show on a very calm sea. Performance is unmeasured on a quiet machine; a loaded-machine A/B showed no cost increase (the layers replace four value-noise ripple octaves)."
+   ],
+   "date": "2026-10-19T21:02:13.896Z",
+   "git": {
+    "sha": "95d7bf0",
+    "ref": "HEAD",
+    "branch": "improve/G-011",
+    "subject": "fix: the sun is a 0.53 degree disc with a close glare and faint haze (was a saturated blob about 8 degrees across)"
+   },
+   "tests": {
+    "ran": true,
+    "items": [
+     {
+      "name": "unit tests",
+      "ok": true,
+      "detail": "194 pass, 0 fail, 1 known-issue"
+     },
+     {
+      "name": "boat and sea scorecard (V10 Gen 4)",
+      "ok": true,
+      "detail": "25 of 28 scored goals pass"
+     }
+    ]
+   },
+   "sizeMB": 37.8
+  },
+  {
+   "id": "night-b-roller-jitter",
+   "title": "night-b-roller-jitter",
+   "status": "candidate",
+   "summary": "Jittered water mesh (to break up circular moire), rollers whose Height setting now means what it says, a 2 m / 25 m roller preset, and the Home Valley rollers sea restored on the new Gorge terrain. Builds on the published night-a-near-water.",
+   "problem": "The regular rings-and-spokes water mesh can print circles and beat against the waves into circular moire. A roller set to 3 m behaved like a 4 to 5 ft wave.",
+   "implemented": [
+    "Water mesh: every other ring is shifted half a spoke and each vertex is nudged by a fixed random fraction of its cell (up to 0.3 of a cell). `?jitter=0` gives the old regular grid for comparison; `?jitter=0.6` is the default.",
+    "Rollers: the Height setting is now the height of the bigger rollers (average of the tallest third, crest to trough); the typical roller is about three quarters of it. The wave the old 3 m setting made is now made by 2 m, so a 2 m, 25 m roller looks as before. Old saved seas with rollers come out about 1.5 times taller than they did.",
+    "Roller group default is 2 m high, 25 m long. The roller preset is \"Rollers, 25 m long, 2 m high\" (replaces \"Small rollers\").",
+    "Home Valley rollers sea is offered again at Home Valley (it was lost when the start moved to the new Gorge terrain).",
+    "Opt-in experiment: `?sector=1` fans the water mesh over the camera's view only. Not measured; off by default."
+   ],
+   "review": [
+    "Look for circular or starburst patterns in the water near the boat while moving, with `?jitter=0` and without.",
+    "Sea tab, add a group, Rollers: check that 2 m / 25 m looks like the roller you liked."
+   ],
+   "questions": [],
+   "known": [
+    "A still frame shows no difference; whether the circular moire is gone needs your eyes in motion. Against an Ultra-density mesh, the jittered mesh differs by about 14 percent more in grey levels than the regular one (a different kind of error, not a lower quality).",
+    "Performance not measured on a quiet machine."
+   ],
+   "date": "2026-10-19T19:38:35.986Z",
+   "git": {
+    "sha": "ed0914e",
+    "ref": "HEAD",
+    "branch": "improve/G-011",
+    "subject": "feat: jittered water mesh (breaks circular moire), rollers' Height means the bigger rollers (2 m x 25 m = the old 3 m wave), roller preset, Home Valley rollers sea restored; opt-in view sector"
+   },
+   "tests": {
+    "ran": true,
+    "items": [
+     {
+      "name": "unit tests",
+      "ok": true,
+      "detail": "186 pass, 0 fail, 1 known-issue"
      },
      {
       "name": "boat and sea scorecard (V10 Gen 4)",
       "ok": true,
       "detail": "26 of 28 scored goals pass"
-     },
-     {
-      "name": "skeptic scenario G-011-break",
-      "ok": true,
-      "detail": "14 pass, 0 fail"
-     },
-     {
-      "name": "skeptic scenario G-011-direction",
-      "ok": true,
-      "detail": "15 pass, 0 fail"
-     },
-     {
-      "name": "skeptic scenario G-011-inset-cpu",
-      "ok": true,
-      "detail": "17 pass, 0 fail"
-     },
-     {
-      "name": "skeptic scenario G-011-judder",
-      "ok": true,
-      "detail": "6 pass, 0 fail"
-     },
-     {
-      "name": "skeptic scenario G-011-nyquist",
-      "ok": true,
-      "detail": "41 pass, 0 fail"
-     },
-     {
-      "name": "skeptic scenario G-011-stale-pause",
-      "ok": true,
-      "detail": "4 pass, 0 fail"
      }
     ]
    },
-   "sizeMB": 2.3
+   "sizeMB": 37.8
+  },
+  {
+   "id": "round3-objects",
+   "title": "round3-objects",
+   "status": "candidate",
+   "summary": "",
+   "problem": "",
+   "implemented": [],
+   "review": [],
+   "questions": [],
+   "known": [],
+   "date": "2026-10-19T04:29:00.618Z",
+   "git": {
+    "sha": "a957ac4",
+    "ref": "HEAD",
+    "branch": "improve/G-011",
+    "subject": "feat: sea model without a shared wind: each wind sea carries its own wind, gusts are their own group, the current acts on every group including rollers and wakes"
+   },
+   "tests": {
+    "ran": true,
+    "items": [
+     {
+      "name": "unit tests",
+      "ok": true,
+      "detail": "169 pass, 0 fail, 1 known-issue"
+     },
+     {
+      "name": "boat and sea scorecard (V10 Gen 4)",
+      "ok": true,
+      "detail": "26 of 28 scored goals pass"
+     }
+    ]
+   },
+   "sizeMB": 28.6
   }
  ]
 }

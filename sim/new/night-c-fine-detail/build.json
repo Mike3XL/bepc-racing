@@ -1,0 +1,52 @@
+{
+ "id": "night-c-fine-detail",
+ "title": "night-c-fine-detail",
+ "status": "candidate",
+ "summary": "Fine water detail from three tiling slope maps (fine chop, ripples, capillary), a Ripples sea group that gusts act on, a 1.5 m wavelength floor for wind-sea components, and a fix for the faceted, rectangular sun. Builds on night-b-roller-jitter.",
+ "problem": "Fine visual detail was a few centimetres square at a few metres, and the sea looked spiky below about 10 km of fetch: waves under a metre cannot be held by the water mesh, and as components they printed hard glitter. Gusts changed almost nothing you could see. The sun was drawn rectangular.",
+ "implemented": [
+  "Three fine-detail layers in the water shader: fine chop (35 cm to 1.5 m), ripples (5 to 35 cm) and capillary (1 to 5 cm). Each is a tiling slope map baked at start-up (inverse FFT, equal slope per octave), drifts with the wind, is looked at twice at different scales so it does not repeat, and fades out per pixel as a pixel grows to its shortest wavelength. What a layer carried when it fades becomes roughness in the glitter lobe.",
+  "How much slope the layers carry follows the wind (Cox and Munk total mean square slope) minus what the wave components already hold; \"Amount\" scales it. Display only: the physics and the boat never see it.",
+  "New Ripples sea group (Wind category): wind, direction, amount, gust response, stretch across the wind, and a mix for each layer. Auto adds one from the lead wind; a model without one follows its strongest wind sea. Zones and time windows apply to it. Only the strongest enabled Ripples group is drawn.",
+  "Gusts now roughen the ripples and lulls leave the water glassy (gust response, default 1). Patches 280 m across travel at 0.9 of the wind.",
+  "Wind sea and chop components stop at 1.5 m wavelength at any fetch; the rest of their slope is in the layers.",
+  "The sky sphere now normalises its direction per pixel. Before, the sun was bright only near a vertex of the 32 x 16 sphere and about 30 times dimmer at the centre of a facet, so its shape followed the facets.",
+  "The sun is the right size: a disc 0.53 degrees across with a soft edge, a close glare of about 0.8 degrees and a faint wide haze. It was a saturated blob about 8 degrees across.",
+  "Settings: \"Ripples and fine detail (0 = off)\" scales the layers. `?layers=0` brings back the old value-noise ripples for comparison.",
+  "Optional highlight shoulder in the water shader (`?tm=0.7`, off by default)."
+ ],
+ "review": [
+  "Boyan and Chase cameras, close up and at a glitter patch; compare with `?layers=0`.",
+  "Sea tab (E): add a Ripples group; try Amount, Gust response and Stretch. Try a 2 km fetch wind sea.",
+  "Move the sun (Lighting and surface) and check its shape."
+ ],
+ "questions": [],
+ "known": [
+  "The look has not been tuned: the glitter patch is broader and the water slightly darker than before. Presets look different because the wind-sea tail is cut at 1.5 m.",
+  "Seen from straight above, the fine detail is subtle.",
+  "Tiling can show on a very calm sea. Performance is unmeasured on a quiet machine; a loaded-machine A/B showed no cost increase (the layers replace four value-noise ripple octaves)."
+ ],
+ "date": "2026-10-19T21:02:13.896Z",
+ "git": {
+  "sha": "95d7bf0",
+  "ref": "HEAD",
+  "branch": "improve/G-011",
+  "subject": "fix: the sun is a 0.53 degree disc with a close glare and faint haze (was a saturated blob about 8 degrees across)"
+ },
+ "tests": {
+  "ran": true,
+  "items": [
+   {
+    "name": "unit tests",
+    "ok": true,
+    "detail": "194 pass, 0 fail, 1 known-issue"
+   },
+   {
+    "name": "boat and sea scorecard (V10 Gen 4)",
+    "ok": true,
+    "detail": "25 of 28 scored goals pass"
+   }
+  ]
+ },
+ "sizeMB": 37.8
+}
