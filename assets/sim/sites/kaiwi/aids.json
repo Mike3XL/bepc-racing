@@ -1,0 +1,42 @@
+{
+ "fetched": "2026-10-18T06:26:04.551Z",
+ "source": "NOAA ENC Direct (public domain)",
+ "aids": [
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "Kaiwi Channel Lighted Buoy GWB",
+   "lat": 21.24819,
+   "lon": -157.62314,
+   "colour": [],
+   "shape": "pillar",
+   "category": "27",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "Kaiwi Channel Lighted Buoy CHG",
+   "lat": 21.23706,
+   "lon": -157.61761,
+   "colour": [],
+   "shape": "pillar",
+   "category": "27",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Laau Point Light",
+   "lat": 21.0997,
+   "lon": -157.3051,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "27",
+   "light": null,
+   "chart": "enc_approach"
+  }
+ ]
+}

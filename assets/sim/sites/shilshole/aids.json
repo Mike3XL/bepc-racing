@@ -1,0 +1,303 @@
+{
+ "fetched": "2026-10-18T06:25:34.736Z",
+ "source": "NOAA ENC Direct (public domain)",
+ "aids": [
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Shilshole Bay Breakwater Light 3",
+   "lat": 47.67721,
+   "lon": -122.41205,
+   "colour": [
+    4
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Shilshole Bay Light 8",
+   "lat": 47.67149,
+   "lon": -122.4087,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lateral",
+   "name": "Shilshole Bay Boat Basin Light 2",
+   "lat": 47.68767,
+   "lon": -122.40492,
+   "colour": [
+    3
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Salt Water Barrier Indicator Light number 2",
+   "lat": 47.66504,
+   "lon": -122.39507,
+   "colour": [
+    6
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Golden Gardens Boat Ramp Pier Light",
+   "lat": 47.68719,
+   "lon": -122.40446,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Salt Water Barrier Indicator Light number 1",
+   "lat": 47.66748,
+   "lon": -122.40265,
+   "colour": [
+    6
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Salt Water Barrier Indicator Light number 3",
+   "lat": 47.66496,
+   "lon": -122.39327,
+   "colour": [
+    6
+   ],
+   "shape": "stake, pole, perch, post",
+   "category": "26",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Stop Signal - Small Lock",
+   "lat": 47.66526,
+   "lon": -122.39594,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "26",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Lower Guide Wall Light",
+   "lat": 47.66852,
+   "lon": -122.40417,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Upper Guide Wall Light",
+   "lat": 47.66466,
+   "lon": -122.39102,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "52",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": null,
+   "lat": 47.66628,
+   "lon": -122.40013,
+   "colour": [],
+   "shape": "stake, pole, perch, post",
+   "category": "26",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Purpose",
+   "name": "Shilshole Bay Entrance Leading Light",
+   "lat": 47.66657,
+   "lon": -122.40298,
+   "colour": [],
+   "shape": "pile beacon",
+   "category": "16",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "West Point Lighted Buoy 1",
+   "lat": 47.6601,
+   "lon": -122.44122,
+   "colour": [
+    4
+   ],
+   "shape": "pillar",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Shilshole Bay Buoy 4",
+   "lat": 47.67615,
+   "lon": -122.4135,
+   "colour": [
+    3
+   ],
+   "shape": "conical ",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Shilshole Bay Buoy 6",
+   "lat": 47.67371,
+   "lon": -122.41069,
+   "colour": [
+    3
+   ],
+   "shape": "conical ",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Meadow Point Lighted Buoy 1",
+   "lat": 47.69626,
+   "lon": -122.4096,
+   "colour": [
+    4
+   ],
+   "shape": "pillar",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Shilshole Bay Entrance Lighted Buoy 2",
+   "lat": 47.6776,
+   "lon": -122.41596,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Shilshole Bay Buoy 7",
+   "lat": 47.67398,
+   "lon": -122.40979,
+   "colour": [
+    4
+   ],
+   "shape": "can",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Shilshole Bay Entrance Lighted Buoy 1",
+   "lat": 47.6794,
+   "lon": -122.41488,
+   "colour": [
+    4
+   ],
+   "shape": "pillar",
+   "category": 1,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Lateral",
+   "name": "Shilshole Bay Buoy 10",
+   "lat": 47.66818,
+   "lon": -122.40601,
+   "colour": [
+    3
+   ],
+   "shape": "conical ",
+   "category": 2,
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Special Purpose",
+   "name": "Puget Sound Traffic Lane Separation Lighted Buoy SG",
+   "lat": 47.66142,
+   "lon": -122.46453,
+   "colour": [
+    6
+   ],
+   "shape": "pillar",
+   "category": "19",
+   "light": null,
+   "chart": "enc_harbour"
+  },
+  {
+   "kind": "light",
+   "type": "Light",
+   "name": null,
+   "lat": 47.66197,
+   "lon": -122.43572,
+   "colour": [
+    1,
+    3
+   ],
+   "shape": null,
+   "category": null,
+   "light": 19,
+   "chart": "enc_harbour"
+  }
+ ]
+}
