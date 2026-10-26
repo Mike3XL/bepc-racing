@@ -78,7 +78,8 @@
     // Debug bar (like a Quake console): a thin bar at the top with the build id and whether anything went wrong, and a drop-down with the details. There is no dev console on a TV or a game console, so this
     // is how an error gets read. Shown with ?debug=1, on consoles and TVs, and whenever an error happens. The ` key opens and closes it.
     (function () {
-      var BUILD = 'ddef235 2026-10-26 05:10Z', consoleUA = /Xbox|PlayStation|SMART-TV|SmartTV|Tizen|Web0S|WebOS|BRAVIA/i.test(navigator.userAgent), want = /[?&]debug=1/.test(location.search) || consoleUA;
+      var BUILD = '7369fce 2026-10-26 05:18Z', consoleUA = /Xbox|PlayStation|SMART-TV|SmartTV|Tizen|Web0S|WebOS|BRAVIA/i.test(navigator.userAgent), want = /[?&]debug=1/.test(location.search) || consoleUA;
+      var fps = 0, frames = 0, lastT = 0;
       var lines = [], errors = 0, bar = null, label = null, panel = null, open = false;
       function make() {
         if (bar || !document.body) return;
@@ -89,12 +90,13 @@
         label = document.createElement('span'); var icon = document.createElement('span'); icon.id = 'dbgicon'; icon.textContent = '\u25be';
         head.appendChild(label); head.appendChild(icon); head.onclick = toggle; bar.appendChild(head);
         panel = document.createElement('pre');
+        (function tick(t) { frames++; if (!lastT) lastT = t; if (t - lastT >= 1000) { fps = Math.round(frames * 1000 / (t - lastT)); frames = 0; lastT = t; refresh(); } requestAnimationFrame(tick); })(0);
         panel.style.cssText = 'font-size:15px;line-height:1.3;word-break:break-word;margin:0;padding:0 12px;max-height:0;overflow:auto;background:rgba(10,20,40,.94);color:#fff;white-space:pre-wrap;pointer-events:auto;transition:max-height .2s,padding .2s;border-radius:0 0 8px 8px';
         bar.appendChild(panel); document.body.appendChild(bar); refresh();
       }
       function refresh() {
         if (!bar) return;
-        label.textContent = 'build ' + BUILD + ' \u00b7 ' + (errors ? errors + (errors > 1 ? ' errors' : ' error') + ' \u2717' : 'no errors \u2713');
+        label.textContent = 'build ' + BUILD + ' \u00b7 ' + (fps ? fps + ' fps \u00b7 ' : '') + (errors ? errors + (errors > 1 ? ' errors' : ' error') + ' \u2717' : 'no errors \u2713');
         label.style.color = errors ? '#ff8a8a' : '#9fe8b0';
         panel.textContent = 'build ' + BUILD + '\n' + navigator.userAgent + '\n' + innerWidth + 'x' + innerHeight + ' at ' + (devicePixelRatio || 1) + 'x\n\n' + (lines.length ? lines.join('\n') : '(nothing yet)');
         panel.style.maxHeight = open ? '85vh' : '0'; panel.style.padding = open ? '8px 12px' : '0 12px'; document.body.classList.toggle('dbgopen', open);
