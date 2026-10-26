@@ -31,6 +31,6 @@ setTimeout(function () {
   say(d ? ('GPU: ' + gl.getParameter(d.UNMASKED_RENDERER_WEBGL)) : 'GPU name hidden');
   say('float textures: ' + !!gl.getExtension('OES_texture_float') + ', half float: ' + !!gl.getExtension('OES_texture_half_float') + (v === 'webgl2' ? ', color buffer float: ' + !!gl.getExtension('EXT_color_buffer_float') : ''));
   say('Done. Now try the simulator with the links below.');
-  var a = document.createElement('div'); a.innerHTML = '<br><a style="color:#9cf" href="./index.html?safe=1&debug=1">Sim, safe mode</a><br><br><a style="color:#9cf" href="./index.html?safe=1&debug=1&maxpx=600000">Sim, safe mode, tiny picture</a><br><br><a style="color:#9cf" href="./index.html?safe=1&debug=1&maxpx=600000&foam=0">Sim, tiny picture, no foam (less graphics memory)</a><br><br><a style="color:#9cf" href="./index.html?safe=1&debug=1&maxpx=300000&foam=0&quality=Draft&lite=1">Sim, smallest possible</a>'; o.appendChild(a);
+  var a = document.createElement('div'); a.innerHTML = '<br><a style="color:#9cf" href="./index.html?safe=1&debug=1">Sim, safe mode</a><br><br><a style="color:#9cf" href="./index.html?safe=1&debug=1&maxpx=600000">Sim, safe mode, tiny picture</a><br><br><a style="color:#9cf" href="./index.html?safe=1&debug=1&maxpx=600000&foam=0">Sim, tiny picture, no foam (less graphics memory)</a><br><br><a style="color:#9cf" href="./index.html?safe=1&debug=1&maxpx=300000&foam=0&quality=Low&lite=1">Sim, smallest possible</a>'; o.appendChild(a);
 }, 1200);
 </script>
