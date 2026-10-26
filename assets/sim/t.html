@@ -1,0 +1,36 @@
+<!doctype html>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Browser check</title>
+<body style="margin:0;padding:24px;background:#0a2a52;color:#fff;font:26px/1.35 monospace">
+<div id="o">Browser check: plain script, no modules. If you can read this, scripts run.</div>
+<script>
+// Plain ES5 on purpose, so it runs on old console browsers. Each line is written before the next test, so the last line shown is where it stopped.
+var o = document.getElementById('o'), t0 = Date.now();
+function say(m) { o.appendChild(document.createElement('br')); o.appendChild(document.createTextNode('[' + (Date.now() - t0) + ' ms] ' + m)); }
+say(navigator.userAgent);
+say('screen ' + screen.width + 'x' + screen.height + ', window ' + innerWidth + 'x' + innerHeight + ', pixel ratio ' + (window.devicePixelRatio || 1));
+say('memory hint: ' + (navigator.deviceMemory || 'n/a') + ' GB, cores ' + (navigator.hardwareConcurrency || 'n/a'));
+function feat(name, src) { try { new Function(src)(); say('ok   ' + name); } catch (e) { say('FAIL ' + name + ': ' + e.message); } }
+feat('arrow functions', 'return (() => 1)()');
+feat('optional chaining', 'var a = null; return a?.b');
+feat('nullish ??', 'return null ?? 1');
+feat('class fields', 'class A { x = 1 }; return new A().x');
+feat('BigInt', 'return typeof BigInt');
+feat('async/await', 'return (async () => 1)()');
+feat('dynamic import()', 'import("data:text/javascript,0").catch(function(){})');
+say('ES module support: ' + ('noModule' in document.createElement('script')));
+say('Promise ' + (typeof Promise) + ', Map ' + (typeof Map) + ', Float32Array ' + (typeof Float32Array) + ', OffscreenCanvas ' + (typeof OffscreenCanvas) + ', ResizeObserver ' + (typeof ResizeObserver));
+var n = 0, hb = setInterval(function () { n++; if (n <= 3) say('timer alive (' + n + ')'); else clearInterval(hb); }, 1000);
+setTimeout(function () {
+  var c = document.createElement('canvas'), gl = null, v = '';
+  try { gl = c.getContext('webgl2'); v = 'webgl2'; } catch (e) { say('webgl2 threw ' + e.message); }
+  if (!gl) { try { gl = c.getContext('webgl'); v = 'webgl1'; } catch (e) { say('webgl threw ' + e.message); } }
+  if (!gl) { say('FAIL no WebGL at all'); return; }
+  say('ok   ' + v + ', max texture ' + gl.getParameter(gl.MAX_TEXTURE_SIZE) + ', max render buffer ' + gl.getParameter(gl.MAX_RENDERBUFFER_SIZE));
+  var d = gl.getExtension('WEBGL_debug_renderer_info');
+  say(d ? ('GPU: ' + gl.getParameter(d.UNMASKED_RENDERER_WEBGL)) : 'GPU name hidden');
+  say('float textures: ' + !!gl.getExtension('OES_texture_float') + ', half float: ' + !!gl.getExtension('OES_texture_half_float') + (v === 'webgl2' ? ', color buffer float: ' + !!gl.getExtension('EXT_color_buffer_float') : ''));
+  say('Done. Now try the simulator with the links below.');
+  var a = document.createElement('div'); a.innerHTML = '<br><a style="color:#9cf" href="./index.html?safe=1&debug=1">Sim, safe mode</a><br><br><a style="color:#9cf" href="./index.html?safe=1&debug=1&maxpx=600000">Sim, safe mode, tiny picture</a>'; o.appendChild(a);
+}, 1200);
+</script>
