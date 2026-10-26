@@ -75,7 +75,7 @@
   <script>
     // No dev console on a TV or console browser: show the first errors and a few loading steps on the page itself. Always on for errors; ?debug=1 also lists the steps.
     (function () {
-      var box = null, lines = [], debug = /[?&]debug=1/.test(location.search);
+      var box = null, lines = [], debug = /[?&]debug=1/.test(location.search) || /Xbox|PlayStation|SMART-TV|SmartTV|Tizen|Web0S|WebOS|BRAVIA/i.test(navigator.userAgent);
       function show(t) {
         lines.push(t); if (lines.length > 14) lines.shift();
         if (!box) { box = document.createElement('pre'); box.id = 'errbox'; box.style.cssText = 'position:fixed;left:8px;top:8px;right:8px;max-height:70vh;overflow:auto;z-index:99999;margin:0;padding:10px 12px;background:rgba(120,0,0,.92);color:#fff;font:14px/1.35 monospace;white-space:pre-wrap;border-radius:6px'; document.body.appendChild(box); }
