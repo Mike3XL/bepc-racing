@@ -80,7 +80,7 @@
     // Debug bar (like a Quake console): a thin bar at the top with the build id and whether anything went wrong, and a drop-down with the details. There is no dev console on a TV or a game console, so this
     // is how an error gets read. Shown with ?debug=1, on consoles and TVs, and whenever an error happens. The ` key opens and closes it.
     (function () {
-      var BUILD = '443582c 2026-10-27 05:59Z', consoleUA = /Xbox|PlayStation|SMART-TV|SmartTV|Tizen|Web0S|WebOS|BRAVIA/i.test(navigator.userAgent), want = /[?&]debug=1/.test(location.search) || consoleUA;
+      var BUILD = '443582c 2026-10-27 06:00Z', consoleUA = /Xbox|PlayStation|SMART-TV|SmartTV|Tizen|Web0S|WebOS|BRAVIA/i.test(navigator.userAgent), want = /[?&]debug=1/.test(location.search) || consoleUA;
       var fps = 0, frames = 0, lastT = 0;
       var lines = [], errors = 0, bar = null, label = null, panel = null, open = false;
       function make() {
