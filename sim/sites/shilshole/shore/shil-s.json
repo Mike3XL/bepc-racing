@@ -1,0 +1,44 @@
+{
+ "id": "shil-s",
+ "title": "Shilshole S (shore effects)",
+ "site": "shilshole",
+ "minE": -3750.0,
+ "minN": -4170.0,
+ "W": 245,
+ "H": 280,
+ "cell": 30.0,
+ "scale": 100,
+ "assumptions": [
+  "Wind from 215 deg (SW by S); Mike: SSW to SW is needed for waves to reach the marina; a due-S sea gives almost nothing there (docs/sea-states/wave-transfer-prototype.md). At 4 s the marina entrance buoy gets about 0.4 of open-water height from this direction.",
+  "Waves toward 35 deg +-20 deg, periods 2.6, 3.3 and 4.1 s (around about 12 km of fetch across the Sound at 20 kt, a guess).",
+  "Same breakwall and shore reflection as the N preset. No tide, current, regrowth."
+ ],
+ "solver": {
+  "base": {
+   "method": "forward",
+   "to": 35.0,
+   "period": 3.3,
+   "spread": 20.0
+  },
+  "overlays": [
+   {
+    "method": "window",
+    "to": 35.0,
+    "period": 3.3,
+    "spread": 20.0,
+    "window": [
+     -150,
+     1050,
+     -700,
+     500
+    ],
+    "cell": 2.5,
+    "r_wall": 0.6,
+    "r_shore": 0.1,
+    "feather": 120.0
+   }
+  ]
+ },
+ "baked": "2026-10-26",
+ "source": "scripts/bake-shore-map.py"
+}
