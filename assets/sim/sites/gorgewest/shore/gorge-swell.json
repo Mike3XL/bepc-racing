@@ -1,0 +1,39 @@
+{
+ "id": "gorge-swell",
+ "title": "Swell City / Hatchery (shore effects)",
+ "site": "gorgewest",
+ "minE": 14910.0,
+ "minN": 5294.0,
+ "W": 253,
+ "H": 140,
+ "cell": 15.0,
+ "scale": 100,
+ "assumptions": [
+  "Wind from 247 deg (WSW), waves toward 67 deg +-15 deg, periods 2.9, 3.6 and 4.5 s (20 m peak wavelength).",
+  "River bed: NOAA BAG surveys where they exist (13.6% of the pack, the channel); unsurveyed water ramps from 0 at the shore to the nearest surveyed depth. Survey datum (Columbia River Datum) NOT reconciled with the pool surface.",
+  "Both shores reflect with R = 0.5 (basalt and riprap, a guess). The incoming sea is a plane wave of ratio 1 at the western edge (no wind growth along the river, no current). The 0.9 kt opposing current is not in the solver.",
+  "Wind keeps making waves along the river, so the solver's steady loss to the walls is divided out: each cross-section is rescaled to a mean of 1 (running mean over 900 m), keeping only the cross-river pattern (shadows behind headlands, focusing, wall lift). The first 450 m at the western edge fade to 1 (edge effects).",
+  "The map is the smoothed envelope. The crossing pyramids themselves come from the reflected group added to the sea (see site-seas.js)."
+ ],
+ "solver": {
+  "base": {
+   "method": "window",
+   "to": 67.0,
+   "period": 3.6,
+   "spread": 15.0,
+   "window": [
+    14910,
+    18710,
+    5294,
+    7394
+   ],
+   "cell": 2.5,
+   "r_wall": 0.5,
+   "r_shore": 0.5,
+   "bag": "cache"
+  },
+  "overlays": []
+ },
+ "baked": "2026-10-26",
+ "source": "scripts/bake-shore-map.py"
+}

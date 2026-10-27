@@ -1,0 +1,45 @@
+{
+ "id": "shil-n",
+ "title": "Shilshole N (shore effects)",
+ "site": "shilshole",
+ "minE": -3750.0,
+ "minN": -4170.0,
+ "W": 245,
+ "H": 280,
+ "cell": 30.0,
+ "scale": 100,
+ "assumptions": [
+  "Wind from 350 deg (N-NNW), waves toward 170 deg with a +-25 deg spread, single period 3.8 s (the Tp of an 18 km fetch at 22 kt).",
+  "Open water west of the pack is deep and unshadowed; the plane wave enters at the pack edge.",
+  "Marina breakwall reflection R = 0.6 (rubble mound / bulkhead mix, a guess); other shore R = 0.1 (beach).",
+  "Mean water level; no tide, no current, no wind regrowth in the lee, shore absorbs. Local fetch shelter still comes from the fetch map."
+ ],
+ "solver": {
+  "base": {
+   "method": "forward",
+   "to": 170.0,
+   "period": 3.8,
+   "spread": 25.0
+  },
+  "overlays": [
+   {
+    "method": "window",
+    "to": 170.0,
+    "period": 3.8,
+    "spread": 25.0,
+    "window": [
+     -150,
+     1050,
+     -700,
+     500
+    ],
+    "cell": 2.5,
+    "r_wall": 0.6,
+    "r_shore": 0.1,
+    "feather": 120.0
+   }
+  ]
+ },
+ "baked": "2026-10-26",
+ "source": "scripts/bake-shore-map.py"
+}

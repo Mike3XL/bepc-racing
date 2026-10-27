@@ -1,0 +1,29 @@
+{
+ "id": "tarifa-poniente",
+ "title": "Tarifa Poniente (shore effects)",
+ "site": "tarifa",
+ "minE": -7980.0,
+ "minN": -6990.0,
+ "W": 517,
+ "H": 250,
+ "cell": 60.0,
+ "scale": 100,
+ "assumptions": [
+  "Wind from 255 deg (WSW): the Poniente is funnelled along the Strait, whose axis near Tarifa is about 70 deg, so the wind is taken along it. Waves toward 75 deg +-15 deg, periods 3.4, 4.2 and 5.3 s (about 35 km of fetch at 18 kt).",
+  "Sea floor: EMODnet about 100 m (coarse for 4 s waves), Copernicus land, OSM coast; a synthetic shelf fills gaps near the coast.",
+  "The Strait current (up to 4-5 kt against the wind) is NOT in the solver; it steepens and shortens waves, and is in the sea itself.",
+  "Sensitivity: with the scenario's plain west wind (270 deg, waves toward 90) the Spanish coast east of Tarifa lies in a long lee and the 64 deg course falls into it after about 1 km (factor 0.1 by 2.5 km). The result depends strongly on this direction, which is a guess.",
+  "Shore absorbs, no tide, no regrowth."
+ ],
+ "solver": {
+  "base": {
+   "method": "forward",
+   "to": 75.0,
+   "period": 4.2,
+   "spread": 15.0
+  },
+  "overlays": []
+ },
+ "baked": "2026-10-26",
+ "source": "scripts/bake-shore-map.py"
+}
