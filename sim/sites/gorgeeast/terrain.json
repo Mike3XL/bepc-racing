@@ -1,7 +1,7 @@
 {
  "id": "gorgeeast",
  "name": "Columbia River Gorge: Hood River to The Dalles Dam",
- "biome": "forest",
+ "biome": "gorge",
  "attribution": "Terrain: USACE Columbia River DEM 2010 via NOAA (public domain); walls above the survey and the river bed are synthetic. Skyline: contains modified Copernicus DEM data (ESA/EU).",
  "skylines": {
   "default": {
