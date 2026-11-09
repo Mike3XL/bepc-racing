@@ -1,0 +1,4970 @@
+{
+ "fetched": "2026-11-09T04:43:22.444Z",
+ "source": "WA Department of Transport, Navigation Aids DoT (DOT-004), data.wa.gov.au, CC BY 4.0",
+ "aids": [
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal West Lit",
+   "name": "Cow Rocks - West Cardinal Beacon",
+   "lat": -31.82042,
+   "lon": 115.72615,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Whitfords-Mullaloo Water Ski Takeoff Area - Special Mark 4",
+   "lat": -31.80317,
+   "lon": 115.72661,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal South Lit",
+   "name": "Wreck Rock - South Cardinal Beacon",
+   "lat": -31.80469,
+   "lon": 115.71814,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Spar Buoy P",
+   "lat": -31.79608,
+   "lon": 115.72,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Pinnaroo Point  8 Knot Speed Limit Area - Special Mark 1",
+   "lat": -31.82,
+   "lon": 115.73436,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Pinnaroo Point  8 Knot Speed Limit Area - Special Mark 2",
+   "lat": -31.81326,
+   "lon": 115.72958,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Whitfords-Mullaloo Water Ski Area - Special Mark 5",
+   "lat": -31.80322,
+   "lon": 115.72437,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Whitfords-Mullaloo Water Ski Takeoff Area - Special Mark 6",
+   "lat": -31.80145,
+   "lon": 115.72781,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Pinnaroo Point  8 Knot Speed Limit Area - Special Mark 3",
+   "lat": -31.80647,
+   "lon": 115.72594,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Cardinal South Lit",
+   "name": "Cow Rocks - South Cardinal Spar Bouy",
+   "lat": -31.82021,
+   "lon": 115.73016,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Lighthouse",
+   "name": "Hillarys North Breakwater Lighthouse",
+   "lat": -31.82355,
+   "lon": 115.73367,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 1.1
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM01 Kingston Reef Sanctuary Zone",
+   "lat": -31.98334,
+   "lon": 115.55557,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM03 Parker Point Sanctuary Zone",
+   "lat": -32.02462,
+   "lon": 115.5326,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM04 Parker Point Sanctuary Zone",
+   "lat": -32.02783,
+   "lon": 115.53263,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM06 Parker Point Sanctuary Zone",
+   "lat": -32.03242,
+   "lon": 115.52493,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM09 Parker Point Sanctuary Zone",
+   "lat": -32.02538,
+   "lon": 115.51734,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal West Lit",
+   "name": "Thomson Bay West Cardinal Mark 10",
+   "lat": -31.99295,
+   "lon": 115.54555,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Unlit",
+   "name": "Catherine Bay Front Lead",
+   "lat": -31.99136,
+   "lon": 115.50344,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot",
+   "elev": 4.5
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM22 West End Dimersal Zone",
+   "lat": -32.03182,
+   "lon": 115.43999,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM25 West End Dimersal Zone",
+   "lat": -32.03351,
+   "lon": 115.45659,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM26 West End Dimersal Zone",
+   "lat": -32.02953,
+   "lon": 115.45683,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM28 Armstrong Point Sanctuary Zone",
+   "lat": -31.98607,
+   "lon": 115.49916,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM31 Armstrong Point Sanctuary Zone",
+   "lat": -31.9811,
+   "lon": 115.51139,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "SZM32 Armstrong Point Sanctuary Zone",
+   "lat": -31.98445,
+   "lon": 115.51292,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "No Boating Zone Eagle Bay",
+   "lat": -32.01911,
+   "lon": 115.45242,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "No Boating Zone Catheral Rocks 1",
+   "lat": -32.01928,
+   "lon": 115.45045,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "5Knot Speed Marker 1 Thomson Bay",
+   "lat": -31.99798,
+   "lon": 115.55441,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Water Unlit",
+   "name": "Rocky Bay Front Lead",
+   "lat": -32.01305,
+   "lon": 115.4724,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Unlit",
+   "name": "Natural Jetty Starboard Marker",
+   "lat": -32.00153,
+   "lon": 115.56367,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Port",
+   "name": "Rottnest Island - Catherine Bay Port No. 8",
+   "lat": -31.99284,
+   "lon": 115.50055,
+   "colour": [
+    3
+   ],
+   "shape": "spar",
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Starboard",
+   "name": "Rottnest Island - Catherine Bay Starboard No. 7",
+   "lat": -31.99258,
+   "lon": 115.50026,
+   "colour": [
+    4
+   ],
+   "shape": "spar",
+   "category": 2,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Geordie Bay Starboard Marker No. 1",
+   "lat": -31.9885,
+   "lon": 115.51884,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Geordie Bay Starboard Marker No. 3",
+   "lat": -31.98931,
+   "lon": 115.5195,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Longreach Bay Starboard Marker No. 1",
+   "lat": -31.98702,
+   "lon": 115.53176,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Monday Rock Starboard Marker",
+   "lat": -31.98583,
+   "lon": 115.53664,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Thomson Bay Starboard Mark",
+   "lat": -31.99466,
+   "lon": 115.54663,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Starboard Lit",
+   "name": "Thomson Bay Lit Starboard Buoy",
+   "lat": -31.99459,
+   "lon": 115.54794,
+   "colour": [
+    4
+   ],
+   "shape": "spar",
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Rottnest Island - Pocillopora Reef Port Marker",
+   "lat": -32.0214,
+   "lon": 115.53218,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Unlit",
+   "name": "Green Island (Nancy Cove) Rear Lead",
+   "lat": -32.01326,
+   "lon": 115.50034,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot",
+   "elev": 15.3
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Lit",
+   "name": "Longreach Bay Front Lead",
+   "lat": -31.98824,
+   "lon": 115.52708,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 6.7
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Unlit",
+   "name": "Natural Jetty Port Marker",
+   "lat": -32.00212,
+   "lon": 115.5616,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Port",
+   "name": "Catherine Bay Port Marker No. 6",
+   "lat": -31.99149,
+   "lon": 115.50199,
+   "colour": [
+    3
+   ],
+   "shape": "spar",
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Port Lit",
+   "name": "Point Clune Port Marker",
+   "lat": -31.98532,
+   "lon": 115.52278,
+   "colour": [
+    3
+   ],
+   "shape": "spar",
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Unlit",
+   "name": "Rocky Bay Starboard Marker No. 8",
+   "lat": -32.00765,
+   "lon": 115.47808,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Unlit",
+   "name": "Rocky Bay Port Marker No. 12",
+   "lat": -32.00963,
+   "lon": 115.46877,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Unlit",
+   "name": "Rocky Bay Port Marker No.13",
+   "lat": -32.00931,
+   "lon": 115.46751,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Unlit",
+   "name": "Rocky Bay Port Marker No. 14",
+   "lat": -32.00971,
+   "lon": 115.4669,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Geordie Bay Port Marker No. 6",
+   "lat": -31.9894,
+   "lon": 115.52139,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Geordie Bay Port Marker No. 2",
+   "lat": -31.98807,
+   "lon": 115.51919,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Monday Rock Port Marker",
+   "lat": -31.98566,
+   "lon": 115.53787,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Thomson Bay Port Mark 1",
+   "lat": -31.99592,
+   "lon": 115.55083,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Thomson Bay Port Mark 3",
+   "lat": -31.99572,
+   "lon": 115.54747,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Thomson Bay Port Mark 5",
+   "lat": -31.99603,
+   "lon": 115.54729,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Isolated Danger Unlit",
+   "name": "Thomson Bay Isolated Danger Mark 9",
+   "lat": -31.99427,
+   "lon": 115.54646,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Unlit",
+   "name": "Rocky Bay Starboard Marker No. 11",
+   "lat": -32.01145,
+   "lon": 115.47053,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Unlit",
+   "name": "Rocky Bay Port Marker No. 15",
+   "lat": -32.0107,
+   "lon": 115.46679,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Unlit",
+   "name": "Rocky Bay Port Marker No. 3",
+   "lat": -32.00911,
+   "lon": 115.4749,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Unlit",
+   "name": "Rocky Bay Port Marker No. 6",
+   "lat": -32.00845,
+   "lon": 115.47563,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal North Lit",
+   "name": "Duck Rock North Cardinal Beacon",
+   "lat": -31.98748,
+   "lon": 115.54429,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal North Lit",
+   "name": "Monday Rock North Cardinal Marker",
+   "lat": -31.98574,
+   "lon": 115.54016,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Unlit",
+   "name": "Porpoise Bay Rear Lead",
+   "lat": -32.01197,
+   "lon": 115.53516,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot",
+   "elev": 14
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Lit",
+   "name": "Thomson Bay Main Jetty Rear Lead",
+   "lat": -31.99571,
+   "lon": 115.54118,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 10.1
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Unlit",
+   "name": "Porpoise Bay Front Lead",
+   "lat": -32.0131,
+   "lon": 115.53514,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot",
+   "elev": 10.9
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Starboard Lit",
+   "name": "Rocky Bay Starboard Buoy No. 1",
+   "lat": -32.0026,
+   "lon": 115.47689,
+   "colour": [
+    4
+   ],
+   "shape": "spar",
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Lit",
+   "name": "Thomson Bay Main Jetty Front Lead",
+   "lat": -31.99559,
+   "lon": 115.54389,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 0.8
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Longreach Bay Starboard Marker No. 3",
+   "lat": -31.98745,
+   "lon": 115.52999,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Cardinal South Lit",
+   "name": "Thomson Bay Lit South Cardinal Buoy",
+   "lat": -31.99633,
+   "lon": 115.55067,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Isolated Danger Lit",
+   "name": "Thompson Bay - Bathurst Point Isolated Danger Buoy",
+   "lat": -31.99066,
+   "lon": 115.54513,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Cardinal North Lit",
+   "name": "Point Clune North Cardinal Buoy",
+   "lat": -31.98306,
+   "lon": 115.52067,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "YAWA - Yacht Buoy Campbell",
+   "lat": -31.98682,
+   "lon": 115.73833,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "Claremont Jetty Light",
+   "lat": -31.98991,
+   "lon": 115.78125,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar",
+   "name": "Deepwater Channel Starboard Mark - DWC 1",
+   "lat": -31.97895,
+   "lon": 115.69062,
+   "colour": [
+    6
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Royal Freshwater Bay Yacht Club - 14 Mosman A Port Buoy",
+   "lat": -32.00808,
+   "lon": 115.77402,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Claremont Yacht Club - 74 Bishop Port Buoy",
+   "lat": -31.99557,
+   "lon": 115.78506,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 8 - Floreat",
+   "lat": -31.92875,
+   "lon": 115.74752,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Swanbourne Army Buoy",
+   "lat": -31.98167,
+   "lon": 115.74333,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Swanbourne Army Buoy",
+   "lat": -31.95556,
+   "lon": 115.7225,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Lower Reaches - Mark 57 Scotch - Freshwater",
+   "lat": -31.99447,
+   "lon": 115.77656,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Lower Reaches - Marker 58 Burnside - Freshwater",
+   "lat": -31.99174,
+   "lon": 115.77679,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Lower Reaches - Marker Karrakatta - Freshwater",
+   "lat": -31.99234,
+   "lon": 115.78055,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Lower Reaches - Marker 56 Claremont - Freshwater",
+   "lat": -31.99356,
+   "lon": 115.78216,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Lower Reaches - Marker Cornish - Freshwater",
+   "lat": -31.9954,
+   "lon": 115.78328,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Lower Reaches - Marker 54 Black - Freshwater",
+   "lat": -31.99697,
+   "lon": 115.78319,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Cardinal West",
+   "name": "Lower Reaches - Bicton West Cardinal 2",
+   "lat": -32.01054,
+   "lon": 115.79047,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Major Light",
+   "name": "Main PEL lead into FPA - Buckland PEL",
+   "lat": -32.01704,
+   "lon": 115.76105,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 54.9
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Cardinal North",
+   "name": "Lower Reaches - Bicton North Cardinal",
+   "lat": -32.01006,
+   "lon": 115.79143,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Swanbourne Army Buoy",
+   "lat": -31.9425,
+   "lon": 115.73542,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Starboard Lit",
+   "name": "Lower Reaches - Point Walter - Court Starboard Buoy",
+   "lat": -32.0088,
+   "lon": 115.79213,
+   "colour": [
+    4
+   ],
+   "shape": "spar",
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Starboard Lit",
+   "name": "Lower Reaches - Point Walter - Pilbarra Starboard Buoy",
+   "lat": -32.00601,
+   "lon": 115.78646,
+   "colour": [
+    4
+   ],
+   "shape": "spar",
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Claremont Yacht Club - 21A Outer Start Buoy",
+   "lat": -31.99088,
+   "lon": 115.77938,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Royal Freshwater Bay Yacht Club - 2 Outer Start Buoy",
+   "lat": -31.9994,
+   "lon": 115.77667,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Royal Freshwater Bay Yacht Club - 17A Parker Starboard Buoy (DAY)",
+   "lat": -32.00002,
+   "lon": 115.7803,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Chidley Point Port Beacon",
+   "lat": -32.01653,
+   "lon": 115.78175,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Point Resolution Port Beacon",
+   "lat": -32.00545,
+   "lon": 115.7907,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Starboard Lit",
+   "name": "Swan River - Point Walter - Tasker Starboard Buoy",
+   "lat": -32.01245,
+   "lon": 115.78483,
+   "colour": [
+    4
+   ],
+   "shape": "spar",
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Starboard Lit",
+   "name": "Swan River - Point Walter - Hobbs Starboard Buoy",
+   "lat": -32.00883,
+   "lon": 115.77808,
+   "colour": [
+    4
+   ],
+   "shape": "spar",
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal South Lit",
+   "name": "Lower Reaches - Karrakatta Bank South Cardinal Marker 55 - Middle",
+   "lat": -31.99789,
+   "lon": 115.77927,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Major Light",
+   "name": "Inner Harbour Rear Lead - Mosman Park Top of Water Tower",
+   "lat": -32.01539,
+   "lon": 115.77576,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 55.1
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "Keanes Point Jetty Beacon",
+   "lat": -32.00103,
+   "lon": 115.77332,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "Mosman Park Jetty Beacon",
+   "lat": -32.00767,
+   "lon": 115.77181,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "Point Walter Jetty Beacon",
+   "lat": -32.01092,
+   "lon": 115.78752,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Point Walter Starboard Beacon No. 1 - 53",
+   "lat": -32.00591,
+   "lon": 115.778,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Point Walter Starboard Beacon No. 2 - 52",
+   "lat": -32.00311,
+   "lon": 115.78133,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Lower Reaches - Pt Walter East Boat Ramp Port 3",
+   "lat": -32.01168,
+   "lon": 115.793,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Cardinal West",
+   "name": "Lower Reaches - Bicton West Cardinal 1",
+   "lat": -32.01155,
+   "lon": 115.79048,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Lower Reaches - Pile 18 - Pt Walter East Boat Ramp Starboard 1",
+   "lat": -32.01208,
+   "lon": 115.79233,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Lower Reaches - Pile 20 - Pt Walter East Boat Ramp Port 1",
+   "lat": -32.01292,
+   "lon": 115.79246,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Lower Reaches - Pile 21 - Pt Walter East Boat Ramp Starboard 2",
+   "lat": -32.01071,
+   "lon": 115.79335,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Lower Reaches - Pile 22 - Pt Walter East Boat Ramp Port 4",
+   "lat": -32.01081,
+   "lon": 115.79355,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "East Fremantle Yacht Club - 12 Pt Walter Port Buoy",
+   "lat": -32.01096,
+   "lon": 115.78054,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Starboard Lit",
+   "name": "Deepwater Channel Starboard Mark with AIS - DWC 3",
+   "lat": -32.001,
+   "lon": 115.6917,
+   "colour": [
+    4
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Royal Freshwater Bay Yacht Club - 13 Mosman B Port Buoy",
+   "lat": -32.00835,
+   "lon": 115.77561,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Royal Freshwater Bay Yacht Club - 16 Roe Port Buoy",
+   "lat": -31.99714,
+   "lon": 115.77441,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Claremont Yacht Club - 23a Clarement Port Buoy",
+   "lat": -31.99235,
+   "lon": 115.78494,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Claremont Yacht Club - 26A North Point Walter Port Buoy",
+   "lat": -32.00489,
+   "lon": 115.78286,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Royal Freshwater Bay Yacht Club - 28 Miller Port Buoy",
+   "lat": -32.01096,
+   "lon": 115.79687,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Royal Freshwater Bay Yacht Club - 17 Parker Port Buoy",
+   "lat": -31.99884,
+   "lon": 115.78024,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Claremont Yacht Club - 23 College Starboard Buoy",
+   "lat": -31.99361,
+   "lon": 115.785,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Royal Freshwater Bay Yacht Club - 33B Bricklanding Starboard Buoy",
+   "lat": -32.01138,
+   "lon": 115.79838,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Royal Freshwater Bay Yacht Club - 33A Bricklanding Starboard Buoy",
+   "lat": -32.01256,
+   "lon": 115.80006,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "Royal Freshwater Bay Yacht Club - 1 Outer Start Buoy",
+   "lat": -32.00235,
+   "lon": 115.7771,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Starboard Lit",
+   "name": "Deepwater Channel Starboard Mark - DWC 2",
+   "lat": -31.99202,
+   "lon": 115.6899,
+   "colour": [
+    4
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Special Mark Lit",
+   "name": "Deepwater Channel Special Mark with AIS - DWC 4",
+   "lat": -31.99959,
+   "lon": 115.68027,
+   "colour": [
+    6
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "East Fremantle Yacht Club - 11 Blackwall Port Buoy",
+   "lat": -32.01605,
+   "lon": 115.78424,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Lower Reaches - Pile 19 - Pt Walter East Boat Ramp Port 2",
+   "lat": -32.01255,
+   "lon": 115.79245,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Swanbourne Army Buoy",
+   "lat": -31.98167,
+   "lon": 115.7225,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal South Lit",
+   "name": "Thomson Bay South Cardinal Mark 7",
+   "lat": -31.99651,
+   "lon": 115.54726,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM10 Parker Point Sanctuary Zone",
+   "lat": -32.02093,
+   "lon": 115.51702,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM12 Green Island Sanctuary Zone",
+   "lat": -32.02418,
+   "lon": 115.50212,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM15 Green Island Sanctuary Zone",
+   "lat": -32.02422,
+   "lon": 115.4892,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM17 West End Dimersal Zone",
+   "lat": -32.01643,
+   "lon": 115.45162,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM19 West End Dimersal Zone",
+   "lat": -32.01658,
+   "lon": 115.44009,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "No Boating Zone Catheral Rocks 2",
+   "lat": -32.01961,
+   "lon": 115.45059,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "5Knot Speed Marker 2 Thomson Bay",
+   "lat": -31.9999,
+   "lon": 115.55765,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Unlit",
+   "name": "Rocky Bay Port Marker No. 4",
+   "lat": -32.00922,
+   "lon": 115.47531,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Unlit",
+   "name": "Rocky Bay Port Marker No. 10",
+   "lat": -32.01158,
+   "lon": 115.47035,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Unlit",
+   "name": "Rocky Bay Starboard Marker No. 16",
+   "lat": -32.01141,
+   "lon": 115.46683,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Unlit",
+   "name": "Rocky Bay Starboard Marker No. 17",
+   "lat": -32.01258,
+   "lon": 115.46739,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Starboard",
+   "name": "Catherine Bay Starboard Marker No. 1",
+   "lat": -31.98996,
+   "lon": 115.50139,
+   "colour": [
+    4
+   ],
+   "shape": "spar",
+   "category": 2,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Starboard",
+   "name": "Catherine Bay Starboard Marker No. 3",
+   "lat": -31.99065,
+   "lon": 115.5018,
+   "colour": [
+    4
+   ],
+   "shape": "spar",
+   "category": 2,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Longreach Bay Port Marker No. 2",
+   "lat": -31.98749,
+   "lon": 115.53061,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 14 - Bickley Point Rottnest",
+   "lat": -32.02417,
+   "lon": 115.57145,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 16 - Strickland Bay Rottnest",
+   "lat": -32.02313,
+   "lon": 115.47653,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Transit Reef Starboard Beacon",
+   "lat": -31.99399,
+   "lon": 115.55827,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Major Light",
+   "name": "Rottnest Island - West End Landfall Beacon",
+   "lat": -32.02356,
+   "lon": 115.45076,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 16.3
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Lit",
+   "name": "Parakeet Bay Front Lead",
+   "lat": -31.98944,
+   "lon": 115.51388,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 5.4
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Lit",
+   "name": "Parker Point Front Lead",
+   "lat": -32.02037,
+   "lon": 115.53028,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 12.2
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Port",
+   "name": "Catherine Bay Port Marker No. 2",
+   "lat": -31.98979,
+   "lon": 115.50134,
+   "colour": [
+    3
+   ],
+   "shape": "spar",
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Port",
+   "name": "Catherine Bay Port Marker No. 4",
+   "lat": -31.99089,
+   "lon": 115.50212,
+   "colour": [
+    3
+   ],
+   "shape": "spar",
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Rocky Bay Port Mark No. 2",
+   "lat": -32.00858,
+   "lon": 115.47475,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Unlit",
+   "name": "Rocky Bay Starboard Marker No. 5",
+   "lat": -32.00862,
+   "lon": 115.47564,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Geordie Bay Port Marker No. 4",
+   "lat": -31.98903,
+   "lon": 115.51966,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Longreach Bay Port Marker No. 4",
+   "lat": -31.98804,
+   "lon": 115.52878,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Longreach Bay Port Marker No. 6",
+   "lat": -31.98885,
+   "lon": 115.52816,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Unlit",
+   "name": "Catherine Bay Rear Lead",
+   "lat": -31.99219,
+   "lon": 115.50459,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot",
+   "elev": 18.7
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Unlit",
+   "name": "Rocky Bay Port Marker No. 7",
+   "lat": -32.00739,
+   "lon": 115.47786,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal South Lit",
+   "name": "Rocky Bay South Cardinal No. 9",
+   "lat": -32.01213,
+   "lon": 115.47225,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Unlit",
+   "name": "Rocky Bay Rear Lead",
+   "lat": -32.01571,
+   "lon": 115.47109,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot",
+   "elev": 11.4
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Starboard",
+   "name": "Catherine Bay Starboard Marker No. 5",
+   "lat": -31.99111,
+   "lon": 115.50203,
+   "colour": [
+    4
+   ],
+   "shape": "spar",
+   "category": 2,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "SZM02 Kingston Reef Sanctuary Zone",
+   "lat": -31.9887,
+   "lon": 115.56171,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Lit",
+   "name": "Longreach Bay Rear Lead",
+   "lat": -31.98855,
+   "lon": 115.52583,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 10
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Lit",
+   "name": "Parakeet Bay Rear Lead",
+   "lat": -31.98958,
+   "lon": 115.51358,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 9.2
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Unlit",
+   "name": "Green Island (Nancy Cove) Front Lead",
+   "lat": -32.01479,
+   "lon": 115.50043,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot",
+   "elev": 5.3
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Cardinal North Lit",
+   "name": "Kingston Reef North Cardinal Buoy",
+   "lat": -31.98083,
+   "lon": 115.5663,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Lit",
+   "name": "Parker Point Rear Lead",
+   "lat": -32.01907,
+   "lon": 115.52769,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 18.7
+  },
+  {
+   "kind": "light",
+   "type": "Lighthouse",
+   "name": "Bathurst Point Lighthouse",
+   "lat": -31.98934,
+   "lon": 115.54064,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 3.3
+  },
+  {
+   "kind": "light",
+   "type": "Lighthouse",
+   "name": "Rottnest Lighthouse",
+   "lat": -32.00727,
+   "lon": 115.50413,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 39.5
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Thomson Bay Port Mark 2",
+   "lat": -31.99565,
+   "lon": 115.5496,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Geordie Bay Starboard Marker No. 5",
+   "lat": -31.98962,
+   "lon": 115.5212,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Lit",
+   "name": "Inner Harbour Entrance Channel Starboard Mark & AIS - Entrance 1",
+   "lat": -32.0574,
+   "lon": 115.71739,
+   "colour": [
+    6
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Lit",
+   "name": "Inner harbour entrance channel Port mark - Entrance A",
+   "lat": -32.05528,
+   "lon": 115.71708,
+   "colour": [
+    6
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Success channel Port channel mark - S&P B",
+   "lat": -32.07091,
+   "lon": 115.69042,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Lower Reaches - Lit Pile 59 - Preston Point",
+   "lat": -32.02863,
+   "lon": 115.76014,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "YAWA - Yacht Buoy B",
+   "lat": -32.05867,
+   "lon": 115.7345,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "YAWA - Yacht Buoy Burnell",
+   "lat": -32.02333,
+   "lon": 115.73722,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Land Lit",
+   "name": "Inner Harbour Entrance Front Lead",
+   "lat": -32.05378,
+   "lon": 115.74085,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 2.7
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Land Lit",
+   "name": "Inner Harbour Rear Entrance Lead",
+   "lat": -32.05357,
+   "lon": 115.74282,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 4.9
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "Dolphin - Slipway Approach Special Mark 4",
+   "lat": -32.05495,
+   "lon": 115.73729,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Port Lit",
+   "name": "Inner harbour entrance channel Port mark - Entrance C",
+   "lat": -32.05382,
+   "lon": 115.73282,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Lit",
+   "name": "Wongara Shoal Limit Front Lead - NQ WONGARA 1",
+   "lat": -32.04036,
+   "lon": 115.75367,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Lit",
+   "name": "Wongara Shoal West Front Lead - VQ WONGARA 1",
+   "lat": -32.04241,
+   "lon": 115.75263,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 1.7
+  },
+  {
+   "kind": "light",
+   "type": "Major Light",
+   "name": "End of North Mole - North Mole Lighthouse",
+   "lat": -32.05388,
+   "lon": 115.72452,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 3.2
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "Dolphin - Slipway Approach Special Mark 5",
+   "lat": -32.05522,
+   "lon": 115.73725,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "East Fremantle Yacht Club - 10A Outer Start Port Buoy",
+   "lat": -32.02735,
+   "lon": 115.77548,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "East Fremantle Yacht Club - 10 Castle Hill Port Buoy",
+   "lat": -32.0249,
+   "lon": 115.77758,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Roe Point Port Beacon 1",
+   "lat": -32.02634,
+   "lon": 115.77259,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Cardinal West Lit",
+   "name": "Wongara Shoal Underwater Rock Mound West Cardinal 2",
+   "lat": -32.0406,
+   "lon": 115.75308,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Cardinal West Lit",
+   "name": "Wongara Shoal Underwater Rock Mound West Cardinal 1",
+   "lat": -32.04032,
+   "lon": 115.75313,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Special Mark Lit",
+   "name": "Inner Harbour entrance - Submerged Fallen Dolphin",
+   "lat": -32.05374,
+   "lon": 115.73301,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Lower Reaches - Lit Pile 3 - Preston Point",
+   "lat": -32.02876,
+   "lon": 115.75946,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Lit",
+   "name": "Victoria Quay J Berth Front Lead",
+   "lat": -32.04363,
+   "lon": 115.75151,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Lit",
+   "name": "Victoria Quay J Berth Rear Lead",
+   "lat": -32.04406,
+   "lon": 115.75213,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 3.3
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "YAWA - Yacht Buoy N",
+   "lat": -32.06667,
+   "lon": 115.71,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Starboard Lit",
+   "name": "Rous Harbour Entrance Lights - Rous 1",
+   "lat": -32.05372,
+   "lon": 115.72852,
+   "colour": [
+    4
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Lit",
+   "name": "Inner Harbour Front Lead 2 - Berth 12",
+   "lat": -32.03822,
+   "lon": 115.75262,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 5.8
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Rocky Bay - Starboard Beacon No. 7",
+   "lat": -32.02317,
+   "lon": 115.76462,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Oyster Beds Starboard Beacon",
+   "lat": -32.03755,
+   "lon": 115.76109,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Port Lit",
+   "name": "Rous Harbour Entrance Lights - Rous A",
+   "lat": -32.0538,
+   "lon": 115.72775,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "Victoria Quay SCP JETTY",
+   "lat": -32.04202,
+   "lon": 115.75282,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Rocky Bay - Starboard Beacon No. 1",
+   "lat": -32.02796,
+   "lon": 115.75651,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Rocky Bay - Starboard Beacon No. 3",
+   "lat": -32.02636,
+   "lon": 115.75599,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Rocky Bay - Starboard Beacon No. 4",
+   "lat": -32.02453,
+   "lon": 115.75962,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Rocky Bay - Starboard Beacon No. 5",
+   "lat": -32.02382,
+   "lon": 115.76193,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Lower Reaches - Lit Pile 5 - Preston Point",
+   "lat": -32.02584,
+   "lon": 115.76051,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Lit",
+   "name": "Inner Habour VQ 100 feet Lead - South Mole (Rear Canberra)",
+   "lat": -32.05603,
+   "lon": 115.73665,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 1.2
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Lit",
+   "name": "Wongara Shoal West Rear Lead - VQ WONGARA 2",
+   "lat": -32.04277,
+   "lon": 115.75324,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 2.8
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal South Lit",
+   "name": "Lower Reaches - Rocky Bay South Cardinal",
+   "lat": -32.02889,
+   "lon": 115.75898,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Cardinal South Lit",
+   "name": "Wongara Shoal Underwater Rock Mound South Cardinal",
+   "lat": -32.04096,
+   "lon": 115.75319,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Special Mark Lit",
+   "name": "Fremantle Ports SFC1",
+   "lat": -32.0589,
+   "lon": 115.71737,
+   "colour": [
+    6
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spherical Lit",
+   "name": "Rous Head - CETO Wave Rider Buoy",
+   "lat": -32.04607,
+   "lon": 115.72858,
+   "colour": [
+    6
+   ],
+   "shape": "spherical",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "Dolphin - Slipway Approach Special Mark 1",
+   "lat": -32.05514,
+   "lon": 115.73618,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "Dolphin - Slipway Approach Special Mark 2",
+   "lat": -32.05489,
+   "lon": 115.73678,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "Dolphin - Slipway Approach Special Mark 3",
+   "lat": -32.05519,
+   "lon": 115.73674,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Cardinal West Lit",
+   "name": "Rous Head - CETO Exclusion Zone",
+   "lat": -32.04622,
+   "lon": 115.72775,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Cardinal South Lit",
+   "name": "Rous Head - CETO Exclusion Zone",
+   "lat": -32.04714,
+   "lon": 115.7288,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Isolated Danger Lit",
+   "name": "Gage Roads Isolated Danger Buoy - Shallow lump",
+   "lat": -32.05406,
+   "lon": 115.67887,
+   "colour": [
+    6
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Mark Lit",
+   "name": "Fremantle Harbours Traffic Separation Lane West",
+   "lat": -32.06516,
+   "lon": 115.74011,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Inner harbour entrance channel Starboard mark - Entrance 3",
+   "lat": -32.05545,
+   "lon": 115.73311,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Roe Point Port Beacon 2",
+   "lat": -32.02562,
+   "lon": 115.77418,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spherical",
+   "name": "South Beach Closed Waters Buoy 2",
+   "lat": -32.07325,
+   "lon": 115.7494,
+   "colour": [
+    6
+   ],
+   "shape": "spherical",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spherical",
+   "name": "South Beach Closed Waters Buoy 3",
+   "lat": -32.07478,
+   "lon": 115.7495,
+   "colour": [
+    6
+   ],
+   "shape": "spherical",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "YAWA - Yacht Buoy E",
+   "lat": -32.0725,
+   "lon": 115.72583,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Hall Bank - Port Beacon",
+   "lat": -32.03065,
+   "lon": 115.71227,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 4 - Trigg 2",
+   "lat": -31.87541,
+   "lon": 115.72427,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Special Mark Lit",
+   "name": "Fremantle Harbours Traffic Separation Lane East",
+   "lat": -32.06414,
+   "lon": 115.74111,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal East Lit",
+   "name": "McAllister - East Cardinal Beacon",
+   "lat": -31.84729,
+   "lon": 115.71913,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal East Lit",
+   "name": "Rocky Bay - East Cardinal",
+   "lat": -32.02413,
+   "lon": 115.76112,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 5 - Scarborough 1",
+   "lat": -31.88565,
+   "lon": 115.72967,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal South Lit",
+   "name": "Challenger Harbour South Cardinal Beacon",
+   "lat": -32.06333,
+   "lon": 115.74046,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Cardinal South Lit",
+   "name": "Centaur Reef South Cardinal Beacon",
+   "lat": -31.87879,
+   "lon": 115.71659,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Isolated Danger Lit",
+   "name": "Marks wreck near harbour entrance channel - Beagle Rocks",
+   "lat": -32.06037,
+   "lon": 115.72674,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Success channel Starboard channel mark - S&P 2",
+   "lat": -32.07109,
+   "lon": 115.68867,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Port Lit",
+   "name": "Success channel Port channel mark - S&P A",
+   "lat": -32.06105,
+   "lon": 115.68845,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 9 - City Beach",
+   "lat": -31.93879,
+   "lon": 115.74737,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 11 - North Cottesloe",
+   "lat": -31.98765,
+   "lon": 115.74408,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 7 - Scarborough 3",
+   "lat": -31.89806,
+   "lon": 115.74832,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Swanbourne Army Buoy",
+   "lat": -31.98167,
+   "lon": 115.73292,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Swanbourne Army Buoy",
+   "lat": -31.96861,
+   "lon": 115.7225,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Swanbourne Army Buoy",
+   "lat": -31.9425,
+   "lon": 115.7225,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Swanbourne Army Buoy",
+   "lat": -31.9425,
+   "lon": 115.74833,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 6 - Scarborough 2",
+   "lat": -31.89295,
+   "lon": 115.73751,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 10 - Swanbourne",
+   "lat": -31.97784,
+   "lon": 115.74646,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 13 - Leighton",
+   "lat": -32.02628,
+   "lon": 115.74365,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Lit",
+   "name": "North Quay East Berth 12 Rear Lead",
+   "lat": -32.03946,
+   "lon": 115.75348,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 3.1
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Lit",
+   "name": "North Quay West Berth 2 Rear Lead",
+   "lat": -32.05033,
+   "lon": 115.73953,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 3.6
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Boyinaboat Starboard Beacon",
+   "lat": -31.82543,
+   "lon": 115.7301,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Lit",
+   "name": "North Quay East Berth 12 Front Lead",
+   "lat": -32.0398,
+   "lon": 115.75314,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 2.7
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Lit",
+   "name": "North Quay West Berth 2 Front Lead",
+   "lat": -32.05006,
+   "lon": 115.73979,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 4.1
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Conical(CAN) Lit",
+   "name": "Carnegie Marmion Waverider Buoy",
+   "lat": -31.85112,
+   "lon": 115.64645,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Lower Reaches - Direction Point Pier 21 Port Beacon",
+   "lat": -32.03173,
+   "lon": 115.76139,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 3 - Trigg 1",
+   "lat": -31.86853,
+   "lon": 115.71356,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "YAWA - Stanton Yacht Buoy",
+   "lat": -32.05519,
+   "lon": 115.65797,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "YAWA - Yacht Buoy L",
+   "lat": -32.06333,
+   "lon": 115.725,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Rear Land Lit",
+   "name": "Wongara Shoal Limit Rear Lead - NQ WONGARA 2",
+   "lat": -32.04031,
+   "lon": 115.75377,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 7.9
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Lit",
+   "name": "Inner Harbour Front Lead 1 - Berth 12",
+   "lat": -32.03854,
+   "lon": 115.75276,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 6.4
+  },
+  {
+   "kind": "light",
+   "type": "Major Light",
+   "name": "Port Groyne",
+   "lat": -31.82367,
+   "lon": 115.73358,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 1.1
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Water Lit",
+   "name": "South Passage Front Lead",
+   "lat": -32.02137,
+   "lon": 115.61837,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Cardinal East Lit",
+   "name": "Wongara Shoal Underwater Rock Mound East Cardinal",
+   "lat": -32.0407,
+   "lon": 115.75344,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Water Lit",
+   "name": "South Passage Rear Lead",
+   "lat": -32.01936,
+   "lon": 115.6279,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Wave Recorder Buoy Lit",
+   "name": "Deepwater Channel (Cottesloe) Waverider Buoy",
+   "lat": -31.98278,
+   "lon": 115.69,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Lower Reaches - Lit Pile 4 - Preston Point",
+   "lat": -32.02582,
+   "lon": 115.76007,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Major Light",
+   "name": "End of South Mole - South Mole Lighthouse",
+   "lat": -32.05587,
+   "lon": 115.73252,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 3.2
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Lead Front Land Lit",
+   "name": "Inner Habour VQ 100 feet Lead - VQ Forrest Landing (Front Canberra)",
+   "lat": -32.05499,
+   "lon": 115.73769,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "YAWA - Yacht Buoy W",
+   "lat": -32.06667,
+   "lon": 115.69333,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "North Quay Port Marker - NQ Berth 1",
+   "lat": -32.05274,
+   "lon": 115.73708,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 3.7
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Starboard Lit",
+   "name": "Success channel Starboard channel mark - S&P 1",
+   "lat": -32.06139,
+   "lon": 115.68637,
+   "colour": [
+    4
+   ],
+   "shape": "pillar",
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Major Light",
+   "name": "Limits of Inner Harbour Dredging - VQ PAX Dredge Limit",
+   "lat": -32.04622,
+   "lon": 115.74862,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Port Lit",
+   "name": "Rous Harbour Entrance Lights - Rous B",
+   "lat": -32.05302,
+   "lon": 115.72759,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Rocky Bay - Starboard Beacon No. 2",
+   "lat": -32.02725,
+   "lon": 115.75609,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Lower Reaches - Lit Pile 1 Leeuwin",
+   "lat": -32.0304,
+   "lon": 115.76209,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 2 - Sorrento",
+   "lat": -31.83163,
+   "lon": 115.73847,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Cardinal North Lit",
+   "name": "Rous Head - CETO Exclusion Zone",
+   "lat": -32.04533,
+   "lon": 115.72881,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Cardinal East Lit",
+   "name": "Rous Head - CETO Exclusion Zone",
+   "lat": -32.04622,
+   "lon": 115.72986,
+   "colour": [
+    6,
+    2
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Port Lit",
+   "name": "Deepwater Channel Port Mark with AIS - DWC B",
+   "lat": -32.00117,
+   "lon": 115.69533,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Shark Monitoring Station 12 - Cottesloe",
+   "lat": -31.99596,
+   "lon": 115.74312,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Port",
+   "name": "Deepwater Channel Port Mark - DWC A",
+   "lat": -31.9835,
+   "lon": 115.69479,
+   "colour": [
+    3
+   ],
+   "shape": "pillar",
+   "category": 1,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Special Mark Lit",
+   "name": "Fremantle Ports SFC2",
+   "lat": -32.05795,
+   "lon": 115.72608,
+   "colour": [
+    6
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Yacht",
+   "name": "East Fremantle Yacht Club - 9 Mt Lyall Starboard Buoy",
+   "lat": -32.0237,
+   "lon": 115.76557,
+   "colour": [
+    11
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Beacon Racon",
+   "name": "Fremantle Landfall Fairway Buoy with Racon and AIS",
+   "lat": -31.95218,
+   "lon": 115.64697,
+   "colour": [
+    6
+   ],
+   "shape": null,
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Pillar Mid Channel Lit",
+   "name": "Fremantle Landfall Fairway Buoy with Racon and AIS",
+   "lat": -31.95218,
+   "lon": 115.64697,
+   "colour": [
+    6
+   ],
+   "shape": "pillar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar",
+   "name": "Hillarys - Sorrento Prohibited Practices Area - Special Mark 20",
+   "lat": -31.83333,
+   "lon": 115.74455,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "Dolphin - North Quay Special Mark",
+   "lat": -32.05286,
+   "lon": 115.73665,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Hillarys - Outer Port Beacon",
+   "lat": -31.82446,
+   "lon": 115.72793,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Port Lit",
+   "name": "Inner harbour entrance channel Port mark - Entrance B",
+   "lat": -32.05468,
+   "lon": 115.72468,
+   "colour": [
+    3
+   ],
+   "shape": null,
+   "category": 1,
+   "light": {
+    "character": null,
+    "colour": "red",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Inner harbour entrance channel Starboard mark - Entrance 2",
+   "lat": -32.05639,
+   "lon": 115.72495,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Major Light",
+   "name": "Challenger Harbour Port Groyne Beacon",
+   "lat": -32.06352,
+   "lon": 115.73958,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "beacon",
+   "type": "Beacon Starboard Lit",
+   "name": "Rocky Bay - Starboard Beacon No. 6",
+   "lat": -32.02342,
+   "lon": 115.76319,
+   "colour": [
+    4
+   ],
+   "shape": null,
+   "category": 2,
+   "light": {
+    "character": null,
+    "colour": "green",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "light",
+   "type": "Major Light",
+   "name": "FFBH Landback Starboard Beacon",
+   "lat": -32.06228,
+   "lon": 115.74285,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 0.7
+  },
+  {
+   "kind": "light",
+   "type": "Major Light",
+   "name": "Starboard Groyne",
+   "lat": -31.82325,
+   "lon": 115.73166,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot",
+   "elev": 1.1
+  },
+  {
+   "kind": "light",
+   "type": "Minor Light",
+   "name": "Hillarys - K & L Jetty Light",
+   "lat": -31.82277,
+   "lon": 115.73904,
+   "colour": [
+    1
+   ],
+   "shape": null,
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spherical",
+   "name": "South Beach Closed Waters Buoy 1",
+   "lat": -32.07177,
+   "lon": 115.74876,
+   "colour": [
+    6
+   ],
+   "shape": "spherical",
+   "category": null,
+   "light": null,
+   "chart": "wa-dot"
+  },
+  {
+   "kind": "buoy",
+   "type": "Buoy Spar Lit",
+   "name": "Port Beach Shark Monitoring Buoy",
+   "lat": -32.0351,
+   "lon": 115.7396,
+   "colour": [
+    6
+   ],
+   "shape": "spar",
+   "category": null,
+   "light": {
+    "character": null,
+    "colour": "white",
+    "period": null
+   },
+   "chart": "wa-dot"
+  }
+ ]
+}
