@@ -1,0 +1,40 @@
+{
+ "source": "Sentinel-2 L2A surface reflectance (ESA Copernicus), via Element 84 Earth Search on AWS open data",
+ "scenes": [
+  {
+   "id": "S2C_29SQV_20260830_0_L2A",
+   "date": "2026-08-30",
+   "cloud": 0.008192,
+   "tile": "29SQV",
+   "cells": 248141
+  },
+  {
+   "id": "S2C_30STE_20260830_0_L2A",
+   "date": "2026-08-30",
+   "cloud": 0.024151,
+   "tile": "30STE",
+   "cells": 390562
+  },
+  {
+   "id": "S2B_30STF_20240825_0_L2A",
+   "date": "2024-08-25",
+   "cloud": 0.007121,
+   "tile": "30STF",
+   "cells": 15
+  }
+ ],
+ "encoding": "sRGB-encoded surface reflectance (red B04, green B03, blue B02), one pixel per pack cell, north up",
+ "water": "land-water.png",
+ "waterRule": "white where the NDWI (green B03 - near infrared B08) / (B03 + B08) > 0",
+ "cloudRule": "a cell takes the first scene whose classification (SCL) shows the ground (not cloud, cirrus or cloud shadow) in at least half its pixels; the first scene of each tile, then the fill scenes, clearest first, for land cells",
+ "cloudyCells": 126,
+ "cloudyLandCells": 0,
+ "waterPct": 78.1,
+ "width": 1149,
+ "height": 556,
+ "cell": 27,
+ "minE": -7996.69923120957,
+ "minN": -6999.334199999794,
+ "filledPct": 100,
+ "attribution": "Contains modified Copernicus Sentinel data 2024, 2026"
+}
