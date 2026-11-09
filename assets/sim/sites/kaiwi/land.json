@@ -1,0 +1,47 @@
+{
+ "source": "Sentinel-2 L2A surface reflectance (ESA Copernicus), via Element 84 Earth Search on AWS open data",
+ "scenes": [
+  {
+   "id": "S2B_4QFJ_20240911_0_L2A",
+   "date": "2024-09-11",
+   "cloud": 3.024008,
+   "tile": "4QFJ",
+   "cells": 264029
+  },
+  {
+   "id": "S2A_4QFJ_20240718_0_L2A",
+   "date": "2024-07-18",
+   "cloud": 3.1151,
+   "tile": "4QFJ",
+   "cells": 1683
+  },
+  {
+   "id": "S2A_4QFJ_20240807_0_L2A",
+   "date": "2024-08-07",
+   "cloud": 3.791184,
+   "tile": "4QFJ",
+   "cells": 1999
+  },
+  {
+   "id": "S2B_4QFJ_20260613_0_L2A",
+   "date": "2026-06-13",
+   "cloud": 4.545558,
+   "tile": "4QFJ",
+   "cells": 2
+  }
+ ],
+ "encoding": "sRGB-encoded surface reflectance (red B04, green B03, blue B02), one pixel per pack cell, north up",
+ "water": "land-water.png",
+ "waterRule": "white where the NDWI (green B03 - near infrared B08) / (B03 + B08) > 0",
+ "cloudRule": "a cell takes the first scene whose classification (SCL) shows the ground (not cloud, cirrus or cloud shadow) in at least half its pixels; the first scene of each tile, then the fill scenes, clearest first, for land cells",
+ "cloudyCells": 7,
+ "cloudyLandCells": 1,
+ "waterPct": 94.5,
+ "width": 690,
+ "height": 388,
+ "cell": 70,
+ "minE": -46854.095294882565,
+ "minN": -3405.6791999999195,
+ "filledPct": 100,
+ "attribution": "Contains modified Copernicus Sentinel data 2024, 2026"
+}

@@ -1,0 +1,54 @@
+{
+ "source": "Sentinel-2 L2A surface reflectance (ESA Copernicus), via Element 84 Earth Search on AWS open data",
+ "scenes": [
+  {
+   "id": "S2C_50HLK_20251231_1_L2A",
+   "date": "2025-12-31",
+   "cloud": 0.008725,
+   "tile": "50HLK",
+   "cells": 1204055
+  },
+  {
+   "id": "S2B_50HLK_20260115_0_L2A",
+   "date": "2026-01-15",
+   "cloud": 0.012661,
+   "tile": "50HLK",
+   "cells": 226
+  },
+  {
+   "id": "S2C_50HLK_20260219_0_L2A",
+   "date": "2026-02-19",
+   "cloud": 0.015053,
+   "tile": "50HLK",
+   "cells": 39
+  },
+  {
+   "id": "S2C_50HLK_20251221_0_L2A",
+   "date": "2025-12-21",
+   "cloud": 0.01713,
+   "tile": "50HLK",
+   "cells": 61
+  },
+  {
+   "id": "S2B_50HLK_20260224_1_L2A",
+   "date": "2026-02-24",
+   "cloud": 0.01846,
+   "tile": "50HLK",
+   "cells": 27
+  }
+ ],
+ "encoding": "sRGB-encoded surface reflectance (red B04, green B03, blue B02), one pixel per pack cell, north up",
+ "water": "land-water.png",
+ "waterRule": "white where the NDWI (green B03 - near infrared B08) / (B03 + B08) > 0",
+ "cloudRule": "a cell takes the first scene whose classification (SCL) shows the ground (not cloud, cirrus or cloud shadow) in at least half its pixels; the first scene of each tile, then the fill scenes, clearest first, for land cells",
+ "cloudyCells": 70,
+ "cloudyLandCells": 37,
+ "waterPct": 85.2,
+ "width": 1166,
+ "height": 1033,
+ "cell": 30,
+ "minE": -17948.623051777296,
+ "minN": -14927.490000000173,
+ "filledPct": 100,
+ "attribution": "Contains modified Copernicus Sentinel data 2025, 2026"
+}
