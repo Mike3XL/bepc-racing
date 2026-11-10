@@ -1,0 +1,44 @@
+{
+ "id": "hillarys-ssw",
+ "title": "Hillarys SSW (shore effects)",
+ "site": "perth",
+ "minE": 7500.0,
+ "minN": 9000.0,
+ "W": 170,
+ "H": 170,
+ "cell": 30.0,
+ "scale": 100,
+ "assumptions": [
+  "Mike (2026-11-09, laps north of Hillarys Boat Harbour): 20 to 25 mph SSW, 2 to 3 ft. Wind from 202 deg, waves toward 22 deg +-20 deg, period 4.1 s (20 kt over 20 km, the evening Doctor seas' fetch), at 0.8, 1 and 1.25 times.",
+  "Open water upwind (SSW) is taken as unshadowed at the window edge; the WA DoT 5 m survey in the pack at 30 m cells, so the harbour walls are blobs a cell or two wide.",
+  "Breakwall reflection R = 0.4 (rock rubble mound, a guess); the beach absorbs (R = 0.1). No tide, current or wind regrowth in the lee; the local fetch shelter still comes from the fetch map."
+ ],
+ "solver": {
+  "base": {
+   "method": "forward",
+   "to": 22.0,
+   "period": 4.1,
+   "spread": 20.0
+  },
+  "overlays": [
+   {
+    "method": "window",
+    "to": 22.0,
+    "period": 4.1,
+    "spread": 20.0,
+    "window": [
+     10250,
+     11350,
+     12700,
+     13500
+    ],
+    "cell": 2.5,
+    "r_wall": 0.4,
+    "r_shore": 0.1,
+    "feather": 120.0
+   }
+  ]
+ },
+ "baked": "2026-11-10",
+ "source": "scripts/bake-shore-map.py"
+}
