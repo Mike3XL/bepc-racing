@@ -1,0 +1,13 @@
+{
+  "title": "Columbia Gorge 'Swell city'",
+  "subtitle": "Gorge · RACE · steep wind waves against the current · cliffs",
+  "blurb": "WSW wind waves funneled between basalt cliffs, running against the river current: a race from Swell City to the White Salmon River mouth.",
+  "notes": [
+    "Race: a field to start with, a finish to chase",
+    "Short, steep, well-organized waves",
+    "Complex wave-shore interactions: reflections off the gorge walls, no swell",
+    "Steepening over river-bed depth changes"
+  ],
+  "image": "swellcity.jpg",
+  "query": "scenario=2&seapick=gorge-swell-city&paddler=Expert&view=Boyan+cam&session=race&tod=Afternoon&wx=Partly+cloudy"
+}

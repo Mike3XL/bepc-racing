@@ -1,0 +1,13 @@
+{
+  "title": "Spring Trigg run",
+  "subtitle": "Perth · RACE · point-to-point · afternoon sun",
+  "blurb": "A race start off Trigg Beach, point to point to Sorrento, with the SW swell and the 'Doctor' wind sea on top.",
+  "notes": [
+    "Race: a field to start with, a finish to chase",
+    "Technical sea: challenging to read and to use the swell effectively",
+    "Beach shoaling",
+    "Pristine sunset location"
+  ],
+  "image": "trigg.jpg",
+  "query": "scenario=10&seapick=perth-sw-doctor&paddler=Advanced&view=Boyan+cam&session=race&tod=Afternoon&wx=Sunny&hdg=330"
+}
