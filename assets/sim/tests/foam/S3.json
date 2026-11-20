@@ -1,0 +1,40 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S3: short chop, often steep",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaRef": "../seas/short-chop.v1.json",
+ "test": {
+  "id": "foam-S3",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S3",
+  "title": "short chop, often steep",
+  "purpose": "Many small whitecaps in 22 kt chop over three fetches (Shilshole's northerly).",
+  "lookFor": [
+   "hundreds of small events without repetition",
+   "no cost blow-up",
+   "until stage 9 these are flat whitecaps"
+  ],
+  "needsStage": 0,
+  "location": "test location test-open-deep@1",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}

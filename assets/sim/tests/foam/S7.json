@@ -1,0 +1,39 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S7: wind against the swell",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaRef": "../seas/wind-oppose.v1.json",
+ "test": {
+  "id": "foam-S7",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S7",
+  "title": "wind against the swell",
+  "purpose": "A 1.5 m, 8 s swell against 22 kt: spray and foam torn back off the crests (from stage 6).",
+  "lookFor": [
+   "spray blown back over the crests",
+   "foam streaks along the wind"
+  ],
+  "needsStage": 6,
+  "location": "test location test-open-deep@1",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}

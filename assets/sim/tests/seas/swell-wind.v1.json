@@ -1,0 +1,55 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: Mike's Doctor, turned to run east (v1)",
+ "seed": 46,
+ "crestSharpen": 3,
+ "layers": [
+  {
+   "kind": "windSea",
+   "id": "w1",
+   "name": "Wind sea: 24 kt",
+   "params": {
+    "windKt": 24,
+    "fromDeg": 270,
+    "fetchKm": 25.5,
+    "spreadDeg": 32,
+    "tailGain": 2.65
+   }
+  },
+  {
+   "kind": "swell",
+   "id": "sw",
+   "name": "Swell: 1.5 m, 4.3 s",
+   "params": {
+    "Hs": 1.5,
+    "Tp": 4.3,
+    "fromDeg": 265,
+    "spreadDeg": 8,
+    "gamma": 7
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 22 kt",
+   "params": {
+    "windKt": 22,
+    "fromDeg": 265,
+    "amount": 0.6,
+    "spread": 0.55
+   }
+  },
+  {
+   "kind": "windSea",
+   "id": "w2",
+   "name": "Wind sea: 13 kt",
+   "params": {
+    "windKt": 13,
+    "fromDeg": 253,
+    "fetchKm": 15,
+    "spreadDeg": 43
+   }
+  }
+ ]
+}

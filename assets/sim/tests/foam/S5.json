@@ -1,0 +1,38 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S5: diagonal seas",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaRef": "../seas/cross-60.v1.json",
+ "test": {
+  "id": "foam-S5",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S5",
+  "title": "diagonal seas",
+  "purpose": "Two 20 kt wind seas crossing at 60 degrees.",
+  "lookFor": [
+   "concentrated, sudden events where crests cross (from stage 4)"
+  ],
+  "needsStage": 4,
+  "location": "test location test-open-deep@1",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}

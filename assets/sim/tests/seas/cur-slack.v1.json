@@ -1,0 +1,30 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: 18 kt wind sea, slack water (v1)",
+ "seed": 11,
+ "crestSharpen": 2,
+ "layers": [
+  {
+   "kind": "windSea",
+   "id": "w1",
+   "name": "Wind sea: 18 kt from the west",
+   "params": {
+    "windKt": 18,
+    "fromDeg": 270,
+    "fetchKm": 15,
+    "spreadDeg": 15
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 18 kt",
+   "params": {
+    "windKt": 18,
+    "fromDeg": 270,
+    "amount": 0.6
+   }
+  }
+ ]
+}

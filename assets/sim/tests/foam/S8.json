@@ -1,0 +1,39 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S8: a young sea under gusty wind",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaRef": "../seas/gusty-young.v1.json",
+ "test": {
+  "id": "foam-S8",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S8",
+  "title": "a young sea under gusty wind",
+  "purpose": "28 kt over 2 km with gust patches to 36: wind stronger than the sea (from stage 6).",
+  "lookFor": [
+   "shedding and blown foam in the gusts",
+   "many small events, no runaway cost"
+  ],
+  "needsStage": 6,
+  "location": "test location test-open-deep@1",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "kind": "surfski-tests",
+ "version": 1,
+ "suites": [
+  {
+   "id": "foam",
+   "title": "Foam and spray",
+   "plan": "improve/foam-events-plan.md",
+   "scorecard": "improve/scorecards/foam.md",
+   "note": "S1 to S10 run on the synthetic test location (objective scores); the r files are the same situations in real places (the look against footage). H1 is a stress test of the cost (the heaviest foam seen).",
+   "situations": [
+    "foam/S1a.json",
+    "foam/S1b.json",
+    "foam/S2.json",
+    "foam/S3.json",
+    "foam/S4.json",
+    "foam/S5.json",
+    "foam/S6.json",
+    "foam/S7.json",
+    "foam/S8.json",
+    "foam/S9.json",
+    "foam/S10.json"
+   ],
+   "realPlaces": [
+    "foam/S2r.json",
+    "foam/S3r.json",
+    "foam/S5r.json",
+    "foam/S7r.json",
+    "foam/S8r.json",
+    "foam/S10r.json"
+   ],
+   "stress": [
+    "foam/H1.json"
+   ]
+  }
+ ]
+}

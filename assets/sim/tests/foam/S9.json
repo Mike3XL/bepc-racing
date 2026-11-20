@@ -1,0 +1,38 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S9: very steep groups: plunging candidates",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaRef": "../seas/steep-short.v1.json",
+ "test": {
+  "id": "foam-S9",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S9",
+  "title": "very steep groups: plunging candidates",
+  "purpose": "A 2 m, 5 s swell under 25 kt (lips, splash-ups and tumbling from stage 5).",
+  "lookFor": [
+   "the steepest crests plunge, the rest spill"
+  ],
+  "needsStage": 5,
+  "location": "test location test-open-deep@1",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}

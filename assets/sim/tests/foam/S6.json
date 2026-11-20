@@ -1,0 +1,39 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S6: shore break at Trigg",
+ "scenario": "perth-trigg-sorrento",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaId": "perth-sw-doctor",
+ "test": {
+  "id": "foam-S6",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S6",
+  "title": "shore break at Trigg",
+  "purpose": "Depth-limited breaking on the beach (not drawn until stage 7).",
+  "lookFor": [
+   "events growing as the crest shoals",
+   "a bore"
+  ],
+  "needsStage": 7,
+  "location": "real place (it may change for the sim)",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}

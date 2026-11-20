@@ -1,0 +1,41 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: a 1.5 m, 8 s swell against a 22 kt wind (v1)",
+ "seed": 41,
+ "crestSharpen": 3,
+ "layers": [
+  {
+   "kind": "swell",
+   "id": "sw",
+   "name": "Swell: 1.5 m, 8 s from the west",
+   "params": {
+    "Hs": 1.5,
+    "Tp": 8,
+    "fromDeg": 270,
+    "spreadDeg": 10
+   }
+  },
+  {
+   "kind": "windSea",
+   "id": "w1",
+   "name": "Wind sea: 22 kt from the east",
+   "params": {
+    "windKt": 22,
+    "fromDeg": 90,
+    "fetchKm": 15,
+    "spreadDeg": 20
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 22 kt from the east",
+   "params": {
+    "windKt": 22,
+    "fromDeg": 90,
+    "amount": 0.6
+   }
+  }
+ ]
+}

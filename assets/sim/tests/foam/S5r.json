@@ -1,0 +1,38 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S5: Kaiwi Channel gale (real place)",
+ "scenario": "kaiwi",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaId": "kaiwi-gale",
+ "test": {
+  "id": "foam-S5r",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S5",
+  "title": "Kaiwi Channel gale (real place)",
+  "purpose": "Wind sea from 67 degrees over swells from 20 and 280 degrees.",
+  "lookFor": [
+   "as S5"
+  ],
+  "needsStage": 4,
+  "location": "real place (it may change for the sim)",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S7: Kaiwi trades against the swell (real place)",
+ "scenario": "kaiwi",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaId": "kaiwi-trades",
+ "test": {
+  "id": "foam-S7r",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S7",
+  "title": "Kaiwi trades against the swell (real place)",
+  "purpose": "25 mph trades from 67 degrees over a 0.9 m swell from 280 degrees.",
+  "lookFor": [
+   "as S7"
+  ],
+  "needsStage": 6,
+  "location": "real place (it may change for the sim)",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}

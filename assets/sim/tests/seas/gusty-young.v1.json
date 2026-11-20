@@ -1,0 +1,44 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: 28 kt over 2 km, gust patches to 36 (v1)",
+ "seed": 51,
+ "crestSharpen": 3,
+ "layers": [
+  {
+   "kind": "windSea",
+   "id": "w1",
+   "name": "Wind sea: 28 kt, 2 km",
+   "params": {
+    "windKt": 28,
+    "fromDeg": 270,
+    "fetchKm": 2,
+    "spreadDeg": 20
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 28 kt",
+   "params": {
+    "windKt": 28,
+    "fromDeg": 270,
+    "amount": 0.6
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "gu",
+   "name": "Ripples: gusts of 36 kt",
+   "params": {
+    "windKt": 36,
+    "fromDeg": 270,
+    "amount": 0.6,
+    "cover": 0.5,
+    "patchM": 250,
+    "stretch": 2,
+    "driftMs": 1.4
+   }
+  }
+ ]
+}

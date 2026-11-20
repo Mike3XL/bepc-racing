@@ -1,0 +1,40 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S10: a moderate sea, few breakers",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaRef": "../seas/moderate.v1.json",
+ "test": {
+  "id": "foam-S10",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S10",
+  "title": "a moderate sea, few breakers",
+  "purpose": "18 kt with a small long swell: the baseline that should stay calm.",
+  "lookFor": [
+   "few, small events",
+   "nothing flickers",
+   "the cost near zero"
+  ],
+  "needsStage": 0,
+  "location": "test location test-open-deep@1",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}
