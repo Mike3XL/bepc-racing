@@ -8,5 +8,5 @@
     "Group paddle"
   ],
   "image": "tarifa.jpg",
-  "query": "scenario=3&seapick=tarifa-poniente&paddler=Advanced&view=Boyan+cam&session=group&tod=Afternoon&wx=Sunny"
+  "query": "scenario=tarifa-poniente&seapick=tarifa-poniente&paddler=Advanced&view=Boyan+cam&session=group&tod=Afternoon&wx=Sunny"
 }

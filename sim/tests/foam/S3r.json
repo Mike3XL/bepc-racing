@@ -1,0 +1,38 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S3: Shilshole northerly 22 kt (real place)",
+ "scenario": "shilshole-meadow-can6",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaId": "shil-n22",
+ "test": {
+  "id": "foam-S3r",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S3",
+  "title": "Shilshole northerly 22 kt (real place)",
+  "purpose": "S3 in its real place.",
+  "lookFor": [
+   "as S3"
+  ],
+  "needsStage": 0,
+  "location": "real place (it may change for the sim)",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}

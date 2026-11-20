@@ -1,0 +1,87 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: Mike's heavy Trigg sea, 2026-11-14 (v1)",
+ "seed": 46,
+ "current": {
+  "kt": 2.3,
+  "toDeg": 182
+ },
+ "crestSharpen": 3,
+ "layers": [
+  {
+   "id": "w1",
+   "kind": "windSea",
+   "name": "Wind sea: SSW 24 kt",
+   "rampS": 30,
+   "params": {
+    "windKt": 24,
+    "fromDeg": 200,
+    "fetchKm": 25.5,
+    "spreadDeg": 32,
+    "shape": 0,
+    "Hs": 1,
+    "peakLenM": 20,
+    "gamma": 3.3,
+    "tailGain": 2.65,
+    "sharp": 1,
+    "fineness": 1
+   }
+  },
+  {
+   "id": "sw",
+   "kind": "swell",
+   "name": "Swell: SSW, 4.3 s",
+   "rampS": 30,
+   "params": {
+    "Hs": 3.35,
+    "Tp": 4,
+    "fromDeg": 195,
+    "spreadDeg": 8,
+    "gamma": 7,
+    "sharp": 1,
+    "fineness": 1
+   }
+  },
+  {
+   "id": "rp",
+   "kind": "ripples",
+   "name": "Ripples: steady 22 kt",
+   "rampS": 30,
+   "params": {
+    "windKt": 22,
+    "fromDeg": 195,
+    "amount": 0.6,
+    "spread": 0.55,
+    "sharp": 1,
+    "cover": 1,
+    "patchM": 280,
+    "stretch": 2,
+    "driftMs": 0.8,
+    "mixChop": 1,
+    "mixRip": 1,
+    "mixCap": 1,
+    "fineness": 1
+   }
+  },
+  {
+   "id": "w2",
+   "kind": "windSea",
+   "name": "Wind sea: S 13 kt",
+   "rampS": 30,
+   "params": {
+    "windKt": 13,
+    "fromDeg": 183,
+    "fetchKm": 15,
+    "spreadDeg": 43,
+    "shape": 0,
+    "Hs": 1,
+    "peakLenM": 20,
+    "gamma": 3.3,
+    "tailGain": 1,
+    "sharp": 1,
+    "fineness": 1
+   }
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S1: the same sea against a 2.5 kt current",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaRef": "../seas/cur-oppose.v1.json",
+ "test": {
+  "id": "foam-S1b",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S1",
+  "title": "the same sea against a 2.5 kt current",
+  "purpose": "A current against the waves shortens and steepens them (wave action) until they break.",
+  "lookFor": [
+   "events appear that S1a does not have",
+   "their onset and size"
+  ],
+  "needsStage": 0,
+  "location": "test location test-open-deep@1",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ],
+  "pairedWith": "foam/S1a.json"
+ }
+}

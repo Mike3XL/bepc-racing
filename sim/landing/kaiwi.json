@@ -8,5 +8,5 @@
     "Group paddle"
   ],
   "image": "kaiwi.jpg",
-  "query": "scenario=4&seapick=kaiwi-trades&paddler=Advanced&view=Deck+cam&session=group&tod=Midday&wx=Sunny"
+  "query": "scenario=kaiwi&seapick=kaiwi-trades&paddler=Advanced&view=Deck+cam&session=group&tod=Midday&wx=Sunny"
 }

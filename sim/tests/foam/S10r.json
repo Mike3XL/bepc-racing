@@ -1,0 +1,38 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S10: the Doctor at 18 kt (real place)",
+ "scenario": "perth-doctor",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaId": "perth-doctor-18",
+ "test": {
+  "id": "foam-S10r",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S10",
+  "title": "the Doctor at 18 kt (real place)",
+  "purpose": "S10 in its real place.",
+  "lookFor": [
+   "as S10"
+  ],
+  "needsStage": 0,
+  "location": "real place (it may change for the sim)",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S4: the wind sea's own peak waves spilling",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaRef": "../seas/wind-peak.v1.json",
+ "test": {
+  "id": "foam-S4",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S4",
+  "title": "the wind sea's own peak waves spilling",
+  "purpose": "25 kt over 20 km: a young sea whose dominant crests spill (about 12 % of the time in the CPU test).",
+  "lookFor": [
+   "patchy along the crest, continuous where a group is steep"
+  ],
+  "needsStage": 0,
+  "location": "test location test-open-deep@1",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S8: Gorge at Swell City (real place)",
+ "scenario": "gorge-swellcity",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaId": "gorge-swell-city",
+ "test": {
+  "id": "foam-S8r",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S8",
+  "title": "Gorge at Swell City (real place)",
+  "purpose": "26 kt gusting 34 against the current, wall reflections.",
+  "lookFor": [
+   "as S8"
+  ],
+  "needsStage": 6,
+  "location": "real place (it may change for the sim)",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ]
+ }
+}

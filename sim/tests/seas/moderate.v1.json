@@ -1,0 +1,42 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: 18 kt with a 0.5 m, 9 s swell: few breakers (v1)",
+ "seed": 71,
+ "crestSharpen": 3,
+ "layers": [
+  {
+   "kind": "windSea",
+   "id": "w1",
+   "name": "Wind sea: 18 kt",
+   "params": {
+    "windKt": 18,
+    "fromDeg": 270,
+    "fetchKm": 25,
+    "spreadDeg": 20,
+    "tailGain": 1.5
+   }
+  },
+  {
+   "kind": "swell",
+   "id": "sw",
+   "name": "Swell: 0.5 m, 9 s",
+   "params": {
+    "Hs": 0.5,
+    "Tp": 9,
+    "fromDeg": 260,
+    "spreadDeg": 8
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 18 kt",
+   "params": {
+    "windKt": 18,
+    "fromDeg": 270,
+    "amount": 0.6
+   }
+  }
+ ]
+}

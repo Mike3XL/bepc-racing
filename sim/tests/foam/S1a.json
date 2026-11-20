@@ -1,0 +1,40 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Foam S1: a wind sea at slack water",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "roller": 1,
+  "racers": 0
+ },
+ "seaRef": "../seas/cur-slack.v1.json",
+ "test": {
+  "id": "foam-S1a",
+  "version": 1,
+  "suite": "foam",
+  "situation": "S1",
+  "title": "a wind sea at slack water",
+  "purpose": "The control for S1: the same wind sea with no current.",
+  "lookFor": [
+   "few or no foam events",
+   "compare with S1b"
+  ],
+  "needsStage": 0,
+  "location": "test location test-open-deep@1",
+  "views": [
+   "cockpit",
+   "review",
+   "drone"
+  ],
+  "pairedWith": "foam/S1b.json"
+ }
+}

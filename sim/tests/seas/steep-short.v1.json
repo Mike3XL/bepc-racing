@@ -1,0 +1,42 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: a 2 m, 5 s swell under 25 kt: plunging candidates (v1)",
+ "seed": 61,
+ "crestSharpen": 3,
+ "layers": [
+  {
+   "kind": "swell",
+   "id": "sw",
+   "name": "Swell: 2 m, 5 s",
+   "params": {
+    "Hs": 2.0,
+    "Tp": 5.0,
+    "fromDeg": 270,
+    "spreadDeg": 6,
+    "gamma": 7
+   }
+  },
+  {
+   "kind": "windSea",
+   "id": "w1",
+   "name": "Wind sea: 25 kt",
+   "params": {
+    "windKt": 25,
+    "fromDeg": 270,
+    "fetchKm": 20,
+    "spreadDeg": 20
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 25 kt",
+   "params": {
+    "windKt": 25,
+    "fromDeg": 270,
+    "amount": 0.6
+   }
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: 25 kt over 20 km, its peak waves spilling (v1)",
+ "seed": 21,
+ "crestSharpen": 3,
+ "layers": [
+  {
+   "kind": "windSea",
+   "id": "w1",
+   "name": "Wind sea: 25 kt, 20 km",
+   "params": {
+    "windKt": 25,
+    "fromDeg": 270,
+    "fetchKm": 20,
+    "spreadDeg": 20,
+    "tailGain": 1.5
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 25 kt",
+   "params": {
+    "windKt": 25,
+    "fromDeg": 270,
+    "amount": 0.6
+   }
+  }
+ ]
+}

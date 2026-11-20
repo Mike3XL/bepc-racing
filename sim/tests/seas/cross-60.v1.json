@@ -1,0 +1,41 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: two 20 kt wind seas crossing at 60 degrees (v1)",
+ "seed": 31,
+ "crestSharpen": 3,
+ "layers": [
+  {
+   "kind": "windSea",
+   "id": "w1",
+   "name": "Wind sea: 20 kt from the west",
+   "params": {
+    "windKt": 20,
+    "fromDeg": 270,
+    "fetchKm": 20,
+    "spreadDeg": 15
+   }
+  },
+  {
+   "kind": "windSea",
+   "id": "w2",
+   "name": "Wind sea: 20 kt from the north-west",
+   "params": {
+    "windKt": 20,
+    "fromDeg": 330,
+    "fetchKm": 20,
+    "spreadDeg": 15
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 20 kt",
+   "params": {
+    "windKt": 20,
+    "fromDeg": 300,
+    "amount": 0.6
+   }
+  }
+ ]
+}

@@ -9,5 +9,5 @@
     "Steepening over river-bed depth changes"
   ],
   "image": "swellcity.jpg",
-  "query": "scenario=2&seapick=gorge-swell-city&paddler=Expert&view=Boyan+cam&session=race&tod=Afternoon&wx=Partly+cloudy"
+  "query": "scenario=gorge-swellcity&seapick=gorge-swell-city&paddler=Expert&view=Boyan+cam&session=race&tod=Afternoon&wx=Partly+cloudy"
 }
