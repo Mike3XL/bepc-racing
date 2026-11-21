@@ -32,6 +32,21 @@
    "stress": [
     "foam/H1.json"
    ]
+  },
+  {
+   "id": "experts",
+   "title": "Boat physics: scenarios to pose to experts",
+   "plan": "improve/boat-vnext-plan.md",
+   "scorecard": "improve/studies/boat-vnext-effects-2026-11-20.md",
+   "note": "Six situations for coaches, designers and a naval architect (section 4 of the study): each opens with the Engineering instruments; add &boat=v3 to compare the vNext boat. Record the answers in the study.",
+   "situations": [
+    "experts/X1.json",
+    "experts/X2.json",
+    "experts/X3.json",
+    "experts/X4.json",
+    "experts/X5.json",
+    "experts/X6.json"
+   ]
   }
  ]
 }

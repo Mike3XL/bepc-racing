@@ -1,0 +1,40 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Experts X5: stopped in a beam sea",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "racers": 0,
+  "objects": 0,
+  "guide": 0,
+  "coaching": 0,
+  "instr": "engineering",
+  "hdg": 0
+ },
+ "test": {
+  "id": "experts-X5",
+  "version": 1,
+  "suite": "experts",
+  "title": "Experts X5: stopped in a beam sea",
+  "purpose": "Stop paddling (press the down arrow until the glide) with the waves on the beam.",
+  "lookFor": [
+   "the heading and the drift, the roll in the attitude widget"
+  ],
+  "questions": [
+   "How fast does a ski drift and turn when you stop paddling, and which way?",
+   "How does it sit in the trough?"
+  ],
+  "compare": "Add &boat=v3 to the address for the vNext boat (sway, yaw and a rudder foil that stalls and ventilates; &rudder=large for the large blade). The Engineering instruments show the rudder, the yaw split, the drift and the wave's push.",
+  "study": "improve/studies/boat-vnext-effects-2026-11-20.md"
+ },
+ "seaRef": "../seas/moderate.v1.json"
+}
