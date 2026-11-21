@@ -1,0 +1,19 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: flat calm (v1)",
+ "seed": 91,
+ "crestSharpen": 3,
+ "layers": [
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 2 kt",
+   "params": {
+    "windKt": 2,
+    "fromDeg": 0,
+    "amount": 0.2
+   }
+  }
+ ]
+}

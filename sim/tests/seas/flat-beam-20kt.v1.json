@@ -1,0 +1,19 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: flat water, a 20 kt wind from the north (v1)",
+ "seed": 91,
+ "crestSharpen": 3,
+ "layers": [
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 20 kt",
+   "params": {
+    "windKt": 20,
+    "fromDeg": 0,
+    "amount": 0.6
+   }
+  }
+ ]
+}

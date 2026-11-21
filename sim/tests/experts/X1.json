@@ -1,0 +1,42 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Experts X1: flat water, a 20 kt beam wind, rudder straight",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "racers": 0,
+  "objects": 0,
+  "guide": 0,
+  "coaching": 0,
+  "instr": "engineering",
+  "hdg": 90
+ },
+ "test": {
+  "id": "experts-X1",
+  "version": 1,
+  "suite": "experts",
+  "title": "Experts X1: flat water, a 20 kt beam wind, rudder straight",
+  "purpose": "Mike's own question: what does a V10-like ski do in flat water when a 20 kt wind blows from the side and the rudder is held straight?",
+  "lookFor": [
+   "the heading on the compass tape and the yaw split (Rudder widget): does the bow turn toward the wind or away, and how fast?",
+   "the drift diamond on the compass: the leeway"
+  ],
+  "questions": [
+   "Does the bow turn into the wind or away from it, and how fast (degrees a second)?",
+   "How much rudder holds the line, and does that change with speed?",
+   "How fast does the ski slide sideways?"
+  ],
+  "compare": "Add &boat=v3 to the address for the vNext boat (sway, yaw and a rudder foil that stalls and ventilates; &rudder=large for the large blade). The Engineering instruments show the rudder, the yaw split, the drift and the wave's push.",
+  "study": "improve/studies/boat-vnext-effects-2026-11-20.md"
+ },
+ "seaRef": "../seas/flat-beam-20kt.v1.json"
+}
