@@ -7,15 +7,15 @@
 <p class="lead">Realistic open water paddling.</p>
 <p class="keys"><kbd>Space</kbd> start/pause · <kbd>←</kbd><kbd>→</kbd> steer · <kbd>↑</kbd> paddle harder · <kbd>↓</kbd> reduce power, brace · <kbd>V</kbd> change camera · <kbd>P</kbd> settings panel</p></header>
 <main id="cards"></main>
-<footer><a href="./about.html">About the simulator</a> · <a href="./sim.html">Open the full simulator and pick your own</a></footer>
+<footer><a href="./about.html">About the simulator</a> · <a href="./sim.html">Open the full simulator and pick your own</a> · © 2026 Michael Liddell</footer>
 <script>
-// The cards are read from landing/index.json (the order) and landing/<id>.json (title, subtitle, blurb, notes, image, query): edit those files to change the page.
-// "query" is the part of the simulator address after sim.html? that sets the scenario, sea, paddler, camera, time of day and weather.
+
+
 const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const get = (f) => fetch('./landing/' + f).then((r) => { if (!r.ok) throw new Error(f); return r.json(); });
 get('index.json').then((idx) => Promise.all(idx.cards.map((id) => get(id + '.json')))).then((cards) => {
   document.getElementById('cards').innerHTML = cards.map((c, i) => {
-    const href = './sim.html?' + esc(c.query) + '&amp;panel=0';      // panel=0: the settings panel starts closed (P opens it)
+    const href = './sim.html?' + esc(c.query) + '&amp;panel=0';
     return `<article class="card"><a class="shot" href="${href}"><img src="./landing/${esc(c.image)}" alt="${esc(c.title)}" loading="${i < 2 ? 'eager' : 'lazy'}"><span class="play">▶ Start</span></a>
 <div class="body"><h2>${esc(c.title)}</h2><p class="sub">${esc(c.subtitle)}</p><p>${esc(c.blurb)}</p><ul>${c.notes.map((n) => `<li>${esc(n)}</li>`).join('')}</ul><a class="btn" href="${href}">▶ Let's go!</a></div></article>`;
   }).join('');

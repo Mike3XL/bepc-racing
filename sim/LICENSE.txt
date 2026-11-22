@@ -1,0 +1,10 @@
+Surfski downwind simulator
+Copyright (c) 2026 Michael Liddell. All rights reserved.
+
+The simulator's code, shaders, models, tuning and data in this folder are the work of Michael Liddell, except for the third-party
+libraries, data and assets credited on the About page (about.html), in audio/CREDITS.md and in THIRD-PARTY-NOTICES.txt, which
+keep their own licences.
+
+You may use the simulator in a web browser at https://pnw.paddlerace.org/sim/ for your own, non-commercial use. No other licence is granted: you may
+not copy, modify, redistribute, publish, sell or create derivative works from the simulator or any part of it, or reverse
+engineer it, except where the law allows it regardless of this notice.
