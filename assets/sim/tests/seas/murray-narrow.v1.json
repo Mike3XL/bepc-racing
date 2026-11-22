@@ -1,0 +1,31 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: a narrow, long-crested 2.5 ft sea (Hs 0.75 m, 4.2 s, spread 5 deg; v1)",
+ "seed": 1,
+ "crestSharpen": 2,
+ "layers": [
+  {
+   "kind": "swell",
+   "id": "sw",
+   "name": "Long-crested sea: 0.75 m, 4.2 s",
+   "params": {
+    "Hs": 0.75,
+    "Tp": 4.2,
+    "fromDeg": 270,
+    "spreadDeg": 5,
+    "gamma": 7
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 14 kt",
+   "params": {
+    "windKt": 14,
+    "fromDeg": 270,
+    "amount": 0.6
+   }
+  }
+ ]
+}

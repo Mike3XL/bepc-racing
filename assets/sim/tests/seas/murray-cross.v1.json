@@ -1,0 +1,41 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: two wind seas 35 degrees apart (moguls; v1)",
+ "seed": 1,
+ "crestSharpen": 2,
+ "layers": [
+  {
+   "kind": "windSea",
+   "id": "w1",
+   "name": "Wind sea: 16 kt, 20 km from the west",
+   "params": {
+    "windKt": 16,
+    "fromDeg": 270,
+    "fetchKm": 20,
+    "spreadDeg": 20
+   }
+  },
+  {
+   "kind": "windSea",
+   "id": "w2",
+   "name": "Wind sea: 13 kt, 10 km from the south-west",
+   "params": {
+    "windKt": 13,
+    "fromDeg": 235,
+    "fetchKm": 10,
+    "spreadDeg": 20
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 16 kt",
+   "params": {
+    "windKt": 16,
+    "fromDeg": 260,
+    "amount": 0.6
+   }
+  }
+ ]
+}
