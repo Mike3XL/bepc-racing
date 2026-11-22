@@ -1,0 +1,43 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Technique Murray 1: a 3 ft wind sea down the course",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "racers": 0,
+  "objects": 0,
+  "guide": 0,
+  "coaching": 0,
+  "faceres": 1,
+  "hdg": 90
+ },
+ "test": {
+  "id": "technique-M1",
+  "version": 1,
+  "suite": "technique",
+  "title": "Murray 1: a 3 ft wind sea down the course",
+  "purpose": "Practise the whole sequence in a plain 3 ft wind sea (4.2 s, 28 m waves) running down the course. Murray Stewart's cues (Rottnest camp, November 2026): catch a wave, as square as needed; stay high on its face (ease off, let the push hold you); scan 3 to 8 m ahead of the bow, within 30 degrees either side, for darker patches on the back faces ahead; when one is in reach, sprint to drop and move to it, to be on the upper part of the next wave's face there; prefer running diagonal to square.",
+  "lookFor": [
+   "the darker patches on the back faces 3 to 8 m ahead (the near-face shading C2 is on: faceres=1)",
+   "where you sit on the face when you ease off, and how long the push holds you there",
+   "what the next wave does where you saw a dark patch"
+  ],
+  "questions": [
+   "Do the dark patches show where the next steep face comes up, there or half a wavelength on?",
+   "Does staying high and dropping on a dark patch give longer or more linked rides than paddling steadily?",
+   "Is 3 to 8 m the right place to look in this sea?"
+  ],
+  "compare": "faceres=0 in the address for the shading without C2; &guide=1&coaching=1 to see what the route finder would do.",
+  "study": "improve/studies/murray-cues-2026-11-21.md"
+ },
+ "seaRef": "../seas/murray-T3.v1.json"
+}

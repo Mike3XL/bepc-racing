@@ -1,0 +1,30 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: a 2 ft wind sea, 16 kt over 15 km (Hs 0.64 m, 3.3 s; v1)",
+ "seed": 1,
+ "crestSharpen": 2,
+ "layers": [
+  {
+   "kind": "windSea",
+   "id": "w1",
+   "name": "Wind sea: 16 kt, 15 km",
+   "params": {
+    "windKt": 16,
+    "fromDeg": 270,
+    "fetchKm": 15,
+    "spreadDeg": 25
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 16 kt",
+   "params": {
+    "windKt": 16,
+    "fromDeg": 270,
+    "amount": 0.6
+   }
+  }
+ ]
+}

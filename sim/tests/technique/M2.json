@@ -1,0 +1,41 @@
+{
+ "kind": "surfski-scenario",
+ "version": 1,
+ "label": "Technique Murray 2: a 2 ft wind sea down the course",
+ "scenario": "test-open-deep",
+ "paddler": "Advanced",
+ "look": {
+  "weatherPreset": "Bright midday",
+  "timeOfDay": "Midday",
+  "weather": "Bright midday"
+ },
+ "camera": {
+  "view": "Boyan cam"
+ },
+ "switches": {
+  "racers": 0,
+  "objects": 0,
+  "guide": 0,
+  "coaching": 0,
+  "faceres": 1,
+  "hdg": 90
+ },
+ "test": {
+  "id": "technique-M2",
+  "version": 1,
+  "suite": "technique",
+  "title": "Murray 2: a 2 ft wind sea down the course",
+  "purpose": "The same in a smaller, shorter sea (3.3 s, 17 m waves): the faces are closer together and pass faster. Murray Stewart's cues (Rottnest camp, November 2026): catch a wave, as square as needed; stay high on its face (ease off, let the push hold you); scan 3 to 8 m ahead of the bow, within 30 degrees either side, for darker patches on the back faces ahead; when one is in reach, sprint to drop and move to it, to be on the upper part of the next wave's face there; prefer running diagonal to square.",
+  "lookFor": [
+   "the dark patches 3 to 8 m ahead: one wave ahead or two?",
+   "how quickly a drop has to follow the cue"
+  ],
+  "questions": [
+   "Is the cue easier or harder to use than in the 3 ft sea?",
+   "Does diagonal running help more here (the crests run at 11.6 mph)?"
+  ],
+  "compare": "faceres=0 in the address for the shading without C2; &guide=1&coaching=1 to see what the route finder would do.",
+  "study": "improve/studies/murray-cues-2026-11-21.md"
+ },
+ "seaRef": "../seas/murray-T2.v1.json"
+}

@@ -1,0 +1,30 @@
+{
+ "kind": "surfski-seastate",
+ "version": 1,
+ "name": "Test: the 3 ft wind sea running 30 degrees off the course (v1)",
+ "seed": 1,
+ "crestSharpen": 2,
+ "layers": [
+  {
+   "kind": "windSea",
+   "id": "w1",
+   "name": "Wind sea: 16 kt, 30 km",
+   "params": {
+    "windKt": 16,
+    "fromDeg": 300,
+    "fetchKm": 30,
+    "spreadDeg": 20
+   }
+  },
+  {
+   "kind": "ripples",
+   "id": "rp",
+   "name": "Ripples: 16 kt",
+   "params": {
+    "windKt": 16,
+    "fromDeg": 300,
+    "amount": 0.6
+   }
+  }
+ ]
+}

@@ -47,6 +47,20 @@
     "experts/X5.json",
     "experts/X6.json"
    ]
+  },
+  {
+   "id": "technique",
+   "title": "Downwind technique: Murray Stewart's cues",
+   "plan": "improve/studies/murray-cues-2026-11-21.md",
+   "scorecard": "improve/studies/murray-cues-2026-11-21.md",
+   "note": "Practice scenarios on the synthetic test location: catch, stay high, look 3 to 8 m ahead for dark back faces, drop to one in reach, run diagonal. The near-face shading C2 is on. Record what works in the study.",
+   "situations": [
+    "technique/M1.json",
+    "technique/M2.json",
+    "technique/M3.json",
+    "technique/M4.json",
+    "technique/M5.json"
+   ]
   }
  ]
 }
