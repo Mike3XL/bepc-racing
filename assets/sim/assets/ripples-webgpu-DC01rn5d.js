@@ -1,5 +1,5 @@
 /*! Surfski downwind simulator. Copyright (c) 2026 Michael Liddell. All rights reserved. Not licensed for copying, modification or reuse: see LICENSE.txt. Bundled open-source libraries: THIRD-PARTY-NOTICES.txt. */
-import"./fftsea-BlV7h9PB.js";import{i as e,n as t}from"./fftgpu-CavxKjr5.js";import{n,r}from"./ripcascade-DKXb2b1O.js";var i=256,a=Math.log2(256),o=43,s=a+1;function c(e,t=i){let n=Math.log2(t),r=(e,t)=>t===`vec4f`?`vec4f(cmul(${e}.xy, w), cmul(${e}.zw, w))`:`cmul(${e}, w)`;return`
+import"./fftsea-BlV7h9PB.js";import{i as e,n as t}from"./fftgpu-CavxKjr5.js";import{n,r}from"./ripcascade-CufHP4RE.js";var i=256,a=Math.log2(256),o=43,s=a+1;function c(e,t=i){let n=Math.log2(t),r=(e,t)=>t===`vec4f`?`vec4f(cmul(${e}.xy, w), cmul(${e}.zw, w))`:`cmul(${e}, w)`;return`
 const N: u32 = ${t}u;
 const LOGN: u32 = ${n}u;
 const PI: f32 = 3.14159265358979;
