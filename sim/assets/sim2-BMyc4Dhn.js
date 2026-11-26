@@ -1,91 +1,125 @@
 /*! Surfski downwind simulator. Copyright (c) 2026 Michael Liddell. All rights reserved. Not licensed for copying, modification or reuse: see LICENSE.txt. Bundled open-source libraries: THIRD-PARTY-NOTICES.txt. */
-import"./modulepreload-polyfill-P2Xu9kJm.js";import{i as e,s as t,t as n}from"./fftsea-BlV7h9PB.js";import{f as r,m as i,v as a}from"./waves-B5Ut6Mnp.js";import{_ as o}from"./seas-CiqO6vxw.js";import{i as s}from"./scenarios-CUIjf6SF.js";import{a as c,c as l,d as u,f as d,i as f,l as p,m,n as h,o as g,p as _,r as v,s as y,t as b,u as x}from"./atmosphere-CzlQdgsZ.js";import"./fftgpu-CavxKjr5.js";import{i as S,o as C}from"./wave-solve-YKJxEQBO.js";import{f as w,l as T,n as E,o as D,s as O,u as k}from"./perf-measure-mz5jO15u.js";import{n as A}from"./ripcascade-CufHP4RE.js";import{n as j,t as M}from"./clouds-Dpdjb2rK.js";import{n as ee,t as N}from"./ripples-webgpu-DC01rn5d.js";var P=`
-struct T { reproj: mat4x4f, inSize: vec2f, outSize: vec2f, jitterPx: vec2f, wMax: f32, valid: f32, up: f32, sharpen: f32, sigN: f32, sigW: f32, wSoft: f32, pad1: f32, pad2: f32, pad3: f32 };
-@group(0) @binding(0) var<uniform> P: T;
-@group(0) @binding(1) var cur: texture_2d<f32>;
-@group(0) @binding(2) var depth: texture_depth_2d;
-@group(0) @binding(3) var hist: texture_2d<f32>;
-@group(0) @binding(4) var lin: sampler;
-struct FO { @location(0) screen: vec4f, @location(1) history: vec4f };
-fn toYCoCg(c: vec3f) -> vec3f { return vec3f(dot(c, vec3f(0.25, 0.5, 0.25)), dot(c, vec3f(0.5, 0.0, -0.5)), dot(c, vec3f(-0.25, 0.5, -0.25))); }
-fn fromYCoCg(c: vec3f) -> vec3f { return vec3f(c.x + c.y - c.z, c.x + c.z, c.x - c.y - c.z); }
-fn catmullRom(uv: vec2f, size: vec2f) -> vec4f {
-  let p = uv * size - 0.5;
-  let t1 = floor(p) + 0.5;
-  let f = p - floor(p);
-  let w0 = f * (-0.5 + f * (1.0 - 0.5 * f));
-  let w1 = 1.0 + f * f * (-2.5 + 1.5 * f);
-  let w2 = f * (0.5 + f * (2.0 - 1.5 * f));
-  let w3 = f * f * (-0.5 + 0.5 * f);
-  let w12 = w1 + w2;
-  let p0 = (t1 - 1.0) / size;
-  let p3 = (t1 + 2.0) / size;
-  let p12 = (t1 + w2 / w12) / size;
-  var c = textureSampleLevel(hist, lin, vec2f(p12.x, p0.y), 0.0) * (w12.x * w0.y);
-  c += textureSampleLevel(hist, lin, vec2f(p0.x, p12.y), 0.0) * (w0.x * w12.y);
-  c += textureSampleLevel(hist, lin, p12, 0.0) * (w12.x * w12.y);
-  c += textureSampleLevel(hist, lin, vec2f(p3.x, p12.y), 0.0) * (w3.x * w12.y);
-  c += textureSampleLevel(hist, lin, vec2f(p12.x, p3.y), 0.0) * (w12.x * w3.y);
-  let wsum = w12.x * w0.y + w0.x * w12.y + w12.x * w12.y + w3.x * w12.y + w12.x * w3.y;
-  return max(c / wsum, vec4f(0.0));
+import"./modulepreload-polyfill-P2Xu9kJm.js";import{i as e,s as t,t as n}from"./fftsea-BlV7h9PB.js";import{f as r,m as i,v as a}from"./waves-B5Ut6Mnp.js";import{_ as o}from"./seas-CiqO6vxw.js";import{i as s}from"./scenarios-CUIjf6SF.js";import{a as c,c as l,d as u,f as d,i as f,l as p,m,n as h,o as g,p as _,r as v,s as y,t as b,u as x}from"./atmosphere-CzlQdgsZ.js";import"./fftgpu-CavxKjr5.js";import{i as S,o as C}from"./wave-solve-YKJxEQBO.js";import{f as w,l as T,n as E,o as D,s as O,u as k}from"./perf-measure-mz5jO15u.js";import{n as A}from"./ripcascade-CufHP4RE.js";import{n as j,t as M}from"./clouds-Dpdjb2rK.js";import{n as ee,t as N}from"./ripples-webgpu-DC01rn5d.js";var P=2*Math.PI;function F(e,t,n){let r=(Math.imul(e|0,2376512323)^Math.imul(t|0,3625334849)^Math.imul(n|0,3407524639))>>>0;return r^=r>>>16,r=Math.imul(r,2246822507)>>>0,r^=r>>>13,r=Math.imul(r,3266489909)>>>0,r^=r>>>16,r>>>0}var I=(e,t,n)=>F(e,t,n)/4294967296,te=e=>e*e*e*(e*(e*6-15)+10),ne=Float64Array.from({length:16},(e,t)=>Math.cos(P*(t+.5)/16)),re=Float64Array.from({length:16},(e,t)=>Math.sin(P*(t+.5)/16));function L(e,t=0){let n=Math.floor(e),r=e-n,i=2*I(n,0,t)-1,a=2*I(n+1,0,t)-1;return i*r+(a*(r-1)-i*r)*te(r)}function R(e,t,n=0){let r=Math.floor(e),i=Math.floor(t),a=e-r,o=t-i,s=(e,t,r,i)=>{let a=F(e,t,n)>>>28;return ne[a]*r+re[a]*i},c=s(r,i,a,o),l=s(r+1,i,a-1,o),u=s(r,i+1,a,o-1),d=s(r+1,i+1,a-1,o-1),f=te(a),p=te(o),m=c+(l-c)*f;return m+(u+(d-u)*f-m)*p}var z=.1405,B=.2158,ie=2.399963229728653;function ae(e,t,n=0,r=null){return se(t,n,r,(n,r)=>L(e/r+17.31*n,t.seed+101*n)/z)}function oe(e,t,n,r=0,i=null){return se(n,r,i,(r,i)=>{let a=Math.cos(ie*r),o=Math.sin(ie*r);return R((a*e-o*t)/i+17.31*r,(o*e+a*t)/i-9.77*r,n.seed+101*r)/B})}function se(e,t,n,r){let i=2**-e.hurst,a=e.rms*Math.sqrt(1-i*i),o=Math.max(t,e.finest??0),s=0,c=0,l=a,u=e.scale;for(let e=0;e<24;e++,l*=i,u*=.5){let t=o>0?Math.min(1,Math.max(0,u/o-1)):1;if(t<=0){c+=l*l/(1-i*i);break}s+=t*l*r(e,u),c+=(1-t*t)*l*l}return n&&(n.value=s,n.cut=c),s}var ce=`
+fn nHash2(i: i32, j: i32, seed: i32) -> u32 {
+  var h = (bitcast<u32>(i) * 0x8da6b343u) ^ (bitcast<u32>(j) * 0xd8163841u) ^ (bitcast<u32>(seed) * 0xcb1ab31fu);
+  h ^= h >> 16u; h *= 0x85ebca6bu; h ^= h >> 13u; h *= 0xc2b2ae35u; h ^= h >> 16u;
+  return h;
 }
-@vertex fn vs(@builtin(vertex_index) vi: u32) -> @builtin(position) vec4f { return vec4f(vec2f(f32((vi << 1u) & 2u), f32(vi & 2u)) * 2.0 - 1.0, 0.0, 1.0); }
-@fragment fn fs(@builtin(position) fp: vec4f) -> FO {
-  let uv = fp.xy / P.outSize;
-  let pc = uv * P.inSize;
-  let ic = vec2i(floor(pc + P.jitterPx));
-  let hiI = vec2i(P.inSize) - 1;
-  // where this pixel was a frame ago: its depth (reversed: 1 near, 0 at infinity) through this frame's inverse view-projection and the
-  // last frame's (one matrix, worked out on the CPU)
-  let d = textureLoad(depth, clamp(ic, vec2i(0), hiI), 0);
-  let prev = P.reproj * vec4f(uv.x * 2.0 - 1.0, 1.0 - uv.y * 2.0, d, 1.0);
-  let pn = prev.xy / prev.w;
-  let uvPrev = vec2f(pn.x * 0.5 + 0.5, 0.5 - pn.y * 0.5);
-  let onScreen = all(uvPrev >= vec2f(0.0)) && all(uvPrev <= vec2f(1.0)) && P.valid > 0.5 && prev.w > 0.0;
-  let H = catmullRom(uvPrev, P.outSize);
-  let vel = length((uvPrev - uv) * P.outSize);
-  // the history's weight: what it holds, capped, and less where the picture moves: each read between the history's pixels softens it (most
-  // at half a pixel, not at all on one), and a fast move brings more that is new (at 6 screen pixels a frame, about 3 frames' worth)
-  let fr = fract(uvPrev * P.outSize - 0.5);
-  let soft = clamp(4.0 * (fr.x * (1.0 - fr.x) + fr.y * (1.0 - fr.y)), 0.0, 1.0) * smoothstep(0.0, 0.05, vel);
-  let wh = select(0.0, min(H.a, min(mix(P.wMax, P.wSoft, soft), mix(P.wMax, 3.0, clamp(vel / 6.0, 0.0, 1.0)))), onScreen);
-  let sig = mix(P.sigW, P.sigN, clamp(wh / 3.0, 0.0, 1.0));
-  let k = 0.5 / (sig * sig);
-  var c = vec3f(0.0);
-  var wsum = 0.0;
-  var m1 = vec3f(0.0);
-  var m2 = vec3f(0.0);
-  for (var dy = -1; dy <= 1; dy++) {
-    for (var dx = -1; dx <= 1; dx++) {
-      let q = clamp(ic + vec2i(dx, dy), vec2i(0), hiI);
-      let s = textureLoad(cur, q, 0).rgb;
-      let dd = (vec2f(q) + 0.5 - P.jitterPx - pc) * P.up;      // (from the screen pixel's centre, in screen pixels)
-      let w = exp(-k * dot(dd, dd));
-      c += s * w;
-      wsum += w;
-      let y = toYCoCg(s);
-      m1 += y;
-      m2 += y * y;
+fn nFade(t: f32) -> f32 { return t * t * t * (t * (t * 6.0 - 15.0) + 10.0); }
+const N_GRAD = array<vec2f, 16>(vec2f(0.980785280, 0.195090322), vec2f(0.831469612, 0.555570233), vec2f(0.555570233, 0.831469612), vec2f(0.195090322, 0.980785280), vec2f(-0.195090322, 0.980785280), vec2f(-0.555570233, 0.831469612), vec2f(-0.831469612, 0.555570233), vec2f(-0.980785280, 0.195090322), vec2f(-0.980785280, -0.195090322), vec2f(-0.831469612, -0.555570233), vec2f(-0.555570233, -0.831469612), vec2f(-0.195090322, -0.980785280), vec2f(0.195090322, -0.980785280), vec2f(0.555570233, -0.831469612), vec2f(0.831469612, -0.555570233), vec2f(0.980785280, -0.195090322));
+fn nGrad(i: i32, j: i32, seed: i32, d: vec2f) -> f32 { return dot(N_GRAD[nHash2(i, j, seed) >> 28u], d); }
+fn nNoise2(p: vec2f, seed: i32) -> f32 {
+  let c = floor(p);
+  let f = p - c;
+  let i = i32(c.x);
+  let j = i32(c.y);
+  let n00 = nGrad(i, j, seed, f);
+  let n10 = nGrad(i + 1, j, seed, f - vec2f(1.0, 0.0));
+  let n01 = nGrad(i, j + 1, seed, f - vec2f(0.0, 1.0));
+  let n11 = nGrad(i + 1, j + 1, seed, f - vec2f(1.0, 1.0));
+  let u = nFade(f.x);
+  let v = nFade(f.y);
+  return mix(mix(n00, n10, u), mix(n01, n11, u), v);
+}
+const N_ROT = array<vec2f, 24>(vec2f(1.000000000, 0.000000000), vec2f(-0.737368878, 0.675490294), vec2f(0.087425725, -0.996171041), vec2f(0.608438861, 0.793600751), vec2f(-0.984713485, -0.174181950), vec2f(0.843755295, -0.536728053), vec2f(-0.259604305, 0.965715074), vec2f(-0.460907025, -0.887448429), vec2f(0.939321296, 0.343038631), vec2f(-0.924345556, 0.381556408), vec2f(0.423845995, -0.905734273), vec2f(0.299283864, 0.954164120), vec2f(-0.865211210, -0.501407581), vec2f(0.976675774, -0.214719429), vec2f(-0.575129429, 0.818062430), vec2f(-0.128510690, -0.991708124), vec2f(0.764648995, 0.644446983), vec2f(-0.999146054, 0.041317826), vec2f(0.708829414, -0.705379941), vec2f(-0.046191446, 0.998932605), vec2f(-0.640709145, -0.767783688), vec2f(0.991069413, 0.133346988), vec2f(-0.820858337, 0.571131850), vec2f(0.219481369, -0.975616691));      // (each octave's turn by the golden angle)
+fn nFractal2(p: vec2f, F: vec4f, band: vec2f) -> f32 {
+  let r = exp2(-F.z);
+  var amp = F.y * sqrt(1.0 - r * r);
+  var w = F.x;
+  var v = 0.0;
+  for (var k = 0; k < 24; k++) {
+    let keep = select(1.0, clamp(w / band.y - 1.0, 0.0, 1.0), band.y > 0.0);
+    if (keep <= 0.0) { break; }
+    let fine = select(1.0, 1.0 - clamp(w / band.x - 1.0, 0.0, 1.0), band.x > 0.0);      // (what a bake at f0 left out of this octave)
+    if (fine > 0.0) {
+      let cs = N_ROT[k].x;
+      let sn = N_ROT[k].y;
+      let q = vec2f((cs * p.x - sn * p.y) / w + 17.31 * f32(k), (sn * p.x + cs * p.y) / w - 9.77 * f32(k));
+      v += fine * keep * amp * nNoise2(q, i32(F.w) + 101 * k) / ${B};
+    }
+    amp *= r;
+    w *= 0.5;
+  }
+  return v;
+}
+// nNoise2 with its gradient (value, d/dx, d/dy): the same corners and fade, differentiated (a slope for the light with no second sample)
+fn nNoise2d(p: vec2f, seed: i32) -> vec3f {
+  let c = floor(p);
+  let f = p - c;
+  let i = i32(c.x);
+  let j = i32(c.y);
+  let ga = N_GRAD[nHash2(i, j, seed) >> 28u];
+  let gb = N_GRAD[nHash2(i + 1, j, seed) >> 28u];
+  let gc = N_GRAD[nHash2(i, j + 1, seed) >> 28u];
+  let gd = N_GRAD[nHash2(i + 1, j + 1, seed) >> 28u];
+  let a = dot(ga, f);
+  let b = dot(gb, f - vec2f(1.0, 0.0));
+  let cc = dot(gc, f - vec2f(0.0, 1.0));
+  let d = dot(gd, f - vec2f(1.0, 1.0));
+  let u = nFade(f.x);
+  let v = nFade(f.y);
+  let du = 30.0 * f.x * f.x * (f.x - 1.0) * (f.x - 1.0);
+  let dv = 30.0 * f.y * f.y * (f.y - 1.0) * (f.y - 1.0);
+  let k = a - b - cc + d;
+  let n = a + u * (b - a) + v * (cc - a) + u * v * k;
+  let g = ga + u * (gb - ga) + v * (gc - ga) + u * v * (ga - gb - gc + gd) + vec2f(du * ((b - a) + v * k), dv * ((cc - a) + u * k));
+  return vec3f(n, g);
+}
+// nFractal2 with its gradient (value, d/dp.x, d/dp.y): each octave's gradient turned back and over its scale
+fn nFractal2d(p: vec2f, F: vec4f, band: vec2f) -> vec3f {
+  let r = exp2(-F.z);
+  var amp = F.y * sqrt(1.0 - r * r);
+  var w = F.x;
+  var v = vec3f(0.0);
+  for (var k = 0; k < 24; k++) {
+    let keep = select(1.0, clamp(w / band.y - 1.0, 0.0, 1.0), band.y > 0.0);
+    if (keep <= 0.0) { break; }
+    let fine = select(1.0, 1.0 - clamp(w / band.x - 1.0, 0.0, 1.0), band.x > 0.0);
+    if (fine > 0.0) {
+      let cs = N_ROT[k].x;
+      let sn = N_ROT[k].y;
+      let q = vec2f((cs * p.x - sn * p.y) / w + 17.31 * f32(k), (sn * p.x + cs * p.y) / w - 9.77 * f32(k));
+      let nd = nNoise2d(q, i32(F.w) + 101 * k);
+      let gq = nd.yz / w;
+      v += (fine * keep * amp / ${B}) * vec3f(nd.x, cs * gq.x + sn * gq.y, -sn * gq.x + cs * gq.y);
+    }
+    amp *= r;
+    w *= 0.5;
+  }
+  return v;
+}
+// the cellular noise's twin ( cellEdge2, laceThreshold)
+fn nCellEdge2(p: vec2f, seed: i32) -> f32 {
+  let c = floor(p);
+  var f1 = 9.0;
+  var f2 = 9.0;
+  for (var dj = -1; dj <= 1; dj++) {
+    for (var di = -1; di <= 1; di++) {
+      let h = nHash2(i32(c.x) + di, i32(c.y) + dj, seed);
+      let q = c + vec2f(f32(di), f32(dj)) + vec2f(f32(h & 0xffffu), f32(h >> 16u)) / 65536.0;
+      let d = length(q - p);
+      if (d < f1) { f2 = f1; f1 = d; } else if (d < f2) { f2 = d; }
     }
   }
-  let cw = c / max(wsum, 1e-6);
-  m1 /= 9.0;
-  let sigma = sqrt(max(m2 / 9.0 - m1 * m1, vec3f(0.0)));
-  let h = toYCoCg(H.rgb);
-  let dh = h - m1;
-  let ext = max(abs(dh) / max(1.25 * sigma, vec3f(1e-4)), vec3f(1.0));
-  let hc = m1 + dh / max(ext.x, max(ext.y, ext.z));
-  let clipped = length(hc - h) / max(length(m1), 1e-3);
-  // this frame's share: its samples' weight against the history's, more where the history was clipped far
-  let a0 = wsum / max(wh + wsum, 1e-6);
-  let a = select(1.0, clamp(a0 + 0.5 * clipped, a0, 1.0), wh > 0.0);
-  let o = max(mix(fromYCoCg(hc), cw, a), vec3f(0.0));
-  let sharp = max(o + P.sharpen * (cw - fromYCoCg(m1)), vec3f(0.0));
-  var r: FO;
-  r.history = vec4f(o, wsum / max(a, 1e-3));      // (the weight it now holds: wh + wsum when nothing was clipped)
-  r.screen = vec4f(pow(min(sharp, vec3f(1.0)), vec3f(1.0 / 2.2)), 1.0);
-  return r;
-}`;function F(e){let t=(e,t)=>{let n=1,r=0;for(;e>0;)n/=t,r+=e%t*n,e=Math.floor(e/t);return r},n=e%8+1;return[t(n,2)-.5,t(n,3)-.5]}var te=class{constructor(e,t,{wMax:n=12,wSoft:r=2,sigN:i=.35,sigW:a=.45,sharpen:o=0,jitter:s=!0}={}){Object.assign(this,{device:e,wMax:n,wSoft:r,sigN:i,sigW:a,sharpen:o,jitter:s});let c=e.createShaderModule({code:P,label:`temporal resolve`});this.modules=[c],this.pipe=e.createRenderPipeline({layout:`auto`,label:`temporal resolve`,vertex:{module:c,entryPoint:`vs`},fragment:{module:c,entryPoint:`fs`,targets:[{format:t},{format:`rgba16float`}]}}),this.uni=e.createBuffer({size:128,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST}),this.uniF=new Float32Array(32),this.lin=e.createSampler({magFilter:`linear`,minFilter:`linear`,addressModeU:`clamp-to-edge`,addressModeV:`clamp-to-edge`}),this.size=``,this.hist=[],this.cur=0,this.valid=!1}resize(e,t,n,r){let i=[e,t,n,r].join(` `);if(i!==this.size){this.size=i,this.inSize=[e,t],this.outSize=[n,r];for(let e of this.hist)e.destroy();this.hist=[0,1].map(()=>this.device.createTexture({size:[n,r],format:`rgba16float`,usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.TEXTURE_BINDING})),this.valid=!1}}reset(){this.valid=!1}resolve(e,t,n,r,i,a,o=null){let s=this.device,c=this.hist[this.cur],l=this.hist[1-this.cur],u=this.outSize[0]/this.inSize[0];this.uniF.set(r,0),this.uniF.set([...this.inSize,...this.outSize,i[0],i[1],this.wMax,+!!this.valid,u,this.sharpen,this.sigN,Math.max(this.sigW,.5*u),this.wSoft,0,0,0],16),s.queue.writeBuffer(this.uni,0,this.uniF);let d=s.createBindGroup({layout:this.pipe.getBindGroupLayout(0),entries:[{binding:0,resource:{buffer:this.uni}},{binding:1,resource:t},{binding:2,resource:n},{binding:3,resource:c.createView()},{binding:4,resource:this.lin}]}),f=e.beginRenderPass({colorAttachments:[{view:a,loadOp:`clear`,storeOp:`store`,clearValue:[0,0,0,1]},{view:l.createView(),loadOp:`clear`,storeOp:`store`,clearValue:[0,0,0,1]}],...o?{timestampWrites:o}:{}});f.setPipeline(this.pipe),f.setBindGroup(0,d),f.draw(3),f.end(),this.cur=1-this.cur,this.valid=!0}};function ne(e){let t=Array.from(e),n=new Float32Array(16);n[0]=t[5]*t[10]*t[15]-t[5]*t[11]*t[14]-t[9]*t[6]*t[15]+t[9]*t[7]*t[14]+t[13]*t[6]*t[11]-t[13]*t[7]*t[10],n[4]=-t[4]*t[10]*t[15]+t[4]*t[11]*t[14]+t[8]*t[6]*t[15]-t[8]*t[7]*t[14]-t[12]*t[6]*t[11]+t[12]*t[7]*t[10],n[8]=t[4]*t[9]*t[15]-t[4]*t[11]*t[13]-t[8]*t[5]*t[15]+t[8]*t[7]*t[13]+t[12]*t[5]*t[11]-t[12]*t[7]*t[9],n[12]=-t[4]*t[9]*t[14]+t[4]*t[10]*t[13]+t[8]*t[5]*t[14]-t[8]*t[6]*t[13]-t[12]*t[5]*t[10]+t[12]*t[6]*t[9],n[1]=-t[1]*t[10]*t[15]+t[1]*t[11]*t[14]+t[9]*t[2]*t[15]-t[9]*t[3]*t[14]-t[13]*t[2]*t[11]+t[13]*t[3]*t[10],n[5]=t[0]*t[10]*t[15]-t[0]*t[11]*t[14]-t[8]*t[2]*t[15]+t[8]*t[3]*t[14]+t[12]*t[2]*t[11]-t[12]*t[3]*t[10],n[9]=-t[0]*t[9]*t[15]+t[0]*t[11]*t[13]+t[8]*t[1]*t[15]-t[8]*t[3]*t[13]-t[12]*t[1]*t[11]+t[12]*t[3]*t[9],n[13]=t[0]*t[9]*t[14]-t[0]*t[10]*t[13]-t[8]*t[1]*t[14]+t[8]*t[2]*t[13]+t[12]*t[1]*t[10]-t[12]*t[2]*t[9],n[2]=t[1]*t[6]*t[15]-t[1]*t[7]*t[14]-t[5]*t[2]*t[15]+t[5]*t[3]*t[14]+t[13]*t[2]*t[7]-t[13]*t[3]*t[6],n[6]=-t[0]*t[6]*t[15]+t[0]*t[7]*t[14]+t[4]*t[2]*t[15]-t[4]*t[3]*t[14]-t[12]*t[2]*t[7]+t[12]*t[3]*t[6],n[10]=t[0]*t[5]*t[15]-t[0]*t[7]*t[13]-t[4]*t[1]*t[15]+t[4]*t[3]*t[13]+t[12]*t[1]*t[7]-t[12]*t[3]*t[5],n[14]=-t[0]*t[5]*t[14]+t[0]*t[6]*t[13]+t[4]*t[1]*t[14]-t[4]*t[2]*t[13]-t[12]*t[1]*t[6]+t[12]*t[2]*t[5],n[3]=-t[1]*t[6]*t[11]+t[1]*t[7]*t[10]+t[5]*t[2]*t[11]-t[5]*t[3]*t[10]-t[9]*t[2]*t[7]+t[9]*t[3]*t[6],n[7]=t[0]*t[6]*t[11]-t[0]*t[7]*t[10]-t[4]*t[2]*t[11]+t[4]*t[3]*t[10]+t[8]*t[2]*t[7]-t[8]*t[3]*t[6],n[11]=-t[0]*t[5]*t[11]+t[0]*t[7]*t[9]+t[4]*t[1]*t[11]-t[4]*t[3]*t[9]-t[8]*t[1]*t[7]+t[8]*t[3]*t[5],n[15]=t[0]*t[5]*t[10]-t[0]*t[6]*t[9]-t[4]*t[1]*t[10]+t[4]*t[2]*t[9]+t[8]*t[1]*t[6]-t[8]*t[2]*t[5];let r=t[0]*n[0]+t[1]*n[4]+t[2]*n[8]+t[3]*n[12];for(let e=0;e<16;e++)n[e]/=r;return n}var re=`
+  return f2 - f1;
+}
+const N_LACE = array<f32, 11>(0.0, 0.0401, 0.0826, 0.1276, 0.1765, 0.23, 0.2893, 0.3574, 0.4413, 0.5591, 1.2444);
+fn nLaceSW(e: f32) -> f32 { return select(0.0, 1.0 - exp(-pow(e / 0.3232, 1.078)), e > 0.0); }
+fn nLaceDW(e: f32) -> f32 { if (e <= 0.0) { return 0.0; } let x = pow(e / 0.3232, 1.078); return (1.078 / 0.3232) * x / max(e / 0.3232, 1e-6) * exp(-x); }
+fn nLaceTAA(c: f32, a: f32) -> vec2f {
+  let d = 0.58 * a;
+  let g0 = 0.3 * nLaceSW(d);
+  if (c <= g0) { return vec2f(0.0, select(0.0, c / g0, g0 > 0.0)); }
+  var t = 0.3232 * pow(-log(1.0 - min(c, 0.999)), 1.0 / 1.078);
+  for (var n = 0; n < 2; n++) {
+    let G = 0.4 * nLaceSW(t) + 0.3 * (nLaceSW(t + d) + nLaceSW(t - d));
+    let dg = 0.4 * nLaceDW(t) + 0.3 * (nLaceDW(t + d) + nLaceDW(t - d));
+    t = max(0.0, t + (c - G) / max(dg, 0.1));
+  }
+  return vec2f(t, 1.0);
+}
+fn nLaceT(c: f32) -> f32 { let x = 10.0 * clamp(c, 0.0, 1.0); let i = min(9u, u32(x)); return mix(N_LACE[i], N_LACE[i + 1u], x - f32(i)); }
+`,le=`
 // lk[0] exposure x white balance (rgb); [1] the sun's disc radiance; [2] the sun's irradiance (both exposed); [3] the air's extinction at the
 // sea (1/m); [4] the haze's phase (g, g of the forward peak, its weight), the bleach; [5] the tone curve (knee, saturation, bleach start,
 // end); [6] the saturation fade (start, end), the sun through the clouds, the sun not hidden; [7] the glitter's colour (display), its gain;
@@ -392,134 +426,14 @@ fn skyBase(d: vec3f) -> vec4f {
 }
 /** The sky just above the horizon in direction d's azimuth (display): what the distance fades things toward. */
 fn horizonSky(d: vec3f) -> vec3f { return toneEnc(skyLin(normalize(vec3f(d.x, 0.012, d.z)))); }
-`;function I(e){let t=new Float32Array(1),n=new Uint32Array(t.buffer);t[0]=e;let r=n[0],i=r>>>16&32768,a=(r>>>23&255)-127+15,o=r&8388607;return a<=0?i|(a<-10?0:(o|8388608)>>>1-a+13):a>=31?i|31744:i|a<<10|o>>>13}function L({sunElDeg:e=30,haze:t=null,hazeAmt:n=null,hazeType:r=null,teal:i=.6,turbid:a=0,bottom:o=null,glint:s=1.3,cloud:m=.35,cloudType:_=.25,cloudVar:v=.4,cloudDark:S=0}={},C={}){let[w,T]=b[t]??b.Light,E=n??w,D=r??T,O=`${E.toFixed(2)},${D.toFixed(2)}`;O!==C.hazeKey&&(C.atm=g(c(E,D)),C.hazeKey=O,C.skyKey=null);let k=Math.max(-4,e)*Math.PI/180,A=`${O}|${e}`,ee=!1;A!==C.skyKey&&(C.skyKey=A,C.sky=l(C.atm,k),ee=!0);let N=C.sky,P={...y(N),sunSin:Math.sin(k)},F=N.g,te=Math.min(1,Math.max(0,(P.lightSun-.03)/.37)),ne=h.bleach[2]*te*te*(3-2*te),re={...h,bleach:[h.bleach[0],h.bleach[1],ne]},I=d(u(i,a),P,o??[.22,.19,.15]),L=(e,t=0)=>[e[0],e[1],e[2],t],R=j(m,_,v),z=Math.min(1,Math.max(0,(R.opaque-.25)/.7)),B=(1-.9*z*z*(3-2*z))*(1-.5*S),ie=e=>p(C.atm,e,k).map((e,t)=>e*P.exp[t]*.8/Math.PI);return{values:new Float32Array([...L(P.exp),...L(P.sunDisc),...L(P.sunE),...L(N.ext),F.g,F.gPeak,F.wPeak,ne,h.knee,h.sat,h.bleach[0],h.bleach[1],h.satFade[0],h.satFade[1],B,1,...L(x(P.sunCol.map(e=>e*40),re),s),...L(f(I.deep,1/h.sat)),...L(f(I.bot,1/h.sat)),...L(I.kd),...L(x(I.sss)),...L(P.skyE.map(e=>e*.85/Math.PI),1),R.low,R.mid,R.high,R.variety,R.puff,R.scale,R.base,R.opaque,R.tower,R.towers,R.anvil,R.sheet,...L(ie(M.low),1),...L(ie(M.mid),S),...L(ie(M.high)),...L(ie(M.top))]),rayleigh:N.rayleigh,mie:N.mie,tablesChanged:ee,sky:N,look:P}}var R=class{constructor(e){this.device=e;let t=t=>e.createTexture({label:t,size:[48,48],format:`rgba16float`,usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST});this.rayleigh=t(`sky rayleigh`),this.mie=t(`sky mie`),this.values=new Float32Array(80),this.cache={},this.version=0}set(e={}){let t=L(e,this.cache);if(t.tablesChanged)for(let[e,n]of[[this.rayleigh,t.rayleigh],[this.mie,t.mie]]){let t=new Uint16Array(n.length);for(let e=0;e<n.length;e++)t[e]=I(n[e]);this.device.queue.writeTexture({texture:e},t,{bytesPerRow:384},[48,48])}return this.values.set(t.values),this.sky=t.sky,this.look=t.look,this.version++,this}},z=2*Math.PI;function B(e,t,n){let r=(Math.imul(e|0,2376512323)^Math.imul(t|0,3625334849)^Math.imul(n|0,3407524639))>>>0;return r^=r>>>16,r=Math.imul(r,2246822507)>>>0,r^=r>>>13,r=Math.imul(r,3266489909)>>>0,r^=r>>>16,r>>>0}var ie=(e,t,n)=>B(e,t,n)/4294967296,ae=e=>e*e*e*(e*(e*6-15)+10),oe=Float64Array.from({length:16},(e,t)=>Math.cos(z*(t+.5)/16)),se=Float64Array.from({length:16},(e,t)=>Math.sin(z*(t+.5)/16));function ce(e,t=0){let n=Math.floor(e),r=e-n,i=2*ie(n,0,t)-1,a=2*ie(n+1,0,t)-1;return i*r+(a*(r-1)-i*r)*ae(r)}function le(e,t,n=0){let r=Math.floor(e),i=Math.floor(t),a=e-r,o=t-i,s=(e,t,r,i)=>{let a=B(e,t,n)>>>28;return oe[a]*r+se[a]*i},c=s(r,i,a,o),l=s(r+1,i,a-1,o),u=s(r,i+1,a,o-1),d=s(r+1,i+1,a-1,o-1),f=ae(a),p=ae(o),m=c+(l-c)*f;return m+(u+(d-u)*f-m)*p}var ue=.1405,V=.2158,de=2.399963229728653;function fe(e,t,n=0,r=null){return me(t,n,r,(n,r)=>ce(e/r+17.31*n,t.seed+101*n)/ue)}function pe(e,t,n,r=0,i=null){return me(n,r,i,(r,i)=>{let a=Math.cos(de*r),o=Math.sin(de*r);return le((a*e-o*t)/i+17.31*r,(o*e+a*t)/i-9.77*r,n.seed+101*r)/V})}function me(e,t,n,r){let i=2**-e.hurst,a=e.rms*Math.sqrt(1-i*i),o=Math.max(t,e.finest??0),s=0,c=0,l=a,u=e.scale;for(let e=0;e<24;e++,l*=i,u*=.5){let t=o>0?Math.min(1,Math.max(0,u/o-1)):1;if(t<=0){c+=l*l/(1-i*i);break}s+=t*l*r(e,u),c+=(1-t*t)*l*l}return n&&(n.value=s,n.cut=c),s}var he=`
-fn nHash2(i: i32, j: i32, seed: i32) -> u32 {
-  var h = (bitcast<u32>(i) * 0x8da6b343u) ^ (bitcast<u32>(j) * 0xd8163841u) ^ (bitcast<u32>(seed) * 0xcb1ab31fu);
-  h ^= h >> 16u; h *= 0x85ebca6bu; h ^= h >> 13u; h *= 0xc2b2ae35u; h ^= h >> 16u;
-  return h;
-}
-fn nFade(t: f32) -> f32 { return t * t * t * (t * (t * 6.0 - 15.0) + 10.0); }
-const N_GRAD = array<vec2f, 16>(vec2f(0.980785280, 0.195090322), vec2f(0.831469612, 0.555570233), vec2f(0.555570233, 0.831469612), vec2f(0.195090322, 0.980785280), vec2f(-0.195090322, 0.980785280), vec2f(-0.555570233, 0.831469612), vec2f(-0.831469612, 0.555570233), vec2f(-0.980785280, 0.195090322), vec2f(-0.980785280, -0.195090322), vec2f(-0.831469612, -0.555570233), vec2f(-0.555570233, -0.831469612), vec2f(-0.195090322, -0.980785280), vec2f(0.195090322, -0.980785280), vec2f(0.555570233, -0.831469612), vec2f(0.831469612, -0.555570233), vec2f(0.980785280, -0.195090322));
-fn nGrad(i: i32, j: i32, seed: i32, d: vec2f) -> f32 { return dot(N_GRAD[nHash2(i, j, seed) >> 28u], d); }
-fn nNoise2(p: vec2f, seed: i32) -> f32 {
-  let c = floor(p);
-  let f = p - c;
-  let i = i32(c.x);
-  let j = i32(c.y);
-  let n00 = nGrad(i, j, seed, f);
-  let n10 = nGrad(i + 1, j, seed, f - vec2f(1.0, 0.0));
-  let n01 = nGrad(i, j + 1, seed, f - vec2f(0.0, 1.0));
-  let n11 = nGrad(i + 1, j + 1, seed, f - vec2f(1.0, 1.0));
-  let u = nFade(f.x);
-  let v = nFade(f.y);
-  return mix(mix(n00, n10, u), mix(n01, n11, u), v);
-}
-const N_ROT = array<vec2f, 24>(vec2f(1.000000000, 0.000000000), vec2f(-0.737368878, 0.675490294), vec2f(0.087425725, -0.996171041), vec2f(0.608438861, 0.793600751), vec2f(-0.984713485, -0.174181950), vec2f(0.843755295, -0.536728053), vec2f(-0.259604305, 0.965715074), vec2f(-0.460907025, -0.887448429), vec2f(0.939321296, 0.343038631), vec2f(-0.924345556, 0.381556408), vec2f(0.423845995, -0.905734273), vec2f(0.299283864, 0.954164120), vec2f(-0.865211210, -0.501407581), vec2f(0.976675774, -0.214719429), vec2f(-0.575129429, 0.818062430), vec2f(-0.128510690, -0.991708124), vec2f(0.764648995, 0.644446983), vec2f(-0.999146054, 0.041317826), vec2f(0.708829414, -0.705379941), vec2f(-0.046191446, 0.998932605), vec2f(-0.640709145, -0.767783688), vec2f(0.991069413, 0.133346988), vec2f(-0.820858337, 0.571131850), vec2f(0.219481369, -0.975616691));      // (each octave's turn by the golden angle)
-fn nFractal2(p: vec2f, F: vec4f, band: vec2f) -> f32 {
-  let r = exp2(-F.z);
-  var amp = F.y * sqrt(1.0 - r * r);
-  var w = F.x;
-  var v = 0.0;
-  for (var k = 0; k < 24; k++) {
-    let keep = select(1.0, clamp(w / band.y - 1.0, 0.0, 1.0), band.y > 0.0);
-    if (keep <= 0.0) { break; }
-    let fine = select(1.0, 1.0 - clamp(w / band.x - 1.0, 0.0, 1.0), band.x > 0.0);      // (what a bake at f0 left out of this octave)
-    if (fine > 0.0) {
-      let cs = N_ROT[k].x;
-      let sn = N_ROT[k].y;
-      let q = vec2f((cs * p.x - sn * p.y) / w + 17.31 * f32(k), (sn * p.x + cs * p.y) / w - 9.77 * f32(k));
-      v += fine * keep * amp * nNoise2(q, i32(F.w) + 101 * k) / ${V};
-    }
-    amp *= r;
-    w *= 0.5;
-  }
-  return v;
-}
-// nNoise2 with its gradient (value, d/dx, d/dy): the same corners and fade, differentiated (a slope for the light with no second sample)
-fn nNoise2d(p: vec2f, seed: i32) -> vec3f {
-  let c = floor(p);
-  let f = p - c;
-  let i = i32(c.x);
-  let j = i32(c.y);
-  let ga = N_GRAD[nHash2(i, j, seed) >> 28u];
-  let gb = N_GRAD[nHash2(i + 1, j, seed) >> 28u];
-  let gc = N_GRAD[nHash2(i, j + 1, seed) >> 28u];
-  let gd = N_GRAD[nHash2(i + 1, j + 1, seed) >> 28u];
-  let a = dot(ga, f);
-  let b = dot(gb, f - vec2f(1.0, 0.0));
-  let cc = dot(gc, f - vec2f(0.0, 1.0));
-  let d = dot(gd, f - vec2f(1.0, 1.0));
-  let u = nFade(f.x);
-  let v = nFade(f.y);
-  let du = 30.0 * f.x * f.x * (f.x - 1.0) * (f.x - 1.0);
-  let dv = 30.0 * f.y * f.y * (f.y - 1.0) * (f.y - 1.0);
-  let k = a - b - cc + d;
-  let n = a + u * (b - a) + v * (cc - a) + u * v * k;
-  let g = ga + u * (gb - ga) + v * (gc - ga) + u * v * (ga - gb - gc + gd) + vec2f(du * ((b - a) + v * k), dv * ((cc - a) + u * k));
-  return vec3f(n, g);
-}
-// nFractal2 with its gradient (value, d/dp.x, d/dp.y): each octave's gradient turned back and over its scale
-fn nFractal2d(p: vec2f, F: vec4f, band: vec2f) -> vec3f {
-  let r = exp2(-F.z);
-  var amp = F.y * sqrt(1.0 - r * r);
-  var w = F.x;
-  var v = vec3f(0.0);
-  for (var k = 0; k < 24; k++) {
-    let keep = select(1.0, clamp(w / band.y - 1.0, 0.0, 1.0), band.y > 0.0);
-    if (keep <= 0.0) { break; }
-    let fine = select(1.0, 1.0 - clamp(w / band.x - 1.0, 0.0, 1.0), band.x > 0.0);
-    if (fine > 0.0) {
-      let cs = N_ROT[k].x;
-      let sn = N_ROT[k].y;
-      let q = vec2f((cs * p.x - sn * p.y) / w + 17.31 * f32(k), (sn * p.x + cs * p.y) / w - 9.77 * f32(k));
-      let nd = nNoise2d(q, i32(F.w) + 101 * k);
-      let gq = nd.yz / w;
-      v += (fine * keep * amp / ${V}) * vec3f(nd.x, cs * gq.x + sn * gq.y, -sn * gq.x + cs * gq.y);
-    }
-    amp *= r;
-    w *= 0.5;
-  }
-  return v;
-}
-// the cellular noise's twin ( cellEdge2, laceThreshold)
-fn nCellEdge2(p: vec2f, seed: i32) -> f32 {
-  let c = floor(p);
-  var f1 = 9.0;
-  var f2 = 9.0;
-  for (var dj = -1; dj <= 1; dj++) {
-    for (var di = -1; di <= 1; di++) {
-      let h = nHash2(i32(c.x) + di, i32(c.y) + dj, seed);
-      let q = c + vec2f(f32(di), f32(dj)) + vec2f(f32(h & 0xffffu), f32(h >> 16u)) / 65536.0;
-      let d = length(q - p);
-      if (d < f1) { f2 = f1; f1 = d; } else if (d < f2) { f2 = d; }
-    }
-  }
-  return f2 - f1;
-}
-const N_LACE = array<f32, 11>(0.0, 0.0401, 0.0826, 0.1276, 0.1765, 0.23, 0.2893, 0.3574, 0.4413, 0.5591, 1.2444);
-fn nLaceSW(e: f32) -> f32 { return select(0.0, 1.0 - exp(-pow(e / 0.3232, 1.078)), e > 0.0); }
-fn nLaceDW(e: f32) -> f32 { if (e <= 0.0) { return 0.0; } let x = pow(e / 0.3232, 1.078); return (1.078 / 0.3232) * x / max(e / 0.3232, 1e-6) * exp(-x); }
-fn nLaceTAA(c: f32, a: f32) -> vec2f {
-  let d = 0.58 * a;
-  let g0 = 0.3 * nLaceSW(d);
-  if (c <= g0) { return vec2f(0.0, select(0.0, c / g0, g0 > 0.0)); }
-  var t = 0.3232 * pow(-log(1.0 - min(c, 0.999)), 1.0 / 1.078);
-  for (var n = 0; n < 2; n++) {
-    let G = 0.4 * nLaceSW(t) + 0.3 * (nLaceSW(t + d) + nLaceSW(t - d));
-    let dg = 0.4 * nLaceDW(t) + 0.3 * (nLaceDW(t + d) + nLaceDW(t - d));
-    t = max(0.0, t + (c - G) / max(dg, 0.1));
-  }
-  return vec2f(t, 1.0);
-}
-fn nLaceT(c: f32) -> f32 { let x = 10.0 * clamp(c, 0.0, 1.0); let i = min(9u, u32(x)); return mix(N_LACE[i], N_LACE[i + 1u], x - f32(i)); }
-`,ge={seed:7,size:1024,res:512,landWidth:160,d50:.3,faceSlope:.07,berm:1.4,bermAt:22,dune:5,duneAt:70,duneWidth:45,maxDepth:22,bar:{u:95,height:1.4,width:16,wander:16,trough:.6,troughAt:1.8},rips:{spacing:230,jitter:.3,at:60,width:15,flare:1.5,cut:.9,depth:.6,head:.3,attach:.5},shore:{megacusp:8,cusps:22,cuspRelief:.24,swash:10,step:.25,stepAt:7},noise:{shore:{scale:1600,rms:10,hurst:.85,seed:51,split:300,finest:4},bed:{scale:80,rms:1,hurst:.8,seed:57,finest:4},zones:{offshore:.12,surf:.05,face:.02,berm:.06,dune:.5}},divots:{hs:1.2,tp:10,scour:1,plunge:4,width:5,minWidth:3,barAt:2.5,da:4,du:1,from:300},reef:{cover:.25,scale:55,height:1.8,from:140,to:3e3,rough:.35,wander:.3},weed:{cover:.4,scale:22,depthMin:3,depthMax:16},coral:{cover:.45,scale:7,depthMin:1.5,depthMax:9},surfClear:1.2,sandDry:[.62,.5,.33],wetDark:.55,weedAlb:[.045,.065,.03],rockAlb:[.34,.31,.26],coralAlb:[.3,.24,.17],scrub:{from:.35,cover:.75,scale:14},scrubAlb:[.1,.11,.055],grains:{quartz:.7,shell:.25,heavy:.05,quartzAlb:[.62,.48,.3],shellAlb:[.8,.77,.7],heavyAlb:[.08,.07,.06],facets:4,facetAlpha:.7,F0:.045},wetLine:.7,ripple:.14},_e=e=>.21*e**.48,ve=(e,t,n)=>{let r=Math.imul(e,374761393)+Math.imul(t,668265263)+Math.imul(n,2147483647)|0;return r=Math.imul(r^r>>>13,1274126177),((r^r>>>16)>>>0)/4294967296};function ye(e,t,n){let r=Math.floor(e),i=Math.floor(t),a=e-r,o=t-i,s=a*a*(3-2*a),c=o*o*(3-2*o),l=ve(r,i,n),u=ve(r+1,i,n),d=ve(r,i+1,n),f=ve(r+1,i+1,n);return l+(u-l)*s+(d-l)*c+(l-u-d+f)*s*c}function be(e,t,n,r=4){let i=0,a=.5,o=1,s=0;for(let c=0;c<r;c++)i+=a*ye(e*o,t*o,n+c*101),s+=a,a*=.5,o*=2.03;return i/s}var xe=e=>.5+.11*Math.SQRT2*Se(1-2*Math.min(.999,Math.max(.001,e)));function Se(e){let t=.147,n=Math.log(1-e*e),r=2/(Math.PI*t)+n/2;return Math.sign(e)*Math.sqrt(Math.sqrt(r*r-n/t)-r)}var H=(e,t,n)=>{let r=Math.min(1,Math.max(0,(n-e)/(t-e)));return r*r*(3-2*r)};function Ce(e,t=ge){let n=t.rips;if(!n)return null;if(!(n.spacing>0)||!Number.isFinite(n.spacing))throw RangeError(`the rips' spacing must be a positive number of metres, not ${n.spacing}`);let r=n.spacing,i=Math.floor((e-n.at)/r),a=Math.min(n.jitter,.5),o=e=>n.at+r*(e+(e===0?0:a*(ve(e,77,t.seed)-.5))),s=-1/0,c=1/0;for(let t=i-1;t<=i+2;t++){let n=o(t);n<=e&&n>s&&(s=n),n>e&&n<c&&(c=n)}let l=(e-s)/(c-s);return{aL:s,aR:c,s:l,c:Math.cos(2*Math.PI*l),d:Math.min(e-s,c-e)}}function we(e,t,n,r){if(Math.abs(t)>3*n.swash)return 0;let i=2*Math.PI*e/n.cusps+6*(be(e/(3*n.cusps),.3,r+41,2)-.5),a=.5+.5*Math.cos(i);return(n.cuspRelief*H(.3,.6,be(e/(8*n.cusps),.7,r+43))*.67+n.cuspRelief*.33)*(a*a-.375)*Math.exp(-((t/n.swash)**2))}var Te=9.81,Ee=60,De=new WeakMap;function Oe(e){if(e>=1)return 1;if(e<.2)return 0;let t=e*e,n=Math.exp(-1/t);for(let e=0;e<30;e++){let e=(1-n+t*Math.log(n))/(t/n-1);if(n-=e,Math.abs(e)<1e-10)break}return Math.min(n,t)}function ke(e,t,n=Ce(e,t)?.c??0){let r=t.bar;return r.u+r.wander*n+.3*r.wander*(2*be(e/400,.5,t.seed+9)-1)}function Ae(e,t){let n=De.get(t);if(n||De.set(t,n=new Map),n.has(e))return n.get(e);let r=t.divots,i=e*r.da,a=Math.round((r.from+Ee)/r.du),o=new Float32Array(a+1);n.set(e,o);let s=Ce(i,t),c=s?1-Math.exp(-((s.d/(t.rips.width*(1+t.rips.flare)))**2)):1;if(c<.001)return o;let l=r.tp,u=1/l,d=r.hs/Math.SQRT2,f=.5+.4*Math.tanh(33*d*2*Math.PI/(Te*l*l)),p=d*d/8*(Te*l/(4*Math.PI)),m=0,h=Ie(i,t).ub+Ie(i,t).xf-.5*t.bar.width;for(let e=0;e<=a;e++){let n=r.from-e*r.du,s=Re(i,n,t,!1,!1),d=-(s.y+o[e]);if(d<.1)break;let g=C(l,d),_=S(g,d)[1],v=Math.sqrt(8*p/_),y=.88/g*Math.tanh(f*g*d/.88),b=Oe(v/y),x=b-m;if(p=Math.max(0,p-.25*u*b*y*y*r.du),m=b,x<=0||n>h)continue;let w=r.width*y,T=Math.max(r.minWidth,w),E=r.scour*y*x*c*(1-s.rock)*w/T,D=n-r.plunge*y,O=D-r.barAt*T,k=Math.max(0,Math.floor((r.from-D-3*T)/r.du)),A=Math.min(a,Math.ceil((r.from-O+3*T)/r.du));for(let e=k;e<=A;e++){let t=r.from-e*r.du;o[e]+=E*(Math.exp(-(((t-O)/T)**2))-Math.exp(-(((t-D)/T)**2)))}}return o}function je(e,t,n){let r=n.divots,i=Math.round((r.from+Ee)/r.du),a=(r.from-t)/r.du;if(a<0||a>i)return 0;let o=e/r.da,s=Math.floor(o),c=o-s,l=Math.min(Math.floor(a),i-1),u=a-l,d=e=>e[l]+(e[l+1]-e[l])*u;return(d(Ae(s,n))*(1-c)+d(Ae(s+1,n))*c)*(1-H(40,Ee,-t))}var Me=(e,t,n=ge)=>Re(e,t,n,!0,!0),Ne=null,Pe=NaN,Fe=null;function Ie(e,t){if(t===Ne&&e===Pe)return Fe;let n=Ce(e,t),r=n?n.c:0,i=t.noise,a=i?fe(e,i.shore,i.shore.split):0,o=i?fe(e,i.shore)-a:0,s={scale:1200,rms:.4,hurst:.8,finest:30},c=fe(e,{...s,seed:t.seed+61}),l=fe(e,{...s,seed:t.seed+67});return Fe={r:n,c:r,horn:.5-.5*r,ub:ke(e,t,r),xf:a,xn:o,rw:c,rw2:l},Ne=t,Pe=e,Fe}function Le(e,t){let n=t.noise.zones,r=t.shore?.swash??10;return e<0?n.face+(n.berm-n.face)*H(r,t.bermAt,-e)+(n.dune-n.berm)*H(t.duneAt,t.duneAt+.5*t.duneWidth,-e):n.face+(n.surf-n.face)*H(r,2*r,e)+(n.offshore-n.surf)*H(1.2*t.bar.u,1.8*t.bar.u,e)}function Re(e,t,n,r,i){let a=_e(n.d50),o=(2*a/(3*n.faceSlope))**3,s=n.bar,c=n.shore,l=n.rips,u=Ie(e,n),{r:d,c:f,horn:p,ub:m}=u,h=t-u.xf,g=h-((c?-c.megacusp*f:0)+u.xn)*(h>=0?1-H(.25*m,.7*m,h):1-H(n.bermAt,n.duneAt,-h)),_=c?we(e,g,c,n.seed):0,v=r&&n.divots?je(e,t,n):0,y=n.noise?Le(g,n)*pe(e,h,n.noise.bed):0,b,x=0,S=0,C=0,w=0,T=0,E=0;if(g>=0){let r=Math.min(n.maxDepth,a*(g+o)**(2/3)-a*o**(2/3)),f=H(0,.5*s.u,g),D=d?Math.exp(-((d.d/l.width)**2)):0,O=d?l.attach:0;r-=s.height*(1-(d?l.cut:0)*D)*Math.exp(-(((h-m)/s.width)**2))*f;let k=m-s.troughAt*s.width;if(r+=s.trough*(1-.4*p)*(1-O*p*p)*Math.exp(-(((h-k)/s.width)**2))*f,d){r-=O*p*p*.6*s.height*H(.15*m,.45*m,h)*(1-H(m-s.width,m,h));let e=k-s.width+O*(.2*m-(k-s.width)),t=l.width*(1+l.flare*(1-H(e,m-.5*s.width,h)));r+=l.depth*Math.exp(-((d.d/t)**2))*H(e-s.width,e,h)*(1-H(m+s.width,m+2.5*s.width,h))*f,r-=l.head*Math.exp(-((d.d/(2.5*l.width))**2))*Math.exp(-(((h-(m+3*s.width))/(1.5*s.width))**2))}c&&(r+=c.step*Math.exp(-(((g-c.stepAt)/(g<c.stepAt?1.5:5))**2))-_);let A=n.reef,j=be(e/A.scale,t/A.scale,n.seed+3),M=xe(A.cover),ee=A.from*(1+A.wander*u.rw),N=A.to*(1+A.wander*u.rw2),P=H(ee-30,ee,h)*(1-H(N,N+.1*A.to,h)),F=.5*(n.blur??0)/A.scale,te=(n.blur??0)>3.5?0:A.rough;x=H(M,M+.04,j)*P;let ne=A.height*H(M-F,M+.12+F,j)*(1-te+te*be(e/3.5,t/3.5,n.seed+5));r-=ne*+(H(M-F,M+F+1e-9,j)>0)*P,r-=v+y;let re=c?c.swash:0,I=H(re,2*re+1,g);if(b=-(r+I*Math.max(0,.05*g*n.faceSlope-r)),!i)return{y:b,rock:x};let L=-b,R=H(n.surfClear*n.bar.u*.85,n.surfClear*n.bar.u,h),z=n.weed,B=n.coral;w=H(z.depthMin,z.depthMin+1.5,L)*(1-H(z.depthMax-2,z.depthMax,L))*R,E=H(B.depthMin,B.depthMin+1,L)*(1-H(B.depthMax-2,B.depthMax,L))*R,T=P;let ie=xe(z.cover),ae=xe(B.cover);S=H(ie,ie+.05,be(e/z.scale,t/z.scale,n.seed+11))*w,C=x*H(ae,ae+.06,be(e/B.scale,t/B.scale,n.seed+17))*E,S*=1-.6*x,x*=1-C}else{let r=-g,i=Math.min(r*n.faceSlope,n.berm),a=n.dune*H(n.duneAt,n.duneAt+n.duneWidth,r)*(n.noise?1:.8+.4*be(e/60,r/60,n.seed+21));b=i+(r>n.bermAt?.15*(r-n.bermAt)/40:0)+a+_+v+y;let o=n.scrub,s=xe(o.cover);w=H(n.duneAt+o.from*n.duneWidth,n.duneAt+(o.from+.3)*n.duneWidth,r),S=H(s,s+.08,be(e/o.scale,t/o.scale,n.seed+31))*w}let D=Math.max(0,1-S-x-C);return{y:b,weed:S,rock:x,coral:C,sand:D,zW:w,zR:T,zC:E}}var ze=.7,U={rollerB:2.5,trailH:3,onset:.9,life:6,cover:.8,jitter:.25,jitterScale:12,drift:.15,patch:14,lead:.03,rag:.035,ragScale:5,ragFine:.25,sizeH:[.02,.08],qbMax:.98},Be={shareP:.65,warpScale:.4,warp:.25,hurst:.45,fine:.06,lifeVar:.6},W={area:.6,voids:.35,lengthH:2.5,peak:.35,bulkVar:.35,bulkScale:4,twistScale:1.4,twistFine:.35,twistV:.12,twistDrift:1.3,twistRoll:.4,crashEnd:1.8,crashAhead:1.2,splash:.15,ragGeo:1.5,lean:.55,leanBore:.4,leanWin:[-.12,.05],leanRamp:.04,lump:.6,spin:.5,churnT:.7,relief:.06,edge:.05,toeRag:.012},G={front:.06,life:6,stranded:2.5,strandedKeep:.7,cell:.35,onset:.9,frontOn:.8,frontLife:1.6,frontPeak:.6,mix:1,mixScale:30},Ve=e=>`
-${he}
+`;function ue(e){let t=new Float32Array(1),n=new Uint32Array(t.buffer);t[0]=e;let r=n[0],i=r>>>16&32768,a=(r>>>23&255)-127+15,o=r&8388607;return a<=0?i|(a<-10?0:(o|8388608)>>>1-a+13):a>=31?i|31744:i|a<<10|o>>>13}function de({sunElDeg:e=30,haze:t=null,hazeAmt:n=null,hazeType:r=null,teal:i=.6,turbid:a=0,bottom:o=null,glint:s=1.3,cloud:m=.35,cloudType:_=.25,cloudVar:v=.4,cloudDark:S=0}={},C={}){let[w,T]=b[t]??b.Light,E=n??w,D=r??T,O=`${E.toFixed(2)},${D.toFixed(2)}`;O!==C.hazeKey&&(C.atm=g(c(E,D)),C.hazeKey=O,C.skyKey=null);let k=Math.max(-4,e)*Math.PI/180,A=`${O}|${e}`,ee=!1;A!==C.skyKey&&(C.skyKey=A,C.sky=l(C.atm,k),ee=!0);let N=C.sky,P={...y(N),sunSin:Math.sin(k)},F=N.g,I=Math.min(1,Math.max(0,(P.lightSun-.03)/.37)),te=h.bleach[2]*I*I*(3-2*I),ne={...h,bleach:[h.bleach[0],h.bleach[1],te]},re=d(u(i,a),P,o??[.22,.19,.15]),L=(e,t=0)=>[e[0],e[1],e[2],t],R=j(m,_,v),z=Math.min(1,Math.max(0,(R.opaque-.25)/.7)),B=(1-.9*z*z*(3-2*z))*(1-.5*S),ie=e=>p(C.atm,e,k).map((e,t)=>e*P.exp[t]*.8/Math.PI);return{values:new Float32Array([...L(P.exp),...L(P.sunDisc),...L(P.sunE),...L(N.ext),F.g,F.gPeak,F.wPeak,te,h.knee,h.sat,h.bleach[0],h.bleach[1],h.satFade[0],h.satFade[1],B,1,...L(x(P.sunCol.map(e=>e*40),ne),s),...L(f(re.deep,1/h.sat)),...L(f(re.bot,1/h.sat)),...L(re.kd),...L(x(re.sss)),...L(P.skyE.map(e=>e*.85/Math.PI),1),R.low,R.mid,R.high,R.variety,R.puff,R.scale,R.base,R.opaque,R.tower,R.towers,R.anvil,R.sheet,...L(ie(M.low),1),...L(ie(M.mid),S),...L(ie(M.high)),...L(ie(M.top))]),rayleigh:N.rayleigh,mie:N.mie,tablesChanged:ee,sky:N,look:P}}var fe=class{constructor(e){this.device=e;let t=t=>e.createTexture({label:t,size:[48,48],format:`rgba16float`,usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST});this.rayleigh=t(`sky rayleigh`),this.mie=t(`sky mie`),this.values=new Float32Array(80),this.cache={},this.version=0}set(e={}){let t=de(e,this.cache);if(t.tablesChanged)for(let[e,n]of[[this.rayleigh,t.rayleigh],[this.mie,t.mie]]){let t=new Uint16Array(n.length);for(let e=0;e<n.length;e++)t[e]=ue(n[e]);this.device.queue.writeTexture({texture:e},t,{bytesPerRow:384},[48,48])}return this.values.set(t.values),this.sky=t.sky,this.look=t.look,this.version++,this}},pe=.7,V={rollerB:2.5,trailH:3,onset:.9,life:6,cover:.8,jitter:.25,jitterScale:12,drift:.15,patch:14,lead:.03,rag:.035,ragScale:5,ragFine:.25,sizeH:[.02,.08],qbMax:.98},me={shareP:.65,warpScale:.4,warp:.25,hurst:.45,fine:.06,lifeVar:.6},H={area:.6,voids:.35,lengthH:2.5,peak:.35,bulkVar:.35,bulkScale:4,twistScale:1.4,twistFine:.35,twistV:.12,twistDrift:1.3,twistRoll:.4,crashRun:4,crashXi:[.3,.6],crashSpill:.2,crashWhite:1.5,crashAhead:1.2,splash:.25,ragGeo:1.5,lean:.55,leanBore:.4,leanWin:[-.12,.05],leanRamp:.04,lump:.6,spin:.5,churnT:.7,relief:.06,edge:.05,toeRag:.012},U={front:.06,life:6,stranded:2.5,strandedKeep:.7,cell:.35,onset:.9,frontOn:.8,frontLife:1.6,frontPeak:.6,mix:1,mixScale:30},he=e=>`
+${ce}
 struct SW { grid: vec4f, size: vec4f, out: vec4f, misc: vec4f, sw: vec4f, bin: array<vec4f, ${e}>, lag: array<vec4f, ${e}>, cull: array<vec4f, 7> };
 @group(0) @binding(0) var<uniform> U: SW;      // grid: a0, u0, 1/cell, bins; size: nx, ny; out: a0, u0, cell, n (texels a side); misc: time, chop, gamma; sw: (unused: the setup is layer 3's), the run-up's gain at the waves' periods, at the surf beat's, the bins' sum of amp^2; bin: omega, amp, then cos and sin of (phi - omega t) (the frame's rotation); lag: e^(i omega T) and e^(2 i omega T), T the mean period (each bin's turn back to one and two crests ago)
 @group(0) @binding(1) var bins: texture_2d_array<f32>;      // amp, S, ka, ku per bin
 // the outputs, one texture array (one storage binding: the default limit is four a stage), its layers: 0 the height, its displacement
 // (a, u) and Hs; 1 its slope (dh/da, dh/du), the edge's band, the sea's share; 2 the swash's timing; 3 the whitewater's present inputs;
-// 4 the past crests'; 5 the past uprushes' sizes (see textureStore below swRead)
+// 4 the past crests'; 5 the past uprushes' sizes and the bed's slope (see textureStore below swRead)
 @group(0) @binding(2) var outA: texture_storage_2d_array<rgba16float, write>;
 @group(0) @binding(4) var bedTex: texture_2d<f32>;
 @group(0) @binding(5) var bedSamp: sampler;
@@ -595,15 +509,20 @@ fn shapeAt(z: vec2f, rr: f32, ff: f32, cph: f32, sph: f32, cc: f32) -> f32 {
   let zb = textureSampleLevel(bedTex, bedSamp, (au - B.m.xy) * B.m.z, 0.0).x;
   let depth = max(-zb, 0.0);
   let wb = (1.0 - smoothstep(0.2, 1.2, depth)) * (1.0 - smoothstep(20.0, 40.0, bk.z));
+  // the bed's slope across the shore here, over 4 m, times the root of the deep-water wavelength of the mean period (g Tm^2 / 2 pi), for
+  // the breaker's type ( crashType: its surf similarity number this over the root of the crest's height)
+  let zbO = textureSampleLevel(bedTex, bedSamp, (au + vec2f(0.0, 2.0) - B.m.xy) * B.m.z, 0.0).x;
+  let zbI = textureSampleLevel(bedTex, bedSamp, (au - vec2f(0.0, 2.0) - B.m.xy) * B.m.z, 0.0).x;
+  let tb = clamp(0.25 * (zbI - zbO), 0.0, 1.0) * 1.2495 * 6.2831853 / max(U.size.w, 0.05);
   // the bores' mixing (Mike, 2026-11-24: "by the time we are at the shore, mixing would have randomized things quite a lot"; "add some
   // fractal noise component to near shore to reduce the strong left-to-right behavior"): the phase of the broken waves and of their swash
-  // turned by a fractal of the along-shore place and of time (its largest scale ${G.mixScale} m along the shore and two wave periods in time,
+  // turned by a fractal of the along-shore place and of time (its largest scale ${U.mixScale} m along the shore and two wave periods in time,
   // resolved to the texel), the same across the shore, as strong as the share of the energy that has broken: each wave's arrival scatters
   // along the beach, its statistics unchanged, and the waves and the swash they cause stay together
   var mixR = vec2f(1.0, 0.0);
-  if (${G.mix} > 0.0 && keep < 0.995) {
-    let tm = t * ${G.mixScale} / (2.0 * 6.2831853 / max(U.size.w, 0.1));
-    let ph = ${G.mix} * (1.0 - keep) * nFractal2(vec2f(au.x, tm), vec4f(${G.mixScale}.0, 1.0, 0.7, 657.0), vec2f(0.0, 2.0 * U.out.z));
+  if (${U.mix} > 0.0 && keep < 0.995) {
+    let tm = t * ${U.mixScale} / (2.0 * 6.2831853 / max(U.size.w, 0.1));
+    let ph = ${U.mix} * (1.0 - keep) * nFractal2(vec2f(au.x, tm), vec4f(${U.mixScale}.0, 1.0, 0.7, 657.0), vec2f(0.0, 2.0 * U.out.z));
     mixR = vec2f(cos(ph), sin(ph));
   }
   for (var b = 0; b < i32(U.grid.w); b++) {
@@ -735,7 +654,7 @@ fn shapeAt(z: vec2f, rr: f32, ff: f32, cph: f32, sph: f32, cc: f32) -> f32 {
   // (Qb no more than SURF.qbMax here and where the shaders read it back ( surfThr): stored as a half float, a Qb
   // near 1 rounds by 5e-4, and the threshold's root of -ln Qb by up to half itself, so the crest's height that the ratio times the
   // threshold gives back came out a tenth of the true one in the inner surf, 2026-11-25)
-  let hthr = max(hrms * sqrt(-log(clamp(qb, 1e-4, ${U.qbMax}))), 1e-3);
+  let hthr = max(hrms * sqrt(-log(clamp(qb, 1e-4, ${V.qbMax}))), 1e-3);
   let rat = vec4f(length(hq), length(hp1), length(hp2), length(hp3)) * 2.0 * cap / hthr;
   // (the phase is the drawn crest's, not the linear wave's: Abreu's form pitches the crest forward, to th_c where sin th = r cos phi +
   // r cc cos(th - phi) (its maximum; two fixed-point steps), reached up to a twelfth of a cycle before the linear crest in the surf: the
@@ -748,9 +667,385 @@ fn shapeAt(z: vec2f, rr: f32, ff: f32, cph: f32, sph: f32, cc: f32) -> f32 {
   let kph = min(length(hq.x * gq[1] - hq.y * gq[0]) / max(dot(hq, hq), 1e-9), 4.0);
   textureStore(outA, id.xy, 3, vec4f(rat.x, hqn, qb));
   textureStore(outA, id.xy, 4, vec4f(rat.yzw, kph));
-  textureStore(outA, id.xy, 5, select(vec4f(0.0), vec4f(vec3f(length(zp1), length(zp2), length(zp3)) * rn * U.sw.y, 0.0), wb > 0.0));      // (the past uprushes' sizes, as the swash's E)
+  textureStore(outA, id.xy, 5, vec4f(select(vec3f(0.0), vec3f(length(zp1), length(zp2), length(zp3)) * rn * U.sw.y, wb > 0.0), tb));      // (the past uprushes' sizes, as the swash's E; the bed's slope times the root of L0)
   textureStore(outA, id.xy, 1, vec4f(s * cap * (1.0 - w), wb, 1.0 - w));      // (w: how much of the surface is the sea's, not the run-up's: the whitewater's share)      // (z: the band where the water's edge is found at the pixel's scale, from the swell's texture, never the mesh's facets)      // (z: the run-up's share, for the edge at the pixel's scale; w: the breaking waves' whitewater)
-}`,He=class{constructor(e,t,n,r,{n:i=512,cell:a=1,a0:o=-256,u0:s=-16,chop:c=ze,gamma:l=.78,swash:u=null,face:d=.07}={}){Object.assign(this,{device:e,n:i,cell:a,a0:o,u0:s,chop:c,gamma:l});let f=t.bins.length,p=t.nx,m=t.ny;this.bins=e.createTexture({label:`swell bins`,size:[p,m,f],format:`rgba16float`,usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST}),t.bins.forEach((t,n)=>{let r=new Uint16Array(p*m*4);for(let e=0;e<p*m;e++){let n=t.amp[e]||0;r[4*e]=I(n*Math.cos(t.S[e])),r[4*e+1]=I(n*Math.sin(t.S[e])),r[4*e+2]=I(t.ka[e]||0),r[4*e+3]=I(t.ku[e]||0)}e.queue.writeTexture({texture:this.bins,origin:[0,0,n]},r,{bytesPerRow:p*8,rowsPerImage:m},[p,m,1])}),this.brk=e.createTexture({label:`swell breaking`,size:[p,m],format:`rgba32float`,usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST});let h=t.breaking??Float32Array.from({length:p*m*4},(e,t)=>+(t%4==0));e.queue.writeTexture({texture:this.brk},h,{bytesPerRow:p*16},[p,m]),this.sref=e.createTexture({label:`swell swash phase`,size:[p,f],format:`rg32float`,usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST});let g=new Float32Array(2*p*f);t.bins.forEach((e,t)=>{for(let n=0;n<p;n++){let r=e.sref?e.sref[n]:0;g[2*(t*p+n)]=Math.cos(r),g[2*(t*p+n)+1]=Math.sin(r)}}),e.queue.writeTexture({texture:this.sref},g,{bytesPerRow:p*8},[p,f]),this.shp=e.createTexture({label:`swell shape`,size:[p,m],format:`rg32float`,usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST}),e.queue.writeTexture({texture:this.shp},t.shape??new Float32Array(p*m*2),{bytesPerRow:p*8},[p,m]),this.out=e.createTexture({label:`swell out`,size:[i,i,6],format:`rgba16float`,usage:GPUTextureUsage.STORAGE_BINDING|GPUTextureUsage.TEXTURE_BINDING}),this.U=new Float32Array(20+8*f+28),this.oCull=20+8*f,this.U.set([t.a0,t.u0,1/t.cell,f,p,m,u?u.sInc/d:0,0,o,s,a,i,0,c,l,0],0),this.U[7]=t.bins.reduce((e,t)=>e+t.a*t.a*t.omega,0)/Math.max(t.bins.reduce((e,t)=>e+t.a*t.a,0),1e-12);let _=t.bins.reduce((e,t)=>e+t.a*t.a,0),v=4*Math.sqrt(_/2);u?this.U.set([u.setup,u.sInc/v,u.sIG/4,_],16):this.U.set([0,0,0,_],16),this.binsW=t.bins.map(e=>[e.omega,e.phi]),t.bins.forEach((e,t)=>this.U.set([e.omega,e.a,1,0],20+4*t)),this.omegaMean=t.bins.reduce((e,t)=>e+t.a*t.a*t.omega,0)/Math.max(_,1e-12);let y=2*Math.PI/Math.max(this.omegaMean,.05);t.bins.forEach((e,t)=>this.U.set([Math.cos(e.omega*y),Math.sin(e.omega*y),Math.cos(2*e.omega*y),Math.sin(2*e.omega*y)],20+4*f+4*t)),this.ubuf=e.createBuffer({size:this.U.byteLength,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST}),this.bbuf=e.createBuffer({size:16,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST}),e.queue.writeBuffer(this.bbuf,0,new Float32Array([r.a0,r.u0,1/r.size,0])),this.module=e.createShaderModule({label:`swell`,code:Ve(f)}),this.pipe=e.createComputePipeline({label:`swell`,layout:`auto`,compute:{module:this.module,entryPoint:`main`}});let b=e.createSampler({magFilter:`linear`,minFilter:`linear`});this.bg=e.createBindGroup({layout:this.pipe.getBindGroupLayout(0),entries:[{binding:0,resource:{buffer:this.ubuf}},{binding:1,resource:this.bins.createView({dimension:`2d-array`})},{binding:2,resource:this.out.createView({dimension:`2d-array`})},{binding:4,resource:n},{binding:5,resource:b},{binding:6,resource:{buffer:this.bbuf}},{binding:7,resource:this.brk.createView()},{binding:8,resource:this.shp.createView()},{binding:9,resource:this.sref.createView()}]})}encode(e,t,n=null){if(this.U[12]=t,n){let e=n.vp,t=t=>[e[t],e[4+t],e[8+t],e[12+t]],r=t(0),i=t(1),a=t(2),o=t(3);[o.map((e,t)=>e+r[t]),o.map((e,t)=>e-r[t]),o.map((e,t)=>e+i[t]),o.map((e,t)=>e-i[t]),o.map((e,t)=>e-a[t])].forEach((e,t)=>{let n=Math.hypot(e[0],e[1],e[2])||1;this.U.set(e.map(e=>e/n),this.oCull+4*t)}),this.U.set([n.cam[0],n.cam[1],12,1],this.oCull+20),this.U.set(n.frame,this.oCull+24)}else this.U[this.oCull+23]=0;this.binsW.forEach(([e,n],r)=>{let i=n-e*t;this.U[20+4*r+2]=Math.cos(i),this.U[20+4*r+3]=Math.sin(i)}),this.device.queue.writeBuffer(this.ubuf,0,this.U),e.setPipeline(this.pipe),e.setBindGroup(0,this.bg),e.dispatchWorkgroups(Math.ceil(this.n/8),Math.ceil(this.n/8))}get map(){return[this.a0,this.u0,1/(this.n*this.cell),1]}get wash(){return[this.omegaMean,G.front,G.life,G.stranded]}get sea(){return[4*Math.sqrt(this.U[19]/2),2*Math.PI/Math.max(this.omegaMean,.1),0,0]}},Ue=Array.from({length:6},(e,t)=>.6**t),We=Ue.reduce((e,t)=>e+t,0),K={cell:.42,scales:Ue.map((e,t)=>[.41**t,e/We]),warp:.9,width:.6,patch:3.4,patchAmp:.35,gain:1};function Ge(e,t=[0,0],n=180,r=ge){let i=new Float32Array(72);if(!e)return i;let a=n*Math.PI/180;i.set([t[0],t[1],Math.sin(a),Math.cos(a)],0),i.set([e.a0,e.u0,1/e.size,1],4),i.set([e.texel,r.wetLine,r.ripple,r.wetDark],8),i.set([...r.sandDry,e.levels.length],12);let o=e.outer??e,s=_e(r.d50),c=(2*s/(3*r.faceSlope))**3,l=o.u0+o.size,u=Math.min(r.maxDepth,s*((l+c)**(2/3)-c**(2/3))),d=u>=r.maxDepth?.005:2/3*s*(l+c)**(-1/3);i.set([...r.weedAlb,-u,...r.rockAlb,d,...r.coralAlb,0,...r.scrubAlb,0],16);let f=r.grains;i.set([r.d50/1e3,f.quartz,f.shell,f.heavy,...f.quartzAlb,f.facets,...f.shellAlb,f.facetAlpha,...f.heavyAlb,f.F0],32),i.set([o.a0,o.u0,1/o.size,o.levels.length],48);let p=r.noise;return p&&(i.set([p.bed.scale,p.bed.hurst,p.bed.seed,p.zones.face],52),i[31]=p.bed.finest),i[27]=r.faceSlope,[[r.reef,3,.04],[r.weed,11,.05],[r.coral,17,.06],[r.scrub,31,.08]].forEach(([e,t,n],a)=>i.set([e.scale,xe(e.cover),r.seed+t,n],56+4*a)),i}function Ke(e,t=null){let n=t?t.res:1,r=t?t.levels.length:1,i=e.createTexture({label:`beach bed`,size:[n,n],format:`rgba16float`,mipLevelCount:r,usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST});return(t?t.levels:[new Float32Array([-1e3,0,0,0])]).forEach((t,r)=>{let a=Math.max(1,n>>r),o=new Uint16Array(t.length);for(let e=0;e<t.length;e++)o[e]=I(t[e]);e.queue.writeTexture({texture:i,mipLevel:r},o,{bytesPerRow:a*8},[a,a])}),i}var qe=`
+}`,ge=class{constructor(e,t,n,r,{n:i=512,cell:a=1,a0:o=-256,u0:s=-16,chop:c=pe,gamma:l=.78,swash:u=null,face:d=.07}={}){Object.assign(this,{device:e,n:i,cell:a,a0:o,u0:s,chop:c,gamma:l});let f=t.bins.length,p=t.nx,m=t.ny;this.bins=e.createTexture({label:`swell bins`,size:[p,m,f],format:`rgba16float`,usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST}),t.bins.forEach((t,n)=>{let r=new Uint16Array(p*m*4);for(let e=0;e<p*m;e++){let n=t.amp[e]||0;r[4*e]=ue(n*Math.cos(t.S[e])),r[4*e+1]=ue(n*Math.sin(t.S[e])),r[4*e+2]=ue(t.ka[e]||0),r[4*e+3]=ue(t.ku[e]||0)}e.queue.writeTexture({texture:this.bins,origin:[0,0,n]},r,{bytesPerRow:p*8,rowsPerImage:m},[p,m,1])}),this.brk=e.createTexture({label:`swell breaking`,size:[p,m],format:`rgba32float`,usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST});let h=t.breaking??Float32Array.from({length:p*m*4},(e,t)=>+(t%4==0));e.queue.writeTexture({texture:this.brk},h,{bytesPerRow:p*16},[p,m]),this.sref=e.createTexture({label:`swell swash phase`,size:[p,f],format:`rg32float`,usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST});let g=new Float32Array(2*p*f);t.bins.forEach((e,t)=>{for(let n=0;n<p;n++){let r=e.sref?e.sref[n]:0;g[2*(t*p+n)]=Math.cos(r),g[2*(t*p+n)+1]=Math.sin(r)}}),e.queue.writeTexture({texture:this.sref},g,{bytesPerRow:p*8},[p,f]),this.shp=e.createTexture({label:`swell shape`,size:[p,m],format:`rg32float`,usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST}),e.queue.writeTexture({texture:this.shp},t.shape??new Float32Array(p*m*2),{bytesPerRow:p*8},[p,m]),this.out=e.createTexture({label:`swell out`,size:[i,i,6],format:`rgba16float`,usage:GPUTextureUsage.STORAGE_BINDING|GPUTextureUsage.TEXTURE_BINDING}),this.U=new Float32Array(20+8*f+28),this.oCull=20+8*f,this.U.set([t.a0,t.u0,1/t.cell,f,p,m,u?u.sInc/d:0,0,o,s,a,i,0,c,l,0],0),this.U[7]=t.bins.reduce((e,t)=>e+t.a*t.a*t.omega,0)/Math.max(t.bins.reduce((e,t)=>e+t.a*t.a,0),1e-12);let _=t.bins.reduce((e,t)=>e+t.a*t.a,0),v=4*Math.sqrt(_/2);u?this.U.set([u.setup,u.sInc/v,u.sIG/4,_],16):this.U.set([0,0,0,_],16),this.binsW=t.bins.map(e=>[e.omega,e.phi]),t.bins.forEach((e,t)=>this.U.set([e.omega,e.a,1,0],20+4*t)),this.omegaMean=t.bins.reduce((e,t)=>e+t.a*t.a*t.omega,0)/Math.max(_,1e-12);let y=2*Math.PI/Math.max(this.omegaMean,.05);t.bins.forEach((e,t)=>this.U.set([Math.cos(e.omega*y),Math.sin(e.omega*y),Math.cos(2*e.omega*y),Math.sin(2*e.omega*y)],20+4*f+4*t)),this.ubuf=e.createBuffer({size:this.U.byteLength,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST}),this.bbuf=e.createBuffer({size:16,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST}),e.queue.writeBuffer(this.bbuf,0,new Float32Array([r.a0,r.u0,1/r.size,0])),this.module=e.createShaderModule({label:`swell`,code:he(f)}),this.pipe=e.createComputePipeline({label:`swell`,layout:`auto`,compute:{module:this.module,entryPoint:`main`}});let b=e.createSampler({magFilter:`linear`,minFilter:`linear`});this.bg=e.createBindGroup({layout:this.pipe.getBindGroupLayout(0),entries:[{binding:0,resource:{buffer:this.ubuf}},{binding:1,resource:this.bins.createView({dimension:`2d-array`})},{binding:2,resource:this.out.createView({dimension:`2d-array`})},{binding:4,resource:n},{binding:5,resource:b},{binding:6,resource:{buffer:this.bbuf}},{binding:7,resource:this.brk.createView()},{binding:8,resource:this.shp.createView()},{binding:9,resource:this.sref.createView()}]})}encode(e,t,n=null){if(this.U[12]=t,n){let e=n.vp,t=t=>[e[t],e[4+t],e[8+t],e[12+t]],r=t(0),i=t(1),a=t(2),o=t(3);[o.map((e,t)=>e+r[t]),o.map((e,t)=>e-r[t]),o.map((e,t)=>e+i[t]),o.map((e,t)=>e-i[t]),o.map((e,t)=>e-a[t])].forEach((e,t)=>{let n=Math.hypot(e[0],e[1],e[2])||1;this.U.set(e.map(e=>e/n),this.oCull+4*t)}),this.U.set([n.cam[0],n.cam[1],12,1],this.oCull+20),this.U.set(n.frame,this.oCull+24)}else this.U[this.oCull+23]=0;this.binsW.forEach(([e,n],r)=>{let i=n-e*t;this.U[20+4*r+2]=Math.cos(i),this.U[20+4*r+3]=Math.sin(i)}),this.device.queue.writeBuffer(this.ubuf,0,this.U),e.setPipeline(this.pipe),e.setBindGroup(0,this.bg),e.dispatchWorkgroups(Math.ceil(this.n/8),Math.ceil(this.n/8))}get map(){return[this.a0,this.u0,1/(this.n*this.cell),1]}get wash(){return[this.omegaMean,U.front,U.life,U.stranded]}get sea(){return[4*Math.sqrt(this.U[19]/2),2*Math.PI/Math.max(this.omegaMean,.1),0,0]}},W={max:16384,_0xc64d5a:.39,kappaOff:.2,throwK:.3,spawnV:.24,cell:[.5,.25],win:[48,160],voids:.35,rub:4,spinDecay:1,float:.5,impact:1.5,life:12,minSize:.03},_e=64,ve=H.crashSpill.toFixed(4),ye=`
+struct Parcel { xm: vec4f, va: vec4f, f0: vec4f, f1: vec4f, f2: vec4f, w0: vec4f, w1: vec4f, w2: vec4f };
+// xm: the centre (east, up, north), the mass (kg); va: the velocity, the age (s; < 0 none); f0..f2: F's columns (its edges, m), f0.w the
+// churn, f1.w its first mass, f2.w its seed; w0: the spin (rad/s, east up north), the time it has been on the water (s); w1, w2: spare
+struct PU { win: vec4f, cell: vec4f, sim: vec4f, k: vec4f, k2: vec4f };
+// win: the window's middle along the shore, its offshore start and end (m), half its width; cell: da, du (m), cells along, across;
+// sim: dt (s), the pool's size, 1 to clear the pool, the frame; k: kappa, spawnV, voids, the spawns' cap a frame; k2: kappaOff, -, -, -
+struct Ctr { head: u32, spawned: atomic<u32>, alive: atomic<u32>, contact: atomic<u32>, volFlight: atomic<u32>, volContact: atomic<u32>, impacts: atomic<u32>, base: u32 };
+@group(1) @binding(0) var<storage, read_write> pool: array<Parcel>;
+@group(1) @binding(1) var<storage, read_write> ctr: Ctr;
+@group(1) @binding(2) var<uniform> PP: PU;
+fn pHash(a: u32, b: u32, c: u32) -> f32 {
+  var h = (a * 73856093u) ^ (b * 19349663u) ^ (c * 83492791u);
+  h = (h ^ (h >> 13u)) * 1274126177u;
+  h = h ^ (h >> 16u);
+  return f32(h) / 4294967295.0;
+}
+/** The water's particle velocity at the surface at p (east, up, north) and the crests' speed (east, north), from the swell (linear: a
+ *  surface at eta moves at eta omega coth(k d) along the waves, and a wave of fixed form moves up at -c . grad eta), for the waves running
+ *  shoreward (the crests' own direction is R3's). */
+struct Water { h: f32, n: vec3f, u: vec3f, c: vec2f, carry: f32 };
+fn waterAt(p: vec2f) -> Water {
+  var o = Water(0.0, vec3f(0.0, 1.0, 0.0), vec3f(0.0), vec2f(0.0), 0.0);
+  let S = swellAt(p);
+  o.h = S.x;
+  let sl = swellSlope(p);
+  o.n = normalize(vec3f(-sl.x, 1.0, -sl.y));
+  if (!swellOn()) { return o; }
+  let q = swellUV(p);
+  if (q.z <= 0.0) { return o; }
+  let k = max(swRead(q.xy, 4).w, 0.01);
+  let d = max(-bedY(p), 0.02);
+  let th = tanh(k * d);
+  let om = sqrt(9.81 * k * th);
+  let kd = -F.bd[0].zw;      // (shoreward)
+  o.c = kd * (om / k);
+  let uh = kd * (S.x * om / th);
+  // (on a breaking crest's front face the surface water runs at about the crest's own speed, which is what breaking is (its crest's
+  // particles as fast as the crest): there a parcel on the water is carried with the crest, a roller riding the bore; behind the crest, or
+  // where the waves do not break, the linear particle velocity: the share breaking (layer 3) times how much the face falls shoreward)
+  o.carry = swRead(q.xy, 3).w * smoothstep(-0.03, 0.08, -dot(sl, kd));      // (from the crest's top, full on the front face)
+  o.u = vec3f(mix(uh, o.c, o.carry).x, -dot(o.c, sl), mix(uh, o.c, o.carry).y);
+  return o;
+}
+@compute @workgroup_size(1) fn pBegin() {
+  ctr.base = ctr.head;
+  atomicStore(&ctr.spawned, 0u); atomicStore(&ctr.alive, 0u); atomicStore(&ctr.contact, 0u);
+  atomicStore(&ctr.volFlight, 0u); atomicStore(&ctr.volContact, 0u); atomicStore(&ctr.impacts, 0u);
+}
+// the detector: a cell where a crest has just passed (in the last step) with its linear kinematic ratio over kappa sheds a parcel
+@compute @workgroup_size(8, 8) fn pSpawn(@builtin(global_invocation_id) id: vec3u) {
+  if (f32(id.x) >= PP.cell.z || f32(id.y) >= PP.cell.w || PP.sim.x <= 0.0 || PP.sim.z > 0.5 || !swellOn()) { return; }
+  let a = PP.win.x - PP.win.w + (f32(id.x) + 0.5) * PP.cell.x;
+  let u = PP.win.y + (f32(id.y) + 0.5) * PP.cell.y;
+  let off = F.bd[0].zw;
+  let al = vec2f(off.y, -off.x);
+  let p = F.bd[0].xy + a * al + u * off;
+  let q = swellUV(p);
+  if (q.z < 0.5) { return; }
+  let B = swRead(q.xy, 3);
+  if (dot(B.yz, B.yz) < 1e-10) { return; }
+  let k = max(swRead(q.xy, 4).w, 0.01);
+  // the crest passed within the last step: its phase since the crest under the share of a period the step is (the period from the mean
+  // frequency first, a cheap test before the bed's read)
+  let x0 = surfPhase0(B);
+  if (x0 > 2.0 * PP.sim.x * F.wash.x / 6.2831853) { return; }
+  let d = -bedY(p);
+  if (d < 0.03 || swRead(q.xy, 1).w < 0.5) { return; }      // (none on the run-up's sheet)
+  let th = tanh(k * d);
+  let om = sqrt(9.81 * k * th);
+  if (x0 > PP.sim.x * om / 6.2831853) { return; }
+  let S = swellAt(p);
+  let eta = S.x;
+  // (onset past kappa; once broken, a bore keeps breaking down to kappaOff, at the field's share breaking (layer 3's Qb, 1 in a regular
+  // train's surf zone): a bore's crest in linear terms is well under the onset's)
+  let beta = eta * k / th;
+  if (beta < PP.k2.x || (beta < PP.k.x && pHash(id.x, id.y, u32(PP.sim.w) + 3u) >= B.w)) { return; }
+  // its size: the share of the roller it renews, spawnV H da du (H taken as twice the crest's height), its air voids of it
+  let H = max(2.0 * eta, 0.02);
+  let V = PP.k.y * H * PP.cell.x * PP.cell.y;
+  let s = pow(V, 1.0 / 3.0);
+  let n = atomicAdd(&ctr.spawned, 1u);
+  if (f32(n) >= PP.k.w) { return; }
+  let slot = (ctr.base + n) % u32(PP.sim.y);
+  let fr = u32(PP.sim.w);
+  let j = vec2f(pHash(id.x, id.y, fr) - 0.5, pHash(id.y, id.x, fr + 7u) - 0.5);
+  let pp = p + (j.x * PP.cell.x) * al + (j.y * PP.cell.y - 0.25 * H) * off + S.yz;      // (just ahead of the crest, on its upper front face)
+  // (the crests' speed; a fresh break's lip thrown faster, by its breaker type (crashType: 0 for a gentle slope's spilling, 1 a steep
+  // face's plunging), so it runs ahead of the crest and falls on the water in front; a bore's parcels at the crest's speed)
+  let fresh = beta >= PP.k.x;
+  let plunge = select(0.0, (crashType(swRead(q.xy, 5).w, H) - ${ve}) / (1.0 - ${ve}), fresh);
+  let c = -off * (om / k) * (1.0 + ${W.throwK} * plunge);
+  let m = 1000.0 * V * (1.0 - PP.k.z);
+  var P: Parcel;
+  P.xm = vec4f(pp.x, eta + 0.5 * s, pp.y, m);
+  P.va = vec4f(c.x, 0.0, c.y, 0.0);
+  P.f0 = vec4f(s * al.x, 0.0, s * al.y, 0.0);
+  P.f1 = vec4f(0.0, s, 0.0, m);
+  P.f2 = vec4f(s * off.x, 0.0, s * off.y, pHash(id.x, id.y, fr + 13u));
+  P.w0 = vec4f(0.0);
+  // (its water dissolving on the water over the roller's renewal: its length, ROLLER.lengthH H, at the crest's speed, so a riding
+  // roller holds about the roller's volume, ROLLER.area H^2; what is left behind is the foam's)
+  P.w1 = vec4f(0.0, clamp(${H.lengthH} * H / max(om / k, 0.3), 0.3, 3.0), 0.0, 0.0);
+  P.w2 = vec4f(0.0);
+  pool[slot] = P;
+}
+@compute @workgroup_size(${_e}) fn pStep(@builtin(global_invocation_id) id: vec3u) {
+  let i = id.x;
+  if (f32(i) >= PP.sim.y) { return; }
+  var P = pool[i];
+  if (PP.sim.z > 0.5) { pool[i].va.w = -1.0; return; }
+  if (P.va.w < 0.0) { return; }
+  let dt = PP.sim.x;
+  var x = P.xm.xyz;
+  var v = P.va.xyz;
+  var m = P.xm.w;
+  var W = P.w0;
+  let s0 = (length(P.f0.xyz) + length(P.f1.xyz) + length(P.f2.xyz)) / 3.0;
+  if (dt > 0.0) {
+    let wa = waterAt(x.xz);
+    var a = vec3f(0.0, -9.81, 0.0);
+    let pen = wa.h - (x.y - 0.5 * s0);
+    var spin = W.xyz;
+    if (pen > 0.0) {
+      // on the water: its push out (the slip into it stopped), its rub (the slip along it taken off at the rub's rate) and the turn the rub
+      // gives about the parcel's centre; its water dissolving
+      let rel = v - wa.u;
+      let vn = dot(rel, wa.n);
+      if (P.w1.x == 0.0 && -vn > ${W.impact}) { atomicAdd(&ctr.impacts, 1u); }      // (a landing from the air, hard)
+      if (vn < 0.0) { v -= vn * wa.n; }
+      x.y += max(pen - ${W.float} * s0, 0.0);
+      let vt = rel - vn * wa.n;
+      let dv = vt * (1.0 - exp(-${W.rub} * dt));
+      v -= dv;
+      // (the rub's impulse m dv at the contact, half the size below the centre along -n: its moment over a cube's inertia m s^2 / 6)
+      spin += cross(-0.5 * s0 * wa.n, -dv) * (6.0 / (s0 * s0));
+      m *= exp(-dt / max(P.w1.y, 0.1));
+      W.w += dt;
+    }
+    spin *= exp(-dt / ${W.spinDecay});
+    v += a * dt;
+    x += v * dt;
+    // its shape: turned by the spin, sized by its mass (its air share kept)
+    let sc = pow(m / max(P.f1.w, 1e-6), 1.0 / 3.0);
+    let s1 = pow(P.f1.w / (1000.0 * (1.0 - PP.k.z)), 1.0 / 3.0) * sc;
+    let ang = length(spin) * dt;
+    var f0 = P.f0.xyz; var f1 = P.f1.xyz; var f2 = P.f2.xyz;
+    if (ang > 1e-6) {
+      let ax = spin / length(spin);
+      let ca = cos(ang); let sa = sin(ang);
+      f0 = f0 * ca + cross(ax, f0) * sa + ax * dot(ax, f0) * (1.0 - ca);
+      f1 = f1 * ca + cross(ax, f1) * sa + ax * dot(ax, f1) * (1.0 - ca);
+      f2 = f2 * ca + cross(ax, f2) * sa + ax * dot(ax, f2) * (1.0 - ca);
+    }
+    let r = s1 / max(s0, 1e-6);
+    P.f0 = vec4f(f0 * r, P.f0.w); P.f1 = vec4f(f1 * r, P.f1.w); P.f2 = vec4f(f2 * r, P.f2.w);
+    W = vec4f(spin, W.w);
+    P.w1.x = select(0.0, 1.0, pen > 0.0);      // (on the water this step)
+    var age = P.va.w + dt;
+    if (age > ${W.life} || s1 < ${W.minSize} || x.y < bedY(x.xz) - 0.2) { age = -1.0; }
+    P.xm = vec4f(x, m);
+    P.va = vec4f(v, age);
+    P.w0 = W;
+    pool[i] = P;
+    if (age < 0.0) { return; }
+  }
+  atomicAdd(&ctr.alive, 1u);
+  let vl = u32(1e4 * m / (1000.0 * (1.0 - PP.k.z)));      // (its volume, 0.1 l)
+  if (W.w > 0.0) { atomicAdd(&ctr.contact, 1u); atomicAdd(&ctr.volContact, vl); } else { atomicAdd(&ctr.volFlight, vl); }
+}
+@compute @workgroup_size(1) fn pEnd() {
+  ctr.head = (ctr.base + min(atomicLoad(&ctr.spawned), u32(PP.k.w))) % u32(PP.sim.y);
+}
+`,be=`
+struct Parcel { xm: vec4f, va: vec4f, f0: vec4f, f1: vec4f, f2: vec4f, w0: vec4f, w1: vec4f, w2: vec4f };
+@group(2) @binding(0) var<storage, read> pool: array<Parcel>;
+fn h3(p: vec3i, s: u32) -> f32 {
+  var h = (u32(p.x) * 73856093u) ^ (u32(p.y) * 19349663u) ^ (u32(p.z) * 83492791u) ^ (s * 2654435761u);
+  h = (h ^ (h >> 13u)) * 1274126177u;
+  h = h ^ (h >> 16u);
+  return f32(h) / 4294967295.0;
+}
+fn vn3(p: vec3f, s: u32) -> f32 {
+  let i = vec3i(floor(p));
+  let f = p - floor(p);
+  let u = f * f * (3.0 - 2.0 * f);
+  let a = mix(mix(h3(i, s), h3(i + vec3i(1, 0, 0), s), u.x), mix(h3(i + vec3i(0, 1, 0), s), h3(i + vec3i(1, 1, 0), s), u.x), u.y);
+  let b = mix(mix(h3(i + vec3i(0, 0, 1), s), h3(i + vec3i(1, 0, 1), s), u.x), mix(h3(i + vec3i(0, 1, 1), s), h3(i + vec3i(1, 1, 1), s), u.x), u.y);
+  return mix(a, b, u.z);
+}
+/** A 3D fractal (three octaves of value noise), about -0.5 to 0.5. */
+fn fbm3(p: vec3f, s: u32) -> f32 { return (vn3(p, s) - 0.5) * 0.57 + (vn3(2.03 * p, s + 1u) - 0.5) * 0.29 + (vn3(4.1 * p, s + 2u) - 0.5) * 0.14; }
+fn inv3(m: mat3x3f) -> mat3x3f {
+  let a = m[0]; let b = m[1]; let c = m[2];
+  let r0 = cross(b, c); let r1 = cross(c, a); let r2 = cross(a, b);
+  let det = dot(a, r0);
+  return transpose(mat3x3f(r0, r1, r2)) * (1.0 / det);
+}
+const P_GROW = 1.35;      // (the bound the fractal can push the edge out to, in the parcel's coordinates)
+struct PO { @builtin(position) pos: vec4f, @location(0) @interpolate(flat) id: u32, @location(1) ray: vec3f };
+@vertex fn pvs(@builtin(vertex_index) vi: u32, @builtin(instance_index) ii: u32) -> PO {
+  let P = pool[ii];
+  var o: PO;
+  o.id = ii;
+  o.ray = vec3f(0.0);
+  if (P.va.w < 0.0) { o.pos = vec4f(2.0, 2.0, 0.5, 1.0); return o; }
+  let c = vec3f(P.xm.x - F.cam.x, P.xm.y, -(P.xm.z - F.cam.z));
+  let R = 0.5 * P_GROW * sqrt(dot(P.f0.xyz, P.f0.xyz) + dot(P.f1.xyz, P.f1.xyz) + dot(P.f2.xyz, P.f2.xyz));
+  let eye = vec3f(0.0, F.cam.y, 0.0);
+  let toC = c - eye;
+  let D = length(toC);
+  let fw = toC / max(D, 1e-4);
+  let rt = normalize(cross(fw, vec3f(0.0, 1.0, 0.0)) + vec3f(1e-5, 0.0, 0.0));
+  let up = cross(rt, fw);
+  var corner = array<vec2f, 6>(vec2f(-1.0, -1.0), vec2f(1.0, -1.0), vec2f(1.0, 1.0), vec2f(-1.0, -1.0), vec2f(1.0, 1.0), vec2f(-1.0, 1.0));
+  let qv = corner[vi];
+  // (the quad through the centre, wide enough for the sphere's outline seen from D; in front of the eye's near plane)
+  let Rs = R * D / sqrt(max(D * D - R * R, 1e-4));
+  let wp = c + (rt * qv.x + up * qv.y) * min(Rs, 4.0 * R + 1.0);
+  o.pos = F.viewProj * vec4f(wp, 1.0);
+  o.ray = wp - eye;
+  return o;
+}
+struct PF { @location(0) col: vec4f, @builtin(frag_depth) depth: f32 };
+@fragment fn pfs(i: PO) -> PF {
+  let P = pool[i.id];
+  let eye = vec3f(0.0, F.cam.y, 0.0);
+  let c = vec3f(P.xm.x - F.cam.x, P.xm.y, -(P.xm.z - F.cam.z));
+  let rd = normalize(i.ray);
+  let toR = vec3f(1.0, 1.0, -1.0);      // (east up north to the drawing's x y z)
+  let Fm = mat3x3f(P.f0.xyz * toR, P.f1.xyz * toR, P.f2.xyz * toR) * 0.5;
+  let Fi = inv3(Fm);
+  let o = Fi * (eye - c);
+  let d = Fi * rd;
+  let A = dot(d, d);
+  let Bq = dot(o, d);
+  let Cq = dot(o, o) - P_GROW * P_GROW;
+  let disc = Bq * Bq - A * Cq;
+  if (disc <= 0.0) { discard; }
+  let sq = sqrt(disc);
+  let t0 = max((-Bq - sq) / A, 0.0);
+  let t1 = (-Bq + sq) / A;
+  if (t1 <= t0) { discard; }
+  // the density: inside the unit ball, its edge broken by the fractal in the parcel's own coordinates (turning with it), boiling with age
+  let seed = u32(P.f2.w * 65535.0);
+  let boil = vec3f(0.0, -0.9 * P.va.w, 0.4 * P.va.w);
+  // (?seadbg=8388608, the teaching view: each parcel a smooth ball painted in quarters, so its drag and its turning show; Mike,
+  // 2026-11-26: "the spheres are actually useful as a teaching visualization as they show the drag and rotation of the parcels")
+  let teach = (u32(F.rip2.w) & 8388608u) != 0u;
+  let amp = select(0.55, 0.0, teach);
+  var t = t0;
+  var hit = false;
+  let nS = 10;
+  let dtm = (t1 - t0) / f32(nS);
+  var X = o + t * d;
+  for (var k = 0; k < nS; k++) {
+    X = o + t * d;
+    if (1.0 - dot(X, X) + amp * fbm3(1.6 * X + boil, seed) > 0.0) { hit = true; break; }
+    t += dtm;
+  }
+  if (!hit) { discard; }
+  // (one step back and a bisection, for a smoother surface)
+  var ta = max(t - dtm, t0);
+  var tb = t;
+  for (var k = 0; k < 4; k++) {
+    let tm = 0.5 * (ta + tb);
+    let Xm = o + tm * d;
+    if (1.0 - dot(Xm, Xm) + amp * fbm3(1.6 * Xm + boil, seed) > 0.0) { tb = tm; } else { ta = tm; }
+  }
+  X = o + tb * d;
+  let e = 0.04;
+  let g0 = amp * fbm3(1.6 * X + boil, seed);
+  let gN = vec3f(amp * fbm3(1.6 * (X + vec3f(e, 0.0, 0.0)) + boil, seed) - g0, amp * fbm3(1.6 * (X + vec3f(0.0, e, 0.0)) + boil, seed) - g0, amp * fbm3(1.6 * (X + vec3f(0.0, 0.0, e)) + boil, seed) - g0) / e;
+  let nX = -2.0 * X + gN;
+  let n = normalize(transpose(Fi) * (-nX));
+  let wp = eye + tb * rd;
+  let dist = length(wp - eye);
+  var out: PF;
+  out.depth = 0.05 / max(dot(wp - eye, F.camF.xyz), 1e-4);
+  // white water: light scattered many times through it, bright in its own shade (as the roller's white in the water's shader), a little
+  // of the sky's blue in the shade
+  let sunVis = F.lk[6].z * F.lk[6].w;
+  let ndl = dot(n, F.sun.xyz);
+  let litR = (0.70 + 0.40 * sunVis * clamp((ndl + 0.4) / 1.4, 0.0, 1.0)) * (0.9 + 0.1 * n.y);
+  var col = mix(vec3f(0.84, 0.90, 1.0), vec3f(0.97, 0.98, 0.98), smoothstep(0.75, 1.05, litR)) * litR;
+  if (teach) { col *= select(vec3f(1.0), vec3f(0.95, 0.35, 0.15), (X.x > 0.0) != (X.z > 0.0)); }      // (quarters in its own coordinates: they turn with it)
+  col = mix(col, skyMap(normalize(vec3f(rd.x, 0.012, rd.z))).rgb, clamp(1.0 - exp(-F.lk[3].xyz * dist), vec3f(0.0), vec3f(1.0)));
+  out.col = present(col);
+  return out;
+}
+`,xe=class{constructor(e,{max:t=W.max}={}){Object.assign(this,{device:e,max:t,ready:!1,frame:0,lastT:null,stats:null,reads:[]}),this.pool=e.createBuffer({label:`parcels`,size:t*128,usage:GPUBufferUsage.STORAGE|GPUBufferUsage.COPY_DST|GPUBufferUsage.COPY_SRC});let n=new Float32Array(t*32);for(let e=0;e<t;e++)n[e*32+7]=-1;e.queue.writeBuffer(this.pool,0,n),this.ctr=e.createBuffer({label:`parcels counters`,size:32,usage:GPUBufferUsage.STORAGE|GPUBufferUsage.COPY_SRC|GPUBufferUsage.COPY_DST}),this.U=new Float32Array(20),this.ubuf=e.createBuffer({label:`parcels uniforms`,size:80,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST});let r=GPUShaderStage.COMPUTE,i=GPUShaderStage.VERTEX|GPUShaderStage.FRAGMENT;this.bglC=e.createBindGroupLayout({entries:[{binding:0,visibility:r,buffer:{type:`storage`}},{binding:1,visibility:r,buffer:{type:`storage`}},{binding:2,visibility:r,buffer:{type:`uniform`}}]}),this.bglR=e.createBindGroupLayout({entries:[{binding:0,visibility:i,buffer:{type:`read-only-storage`}}]}),this.bgC=e.createBindGroup({layout:this.bglC,entries:[{binding:0,resource:{buffer:this.pool}},{binding:1,resource:{buffer:this.ctr}},{binding:2,resource:{buffer:this.ubuf}}]}),this.bgR=e.createBindGroup({layout:this.bglR,entries:[{binding:0,resource:{buffer:this.pool}}]})}build(e,t){let n=this.device;this.module=n.createShaderModule({label:`parcels compute`,code:e+ye});let r=n.createPipelineLayout({bindGroupLayouts:[t,this.bglC]});this.pipes=Object.fromEntries([`begin`,`spawn`,`step`,`end`].map(e=>[e,n.createComputePipeline({label:`parcels ${e}`,layout:r,compute:{module:this.module,entryPoint:`p${e[0].toUpperCase()}${e.slice(1)}`}})])),this.ready=!0}encode(e,t,n,r,i){if(!this.ready)return;let a=this.lastT==null?0:t-this.lastT,o=0;this.lastT!=null&&(a<0||a>1)&&(o=1,a=0),this.lastT=t,a=Math.min(a,1/20);let s=[r[2],r[3]],c=i.e-r[0],l=i.n-r[1],u=c*s[1]-l*s[0],d=c*s[0]+l*s[1],[f,p]=W.cell,[m,h]=W.win,g=Math.max(-5,Math.min(d-.5*h,d-20)),_=Math.ceil(2*m/f),v=Math.ceil(h/p);this.U.set([u,g,g+h,m,f,p,_,v,a,this.max,o,this.frame++,W._0xc64d5a,W.spawnV,W.voids,Math.floor(this.max/8),W.kappaOff,0,0,0]),this.device.queue.writeBuffer(this.ubuf,0,this.U),e.setBindGroup(0,n),e.setBindGroup(1,this.bgC),e.setPipeline(this.pipes.begin),e.dispatchWorkgroups(1),e.setPipeline(this.pipes.spawn),e.dispatchWorkgroups(Math.ceil(_/8),Math.ceil(v/8)),e.setPipeline(this.pipes.step),e.dispatchWorkgroups(Math.ceil(this.max/_e)),e.setPipeline(this.pipes.end),e.dispatchWorkgroups(1)}readback(e){if(!this.ready||!this.reads.length&&(this.made??0)>=3)return;let t=this.reads.pop()??(this.made=(this.made??0)+1,this.device.createBuffer({size:32,usage:GPUBufferUsage.COPY_DST|GPUBufferUsage.MAP_READ}));e.copyBufferToBuffer(this.ctr,0,t,0,32),this.pending=t}afterSubmit(){let e=this.pending;this.pending=null,e&&e.mapAsync(GPUMapMode.READ).then(()=>{let t=new Uint32Array(e.getMappedRange().slice(0));e.unmap(),this.reads.push(e);let n=performance.now();this.hist=(this.hist??[]).filter(e=>n-e.t<1e3),this.hist.push({t:n,s:t[1],i:t[6]});let r=this.hist.length;this.stats={spawned:t[1],alive:t[2],contact:t[3],volFlight:t[4]/1e4,volContact:t[5]/1e4,impacts:t[6],spawnRate:this.hist.reduce((e,t)=>e+t.s,0)/r,impactRate:this.hist.reduce((e,t)=>e+t.i,0)/r}}).catch(()=>{})}async dump(e=this.max){let t=this.device,n=Math.min(e,this.max)*128,r=t.createBuffer({size:n,usage:GPUBufferUsage.COPY_DST|GPUBufferUsage.MAP_READ}),i=t.createCommandEncoder();i.copyBufferToBuffer(this.pool,0,r,0,n),t.queue.submit([i.finish()]),await r.mapAsync(GPUMapMode.READ);let a=new Float32Array(r.getMappedRange().slice(0));return r.unmap(),r.destroy(),a}draw(e,t){this.ready&&(e.setPipeline(t),e.setBindGroup(2,this.bgR),e.draw(6,this.max))}},Se=`
+struct T { reproj: mat4x4f, inSize: vec2f, outSize: vec2f, jitterPx: vec2f, wMax: f32, valid: f32, up: f32, sharpen: f32, sigN: f32, sigW: f32, wSoft: f32, pad1: f32, pad2: f32, pad3: f32 };
+@group(0) @binding(0) var<uniform> P: T;
+@group(0) @binding(1) var cur: texture_2d<f32>;
+@group(0) @binding(2) var depth: texture_depth_2d;
+@group(0) @binding(3) var hist: texture_2d<f32>;
+@group(0) @binding(4) var lin: sampler;
+struct FO { @location(0) screen: vec4f, @location(1) history: vec4f };
+fn toYCoCg(c: vec3f) -> vec3f { return vec3f(dot(c, vec3f(0.25, 0.5, 0.25)), dot(c, vec3f(0.5, 0.0, -0.5)), dot(c, vec3f(-0.25, 0.5, -0.25))); }
+fn fromYCoCg(c: vec3f) -> vec3f { return vec3f(c.x + c.y - c.z, c.x + c.z, c.x - c.y - c.z); }
+fn catmullRom(uv: vec2f, size: vec2f) -> vec4f {
+  let p = uv * size - 0.5;
+  let t1 = floor(p) + 0.5;
+  let f = p - floor(p);
+  let w0 = f * (-0.5 + f * (1.0 - 0.5 * f));
+  let w1 = 1.0 + f * f * (-2.5 + 1.5 * f);
+  let w2 = f * (0.5 + f * (2.0 - 1.5 * f));
+  let w3 = f * f * (-0.5 + 0.5 * f);
+  let w12 = w1 + w2;
+  let p0 = (t1 - 1.0) / size;
+  let p3 = (t1 + 2.0) / size;
+  let p12 = (t1 + w2 / w12) / size;
+  var c = textureSampleLevel(hist, lin, vec2f(p12.x, p0.y), 0.0) * (w12.x * w0.y);
+  c += textureSampleLevel(hist, lin, vec2f(p0.x, p12.y), 0.0) * (w0.x * w12.y);
+  c += textureSampleLevel(hist, lin, p12, 0.0) * (w12.x * w12.y);
+  c += textureSampleLevel(hist, lin, vec2f(p3.x, p12.y), 0.0) * (w3.x * w12.y);
+  c += textureSampleLevel(hist, lin, vec2f(p12.x, p3.y), 0.0) * (w12.x * w3.y);
+  let wsum = w12.x * w0.y + w0.x * w12.y + w12.x * w12.y + w3.x * w12.y + w12.x * w3.y;
+  return max(c / wsum, vec4f(0.0));
+}
+@vertex fn vs(@builtin(vertex_index) vi: u32) -> @builtin(position) vec4f { return vec4f(vec2f(f32((vi << 1u) & 2u), f32(vi & 2u)) * 2.0 - 1.0, 0.0, 1.0); }
+@fragment fn fs(@builtin(position) fp: vec4f) -> FO {
+  let uv = fp.xy / P.outSize;
+  let pc = uv * P.inSize;
+  let ic = vec2i(floor(pc + P.jitterPx));
+  let hiI = vec2i(P.inSize) - 1;
+  // where this pixel was a frame ago: its depth (reversed: 1 near, 0 at infinity) through this frame's inverse view-projection and the
+  // last frame's (one matrix, worked out on the CPU)
+  let d = textureLoad(depth, clamp(ic, vec2i(0), hiI), 0);
+  let prev = P.reproj * vec4f(uv.x * 2.0 - 1.0, 1.0 - uv.y * 2.0, d, 1.0);
+  let pn = prev.xy / prev.w;
+  let uvPrev = vec2f(pn.x * 0.5 + 0.5, 0.5 - pn.y * 0.5);
+  let onScreen = all(uvPrev >= vec2f(0.0)) && all(uvPrev <= vec2f(1.0)) && P.valid > 0.5 && prev.w > 0.0;
+  let H = catmullRom(uvPrev, P.outSize);
+  let vel = length((uvPrev - uv) * P.outSize);
+  // the history's weight: what it holds, capped, and less where the picture moves: each read between the history's pixels softens it (most
+  // at half a pixel, not at all on one), and a fast move brings more that is new (at 6 screen pixels a frame, about 3 frames' worth)
+  let fr = fract(uvPrev * P.outSize - 0.5);
+  let soft = clamp(4.0 * (fr.x * (1.0 - fr.x) + fr.y * (1.0 - fr.y)), 0.0, 1.0) * smoothstep(0.0, 0.05, vel);
+  let wh = select(0.0, min(H.a, min(mix(P.wMax, P.wSoft, soft), mix(P.wMax, 3.0, clamp(vel / 6.0, 0.0, 1.0)))), onScreen);
+  let sig = mix(P.sigW, P.sigN, clamp(wh / 3.0, 0.0, 1.0));
+  let k = 0.5 / (sig * sig);
+  var c = vec3f(0.0);
+  var wsum = 0.0;
+  var m1 = vec3f(0.0);
+  var m2 = vec3f(0.0);
+  for (var dy = -1; dy <= 1; dy++) {
+    for (var dx = -1; dx <= 1; dx++) {
+      let q = clamp(ic + vec2i(dx, dy), vec2i(0), hiI);
+      let s = textureLoad(cur, q, 0).rgb;
+      let dd = (vec2f(q) + 0.5 - P.jitterPx - pc) * P.up;      // (from the screen pixel's centre, in screen pixels)
+      let w = exp(-k * dot(dd, dd));
+      c += s * w;
+      wsum += w;
+      let y = toYCoCg(s);
+      m1 += y;
+      m2 += y * y;
+    }
+  }
+  let cw = c / max(wsum, 1e-6);
+  m1 /= 9.0;
+  let sigma = sqrt(max(m2 / 9.0 - m1 * m1, vec3f(0.0)));
+  let h = toYCoCg(H.rgb);
+  let dh = h - m1;
+  let ext = max(abs(dh) / max(1.25 * sigma, vec3f(1e-4)), vec3f(1.0));
+  let hc = m1 + dh / max(ext.x, max(ext.y, ext.z));
+  let clipped = length(hc - h) / max(length(m1), 1e-3);
+  // this frame's share: its samples' weight against the history's, more where the history was clipped far
+  let a0 = wsum / max(wh + wsum, 1e-6);
+  let a = select(1.0, clamp(a0 + 0.5 * clipped, a0, 1.0), wh > 0.0);
+  let o = max(mix(fromYCoCg(hc), cw, a), vec3f(0.0));
+  let sharp = max(o + P.sharpen * (cw - fromYCoCg(m1)), vec3f(0.0));
+  var r: FO;
+  r.history = vec4f(o, wsum / max(a, 1e-3));      // (the weight it now holds: wh + wsum when nothing was clipped)
+  r.screen = vec4f(pow(min(sharp, vec3f(1.0)), vec3f(1.0 / 2.2)), 1.0);
+  return r;
+}`;function Ce(e){let t=(e,t)=>{let n=1,r=0;for(;e>0;)n/=t,r+=e%t*n,e=Math.floor(e/t);return r},n=e%8+1;return[t(n,2)-.5,t(n,3)-.5]}var we=class{constructor(e,t,{wMax:n=12,wSoft:r=2,sigN:i=.35,sigW:a=.45,sharpen:o=0,jitter:s=!0}={}){Object.assign(this,{device:e,wMax:n,wSoft:r,sigN:i,sigW:a,sharpen:o,jitter:s});let c=e.createShaderModule({code:Se,label:`temporal resolve`});this.modules=[c],this.pipe=e.createRenderPipeline({layout:`auto`,label:`temporal resolve`,vertex:{module:c,entryPoint:`vs`},fragment:{module:c,entryPoint:`fs`,targets:[{format:t},{format:`rgba16float`}]}}),this.uni=e.createBuffer({size:128,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST}),this.uniF=new Float32Array(32),this.lin=e.createSampler({magFilter:`linear`,minFilter:`linear`,addressModeU:`clamp-to-edge`,addressModeV:`clamp-to-edge`}),this.size=``,this.hist=[],this.cur=0,this.valid=!1}resize(e,t,n,r){let i=[e,t,n,r].join(` `);if(i!==this.size){this.size=i,this.inSize=[e,t],this.outSize=[n,r];for(let e of this.hist)e.destroy();this.hist=[0,1].map(()=>this.device.createTexture({size:[n,r],format:`rgba16float`,usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.TEXTURE_BINDING})),this.valid=!1}}reset(){this.valid=!1}resolve(e,t,n,r,i,a,o=null){let s=this.device,c=this.hist[this.cur],l=this.hist[1-this.cur],u=this.outSize[0]/this.inSize[0];this.uniF.set(r,0),this.uniF.set([...this.inSize,...this.outSize,i[0],i[1],this.wMax,+!!this.valid,u,this.sharpen,this.sigN,Math.max(this.sigW,.5*u),this.wSoft,0,0,0],16),s.queue.writeBuffer(this.uni,0,this.uniF);let d=s.createBindGroup({layout:this.pipe.getBindGroupLayout(0),entries:[{binding:0,resource:{buffer:this.uni}},{binding:1,resource:t},{binding:2,resource:n},{binding:3,resource:c.createView()},{binding:4,resource:this.lin}]}),f=e.beginRenderPass({colorAttachments:[{view:a,loadOp:`clear`,storeOp:`store`,clearValue:[0,0,0,1]},{view:l.createView(),loadOp:`clear`,storeOp:`store`,clearValue:[0,0,0,1]}],...o?{timestampWrites:o}:{}});f.setPipeline(this.pipe),f.setBindGroup(0,d),f.draw(3),f.end(),this.cur=1-this.cur,this.valid=!0}};function Te(e){let t=Array.from(e),n=new Float32Array(16);n[0]=t[5]*t[10]*t[15]-t[5]*t[11]*t[14]-t[9]*t[6]*t[15]+t[9]*t[7]*t[14]+t[13]*t[6]*t[11]-t[13]*t[7]*t[10],n[4]=-t[4]*t[10]*t[15]+t[4]*t[11]*t[14]+t[8]*t[6]*t[15]-t[8]*t[7]*t[14]-t[12]*t[6]*t[11]+t[12]*t[7]*t[10],n[8]=t[4]*t[9]*t[15]-t[4]*t[11]*t[13]-t[8]*t[5]*t[15]+t[8]*t[7]*t[13]+t[12]*t[5]*t[11]-t[12]*t[7]*t[9],n[12]=-t[4]*t[9]*t[14]+t[4]*t[10]*t[13]+t[8]*t[5]*t[14]-t[8]*t[6]*t[13]-t[12]*t[5]*t[10]+t[12]*t[6]*t[9],n[1]=-t[1]*t[10]*t[15]+t[1]*t[11]*t[14]+t[9]*t[2]*t[15]-t[9]*t[3]*t[14]-t[13]*t[2]*t[11]+t[13]*t[3]*t[10],n[5]=t[0]*t[10]*t[15]-t[0]*t[11]*t[14]-t[8]*t[2]*t[15]+t[8]*t[3]*t[14]+t[12]*t[2]*t[11]-t[12]*t[3]*t[10],n[9]=-t[0]*t[9]*t[15]+t[0]*t[11]*t[13]+t[8]*t[1]*t[15]-t[8]*t[3]*t[13]-t[12]*t[1]*t[11]+t[12]*t[3]*t[9],n[13]=t[0]*t[9]*t[14]-t[0]*t[10]*t[13]-t[8]*t[1]*t[14]+t[8]*t[2]*t[13]+t[12]*t[1]*t[10]-t[12]*t[2]*t[9],n[2]=t[1]*t[6]*t[15]-t[1]*t[7]*t[14]-t[5]*t[2]*t[15]+t[5]*t[3]*t[14]+t[13]*t[2]*t[7]-t[13]*t[3]*t[6],n[6]=-t[0]*t[6]*t[15]+t[0]*t[7]*t[14]+t[4]*t[2]*t[15]-t[4]*t[3]*t[14]-t[12]*t[2]*t[7]+t[12]*t[3]*t[6],n[10]=t[0]*t[5]*t[15]-t[0]*t[7]*t[13]-t[4]*t[1]*t[15]+t[4]*t[3]*t[13]+t[12]*t[1]*t[7]-t[12]*t[3]*t[5],n[14]=-t[0]*t[5]*t[14]+t[0]*t[6]*t[13]+t[4]*t[1]*t[14]-t[4]*t[2]*t[13]-t[12]*t[1]*t[6]+t[12]*t[2]*t[5],n[3]=-t[1]*t[6]*t[11]+t[1]*t[7]*t[10]+t[5]*t[2]*t[11]-t[5]*t[3]*t[10]-t[9]*t[2]*t[7]+t[9]*t[3]*t[6],n[7]=t[0]*t[6]*t[11]-t[0]*t[7]*t[10]-t[4]*t[2]*t[11]+t[4]*t[3]*t[10]+t[8]*t[2]*t[7]-t[8]*t[3]*t[6],n[11]=-t[0]*t[5]*t[11]+t[0]*t[7]*t[9]+t[4]*t[1]*t[11]-t[4]*t[3]*t[9]-t[8]*t[1]*t[7]+t[8]*t[3]*t[5],n[15]=t[0]*t[5]*t[10]-t[0]*t[6]*t[9]-t[4]*t[1]*t[10]+t[4]*t[2]*t[9]+t[8]*t[1]*t[6]-t[8]*t[2]*t[5];let r=t[0]*n[0]+t[1]*n[4]+t[2]*n[8]+t[3]*n[12];for(let e=0;e<16;e++)n[e]/=r;return n}var Ee={seed:7,size:1024,res:512,landWidth:160,d50:.3,faceSlope:.07,plane:0,berm:1.4,bermAt:22,dune:5,duneAt:70,duneWidth:45,maxDepth:22,bar:{u:95,height:1.4,width:16,wander:16,trough:.6,troughAt:1.8},rips:{spacing:230,jitter:.3,at:60,width:15,flare:1.5,cut:.9,depth:.6,head:.3,attach:.5},shore:{megacusp:8,cusps:22,cuspRelief:.24,swash:10,step:.25,stepAt:7},noise:{shore:{scale:1600,rms:10,hurst:.85,seed:51,split:300,finest:4},bed:{scale:80,rms:1,hurst:.8,seed:57,finest:4},zones:{offshore:.12,surf:.05,face:.02,berm:.06,dune:.5}},divots:{hs:1.2,tp:10,scour:1,plunge:4,width:5,minWidth:3,barAt:2.5,da:4,du:1,from:300},reef:{cover:.25,scale:55,height:1.8,from:140,to:3e3,rough:.35,wander:.3},weed:{cover:.4,scale:22,depthMin:3,depthMax:16},coral:{cover:.45,scale:7,depthMin:1.5,depthMax:9},surfClear:1.2,sandDry:[.62,.5,.33],wetDark:.55,weedAlb:[.045,.065,.03],rockAlb:[.34,.31,.26],coralAlb:[.3,.24,.17],scrub:{from:.35,cover:.75,scale:14},scrubAlb:[.1,.11,.055],grains:{quartz:.7,shell:.25,heavy:.05,quartzAlb:[.62,.48,.3],shellAlb:[.8,.77,.7],heavyAlb:[.08,.07,.06],facets:4,facetAlpha:.7,F0:.045},wetLine:.7,ripple:.14};function De(e,t=Ee){return{...t,plane:e,faceSlope:e,bar:{...t.bar,height:0,trough:0},rips:null,shore:null,divots:null,noise:null,reef:{...t.reef,cover:0},weed:{...t.weed,cover:0},coral:{...t.coral,cover:0}}}var Oe=e=>.21*e**.48,ke=(e,t,n)=>{let r=Math.imul(e,374761393)+Math.imul(t,668265263)+Math.imul(n,2147483647)|0;return r=Math.imul(r^r>>>13,1274126177),((r^r>>>16)>>>0)/4294967296};function Ae(e,t,n){let r=Math.floor(e),i=Math.floor(t),a=e-r,o=t-i,s=a*a*(3-2*a),c=o*o*(3-2*o),l=ke(r,i,n),u=ke(r+1,i,n),d=ke(r,i+1,n),f=ke(r+1,i+1,n);return l+(u-l)*s+(d-l)*c+(l-u-d+f)*s*c}function je(e,t,n,r=4){let i=0,a=.5,o=1,s=0;for(let c=0;c<r;c++)i+=a*Ae(e*o,t*o,n+c*101),s+=a,a*=.5,o*=2.03;return i/s}var Me=e=>.5+.11*Math.SQRT2*Ne(1-2*Math.min(.999,Math.max(.001,e)));function Ne(e){let t=.147,n=Math.log(1-e*e),r=2/(Math.PI*t)+n/2;return Math.sign(e)*Math.sqrt(Math.sqrt(r*r-n/t)-r)}var G=(e,t,n)=>{let r=Math.min(1,Math.max(0,(n-e)/(t-e)));return r*r*(3-2*r)};function Pe(e,t=Ee){let n=t.rips;if(!n)return null;if(!(n.spacing>0)||!Number.isFinite(n.spacing))throw RangeError(`the rips' spacing must be a positive number of metres, not ${n.spacing}`);let r=n.spacing,i=Math.floor((e-n.at)/r),a=Math.min(n.jitter,.5),o=e=>n.at+r*(e+(e===0?0:a*(ke(e,77,t.seed)-.5))),s=-1/0,c=1/0;for(let t=i-1;t<=i+2;t++){let n=o(t);n<=e&&n>s&&(s=n),n>e&&n<c&&(c=n)}let l=(e-s)/(c-s);return{aL:s,aR:c,s:l,c:Math.cos(2*Math.PI*l),d:Math.min(e-s,c-e)}}function Fe(e,t,n,r){if(Math.abs(t)>3*n.swash)return 0;let i=2*Math.PI*e/n.cusps+6*(je(e/(3*n.cusps),.3,r+41,2)-.5),a=.5+.5*Math.cos(i);return(n.cuspRelief*G(.3,.6,je(e/(8*n.cusps),.7,r+43))*.67+n.cuspRelief*.33)*(a*a-.375)*Math.exp(-((t/n.swash)**2))}var Ie=9.81,Le=60,Re=new WeakMap;function ze(e){if(e>=1)return 1;if(e<.2)return 0;let t=e*e,n=Math.exp(-1/t);for(let e=0;e<30;e++){let e=(1-n+t*Math.log(n))/(t/n-1);if(n-=e,Math.abs(e)<1e-10)break}return Math.min(n,t)}function Be(e,t,n=Pe(e,t)?.c??0){let r=t.bar;return r.u+r.wander*n+.3*r.wander*(2*je(e/400,.5,t.seed+9)-1)}function Ve(e,t){let n=Re.get(t);if(n||Re.set(t,n=new Map),n.has(e))return n.get(e);let r=t.divots,i=e*r.da,a=Math.round((r.from+Le)/r.du),o=new Float32Array(a+1);n.set(e,o);let s=Pe(i,t),c=s?1-Math.exp(-((s.d/(t.rips.width*(1+t.rips.flare)))**2)):1;if(c<.001)return o;let l=r.tp,u=1/l,d=r.hs/Math.SQRT2,f=.5+.4*Math.tanh(33*d*2*Math.PI/(Ie*l*l)),p=d*d/8*(Ie*l/(4*Math.PI)),m=0,h=qe(i,t).ub+qe(i,t).xf-.5*t.bar.width;for(let e=0;e<=a;e++){let n=r.from-e*r.du,s=Ye(i,n,t,!1,!1),d=-(s.y+o[e]);if(d<.1)break;let g=C(l,d),_=S(g,d)[1],v=Math.sqrt(8*p/_),y=.88/g*Math.tanh(f*g*d/.88),b=ze(v/y),x=b-m;if(p=Math.max(0,p-.25*u*b*y*y*r.du),m=b,x<=0||n>h)continue;let w=r.width*y,T=Math.max(r.minWidth,w),E=r.scour*y*x*c*(1-s.rock)*w/T,D=n-r.plunge*y,O=D-r.barAt*T,k=Math.max(0,Math.floor((r.from-D-3*T)/r.du)),A=Math.min(a,Math.ceil((r.from-O+3*T)/r.du));for(let e=k;e<=A;e++){let t=r.from-e*r.du;o[e]+=E*(Math.exp(-(((t-O)/T)**2))-Math.exp(-(((t-D)/T)**2)))}}return o}function He(e,t,n){let r=n.divots,i=Math.round((r.from+Le)/r.du),a=(r.from-t)/r.du;if(a<0||a>i)return 0;let o=e/r.da,s=Math.floor(o),c=o-s,l=Math.min(Math.floor(a),i-1),u=a-l,d=e=>e[l]+(e[l+1]-e[l])*u;return(d(Ve(s,n))*(1-c)+d(Ve(s+1,n))*c)*(1-G(40,Le,-t))}var Ue=(e,t,n=Ee)=>Ye(e,t,n,!0,!0),We=null,Ge=NaN,Ke=null;function qe(e,t){if(t===We&&e===Ge)return Ke;let n=Pe(e,t),r=n?n.c:0,i=t.noise,a=i?ae(e,i.shore,i.shore.split):0,o=i?ae(e,i.shore)-a:0,s={scale:1200,rms:.4,hurst:.8,finest:30},c=ae(e,{...s,seed:t.seed+61}),l=ae(e,{...s,seed:t.seed+67});return Ke={r:n,c:r,horn:.5-.5*r,ub:Be(e,t,r),xf:a,xn:o,rw:c,rw2:l},We=t,Ge=e,Ke}function Je(e,t){let n=t.noise.zones,r=t.shore?.swash??10;return e<0?n.face+(n.berm-n.face)*G(r,t.bermAt,-e)+(n.dune-n.berm)*G(t.duneAt,t.duneAt+.5*t.duneWidth,-e):n.face+(n.surf-n.face)*G(r,2*r,e)+(n.offshore-n.surf)*G(1.2*t.bar.u,1.8*t.bar.u,e)}function Ye(e,t,n,r,i){let a=Oe(n.d50),o=(2*a/(3*n.faceSlope))**3,s=n.bar,c=n.shore,l=n.rips,u=qe(e,n),{r:d,c:f,horn:p,ub:m}=u,h=t-u.xf,g=h-((c?-c.megacusp*f:0)+u.xn)*(h>=0?1-G(.25*m,.7*m,h):1-G(n.bermAt,n.duneAt,-h)),_=c?Fe(e,g,c,n.seed):0,v=r&&n.divots?He(e,t,n):0,y=n.noise?Je(g,n)*oe(e,h,n.noise.bed):0,b,x=0,S=0,C=0,w=0,T=0,E=0;if(g>=0){let r=Math.min(n.maxDepth,n.plane?n.plane*g:a*(g+o)**(2/3)-a*o**(2/3)),f=G(0,.5*s.u,g),D=d?Math.exp(-((d.d/l.width)**2)):0,O=d?l.attach:0;r-=s.height*(1-(d?l.cut:0)*D)*Math.exp(-(((h-m)/s.width)**2))*f;let k=m-s.troughAt*s.width;if(r+=s.trough*(1-.4*p)*(1-O*p*p)*Math.exp(-(((h-k)/s.width)**2))*f,d){r-=O*p*p*.6*s.height*G(.15*m,.45*m,h)*(1-G(m-s.width,m,h));let e=k-s.width+O*(.2*m-(k-s.width)),t=l.width*(1+l.flare*(1-G(e,m-.5*s.width,h)));r+=l.depth*Math.exp(-((d.d/t)**2))*G(e-s.width,e,h)*(1-G(m+s.width,m+2.5*s.width,h))*f,r-=l.head*Math.exp(-((d.d/(2.5*l.width))**2))*Math.exp(-(((h-(m+3*s.width))/(1.5*s.width))**2))}c&&(r+=c.step*Math.exp(-(((g-c.stepAt)/(g<c.stepAt?1.5:5))**2))-_);let A=n.reef,j=je(e/A.scale,t/A.scale,n.seed+3),M=Me(A.cover),ee=A.from*(1+A.wander*u.rw),N=A.to*(1+A.wander*u.rw2),P=G(ee-30,ee,h)*(1-G(N,N+.1*A.to,h)),F=.5*(n.blur??0)/A.scale,I=(n.blur??0)>3.5?0:A.rough;x=G(M,M+.04,j)*P;let te=A.height*G(M-F,M+.12+F,j)*(1-I+I*je(e/3.5,t/3.5,n.seed+5));r-=te*+(G(M-F,M+F+1e-9,j)>0)*P,r-=v+y;let ne=c?c.swash:0,re=G(ne,2*ne+1,g);if(b=-(r+re*Math.max(0,.05*g*n.faceSlope-r)),!i)return{y:b,rock:x};let L=-b,R=G(n.surfClear*n.bar.u*.85,n.surfClear*n.bar.u,h),z=n.weed,B=n.coral;w=G(z.depthMin,z.depthMin+1.5,L)*(1-G(z.depthMax-2,z.depthMax,L))*R,E=G(B.depthMin,B.depthMin+1,L)*(1-G(B.depthMax-2,B.depthMax,L))*R,T=P;let ie=Me(z.cover),ae=Me(B.cover);S=G(ie,ie+.05,je(e/z.scale,t/z.scale,n.seed+11))*w,C=x*G(ae,ae+.06,je(e/B.scale,t/B.scale,n.seed+17))*E,S*=1-.6*x,x*=1-C}else{let r=-g,i=Math.min(r*n.faceSlope,n.berm),a=n.dune*G(n.duneAt,n.duneAt+n.duneWidth,r)*(n.noise?1:.8+.4*je(e/60,r/60,n.seed+21));b=i+(r>n.bermAt?.15*(r-n.bermAt)/40:0)+a+_+v+y;let o=n.scrub,s=Me(o.cover);w=G(n.duneAt+o.from*n.duneWidth,n.duneAt+(o.from+.3)*n.duneWidth,r),S=G(s,s+.08,je(e/o.scale,t/o.scale,n.seed+31))*w}let D=Math.max(0,1-S-x-C);return{y:b,weed:S,rock:x,coral:C,sand:D,zW:w,zR:T,zC:E}}var Xe=Array.from({length:6},(e,t)=>.6**t),Ze=Xe.reduce((e,t)=>e+t,0),K={cell:.42,scales:Xe.map((e,t)=>[.41**t,e/Ze]),warp:.9,width:.6,patch:3.4,patchAmp:.35,gain:1};function Qe(e,t=[0,0],n=180,r=Ee){let i=new Float32Array(72);if(!e)return i;let a=n*Math.PI/180;i.set([t[0],t[1],Math.sin(a),Math.cos(a)],0),i.set([e.a0,e.u0,1/e.size,1],4),i.set([e.texel,r.wetLine,r.ripple,r.wetDark],8),i.set([...r.sandDry,e.levels.length],12);let o=e.outer??e,s=Oe(r.d50),c=(2*s/(3*r.faceSlope))**3,l=o.u0+o.size,u=Math.min(r.maxDepth,r.plane?r.plane*l:s*((l+c)**(2/3)-c**(2/3))),d=u>=r.maxDepth?.005:r.plane?r.plane:2/3*s*(l+c)**(-1/3);i.set([...r.weedAlb,-u,...r.rockAlb,d,...r.coralAlb,0,...r.scrubAlb,0],16);let f=r.grains;i.set([r.d50/1e3,f.quartz,f.shell,f.heavy,...f.quartzAlb,f.facets,...f.shellAlb,f.facetAlpha,...f.heavyAlb,f.F0],32),i.set([o.a0,o.u0,1/o.size,o.levels.length],48);let p=r.noise;return p&&(i.set([p.bed.scale,p.bed.hurst,p.bed.seed,p.zones.face],52),i[31]=p.bed.finest),i[27]=r.faceSlope,[[r.reef,3,.04],[r.weed,11,.05],[r.coral,17,.06],[r.scrub,31,.08]].forEach(([e,t,n],a)=>i.set([e.scale,Me(e.cover),r.seed+t,n],56+4*a)),i}function $e(e,t=null){let n=t?t.res:1,r=t?t.levels.length:1,i=e.createTexture({label:`beach bed`,size:[n,n],format:`rgba16float`,mipLevelCount:r,usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST});return(t?t.levels:[new Float32Array([-1e3,0,0,0])]).forEach((t,r)=>{let a=Math.max(1,n>>r),o=new Uint16Array(t.length);for(let e=0;e<t.length;e++)o[e]=ue(t[e]);e.queue.writeTexture({texture:i,mipLevel:r},o,{bytesPerRow:a*8},[a,a])}),i}var et=`
 @group(0) @binding(10) var bedTex: texture_2d<f32>;      // the beach's bed: elevation (m), weed, rock, coral
 @group(0) @binding(13) var bedOut: texture_2d<f32>;      // the same bed round it, coarser ( OUTER)
 fn bHash(p: vec2f) -> f32 { return fract(sin(dot(p, vec2f(127.1, 311.7))) * 43758.5453); }
@@ -1104,7 +1399,7 @@ fn bedWaveGain(p: vec2f) -> f32 {
   let depth = max(-bedY(p), 0.0);
   return smoothstep(0.0, 1.0, clamp(0.78 * depth * F.wave.y, 0.0, 1.0));
 }
-`,Je=`
+`,tt=`
 @group(0) @binding(11) var swA: texture_2d_array<f32>;
 fn swRead(uv: vec2f, l: i32) -> vec4f { return textureSampleLevel(swA, skySamp, uv, l, 0.0); }
 fn swellOn() -> bool { return F.sw.w > 0.5; }
@@ -1135,10 +1430,10 @@ return (crestCum(x + 0.5 * d, b) - crestCum(x - 0.5 * d, b)) / d - exp(-b * x) /
 fn foamPatches(p: vec2f, cF: f32, px: f32, sc: f32, seed: f32, sp: f32) -> f32 {
 let m = clamp(1.1 * pow(max(cF, 1e-8), sp), 0.0, 1.0);
 if (m >= 0.999) { return cF; }
-let kw = clamp(${Be.warpScale} * sc / (2.0 * max(px, 1e-4)) - 1.0, 0.0, 1.0);
-let nw = nNoise2d(p / (${Be.warpScale} * sc), i32(seed) + 7);
-let w = ${Be.warp} * sc * kw * vec2f(-nw.z, nw.y) / 0.626;
-let pg = nFractal2(p + w, vec4f(sc, 1.0, ${Be.hurst}, seed), vec2f(0.0, max(px, ${Be.fine} * sc)));
+let kw = clamp(${me.warpScale} * sc / (2.0 * max(px, 1e-4)) - 1.0, 0.0, 1.0);
+let nw = nNoise2d(p / (${me.warpScale} * sc), i32(seed) + 7);
+let w = ${me.warp} * sc * kw * vec2f(-nw.z, nw.y) / 0.626;
+let pg = nFractal2(p + w, vec4f(sc, 1.0, ${me.hurst}, seed), vec2f(0.0, max(px, ${me.fine} * sc)));
 let res = 1.0 - pow(clamp(2.0 * px / sc, 0.0, 1.0), 1.2);
 let z = log((1.0 - m) / max(m, 1e-4)) / 1.702;
 let M = mix(m, smoothstep(z - 0.25, z + 0.25, pg), res);
@@ -1148,18 +1443,18 @@ fn surfPhase(p: vec2f, B: vec4f, px: f32, d: f32) -> f32 {
 let x0 = surfPhase0(B);
 let wr = (1.0 - smoothstep(0.04, 0.25, min(x0, 1.0 - x0))) * (1.0 - smoothstep(0.25, 1.0, d));
 var rag = 0.0;
-if (wr > 0.0) { rag = wr * ${U.rag} * clamp(nFractal2(p, vec4f(${U.ragScale}, 1.0, 0.55, 697.0), vec2f(0.0, max(px, ${U.ragFine}))), -2.5, 2.5); }
+if (wr > 0.0) { rag = wr * ${V.rag} * clamp(nFractal2(p, vec4f(${V.ragScale}, 1.0, 0.55, 697.0), vec2f(0.0, max(px, ${V.ragFine}))), -2.5, 2.5); }
 return fract(x0 + rag);
 }
-fn surfPhase0(B: vec4f) -> f32 { return fract(-atan2(B.z, B.y) / 6.2831853 + ${U.lead}); }
+fn surfPhase0(B: vec4f) -> f32 { return fract(-atan2(B.z, B.y) / 6.2831853 + ${V.lead}); }
 fn surfJitter(al: f32, tc: f32, px: f32) -> f32 {
-let ja = ${U.jitter} * clamp(${U.jitterScale}.0 / max(2.0 * px, 1e-3) - 1.0, 0.0, 1.0);
-return 1.0 + ja * nNoise2(vec2f(al, tc * ${U.jitterScale}.0) / ${U.jitterScale}.0, 661) / ${V};
+let ja = ${V.jitter} * clamp(${V.jitterScale}.0 / max(2.0 * px, 1e-3) - 1.0, 0.0, 1.0);
+return 1.0 + ja * nNoise2(vec2f(al, tc * ${V.jitterScale}.0) / ${V.jitterScale}.0, 661) / ${B};
 }
 fn leanG(y: f32) -> vec2f {
-let y0 = ${W.leanWin[0]};
-let y1 = ${W.leanWin[1]};
-let r = ${W.leanRamp};
+let y0 = ${H.leanWin[0]};
+let y1 = ${H.leanWin[1]};
+let r = ${H.leanRamp};
 let beta = y1 - y0 - r;
 var b = 0.0;
 var I = 0.0;
@@ -1185,6 +1480,7 @@ let B = swRead(q.xy, 3);
 let sea = surfSea(swRead(q.xy, 1).w);
 if (B.w < 0.003 || sea <= 0.0) { return o; }
 let P = swRead(q.xy, 4);
+let xs = swRead(q.xy, 5).w;
 let lam = 6.2831853 / max(P.w, 0.05);
 let wc = cell / lam;
 if (wc > 0.25 || dot(B.yz, B.yz) < 1e-10) { return o; }
@@ -1198,8 +1494,8 @@ let thr = surfThr(swRead(q.xy, 0).w, B.w);
 let gate = smoothstep(0.003, 0.01, B.w) * sea * q.z;
 let r0 = select(mix(B.x, P.x, y0), B.x, y0 < 0.0);
 let j0 = surfJitter(al, T - y0, cell);
-let st = smoothstep(0.55, 1.0, r0) * (1.0 - (1.0 - ${W.leanBore}) * smoothstep(0.85, 1.15, r0 * j0)) * surfSize(r0 * thr) * gate;
-var a = ${W.lean} * st * (1.0 - smoothstep(0.05, 0.1, wc));
+let st = smoothstep(0.55, 1.0, r0) * (1.0 - (1.0 - ${H.leanBore}) * smoothstep(0.85, 1.15, r0 * j0)) * surfSize(r0 * thr) * gate;
+var a = ${H.lean} * st * (1.0 - smoothstep(0.05, 0.1, wc));
 let inShape = y0 >= -0.25 && y0 <= 0.42;
 if (a <= 0.0 && !inShape) { return o; }
 let ph = atan2(B.z, B.y);
@@ -1215,7 +1511,7 @@ kx = mix(F.bd[0].zw / lam, kx, kw);
 kl = length(kx) * lam;
 let kn = normalize(kx);
 if (a > 0.0) {
-a = min(a, 0.6 / (kl * ${(1-(W.leanWin[1]-W.leanWin[0]-W.leanRamp)).toFixed(6)}));
+a = min(a, 0.6 / (kl * ${(1-(H.leanWin[1]-H.leanWin[0]-H.leanRamp)).toFixed(6)}));
 let G = leanG(y0);
 o.d = -kn * (a * lam * G.x);
 let mJ = 1.0 / (1.0 - a * kl * G.y) - 1.0;
@@ -1229,38 +1525,40 @@ let wr = (1.0 - wrs.x) * wd;
 var y = y0;
 var gy = kx;
 if (wr > 0.0) {
-let n = nFractal2d(p, vec4f(${U.ragScale}, 1.0, 0.55, 697.0), vec2f(0.0, max(2.0 * cell, ${W.ragGeo})));
+let n = nFractal2d(p, vec4f(${V.ragScale}, 1.0, 0.55, 697.0), vec2f(0.0, max(2.0 * cell, ${H.ragGeo})));
 let nc = clamp(n.x, -2.5, 2.5);
 let gwr = -wrs.y * wd * select(-1.0, 1.0, x0 < 0.5) * kx;
-y += wr * ${U.rag} * nc;
-gy += ${U.rag} * (wr * n.yz * select(0.0, 1.0, abs(n.x) < 2.5) + nc * gwr);
+y += wr * ${V.rag} * nc;
+gy += ${V.rag} * (wr * n.yz * select(0.0, 1.0, abs(n.x) < 2.5) + nc * gwr);
 }
-let hg = breakShape(y, gy, al, ald, T, B, P, lam, thr, gate, cell);
+var cro = vec2f(1.0, 0.0);
+let hn0 = B.x * thr;
+if (B.x > 0.65 && y0 < 0.09 && y0 > -(${H.crashAhead} * hn0 + cell) / lam - 0.09) {
+let grB = vec2f(Be.x - B.x, Bn.x - B.x) / es;
+cro = vec2f(B.x + ${H.crashRun} * hn0 * dot(grB, kn), crashType(xs, hn0));
+}
+let hg = breakShape(y, gy, al, ald, T, B, P, lam, thr, gate, cell, kn, cro);
 o.dh = hg.x;
 o.g = hg.yz;
 return o;
 }
-fn breakShape(y: f32, gy: vec2f, al: f32, ald: vec2f, T: f32, B: vec4f, P: vec4f, lam: f32, thr: f32, gate: f32, cell: f32) -> vec3f {
+fn breakShape(y: f32, gy: vec2f, al: f32, ald: vec2f, T: f32, B: vec4f, P: vec4f, lam: f32, thr: f32, gate: f32, cell: f32, kn: vec2f, cro: vec2f) -> vec3f {
 if (y < -0.2 || y > 0.33) { return vec3f(0.0); }
 let tc = T - y;
 let gtc = -gy;
-let jS = ${U.jitterScale}.0;
-let ja = ${U.jitter} * clamp(jS / max(2.0 * cell, 1e-3) - 1.0, 0.0, 1.0);
+let jS = ${V.jitterScale}.0;
+let ja = ${V.jitter} * clamp(jS / max(2.0 * cell, 1e-3) - 1.0, 0.0, 1.0);
 let nj = nNoise2d(vec2f(al / jS, tc), 661);
-let jr = 1.0 + ja * nj.x / ${V};
-let gjr = (ja / ${V}) * (nj.y / jS * ald + nj.z * gtc);
+let jr = 1.0 + ja * nj.x / ${B};
+let gjr = (ja / ${B}) * (nj.y / jS * ald + nj.z * gtc);
 let xb = y * lam;
 let gxb = lam * gy;
 if (y < 0.0) {
 let hn = B.x * thr;
-let rc = B.x * jr;
-let c1 = ssd(0.9, 1.1, rc);
-let c2 = ssd(1.3, ${W.crashEnd}, rc);
-let sz = surfSize(hn) * gate;
-let cs = c1.x * (1.0 - c2.x) * sz;
-if (cs <= 0.0 || hn <= 0.0) { return vec3f(0.0); }
-let gcs = (c1.y * (1.0 - c2.x) - c1.x * c2.y) * sz * B.x * gjr;
-let A = ${W.crashAhead} * hn;
+if (hn <= 0.0) { return vec3f(0.0); }
+let cs = crashRun(B.x * jr, cro.x * jr, xb / (${H.crashRun} * hn)) * surfSize(hn) * gate * cro.y;
+if (cs <= 0.0) { return vec3f(0.0); }
+let A = ${H.crashAhead} * hn;
 let t = -xb / A;
 let wf = cell / A;
 let fd = 1.0 - smoothstep(0.3, 0.8, wf);
@@ -1268,8 +1566,8 @@ let u1 = ssd(0.0, 0.4 + wf, t);
 let u2 = ssd(0.45, 1.0 + wf, t);
 let sh = u1.x * (1.0 - u2.x);
 let dsh = (u1.y * (1.0 - u2.x) - u1.x * u2.y) / A;
-let K = ${W.splash} * hn * fd;
-return vec3f(K * cs * sh, K * (sh * gcs - cs * dsh * gxb));
+let K = ${H.splash} * hn * fd;
+return vec3f(K * cs * sh, -K * cs * dsh * gxb);
 }
 let r = mix(B.x, P.x, y);
 let gr = (P.x - B.x) * gy;
@@ -1277,63 +1575,69 @@ let hc = r * thr;
 if (hc <= 0.01) { return vec3f(0.0); }
 let ghc = thr * gr;
 let sS = ssd(0.85, 1.15, r * jr);
-let sZ = ssd(${U.sizeH[0]}, ${U.sizeH[1]}, hc);
+let sZ = ssd(${V.sizeH[0]}, ${V.sizeH[1]}, hc);
 let s = sS.x * sZ.x * gate;
 if (s <= 0.0) { return vec3f(0.0); }
 let gs = gate * (sS.y * sZ.x * (jr * gr + r * gjr) + sS.x * sZ.y * ghc);
-let Lr = min(${W.lengthH} * hc, 0.3 * lam / (1.0 + cell / (${W.lengthH} * hc)));
-let nv = nNoise2d(vec2f(al / ${W.bulkScale}, tc), 719);
-var v = 1.0 + ${W.bulkVar} * nv.x / ${V};
-var gv = (${W.bulkVar} / ${V}) * (nv.y / ${W.bulkScale} * ald + nv.z * gtc);
+let Lr = min(${H.lengthH} * hc, 0.3 * lam / (1.0 + cell / (${H.lengthH} * hc)));
+let nv = nNoise2d(vec2f(al / ${H.bulkScale}, tc), 719);
+var v = 1.0 + ${H.bulkVar} * nv.x / ${B};
+var gv = (${H.bulkVar} / ${B}) * (nv.y / ${H.bulkScale} * ald + nv.z * gtc);
 if (v < 0.2) { v = 0.2; gv = vec2f(0.0); }
 let xi = xb / Lr;
-let gxi = gxb / Lr - select(vec2f(0.0), xi * ghc / hc, Lr >= 0.999 * ${W.lengthH} * hc);
+let gxi = gxb / Lr - select(vec2f(0.0), xi * ghc / hc, Lr >= 0.999 * ${H.lengthH} * hc);
 let wf = cell / Lr;
-let pk = max(${W.peak}, 1.5 * wf);
+let pk = max(${H.peak}, 1.5 * wf);
 let b1 = ssd(0.0, pk, xi);
 let b2 = ssd(pk, 1.0 + wf, xi);
 let bf = 1.0 - smoothstep(0.3, 0.8, wf);
 let sh = select(0.0, b1.x * (1.0 - b2.x) * bf, bf > 0.0);
 let dsh = select(0.0, (b1.y * (1.0 - b2.x) - b1.x * b2.y) * bf, bf > 0.0);
-let K = ${2*W.area*W.voids/W.lengthH};
+let K = ${2*H.area*H.voids/H.lengthH};
 var h = K * hc * v * sh;
 var g = K * (sh * (v * ghc + hc * gv) + hc * v * dsh * gxi);
 let E = min(2.0 * Lr, 0.3 * lam);
-let top = ${W.twistScale} * 0.5 * max(F.swl.x, 0.1);
+let top = ${H.twistScale} * 0.5 * max(F.swl.x, 0.1);
 let k1 = ssd(0.0, 0.3 * Lr, xb);
 let k2 = ssd(0.4 * E, E, xb);
 let kf = 1.0 - smoothstep(0.25 * top, 0.5 * top, cell);
 let k = k1.x * (1.0 - k2.x) * kf;
 if (k > 0.0) {
 let gk = (k1.y * (1.0 - k2.x) - k1.x * k2.y) * kf * gxb;
-let roll = ${W.twistRoll} * F.cam.w;
-let qc = vec2f(al + ${W.twistDrift} * tc, xb + roll - 997.0 * floor(roll / 997.0));
-let z = nFractal2d(qc, vec4f(top, 1.0, 0.6, 733.0), vec2f(0.0, max(${W.twistFine} * top, 2.0 * cell)));
-let gz = z.y * (ald + ${W.twistDrift} * gtc) + z.z * gxb;
+let roll = ${H.twistRoll} * F.cam.w;
+let qc = vec2f(al + ${H.twistDrift} * tc, xb + roll - 997.0 * floor(roll / 997.0));
+let z = nFractal2d(qc, vec4f(top, 1.0, 0.6, 733.0), vec2f(0.0, max(${H.twistFine} * top, 2.0 * cell)));
+let gz = z.y * (ald + ${H.twistDrift} * gtc) + z.z * gxb;
 let sq = sqrt(z.x * z.x + 0.25);
 let bl = 0.5 * (z.x + sq);
 let dbl = 0.5 * (1.0 + z.x / sq);
-let V = ${W.twistV};
+let V = ${H.twistV};
 h += V * hc * k * bl;
 g += V * (bl * (k * ghc + hc * gk) + hc * k * dbl * gz);
 }
 return vec3f(s * h, s * g + h * gs);
 }
-fn crashShare(rn: f32, hn: f32) -> f32 {
-return smoothstep(0.9, 1.1, rn) * (1.0 - smoothstep(1.3, ${W.crashEnd}, rn)) * surfSize(hn);
+fn crashRun(rh: f32, ro: f32, sh: f32) -> f32 {
+let d = rh - ro;
+if (d <= 0.01) { return 0.0; }
+let f = (rh - 1.0) / d + sh;
+return smoothstep(0.0, 0.1, f) * (1.0 - smoothstep(0.35, 1.0, f)) * smoothstep(0.01, 0.03, d);
+}
+fn crashType(xs: f32, hb: f32) -> f32 {
+return mix(${H.crashSpill}, 1.0, smoothstep(${H.crashXi[0]}, ${H.crashXi[1]}, xs * inverseSqrt(max(hb, 1e-3))));
 }
 fn rollerChurn(al: f32, xb: f32, px: f32, c: f32) -> vec3f {
-let ph = F.cam.w / ${W.churnT};
+let ph = F.cam.w / ${H.churnT};
 let k = floor(ph);
 let f = ph - k;
-let v = ${W.spin} * c * ${W.churnT};
+let v = ${H.spin} * c * ${H.churnT};
 let band = vec2f(0.0, max(3.0 * px, 0.01));
 let kk = k - 4096.0 * floor(k / 4096.0);
 let fb = fract(f + 0.5);
 let kb = select(kk, kk + 1.0 - select(0.0, 4096.0, kk >= 4095.0), f >= 0.5);
 let oa = vec2f(37.1 * fract(kk * 0.6180339), 53.3 * fract(kk * 0.4142136));
 let ob = vec2f(37.1 * fract((kb + 0.5) * 0.6180339), 53.3 * fract((kb + 0.5) * 0.4142136));
-let FL = vec4f(${W.lump}, 1.0, 0.8, 709.0);
+let FL = vec4f(${H.lump}, 1.0, 0.8, 709.0);
 let na = nFractal2d(vec2f(al, xb + v * f) + oa, FL, band);
 let nb = nFractal2d(vec2f(al, xb + v * fb) + ob, FL, band);
 let wa = 1.0 - abs(2.0 * f - 1.0);
@@ -1352,24 +1656,25 @@ let off = F.bd[0].zw;
 let xs = fract(surfPhase0(B) + 0.5) - 0.5;
 let ca = al + 7.0 * (fract((F.cam.w / Tm - xs) / 64.0) * 64.0);
 let ch = rollerChurn(ca, xs * lam, px, lam / Tm);
-let kL = clamp((${W.lump} / (3.0 * max(px, 1e-4)) - 1.0) / 3.0, 0.0, 1.0);
-let gr = kL * ${W.relief} * (ch.y * vec2f(off.y, -off.x) + ch.z * off);
+let kL = clamp((${H.lump} / (3.0 * max(px, 1e-4)) - 1.0) / 3.0, 0.0, 1.0);
+let gr = kL * ${H.relief} * (ch.y * vec2f(off.y, -off.x) + ch.z * off);
 return mat2x4f(vec4f(0.0, max(s, sc), ch.x, x), vec4f(gr, 0.0, 0.0));
 }
-fn surfThr(hs: f32, qb: f32) -> f32 { return max(0.7071 * hs * sqrt(-log(clamp(qb, 1e-4, ${U.qbMax}))), 1e-3); }
+fn surfThr(hs: f32, qb: f32) -> f32 { return max(0.7071 * hs * sqrt(-log(clamp(qb, 1e-4, ${V.qbMax}))), 1e-3); }
 fn surfSea(sea: f32) -> f32 { return smoothstep(0.0, 0.35, sea); }
-fn surfSize(h: f32) -> f32 { return smoothstep(${U.sizeH[0]}, ${U.sizeH[1]}, h); }
+fn surfSize(h: f32) -> f32 { return smoothstep(${V.sizeH[0]}, ${V.sizeH[1]}, h); }
 fn rollerWhite(r: vec4f, ws: f32, aL: f32, px: f32) -> f32 {
 if (ws <= 0.002) { return 0.0; }
 if (r.y <= 0.0) { return ws; }
-let kL = clamp((${W.lump} / (3.0 * max(px, 1e-4)) - 1.0) / 3.0, 0.0, 1.0);
+let kL = clamp((${H.lump} / (3.0 * max(px, 1e-4)) - 1.0) / 3.0, 0.0, 1.0);
 let wc = clamp(ws, 0.001, 0.999);
 let t = 0.5 + 0.195 * log((1.0 - wc) / wc);
 let a = max(aL, 0.02);
-let toe = smoothstep(0.0, 0.006, r.w - ${W.toeRag} * (0.6 - r.z));
+let toe = smoothstep(0.0, 0.006, r.w - ${H.toeRag} * (0.6 - r.z));
 return mix(ws, smoothstep(t - a, t + a, r.z), kL) * mix(1.0, toe, kL);
 }
 var<private> gSurfDbg: vec4f = vec4f(0.0, 0.0, 0.0, 1.0);
+var<private> gCrash: f32 = 0.0;
 struct Surf { lace: f32, ws: f32, r: vec4f, g: vec2f }
 fn surfAt(p: vec2f, px: f32) -> Surf {
 var o = Surf(0.0, 0.0, vec4f(0.0), vec2f(0.0));
@@ -1389,7 +1694,7 @@ let gate = smoothstep(0.003, 0.01, B.w);
 let toMean = smoothstep(0.25, 1.0, d);
 var jit = vec3f(1.0);
 let al = bedAU(p).x;
-if (${U.jitter} > 0.0 && toMean < 1.0) {
+if (${V.jitter} > 0.0 && toMean < 1.0) {
 let tc = F.cam.w / Tm - x;
 for (var n = 0; n < 3; n++) {
 jit[n] = surfJitter(al, tc - f32(n), px);
@@ -1397,14 +1702,27 @@ jit[n] = surfJitter(al, tc - f32(n), px);
 }
 let thr = surfThr(hs, B.w);
 let r3 = mix(vec3f(B.x, P.x, P.y), P.xyz, x);
-let sz = smoothstep(vec3f(${U.sizeH[0]}), vec3f(${U.sizeH[1]}), r3 * thr);
+let sz = smoothstep(vec3f(${V.sizeH[0]}), vec3f(${V.sizeH[1]}), r3 * thr);
 let qm = B.w * surfSize(max(0.7071 * hs, thr));
 var S3 = smoothstep(vec3f(0.85), vec3f(1.15), r3 * jit) * sz * gate;
 let dbg = u32(F.rip2.w);
 var crash = vec2f(0.0, B.x * thr);
 let ya = 1.0 - x;
-let aC = ${W.crashAhead} * crash.y * P.w / 6.2831853;
-if (ya < aC && toMean < 1.0) { crash.x = crashShare(B.x * surfJitter(al, F.cam.w / Tm - x + 1.0, px), crash.y) * gate * sea * q.z * (1.0 - toMean); }
+let aC = ${H.crashAhead} * crash.y * P.w / 6.2831853;
+let xr = max(${H.lengthH} * r3.x * thr * P.w / 6.2831853, 0.004);
+let ahead = ya < aC;
+if ((ahead || x < xr) && toMean < 1.0) {
+let rc = select(r3.x, B.x, ahead);
+let jc = select(jit.x, surfJitter(al, F.cam.w / Tm - x + 1.0, px), ahead);
+let hc = rc * thr;
+if (rc * jc > 0.7 && hc > ${V.sizeH[0]}) {
+let Dc = ${H.crashRun} * hc;
+let ro = swRead(swellUV(p + F.bd[0].zw * Dc).xy, 3).x;
+let ty = crashType(swRead(q.xy, 5).w, hc);
+crash.x = crashRun(rc * jc, ro * jc, select(x, -ya, ahead) * 6.2831853 / (max(P.w, 0.05) * Dc)) * ty * surfSize(hc) * gate * sea * q.z * (1.0 - toMean);
+gCrash = crash.x;
+}
+}
 if (d < 0.2 && (dbg & 524288u) == 0u && (x < 0.3 || crash.x > 0.0)) {
 let rp = rollerPix(x, S3.x * sea * q.z, d, B, P.w, al, Tm, px, crash);
 o.r = rp[0];
@@ -1414,23 +1732,22 @@ if ((dbg & 1024u) != 0u) { return o; }
 S3.z = mix(S3.z, qm, x);
 let S = vec4f(mix(S3, vec3f(qm), toMean), qm);
 let up = -F.bd[0].zw;
-let dr = ${U.drift} * F.cam.w;
+let dr = ${V.drift} * F.cam.w;
 let pl = p - up * (dr - 4096.0 * floor(dr / 4096.0));
-let lv = ${Be.lifeVar} * clamp(${U.patch}.0 / max(2.0 * px, 1e-3) - 1.0, 0.0, 1.0);
-let life = ${U.life}.0 * clamp(pow(max(hs, 0.01) / 0.3, 0.7), 1.0, 2.5) * exp(lv * nNoise2(pl / (0.7 * ${U.patch}.0), 677) / ${V} - 0.5 * lv * lv);
-let bR = clamp(6.2831853 / max(P.w, 0.05) / (${U.trailH} * max(0.7071 * hs, thr)), ${U.rollerB}, 25.0);
+let lv = ${me.lifeVar} * clamp(${V.patch}.0 / max(2.0 * px, 1e-3) - 1.0, 0.0, 1.0);
+let life = ${V.life}.0 * clamp(pow(max(hs, 0.01) / 0.3, 0.7), 1.0, 2.5) * exp(lv * nNoise2(pl / (0.7 * ${V.patch}.0), 677) / ${B} - 0.5 * lv * lv);
+let bR = clamp(6.2831853 / max(P.w, 0.05) / (${V.trailH} * max(0.7071 * hs, thr)), ${V.rollerB}, 25.0);
 let bL = Tm / life;
-let b2 = Tm * (1.0 / ${U.onset} + 1.0 / life);
+let b2 = Tm * (1.0 / ${V.onset} + 1.0 / life);
 let W = clamp(crestSum(x, S, bR) + qm * crestBox(x, d, bR), 0.0, 1.0);
 let Fm = max(crestSum(x, S, bL) - crestSum(x, S, b2) + qm * (crestBox(x, d, bL) - crestBox(x, d, b2)), 0.0);
-let cF = 1.0 - exp(-${U.cover} * Fm);
+let cF = 1.0 - exp(-${V.cover} * Fm);
 if (max(W, cF) * sea < 0.002) { return o; }
-let xr = max(${W.lengthH} * r3.x * thr * P.w / 6.2831853, 0.004);
-let Wc = crash.x * (1.0 - smoothstep(0.6 * aC, aC, ya)) / max(sea * q.z, 1e-3);
+let Wc = min(${H.crashWhite} * crash.x / max(sea * q.z, 1e-3), 1.0) * select(1.0 - smoothstep(0.5 * xr, 1.3 * xr, x), 1.0 - smoothstep(0.6 * aC, aC, ya), ahead);
 let Ws = min(max(S.x * exp(-x * bR) * (1.0 - smoothstep(0.5 * xr, 1.3 * xr, x)) * (1.0 - toMean), Wc), 1.0);
-let cL = foamPatches(pl, cF, px, ${U.patch}.0, 673.0, ${Be.shareP});
+let cL = foamPatches(pl, cF, px, ${V.patch}.0, 673.0, ${me.shareP});
 let c = 1.0 - (1.0 - max(W - Ws, 0.0) / max(1.0 - Ws, 0.05)) * (1.0 - min(cL, 0.97));
-if ((u32(F.rip2.w) & 32768u) != 0u) { gSurfDbg = vec4f(W, ${U.cover} * Fm, S.x, 1.0); }
+if ((u32(F.rip2.w) & 32768u) != 0u) { gSurfDbg = vec4f(W, ${V.cover} * Fm, S.x, 1.0); }
 o.lace = washLace(pl, c * sea, px) * q.z;
 o.ws = Ws * sea * q.z;
 return o;
@@ -1467,7 +1784,7 @@ return (v.x * vec2f(off.y, -off.x) + v.y * off) * q.z;
 fn washLace(p: vec2f, c: f32, px: f32) -> f32 {
 if (c <= 0.002) { return c; }
 let kp = clamp(${K.patch} / max(px, 1e-4) - 1.0, 0.0, 1.0);
-let d = clamp(1.0 + ${K.patchAmp} * kp * nNoise2(p / ${K.patch}, 631) / ${V}, 0.3, 1.8);
+let d = clamp(1.0 + ${K.patchAmp} * kp * nNoise2(p / ${K.patch}, 631) / ${B}, 0.3, 1.8);
 let ce = 1.0 - pow(1.0 - min(c, 0.999), d);
 if (c >= 0.96) { return ce; }
 let fadeC = 1.0 - smoothstep(0.85, 0.96, c);
@@ -1483,7 +1800,7 @@ let SC = array<vec2f, ${K.scales.length}>(${K.scales.map(([e,t])=>`vec2f(${e.toF
       let wp = p / s + ${K.warp} * k * vec2f(nNoise2(p / (1.3 * s), 621 + sd), nNoise2(p / (1.3 * s), 623 + sd));
       let a = max(px / s, 0.03);
       let ti = nLaceTAA(min(0.98, co * ${K.gain}), a);
-      let t = max(0.0, ti.x * (1.0 + ${K.width} * k * nNoise2(p / (0.6 * s), 625 + sd) / ${V}));
+      let t = max(0.0, ti.x * (1.0 + ${K.width} * k * nNoise2(p / (0.6 * s), 625 + sd) / ${B}));
       let line = (1.0 - smoothstep(t - a, t + a, nCellEdge2(wp, 613 + sd))) * ti.y;
       m = mix(co, line, k);
     }
@@ -1548,13 +1865,13 @@ fn washAt(p: vec2f, z: f32, level: f32, fine: f32, px: f32) -> vec2f {      // (
   let ageA = max(ph - chiWn, vec3f(0.0)) / om;
   let aDr = (chiDn - chiWn) / om;
   let ageD = max(ph - chiDn, vec3f(0.0)) / om;
-  let gWet = (1.0 - exp(-ageA / ${G.onset})) * exp(-ageA / F.wash.z);
+  let gWet = (1.0 - exp(-ageA / ${U.onset})) * exp(-ageA / F.wash.z);
   // (what is left on the sand: strandedKeep of it near the top of the run-up, where the water stops, less lower down, where the backwash
   // runs fast and takes its foam with it (the lower swash is dry only briefly, and lace left there lay just ahead of the next front); the
   // rest shed over 0.4 s, so nothing steps as the point drains; and where the point barely drains (c near 1) the lace stays the water's,
   // so the band that never dries does not step where chi wraps: the review of 2026-11-24)
-  let keepE = ${G.strandedKeep} * smoothstep(vec3f(0.2 * 3.14159265), vec3f(0.8 * 3.14159265), chiWn);
-  let gDr = (1.0 - exp(-aDr / ${G.onset})) * exp(-aDr / F.wash.z) * (keepE + (1.0 - keepE) * exp(-ageD / 0.4)) * exp(-ageD / F.wash.w);
+  let keepE = ${U.strandedKeep} * smoothstep(vec3f(0.2 * 3.14159265), vec3f(0.8 * 3.14159265), chiWn);
+  let gDr = (1.0 - exp(-aDr / ${U.onset})) * exp(-aDr / F.wash.z) * (keepE + (1.0 - keepE) * exp(-ageD / 0.4)) * exp(-ageD / F.wash.w);
   let drains = smoothstep(vec3f(0.98), vec3f(0.9), cn);
   let arrived = vec3f(select(0.0, 1.0, chi > chiWn.x), 1.0, 1.0);
   let gL = select(mix(gWet, gDr, drains), gWet, ph < chiDn) * reached * arrived;
@@ -1566,7 +1883,7 @@ fn washAt(p: vec2f, z: f32, level: f32, fine: f32, px: f32) -> vec2f {      // (
     // on the water: the bore's front (the newly wet thin sheet, coming on and fading with its age) and the lace, carried up and back with
     // the sheet (a quarter of the swash's own excursion: the same over a few metres, so the lace moves without stretching)
     let age = ageA.x;
-    let front = (1.0 - smoothstep(0.3 * F.wash.y, F.wash.y, level - z)) * (1.0 - exp(-age / ${G.frontOn})) * exp(-age / ${G.frontLife}) * ${G.frontPeak};
+    let front = (1.0 - smoothstep(0.3 * F.wash.y, F.wash.y, level - z)) * (1.0 - exp(-age / ${U.frontOn})) * exp(-age / ${U.frontLife}) * ${U.frontPeak};
     let pl = p - up * clamp(0.25 * T.x / beta, -4.0, 4.0);
     let lace = washLace(pl, 0.55 * min(g, 1.6) * fade, px);
     return vec2f(max(front * fade * (0.75 + 0.25 * nNoise2(p / 0.4, 619)), lace) * q.z, 0.0);      // (the front faded with the rest: the second review)
@@ -1576,7 +1893,7 @@ fn washAt(p: vec2f, z: f32, level: f32, fine: f32, px: f32) -> vec2f {      // (
   let pd = p - up * clamp(0.25 * (z - T.z - fine) / beta, -4.0, 4.0);
   return vec2f(0.0, washLace(pd, 0.55 * min(g, 1.6) * fade, px) * q.z);
 }
-`,Ye=.8,Xe=12,Ze=6,Qe=3,$e=2,et=.35,tt=68,nt=tt+64,rt=nt+128,it=rt+80,at=it+72,ot=at+4,st=ot+4,ct=st+4,lt=ct+8,ut=typeof location<`u`&&new URLSearchParams(location.search).get(`swcull`)===`0`,dt={rollerB:12,cover:.12,onset:.3,patchM:i.patchM,patchFrac:i.patchFrac},ft={OFF:0,MAIN:1,TAIL:2},pt=`
+`,nt=.8,rt=12,it=6,at=3,ot=2,st=.35,ct=68,lt=ct+64,ut=lt+128,dt=ut+80,ft=dt+72,pt=ft+4,mt=pt+4,ht=mt+4,gt=ht+8,_t=typeof location<`u`&&new URLSearchParams(location.search).get(`swcull`)===`0`,vt={rollerB:12,cover:.12,onset:.3,patchM:i.patchM,patchFrac:i.patchFrac},yt={OFF:0,MAIN:1,TAIL:2},bt=`
 /** The bed above the water as the ground pass draws it (its albedo, dry or wet, its grains' glints, the sun and the sky's light, the air
  *  between), before present(): p the point (east, north), world its place, px the pixel's footprint. The water's shader uses it too, where
  *  the edge at the pixel's own scale leaves the bed dry. */
@@ -1595,7 +1912,7 @@ fn groundShade(p: vec2f, world: vec3f, px: f32) -> vec3f {
   let col = toneEnc(lin);
   return mix(col, skyMap(normalize(vec3f(-toEye.x / dist, 0.012, -toEye.z / dist))).rgb, clamp(1.0 - exp(-F.lk[3].xyz * dist), vec3f(0.0), vec3f(1.0)));
 }
-`,mt=`
+`,xt=`
 struct Frame {
   viewProj: mat4x4f,
   cam: vec4f,          // eye east, height, north; time
@@ -1630,10 +1947,10 @@ override GAMMA: bool = true;      // the colour gamma-encoded for the canvas; fa
 @group(0) @binding(7) var skyR: texture_2d<f32>;          // the sky-view tables: the air's light, the haze's without its phase
 @group(0) @binding(8) var skyM: texture_2d<f32>;
 @group(0) @binding(9) var skySamp: sampler;
-${re}
-${he}
-${qe}
-${Je}
+${le}
+${ce}
+${et}
+${tt}
 /** The dominant waves' whitecaps at p (the still-water place: the foam rides the orbit), a footprint px, from z, the peak set's analytic
  *  slope here (WHITECAP): the share covered. The surf's crest sum (crestSum, crestBox) with
  *  the present crest's strength for the past ones too (the deep sea's past is not summed: a stated approximation), each crest breaking where
@@ -1661,14 +1978,14 @@ fn whitecaps(p: vec2f, px: f32, z: vec2f) -> f32 {
   if (sH0 <= 0.0 && toMean <= 0.0) { return 0.0; }      // (not steep enough here to break, and near enough that the mean does not stand in: most of the sea)
   if (toMean < 1.0) {
     let dir = F.wcap[0].zw;
-    let al = dot(p, vec2f(-dir.y, dir.x)) / ${dt.patchM.toFixed(2)};
+    let al = dot(p, vec2f(-dir.y, dir.x)) / ${vt.patchM.toFixed(2)};
     let tc = F.cam.w / Tm - x;
-    let pa = clamp(${dt.patchM.toFixed(2)} / max(2.0 * px, 1e-3) - 1.0, 0.0, 1.0);
+    let pa = clamp(${vt.patchM.toFixed(2)} / max(2.0 * px, 1e-3) - 1.0, 0.0, 1.0);
     let sH = sH0;
     let th = 1.4 * (0.5 - pf);
-    let c0 = mix(pf, smoothstep(-0.3, 0.3, nNoise2(vec2f(al, tc), 683) / ${V} - th), pa);
-    let c1 = mix(pf, smoothstep(-0.3, 0.3, nNoise2(vec2f(al, tc - 1.0), 683) / ${V} - th), pa);
-    let c2 = mix(pf, smoothstep(-0.3, 0.3, nNoise2(vec2f(al, tc - 2.0), 683) / ${V} - th), pa);
+    let c0 = mix(pf, smoothstep(-0.3, 0.3, nNoise2(vec2f(al, tc), 683) / ${B} - th), pa);
+    let c1 = mix(pf, smoothstep(-0.3, 0.3, nNoise2(vec2f(al, tc - 1.0), 683) / ${B} - th), pa);
+    let c2 = mix(pf, smoothstep(-0.3, 0.3, nNoise2(vec2f(al, tc - 2.0), 683) / ${B} - th), pa);
     S4 = mix(vec4f(sH * c0, sH * c1, sH * mix(c2, pf, x), sH * pf), vec4f(Smean), toMean);      // (the third to the tail's as x wraps)
   }
   let bR = F.wcap[1].z;
@@ -1678,12 +1995,12 @@ fn whitecaps(p: vec2f, px: f32, z: vec2f) -> f32 {
   let hb = 2.0 * max(a, sqrt(2.0 * sv)) / max(km, 1e-3);
   let life = 1.7 * clamp(${a().tauP05} * pow(max(hb, 0.02) / 0.5, 0.7), 0.5, 10.0);
   let bL = Tm / life;
-  let b2 = Tm * (1.0 / ${dt.onset} + 1.0 / life);
+  let b2 = Tm * (1.0 / ${vt.onset} + 1.0 / life);
   let Fm = max(crestSum(x, S4, bL) - crestSum(x, S4, b2) + Smean * (crestBox(x, d, bL) - crestBox(x, d, b2)), 0.0);
-  let cF = 1.0 - exp(-${dt.cover} * Fm);
+  let cF = 1.0 - exp(-${vt.cover} * Fm);
   if (max(W, cF) < 0.002) { return 0.0; }
   // (the foam left in patches about half the waves' length across: each whitecap's own, not a net over the whole group)
-  let cL = foamPatches(p, cF, px, 3.3 / max(km, 0.01), 691.0, ${Be.shareP});
+  let cL = foamPatches(p, cF, px, 3.3 / max(km, 0.01), 691.0, ${me.shareP});
   let c = 1.0 - (1.0 - W) * (1.0 - min(cL, 0.97));
   return washLace(p, c, px);
 }
@@ -1706,7 +2023,7 @@ const N: f32 = 256.0;
 fn skyColor(d: vec3f) -> vec3f { return toneEnc(skyLin(d)); }
 /** A display colour to the target: as it is for the canvas; back to linear for the temporal resolve (GAMMA off), which encodes it again. */
 fn present(c: vec3f) -> vec4f { return vec4f(select(pow(max(c, vec3f(0.0)), vec3f(2.2)), c, GAMMA), 1.0); }
-`,ht=(e,t,n=``)=>mt+`
+`,St=(e,t,n=``)=>xt+`
 override RIPPLES: bool = true;      // the ripple cascades
 override FACETS: u32 = 4u;          // the sky averaged over 4 facets, or 1 (the mean normal's reflection)
 override FRAG_SETS: bool = true;    // the sea's sets read again per pixel for the slope (false: a flat normal; a cost test)
@@ -1718,7 +2035,7 @@ override SUN_FACETS: bool = true;   // the sun's disc and glare in each facet's 
 override REGIMES: u32 = 1u;         // each ripple band by what the pixel makes of it (bits): 1 averaged away (its known variance, no reads; the same picture), 2 resolved (no read of the squares: sharpens the glitter, learnings 39, off); else read in full
 @group(1) @binding(0) var env: texture_2d<f32>;      // the sky map for reflections (display values and the clouds' opacity, octahedral): drawn when the look or the sun changes
 fn skyMap(d: vec3f) -> vec4f { return textureSampleLevel(env, skySamp, octUV(d), 0.0); }
-${pt}
+${bt}
 struct VO { @builtin(position) pos: vec4f, @location(0) ${n} p0: vec2f, @location(1) ${n} world: vec3f, @location(2) ${n} h: f32, @location(3) ${n} bias: f32, @location(4) ${n} br: vec4f };
 // the fragment's inputs: without the position unless fsPos (a cost test: whether a fragment input of the position changes how often the shader runs)
 struct FI { ${t?`@builtin(position) pos: vec4f, `:``}@location(0) ${n} p0: vec2f, @location(1) ${n} world: vec3f, @location(2) ${n} h: f32, @location(3) ${n} bias: f32, @location(4) ${n} br: vec4f };
@@ -1955,7 +2272,7 @@ fn smithLambda(t: f32) -> f32 { return select((1.0 - 1.259 * t + 0.396 * t * t) 
   let e1 = vec2f(cos(th), sin(th));
   let o1 = 1.4142 * sqrt(max(tr2 + rd, 1e-9)) * e1;
   let o2 = 1.4142 * sqrt(max(tr2 - rd, 1e-9)) * vec2f(-e1.y, e1.x);
-  let cRes = ${et} * (1.0 - smoothstep(20.0, 35.0, dist));
+  let cRes = ${st} * (1.0 - smoothstep(20.0, 35.0, dist));
   let vis = smoothstep(0.0, 0.08, tr2) * 0.45 * (1.0 - cRes);
   var skyAcc = vec3f(0.0);
   var fAcc = 0.0;
@@ -2053,7 +2370,7 @@ fn smithLambda(t: f32) -> f32 { return select((1.0 - 1.259 * t + 0.396 * t * t) 
   // (the breaking crest's roller over it, the white's solid part: solid at the toe, broken into its lumps behind (rollerWhite), lit as
   // white water is, scattering many times: wrapped round past its bulk's sides, a sky's worth of light in their shade, darker in the
   // hollows between its lumps)
-  let rW = rollerWhite(rlF, surfW, ${W.edge}, px);
+  let rW = rollerWhite(rlF, surfW, ${H.edge}, px);
   // (its normal's light as the water's, NdLs (the bulk's shape is in the water's normal), tilted by its churn's relief (surfAt's g), its
   // churn's hollows darker)
   let NdLr = (NdLs - sf.g.x * F.sun.x + sf.g.y * F.sun.z) / sqrt(1.0 + dot(sf.g, sf.g));
@@ -2065,6 +2382,7 @@ fn smithLambda(t: f32) -> f32 { return select((1.0 - 1.259 * t + 0.396 * t * t) 
   // the air between: the distance fades the sea toward the sky just above the horizon in that direction, per channel (the blue first)
   col = mix(col, skyMap(normalize(vec3f(-V.x, 0.012, -V.z))).rgb, clamp(1.0 - exp(-F.lk[3].xyz * dist), vec3f(0.0), vec3f(1.0)));
   if ((dbg & 8192u) != 0u) { return gWashDbg; }      // (debug 8192: the wash's c0 (red, 0.5 at the slow level), its phase (green), its band (blue))
+  if ((dbg & 4194304u) != 0u) { return vec4f(mix(col, vec3f(1.0, 0.0, 1.0), clamp(2.0 * gCrash, 0.0, 1.0)), 1.0); }      // (debug 4194304: the coming crests' crash over the picture, magenta)
   if ((dbg & 32768u) != 0u) { return gSurfDbg; }      // (debug 32768: the surf's roller (red), foam (green), last crest's strength (blue))
   if ((dbg & 131072u) != 0u) { return vec4f(wcap, 1.0 - (1.0 - surf) * (1.0 - rW), wash, 1.0); }      // (debug 131072: the foams' shares, linear, for measuring their cover: red the whitecaps, green the surf's (its lace and its roller's white), blue the wash's)
   if ((dbg & 1048576u) != 0u) { return vec4f(clamp(breakGeom(i.p0, 0.05).dh * 10.0, 0.0, 1.0), rW, rlF.z * step(1e-4, rlF.y), 1.0); }      // (debug 1048576: the breaking crests' height x 10 (red, m: worked out again here, as the mesh's held through the shading cost 1.8 ms of the view's 16.5 on the Mac), the roller's white (green), its lumps (blue))
@@ -2073,7 +2391,7 @@ fn smithLambda(t: f32) -> f32 { return select((1.0 - 1.259 * t + 0.396 * t * t) 
   if (dry) { return present(dryCol); }
   return present(col + vec3f(burn * 1e-6));
 }
-`,gt=mt+`
+`,Ct=xt+`
 override MAP_N: f32 = 256.0;
 override FACE: i32 = -1;      // -1 the octahedral map; 0 to 5 a cube face (+x, -x, +y, -y, +z, -z)
 /** A cube face's direction at (s, t) in -1..1 (s right, t down: the sampling convention of cube textures). */
@@ -2089,7 +2407,7 @@ fn cubeDir(f: i32, s: f32, t: f32) -> vec3f {
   if (FACE < 0) { return skyBase(octDir(uv)); }
   return skyBase(cubeDir(FACE, uv.x * 2.0 - 1.0, uv.y * 2.0 - 1.0));
 }
-`,_t=mt+`
+`,wt=xt+`
 struct SO { @builtin(position) pos: vec4f, @location(0) ndc: vec2f };
 @vertex fn vs(@builtin(vertex_index) vi: u32) -> SO {
   let p = vec2f(f32((vi << 1u) & 2u), f32(vi & 2u)) * 2.0 - 1.0;
@@ -2119,10 +2437,10 @@ override BURN: u32 = 0u;      // extra arithmetic a fragment (a cost test: one t
   if ((u32(F.rip2.w) & 32u) != 0u) { m = skyBase(d); }      // (debug 32: the sky worked out per pixel, to check the cube against)
   return present(sunOver(m.rgb, d, 1.0 - m.a) + vec3f(burn * 1e-6));
 }
-`,vt=e=>mt+`
+`,Tt=e=>xt+`
 @group(1) @binding(0) var env: texture_2d<f32>;
 fn skyMap(d: vec3f) -> vec4f { return textureSampleLevel(env, skySamp, octUV(d), 0.0); }
-${pt}
+${bt}
 struct GO { @builtin(position) pos: vec4f, @location(0) p: vec2f, @location(1) world: vec3f };
 @vertex fn vs(@builtin(vertex_index) vi: u32, @location(0) inst: vec4f) -> GO {
   let gx = vi % ${e+1}u;
@@ -2150,12 +2468,15 @@ struct GO { @builtin(position) pos: vec4f, @location(0) p: vec2f, @location(1) w
   if ((u32(F.rip2.w) & 2048u) != 0u) { let r = bedRaw(i.p, px); return vec4f(r.y, bedMat(i.p, px).y, clamp(px / 64.0, 0.0, 1.0), 1.0); }      // (debug 2048: the cover's zone, its share and the footprint / 64 m)
   return present(groundShade(i.p, i.world, px));
 }
-`;function yt(i,a,o,s={},{micro:c=1,debug:l=0}={}){let u=_(m(s),c),d=a.sets;i.set([.15*(s.stokes??0)*(s.stats?.sharpWeight??1),1/Math.max(.05,s.stats?.hs??0),s.ripples?.sharp??1,0],44),i.set(u.on?[u.dir[0],u.dir[1],u.amount*Math.sqrt(t(u.windMs,u.res)),1]:[1,0,0,0],48),i.set([...u.amp,u.on?u.sharp:1],52),i.set([e.cut,+!!a.tails?.length,1,l],56),i.set(A.map(e=>e[2]),60);for(let e=0;e<32;e++){let t=d[e],r=e>=o||t.band===n.WIND_L||t.band===n.WIND_R?ft.OFF:t.band===n.TAIL?ft.TAIL:ft.MAIN;i.set(e<o?[t.L,(t.span??1)-1,t.slopeVar??0,r]:[1,0,0,0],nt+4*e)}let f=-1,p=0;for(let e=0;e<o;e++){let t=d[e];t.band===n.WIND&&!t.tail&&(t.var??0)>p&&(p=t.var,f=e)}if(f>=0){let e=d[f],t=0,n=0,r=0,a=0;for(let i=0;i<e.n;i++){let o=e.re[i]*e.re[i]+e.im[i]*e.im[i];t+=o,n+=o*e.kk[i],r+=o*e.ux[i],a+=o*e.uy[i]}let o=Math.hypot(r,a)||1;i.set([f+1,n/Math.max(t,1e-30),r/o,a/o],ct)}else i.set([0,1,1,0],ct);return i.set([r.s0,r.sd,dt.rollerB,dt.patchFrac],ct+4),i}var bt={msaa:4,grid:32,ripples:!0,facets:4,fragSets:!0,vsDisp:!0,shade:!0,fsPos:!1,deriv:!0,burn:0,skyBurn:0,interp:``,target:`canvas`,depth:`depth32float`,rs:.7,detail:null,regimes:1,sunFacets:!0,dbg:0,ground:!0,swell:!0},xt=`rgba16float`,St=class{constructor(e,t,{msaa:n=4,format:r=navigator.gpu.getPreferredCanvasFormat(),timestamps:i=!1,grid:a=32,patch0:o=4,levels:s=12,rangeK:c=6}={}){if(c*.30000000000000004<Math.SQRT2)throw Error(`rangeK ${c} is too small: the mesh would crack (at least ${(Math.SQRT2/.30000000000000004).toFixed(2)})`);Object.assign(this,{device:e,canvas:t,format:r,patch0:o,rangeK:c,levels:Math.min(s,16)}),this.ctx=t.getContext(`webgpu`),this.ctx.configure({device:e,format:r,alphaMode:`opaque`});let l=GPUShaderStage.VERTEX|GPUShaderStage.FRAGMENT;this.bgl=e.createBindGroupLayout({entries:[{binding:0,visibility:l,buffer:{type:`uniform`}},{binding:1,visibility:l,sampler:{type:`filtering`}},...[2,3,4,5,6].map(e=>({binding:e,visibility:l,texture:{sampleType:`float`,viewDimension:`2d-array`}})),...[7,8].map(e=>({binding:e,visibility:l,texture:{sampleType:`float`,viewDimension:`2d`}})),{binding:9,visibility:l,sampler:{type:`filtering`}},{binding:10,visibility:l,texture:{sampleType:`float`,viewDimension:`2d`}},{binding:11,visibility:l,texture:{sampleType:`float`,viewDimension:`2d-array`}},{binding:13,visibility:l,texture:{sampleType:`float`,viewDimension:`2d`}}]}),this.swellNone=e.createTexture({size:[1,1,6],format:`rgba16float`,usage:GPUTextureUsage.TEXTURE_BINDING}),this.bedTex=Ke(e),this.bedOut=Ke(e),this.bedU=Ge(null),this.envLayout=e.createPipelineLayout({bindGroupLayouts:[this.bgl]}),this.bglEnv=e.createBindGroupLayout({entries:[0,1].map(e=>({binding:e,visibility:l,texture:{sampleType:`float`,viewDimension:e?`cube`:`2d`}}))}),this.layout=e.createPipelineLayout({bindGroupLayouts:[this.bgl,this.bglEnv]});let u=(t,n,r=1,i=xt)=>e.createTexture({label:t,size:[n,n,r],format:i,usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.TEXTURE_BINDING});this.env=u(`sky map`,256),this.domes=[u(`dome cube A`,512,6,`rgba8unorm`),u(`dome cube B`,512,6,`rgba8unorm`)],this.domeFront=0,this.domeStrip=-1,this.domeReady=!1,this.bgEnvs=this.domes.map(t=>e.createBindGroup({layout:this.bglEnv,entries:[{binding:0,resource:this.env.createView()},{binding:1,resource:t.createView({dimension:`cube`})}]}));let d=e.createShaderModule({code:gt,label:`sky map`}),f=(t,n,r)=>e.createRenderPipeline({layout:this.envLayout,label:`sky map ${t} ${n}`,vertex:{module:d,entryPoint:`vs`},fragment:{module:d,entryPoint:`fs`,constants:{MAP_N:t,FACE:n,LODK:r},targets:[{format:n<0?xt:`rgba8unorm`}]}});this.envPipe=f(256,-1,9),this.facePipes=[0,1,2,3,4,5].map(e=>f(512,e,2)),this.envMod=d,this.envKey=null,this.skyModule=e.createShaderModule({code:_t,label:`sky`}),this.byGrid=new Map,this.pipes=new Map,this.uni=e.createBuffer({size:lt*4,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST}),this.uniF=new Float32Array(lt),this.samp=e.createSampler({magFilter:`linear`,minFilter:`linear`,mipmapFilter:`linear`,addressModeU:`repeat`,addressModeV:`repeat`,maxAnisotropy:2}),this.skySamp=e.createSampler({magFilter:`linear`,minFilter:`linear`}),this.look=new R(e).set(),this.instMax=2048,this.instF=new Float32Array(this.instMax*4),this.inst=e.createBuffer({size:this.instF.byteLength,usage:GPUBufferUsage.VERTEX|GPUBufferUsage.COPY_DST}),this.timestamps=i,i&&(this.qs=e.createQuerySet({type:`timestamp`,count:6}),this.qres=e.createBuffer({size:48,usage:GPUBufferUsage.QUERY_RESOLVE|GPUBufferUsage.COPY_SRC}),this.qread=[],this.gpu={fft:[],draw:[],post:[],tagged:[]}),this.size=``,this.cpuMs=[],this.doneMs=[],this.readMs=[],this.frameNo=0,this.inFlight=0,this.setVariant({msaa:n,grid:a}),this.modules=[this._grid(a).module,this.skyModule,this.envMod]}_grid(e,t=!1,n=``){let r=this.byGrid.get(`${e} ${t} ${n}`);if(!r){let i=new Uint16Array(e*e*6),a=0;for(let t=0;t<e;t++)for(let n=0;n<e;n++){let r=t*(e+1)+n,o=r+1,s=r+e+1,c=s+1;i.set([r,s,o,o,s,c],a),a+=6}let o=this.device.createBuffer({size:i.byteLength,usage:GPUBufferUsage.INDEX|GPUBufferUsage.COPY_DST});this.device.queue.writeBuffer(o,0,i),r={module:this.device.createShaderModule({code:ht(e,t,n),label:`water ${e}`}),idx:o},this.byGrid.set(`${e} ${t} ${n}`,r)}return r}_ground(e){return this.groundMods??=new Map,this.groundMods.has(e)||this.groundMods.set(e,this.device.createShaderModule({code:vt(e),label:`ground ${e}`})),this.groundMods.get(e)}setVariant(e={}){let t={...bt,...e},n=JSON.stringify({...t,dbg:0,ground:!0,swell:!0}),r=this.device,i=this.pipes.get(n);if(!i){let e=t.target===`temporal`,a=this._grid(t.grid,t.fsPos,t.interp),o={count:e?1:t.msaa},s=t.target===`hdr`||e?xt:this.format,c=t.depth,l=[{format:s}],u=this.skyModule,d={RIPPLES:+!!t.ripples,FACETS:t.facets,FRAG_SETS:+!!t.fragSets,VS_DISP:+!!t.vsDisp,SHADE:+!!t.shade,DERIV:+!!t.deriv,BURN:t.burn,GAMMA:+!e,REGIMES:t.regimes||0,SUN_FACETS:+!!t.sunFacets};i={water:r.createRenderPipeline({layout:this.layout,label:`water ${n}`,vertex:{module:a.module,entryPoint:`vs`,constants:d,buffers:[{arrayStride:16,stepMode:`instance`,attributes:[{shaderLocation:0,offset:0,format:`float32x4`}]}]},fragment:{module:a.module,entryPoint:`fs`,constants:d,targets:l},primitive:{topology:`triangle-list`,cullMode:`none`},depthStencil:{format:c,depthWriteEnabled:!0,depthCompare:`greater`},multisample:o}),sky:r.createRenderPipeline({layout:this.layout,label:`sky`,vertex:{module:u,entryPoint:`vs`},fragment:{module:u,entryPoint:`fs`,constants:{BURN:t.skyBurn,GAMMA:+!e},targets:l},depthStencil:{format:c,depthWriteEnabled:!1,depthCompare:`greater-equal`},multisample:o}),idx:a.idx,ground:this.bedOn?r.createRenderPipeline({layout:this.layout,label:`ground ${t.grid}`,vertex:{module:this._ground(t.grid),entryPoint:`vs`,buffers:[{arrayStride:16,stepMode:`instance`,attributes:[{shaderLocation:0,offset:0,format:`float32x4`}]}]},fragment:{module:this._ground(t.grid),entryPoint:`fs`,constants:{GAMMA:+!e},targets:l},primitive:{topology:`triangle-list`,cullMode:`none`},depthStencil:{format:c,depthWriteEnabled:!0,depthCompare:`greater`},multisample:o}):null},this.pipes.set(n,i)}this.variant=t,this.water=i.water,this.sky=i.sky,this.idx=i.idx,this.groundPipe=i.ground,this.msaa=t.target===`temporal`?1:t.msaa,this.grid=t.grid,t.target===`temporal`&&!this.temporal&&(this.temporal=new te(this.device,this.format)),t.target===`hdr`&&!this.blit&&this._makeBlit();for(let e=0;e<this.levels;e++){let n=this.patch0*2**e,r=this.rangeK*n;this.uniF.set([n/t.grid,Ye*r,r,n],tt+4*e)}}setSea(e,t,n={},{micro:r=1,debug:i=0}={}){this.fft=e,this.rip=t,t.setShape(n.ripples),yt(this.uniF,e.sea,e.nS,n,{micro:r,debug:i}),this.debug=i,this.chop=n.chop??1,this._bind()}setBed(e,t=[0,0],n=180,r=void 0){this.bedTex.destroy(),this.bedTex=Ke(this.device,e),this.bedU=Ge(e,t,n,r),this.bedOut.destroy(),this.bedOut=Ke(this.device,e?.outer??null),this.bedOn=!!e,this.pipes.clear(),this.setVariant(this.variant??{}),this.fft&&this._bind()}setWetLine(e){this.bedU[9]=e}setSwell(e){this.swell=e,this.fft&&this._bind()}setLook(e){this.look=e,this.fft&&this._bind()}_bind(){let e=this.fft,t=this.rip;this.bg=this.device.createBindGroup({layout:this.bgl,entries:[{binding:0,resource:{buffer:this.uni}},{binding:1,resource:this.samp},...[...e.out,...t.out].map((e,t)=>({binding:2+t,resource:e.createView({dimension:`2d-array`})})),{binding:7,resource:this.look.rayleigh.createView()},{binding:8,resource:this.look.mie.createView()},{binding:9,resource:this.skySamp},{binding:10,resource:this.bedTex.createView()},{binding:13,resource:this.bedOut.createView()},{binding:11,resource:(this.swell?.out??this.swellNone).createView({dimension:`2d-array`})}]})}_targets(){let e=this.canvas.width,t=this.canvas.height,n=this.variant,r=n.target===`temporal`,i=[e,t,this.msaa,n.target,n.depth,n.rs].join(` `);if(i===this.size)return;this.size=i,this.colorMS?.destroy(),this.depth?.destroy(),this.hdrTex?.destroy(),this.hdrTex=null,this.tColor?.destroy(),this.tColor=null;let a=r?Math.max(1,Math.round(e*n.rs)):e,o=r?Math.max(1,Math.round(t*n.rs)):t;this.renderSize=[a,o];let s=n.target===`hdr`?xt:this.format,c=GPUTextureUsage.RENDER_ATTACHMENT;this.colorMS=this.msaa>1?this.device.createTexture({size:[a,o],format:s,sampleCount:this.msaa,usage:c}):null,this.depth=this.device.createTexture({size:[a,o],format:n.depth,sampleCount:this.msaa,usage:c|(r?GPUTextureUsage.TEXTURE_BINDING:0)}),r&&(this.tColor=this.device.createTexture({size:[a,o],format:xt,usage:c|GPUTextureUsage.TEXTURE_BINDING}),this.temporal.resize(a,o,e,t)),n.target===`hdr`&&(this.hdrTex=this.device.createTexture({size:[a,o],format:xt,usage:c|GPUTextureUsage.TEXTURE_BINDING}),this.blitBG=this.device.createBindGroup({layout:this.blit.getBindGroupLayout(0),entries:[{binding:0,resource:this.hdrTex.createView()}]}))}_makeBlit(){let e=this.device.createShaderModule({label:`blit`,code:`
+`;function Et(i,a,o,s={},{micro:c=1,debug:l=0}={}){let u=_(m(s),c),d=a.sets;i.set([.15*(s.stokes??0)*(s.stats?.sharpWeight??1),1/Math.max(.05,s.stats?.hs??0),s.ripples?.sharp??1,0],44),i.set(u.on?[u.dir[0],u.dir[1],u.amount*Math.sqrt(t(u.windMs,u.res)),1]:[1,0,0,0],48),i.set([...u.amp,u.on?u.sharp:1],52),i.set([e.cut,+!!a.tails?.length,1,l],56),i.set(A.map(e=>e[2]),60);for(let e=0;e<32;e++){let t=d[e],r=e>=o||t.band===n.WIND_L||t.band===n.WIND_R?yt.OFF:t.band===n.TAIL?yt.TAIL:yt.MAIN;i.set(e<o?[t.L,(t.span??1)-1,t.slopeVar??0,r]:[1,0,0,0],lt+4*e)}let f=-1,p=0;for(let e=0;e<o;e++){let t=d[e];t.band===n.WIND&&!t.tail&&(t.var??0)>p&&(p=t.var,f=e)}if(f>=0){let e=d[f],t=0,n=0,r=0,a=0;for(let i=0;i<e.n;i++){let o=e.re[i]*e.re[i]+e.im[i]*e.im[i];t+=o,n+=o*e.kk[i],r+=o*e.ux[i],a+=o*e.uy[i]}let o=Math.hypot(r,a)||1;i.set([f+1,n/Math.max(t,1e-30),r/o,a/o],ht)}else i.set([0,1,1,0],ht);return i.set([r.s0,r.sd,vt.rollerB,vt.patchFrac],ht+4),i}var Dt={msaa:4,grid:32,ripples:!0,facets:4,fragSets:!0,vsDisp:!0,shade:!0,fsPos:!1,deriv:!0,burn:0,skyBurn:0,interp:``,target:`canvas`,depth:`depth32float`,rs:.7,detail:null,regimes:1,sunFacets:!0,dbg:0,ground:!0,swell:!0},Ot=`rgba16float`,kt=class{constructor(e,t,{msaa:n=4,format:r=navigator.gpu.getPreferredCanvasFormat(),timestamps:i=!1,grid:a=32,patch0:o=4,levels:s=12,rangeK:c=6}={}){if(c*.30000000000000004<Math.SQRT2)throw Error(`rangeK ${c} is too small: the mesh would crack (at least ${(Math.SQRT2/.30000000000000004).toFixed(2)})`);Object.assign(this,{device:e,canvas:t,format:r,patch0:o,rangeK:c,levels:Math.min(s,16)}),this.ctx=t.getContext(`webgpu`),this.ctx.configure({device:e,format:r,alphaMode:`opaque`});let l=GPUShaderStage.VERTEX|GPUShaderStage.FRAGMENT|GPUShaderStage.COMPUTE;this.bgl=e.createBindGroupLayout({entries:[{binding:0,visibility:l,buffer:{type:`uniform`}},{binding:1,visibility:l,sampler:{type:`filtering`}},...[2,3,4,5,6].map(e=>({binding:e,visibility:l,texture:{sampleType:`float`,viewDimension:`2d-array`}})),...[7,8].map(e=>({binding:e,visibility:l,texture:{sampleType:`float`,viewDimension:`2d`}})),{binding:9,visibility:l,sampler:{type:`filtering`}},{binding:10,visibility:l,texture:{sampleType:`float`,viewDimension:`2d`}},{binding:11,visibility:l,texture:{sampleType:`float`,viewDimension:`2d-array`}},{binding:13,visibility:l,texture:{sampleType:`float`,viewDimension:`2d`}}]}),this.swellNone=e.createTexture({size:[1,1,6],format:`rgba16float`,usage:GPUTextureUsage.TEXTURE_BINDING}),this.bedTex=$e(e),this.bedOut=$e(e),this.bedU=Qe(null),this.envLayout=e.createPipelineLayout({bindGroupLayouts:[this.bgl]}),this.bglEnv=e.createBindGroupLayout({entries:[0,1].map(e=>({binding:e,visibility:l,texture:{sampleType:`float`,viewDimension:e?`cube`:`2d`}}))}),this.layout=e.createPipelineLayout({bindGroupLayouts:[this.bgl,this.bglEnv]});let u=(t,n,r=1,i=Ot)=>e.createTexture({label:t,size:[n,n,r],format:i,usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.TEXTURE_BINDING});this.env=u(`sky map`,256),this.domes=[u(`dome cube A`,512,6,`rgba8unorm`),u(`dome cube B`,512,6,`rgba8unorm`)],this.domeFront=0,this.domeStrip=-1,this.domeReady=!1,this.bgEnvs=this.domes.map(t=>e.createBindGroup({layout:this.bglEnv,entries:[{binding:0,resource:this.env.createView()},{binding:1,resource:t.createView({dimension:`cube`})}]}));let d=e.createShaderModule({code:Ct,label:`sky map`}),f=(t,n,r)=>e.createRenderPipeline({layout:this.envLayout,label:`sky map ${t} ${n}`,vertex:{module:d,entryPoint:`vs`},fragment:{module:d,entryPoint:`fs`,constants:{MAP_N:t,FACE:n,LODK:r},targets:[{format:n<0?Ot:`rgba8unorm`}]}});this.envPipe=f(256,-1,9),this.facePipes=[0,1,2,3,4,5].map(e=>f(512,e,2)),this.envMod=d,this.envKey=null,this.skyModule=e.createShaderModule({code:wt,label:`sky`}),this.byGrid=new Map,this.pipes=new Map,this.uni=e.createBuffer({size:gt*4,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST}),this.uniF=new Float32Array(gt),this.samp=e.createSampler({magFilter:`linear`,minFilter:`linear`,mipmapFilter:`linear`,addressModeU:`repeat`,addressModeV:`repeat`,maxAnisotropy:2}),this.skySamp=e.createSampler({magFilter:`linear`,minFilter:`linear`}),this.look=new fe(e).set(),this.instMax=2048,this.instF=new Float32Array(this.instMax*4),this.inst=e.createBuffer({size:this.instF.byteLength,usage:GPUBufferUsage.VERTEX|GPUBufferUsage.COPY_DST}),this.timestamps=i,i&&(this.qs=e.createQuerySet({type:`timestamp`,count:6}),this.qres=e.createBuffer({size:48,usage:GPUBufferUsage.QUERY_RESOLVE|GPUBufferUsage.COPY_SRC}),this.qread=[],this.gpu={fft:[],draw:[],post:[],tagged:[]}),this.size=``,this.cpuMs=[],this.doneMs=[],this.readMs=[],this.frameNo=0,this.inFlight=0,this.setVariant({msaa:n,grid:a}),this.modules=[this._grid(a).module,this.skyModule,this.envMod]}_grid(e,t=!1,n=``){let r=this.byGrid.get(`${e} ${t} ${n}`);if(!r){let i=new Uint16Array(e*e*6),a=0;for(let t=0;t<e;t++)for(let n=0;n<e;n++){let r=t*(e+1)+n,o=r+1,s=r+e+1,c=s+1;i.set([r,s,o,o,s,c],a),a+=6}let o=this.device.createBuffer({size:i.byteLength,usage:GPUBufferUsage.INDEX|GPUBufferUsage.COPY_DST});this.device.queue.writeBuffer(o,0,i),r={module:this.device.createShaderModule({code:St(e,t,n),label:`water ${e}`}),idx:o},this.byGrid.set(`${e} ${t} ${n}`,r)}return r}_ground(e){return this.groundMods??=new Map,this.groundMods.has(e)||this.groundMods.set(e,this.device.createShaderModule({code:Tt(e),label:`ground ${e}`})),this.groundMods.get(e)}setVariant(e={}){let t={...Dt,...e},n=JSON.stringify({...t,dbg:0,ground:!0,swell:!0}),r=this.device,i=this.pipes.get(n);if(!i){let e=t.target===`temporal`,a=this._grid(t.grid,t.fsPos,t.interp),o={count:e?1:t.msaa},s=t.target===`hdr`||e?Ot:this.format,c=t.depth,l=[{format:s}],u=this.skyModule,d={RIPPLES:+!!t.ripples,FACETS:t.facets,FRAG_SETS:+!!t.fragSets,VS_DISP:+!!t.vsDisp,SHADE:+!!t.shade,DERIV:+!!t.deriv,BURN:t.burn,GAMMA:+!e,REGIMES:t.regimes||0,SUN_FACETS:+!!t.sunFacets};i={water:r.createRenderPipeline({layout:this.layout,label:`water ${n}`,vertex:{module:a.module,entryPoint:`vs`,constants:d,buffers:[{arrayStride:16,stepMode:`instance`,attributes:[{shaderLocation:0,offset:0,format:`float32x4`}]}]},fragment:{module:a.module,entryPoint:`fs`,constants:d,targets:l},primitive:{topology:`triangle-list`,cullMode:`none`},depthStencil:{format:c,depthWriteEnabled:!0,depthCompare:`greater`},multisample:o}),sky:r.createRenderPipeline({layout:this.layout,label:`sky`,vertex:{module:u,entryPoint:`vs`},fragment:{module:u,entryPoint:`fs`,constants:{BURN:t.skyBurn,GAMMA:+!e},targets:l},depthStencil:{format:c,depthWriteEnabled:!1,depthCompare:`greater-equal`},multisample:o}),idx:a.idx,parcels:this.parcels?r.createRenderPipeline({layout:r.createPipelineLayout({bindGroupLayouts:[this.bgl,this.bglEnv,this.parcels.bglR]}),label:`parcels`,vertex:{module:this._parcelModule(),entryPoint:`pvs`},fragment:{module:this._parcelModule(),entryPoint:`pfs`,constants:{GAMMA:+!e},targets:l},primitive:{topology:`triangle-list`,cullMode:`none`},depthStencil:{format:c,depthWriteEnabled:!0,depthCompare:`greater`},multisample:o}):null,ground:this.bedOn?r.createRenderPipeline({layout:this.layout,label:`ground ${t.grid}`,vertex:{module:this._ground(t.grid),entryPoint:`vs`,buffers:[{arrayStride:16,stepMode:`instance`,attributes:[{shaderLocation:0,offset:0,format:`float32x4`}]}]},fragment:{module:this._ground(t.grid),entryPoint:`fs`,constants:{GAMMA:+!e},targets:l},primitive:{topology:`triangle-list`,cullMode:`none`},depthStencil:{format:c,depthWriteEnabled:!0,depthCompare:`greater`},multisample:o}):null},this.pipes.set(n,i)}this.variant=t,this.water=i.water,this.sky=i.sky,this.idx=i.idx,this.groundPipe=i.ground,this.parcelPipe=i.parcels,this.msaa=t.target===`temporal`?1:t.msaa,this.grid=t.grid,t.target===`temporal`&&!this.temporal&&(this.temporal=new we(this.device,this.format)),t.target===`hdr`&&!this.blit&&this._makeBlit();for(let e=0;e<this.levels;e++){let n=this.patch0*2**e,r=this.rangeK*n;this.uniF.set([n/t.grid,nt*r,r,n],ct+4*e)}}setSea(e,t,n={},{micro:r=1,debug:i=0}={}){this.fft=e,this.rip=t,t.setShape(n.ripples),Et(this.uniF,e.sea,e.nS,n,{micro:r,debug:i}),this.debug=i,this.chop=n.chop??1,this._bind()}setBed(e,t=[0,0],n=180,r=void 0){this.bedTex.destroy(),this.bedTex=$e(this.device,e),this.bedU=Qe(e,t,n,r),this.bedOut.destroy(),this.bedOut=$e(this.device,e?.outer??null),this.bedOn=!!e,this.pipes.clear(),this.setVariant(this.variant??{}),this.fft&&this._bind()}setWetLine(e){this.bedU[9]=e}setSwell(e){this.swell=e,this.fft&&this._bind()}setParcels(e){this.parcels=e,e&&e.build(xt,this.bgl),this.pipes.clear(),this.setVariant(this.variant??{})}_parcelModule(){return this.parcelMod||=this.device.createShaderModule({label:`parcels`,code:xt+`
+@group(1) @binding(0) var env: texture_2d<f32>;
+fn skyMap(d: vec3f) -> vec4f { return textureSampleLevel(env, skySamp, octUV(d), 0.0); }
+`+be}),this.parcelMod}setLook(e){this.look=e,this.fft&&this._bind()}_bind(){let e=this.fft,t=this.rip;this.bg=this.device.createBindGroup({layout:this.bgl,entries:[{binding:0,resource:{buffer:this.uni}},{binding:1,resource:this.samp},...[...e.out,...t.out].map((e,t)=>({binding:2+t,resource:e.createView({dimension:`2d-array`})})),{binding:7,resource:this.look.rayleigh.createView()},{binding:8,resource:this.look.mie.createView()},{binding:9,resource:this.skySamp},{binding:10,resource:this.bedTex.createView()},{binding:13,resource:this.bedOut.createView()},{binding:11,resource:(this.swell?.out??this.swellNone).createView({dimension:`2d-array`})}]})}_targets(){let e=this.canvas.width,t=this.canvas.height,n=this.variant,r=n.target===`temporal`,i=[e,t,this.msaa,n.target,n.depth,n.rs].join(` `);if(i===this.size)return;this.size=i,this.colorMS?.destroy(),this.depth?.destroy(),this.hdrTex?.destroy(),this.hdrTex=null,this.tColor?.destroy(),this.tColor=null;let a=r?Math.max(1,Math.round(e*n.rs)):e,o=r?Math.max(1,Math.round(t*n.rs)):t;this.renderSize=[a,o];let s=n.target===`hdr`?Ot:this.format,c=GPUTextureUsage.RENDER_ATTACHMENT;this.colorMS=this.msaa>1?this.device.createTexture({size:[a,o],format:s,sampleCount:this.msaa,usage:c}):null,this.depth=this.device.createTexture({size:[a,o],format:n.depth,sampleCount:this.msaa,usage:c|(r?GPUTextureUsage.TEXTURE_BINDING:0)}),r&&(this.tColor=this.device.createTexture({size:[a,o],format:Ot,usage:c|GPUTextureUsage.TEXTURE_BINDING}),this.temporal.resize(a,o,e,t)),n.target===`hdr`&&(this.hdrTex=this.device.createTexture({size:[a,o],format:Ot,usage:c|GPUTextureUsage.TEXTURE_BINDING}),this.blitBG=this.device.createBindGroup({layout:this.blit.getBindGroupLayout(0),entries:[{binding:0,resource:this.hdrTex.createView()}]}))}_makeBlit(){let e=this.device.createShaderModule({label:`blit`,code:`
 @group(0) @binding(0) var src: texture_2d<f32>;
 @vertex fn vs(@builtin(vertex_index) vi: u32) -> @builtin(position) vec4f { return vec4f(vec2f(f32((vi << 1u) & 2u), f32(vi & 2u)) * 2.0 - 1.0, 0.0, 1.0); }
 @fragment fn fs(@builtin(position) p: vec4f) -> @location(0) vec4f { return textureLoad(src, vec2u(p.xy), 0); }
-`});this.blit=this.device.createRenderPipeline({layout:`auto`,label:`blit`,vertex:{module:e,entryPoint:`vs`},fragment:{module:e,entryPoint:`fs`,targets:[{format:this.format}]}})}_select(e,t){let n=this.instF,r=this.patch0,i=this.levels-1,a=e.e,o=e.n,s=e.h,c=e=>[t[e],t[4+e],t[8+e],t[12+e]],l=c(0),u=c(1),d=c(2),f=c(3),p=[f.map((e,t)=>e+l[t]),f.map((e,t)=>e-l[t]),f.map((e,t)=>e+u[t]),f.map((e,t)=>e-u[t]),f.map((e,t)=>e-d[t])],m=(e,t,n)=>{let r=e-a-Ze,i=r+n+12,s=o-t-n-Ze,c=s+n+12;for(let[e,t,n,a]of p)if(e*(e>0?i:r)+t*(t>0?Xe:-12)+n*(n>0?c:s)+a<0)return!1;return!0},h=e=>this.rangeK*r*2**e,g=(e,t,n)=>Math.hypot(Math.max(e-a,0,a-e-n),Math.max(t-o,0,o-t-n),s),_=0,v=this.perLevel=Array(this.levels).fill(0),y=(e,t,i)=>{_<this.instMax&&(n.set([e,t,r*2**i,i],4*_),_++,v[i]++)},b=(e,t,n)=>{let i=r*2**n,a=g(e,t,i);if(a>h(n))return!1;if(!m(e,t,i))return!0;if(n===0||a>h(n-1))return y(e,t,n),!0;let o=i/2;for(let[r,i]of[[0,0],[o,0],[0,o],[o,o]])!b(e+r,t+i,n-1)&&m(e+r,t+i,o)&&y(e+r,t+i,n-1);return!0},x=r*2**i,S=h(i);for(let e=Math.floor((a-S)/x);e<=Math.floor((a+S)/x);e++)for(let t=Math.floor((o-S)/x);t<=Math.floor((o+S)/x);t++)b(e*x,t*x,i);return _}ready(){return this.inFlight<$e}frame(e,t,{exposure:n=1.4,chop:r=this.chop??1,sunDir:i=[.3,.45,-.84],load:a=1,tag:o=null}={}){let s=performance.now(),c=this.device;this._targets();let[l,u]=this.renderSize,d=this.uniF,f=this.variant.target===`temporal`,p=Math.cos(e.yaw),m=Math.sin(e.yaw),h=Math.cos(e.pitch),g=Math.sin(e.pitch),_=[m*h,g,-p*h],v=[p,0,m],y=[v[1]*_[2]-v[2]*_[1],v[2]*_[0]-v[0]*_[2],v[0]*_[1]-v[1]*_[0]],b=[0,e.h,0],x=(e,t)=>e[0]*t[0]+e[1]*t[1]+e[2]*t[2],S=[v[0],y[0],-_[0],0,v[1],y[1],-_[1],0,v[2],y[2],-_[2],0,-x(v,b),-x(y,b),x(_,b),1],C=l/u,w=Math.tan(e.fov*Math.PI/360),T=[1/(C*w),0,0,0,0,1/w,0,0,0,0,0,-1,0,0,.05,0],E=wt(T,S),D=E,O=[0,0];if(f){O=this.temporal.jitter?F(this.frameNo):[0,0];let t=T.slice();t[8]=-2*O[0]/l,t[9]=-2*O[1]/u,D=wt(t,S);let n=this.prevCam??[e.e,e.n],r=[1,0,0,0,0,1,0,0,0,0,1,0,e.e-n[0],0,-(e.n-n[1]),1],i=Math.hypot(e.e-n[0],e.n-n[1])>50||!this.prevVP;i&&this.temporal.reset(),this.reproj=wt(wt(i?E:this.prevVP,r),ne(E)),this.prevVP=E,this.prevCam=[e.e,e.n]}d.set(D,0),d.set([e.e,e.h,e.n,t],16);let k=Math.hypot(...i);d.set([i[0]/k,i[1]/k,i[2]/k,Qe],20),d.set([l,u,1/l,1/u],24),d.set([this.fft.nS,r,n,f?this.variant.detail??.5*this.variant.rs:1],28),d.set(this.look.values,rt),d.set(this.bedU,it);let A=this.variant.swell?this.swell:null;d.set(A?A.map:[0,0,0,0],at),d.set(A?.wash??[0,0,0,0],ot),d.set(A?.sea??[0,0,0,0],st),d[59]=(this.debug??0)|this.variant.dbg,d.set([v[0]*w*C,v[1]*w*C,v[2]*w*C,0,y[0]*w,y[1]*w,y[2]*w,0,_[0],_[1],_[2],0],32);let j=this._select(e,D);c.queue.writeBuffer(this.uni,0,d),c.queue.writeBuffer(this.inst,0,this.instF,0,j*4);let M=c.createCommandEncoder(),ee=this.timestamps,N=M.beginComputePass(ee?{timestampWrites:{querySet:this.qs,beginningOfPassWriteIndex:0,endOfPassWriteIndex:1}}:{});this.fft.encode(N,t),this.rip.encode(N,t),A?.encode(N,t,this.variant.swellCull===!1||f||ut?null:{vp:E,cam:[e.e,e.n],frame:[this.bedU[0],this.bedU[1],this.bedU[2],this.bedU[3]]}),N.end();let P=`${this.look.version} ${d[20].toFixed(5)} ${d[21].toFixed(5)} ${d[22].toFixed(5)}`,te=(e,t)=>{let n=M.beginRenderPass({colorAttachments:[{view:e,loadOp:`clear`,storeOp:`store`,clearValue:[0,0,0,0]}]});n.setPipeline(t),n.setBindGroup(0,this.bg),n.draw(3),n.end()},re=(e,t)=>e.createView({dimension:`2d`,baseArrayLayer:t,arrayLayerCount:1});if(P!==this.envKey){if(this.envKey=P,te(this.env.createView(),this.envPipe),this.domeReady)this.domeStrip=0;else{for(let e=0;e<6;e++)te(re(this.domes[this.domeFront],e),this.facePipes[e]);this.domeReady=!0}}this.domeStrip>=0&&(te(re(this.domes[1-this.domeFront],this.domeStrip),this.facePipes[this.domeStrip]),++this.domeStrip===6&&(this.domeFront=1-this.domeFront,this.domeStrip=-1));let I=this.ctx.getCurrentTexture().createView(),L=this.tColor?this.tColor.createView():this.hdrTex?this.hdrTex.createView():I;for(let e=0;e<a;e++){let t=ee&&(e===0||e===a-1)?{querySet:this.qs,...e===0?{beginningOfPassWriteIndex:2}:{},...e===a-1?{endOfPassWriteIndex:3}:{}}:null,n=M.beginRenderPass({colorAttachments:[this.colorMS?{view:this.colorMS.createView(),resolveTarget:L,loadOp:`clear`,storeOp:`discard`,clearValue:[0,0,0,1]}:{view:L,loadOp:`clear`,storeOp:`store`,clearValue:[0,0,0,1]}],depthStencilAttachment:{view:this.depth.createView(),depthClearValue:0,depthLoadOp:`clear`,depthStoreOp:this.tColor?`store`:`discard`},...t?{timestampWrites:t}:{}});n.setBindGroup(0,this.bg),n.setBindGroup(1,this.bgEnvs[this.domeFront]),j&&this.groundPipe&&this.variant.ground&&(n.setPipeline(this.groundPipe),n.setVertexBuffer(0,this.inst),n.setIndexBuffer(this.idx,`uint16`),n.drawIndexed(this.grid*this.grid*6,j)),j&&(n.setPipeline(this.water),n.setVertexBuffer(0,this.inst),n.setIndexBuffer(this.idx,`uint16`),n.drawIndexed(this.grid*this.grid*6,j)),n.setPipeline(this.sky),n.draw(3),n.end()}if(this.tColor&&this.temporal.resolve(M,this.tColor.createView(),this.depth.createView(),this.reproj,[O[0],-O[1]],I,ee?{querySet:this.qs,beginningOfPassWriteIndex:4,endOfPassWriteIndex:5}:null),this.hdrTex){let e=M.beginRenderPass({colorAttachments:[{view:I,loadOp:`clear`,storeOp:`store`,clearValue:[0,0,0,1]}]});e.setPipeline(this.blit),e.setBindGroup(0,this.blitBG),e.draw(3),e.end()}let R=null,z=this.tColor?6:4;ee&&(M.resolveQuerySet(this.qs,0,z,this.qres,0),R=this.qread.pop()??c.createBuffer({size:48,usage:GPUBufferUsage.COPY_DST|GPUBufferUsage.MAP_READ}),M.copyBufferToBuffer(this.qres,0,R,0,8*z)),c.queue.submit([M.finish()]),this.inFlight++;let B=performance.now();c.queue.onSubmittedWorkDone().then(()=>{this.inFlight--,Ct(this.doneMs,performance.now()-B)}).catch(()=>{this.inFlight--});let ie=++this.frameNo;R&&R.mapAsync(GPUMapMode.READ).then(()=>{Ct(this.readMs,performance.now()-B);let e=new BigUint64Array(R.getMappedRange()),t=Number(e[1]-e[0])/1e6,n=z===6?Number(e[5]-e[4])/1e6:0,r=Number(e[3]-e[2])/1e6+n;Ct(this.gpu.fft,t),Ct(this.gpu.draw,r),Ct(this.gpu.post,n),this.gpu.count=(this.gpu.count??0)+1,o!=null&&Ct(this.gpu.tagged,{tag:o,fft:t,draw:r,post:n,lag:this.frameNo-ie}),R.unmap(),this.qread.push(R)}).catch(()=>{}),this.patches=j,this.vertices=j*(this.grid+1)**2,Ct(this.cpuMs,performance.now()-s)}};function Ct(e,t){e.push(t),e.length>1200&&e.splice(0,600)}function wt(e,t){let n=new Float32Array(16);for(let r=0;r<4;r++)for(let i=0;i<4;i++){let a=0;for(let n=0;n<4;n++)a+=e[n*4+i]*t[r*4+n];n[r*4+i]=a}return n}var Tt=9.81,Et={hs:1.2,tp:10,gamma:3.3,spread:10,offNormal:0,seed:3};function Dt(e,t,n){let r=Math.sqrt(e*(Tt*t*t/(2*Math.PI))),i=.35*n*r,a=.75*n*r,o=.06*r;return{setup:i,sInc:a,sIG:o,R2:1.1*(i+Math.hypot(a,o)/2)}}var q=new URLSearchParams(location.search),J=(e,t)=>q.get(e)==null?t:Number(q.get(e)),Ot=document.getElementById(`hud`),Y=document.getElementById(`view`),X={ready:!1,done:!1,errors:[],frames:0,fft:[],draw:[],wall:[]};window.__sim2=X;var kt=e=>{X.errors.length>=20||X.errors.includes(e)||(X.errors.push(e),Ot.textContent=`${Ot.textContent}\n${e}`,console.error(e))},Z=e=>{if(!e.length)return null;let t=e.slice().sort((e,t)=>e-t);return t[Math.floor(t.length/2)]},At=e=>{q.get(`post`)&&fetch(`./__report`,{method:`POST`,body:e}).catch(()=>{})},Q=e=>e==null?`-`:e.toFixed(1),$=e=>e==null?`-`:e.toFixed(2),jt=typeof matchMedia<`u`&&matchMedia(`(pointer: coarse)`).matches,Mt=q.get(`dpr`)==null?Math.min(devicePixelRatio,Math.min(innerWidth,innerHeight)<600?2:devicePixelRatio,jt?Math.sqrt(25e5/(innerWidth*innerHeight)):1/0):J(`dpr`,devicePixelRatio),Nt=Mt>=1.5?1:.75*Mt,Pt=Mt;function Ft(){let e=Pt,t=(q.get(`size`)??``).split(`x`).map(Number);Y.width=t[0]||Math.round(innerWidth*e),Y.height=t[1]||Math.round(innerHeight*e),t[1]&&(Y.style.width=`${Y.width/e}px`,Y.style.height=`${Y.height/e}px`)}function It(e,t){let n=0,r=0,i=3,a=0,o=0,s=!1;return(c,l=!1)=>{let u=e.gpu;if(!u)return;if(l||document.hidden){s=!0;return}if(s){s=!1,i=3,o=u.count??0,a=c+1e3;return}if(c<a)return;a=c+1e3;let d=Math.min((u.count??0)-o,u.fft.length,u.draw.length);if(o=u.count??0,i>0){i--;return}if(d<5)return;let f=Z(u.fft.slice(-d)),p=Z(u.draw.slice(-d)),m=f+p;n=m>.9*t?n+1:0,r=m<.55*t?r+1:0;let h=Pt;n>=2?h=Math.max(Nt,Pt*Math.sqrt(Math.min(1,Math.max(.6,(.8*t-f)/Math.max(p,.001))))):r>=5&&(h=Math.min(Mt,Pt*Math.sqrt(1.125))),Math.abs(h-Pt)>.02&&(Pt=h,Ft(),n=0,r=0,i=3,tn=`resolution ${Pt.toFixed(2)}x (the load governor: GPU ${m.toFixed(1)} ms against a ${t.toFixed(1)} ms budget)`)}}var Lt=.7;function Rt(e,t=()=>0){let n={e:0,n:0,h:J(`eye`,1.1),yaw:(q.get(`yaw`)==null?e.headingDeg??0:J(`yaw`,0))*Math.PI/180,pitch:J(`pitch`,-6)*Math.PI/180,fov:J(`fov`,70)},r=new Set,i=J(`speed`,3.5),a=J(`turn`,0)*Math.PI/180;addEventListener(`keydown`,e=>r.add(e.key.toLowerCase())),addEventListener(`keyup`,e=>r.delete(e.key.toLowerCase()));let o=new Map,s=null,c=performance.now(),l={e:0,n:0,h:0},u=()=>{let e=0,t=0;for(let n of o.values())e+=n.x,t+=n.y;return{x:e/o.size,y:t/o.size,n:o.size}},d=()=>[Math.sin(n.yaw),Math.cos(n.yaw)],f=()=>[Math.cos(n.yaw),-Math.sin(n.yaw)],p=(e,t,r,i)=>{let[a,o]=d(),[s,c]=f(),u=a*e+s*t,p=o*e+c*t;n.e+=u,n.n+=p,n.h=Math.max(.3,Math.min(3e3,n.h+r));let h=1/Math.max(.016,i),g=3*Math.max(4,n.h),_=e=>Math.max(-g,Math.min(g,e));l.e=_(u*h),l.n=_(p*h),l.h=_(r*h)*.5,m=performance.now(),n.lastInput=m},m=0,h=()=>{if(n.pitch>=-.005)return null;let e=Math.max(.3,n.h)/Math.tan(-n.pitch);return e>5e3?null:{e:n.e+Math.sin(n.yaw)*e,n:n.n+Math.cos(n.yaw)*e,D:e}},g=e=>{let t=h();t&&(n.yaw+=e,n.e=t.e-Math.sin(n.yaw)*t.D,n.n=t.n-Math.cos(n.yaw)*t.D,l.e=0,l.n=0,m=performance.now(),n.lastInput=m)};Y.addEventListener(`contextmenu`,e=>e.preventDefault()),Y.addEventListener(`pointerdown`,e=>{n.lastInput=performance.now(),o.set(e.pointerId,{x:e.clientX,y:e.clientY,two:e.pointerType===`mouse`&&e.button===2}),Y.setPointerCapture(e.pointerId),s=o.size>1?u():null,c=performance.now()}),Y.addEventListener(`pointermove`,e=>{let t=o.get(e.pointerId);if(t){if(o.size===1&&t.two){let r=performance.now(),i=(r-c)/1e3,a=Math.max(1,n.h)*.006;e.altKey?(p(0,0,-(e.clientY-t.y)*a,i),g(-(e.clientX-t.x)*.004)):(n.yaw+=(e.clientX-t.x)*.004,p((e.clientY-t.y)*a,0,0,i)),c=r}else o.size===1&&(n.yaw+=(e.clientX-t.x)*.004,n.pitch=Math.max(-1.5,Math.min(1.2,n.pitch-(e.clientY-t.y)*.004)));if(t.x=e.clientX,t.y=e.clientY,o.size>1&&s&&s.n===o.size){let e=u(),t=e.x-s.x,r=e.y-s.y,i=performance.now(),a=(i-c)/1e3,l=Math.max(1,n.h)*.006;o.size===2?(n.yaw+=t*.004,p(r*l,0,0,a)):p(0,-t*l,r*l*.6,a),s=e,c=i}}});let _=e=>{o.delete(e.pointerId),s=o.size>1?u():null,c=performance.now()};Y.addEventListener(`pointerup`,_),Y.addEventListener(`pointercancel`,_);let v=performance.now();Y.addEventListener(`wheel`,e=>{e.preventDefault();let t=performance.now(),r=Math.min(.1,(t-v)/1e3),i=Math.max(1,n.h)*.004,a=e.deltaMode===1?16:1;v=t;let o=e.deltaX*a,s=e.deltaY*a;e.ctrlKey?p(0,0,-s*i*2,r):e.altKey?(p(0,0,-s*i*1.5,r),g(-o*.003)):e.shiftKey?(n.yaw+=o*.003,n.pitch=Math.max(-1.5,Math.min(1.2,n.pitch-s*.003))):p(-s*i,o*i,0,r)},{passive:!1});let y=q.get(`drone`)==null?q.get(`scene`)!=null:q.get(`drone`)!==`0`;return n.step=e=>{let s=e=>r.has(e),c=+!!s(`w`)-!!s(`s`),u=+!!s(`d`)-!!s(`a`);if(y){let r=3*Math.max(4,n.h)*e,i=+!!s(`e`)-!!s(`q`);l.e+=(Math.sin(n.yaw)*c+Math.cos(n.yaw)*u)*r,l.n+=(Math.cos(n.yaw)*c-Math.sin(n.yaw)*u)*r,l.h+=i*r;let a=o.size>=2||performance.now()-m<60,d=a?1:Math.exp(-e/Lt);a||(n.e+=l.e*e,n.n+=l.n*e,n.h+=l.h*e),l.e*=d,l.n*=d,l.h*=d;let f=Math.max(t(n.e,n.n),0)+.3;n.h<f&&(n.h=f,l.h=Math.max(l.h,0)),n.h=Math.min(n.h,3e3),s(`arrowleft`)&&(n.yaw-=e),s(`arrowright`)&&(n.yaw+=e),s(`arrowup`)&&(n.pitch=Math.min(1.2,n.pitch+e*.6)),s(`arrowdown`)&&(n.pitch=Math.max(-1.5,n.pitch-e*.6)),n.speed=Math.hypot(l.e,l.n),n.climb=l.h,n.ground=t(n.e,n.n);return}let d=r.size?Math.max(i,3.5)*4*Math.max(1,n.h/10):y?0:i,f=r.size?c:1;n.e+=(Math.sin(n.yaw)*f+Math.cos(n.yaw)*u)*d*e,n.n+=(Math.cos(n.yaw)*f-Math.sin(n.yaw)*u)*d*e,r.size||(n.yaw+=a*e),s(`arrowleft`)&&(n.yaw-=e),s(`arrowright`)&&(n.yaw+=e),s(`arrowup`)&&(n.pitch=Math.min(1.2,n.pitch+e*.6)),s(`arrowdown`)&&(n.pitch=Math.max(-1.4,n.pitch-e*.6)),s(`q`)&&(n.h=Math.max(.3,n.h*Math.exp(-e))),s(`e`)&&(n.h=Math.min(3e3,n.h*Math.exp(e)))},n}function zt(){let e=document.createElement(`canvas`),t=Math.min(2,devicePixelRatio||1);e.width=150*t,e.height=224*t,e.style.cssText=`position:fixed;top:8px;right:8px;width:150px;height:224px;pointer-events:none;z-index:5`,document.body.appendChild(e);let n=e.getContext(`2d`);n.scale(t,t);let r=[`N`,`NE`,`E`,`SE`,`S`,`SW`,`W`,`NW`];return e=>{let t=e.pitch*180/Math.PI,i=69/45,a=(e.yaw*180/Math.PI%360+360)%360,o=75+t*i;n.clearRect(0,0,150,224),n.save(),n.beginPath(),n.arc(75,75,69,0,2*Math.PI),n.clip(),n.fillStyle=`#3b7fc4`,n.fillRect(0,0,150,150),n.fillStyle=`#8a6a3c`,n.fillRect(0,o,150,150),n.strokeStyle=`#fff`,n.lineWidth=2,n.beginPath(),n.moveTo(0,o),n.lineTo(150,o),n.stroke(),n.lineWidth=1,n.font=`9px system-ui`,n.fillStyle=`#fff`,n.textAlign=`left`;for(let e=-80;e<=80;e+=10){if(!e)continue;let t=o-e*i,r=e%20?10:20;t<6||t>144||(n.beginPath(),n.moveTo(75-r,t),n.lineTo(75+r,t),n.stroke(),e%20||n.fillText(String(e),75+r+3,t+3))}n.restore(),n.strokeStyle=`#fc3`,n.lineWidth=2.5,n.beginPath(),n.moveTo(47,75),n.lineTo(66,75),n.lineTo(75,81),n.lineTo(84,75),n.lineTo(103,75),n.stroke(),n.strokeStyle=`rgba(255,255,255,0.8)`,n.lineWidth=1.5,n.beginPath(),n.arc(75,75,69,0,2*Math.PI),n.stroke(),n.fillStyle=`rgba(0,0,0,0.55)`,n.fillRect(0,150,150,74),n.fillStyle=`#fff`,n.textAlign=`center`,n.font=`bold 13px system-ui`,n.fillText(`${String(Math.round(a)).padStart(3,`0`)}° ${r[Math.round(a/45)%8]}`,75,166),n.font=`12px system-ui`,n.textAlign=`left`;let s=e.h-Math.max(e.ground??0,0);n.fillText(`height ${e.h<10?e.h.toFixed(1):Math.round(e.h)} m`,8,184),n.fillText(`above ${(e.ground??0)>0?`ground`:`water`} ${s<10?s.toFixed(1):Math.round(s)} m`,8,200),n.fillText(`pitch ${Math.round(t)}°  speed ${(e.speed??0).toFixed(1)} m/s`,8,216)}}function Bt(){let e=new URLSearchParams(location.search),t=document.createElement(`div`);t.style.cssText=`position:fixed;right:8px;bottom:8px;display:flex;flex-direction:column;gap:4px;font:12px system-ui;z-index:6;background:rgba(0,0,0,.55);padding:6px;border-radius:6px;color:#fff`;let n=e=>{let t=new URLSearchParams(location.search);for(let[n,r]of Object.entries(e))r==null?t.delete(n):t.set(n,r);location.search=t.toString()},r=(e,t,r=!1)=>{let i=document.createElement(`button`);return i.textContent=e,i.style.cssText=`font:12px system-ui;padding:3px 8px;border-radius:4px;border:0;cursor:pointer;background:${r?`#fc3`:`#eee`}`,i.onclick=()=>n(t),i},i=(...e)=>{let n=document.createElement(`div`);n.style.cssText=`display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end`,n.append(...e),t.append(n)},a=e=>{let t=document.createElement(`span`);return t.textContent=e,t.style.cssText=`align-self:center;opacity:.8`,t},o=e.get(`swell`)!==`0`,s=e.get(`seadbg`)===`64`;i(a(`swell`),r(o?`on`:`off`,{swell:o?`0`:null},o),r(`its height alone`,{seadbg:s?null:`64`},s)),i(a(`swell`),...[[`0.6 m`,.6],[`1.2 m`,1.2],[`2 m`,2]].map(([t,n])=>r(t,{hs:n},Number(e.get(`hs`)??1.2)===n)),...[[`7 s`,7],[`10 s`,10],[`14 s`,14]].map(([t,n])=>r(t,{tp:n},Number(e.get(`tp`)??10)===n))),i(a(`view`),r(`paddler`,{eye:1.1,pitch:-4,off:70}),r(`low drone`,{eye:8,pitch:-20,off:60}),r(`aerial`,{eye:220,pitch:-50,off:360}),r(`overhead`,{eye:700,pitch:-89,off:260}));let c=e.get(`rips`)!==`0`,l=Number(e.get(`attach`)??ge.rips.attach),u=e.get(`shore`)!==`0`,d=e.get(`divots`)!==`0`;i(a(`bar`),r(`even`,{rips:`0`,attach:null},!c),...[[`crescentic`,0],[`rips`,ge.rips.attach],[`transverse`,1]].map(([e,t])=>r(e,{rips:null,attach:t===ge.rips.attach?null:t},c&&l===t)),r(d?`divots`:`no divots`,{divots:d?`0`:null},d)),i(a(`shore`),r(u?`cusps, step`:`straight`,{shore:u?`0`:null},u),r(`over a rip`,{eye:260,pitch:-89,off:90,along:ge.rips.at}),r(`toward a rip`,{eye:35,pitch:-24,off:-10,along:ge.rips.at-120,yawrel:40})),document.body.append(t)}var Vt=3,Ht=J(`ramp`,75),Ut=J(`tail`,30),Wt=48;function Gt(e,t){let n=Vt+Ht+Ut,r=[],i=[],a=T(),o=D(),s=null,c=-1,l=0,u=[],d=!1,f=60,p=1,m=e=>e<Vt?`warm`:e<Vt+Ht?`ramp`:e<n?`tail`:null,h=(n,a)=>{let o=e.gpu,s=e=>e?e.splice(0):[],c={s:n,phase:a,load:p,fps:l,frameMs:Z(u),doneMs:Z(s(e.doneMs)),drawMs:Z(s(o?.draw)),computeMs:Z(s(o?.fft)),patches:e.patches};if(a===`warm`?i.push(...u):r.push(c),n===2){let e=i.slice().sort((e,t)=>e-t)[Math.floor(i.length*.1)]??16.7;f=e<11?120:e<22?60:30,t.pacing=k(e)}if(a===`ramp`||n===2){let e=l>=.95*f;p=n===2?1:e?Math.min(Wt,p+Math.max(1,Math.floor(p/4))):Math.max(1,p-(l<.8*f?2:1))}n+1===Vt+Ht&&(p=1),l=0,u=[]},g=()=>{let e=[`display ${f} fps (${t.pacing??`?`})`],n=r.filter(e=>e.phase===`ramp`),i=r.filter(e=>e.phase===`tail`);for(let t=0;t<Ht;t+=10){let r=n.filter(e=>e.s-Vt>=t&&e.s-Vt<t+10).filter(e=>e.fps>=.95*f).map(e=>e.load);e.push(`${t}-${Math.min(Ht,t+10)} s: held ${r.length?`up to ${Math.max(...r)} copies (median ${Z(r)})`:`no second at the display rate`}`)}let a=(e,t)=>Z(e.map(e=>e[t]).filter(e=>e!=null)),o=i.slice(0,5),s=i.slice(-10);return e.push(`then 1 copy: ${Q(a(o,`fps`))} fps in its first 5 s, ${Q(a(s,`fps`))} in its last 10 s; submit to done ${Q(a(o,`doneMs`))} then ${Q(a(s,`doneMs`))} ms`+(t.timestamps?`; GPU sea ${$(a(s,`drawMs`))} ms, compute ${$(a(s,`computeMs`))} ms`:``)),e},_=async()=>{d=!0;let n=[`build ${document.querySelector(`meta[name=build]`)?.content??``}`,navigator.userAgent,`${innerWidth}x${innerHeight} at ${devicePixelRatio}x, canvas ${Y.width}x${Y.height}, MSAA ${e.msaa}`,location.href,`WebGPU: ${t.adapter}; timestamp queries ${t.timestamps?`yes`:`no`}; ${t.sets} sea sets`,`${await w()}, ${o.report()}`];o.release();let i=[`s phase copies fps frame_ms done_ms gpu_sea_ms gpu_compute_ms patches`,...r.map(e=>[e.s,e.phase,e.load,e.fps,Q(e.frameMs),Q(e.doneMs),$(e.drawMs),$(e.computeMs),e.patches].join(` `))],s=g(),c=[...n,``,`The WebGPU sea: the copies a frame held at the display rate, then one copy:`,...s,``,...i,...X.errors.length?[``,...X.errors]:[]].join(`
-`);X.measure={rows:r,lines:s,report:c},At(c),a.done({lines:s,report:c,title:`Surfski WebGPU sea measurement`,onSend:()=>O(`Surfski WebGPU sea measurement`,c),onCopy:e=>E(c,e)})};return(e,t)=>{if(d)return null;s??=e;let r=Math.floor((e-s)/1e3),i=m(r);return r!==c&&(c>=0&&h(c,m(c)),c=r,i&&a.progress(i===`warm`?`the WebGPU sea, settling`:i===`ramp`?`the WebGPU sea, ${p} cop${p>1?`ies`:`y`} a frame`:`the WebGPU sea drawn once`,n-r)),i?(l++,u.push(t),p):(_(),null)}}var Kt=Math.max(1,J(`load`,1)),qt=J(`slot`,2.5),Jt=.5,Yt=J(`rounds`,3),Xt=4,Zt=Math.max(1,J(`load`,1)),Qt=.08;function $t(e,t=!1){let n=t=>Math.min(1,Math.sqrt(t/e));return t?[[`full again`,{}],[`no swell (its compute and reads; the bed fades the open sea)`,{swell:!1}],[`no whitewater`,{dbg:1024}],[`no shore wash (its front and lace)`,{dbg:4096}],[`no water’s edge at the pixel’s scale`,{dbg:256}],[`the bed read bilinear only (no cubic)`,{dbg:512}],[`the cover’s patches as their mean`,{dbg:128}],[`all three bed cuts`,{dbg:896}],[`no ground pass`,{ground:!1}],[`no ripples`,{ripples:!1}],[`no per-pixel sea sets`,{fragSets:!1}],[`16 x 16 patches, not 32 x 32`,{grid:16}],[`1.2 megapixels`,{scale:n(12e5)}],[`one colour (mesh, raster only)`,{shade:!1}]]:[[`full again`,{}],[`MSAA off`,{msaa:1}],[`1.2 megapixels`,{scale:n(12e5)}],[`1.2 megapixels, MSAA off`,{scale:n(12e5),msaa:1}],[`0.6 megapixels`,{scale:n(6e5)}],[`no ripples`,{ripples:!1}],[`sky from 1 facet, not 4`,{facets:1}],[`no per-pixel sea sets`,{fragSets:!1}],[`16 x 16 patches, not 32 x 32`,{grid:16}],[`flat vertices (no displacement)`,{vsDisp:!1}],[`one colour (mesh, raster, MSAA only)`,{shade:!1}],[`the position among the fragment inputs`,{fsPos:!0}],[`MSAA off, 16 x 16 patches`,{msaa:1,grid:16}],[`one colour, MSAA off`,{shade:!1,msaa:1}],[`half-float target, own resolve (web-ocean)`,{target:`hdr`}],[`half-float target, MSAA off`,{target:`hdr`,msaa:1}],[`depth24plus, not depth32float`,{depth:`depth24plus`}],[`footprint worked out (no derivatives)`,{deriv:!1}],[`footprint worked out, MSAA off`,{deriv:!1,msaa:1}],[`interpolation marked centre`,{interp:`@interpolate(perspective, center)`}],[`added arithmetic (MSAA 4)`,{burn:64}],[`added arithmetic, MSAA off`,{burn:64,msaa:1}],[`added arithmetic in the sky (one big triangle)`,{skyBurn:256}],[`added arithmetic in the sky, MSAA off`,{skyBurn:256,msaa:1}],[`temporal, drawn at 0.7 of the size`,{target:`temporal`,rs:.7}],[`temporal, drawn at 0.5 of the size`,{target:`temporal`,rs:.5}],[`temporal, drawn at full size`,{target:`temporal`,rs:1}],[`temporal, drawn at 0.85 of the size`,{target:`temporal`,rs:.85}],[`every ripple band read in full (no regimes)`,{regimes:0}],[`no regimes, MSAA off`,{regimes:0,msaa:1}],[`both regimes, MSAA off`,{regimes:3,msaa:1}]]}function en(e,t,n,r=!1){let i=q.get(`only`)?.split(`,`).map(Number),a=$t(n[0]*n[1],r).filter((e,t)=>!i||i.includes(t)),o=[];for(let e=0;e<Yt;e++)for(let[e,t]of a)o.push([`full`,{}],[e,t]);o.push([`full`,{}]);let s=Xt+o.length*qt+1.5,c=T(),l=D(),u=o.map(([e])=>({name:e,frames:0,draw:[],post:[],compute:[],lag:[],iv:[],tLast:null})),d=null,f=-2,p=!1,m=null,h={msaa:e.variant.msaa,grid:e.variant.grid},g=([,t])=>{let{scale:r=1,...i}=t;Y.width=Math.round(n[0]*r),Y.height=Math.round(n[1]*r),e.setVariant({...h,...i})};for(let[,t]of a){let{scale:n,...r}=t;e.setVariant({...h,...r})}e.setVariant(h);let _=()=>{for(let t of e.gpu?.tagged.splice(0)??[]){let e=u[t.tag];e&&(e.draw.push(t.draw-t.post),e.post.push(t.post),e.compute.push(t.fft),e.lag.push(t.lag))}},v=async()=>{p=!0,_(),g([`full`,{}]);let r=(e,t)=>{let n=e.slice().sort((e,t)=>e-t);return n.length?n[Math.min(n.length-1,Math.floor(t*n.length))]:null},i=u.map((e,t)=>{let n=d+(Xt+(t+1)*qt)*1e3,i=r(e.iv,.5),a=e.frames===0||n-e.tLast>Math.max(500,3*(i??0));return{name:e.name,drawMs:e.draw.length?Z(e.draw)/Zt+Z(e.post):null,postMs:Z(e.post),computeMs:Z(e.compute),fps:e.frames/(qt-Jt),n:e.draw.length,lag:Z(e.lag),p50:i,p95:r(e.iv,.95),partial:a}}),o=i.findIndex((e,t)=>e.fps===0&&i.slice(t).every(e=>e.fps===0)),s=t.timestamps?`drawMs`:`fps`,f=[];for(let[e]of a){let n=[],r=[],a=0;i.forEach((o,c)=>{if(o.name!==e||o.partial||i[c-1]?.partial||i[c+1]?.partial)return;let l=i[c-1]?.[s],u=i[c+1]?.[s],d=o[s];if(l==null||u==null||d==null)return;let f=(l+u)/2;n.push((t.timestamps?f-d:d-f)/f),r.push(f-d),Math.abs(l-u)/f>Qt&&a++}),f.push({name:e,rel:Z(n),lo:n.length?Math.min(...n):null,hi:n.length?Math.max(...n):null,ms:Z(r),pairs:n.length,drift:a})}let m=i.filter(e=>e.name===`full`&&!e.partial),h=e=>e==null?`-`:`${Math.round(e*100)}%`,v=[t.timestamps?`the full picture: ${$(Z(m.map(e=>e.drawMs)))} ms of GPU (${$(m[0]?.drawMs)} at the start, ${$(m[m.length-1]?.drawMs)} at the end), compute ${$(Z(m.map(e=>e.computeMs)))} ms, ${Q(Z(m.map(e=>e.fps)))} fps`:`the full picture: ${Q(Z(m.map(e=>e.fps)))} fps (no GPU timers here: the shares are of frames a second)`,...f.map(e=>`${e.name}: ${t.timestamps?`saves`:`gains`} ${h(e.rel)}${t.timestamps?` (${$(e.ms)} ms)`:``}, ${h(e.lo)} to ${h(e.hi)}${e.drift?`; ${e.drift} of ${e.pairs} pairs drifted`:``}`),`the times came back ${Q(Z(u.flatMap(e=>e.lag)))} frames late; submit to done ${Q(Z(e.doneMs))} ms, to the timers read back ${Q(Z(e.readMs))} ms`];o>=0&&v.push(`no frames from slot ${o} on (about ${Math.round(Xt+o*qt)} s in): the page stopped drawing (the screen locked, or the page was hidden); the slots before it stand`);let y=[`build ${document.querySelector(`meta[name=build]`)?.content??``}`,navigator.userAgent,`${innerWidth}x${innerHeight} at ${devicePixelRatio}x, full canvas ${n[0]}x${n[1]}, MSAA 4${Zt>1?`, ${Zt} copies a frame (times per copy)`:``}`,location.href,`WebGPU: ${t.adapter}; timestamp queries ${t.timestamps?`yes`:`no`}; ${t.sets} sea sets, ${e.patches} patches`,`${await w()}, ${l.report()}`];l.release();let b=[`slot variant gpu_sea_ms gpu_resolve_ms gpu_compute_ms fps samples lag_frames frame_p50_ms frame_p95_ms cut_short`,...i.map((e,t)=>[t,`"${e.name}"`,$(e.drawMs),$(e.postMs),$(e.computeMs),Q(e.fps),e.n,e.lag,Q(e.p50),Q(e.p95),+!!e.partial].join(` `))],x=[...y,``,`The WebGPU sea, part by part (each against the full picture either side of it):`,...v,``,...b,...X.errors.length?[``,...X.errors]:[]].join(`
-`);X.sweep={slots:i,rows:f,lines:v,report:x},At(x),c.done({lines:v,report:x,title:`Surfski WebGPU sea parts`,onSend:()=>O(`Surfski WebGPU sea parts`,x),onCopy:e=>E(x,e)})};return{before(e){if(p)return null;d??=e;let t=(e-d)/1e3-Xt,n=t<0?-1:Math.floor(t/qt);if(n>=o.length)return m??=e,e-m>1500?v():_(),null;if(n!==f&&(f=n,n>=0&&g(o[n]),(n===0||n===o.length>>1)&&At(`sweep progress: slot ${n} of ${o.length} at ${Q((e-d)/1e3)} s, ${X.frames} frames${X.errors.length?`; ${X.errors.join(`; `)}`:``}`),c.progress(n>=0?`the WebGPU sea's parts: ${o[n][0]}`:`the WebGPU sea, settling`,s-(e-d)/1e3)),_(),n<0||t-n*qt<Jt)return null;let r=u[n];return r.tLast!=null&&r.iv.push(e-r.tLast),r.tLast=e,r.frames++,n}}}var tn=``;async function nn(){if(!navigator.gpu){kt(`WebGPU is not available in this browser`);return}let e=await navigator.gpu.requestAdapter({powerPreference:`high-performance`});if(!e){kt(`WebGPU: no adapter`);return}let t=e.features.has(`timestamp-query`),n=await e.requestDevice({requiredFeatures:t?[`timestamp-query`]:[]});n.addEventListener(`uncapturederror`,e=>kt(`WebGPU error: ${e.error.message}`)),n.lost.then(e=>kt(`WebGPU device lost: ${e.message}`)),Ft(),!q.get(`size`)&&!q.get(`sweep`)&&addEventListener(`resize`,Ft);let r=o(q.get(`course`)??(q.get(`scene`)===`beach`?`perth-trigg-sorrento`:`gorge-swellcity`))??o(`gorge-swellcity`),i=s(r.name),a=i.state.fft.sea,c=a.sets.slice(0,32),l=new ee(n);l.build({...a,sets:c});let u=new St(n,Y,{msaa:J(`msaa`,1),timestamps:t,grid:J(`grid`,32),patch0:J(`patch0`,4),levels:J(`levels`,12),rangeK:J(`rangeK`,6)});q.get(`ground`)===`0`&&u.setVariant({msaa:u.variant.msaa,grid:u.variant.grid,ground:!1});let d=new N(n);for(let e of[...u.modules,...d.modules])for(let t of(await e.getCompilationInfo()).messages)kt(`${e.label} ${t.type} line ${t.lineNum}:${t.linePos} ${t.message}`);u.setSea(l,d,i.state,{micro:J(`ripples`,1),debug:J(`seadbg`,0)});let f=q.get(`scene`)===`beach`?{...ge}:null;if(f){for(let[e,t]of[[`d50`,`d50`],[`faceslope`,`faceSlope`],[`berm`,`berm`],[`dune`,`dune`],[`seed`,`seed`]])q.get(e)!=null&&(f[t]=J(e,f[t]));q.get(`bar`)!=null&&(f.bar={...f.bar,height:J(`bar`,f.bar.height)}),f.rips=q.get(`rips`)===`0`?null:{...f.rips,attach:Math.min(1,Math.max(0,J(`attach`,f.rips.attach))),spacing:Math.max(40,J(`ripspacing`,f.rips.spacing)||f.rips.spacing)},q.get(`shore`)===`0`&&(f.shore=null),f.divots=q.get(`divots`)===`0`?null:{...f.divots,hs:Math.max(0,J(`divhs`,f.divots.hs)),tp:Math.max(2,J(`divtp`,f.divots.tp))},f.facing=J(`facing`,((i.state.dirToDeg??20)+180)%360);let e={hs:J(`hs`,Et.hs),tp:J(`tp`,Et.tp)},t=q.get(`swell`)===`0`?null:Dt(e.hs,e.tp,f.faceSlope);t&&(f.wetLine=t.R2);let r=performance.now(),a=new Worker(new URL(new URL(`bed-texture-worker-hhUHCcwj.js`,import.meta.url).href,``+import.meta.url),{type:`module`});a.onmessage=e=>{f.tex=e.data.inner,f.tex.outer=e.data.outer,f.buildMs=performance.now()-r,X.bedBake={ms:e.data.ms,wallMs:f.buildMs},a.terminate(),u.setBed(f.tex,[0,0],f.facing,f),o&&=(o(),null)},a.postMessage({P:{...f}});let o=null;if(q.get(`swell`)!==`0`){let e={...Et,hs:J(`hs`,Et.hs),tp:J(`tp`,Et.tp),spread:J(`spread`,Et.spread)},r=new Worker(new URL(new URL(`bed-solve-worker-_BwLWRSF.js`,import.meta.url).href,``+import.meta.url),{type:`module`}),i=performance.now();r.onmessage=e=>{if(e.data.progress){tn=`the bed's wave response: ${e.data.progress[0]} of ${e.data.progress[1]} bins`;return}let a=e.data.result;X.swellSolve={ms:a.ms,wallMs:performance.now()-i,bins:a.bins.length,grid:[a.nx,a.ny]};let s=()=>u.setSwell(new He(n,a,u.bedTex.createView(),f.tex,{u0:Math.floor(a.u0),swash:q.get(`swash`)===`0`?null:t,face:f.faceSlope}));if(f.tex?s():o=s,tn=``,r.terminate(),t&&a.breaking){let e=0,n=0;for(let t=0;t<a.nx;t++)for(let r=0;r<a.ny;r++){let i=4*(r*a.nx+t);if(a.breaking[i+2]>0){e+=a.breaking[i+3],n++;break}}let r=n?e/n:t.setup;X.runup={setup:r,R2:1.1*(r+Math.hypot(t.sInc,t.sIG)/2)},u.setWetLine(X.runup.R2)}},r.postMessage({P:{...f},swell:e,opts:{cell:2}})}}let p=q.get(`regimes`)==null?1:J(`regimes`,1);if(q.get(`aa`)===`temporal`?u.setVariant({target:`temporal`,rs:J(`rs`,.7),detail:q.get(`detail`)==null?null:J(`detail`,1),regimes:p}):p!==1&&u.setVariant({msaa:u.msaa,grid:u.grid,regimes:p}),q.get(`v`)){let e=Object.fromEntries(q.get(`v`).split(`,`).map(e=>e.split(`:`)).filter(([e,t])=>e in bt&&t!=null).map(([e,t])=>[e,t===`true`?!0:t===`false`?!1:Number.isNaN(Number(t))?t:Number(t)]));u.setVariant({...u.variant,...e})}if(u.temporal)for(let[e,t]of[[`twmax`,`wMax`],[`twsoft`,`wSoft`],[`tsign`,`sigN`],[`tsigw`,`sigW`],[`tsharp`,`sharpen`]])q.get(e)!=null&&(u.temporal[t]=J(e,0));u.temporal&&q.get(`jitter`)===`0`&&(u.temporal.jitter=!1);let m=Rt(i,f?(e,t)=>{let n=f.facing*Math.PI/180,r=Math.sin(n),i=Math.cos(n);return Me(e*i-t*r,e*r+t*i,f).y}:()=>-1e3),h=J(`frames`,0);X.cam=m;let g=performance.now();addEventListener(`keydown`,()=>{g=performance.now()}),addEventListener(`wheel`,()=>{m.lastInput=performance.now()},{passive:!0});let _=()=>g,v=(q.get(`drone`)==null?q.get(`scene`):q.get(`drone`)!==`0`)&&q.get(`instruments`)!==`0`?zt():null;if(f&&q.get(`trial`)!==`0`&&!q.get(`frames`)&&!q.get(`probe`)&&Bt(),f){let e=f.facing*Math.PI/180,t=q.get(`off`)==null,n=J(`off`,-8),r=J(`along`,t?11:0);m.e=Math.sin(e)*n+Math.cos(e)*r,m.n=Math.cos(e)*n-Math.sin(e)*r,q.get(`yawrel`)==null?q.get(`yaw`)??(m.yaw=t?e+16*Math.PI/180:e+Math.PI):m.yaw=e+J(`yawrel`,0)*Math.PI/180,t&&q.get(`eye`)==null&&(m.h=14.4),t&&q.get(`pitch`)==null&&(m.pitch=-20.6*Math.PI/180)}let y=i.look??{},b=J(`sunaz`,y.sunAz??200),x=J(`sunel`,y.sunEl??30);u.setLook(new R(n).set({sunElDeg:x,haze:q.get(`haze`)??y.haze??null,teal:J(`teal`,f?.85:y.teal??.6),turbid:J(`turbid`,f?0:y.turbid??0),bottom:f?[1,1,1]:y.bottom??null,glint:J(`glint`,1.3),cloud:J(`cloud`,y.cloud??.35),cloudType:J(`cloudtype`,y.cloudType??.25),cloudVar:J(`cloudvar`,y.cloudVar??.4),cloudDark:J(`clouddark`,y.cloudDark??0)}));let S=b*Math.PI/180,C=x*Math.PI/180,w={sunDir:[Math.sin(S)*Math.cos(C),Math.sin(C),-Math.cos(S)*Math.cos(C)]};X.info={course:r.id,adapter:`${e.info?.vendor??``} ${e.info?.architecture??``}`.trim()||`unknown`,timestamps:t,sets:c.length,msaa:u.msaa};let T=q.get(`measure`)?Gt(u,X.info):null,E=q.get(`sweep`)?en(u,X.info,[Y.width,Y.height],!!f):null,D=performance.now(),O=0,k=1,A=q.get(`freeze`)==null?null:J(`freeze`,100),j=q.get(`freezesea`)==null?null:J(`freezesea`,100),M=!q.get(`noqueuecap`),P=q.get(`dt`)==null?null:J(`dt`,1/60),F=null;if(!q.get(`probe`)&&!q.get(`frames`)&&[`127.0.0.1`,`localhost`,`[::1]`].includes(location.hostname)){let e=document.createElement(`div`);e.style.cssText=`position:fixed;inset:auto 0 40% 0;margin:auto;width:fit-content;padding:10px 16px;background:rgba(0,0,0,.75);color:#fff;font:15px system-ui;border-radius:8px;display:none;z-index:9`,document.body.appendChild(e);let t=()=>fetch(`/__probe`).then(e=>e.json()).then(t=>{F=t.busy?t:null,e.style.display=t.busy?`block`:`none`,t.busy&&(e.textContent=`Paused: a performance probe is running (${t.why}; about ${t.left} s left)`)}).catch(()=>{}).finally(()=>setTimeout(t,1500));t()}let te=J(`idlefps`,20),ne=J(`fps`,60),re=!(q.get(`measure`)||q.get(`sweep`)||q.get(`frames`))&&(q.get(`gov`)===`1`||q.get(`gov`)!==`0`&&!q.get(`probe`)&&q.get(`freeze`)==null&&!q.get(`size`))?It(u,J(`budget`,1e3/30)):null,I=0,L=e=>{if(F){D=e,requestAnimationFrame(L);return}let t=!h&&!E&&!T&&(!document.hasFocus()||e-Math.max(m.lastInput??0,_())>1e4);if(!h&&!E&&!T&&e-I<1e3/(t?te:ne)-2){requestAnimationFrame(L);return}if(I=e,M&&!u.ready()){X.skipped=(X.skipped??0)+1,requestAnimationFrame(L);return}let n=P??Math.min(.1,(e-D)/1e3);D=e,O+=n;let r=!f||!!f.tex&&(q.get(`swell`)===`0`||!!u.swell);k=T&&r?T(e,n*1e3)??1:E&&r?Zt:T||E?1:Kt;let i=r?E?.before(e)??null:null;if(A==null&&!E&&m.step(n),u.frame(m,X.freeze??A??j??100+O,{...w,load:k,tag:i}),r&&re?.(e,t),v?.(m),X.frames++,X.wall.push(n*1e3),X.wall.length>1200&&X.wall.splice(0,600),X.ready=!0,X.frames%20==0){let e=u.gpu,t=Z(X.wall.slice(-60));Ot.textContent=`${Y.width}x${Y.height}, MSAA ${u.msaa}, ${c.length} sets, ${u.patches} patches${k>1?`, drawn ${k} times`:``}\nframe ${Q(t)} ms${e?`; GPU: FFT and ripples ${$(Z(e.fft.slice(-60)))} ms, sea and sky ${$(Z(e.draw.slice(-60)))} ms`:`; submit to done ${Q(Z(u.doneMs.slice(-60)))} ms`}\neye ${m.h.toFixed(1)} m, pitch ${(m.pitch*180/Math.PI).toFixed(0)}°${tn?`\n${tn}`:``}${X.errors.length?`\n${X.errors.join(`
-`)}`:``}`}if(h&&X.frames>=h){let e=u.gpu;Object.assign(X,{done:!0,fftMs:e?Z(e.fft.slice(10)):null,drawMs:e?Z(e.draw.slice(10)):null,postMs:e?Z(e.post.slice(10)):null,frameMs:Z(X.wall.slice(10)),doneMs:Z(u.doneMs.slice(10)),patches:u.patches,perLevel:u.perLevel,vertices:u.vertices,cpuMs:Z(u.cpuMs.slice(10)),size:[Y.width,Y.height]}),X.fft=e?.fft??[],X.draw=e?.draw??[],At([navigator.userAgent,location.href,`canvas ${Y.width}x${Y.height}, rendered ${u.renderSize?.join(`x`)}`,`GPU: compute ${$(X.fftMs)} ms, sea and sky with resolve and present ${$(X.drawMs)} ms, of which resolve and present ${$(X.postMs)} ms; frame ${Q(X.frameMs)} ms`].join(`
-`))}else requestAnimationFrame(L)};requestAnimationFrame(L)}nn().catch(e=>kt(`sim2 failed: ${e.message}`));
+`});this.blit=this.device.createRenderPipeline({layout:`auto`,label:`blit`,vertex:{module:e,entryPoint:`vs`},fragment:{module:e,entryPoint:`fs`,targets:[{format:this.format}]}})}_select(e,t){let n=this.instF,r=this.patch0,i=this.levels-1,a=e.e,o=e.n,s=e.h,c=e=>[t[e],t[4+e],t[8+e],t[12+e]],l=c(0),u=c(1),d=c(2),f=c(3),p=[f.map((e,t)=>e+l[t]),f.map((e,t)=>e-l[t]),f.map((e,t)=>e+u[t]),f.map((e,t)=>e-u[t]),f.map((e,t)=>e-d[t])],m=(e,t,n)=>{let r=e-a-it,i=r+n+12,s=o-t-n-it,c=s+n+12;for(let[e,t,n,a]of p)if(e*(e>0?i:r)+t*(t>0?rt:-12)+n*(n>0?c:s)+a<0)return!1;return!0},h=e=>this.rangeK*r*2**e,g=(e,t,n)=>Math.hypot(Math.max(e-a,0,a-e-n),Math.max(t-o,0,o-t-n),s),_=0,v=this.perLevel=Array(this.levels).fill(0),y=(e,t,i)=>{_<this.instMax&&(n.set([e,t,r*2**i,i],4*_),_++,v[i]++)},b=(e,t,n)=>{let i=r*2**n,a=g(e,t,i);if(a>h(n))return!1;if(!m(e,t,i))return!0;if(n===0||a>h(n-1))return y(e,t,n),!0;let o=i/2;for(let[r,i]of[[0,0],[o,0],[0,o],[o,o]])!b(e+r,t+i,n-1)&&m(e+r,t+i,o)&&y(e+r,t+i,n-1);return!0},x=r*2**i,S=h(i);for(let e=Math.floor((a-S)/x);e<=Math.floor((a+S)/x);e++)for(let t=Math.floor((o-S)/x);t<=Math.floor((o+S)/x);t++)b(e*x,t*x,i);return _}ready(){return this.inFlight<ot}frame(e,t,{exposure:n=1.4,chop:r=this.chop??1,sunDir:i=[.3,.45,-.84],load:a=1,tag:o=null}={}){let s=performance.now(),c=this.device;this._targets();let[l,u]=this.renderSize,d=this.uniF,f=this.variant.target===`temporal`,p=Math.cos(e.yaw),m=Math.sin(e.yaw),h=Math.cos(e.pitch),g=Math.sin(e.pitch),_=[m*h,g,-p*h],v=[p,0,m],y=[v[1]*_[2]-v[2]*_[1],v[2]*_[0]-v[0]*_[2],v[0]*_[1]-v[1]*_[0]],b=[0,e.h,0],x=(e,t)=>e[0]*t[0]+e[1]*t[1]+e[2]*t[2],S=[v[0],y[0],-_[0],0,v[1],y[1],-_[1],0,v[2],y[2],-_[2],0,-x(v,b),-x(y,b),x(_,b),1],C=l/u,w=Math.tan(e.fov*Math.PI/360),T=[1/(C*w),0,0,0,0,1/w,0,0,0,0,0,-1,0,0,.05,0],E=jt(T,S),D=E,O=[0,0];if(f){O=this.temporal.jitter?Ce(this.frameNo):[0,0];let t=T.slice();t[8]=-2*O[0]/l,t[9]=-2*O[1]/u,D=jt(t,S);let n=this.prevCam??[e.e,e.n],r=[1,0,0,0,0,1,0,0,0,0,1,0,e.e-n[0],0,-(e.n-n[1]),1],i=Math.hypot(e.e-n[0],e.n-n[1])>50||!this.prevVP;i&&this.temporal.reset(),this.reproj=jt(jt(i?E:this.prevVP,r),Te(E)),this.prevVP=E,this.prevCam=[e.e,e.n]}d.set(D,0),d.set([e.e,e.h,e.n,t],16);let k=Math.hypot(...i);d.set([i[0]/k,i[1]/k,i[2]/k,at],20),d.set([l,u,1/l,1/u],24),d.set([this.fft.nS,r,n,f?this.variant.detail??.5*this.variant.rs:1],28),d.set(this.look.values,ut),d.set(this.bedU,dt);let A=this.variant.swell?this.swell:null;d.set(A?A.map:[0,0,0,0],ft),d.set(A?.wash??[0,0,0,0],pt),d.set(A?.sea??[0,0,0,0],mt),d[59]=(this.debug??0)|this.variant.dbg,d.set([v[0]*w*C,v[1]*w*C,v[2]*w*C,0,y[0]*w,y[1]*w,y[2]*w,0,_[0],_[1],_[2],0],32);let j=this._select(e,D);c.queue.writeBuffer(this.uni,0,d),c.queue.writeBuffer(this.inst,0,this.instF,0,j*4);let M=c.createCommandEncoder(),ee=this.timestamps,N=M.beginComputePass(ee?{timestampWrites:{querySet:this.qs,beginningOfPassWriteIndex:0,endOfPassWriteIndex:1}}:{});this.fft.encode(N,t),this.rip.encode(N,t),A?.encode(N,t,this.variant.swellCull===!1||f||_t||this.parcels?null:{vp:E,cam:[e.e,e.n],frame:[this.bedU[0],this.bedU[1],this.bedU[2],this.bedU[3]]});let P=A&&this.bedOn&&this.parcelPipe?this.parcels:null;P?.encode(N,t,this.bg,[this.bedU[0],this.bedU[1],this.bedU[2],this.bedU[3]],e),N.end(),P?.readback(M);let F=`${this.look.version} ${d[20].toFixed(5)} ${d[21].toFixed(5)} ${d[22].toFixed(5)}`,I=(e,t)=>{let n=M.beginRenderPass({colorAttachments:[{view:e,loadOp:`clear`,storeOp:`store`,clearValue:[0,0,0,0]}]});n.setPipeline(t),n.setBindGroup(0,this.bg),n.draw(3),n.end()},te=(e,t)=>e.createView({dimension:`2d`,baseArrayLayer:t,arrayLayerCount:1});if(F!==this.envKey){if(this.envKey=F,I(this.env.createView(),this.envPipe),this.domeReady)this.domeStrip=0;else{for(let e=0;e<6;e++)I(te(this.domes[this.domeFront],e),this.facePipes[e]);this.domeReady=!0}}this.domeStrip>=0&&(I(te(this.domes[1-this.domeFront],this.domeStrip),this.facePipes[this.domeStrip]),++this.domeStrip===6&&(this.domeFront=1-this.domeFront,this.domeStrip=-1));let ne=this.ctx.getCurrentTexture().createView(),re=this.tColor?this.tColor.createView():this.hdrTex?this.hdrTex.createView():ne;for(let e=0;e<a;e++){let t=ee&&(e===0||e===a-1)?{querySet:this.qs,...e===0?{beginningOfPassWriteIndex:2}:{},...e===a-1?{endOfPassWriteIndex:3}:{}}:null,n=M.beginRenderPass({colorAttachments:[this.colorMS?{view:this.colorMS.createView(),resolveTarget:re,loadOp:`clear`,storeOp:`discard`,clearValue:[0,0,0,1]}:{view:re,loadOp:`clear`,storeOp:`store`,clearValue:[0,0,0,1]}],depthStencilAttachment:{view:this.depth.createView(),depthClearValue:0,depthLoadOp:`clear`,depthStoreOp:this.tColor?`store`:`discard`},...t?{timestampWrites:t}:{}});n.setBindGroup(0,this.bg),n.setBindGroup(1,this.bgEnvs[this.domeFront]),j&&this.groundPipe&&this.variant.ground&&(n.setPipeline(this.groundPipe),n.setVertexBuffer(0,this.inst),n.setIndexBuffer(this.idx,`uint16`),n.drawIndexed(this.grid*this.grid*6,j)),j&&(n.setPipeline(this.water),n.setVertexBuffer(0,this.inst),n.setIndexBuffer(this.idx,`uint16`),n.drawIndexed(this.grid*this.grid*6,j)),P?.draw(n,this.parcelPipe),n.setPipeline(this.sky),n.draw(3),n.end()}if(this.tColor&&this.temporal.resolve(M,this.tColor.createView(),this.depth.createView(),this.reproj,[O[0],-O[1]],ne,ee?{querySet:this.qs,beginningOfPassWriteIndex:4,endOfPassWriteIndex:5}:null),this.hdrTex){let e=M.beginRenderPass({colorAttachments:[{view:ne,loadOp:`clear`,storeOp:`store`,clearValue:[0,0,0,1]}]});e.setPipeline(this.blit),e.setBindGroup(0,this.blitBG),e.draw(3),e.end()}let L=null,R=this.tColor?6:4;ee&&(M.resolveQuerySet(this.qs,0,R,this.qres,0),L=this.qread.pop()??c.createBuffer({size:48,usage:GPUBufferUsage.COPY_DST|GPUBufferUsage.MAP_READ}),M.copyBufferToBuffer(this.qres,0,L,0,8*R)),c.queue.submit([M.finish()]),P?.afterSubmit(),this.inFlight++;let z=performance.now();c.queue.onSubmittedWorkDone().then(()=>{this.inFlight--,At(this.doneMs,performance.now()-z)}).catch(()=>{this.inFlight--});let B=++this.frameNo;L&&L.mapAsync(GPUMapMode.READ).then(()=>{At(this.readMs,performance.now()-z);let e=new BigUint64Array(L.getMappedRange()),t=Number(e[1]-e[0])/1e6,n=R===6?Number(e[5]-e[4])/1e6:0,r=Number(e[3]-e[2])/1e6+n;At(this.gpu.fft,t),At(this.gpu.draw,r),At(this.gpu.post,n),this.gpu.count=(this.gpu.count??0)+1,o!=null&&At(this.gpu.tagged,{tag:o,fft:t,draw:r,post:n,lag:this.frameNo-B}),L.unmap(),this.qread.push(L)}).catch(()=>{}),this.patches=j,this.vertices=j*(this.grid+1)**2,At(this.cpuMs,performance.now()-s)}};function At(e,t){e.push(t),e.length>1200&&e.splice(0,600)}function jt(e,t){let n=new Float32Array(16);for(let r=0;r<4;r++)for(let i=0;i<4;i++){let a=0;for(let n=0;n<4;n++)a+=e[n*4+i]*t[r*4+n];n[r*4+i]=a}return n}var Mt=9.81;function Nt(e,t,n){let r=.39*Mt**.2*(t*e*e)**.4,i=r/.78;return{Hb:r,hb:i,u:i/n}}function Pt(e,t,n){let r=Mt*t*t/(2*Math.PI),i=n/Math.sqrt(e/r);return{xi:i,L0:r,type:i<.5?`spilling`:i<3.3?`plunging`:`collapsing or surging`}}var Ft=(e,t,n,r,i,a)=>{let o=Nt(r,i,n),s=Pt(r,i,n),c=Math.max(o.u,2);return{id:e,rung:`R1`,title:t,q:{scene:`beach`,plane:n,sea:`regular`,H:r,tp:i,chop:0,whitewater:0,parcels:1},views:{"down the line":{eye:Math.max(.8,1.6*o.Hb),pitch:-5,off:.8*c,along:-10,yawrel:82},"from the beach":{eye:1.6,pitch:-14,off:Math.max(-3,-.2*c),along:0,yawrel:30},"from behind":{eye:Math.max(1.5,2*o.Hb),pitch:-10,off:c+Math.max(8,4*o.Hb),along:0,yawrel:170},above:{eye:Math.max(10,.6*c),pitch:-70,off:c,along:0,yawrel:0}},notes:[`A regular wave ${r} m high at ${i} s, long-crested, straight in, over a plane slope of 1:${Math.round(1/n)}; no wind sea.`,`Breaker type by Battjes 1974's surf similarity number: ξ0 = ${s.xi.toFixed(2)} (spilling below 0.5, plunging 0.5 to 3.3): ${s.type}.`,`Breaks about ${o.u.toFixed(0)} m offshore in ${o.hb.toFixed(2)} m of water, ${o.Hb.toFixed(2)} m high (Komar and Gaughan 1972; H/h 0.78).`,`Look at: ${a}`,`Now: R1a and R1b, parcels that spawn, fly, land, ride and dissolve (no parcel touches another yet); today's whitewater off.`]}},It=(e,t,n,r,i)=>({id:e,rung:`R0`,title:t,q:{scene:`beach`,...n},views:r,notes:i}),Lt=[Ft(`r1-spill`,`Spilling: 0.5 m, 6 s on 1:50`,.02,.5,6,`a white roller growing down the front from the crest; a bore running in; foam left behind.`),Ft(`r1-plunge`,`Plunging: 0.3 m, 8 s on 1:10`,.1,.3,8,`a lip thrown ahead of the crest, its landing and splash-up; the crash as an event at the start.`),Ft(`r1-tiny`,`Tiny shore break: 0.1 m, 8 s on 1:10`,.1,.1,8,`a distinct small crash at the water's edge even at this size (Mike: "apparent even for tiny shore breaking ripple waves").`),Ft(`r1-weak-plunge`,`Weak plunging: 0.6 m, 8 s on 1:20`,.05,.6,8,`between the two: a short throw that turns into a spilling bore.`),Ft(`r1-big-spill`,`Big spilling: 1.5 m, 10 s on 1:50`,.02,1.5,10,`the roller's volume and churn at a size a surfski meets outside; the width of the surf zone.`),It(`r0-mike-2m`,`Today: 2 m at 7 s, Mike's drone view`,{hs:2,tp:7,attach:0},{drone:{eye:8,pitch:-20,off:60,along:-10,yawrel:35},low:{eye:4.9,pitch:-4,off:82,along:81,yawrel:-12}},[`The default beach (bar, crescentic rips), a 2 m sea at 7 s with the wind sea: the view the perf is measured at.`,`Now: R0, today's system.`]),It(`r0-shore`,`Today: 0.5 m shore break on a 0.12 face`,{bar:0,rips:0,divots:0,faceslope:.12,hs:.5,tp:8},{side:{eye:1,pitch:-6,off:-1,along:-10,yawrel:-60},"from the beach":{eye:1.6,pitch:-25,off:0,along:0,yawrel:75}},[`The default beach without its bar, a random 0.5 m sea at 8 s on a steep face: the crash of learnings 53.`,`Now: R0, today's system.`])],Rt=e=>Lt.find(t=>t.id===e)??null,zt=9.81,Bt={hs:1.2,tp:10,gamma:3.3,spread:10,offNormal:0,seed:3};function Vt(e,t,n){let r=Math.sqrt(e*(zt*t*t/(2*Math.PI))),i=.35*n*r,a=.75*n*r,o=.06*r;return{setup:i,sInc:a,sIG:o,R2:1.1*(i+Math.hypot(a,o)/2)}}var q=new URLSearchParams(location.search),J=(e,t)=>q.get(e)==null?t:Number(q.get(e)),Ht=document.getElementById(`hud`),Y=document.getElementById(`view`),X={ready:!1,done:!1,errors:[],frames:0,fft:[],draw:[],wall:[]};window.__sim2=X;var Ut=e=>{X.errors.length>=20||X.errors.includes(e)||(X.errors.push(e),Ht.textContent=`${Ht.textContent}\n${e}`,console.error(e))},Z=e=>{if(!e.length)return null;let t=e.slice().sort((e,t)=>e-t);return t[Math.floor(t.length/2)]},Wt=e=>{q.get(`post`)&&fetch(`./__report`,{method:`POST`,body:e}).catch(()=>{})},Q=e=>e==null?`-`:e.toFixed(1),$=e=>e==null?`-`:e.toFixed(2),Gt=typeof matchMedia<`u`&&matchMedia(`(pointer: coarse)`).matches,Kt=q.get(`dpr`)==null?Math.min(devicePixelRatio,Math.min(innerWidth,innerHeight)<600?2:devicePixelRatio,Gt?Math.sqrt(25e5/(innerWidth*innerHeight)):1/0):J(`dpr`,devicePixelRatio),qt=Kt>=1.5?1:.75*Kt,Jt=Kt;function Yt(){let e=Jt,t=(q.get(`size`)??``).split(`x`).map(Number);Y.width=t[0]||Math.round(innerWidth*e),Y.height=t[1]||Math.round(innerHeight*e),t[1]&&(Y.style.width=`${Y.width/e}px`,Y.style.height=`${Y.height/e}px`)}function Xt(e,t){let n=0,r=0,i=3,a=0,o=0,s=!1;return(c,l=!1)=>{let u=e.gpu;if(!u)return;if(l||document.hidden){s=!0;return}if(s){s=!1,i=3,o=u.count??0,a=c+1e3;return}if(c<a)return;a=c+1e3;let d=Math.min((u.count??0)-o,u.fft.length,u.draw.length);if(o=u.count??0,i>0){i--;return}if(d<5)return;let f=Z(u.fft.slice(-d)),p=Z(u.draw.slice(-d)),m=f+p;n=m>.9*t?n+1:0,r=m<.55*t?r+1:0;let h=Jt;n>=2?h=Math.max(qt,Jt*Math.sqrt(Math.min(1,Math.max(.6,(.8*t-f)/Math.max(p,.001))))):r>=5&&(h=Math.min(Kt,Jt*Math.sqrt(1.125))),Math.abs(h-Jt)>.02&&(Jt=h,Yt(),n=0,r=0,i=3,gn=`resolution ${Jt.toFixed(2)}x (the load governor: GPU ${m.toFixed(1)} ms against a ${t.toFixed(1)} ms budget)`)}}var Zt=.7;function Qt(e,t=()=>0){let n={e:0,n:0,h:J(`eye`,1.1),yaw:(q.get(`yaw`)==null?e.headingDeg??0:J(`yaw`,0))*Math.PI/180,pitch:J(`pitch`,-6)*Math.PI/180,fov:J(`fov`,70)},r=new Set,i=J(`speed`,3.5),a=J(`turn`,0)*Math.PI/180;addEventListener(`keydown`,e=>r.add(e.key.toLowerCase())),addEventListener(`keyup`,e=>r.delete(e.key.toLowerCase()));let o=new Map,s=null,c=performance.now(),l={e:0,n:0,h:0},u=()=>{let e=0,t=0;for(let n of o.values())e+=n.x,t+=n.y;return{x:e/o.size,y:t/o.size,n:o.size}},d=()=>[Math.sin(n.yaw),Math.cos(n.yaw)],f=()=>[Math.cos(n.yaw),-Math.sin(n.yaw)],p=(e,t,r,i)=>{let[a,o]=d(),[s,c]=f(),u=a*e+s*t,p=o*e+c*t;n.e+=u,n.n+=p,n.h=Math.max(.3,Math.min(3e3,n.h+r));let h=1/Math.max(.016,i),g=3*Math.max(4,n.h),_=e=>Math.max(-g,Math.min(g,e));l.e=_(u*h),l.n=_(p*h),l.h=_(r*h)*.5,m=performance.now(),n.lastInput=m},m=0,h=()=>{if(n.pitch>=-.005)return null;let e=Math.max(.3,n.h)/Math.tan(-n.pitch);return e>5e3?null:{e:n.e+Math.sin(n.yaw)*e,n:n.n+Math.cos(n.yaw)*e,D:e}},g=e=>{let t=h();t&&(n.yaw+=e,n.e=t.e-Math.sin(n.yaw)*t.D,n.n=t.n-Math.cos(n.yaw)*t.D,l.e=0,l.n=0,m=performance.now(),n.lastInput=m)};Y.addEventListener(`contextmenu`,e=>e.preventDefault()),Y.addEventListener(`pointerdown`,e=>{n.lastInput=performance.now(),o.set(e.pointerId,{x:e.clientX,y:e.clientY,two:e.pointerType===`mouse`&&e.button===2}),Y.setPointerCapture(e.pointerId),s=o.size>1?u():null,c=performance.now()}),Y.addEventListener(`pointermove`,e=>{let t=o.get(e.pointerId);if(t){if(o.size===1&&t.two){let r=performance.now(),i=(r-c)/1e3,a=Math.max(1,n.h)*.006;e.altKey?(p(0,0,-(e.clientY-t.y)*a,i),g(-(e.clientX-t.x)*.004)):(n.yaw+=(e.clientX-t.x)*.004,p((e.clientY-t.y)*a,0,0,i)),c=r}else o.size===1&&(n.yaw+=(e.clientX-t.x)*.004,n.pitch=Math.max(-1.5,Math.min(1.2,n.pitch-(e.clientY-t.y)*.004)));if(t.x=e.clientX,t.y=e.clientY,o.size>1&&s&&s.n===o.size){let e=u(),t=e.x-s.x,r=e.y-s.y,i=performance.now(),a=(i-c)/1e3,l=Math.max(1,n.h)*.006;o.size===2?(n.yaw+=t*.004,p(r*l,0,0,a)):p(0,-t*l,r*l*.6,a),s=e,c=i}}});let _=e=>{o.delete(e.pointerId),s=o.size>1?u():null,c=performance.now()};Y.addEventListener(`pointerup`,_),Y.addEventListener(`pointercancel`,_);let v=performance.now();Y.addEventListener(`wheel`,e=>{e.preventDefault();let t=performance.now(),r=Math.min(.1,(t-v)/1e3),i=Math.max(1,n.h)*.004,a=e.deltaMode===1?16:1;v=t;let o=e.deltaX*a,s=e.deltaY*a;e.ctrlKey?p(0,0,-s*i*2,r):e.altKey?(p(0,0,-s*i*1.5,r),g(-o*.003)):e.shiftKey?(n.yaw+=o*.003,n.pitch=Math.max(-1.5,Math.min(1.2,n.pitch-s*.003))):p(-s*i,o*i,0,r)},{passive:!1});let y=q.get(`drone`)==null?q.get(`scene`)!=null:q.get(`drone`)!==`0`;return n.halt=()=>{l.e=l.n=l.h=0},n.step=e=>{let s=e=>r.has(e),c=+!!s(`w`)-!!s(`s`),u=+!!s(`d`)-!!s(`a`);if(y){let r=3*Math.max(4,n.h)*e,i=+!!s(`e`)-!!s(`q`);l.e+=(Math.sin(n.yaw)*c+Math.cos(n.yaw)*u)*r,l.n+=(Math.cos(n.yaw)*c-Math.sin(n.yaw)*u)*r,l.h+=i*r;let a=o.size>=2||performance.now()-m<60,d=a?1:Math.exp(-e/Zt);a||(n.e+=l.e*e,n.n+=l.n*e,n.h+=l.h*e),l.e*=d,l.n*=d,l.h*=d;let f=Math.max(t(n.e,n.n),0)+.3;n.h<f&&(n.h=f,l.h=Math.max(l.h,0)),n.h=Math.min(n.h,3e3),s(`arrowleft`)&&(n.yaw-=e),s(`arrowright`)&&(n.yaw+=e),s(`arrowup`)&&(n.pitch=Math.min(1.2,n.pitch+e*.6)),s(`arrowdown`)&&(n.pitch=Math.max(-1.5,n.pitch-e*.6)),n.speed=Math.hypot(l.e,l.n),n.climb=l.h,n.ground=t(n.e,n.n);return}let d=r.size?Math.max(i,3.5)*4*Math.max(1,n.h/10):y?0:i,f=r.size?c:1;n.e+=(Math.sin(n.yaw)*f+Math.cos(n.yaw)*u)*d*e,n.n+=(Math.cos(n.yaw)*f-Math.sin(n.yaw)*u)*d*e,r.size||(n.yaw+=a*e),s(`arrowleft`)&&(n.yaw-=e),s(`arrowright`)&&(n.yaw+=e),s(`arrowup`)&&(n.pitch=Math.min(1.2,n.pitch+e*.6)),s(`arrowdown`)&&(n.pitch=Math.max(-1.4,n.pitch-e*.6)),s(`q`)&&(n.h=Math.max(.3,n.h*Math.exp(-e))),s(`e`)&&(n.h=Math.min(3e3,n.h*Math.exp(e)))},n}function $t(){let e=document.createElement(`canvas`),t=Math.min(2,devicePixelRatio||1);e.width=150*t,e.height=224*t,e.style.cssText=`position:fixed;top:8px;right:8px;width:150px;height:224px;pointer-events:none;z-index:5`,document.body.appendChild(e);let n=e.getContext(`2d`);n.scale(t,t);let r=[`N`,`NE`,`E`,`SE`,`S`,`SW`,`W`,`NW`];return e=>{let t=e.pitch*180/Math.PI,i=69/45,a=(e.yaw*180/Math.PI%360+360)%360,o=75+t*i;n.clearRect(0,0,150,224),n.save(),n.beginPath(),n.arc(75,75,69,0,2*Math.PI),n.clip(),n.fillStyle=`#3b7fc4`,n.fillRect(0,0,150,150),n.fillStyle=`#8a6a3c`,n.fillRect(0,o,150,150),n.strokeStyle=`#fff`,n.lineWidth=2,n.beginPath(),n.moveTo(0,o),n.lineTo(150,o),n.stroke(),n.lineWidth=1,n.font=`9px system-ui`,n.fillStyle=`#fff`,n.textAlign=`left`;for(let e=-80;e<=80;e+=10){if(!e)continue;let t=o-e*i,r=e%20?10:20;t<6||t>144||(n.beginPath(),n.moveTo(75-r,t),n.lineTo(75+r,t),n.stroke(),e%20||n.fillText(String(e),75+r+3,t+3))}n.restore(),n.strokeStyle=`#fc3`,n.lineWidth=2.5,n.beginPath(),n.moveTo(47,75),n.lineTo(66,75),n.lineTo(75,81),n.lineTo(84,75),n.lineTo(103,75),n.stroke(),n.strokeStyle=`rgba(255,255,255,0.8)`,n.lineWidth=1.5,n.beginPath(),n.arc(75,75,69,0,2*Math.PI),n.stroke(),n.fillStyle=`rgba(0,0,0,0.55)`,n.fillRect(0,150,150,74),n.fillStyle=`#fff`,n.textAlign=`center`,n.font=`bold 13px system-ui`,n.fillText(`${String(Math.round(a)).padStart(3,`0`)}° ${r[Math.round(a/45)%8]}`,75,166),n.font=`12px system-ui`,n.textAlign=`left`;let s=e.h-Math.max(e.ground??0,0);n.fillText(`height ${e.h<10?e.h.toFixed(1):Math.round(e.h)} m`,8,184),n.fillText(`above ${(e.ground??0)>0?`ground`:`water`} ${s<10?s.toFixed(1):Math.round(s)} m`,8,200),n.fillText(`pitch ${Math.round(t)}°  speed ${(e.speed??0).toFixed(1)} m/s`,8,216)}}function en(e,t,n){let r=Rt(new URLSearchParams(location.search).get(`test`)),i=document.createElement(`div`);i.style.cssText=`position:fixed;right:8px;bottom:8px;max-width:min(460px,92vw);display:flex;flex-direction:column;gap:4px;font:12px system-ui;z-index:6;background:rgba(0,0,0,.6);padding:6px 8px;border-radius:6px;color:#fff`;let a=(e,t,n)=>{let r=document.createElement(e);return t&&(r.style.cssText=t),n!=null&&(r.textContent=n),r},o=e=>`font:12px system-ui;padding:3px 8px;border-radius:4px;border:0;cursor:pointer;background:${e?`#fc3`:`#eee`};color:#000`,s=(...e)=>{let t=a(`div`,`display:flex;gap:4px;flex-wrap:wrap;align-items:center;justify-content:flex-end`);return t.append(...e),i.append(t),t},c=a(`select`,`font:12px system-ui;max-width:100%`);c.append(new Option(`(no test case: the address as it is)`,``));for(let e of[...new Set(Lt.map(e=>e.rung))]){let t=document.createElement(`optgroup`);t.label=e;for(let n of Lt.filter(t=>t.rung===e))t.append(new Option(`${n.id}: ${n.title}`,n.id));c.append(t)}if(c.value=r?.id??``,c.onchange=()=>{let e=Rt(c.value);if(!e){location.search=`scene=beach`;return}let t=Object.values(e.views)[0],n=new URLSearchParams({test:e.id,...e.q,...t});location.search=n.toString()},s(a(`span`,`opacity:.8`,`case`),c),r){let n=t*Math.PI/180,i=t=>{e.e=Math.sin(n)*t.off+Math.cos(n)*t.along,e.n=Math.cos(n)*t.off-Math.sin(n)*t.along,e.yaw=n+t.yawrel*Math.PI/180,e.h=t.eye,e.pitch=t.pitch*Math.PI/180,e.halt?.(),e.lastInput=performance.now()};s(a(`span`,`opacity:.8`,`view`),...Object.entries(r.views).map(([e,t])=>{let n=a(`button`,o(!1),e);return n.onclick=()=>i(t),n}))}let l=[[`pause`,0],[`¼×`,.25],[`1×`,1]],u=[],d=e=>{X.timeK=e,u.forEach(([t,n])=>{t.style.cssText=o(n===e)})};if(s(a(`span`,`opacity:.8`,`time`),...l.map(([e,t])=>{let n=a(`button`,o(t===1),e);return n.onclick=()=>d(t),u.push([n,t]),n})),r){let e=a(`div`,`text-align:left;line-height:1.35;opacity:.92;white-space:normal`);e.innerHTML=`<b>${r.title}</b>`;for(let t of r.notes)e.append(a(`div`,``,t));i.append(e)}let f=a(`div`,`text-align:left;font:11px ui-monospace,monospace;opacity:.9;white-space:pre-wrap`);i.append(f),setInterval(()=>{f.textContent=n()},500),document.body.append(i)}var tn=3,nn=J(`ramp`,75),rn=J(`tail`,30),an=48;function on(e,t){let n=tn+nn+rn,r=[],i=[],a=T(),o=D(),s=null,c=-1,l=0,u=[],d=!1,f=60,p=1,m=e=>e<tn?`warm`:e<tn+nn?`ramp`:e<n?`tail`:null,h=(n,a)=>{let o=e.gpu,s=e=>e?e.splice(0):[],c={s:n,phase:a,load:p,fps:l,frameMs:Z(u),doneMs:Z(s(e.doneMs)),drawMs:Z(s(o?.draw)),computeMs:Z(s(o?.fft)),patches:e.patches};if(a===`warm`?i.push(...u):r.push(c),n===2){let e=i.slice().sort((e,t)=>e-t)[Math.floor(i.length*.1)]??16.7;f=e<11?120:e<22?60:30,t.pacing=k(e)}if(a===`ramp`||n===2){let e=l>=.95*f;p=n===2?1:e?Math.min(an,p+Math.max(1,Math.floor(p/4))):Math.max(1,p-(l<.8*f?2:1))}n+1===tn+nn&&(p=1),l=0,u=[]},g=()=>{let e=[`display ${f} fps (${t.pacing??`?`})`],n=r.filter(e=>e.phase===`ramp`),i=r.filter(e=>e.phase===`tail`);for(let t=0;t<nn;t+=10){let r=n.filter(e=>e.s-tn>=t&&e.s-tn<t+10).filter(e=>e.fps>=.95*f).map(e=>e.load);e.push(`${t}-${Math.min(nn,t+10)} s: held ${r.length?`up to ${Math.max(...r)} copies (median ${Z(r)})`:`no second at the display rate`}`)}let a=(e,t)=>Z(e.map(e=>e[t]).filter(e=>e!=null)),o=i.slice(0,5),s=i.slice(-10);return e.push(`then 1 copy: ${Q(a(o,`fps`))} fps in its first 5 s, ${Q(a(s,`fps`))} in its last 10 s; submit to done ${Q(a(o,`doneMs`))} then ${Q(a(s,`doneMs`))} ms`+(t.timestamps?`; GPU sea ${$(a(s,`drawMs`))} ms, compute ${$(a(s,`computeMs`))} ms`:``)),e},_=async()=>{d=!0;let n=[`build ${document.querySelector(`meta[name=build]`)?.content??``}`,navigator.userAgent,`${innerWidth}x${innerHeight} at ${devicePixelRatio}x, canvas ${Y.width}x${Y.height}, MSAA ${e.msaa}`,location.href,`WebGPU: ${t.adapter}; timestamp queries ${t.timestamps?`yes`:`no`}; ${t.sets} sea sets`,`${await w()}, ${o.report()}`];o.release();let i=[`s phase copies fps frame_ms done_ms gpu_sea_ms gpu_compute_ms patches`,...r.map(e=>[e.s,e.phase,e.load,e.fps,Q(e.frameMs),Q(e.doneMs),$(e.drawMs),$(e.computeMs),e.patches].join(` `))],s=g(),c=[...n,``,`The WebGPU sea: the copies a frame held at the display rate, then one copy:`,...s,``,...i,...X.errors.length?[``,...X.errors]:[]].join(`
+`);X.measure={rows:r,lines:s,report:c},Wt(c),a.done({lines:s,report:c,title:`Surfski WebGPU sea measurement`,onSend:()=>O(`Surfski WebGPU sea measurement`,c),onCopy:e=>E(c,e)})};return(e,t)=>{if(d)return null;s??=e;let r=Math.floor((e-s)/1e3),i=m(r);return r!==c&&(c>=0&&h(c,m(c)),c=r,i&&a.progress(i===`warm`?`the WebGPU sea, settling`:i===`ramp`?`the WebGPU sea, ${p} cop${p>1?`ies`:`y`} a frame`:`the WebGPU sea drawn once`,n-r)),i?(l++,u.push(t),p):(_(),null)}}var sn=Math.max(1,J(`load`,1)),cn=J(`slot`,2.5),ln=.5,un=J(`rounds`,3),dn=4,fn=Math.max(1,J(`load`,1)),pn=.08;function mn(e,t=!1){let n=t=>Math.min(1,Math.sqrt(t/e));return t?[[`full again`,{}],[`no swell (its compute and reads; the bed fades the open sea)`,{swell:!1}],[`no whitewater`,{dbg:1024}],[`no shore wash (its front and lace)`,{dbg:4096}],[`no water’s edge at the pixel’s scale`,{dbg:256}],[`the bed read bilinear only (no cubic)`,{dbg:512}],[`the cover’s patches as their mean`,{dbg:128}],[`all three bed cuts`,{dbg:896}],[`no ground pass`,{ground:!1}],[`no ripples`,{ripples:!1}],[`no per-pixel sea sets`,{fragSets:!1}],[`16 x 16 patches, not 32 x 32`,{grid:16}],[`1.2 megapixels`,{scale:n(12e5)}],[`one colour (mesh, raster only)`,{shade:!1}]]:[[`full again`,{}],[`MSAA off`,{msaa:1}],[`1.2 megapixels`,{scale:n(12e5)}],[`1.2 megapixels, MSAA off`,{scale:n(12e5),msaa:1}],[`0.6 megapixels`,{scale:n(6e5)}],[`no ripples`,{ripples:!1}],[`sky from 1 facet, not 4`,{facets:1}],[`no per-pixel sea sets`,{fragSets:!1}],[`16 x 16 patches, not 32 x 32`,{grid:16}],[`flat vertices (no displacement)`,{vsDisp:!1}],[`one colour (mesh, raster, MSAA only)`,{shade:!1}],[`the position among the fragment inputs`,{fsPos:!0}],[`MSAA off, 16 x 16 patches`,{msaa:1,grid:16}],[`one colour, MSAA off`,{shade:!1,msaa:1}],[`half-float target, own resolve (web-ocean)`,{target:`hdr`}],[`half-float target, MSAA off`,{target:`hdr`,msaa:1}],[`depth24plus, not depth32float`,{depth:`depth24plus`}],[`footprint worked out (no derivatives)`,{deriv:!1}],[`footprint worked out, MSAA off`,{deriv:!1,msaa:1}],[`interpolation marked centre`,{interp:`@interpolate(perspective, center)`}],[`added arithmetic (MSAA 4)`,{burn:64}],[`added arithmetic, MSAA off`,{burn:64,msaa:1}],[`added arithmetic in the sky (one big triangle)`,{skyBurn:256}],[`added arithmetic in the sky, MSAA off`,{skyBurn:256,msaa:1}],[`temporal, drawn at 0.7 of the size`,{target:`temporal`,rs:.7}],[`temporal, drawn at 0.5 of the size`,{target:`temporal`,rs:.5}],[`temporal, drawn at full size`,{target:`temporal`,rs:1}],[`temporal, drawn at 0.85 of the size`,{target:`temporal`,rs:.85}],[`every ripple band read in full (no regimes)`,{regimes:0}],[`no regimes, MSAA off`,{regimes:0,msaa:1}],[`both regimes, MSAA off`,{regimes:3,msaa:1}]]}function hn(e,t,n,r=!1){let i=q.get(`only`)?.split(`,`).map(Number),a=mn(n[0]*n[1],r).filter((e,t)=>!i||i.includes(t)),o=[];for(let e=0;e<un;e++)for(let[e,t]of a)o.push([`full`,{}],[e,t]);o.push([`full`,{}]);let s=dn+o.length*cn+1.5,c=T(),l=D(),u=o.map(([e])=>({name:e,frames:0,draw:[],post:[],compute:[],lag:[],iv:[],tLast:null})),d=null,f=-2,p=!1,m=null,h={msaa:e.variant.msaa,grid:e.variant.grid},g=([,t])=>{let{scale:r=1,...i}=t;Y.width=Math.round(n[0]*r),Y.height=Math.round(n[1]*r),e.setVariant({...h,...i})};for(let[,t]of a){let{scale:n,...r}=t;e.setVariant({...h,...r})}e.setVariant(h);let _=()=>{for(let t of e.gpu?.tagged.splice(0)??[]){let e=u[t.tag];e&&(e.draw.push(t.draw-t.post),e.post.push(t.post),e.compute.push(t.fft),e.lag.push(t.lag))}},v=async()=>{p=!0,_(),g([`full`,{}]);let r=(e,t)=>{let n=e.slice().sort((e,t)=>e-t);return n.length?n[Math.min(n.length-1,Math.floor(t*n.length))]:null},i=u.map((e,t)=>{let n=d+(dn+(t+1)*cn)*1e3,i=r(e.iv,.5),a=e.frames===0||n-e.tLast>Math.max(500,3*(i??0));return{name:e.name,drawMs:e.draw.length?Z(e.draw)/fn+Z(e.post):null,postMs:Z(e.post),computeMs:Z(e.compute),fps:e.frames/(cn-ln),n:e.draw.length,lag:Z(e.lag),p50:i,p95:r(e.iv,.95),partial:a}}),o=i.findIndex((e,t)=>e.fps===0&&i.slice(t).every(e=>e.fps===0)),s=t.timestamps?`drawMs`:`fps`,f=[];for(let[e]of a){let n=[],r=[],a=0;i.forEach((o,c)=>{if(o.name!==e||o.partial||i[c-1]?.partial||i[c+1]?.partial)return;let l=i[c-1]?.[s],u=i[c+1]?.[s],d=o[s];if(l==null||u==null||d==null)return;let f=(l+u)/2;n.push((t.timestamps?f-d:d-f)/f),r.push(f-d),Math.abs(l-u)/f>pn&&a++}),f.push({name:e,rel:Z(n),lo:n.length?Math.min(...n):null,hi:n.length?Math.max(...n):null,ms:Z(r),pairs:n.length,drift:a})}let m=i.filter(e=>e.name===`full`&&!e.partial),h=e=>e==null?`-`:`${Math.round(e*100)}%`,v=[t.timestamps?`the full picture: ${$(Z(m.map(e=>e.drawMs)))} ms of GPU (${$(m[0]?.drawMs)} at the start, ${$(m[m.length-1]?.drawMs)} at the end), compute ${$(Z(m.map(e=>e.computeMs)))} ms, ${Q(Z(m.map(e=>e.fps)))} fps`:`the full picture: ${Q(Z(m.map(e=>e.fps)))} fps (no GPU timers here: the shares are of frames a second)`,...f.map(e=>`${e.name}: ${t.timestamps?`saves`:`gains`} ${h(e.rel)}${t.timestamps?` (${$(e.ms)} ms)`:``}, ${h(e.lo)} to ${h(e.hi)}${e.drift?`; ${e.drift} of ${e.pairs} pairs drifted`:``}`),`the times came back ${Q(Z(u.flatMap(e=>e.lag)))} frames late; submit to done ${Q(Z(e.doneMs))} ms, to the timers read back ${Q(Z(e.readMs))} ms`];o>=0&&v.push(`no frames from slot ${o} on (about ${Math.round(dn+o*cn)} s in): the page stopped drawing (the screen locked, or the page was hidden); the slots before it stand`);let y=[`build ${document.querySelector(`meta[name=build]`)?.content??``}`,navigator.userAgent,`${innerWidth}x${innerHeight} at ${devicePixelRatio}x, full canvas ${n[0]}x${n[1]}, MSAA 4${fn>1?`, ${fn} copies a frame (times per copy)`:``}`,location.href,`WebGPU: ${t.adapter}; timestamp queries ${t.timestamps?`yes`:`no`}; ${t.sets} sea sets, ${e.patches} patches`,`${await w()}, ${l.report()}`];l.release();let b=[`slot variant gpu_sea_ms gpu_resolve_ms gpu_compute_ms fps samples lag_frames frame_p50_ms frame_p95_ms cut_short`,...i.map((e,t)=>[t,`"${e.name}"`,$(e.drawMs),$(e.postMs),$(e.computeMs),Q(e.fps),e.n,e.lag,Q(e.p50),Q(e.p95),+!!e.partial].join(` `))],x=[...y,``,`The WebGPU sea, part by part (each against the full picture either side of it):`,...v,``,...b,...X.errors.length?[``,...X.errors]:[]].join(`
+`);X.sweep={slots:i,rows:f,lines:v,report:x},Wt(x),c.done({lines:v,report:x,title:`Surfski WebGPU sea parts`,onSend:()=>O(`Surfski WebGPU sea parts`,x),onCopy:e=>E(x,e)})};return{before(e){if(p)return null;d??=e;let t=(e-d)/1e3-dn,n=t<0?-1:Math.floor(t/cn);if(n>=o.length)return m??=e,e-m>1500?v():_(),null;if(n!==f&&(f=n,n>=0&&g(o[n]),(n===0||n===o.length>>1)&&Wt(`sweep progress: slot ${n} of ${o.length} at ${Q((e-d)/1e3)} s, ${X.frames} frames${X.errors.length?`; ${X.errors.join(`; `)}`:``}`),c.progress(n>=0?`the WebGPU sea's parts: ${o[n][0]}`:`the WebGPU sea, settling`,s-(e-d)/1e3)),_(),n<0||t-n*cn<ln)return null;let r=u[n];return r.tLast!=null&&r.iv.push(e-r.tLast),r.tLast=e,r.frames++,n}}}var gn=``;async function _n(){if(!navigator.gpu){Ut(`WebGPU is not available in this browser`);return}let e=await navigator.gpu.requestAdapter({powerPreference:`high-performance`});if(!e){Ut(`WebGPU: no adapter`);return}let t=e.features.has(`timestamp-query`),n=await e.requestDevice({requiredFeatures:t?[`timestamp-query`]:[]});n.addEventListener(`uncapturederror`,e=>Ut(`WebGPU error: ${e.error.message}`)),n.lost.then(e=>Ut(`WebGPU device lost: ${e.message}`)),Yt(),!q.get(`size`)&&!q.get(`sweep`)&&addEventListener(`resize`,Yt);let r=o(q.get(`course`)??(q.get(`scene`)===`beach`?`perth-trigg-sorrento`:`gorge-swellcity`))??o(`gorge-swellcity`),i=s(r.name),a=i.state.fft.sea,c=q.get(`chop`)==null?1:Math.max(0,J(`chop`,1)),l=a.sets.slice(0,32).map(e=>c===1?e:{...e,re:e.re.map(e=>e*c),im:e.im.map(e=>e*c)}),u=new ee(n);u.build({...a,sets:l});let d=new kt(n,Y,{msaa:J(`msaa`,1),timestamps:t,grid:J(`grid`,32),patch0:J(`patch0`,4),levels:J(`levels`,12),rangeK:J(`rangeK`,6)});q.get(`ground`)===`0`&&d.setVariant({msaa:d.variant.msaa,grid:d.variant.grid,ground:!1});let f=new N(n);for(let e of[...d.modules,...f.modules])for(let t of(await e.getCompilationInfo()).messages)Ut(`${e.label} ${t.type} line ${t.lineNum}:${t.linePos} ${t.message}`);let p=q.get(`whitewater`)===`0`?594944:0;d.setSea(u,f,i.state,{micro:J(`ripples`,1),debug:J(`seadbg`,0)|p});let m=q.get(`scene`)===`beach`?q.get(`plane`)==null?{...Ee}:De(Math.min(.5,Math.max(.005,J(`plane`,.05)))):null;if(m){for(let[e,t]of[[`d50`,`d50`],[`faceslope`,`faceSlope`],[`berm`,`berm`],[`dune`,`dune`],[`seed`,`seed`]])q.get(e)!=null&&(m[t]=J(e,m[t]));q.get(`bar`)!=null&&(m.bar={...m.bar,height:J(`bar`,m.bar.height)}),m.rips=q.get(`rips`)===`0`||!m.rips?null:{...m.rips,attach:Math.min(1,Math.max(0,J(`attach`,m.rips.attach))),spacing:Math.max(40,J(`ripspacing`,m.rips.spacing)||m.rips.spacing)},q.get(`shore`)===`0`&&(m.shore=null),m.divots=q.get(`divots`)===`0`||!m.divots?null:{...m.divots,hs:Math.max(0,J(`divhs`,m.divots.hs)),tp:Math.max(2,J(`divtp`,m.divots.tp))},m.facing=J(`facing`,((i.state.dirToDeg??20)+180)%360);let e=q.get(`sea`)===`regular`?Math.max(.01,J(`H`,.3)):0,t={hs:e?Math.SQRT2*Math.hypot(e,q.get(`T2`)?J(`H2`,e):0):J(`hs`,Bt.hs),tp:J(`tp`,Bt.tp)},r=q.get(`swell`)===`0`?null:Vt(t.hs,t.tp,m.faceSlope);r&&(m.wetLine=r.R2);let a=performance.now(),o=new Worker(new URL(new URL(`bed-texture-worker-CgXqlQmy.js`,import.meta.url).href,``+import.meta.url),{type:`module`});o.onmessage=e=>{m.tex=e.data.inner,m.tex.outer=e.data.outer,m.buildMs=performance.now()-a,X.bedBake={ms:e.data.ms,wallMs:m.buildMs},o.terminate(),d.setBed(m.tex,[0,0],m.facing,m),s&&=(s(),null)},o.postMessage({P:{...m}});let s=null;if(q.get(`swell`)!==`0`){let i={...Bt,hs:t.hs,tp:t.tp,spread:J(`spread`,Bt.spread),offNormal:J(`dir`,Bt.offNormal),...e?{regular:e,T2:q.get(`T2`)?J(`T2`,t.tp):0,H2:J(`H2`,e),dir2:J(`dir2`,J(`dir`,Bt.offNormal))}:{}},a=new Worker(new URL(new URL(`bed-solve-worker-BOpBRLtn.js`,import.meta.url).href,``+import.meta.url),{type:`module`}),o=performance.now();a.onmessage=t=>{if(t.data.progress){gn=`the bed's wave response: ${t.data.progress[0]} of ${t.data.progress[1]} bins`;return}let i=t.data.result;X.swellSolve={ms:i.ms,wallMs:performance.now()-o,bins:i.bins.length,grid:[i.nx,i.ny]};let c=()=>{d.setSwell(new ge(n,i,d.bedTex.createView(),m.tex,{u0:Math.floor(i.u0),swash:q.get(`swash`)===`0`?null:r,face:m.faceSlope,...e?{gamma:.78*Math.SQRT2}:{}})),q.get(`parcels`)===`1`&&(d.setParcels(new xe(n)),X.parcels=d.parcels,window.__bd0=[...d.bedU.slice(0,4)])};if(m.tex?c():s=c,gn=``,a.terminate(),r&&i.breaking){let e=0,t=0;for(let n=0;n<i.nx;n++)for(let r=0;r<i.ny;r++){let a=4*(r*i.nx+n);if(i.breaking[a+2]>0){e+=i.breaking[a+3],t++;break}}let n=t?e/t:r.setup;X.runup={setup:n,R2:1.1*(n+Math.hypot(r.sInc,r.sIG)/2)},d.setWetLine(X.runup.R2)}},a.postMessage({P:{...m},swell:i,opts:{cell:2}})}}let h=q.get(`regimes`)==null?1:J(`regimes`,1);if(q.get(`aa`)===`temporal`?d.setVariant({target:`temporal`,rs:J(`rs`,.7),detail:q.get(`detail`)==null?null:J(`detail`,1),regimes:h}):h!==1&&d.setVariant({msaa:d.msaa,grid:d.grid,regimes:h}),q.get(`v`)){let e=Object.fromEntries(q.get(`v`).split(`,`).map(e=>e.split(`:`)).filter(([e,t])=>e in Dt&&t!=null).map(([e,t])=>[e,t===`true`?!0:t===`false`?!1:Number.isNaN(Number(t))?t:Number(t)]));d.setVariant({...d.variant,...e})}if(d.temporal)for(let[e,t]of[[`twmax`,`wMax`],[`twsoft`,`wSoft`],[`tsign`,`sigN`],[`tsigw`,`sigW`],[`tsharp`,`sharpen`]])q.get(e)!=null&&(d.temporal[t]=J(e,0));d.temporal&&q.get(`jitter`)===`0`&&(d.temporal.jitter=!1);let g=Qt(i,m?(e,t)=>{let n=m.facing*Math.PI/180,r=Math.sin(n),i=Math.cos(n);return Ue(e*i-t*r,e*r+t*i,m).y}:()=>-1e3),_=J(`frames`,0);X.cam=g;let v=performance.now();addEventListener(`keydown`,()=>{v=performance.now()}),addEventListener(`wheel`,()=>{g.lastInput=performance.now()},{passive:!0});let y=()=>v,b=(q.get(`drone`)==null?q.get(`scene`):q.get(`drone`)!==`0`)&&q.get(`instruments`)!==`0`?$t():null;if(m){let e=m.facing*Math.PI/180,t=q.get(`off`)==null,n=J(`off`,-8),r=J(`along`,t?11:0);g.e=Math.sin(e)*n+Math.cos(e)*r,g.n=Math.cos(e)*n-Math.sin(e)*r,q.get(`yawrel`)==null?q.get(`yaw`)??(g.yaw=t?e+16*Math.PI/180:e+Math.PI):g.yaw=e+J(`yawrel`,0)*Math.PI/180,t&&q.get(`eye`)==null&&(g.h=14.4),t&&q.get(`pitch`)==null&&(g.pitch=-20.6*Math.PI/180)}m&&q.get(`trial`)!==`0`&&!q.get(`frames`)&&!q.get(`probe`)&&en(g,m.facing,()=>{let e=d.gpu,t=Z(X.wall.slice(-60)),n=d.parcels?.stats;return`frame ${Q(t)} ms${e?`; GPU: sea and sky ${$(Z(e.draw.slice(-60)))} ms, FFT, ripples, swell and parcels ${$(Z(e.fft.slice(-60)))} ms`:``}`+(n?`\nparcels: ${n.alive} (${n.contact} on the water), ${n.spawnRate.toFixed(0)} new a frame, ${(1e3*n.volFlight).toFixed(0)} l in the air, ${(1e3*n.volContact).toFixed(0)} l on the water, ${n.impactRate.toFixed(1)} hard landings a frame`:``)});let x=i.look??{},S=J(`sunaz`,x.sunAz??200),C=J(`sunel`,x.sunEl??30);d.setLook(new fe(n).set({sunElDeg:C,haze:q.get(`haze`)??x.haze??null,teal:J(`teal`,m?.85:x.teal??.6),turbid:J(`turbid`,m?0:x.turbid??0),bottom:m?[1,1,1]:x.bottom??null,glint:J(`glint`,1.3),cloud:J(`cloud`,x.cloud??.35),cloudType:J(`cloudtype`,x.cloudType??.25),cloudVar:J(`cloudvar`,x.cloudVar??.4),cloudDark:J(`clouddark`,x.cloudDark??0)}));let w=S*Math.PI/180,T=C*Math.PI/180,E={sunDir:[Math.sin(w)*Math.cos(T),Math.sin(T),-Math.cos(w)*Math.cos(T)]};X.info={course:r.id,adapter:`${e.info?.vendor??``} ${e.info?.architecture??``}`.trim()||`unknown`,timestamps:t,sets:l.length,msaa:d.msaa};let D=q.get(`measure`)?on(d,X.info):null,O=q.get(`sweep`)?hn(d,X.info,[Y.width,Y.height],!!m):null,k=performance.now(),A=0,j=1,M=q.get(`freeze`)==null?null:J(`freeze`,100),P=q.get(`freezesea`)==null?null:J(`freezesea`,100),F=!q.get(`noqueuecap`),I=q.get(`dt`)==null?null:J(`dt`,1/60),te=null;if(!q.get(`probe`)&&!q.get(`frames`)&&[`127.0.0.1`,`localhost`,`[::1]`].includes(location.hostname)){let e=document.createElement(`div`);e.style.cssText=`position:fixed;inset:auto 0 40% 0;margin:auto;width:fit-content;padding:10px 16px;background:rgba(0,0,0,.75);color:#fff;font:15px system-ui;border-radius:8px;display:none;z-index:9`,document.body.appendChild(e);let t=()=>fetch(`/__probe`).then(e=>e.json()).then(t=>{te=t.busy?t:null,e.style.display=t.busy?`block`:`none`,t.busy&&(e.textContent=`Paused: a performance probe is running (${t.why}; about ${t.left} s left)`)}).catch(()=>{}).finally(()=>setTimeout(t,1500));t()}let ne=J(`idlefps`,20),re=J(`fps`,60),L=!(q.get(`measure`)||q.get(`sweep`)||q.get(`frames`))&&(q.get(`gov`)===`1`||q.get(`gov`)!==`0`&&!q.get(`probe`)&&q.get(`freeze`)==null&&!q.get(`size`))?Xt(d,J(`budget`,1e3/30)):null,R=0,z=e=>{if(te){k=e,requestAnimationFrame(z);return}let t=!_&&!O&&!D&&(!document.hasFocus()||e-Math.max(g.lastInput??0,y())>1e4);if(!_&&!O&&!D&&e-R<1e3/(t?ne:re)-2){requestAnimationFrame(z);return}if(R=e,F&&!d.ready()){X.skipped=(X.skipped??0)+1,requestAnimationFrame(z);return}let n=I??Math.min(.1,(e-k)/1e3);k=e,A+=n*(X.timeK??1);let r=!m||!!m.tex&&(q.get(`swell`)===`0`||!!d.swell);j=D&&r?D(e,n*1e3)??1:O&&r?fn:D||O?1:sn;let i=r?O?.before(e)??null:null;if(M==null&&!O&&g.step(n),d.frame(g,X.freeze??M??P??100+A,{...E,load:j,tag:i}),r&&L?.(e,t),b?.(g),X.frames++,X.wall.push(n*1e3),X.wall.length>1200&&X.wall.splice(0,600),X.ready=!0,X.frames%20==0){let e=d.gpu,t=Z(X.wall.slice(-60));Ht.textContent=`${Y.width}x${Y.height}, MSAA ${d.msaa}, ${l.length} sets, ${d.patches} patches${j>1?`, drawn ${j} times`:``}\nframe ${Q(t)} ms${e?`; GPU: FFT and ripples ${$(Z(e.fft.slice(-60)))} ms, sea and sky ${$(Z(e.draw.slice(-60)))} ms`:`; submit to done ${Q(Z(d.doneMs.slice(-60)))} ms`}\neye ${g.h.toFixed(1)} m, pitch ${(g.pitch*180/Math.PI).toFixed(0)}°${gn?`\n${gn}`:``}${X.errors.length?`\n${X.errors.join(`
+`)}`:``}`}if(_&&X.frames>=_){let e=d.gpu;Object.assign(X,{done:!0,fftMs:e?Z(e.fft.slice(10)):null,drawMs:e?Z(e.draw.slice(10)):null,postMs:e?Z(e.post.slice(10)):null,frameMs:Z(X.wall.slice(10)),doneMs:Z(d.doneMs.slice(10)),patches:d.patches,perLevel:d.perLevel,vertices:d.vertices,cpuMs:Z(d.cpuMs.slice(10)),size:[Y.width,Y.height]}),X.fft=e?.fft??[],X.draw=e?.draw??[],Wt([navigator.userAgent,location.href,`canvas ${Y.width}x${Y.height}, rendered ${d.renderSize?.join(`x`)}`,`GPU: compute ${$(X.fftMs)} ms, sea and sky with resolve and present ${$(X.drawMs)} ms, of which resolve and present ${$(X.postMs)} ms; frame ${Q(X.frameMs)} ms`].join(`
+`))}else requestAnimationFrame(z)};requestAnimationFrame(z)}_n().catch(e=>Ut(`sim2 failed: ${e.message}`));
